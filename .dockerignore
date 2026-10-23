@@ -1,0 +1,7 @@
+node_modules
+.next
+data/raw
+data/*.db
+data/*.db-*
+docs
+.git

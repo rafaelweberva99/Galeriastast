@@ -133,3 +133,22 @@ npm run dev            # http://localhost:3000
 `npm test` corre la suite de Vitest y `npm run lint` hace el chequeo de tipos.
 
 Requiere Node 22.13 o superior.
+
+## Publicar en Railway
+
+El repo trae `Dockerfile`, `railway.json` y `scripts/start.sh`. En el primer arranque se descargan y cargan
+los partidos solos; los usuarios quedan guardados en un volumen persistente.
+
+1. Entra a <https://railway.com>, inicia sesión con GitHub y elige **New Project → Deploy from GitHub repo**.
+   Elige este repositorio (rama `main`).
+2. En el servicio creado: **Settings → Volumes → Add Volume**, con *mount path* `/data`.
+3. **Settings → Networking → Generate Domain** para obtener la URL pública
+   (`https://<algo>.up.railway.app`).
+4. Espera el primer despliegue: la carga de datos toma alrededor de un minuto. Luego abre la URL.
+
+Variables opcionales:
+- `DATABASE_PATH`: por defecto es `/data/galeriastats.db`.
+- `REINGEST=1`: fuerza a recargar los partidos en el próximo arranque.
+
+El mismo `Dockerfile` sirve para Render o Fly.io (con un volumen en `/data`).
+
