@@ -9,6 +9,7 @@ import path from "node:path";
 import { openDb } from "../src/lib/db/client.ts";
 import { matchId } from "../src/lib/domain/normalize.ts";
 import { ensureTeam, loadCatalog, readJson } from "../src/lib/ingest/catalog.ts";
+import { applyCorrections, loadCorrections } from "../src/lib/ingest/quality.ts";
 import { isFinalRound, parseFootballTxt, roundToSpanish, stageToSpanish } from "../src/lib/ingest/footballtxt.ts";
 
 interface FileCfg {
@@ -103,7 +104,10 @@ try {
   throw e;
 }
 
-console.log(`\nTotal: ${total} partidos cargados.`);
+// La ingesta sobrescribe resultados, así que las correcciones confirmadas se reaplican siempre.
+const corrections = loadCorrections();
+const applied = applyCorrections(db, corrections, (n) => resolver.resolve(n));
+console.log(`\nTotal: ${total} partidos cargados; ${applied} de ${corrections.length} correcciones aplicadas.`);
 if (unknownTeams.size) {
   console.log(`${unknownTeams.size} clubes chilenos fuera del catálogo (creados automáticamente; agrega alias en data/catalog/teams.json si corresponde):`);
   console.log([...unknownTeams.keys()].sort().join(", "));

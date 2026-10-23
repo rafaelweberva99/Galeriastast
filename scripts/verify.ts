@@ -10,24 +10,14 @@ import path from "node:path";
 import { openDb } from "../src/lib/db/client.ts";
 import { loadCatalog } from "../src/lib/ingest/catalog.ts";
 import { parseCsv } from "../src/lib/ingest/csv.ts";
-import { applyCorrections, crossCheck, runQualityChecks, type Correction } from "../src/lib/ingest/quality.ts";
+import { applyCorrections, crossCheck, loadCorrections, runQualityChecks } from "../src/lib/ingest/quality.ts";
 
 const db = openDb();
 const resolver = loadCatalog(db);
 const resolve = (name: string) => resolver.resolve(name);
 
-const correctionsFile = path.resolve("data/corrections.csv");
-if (existsSync(correctionsFile)) {
-  const rows = parseCsv(readFileSync(correctionsFile, "utf8"));
-  const corrections: Correction[] = rows.map((r) => ({
-    date: r.date,
-    home: r.home,
-    away: r.away,
-    field: r.field as Correction["field"],
-    correctValue: r.correct_value,
-  }));
-  console.log(`Correcciones aplicadas: ${applyCorrections(db, corrections, resolve)} de ${corrections.length}`);
-}
+const corrections = loadCorrections();
+console.log(`Correcciones aplicadas: ${applyCorrections(db, corrections, resolve)} de ${corrections.length}`);
 
 const crossDir = path.resolve("data/crosscheck");
 if (existsSync(crossDir)) {

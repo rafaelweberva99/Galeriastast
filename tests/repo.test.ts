@@ -47,6 +47,13 @@ describe("calidad de datos", () => {
     db.exec(`INSERT INTO matches (id, date, season, competition_id, home_team_id, away_team_id, home_goals, away_goals, source)
              VALUES ('dup', '2024-03-01', 2024, 'primera-division', 'everton', 'colo-colo', 0, 0, 't')`);
     expect(runQualityChecks(db, "2030-01-01").some((i) => i.check === "equipo-dos-veces-mismo-dia")).toBe(true);
+    db.exec(`DELETE FROM matches WHERE id = 'dup';
+             INSERT INTO competitions VALUES ('copa-chile', 'Copa Chile', 'copa', 3);
+             INSERT INTO matches (id, date, season, competition_id, home_team_id, away_team_id, home_goals, away_goals, source)
+             VALUES ('cup', '2024-03-01', 2024, 'copa-chile', 'everton', 'colo-colo', 0, 0, 't')`);
+    const checks = runQualityChecks(db, "2030-01-01").map((i) => i.check);
+    expect(checks).not.toContain("equipo-dos-veces-mismo-dia");
+    expect(checks).toContain("jornada-doble-otra-competicion");
 
     const resolver = new TeamResolver([
       { id: "colo-colo", name: "Colo-Colo" },

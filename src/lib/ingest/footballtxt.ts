@@ -222,8 +222,13 @@ export function stageToSpanish(stage: string | null): string | null {
   return out;
 }
 
-/** Una final es la ronda "Final" o una fase llamada "... Final" (no semifinal / cuartos). */
+/**
+ * Una final de título es la ronda "Final" o una fase llamada "... Final" (no semifinal / cuartos).
+ * Las liguillas de clasificación a Libertadores / Sudamericana también tienen ronda "Final",
+ * pero no definen un título, así que se excluyen.
+ */
 export function isFinalRound(stage: string | null, round: string | null): boolean {
+  if (stage && /Libert|Lib Playoffs|Copa Sud/i.test(stage)) return false;
   const isFinal = (s: string | null) => !!s && /(^|\s)finals?$/i.test(s.trim()) && !/semi|quarter/i.test(s);
   return isFinal(round) || isFinal(stage);
 }

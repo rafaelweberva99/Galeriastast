@@ -1,0 +1,19 @@
+date,home,away,field,source_value,correct_value,evidence_url
+2004-06-27,Cobreloa,Universidad de Chile,home_goals,2 (a.e.t. inexistente),1,https://www.alairelibre.cl/polideportivo/u-de-chile-apelo-a-la-garra-para-conquistar-su-duodecima-estrella/
+2004-06-27,Cobreloa,Universidad de Chile,away_goals,4 (a.e.t. inexistente),1,https://www.alairelibre.cl/polideportivo/u-de-chile-apelo-a-la-garra-para-conquistar-su-duodecima-estrella/
+2004-06-27,Cobreloa,Universidad de Chile,home_pens,,2,https://en.wikipedia.org/wiki/2004_Campeonato_Nacional_Primera_Divisi%C3%B3n
+2004-06-27,Cobreloa,Universidad de Chile,away_pens,,4,https://en.wikipedia.org/wiki/2004_Campeonato_Nacional_Primera_Divisi%C3%B3n
+2004-12-05,Universidad de Chile,Unión Española,home_goals,,3,https://www.emol.com/noticias/deportes/2004/12/05/166017/union-espanola-dejo-a-la-u-sin-bicampeonato.html
+2004-12-05,Universidad de Chile,Unión Española,away_goals,,2,https://www.emol.com/noticias/deportes/2004/12/05/166017/union-espanola-dejo-a-la-u-sin-bicampeonato.html
+2005-06-19,Universidad de Chile,Unión Española,home_goals,,0,https://www.emol.com/noticias/deportes/2005/06/19/185970/union-espanola-deja-fuera-a-la-u-en-los-penales.html
+2005-06-19,Universidad de Chile,Unión Española,away_goals,,1,https://www.emol.com/noticias/deportes/2005/06/19/185970/union-espanola-deja-fuera-a-la-u-en-los-penales.html
+2005-06-26,Universidad Católica,Unión Española,home_goals,,1,https://www.emol.com/noticias/deportes/2005/06/26/186752/union-espanola-supera-a-la-uc-en-dramatica-tanda-de-penales.html
+2005-06-26,Universidad Católica,Unión Española,away_goals,,1,https://www.emol.com/noticias/deportes/2005/06/26/186752/union-espanola-supera-a-la-uc-en-dramatica-tanda-de-penales.html
+2005-12-03,Colo-Colo,La Serena,home_goals,,3,https://www.emol.com/noticias/deportes/2005/12/03/203764/la-serena-da-el-golpe-y-elimina-a-colo-colo-en-penales.html
+2005-12-03,Colo-Colo,La Serena,away_goals,,3,https://www.emol.com/noticias/deportes/2005/12/03/203764/la-serena-da-el-golpe-y-elimina-a-colo-colo-en-penales.html
+2005-12-22,Universidad Católica,Universidad de Chile,home_pens,,5,https://cooperativa.cl/noticias/deportes/torneo-de-clausura/final/universidad-catolica-conquisto-el-clausura-tras-una-infartante/2005-12-22/211000.html
+2005-12-22,Universidad Católica,Universidad de Chile,away_pens,,4,https://cooperativa.cl/noticias/deportes/torneo-de-clausura/final/universidad-catolica-conquisto-el-clausura-tras-una-infartante/2005-12-22/211000.html
+2006-07-02,Colo-Colo,Universidad de Chile,home_goals,,0,https://en.wikipedia.org/wiki/2006_Torneo_Apertura_(Chile)
+2006-07-02,Colo-Colo,Universidad de Chile,away_goals,,1,https://en.wikipedia.org/wiki/2006_Torneo_Apertura_(Chile)
+2023-03-13,Coquimbo Unido,Cobresal,home_goals,2 (en cancha),0,https://www.emol.com/noticias/Deportes/2023/04/03/1091146/cobresal-coquimbo-tribunal-puntos.html
+2023-03-13,Coquimbo Unido,Cobresal,away_goals,1 (en cancha),3,https://www.emol.com/noticias/Deportes/2023/04/03/1091146/cobresal-coquimbo-tribunal-puntos.html

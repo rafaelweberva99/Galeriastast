@@ -62,17 +62,46 @@ tests/                  Vitest: dominio, parser, repositorios y calidad de datos
 
 ## Datos
 
-La búsqueda y verificación de fuentes la hicieron dos agentes independientes:
+La búsqueda y verificación de fuentes la hicieron dos agentes independientes: uno buscó plataformas y otro
+auditó la elegida.
 
-- **Fuente principal:** resultados de worldfootball.net, vía el espejo en formato Football.TXT
-  [`yorobot/cache.wfb.txt`](https://github.com/yorobot/cache.wfb.txt). Primera División desde el Clausura
-  2003, Copa Chile 2015–2024 y partidos de clubes chilenos en Copa Libertadores 2000–2024 (unos 7.800
-  partidos).
-- El repositorio fuente **no declara licencia**, por eso los datos crudos no se versionan aquí: se
-  descargan con `npm run data:fetch`.
-- **Huecos conocidos:** Primera 2001–2002 y Apertura 2003, temporadas 2025–2026, segunda mitad de 2024,
-  Primera B, Supercopa y Copa Sudamericana. Para la temporada en curso se recomienda API-Football
-  (liga 265), con plan de pago.
+**Fuente principal:** resultados de worldfootball.net, vía el espejo en formato Football.TXT
+[`yorobot/cache.wfb.txt`](https://github.com/yorobot/cache.wfb.txt). Son unos 7.800 partidos:
+- Primera División desde el Clausura 2003.
+- Copa Chile 2015–2024.
+- Partidos de clubes chilenos en Copa Libertadores 2000–2024.
+
+El repositorio fuente **no declara licencia**, por eso los datos crudos no se versionan aquí: se descargan
+con `npm run data:fetch`.
+
+### Confiabilidad (auditoría del agente verificador)
+
+| Competición / período | Nivel | Evidencia |
+|---|---|---|
+| Primera, fase regular 2004–2023 | Alta | El campeón calculado desde los partidos coincide con el oficial en 21 de 21 torneos. Muestra aleatoria contrastada con prensa: 0 errores. |
+| Finales 2003–2013 | Alta en el campeón | Los 17 campeones coinciden. Faltaban detalles (marcador de 90', penales), ya corregidos. |
+| Playoffs 2004–2006 | Media-baja → corregida | 9 partidos corregidos con evidencia en `data/corrections.csv`. |
+| Copa Chile 2015–2023 | Alta | Finales verificadas. |
+| 2024 (liga y copa) | Baja | La copia se cortó en la fecha 23 de la liga y antes de las semifinales de la copa. |
+
+- **Correcciones:** `data/corrections.csv` guarda cada error confirmado con la URL de su evidencia. Se
+  aplican automáticamente en cada ingesta.
+- **Verificación cruzada:** `data/crosscheck/` contiene partidos contrastados con fuentes independientes
+  (prensa, ESPN). Esos partidos quedan marcados `verified = 1`.
+- **Resultados de mesa:** se usa el resultado oficial. Por ejemplo, Coquimbo–Cobresal 2023 cuenta como
+  0-3 por fallo del Tribunal, aunque en cancha terminó 2-1.
+- **Finales:** son finales las rondas "Final" de los playoffs de Apertura y Clausura, la final única del
+  Apertura 2013 y la final de Copa Chile. Las liguillas de clasificación a Libertadores y Sudamericana no
+  cuentan como finales.
+
+**Huecos conocidos:**
+- Primera 2001–2002 y Apertura 2003.
+- Segunda mitad de 2024 y temporadas 2025–2026.
+- Copa Chile antes de 2015.
+- Primera B, Supercopa y Copa Sudamericana.
+
+Para la temporada en curso se recomienda API-Football (liga 265, plan de pago). Para 2001–2003 se
+recomienda RSSSF.
 
 ## Puesta en marcha
 

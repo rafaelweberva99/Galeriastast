@@ -1,4 +1,7 @@
+import { existsSync, readFileSync } from "node:fs";
+import path from "node:path";
 import type { Db } from "../db/client.ts";
+import { parseCsv } from "./csv.ts";
 
 export interface Issue {
   check: string;
@@ -14,18 +17,19 @@ export function runQualityChecks(db: Db, today = new Date().toISOString().slice(
   const add = (check: string, severity: Issue["severity"], rows: Row[], fmt: (r: Row) => string) =>
     rows.forEach((r) => issues.push({ check, severity, detail: fmt(r) }));
 
-  add(
-    "equipo-dos-veces-mismo-dia",
-    "error",
-    db
-      .prepare(
-        `SELECT team, date, COUNT(*) AS n FROM (
-           SELECT home_team_id AS team, date FROM matches UNION ALL SELECT away_team_id, date FROM matches)
-         GROUP BY team, date HAVING n > 1`,
-      )
-      .all() as Row[],
-    (r) => `${r.team} figura en ${r.n} partidos el ${r.date}`,
-  );
+  // Dos partidos el mismo día en la misma competición es imposible; entre competiciones distintas
+  // ocurre (p.ej. Huachipato jugó liga y Copa Chile el 8-9-2024 con planteles distintos).
+  const sameDay = db
+    .prepare(
+      `SELECT team, date, COUNT(*) AS n, COUNT(DISTINCT competition_id) AS comps FROM (
+         SELECT home_team_id AS team, date, competition_id FROM matches
+         UNION ALL SELECT away_team_id, date, competition_id FROM matches)
+       GROUP BY team, date HAVING n > 1`,
+    )
+    .all() as Row[];
+  const fmtSameDay = (r: Row) => `${r.team} figura en ${r.n} partidos el ${r.date}`;
+  add("equipo-dos-veces-mismo-dia", "error", sameDay.filter((r) => Number(r.comps) < Number(r.n)), fmtSameDay);
+  add("jornada-doble-otra-competicion", "warning", sameDay.filter((r) => Number(r.comps) === Number(r.n)), fmtSameDay);
 
   add(
     "local-igual-visita",
@@ -84,6 +88,18 @@ export interface Correction {
   away: string;
   field: "home_goals" | "away_goals" | "home_pens" | "away_pens" | "date" | "delete";
   correctValue: string;
+}
+
+/** Lee data/corrections.csv (date,home,away,field,source_value,correct_value,evidence_url). */
+export function loadCorrections(file = path.resolve(process.cwd(), "data/corrections.csv")): Correction[] {
+  if (!existsSync(file)) return [];
+  return parseCsv(readFileSync(file, "utf8")).map((r) => ({
+    date: r.date,
+    home: r.home,
+    away: r.away,
+    field: r.field as Correction["field"],
+    correctValue: r.correct_value,
+  }));
 }
 
 const CORRECTABLE = new Set(["home_goals", "away_goals", "home_pens", "away_pens", "date"]);

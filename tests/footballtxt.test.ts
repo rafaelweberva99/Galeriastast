@@ -66,6 +66,8 @@ Final
     expect(isFinalRound("Apertura Playoffs", "Final")).toBe(true);
     expect(isFinalRound("Apertura Final", null)).toBe(true);
     expect(isFinalRound("Apertura Playoffs", "Semifinals")).toBe(false);
+    expect(isFinalRound("Ap. Playoff Libert.", "Final")).toBe(false);
+    expect(isFinalRound("Copa Sud Playoffs", "Final")).toBe(false);
     expect(roundToSpanish("Matchday 12")).toBe("Fecha 12");
     expect(roundToSpanish("Quarterfinals")).toBe("Cuartos de final");
   });
