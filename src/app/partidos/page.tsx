@@ -1,0 +1,94 @@
+import Link from "next/link";
+import { requireUser } from "@/lib/auth.ts";
+import { getDb } from "@/lib/db/client.ts";
+import { competitionsForClub, listClubMatches, seasonsForClub } from "@/lib/repo/matches.ts";
+import { getTeam, listClubs } from "@/lib/repo/teams.ts";
+import { attendanceModes } from "@/lib/repo/users.ts";
+import { AttendanceToggle } from "@/components/AttendanceToggle.tsx";
+import { MatchRow } from "@/components/MatchRow.tsx";
+
+export const metadata = { title: "Marcar partidos · GaleríaStats" };
+
+type Search = Promise<{ temporada?: string; competicion?: string; rival?: string; solo?: string }>;
+
+export default async function MatchesPage({ searchParams }: { searchParams: Search }) {
+  const user = await requireUser();
+  const sp = await searchParams;
+  const db = getDb();
+  const club = getTeam(db, user.clubId)!;
+  const seasons = seasonsForClub(db, club.id);
+  const season = sp.temporada === "todas" ? undefined : Number(sp.temporada) || seasons[0];
+  const modes = attendanceModes(db, user.id);
+  const today = new Date().toISOString().slice(0, 10);
+  let matches = listClubMatches(db, club.id, {
+    season,
+    competitionId: sp.competicion || undefined,
+    opponent: sp.rival || undefined,
+  }).filter((m) => m.date <= today);
+  if (sp.solo === "1") matches = matches.filter((m) => modes.has(m.id));
+  const rivals = listClubs(db).filter((c) => c.id !== club.id);
+
+  return (
+    <div className="stack">
+      <div>
+        <h1>Marca los partidos a los que fuiste</h1>
+        <p className="muted">
+          {club.name} · {modes.size} partidos marcados ·{" "}
+          <Link href="/carnet">ver mi carnet</Link>
+        </p>
+      </div>
+
+      <form className="card filters" method="get">
+        <div className="field">
+          <label htmlFor="temporada">Temporada</label>
+          <select id="temporada" name="temporada" defaultValue={season ? String(season) : "todas"}>
+            <option value="todas">Todas</option>
+            {seasons.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="field">
+          <label htmlFor="competicion">Competición</label>
+          <select id="competicion" name="competicion" defaultValue={sp.competicion ?? ""}>
+            <option value="">Todas</option>
+            {competitionsForClub(db, club.id).map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="field">
+          <label htmlFor="rival">Rival</label>
+          <select id="rival" name="rival" defaultValue={sp.rival ?? ""}>
+            <option value="">Todos</option>
+            {rivals.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <label className="row small">
+          <input type="checkbox" name="solo" value="1" defaultChecked={sp.solo === "1"} /> Solo los que marqué
+        </label>
+        <button className="btn">Filtrar</button>
+      </form>
+
+      <div className="card">
+        {matches.length === 0 ? (
+          <p className="muted">No hay partidos con esos filtros.</p>
+        ) : (
+          matches.map((m) => (
+            <MatchRow key={m.id} match={m} highlight={club.id}>
+              <AttendanceToggle matchId={m.id} initial={modes.get(m.id) ?? "ninguno"} />
+            </MatchRow>
+          ))
+        )}
+      </div>
+    </div>
+  );
+}

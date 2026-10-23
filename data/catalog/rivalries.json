@@ -1,0 +1,10 @@
+[
+  { "id": "superclasico", "name": "Superclásico", "teamA": "colo-colo", "teamB": "universidad-de-chile" },
+  { "id": "clasico-universitario", "name": "Clásico Universitario", "teamA": "universidad-de-chile", "teamB": "universidad-catolica" },
+  { "id": "colo-colo-catolica", "name": "Colo-Colo vs. Católica", "teamA": "colo-colo", "teamB": "universidad-catolica" },
+  { "id": "clasico-porteno", "name": "Clásico Porteño", "teamA": "everton", "teamB": "santiago-wanderers" },
+  { "id": "clasico-de-colonias", "name": "Clásico de Colonias", "teamA": "union-espanola", "teamB": "audax-italiano" },
+  { "id": "clasico-de-colonias-palestino", "name": "Clásico de Colonias (Palestino)", "teamA": "palestino", "teamB": "union-espanola" },
+  { "id": "clasico-del-norte-grande", "name": "Clásico del Norte Grande", "teamA": "deportes-iquique", "teamB": "san-marcos-de-arica" },
+  { "id": "clasico-del-desierto", "name": "Clásico del Desierto", "teamA": "cobreloa", "teamB": "deportes-antofagasta" }
+]

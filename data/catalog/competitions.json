@@ -1,0 +1,8 @@
+[
+  { "id": "primera-division", "name": "Primera División", "kind": "liga", "tier": 1 },
+  { "id": "primera-b", "name": "Primera B", "kind": "liga", "tier": 2 },
+  { "id": "copa-chile", "name": "Copa Chile", "kind": "copa", "tier": 3 },
+  { "id": "supercopa", "name": "Supercopa de Chile", "kind": "supercopa", "tier": 4 },
+  { "id": "copa-libertadores", "name": "Copa Libertadores", "kind": "internacional", "tier": 5 },
+  { "id": "copa-sudamericana", "name": "Copa Sudamericana", "kind": "internacional", "tier": 6 }
+]
