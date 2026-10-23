@@ -5,8 +5,11 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { endSession, requireUser, startSession } from "@/lib/auth.ts";
 import { getDb } from "@/lib/db/client.ts";
+import { readJson, type CatalogTeam } from "@/lib/ingest/catalog.ts";
+import { findTicketMatches, TeamMentionIndex } from "@/lib/ingest/tickets.ts";
 import { getTeam } from "@/lib/repo/teams.ts";
 import {
+  attendanceModes,
   AttendanceError,
   authenticate,
   createUser,
@@ -87,5 +90,66 @@ export async function saveProfile(_: FormState, form: FormData): Promise<FormSta
   if (!getTeam(db, clubId)) return { error: "Club desconocido." };
   updateProfile(db, user.id, { clubId, isPublic: form.get("isPublic") === "on" });
   revalidatePath("/", "layout");
+  redirect("/carnet");
+}
+
+// --- Importar desde PuntoTicket --------------------------------------------
+
+export interface ImportPreview {
+  error?: string;
+  candidates?: {
+    id: string;
+    date: string;
+    label: string;
+    detail: string;
+    reason: string;
+    alreadyMarked: boolean;
+  }[];
+}
+
+let mentionIndex: TeamMentionIndex | null = null;
+
+/** Analiza el comprobante de compra y propone partidos. No guarda el texto. */
+export async function previewTicketImport(_: ImportPreview, form: FormData): Promise<ImportPreview> {
+  const user = await requireUser();
+  const text = String(form.get("text") ?? "");
+  if (text.trim().length < 10) return { error: "Pega el correo de confirmación de tu compra o sube el archivo .eml." };
+  if (text.length > 2_000_000) return { error: "El archivo es demasiado grande." };
+  mentionIndex ??= new TeamMentionIndex(readJson<CatalogTeam[]>("catalog/teams.json"));
+  const db = getDb();
+  const modes = attendanceModes(db, user.id);
+  const found = findTicketMatches(db, user.clubId, text, mentionIndex);
+  if (!found.length) {
+    return {
+      error:
+        "No encontramos partidos de tu club con esas fechas. Revisa que el correo incluya la fecha del evento; " +
+        "por ahora la base cubre partidos hasta mediados de 2024.",
+    };
+  }
+  return {
+    candidates: found.map(({ match: m, reason }) => ({
+      id: m.id,
+      date: m.date,
+      label: `${m.homeTeamName} ${m.homeGoals ?? ""}-${m.awayGoals ?? ""} ${m.awayTeamName}`,
+      detail: [m.competitionName, m.tournament, m.stage].filter(Boolean).join(" · "),
+      reason,
+      alreadyMarked: modes.has(m.id),
+    })),
+  };
+}
+
+/** Marca de una vez los partidos confirmados por el hincha. */
+export async function confirmTicketImport(form: FormData): Promise<void> {
+  const user = await requireUser();
+  const mode = form.get("mode") === "infiltrado" ? "infiltrado" : "propia";
+  const db = getDb();
+  for (const id of form.getAll("matchId").map(String)) {
+    try {
+      setAttendance(db, user, id, mode);
+    } catch (e) {
+      if (!(e instanceof AttendanceError)) throw e;
+    }
+  }
+  revalidatePath("/carnet");
   redirect("/carnet");
 }

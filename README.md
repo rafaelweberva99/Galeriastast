@@ -13,6 +13,7 @@ chileno.
 |---|---|---|
 | Carnet de hincha (registro / ingreso) | `/registro`, `/ingresar` | Usuario + club. Sesiones con cookie httpOnly; contraseñas con scrypt. |
 | Marcar partidos | `/partidos` | Filtros por temporada, competición y rival. Tres estados por partido: *No fui*, *Fui*, *Infiltrado*. Solo partidos del propio club y ya jugados. |
+| Importar desde PuntoTicket | `/importar` | Pegas el correo de confirmación de compra (o subes el `.eml`) y se proponen los partidos que coinciden por fecha (±1 día) y rival. El hincha confirma; el correo no se guarda. |
 | Mufómetro | `/carnet` | Efectividad = puntos obtenidos / en disputa en los partidos que viste. >60% **cábala**, 40–60% **neutro**, <40% **yeta** (mínimo 5 partidos). |
 | Impacto real | `/carnet` | Tu efectividad vs. la del club en todas sus partidos de esas mismas temporadas. |
 | Clásicos | `/carnet`, `/clubes/[id]` | Superclásico, Clásico Universitario, Porteño, de Colonias, etc. (`data/catalog/rivalries.json`). |
@@ -102,6 +103,22 @@ con `npm run data:fetch`.
 
 Para la temporada en curso se recomienda API-Football (liga 265, plan de pago). Para 2001–2003 se
 recomienda RSSSF.
+
+## Integración con PuntoTicket
+
+PuntoTicket, la ticketera de la mayoría de los partidos del fútbol chileno, no publica una API ni un
+programa de afiliados. Por eso la integración rápida se apoya en lo único que todo comprador tiene: el
+**correo de confirmación de compra**.
+
+- `src/lib/ingest/tickets.ts` hace el trabajo:
+  - decodifica el `.eml` (quoted-printable, base64 y HTML);
+  - detecta fechas (`10/08/2024`, `10 de agosto de 2024`, ISO);
+  - detecta equipos, incluidos apodos de ticketera como "UdeChile" o "Cruzados";
+  - cruza esos datos con los partidos del club del hincha.
+- **Siguiente nivel:** un acuerdo comercial con PuntoTicket (API de historial de compras o enlaces de
+  afiliado en "Comprar entradas"), o conectar Gmail con OAuth para importar todas las compras de una vez.
+
+Capturas de la app en `docs/capturas/`.
 
 ## Puesta en marcha
 

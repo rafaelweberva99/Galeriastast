@@ -34,7 +34,8 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
         <h1>Marca los partidos a los que fuiste</h1>
         <p className="muted">
           {club.name} · {modes.size} partidos marcados ·{" "}
-          <Link href="/carnet">ver mi carnet</Link>
+          <Link href="/carnet">ver mi carnet</Link> ·{" "}
+          <Link href="/importar">importar desde PuntoTicket</Link>
         </p>
       </div>
 

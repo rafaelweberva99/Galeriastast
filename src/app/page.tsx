@@ -42,7 +42,7 @@ export default async function Home() {
         </div>
         <div className="card stat">
           <span className="stat-value">{summary.teams}</span>
-          <span className="stat-label">clubes chilenos</span>
+          <span className="stat-label">clubes de Primera División</span>
         </div>
         <div className="card stat">
           <span className="stat-value">{summary.competitions}</span>

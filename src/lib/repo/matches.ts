@@ -99,7 +99,9 @@ export function datasetSummary(db: Db): DatasetSummary {
   const r = db
     .prepare(
       `SELECT COUNT(*) AS matches, MIN(season) AS first, MAX(season) AS last, AVG(verified) AS verified,
-              (SELECT COUNT(*) FROM teams WHERE is_chilean = 1) AS teams,
+              (SELECT COUNT(DISTINCT team) FROM (
+                 SELECT home_team_id AS team FROM matches WHERE competition_id = 'primera-division'
+                 UNION SELECT away_team_id FROM matches WHERE competition_id = 'primera-division')) AS teams,
               (SELECT COUNT(*) FROM competitions) AS competitions
        FROM matches`,
     )
