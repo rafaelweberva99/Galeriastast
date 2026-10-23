@@ -2,7 +2,8 @@ import Link from "next/link";
 import { effectiveness, type Breakdown, type Carnet } from "@/lib/domain/stats.ts";
 import type { AttendedMatch } from "@/lib/domain/types.ts";
 import type { Team } from "@/lib/repo/teams.ts";
-import { ClubBadge } from "./ClubBadge.tsx";
+import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
+import { Jersey } from "./Jersey.tsx";
 import { formatDate, pct, recordLine, scoreLine } from "./format.ts";
 import { MatchRow } from "./MatchRow.tsx";
 import { Mufometro } from "./Mufometro.tsx";
@@ -64,12 +65,14 @@ function Memorable({ title, match }: { title: string; match: AttendedMatch | nul
 
 export function CarnetView({
   username,
+  memberId,
   club,
   carnet,
   attended,
   isOwner,
 }: {
   username: string;
+  memberId: number;
   club: Team;
   carnet: Carnet;
   attended: AttendedMatch[];
@@ -77,25 +80,41 @@ export function CarnetView({
 }) {
   const c = carnet;
   const impact = c.impact;
+  const id = clubIdentity(club);
+  const since = c.first ? c.first.season : null;
+  const phrase =
+    c.verdict.key === "cabala" || c.verdict.key === "cabala-absoluta"
+      ? id.needsYou
+      : c.verdict.key === "yeta" || c.verdict.key === "yeta-total"
+        ? "Quizás conviene verlo por la tele…"
+        : c.verdict.description;
   return (
-    <div className="stack">
-      <section className="card carnet-head">
-        <Mufometro value={c.effectiveness} verdict={c.verdict} />
-        <div>
-          <div className="row">
-            <ClubBadge primary={club.colorPrimary} secondary={club.colorSecondary} />
-            <div>
-              <h1 style={{ margin: 0 }}>@{username}</h1>
-              <Link href={`/clubes/${club.id}`} className="muted">
-                Hincha de {club.name}
-              </Link>
+    <div className="stack" style={clubStyle(id) as React.CSSProperties}>
+      <section className="socio-card">
+        <div className="row" style={{ alignItems: "center", gap: 20 }}>
+          <Jersey club={id} size={110} number="12" />
+          <div>
+            <div className="socio-kicker">Carnet de hincha · {id.nickname}</div>
+            <div className="socio-name">@{username}</div>
+            <div className="socio-meta">
+              <Link href={`/clubes/${club.id}`}>{club.name}</Link>
+              {id.stadium ? ` · ${id.stadium}` : ""}
             </div>
+            <div className="socio-meta">
+              Socio N° {String(memberId).padStart(6, "0")}
+              {since ? ` · En la galería desde ${since}` : ""}
+            </div>
+            <div className="cheer">{id.cheer}</div>
           </div>
-          <p className="verdict" style={{ margin: "12px 0 4px" }}>
-            {c.verdict.label}
-          </p>
-          <p className="muted" style={{ margin: 0 }}>
-            {c.verdict.description}
+        </div>
+        <div className="mufometro-panel">
+          <div className="socio-kicker" style={{ opacity: 0.6 }}>
+            Mufómetro
+          </div>
+          <Mufometro value={c.effectiveness} verdict={c.verdict} />
+          <p className="verdict">{c.verdict.label}</p>
+          <p className="small" style={{ margin: "4px 0 0", maxWidth: 240, color: "#56655c" }}>
+            {phrase}
           </p>
         </div>
       </section>
@@ -116,7 +135,7 @@ export function CarnetView({
           <span className="stat-label">vs. tu club esas temporadas ({pct(c.baselineEffectiveness)})</span>
         </div>
         <div className="card stat">
-          <span className="stat-value">{recordLine(c.record)}</span>
+          <span className="stat-value sm">{recordLine(c.record)}</span>
           <span className="stat-label">
             goles {c.record.goalsFor}-{c.record.goalsAgainst}
           </span>
@@ -154,7 +173,7 @@ export function CarnetView({
 
       <section className="grid grid-2">
         <div className="card">
-          <h2>Clásicos</h2>
+          <h2 className="section-title">Clásicos</h2>
           {c.classics.length === 0 ? (
             <p className="muted">Tu club no tiene clásicos registrados.</p>
           ) : (
@@ -185,12 +204,12 @@ export function CarnetView({
           )}
         </div>
         <div className="card">
-          <h2>Finales</h2>
+          <h2 className="section-title">Finales</h2>
           {c.finals.length === 0 ? (
             <p className="muted">Todavía no marcas ninguna final.</p>
           ) : (
             c.finals.map(({ match, outcome }) => (
-              <div key={match.id} className="row" style={{ justifyContent: "space-between", padding: "6px 0" }}>
+              <div key={match.id} className="final-row">
                 <span>
                   {match.homeTeamName} {scoreLine(match)} {match.awayTeamName}
                   <span className="muted small"> · {match.tournament}</span>
@@ -232,11 +251,11 @@ export function CarnetView({
 
       <section className="grid grid-2">
         <div className="card">
-          <h2>Por temporada</h2>
+          <h2 className="section-title">Por temporada</h2>
           <BreakdownTable rows={c.bySeason} label="Año" />
         </div>
         <div className="card">
-          <h2>Por competición</h2>
+          <h2 className="section-title">Por competición</h2>
           <BreakdownTable rows={c.byCompetition} label="Competición" />
           <h2 className="section">Rivales más vistos</h2>
           <BreakdownTable rows={c.byOpponent.slice(0, 10)} label="Rival" />
@@ -245,7 +264,7 @@ export function CarnetView({
 
       <section className="card">
         <div className="row" style={{ justifyContent: "space-between" }}>
-          <h2 style={{ margin: 0 }}>Partidos a los que fue</h2>
+          <h2 className="section-title" style={{ margin: 0 }}>Partidos a los que fue</h2>
           {isOwner && (
             <Link className="btn btn-ghost" href="/partidos">
               Marcar más partidos

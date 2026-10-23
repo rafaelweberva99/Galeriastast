@@ -1,10 +1,11 @@
 import Link from "next/link";
+import { clubIdentity, clubStyle, fansLabel } from "@/lib/clubTheme.ts";
+import { Jersey } from "@/components/Jersey.tsx";
 import { notFound } from "next/navigation";
 import { getDb } from "@/lib/db/client.ts";
 import { decidedOutcome, effectiveness, involves, recordFor } from "@/lib/domain/stats.ts";
 import { listClubMatches } from "@/lib/repo/matches.ts";
 import { getTeam, listRivalries } from "@/lib/repo/teams.ts";
-import { ClubBadge } from "@/components/ClubBadge.tsx";
 import { pct, recordLine, scoreLine } from "@/components/format.ts";
 import { RecordBar } from "@/components/RecordBar.tsx";
 
@@ -21,16 +22,18 @@ export default async function ClubPage({ params }: { params: Params }) {
   const record = recordFor(matches, club.id);
   const seasons = [...new Set(matches.map((m) => m.season))].sort((a, b) => b - a);
   const finals = matches.filter((m) => m.isFinal);
+  const identity = clubIdentity(club);
   const rivalries = listRivalries(db).filter((r) => r.teamA === club.id || r.teamB === club.id);
 
   return (
-    <div className="stack">
-      <div className="row">
-        <ClubBadge primary={club.colorPrimary} secondary={club.colorSecondary} />
+    <div className="stack" style={clubStyle(identity) as React.CSSProperties}>
+      <div className="club-banner row">
+        <Jersey club={identity} size={84} />
         <div>
-          <h1 style={{ margin: 0 }}>{club.name}</h1>
+          <div className="small">{[identity.alias, identity.stadium ?? club.city].filter(Boolean).join(" · ")}</div>
+          <h1>{club.name}</h1>
           <span className="muted">
-            {club.city} · <Link href={`/rankings/${club.id}`}>ranking de hinchas</Link>
+            <Link href={`/rankings/${club.id}`}>Ranking de {fansLabel(identity)}</Link>
           </span>
         </div>
       </div>
@@ -45,7 +48,7 @@ export default async function ClubPage({ params }: { params: Params }) {
           <span className="stat-label">efectividad histórica</span>
         </div>
         <div className="card stat">
-          <span className="stat-value">{recordLine(record)}</span>
+          <span className="stat-value sm">{recordLine(record)}</span>
           <RecordBar record={record} />
         </div>
         <div className="card stat">
@@ -58,7 +61,7 @@ export default async function ClubPage({ params }: { params: Params }) {
 
       <section className="grid grid-2">
         <div className="card">
-          <h2>Clásicos (historial completo)</h2>
+          <h2 className="section-title">Clásicos (historial completo)</h2>
           {rivalries.length === 0 && <p className="muted">Sin clásicos registrados.</p>}
           {rivalries.map((r) => {
             const rival = r.teamA === club.id ? r.teamB : r.teamA;
@@ -77,12 +80,12 @@ export default async function ClubPage({ params }: { params: Params }) {
           })}
         </div>
         <div className="card">
-          <h2>Finales</h2>
+          <h2 className="section-title">Finales</h2>
           {finals.length === 0 && <p className="muted">Sin finales registradas.</p>}
           {finals.map((m) => {
             const o = decidedOutcome(m, club.id);
             return (
-              <div key={m.id} className="row" style={{ justifyContent: "space-between", padding: "4px 0" }}>
+              <div key={m.id} className="final-row">
                 <span>
                   {m.homeTeamName} {scoreLine(m)} {m.awayTeamName}
                   <span className="muted small"> · {m.tournament}</span>
@@ -95,7 +98,7 @@ export default async function ClubPage({ params }: { params: Params }) {
       </section>
 
       <section className="card">
-        <h2>Por temporada</h2>
+        <h2 className="section-title">Por temporada</h2>
         <div className="table-wrap">
           <table>
             <thead>

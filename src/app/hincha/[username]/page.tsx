@@ -19,5 +19,5 @@ export default async function FanPage({ params }: { params: Params }) {
   const viewer = await currentUser();
   const isOwner = !!viewer && viewer.id === fan?.id;
   if (!fan || (!fan.isPublic && !isOwner)) notFound();
-  return <CarnetView username={fan.username} {...loadCarnet(db, fan)} isOwner={isOwner} />;
+  return <CarnetView username={fan.username} memberId={fan.id} {...loadCarnet(db, fan)} isOwner={isOwner} />;
 }

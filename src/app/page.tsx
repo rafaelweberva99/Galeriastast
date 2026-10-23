@@ -1,37 +1,86 @@
 import Link from "next/link";
 import { currentUser } from "@/lib/auth.ts";
+import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { datasetSummary } from "@/lib/repo/matches.ts";
 import { clubsByFans } from "@/lib/repo/rankings.ts";
+import { getTeam } from "@/lib/repo/teams.ts";
+import { Jersey } from "@/components/Jersey.tsx";
+
+const BIG_THREE = ["colo-colo", "universidad-de-chile", "universidad-catolica"];
 
 const FEATURES = [
-  { title: "Mufómetro", text: "Tu efectividad (puntos ganados / en disputa) en los partidos que viste. Más de 60%: cábala. Menos de 40%: yeta." },
-  { title: "Clásicos", text: "Superclásico, Clásico Universitario, Porteño, de Colonias… cómo le va a tu club en los clásicos que viste." },
-  { title: "Finales", text: "Las finales a las que fuiste, con penales incluidos. ¿Viste dar la vuelta o llorar?" },
-  { title: "Modo Infiltrado", text: "¿Fuiste escondido a la galería rival? También cuenta, y lo separamos aparte." },
-  { title: "Impacto real", text: "Comparamos tu efectividad con la del club en esas mismas temporadas: ¿sumas o restas?" },
-  { title: "Rankings por club", text: "Los hinchas que más fueron a la cancha, club por club, y las mayores cábalas." },
+  { n: "01", title: "Mufómetro", text: "Tu efectividad en los partidos que viste desde la galería. Más de 60%: cábala. Menos de 40%: yeta." },
+  { n: "02", title: "Clásicos", text: "Superclásico, Clásico Universitario, albos contra cruzados… ¿cómo le va a tu club cuando tú vas?" },
+  { n: "03", title: "Finales", text: "Las finales a las que fuiste, con penales incluidos. ¿Viste dar la vuelta o te tocó llorar?" },
+  { n: "04", title: "Modo Infiltrado", text: "¿Fuiste escondido a la galería rival? También cuenta, y lo separamos aparte." },
+  { n: "05", title: "Impacto real", text: "Comparamos tu efectividad con la de tu club en esas mismas temporadas: ¿sumas o restas?" },
+  { n: "06", title: "Importa tus entradas", text: "Pega el correo de compra de PuntoTicket y marcamos tus partidos solos." },
 ];
 
 export default async function Home() {
   const db = getDb();
   const [user, summary, clubs] = [await currentUser(), datasetSummary(db), clubsByFans(db).slice(0, 5)];
+  const big = BIG_THREE.map((id) => getTeam(db, id))
+    .filter((t) => t !== null)
+    .map(clubIdentity);
+
   return (
     <>
-      <section className="hero">
-        <h1>¿Eres cábala o yeta?</h1>
-        <p className="lead">
-          Marca los partidos de tu club a los que fuiste al estadio y descubre tu efectividad como hincha. Con datos
-          reales de {summary.matches.toLocaleString("es-CL")} partidos del fútbol chileno
-          {summary.firstSeason ? ` desde ${summary.firstSeason}` : ""}.
-        </p>
-        <div className="row">
-          <Link className="btn" href={user ? "/partidos" : "/registro"}>
-            {user ? "Marcar partidos" : "Crear mi carnet de hincha"}
-          </Link>
-          <Link className="btn btn-ghost" href="/rankings">
-            Ver rankings
-          </Link>
+      <section className="pitch bleed hero">
+        <div className="container">
+          <p className="display" style={{ fontSize: "1.1rem", letterSpacing: "0.2em", opacity: 0.9, margin: 0 }}>
+            Carnet de hincha · Fútbol chileno
+          </p>
+          <h1>¿Eres cábala o yeta?</h1>
+          <p className="lead">
+            Marca los partidos a los que fuiste al estadio y descubre si tu club gana más cuando estás en la galería.
+            Con {summary.matches.toLocaleString("es-CL")} partidos reales desde {summary.firstSeason ?? "2000"}.
+          </p>
+
+          {user ? (
+            <div className="row" style={{ marginTop: 24 }}>
+              <Link className="btn btn-light" href="/carnet">
+                Ver mi carnet
+              </Link>
+              <Link
+                className="btn btn-light"
+                href="/partidos"
+                style={{ background: "transparent", color: "#fff", borderColor: "rgb(255 255 255 / 0.6)" }}
+              >
+                Marcar partidos
+              </Link>
+            </div>
+          ) : (
+            <>
+              <div className="pick-club">
+                {big.map((c) => (
+                  <Link
+                    key={c.id}
+                    href={`/registro?club=${c.id}`}
+                    className="pick-card"
+                    style={clubStyle(c) as React.CSSProperties}
+                  >
+                    <Jersey club={c} size={64} number="12" />
+                    <div>
+                      <div className="small" style={{ opacity: 0.85 }}>
+                        Soy
+                      </div>
+                      <p className="display">{c.nickname}</p>
+                      <div className="small" style={{ opacity: 0.85 }}>
+                        {c.short}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              <p style={{ marginTop: 16 }}>
+                <Link href="/registro" style={{ color: "#fff", fontWeight: 600 }}>
+                  ¿Eres de otro club? Elige el tuyo →
+                </Link>
+              </p>
+            </>
+          )}
         </div>
       </section>
 
@@ -57,10 +106,13 @@ export default async function Home() {
       </section>
 
       <section className="section">
-        <h2>Cómo funciona</h2>
+        <h2 className="section-title">Cómo funciona</h2>
         <div className="grid grid-3">
           {FEATURES.map((f) => (
             <div key={f.title} className="card">
+              <div className="display" style={{ color: "var(--accent)", fontSize: "1.6rem", marginBottom: 4 }}>
+                {f.n}
+              </div>
               <h3>{f.title}</h3>
               <p className="muted" style={{ margin: 0 }}>
                 {f.text}
@@ -72,7 +124,7 @@ export default async function Home() {
 
       {clubs.length > 0 && (
         <section className="section card">
-          <h2>Clubes con más hinchas en GaleríaStats</h2>
+          <h2 className="section-title">Las hinchadas que más marcan</h2>
           <ol>
             {clubs.map((c) => (
               <li key={c.clubId}>

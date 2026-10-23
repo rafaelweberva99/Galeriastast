@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useActionState } from "react";
 import { register } from "../actions.ts";
 
-export function RegisterForm({ clubs }: { clubs: { id: string; name: string }[] }) {
+export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name: string }[]; defaultClub: string }) {
   const [state, action, pending] = useActionState(register, {});
   return (
     <form action={action} className="form">
@@ -22,7 +22,7 @@ export function RegisterForm({ clubs }: { clubs: { id: string; name: string }[] 
       </div>
       <div className="field">
         <label htmlFor="clubId">Tu club</label>
-        <select id="clubId" name="clubId" required defaultValue="">
+        <select id="clubId" name="clubId" required defaultValue={defaultClub}>
           <option value="" disabled>
             Elige tu club…
           </option>

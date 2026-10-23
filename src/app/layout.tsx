@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
+import { Barlow, Oswald } from "next/font/google";
 import Link from "next/link";
 import { logout } from "./actions.ts";
 import { currentUser } from "@/lib/auth.ts";
+import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
+import { getDb } from "@/lib/db/client.ts";
+import { getTeam } from "@/lib/repo/teams.ts";
+import { Ball } from "@/components/Ball.tsx";
 import "./globals.css";
+
+const display = Oswald({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-display" });
+const body = Barlow({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-body" });
 
 export const metadata: Metadata = {
   title: "GaleríaStats · ¿Eres cábala o yeta?",
@@ -14,15 +22,16 @@ export const dynamic = "force-dynamic";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const user = await currentUser();
+  // Todo el sitio se tiñe con los colores del club del hincha conectado.
+  const team = user ? getTeam(getDb(), user.clubId) : null;
+  const theme = team ? clubStyle(clubIdentity(team)) : undefined;
   return (
-    <html lang="es-CL">
-      <body>
+    <html lang="es-CL" className={`${display.variable} ${body.variable}`}>
+      <body style={theme as React.CSSProperties}>
         <header className="site-header">
           <div className="container">
             <Link href="/" className="brand">
-              <span className="brand-mark" aria-hidden>
-                GS
-              </span>
+              <Ball size={26} />
               GaleríaStats
             </Link>
             <nav className="nav" aria-label="Principal">
@@ -41,7 +50,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               ) : (
                 <>
                   <Link href="/ingresar">Ingresar</Link>
-                  <Link href="/registro" className="btn">
+                  <Link href="/registro" className="nav-cta">
                     Crear carnet
                   </Link>
                 </>
@@ -53,7 +62,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <footer className="site-footer">
           <div className="container">
             Resultados históricos: <Link href="/datos">worldfootball.net vía yorobot/cache.wfb.txt</Link>, con
-            chequeos de calidad propios. GaleríaStats no está afiliado a la ANFP ni a ningún club.
+            chequeos de calidad propios. GaleríaStats no está afiliado a la ANFP ni a ningún club; los colores se usan
+            solo como referencia de los hinchas.
           </div>
         </footer>
       </body>

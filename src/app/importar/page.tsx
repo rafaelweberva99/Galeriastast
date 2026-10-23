@@ -11,7 +11,7 @@ export default async function ImportPage() {
   return (
     <div className="stack">
       <div>
-        <h1>Importar desde PuntoTicket</h1>
+        <h1 className="section-title">Importar desde PuntoTicket</h1>
         <p className="muted" style={{ maxWidth: 720 }}>
           ¿Compraste tus entradas en PuntoTicket? Pega el correo de confirmación de la compra (o sube el archivo
           .eml) y buscamos los partidos de {club.name} que coinciden. Tú confirmas cuáles marcar. No guardamos el

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
+import { Jersey } from "@/components/Jersey.tsx";
 import { notFound } from "next/navigation";
 import { getDb } from "@/lib/db/client.ts";
 import { fansOfClub, topCabalas, type FanRanking } from "@/lib/repo/rankings.ts";
@@ -46,25 +48,30 @@ export default async function ClubRankingPage({ params }: { params: Params }) {
   const db = getDb();
   const club = getTeam(db, clubId);
   if (!club) notFound();
+  const identity = clubIdentity(club);
   const fans = fansOfClub(db, club.id);
   const cabalas = topCabalas(fans);
   return (
-    <div className="stack">
-      <div>
-        <h1>Hinchas de {club.name}</h1>
-        <p className="muted">
-          <Link href={`/clubes/${club.id}`}>Historial del club</Link> · <Link href="/rankings">Todos los clubes</Link>
-        </p>
+    <div className="stack" style={clubStyle(identity) as React.CSSProperties}>
+      <div className="club-banner row">
+        <Jersey club={identity} size={72} number="12" />
+        <div>
+          <div className="small">Ranking de hinchas</div>
+          <h1>{identity.fansPlural ? `Los ${identity.fansPlural}` : club.name}</h1>
+          <p className="muted" style={{ margin: 0 }}>
+            <Link href={`/clubes/${club.id}`}>Historial del club</Link> · <Link href="/rankings">Todos los clubes</Link>
+          </p>
+        </div>
       </div>
       <div className="grid grid-2">
         <section className="card">
-          <h2>Los que más fueron</h2>
+          <h2 className="section-title">Los que más fueron</h2>
           <FanTable rows={fans.slice(0, 50)} empty="Todavía no hay hinchas con partidos marcados." />
         </section>
         <section className="card">
-          <h2>Mayores cábalas</h2>
+          <h2 className="section-title">Mayores cábalas</h2>
           <FanTable rows={cabalas.slice(0, 10)} empty="Se necesitan hinchas con al menos 5 partidos." />
-          <h2 className="section">Mayores yetas</h2>
+          <h2 className="section-title section">Mayores yetas</h2>
           <FanTable rows={[...cabalas].reverse().slice(0, 10)} empty="Se necesitan hinchas con al menos 5 partidos." />
         </section>
       </div>

@@ -13,13 +13,13 @@ export default function RankingsPage() {
   return (
     <div className="stack">
       <div>
-        <h1>Rankings de hinchas por club</h1>
+        <h1 className="section-title">Rankings de hinchas por club</h1>
         <p className="muted">Los hinchas que más fueron a la cancha, club por club, y las mayores cábalas y yetas.</p>
       </div>
       <div className="grid grid-3">
         {clubs.map((c) => (
-          <Link key={c.id} href={`/rankings/${c.id}`} className="card row" style={{ textDecoration: "none" }}>
-            <ClubBadge primary={c.colorPrimary} secondary={c.colorSecondary} size={32} />
+          <Link key={c.id} href={`/rankings/${c.id}`} className="card row" style={{ textDecoration: "none", borderTop: `5px solid ${c.colorPrimary}` }}>
+            <ClubBadge team={c} size={40} />
             <div>
               <div style={{ fontWeight: 700 }}>{c.name}</div>
               <div className="muted small">

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { clubIdentity } from "@/lib/clubTheme.ts";
+import { Jersey } from "@/components/Jersey.tsx";
 import { requireUser } from "@/lib/auth.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { competitionsForClub, listClubMatches, seasonsForClub } from "@/lib/repo/matches.ts";
@@ -30,13 +32,16 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
 
   return (
     <div className="stack">
-      <div>
-        <h1>Marca los partidos a los que fuiste</h1>
-        <p className="muted">
-          {club.name} · {modes.size} partidos marcados ·{" "}
-          <Link href="/carnet">ver mi carnet</Link> ·{" "}
-          <Link href="/importar">importar desde PuntoTicket</Link>
-        </p>
+      <div className="club-banner row">
+        <Jersey club={clubIdentity(club)} size={72} number="12" />
+        <div>
+          <div className="small">Fecha a fecha · {club.name}</div>
+          <h1>¿Dónde estuviste?</h1>
+          <p className="muted" style={{ margin: 0 }}>
+            {modes.size} partidos marcados · <Link href="/carnet">ver mi carnet</Link> ·{" "}
+            <Link href="/importar">importar desde PuntoTicket</Link>
+          </p>
+        </div>
       </div>
 
       <form className="card filters" method="get">

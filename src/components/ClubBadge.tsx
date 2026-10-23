@@ -1,9 +1,6 @@
-export function ClubBadge({ primary, secondary, size = 44 }: { primary: string; secondary: string; size?: number }) {
-  return (
-    <span
-      className="club-badge"
-      aria-hidden
-      style={{ width: size, height: size, background: primary, borderColor: secondary }}
-    />
-  );
+import { clubIdentity, type TeamColors } from "@/lib/clubTheme.ts";
+import { Jersey } from "./Jersey.tsx";
+
+export function ClubBadge({ team, size = 44 }: { team: TeamColors; size?: number }) {
+  return <Jersey club={clubIdentity(team)} size={size} />;
 }
