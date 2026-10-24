@@ -134,6 +134,15 @@ npm run dev            # http://localhost:3000
 
 Requiere Node 22.13 o superior.
 
+## Vista previa sin servidor
+
+`npm run demo:build` genera `demo/dist/index.html`: una versión de la app en un solo archivo.
+- Corre entera en el navegador e incluye los partidos, el Mufómetro, los clásicos, las finales, el tema de
+  cada club y el importador de PuntoTicket.
+- Los partidos marcados se guardan en el navegador del hincha.
+- Sirve para mostrar la app sin desplegar nada. No incluye cuentas ni rankings, porque esas funciones
+  necesitan el servidor.
+
 ## Publicar en Railway
 
 El repo trae `Dockerfile`, `railway.json` y `scripts/start.sh`. En el primer arranque se descargan y cargan
