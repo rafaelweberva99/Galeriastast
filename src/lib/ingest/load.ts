@@ -7,7 +7,7 @@ import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import type { Db, Param } from "../db/client.ts";
-import { matchId, type TeamResolver } from "../domain/normalize.ts";
+import { matchId, slugify, type TeamResolver } from "../domain/normalize.ts";
 import { externalTeamId, loadCatalog, readJson } from "./catalog.ts";
 import { isFinalRound, parseFootballTxt, roundToSpanish, stageToSpanish } from "./footballtxt.ts";
 import { applyCorrections, loadCorrections } from "./quality.ts";
@@ -188,6 +188,8 @@ export async function ingestMatchesCsv(
   };
 
   const rows = new Map<string, Param[]>();
+  const venues = new Map<string, string>(); // venue_id -> nombre
+  const matchVenue = new Map<string, string>(); // match_id -> venue_id
   for (const [i, r] of parseCsv(text).entries()) {
     const where = `${path.basename(file)}#${i + 2}`;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(r.date ?? "")) {
@@ -211,6 +213,12 @@ export async function ingestMatchesCsv(
       continue;
     }
     const id = matchId(r.date, home, away);
+    const venueName = (r.venue ?? "").trim();
+    if (venueName) {
+      const vid = slugify(venueName);
+      venues.set(vid, venueName);
+      matchVenue.set(id, vid);
+    }
     rows.set(id, [
       id,
       r.date,
@@ -241,6 +249,10 @@ export async function ingestMatchesCsv(
       );
     }
     await upsertMatches(tx, [...rows.values()]);
+    for (const [vid, name] of venues) {
+      await tx.run("INSERT INTO venues (id, name) VALUES (?, ?) ON CONFLICT (id) DO UPDATE SET name = excluded.name", vid, name);
+    }
+    for (const [mid, vid] of matchVenue) await tx.run("UPDATE matches SET venue_id = ? WHERE id = ?", vid, mid);
   });
   return { loaded: rows.size, unknownTeams: [...unknownTeams].sort(), rejected };
 }

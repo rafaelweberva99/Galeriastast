@@ -3,7 +3,8 @@ import { clubIdentity } from "@/lib/clubTheme.ts";
 import { Jersey } from "@/components/Jersey.tsx";
 import { requireUser } from "@/lib/auth.ts";
 import { getDb } from "@/lib/db/client.ts";
-import { competitionsForClub, listClubMatches, seasonsForClub } from "@/lib/repo/matches.ts";
+import { competitionsForClub, listClubMatches, seasonsForClub, upcomingClubMatches } from "@/lib/repo/matches.ts";
+import { UpcomingMatches } from "@/components/UpcomingMatches.tsx";
 import { getTeam, listClubs } from "@/lib/repo/teams.ts";
 import { attendanceModes } from "@/lib/repo/users.ts";
 import { goalsForMatches } from "@/lib/repo/goals.ts";
@@ -30,6 +31,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
   })).filter((m) => m.date <= today);
   if (sp.solo === "1") matches = matches.filter((m) => modes.has(m.id));
   const goals = await goalsForMatches(db, matches.map((m) => m.id));
+  const upcoming = await upcomingClubMatches(db, club.id, today, 5);
   const rivals = (await listClubs(db)).filter((c) => c.id !== club.id);
 
   return (
@@ -45,6 +47,8 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
           </p>
         </div>
       </div>
+
+      <UpcomingMatches matches={upcoming} clubId={club.id} clubs={rivals} />
 
       <form className="card filters" method="get">
         <div className="field">

@@ -183,5 +183,8 @@ describe.each(ENGINES)("partidos en CSV: %s", (_name, open) => {
     const futuro = await db.get("SELECT home_goals FROM matches WHERE id = '2026-12-06_colo-colo_universidad-de-chile'");
     expect(futuro?.home_goals).toBeNull();
     expect((await db.get("SELECT is_chilean FROM teams WHERE id = 'flamengo-bra'"))?.is_chilean).toBe(0);
+    const { upcomingClubMatches } = await import("../src/lib/repo/matches.ts");
+    const next = await upcomingClubMatches(db, "colo-colo", "2026-10-28");
+    expect(next.map((m) => m.id)).toEqual(["2026-12-06_colo-colo_universidad-de-chile"]);
   });
 });

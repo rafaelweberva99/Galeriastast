@@ -119,3 +119,17 @@ export async function listAttended(db: Db, userId: number): Promise<AttendedMatc
     JOIN attendances a ON a.match_id = m.id WHERE a.user_id = ? ORDER BY m.date`;
   return (await db.all(sql, userId)).map((r) => ({ ...toMatch(r), mode: r.mode as AttendanceMode }));
 }
+
+/** Próximos partidos del club (sin resultado, desde hoy), del más cercano al más lejano. */
+export async function upcomingClubMatches(db: Db, clubId: string, today: string, limit = 6): Promise<Match[]> {
+  return (
+    await db.all(
+      `${SELECT_MATCH} WHERE (m.home_team_id = ? OR m.away_team_id = ?) AND m.date >= ? AND m.home_goals IS NULL
+       ORDER BY m.date ASC LIMIT ?`,
+      clubId,
+      clubId,
+      today,
+      limit,
+    )
+  ).map(toMatch);
+}
