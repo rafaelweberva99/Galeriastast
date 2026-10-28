@@ -3,6 +3,7 @@
   "criterio": "Clubes con su historial de Primera División desde 1997 completo al 100%: todos los partidos de cada temporada en que jugaron en Primera, con resultado y fecha real y sin marcadores en duda. Los demás clubes siguen en la base (aparecen como rivales) pero no se ofrecen para crear carnet ni tienen página propia hasta resolver sus dudas.",
   "clubs": [
     "colo-colo",
+    "universidad-de-chile",
     "universidad-catolica",
     "cobresal",
     "ohiggins",
@@ -14,7 +15,6 @@
   ],
   "pendientes": {
     "fechas de 1997-1998 sin confirmar (la fuente da la jornada en un rango de días)": [
-      "universidad-de-chile",
       "coquimbo-unido",
       "audax-italiano",
       "palestino",
