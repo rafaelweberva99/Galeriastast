@@ -43,7 +43,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
           <h1>¿Dónde estuviste?</h1>
           <p className="muted" style={{ margin: 0 }}>
             {modes.size} partidos marcados · <Link href="/carnet">ver mi carnet</Link> ·{" "}
-            <Link href="/importar">importar desde PuntoTicket</Link>
+            <Link href="/importar">importar entradas</Link>
           </p>
         </div>
       </div>
