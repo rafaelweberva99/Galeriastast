@@ -161,7 +161,8 @@ export async function applyCorrections(
       continue;
     }
     if (!CORRECTABLE.has(c.field)) continue;
-    const value = c.field === "date" ? c.correctValue : Number(c.correctValue);
+    // Un valor vacío deja el dato sin resultado (por ejemplo, un partido suspendido que nunca se terminó).
+    const value = c.field === "date" ? c.correctValue : c.correctValue.trim() === "" ? null : Number(c.correctValue);
     if (c.field === "date" && (await db.get("SELECT 1 AS x FROM matches WHERE id = ?", `${c.correctValue}_${home}_${away}`))) {
       await db.run("DELETE FROM matches WHERE id = ?", id);
       continue;

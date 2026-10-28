@@ -12,6 +12,7 @@ import { ScorersSection } from "@/components/ScorersSection.tsx";
 import { BuyTickets } from "@/components/BuyTickets.tsx";
 import { pct, recordLine, scoreLine } from "@/components/format.ts";
 import { RecordBar } from "@/components/RecordBar.tsx";
+import { isVisibleClub } from "@/lib/mvp.ts";
 
 type Params = Promise<{ id: string }>;
 
@@ -21,7 +22,7 @@ export default async function ClubPage({ params }: { params: Params }) {
   const { id } = await params;
   const db = await getDb();
   const club = await getTeam(db, id);
-  if (!club) notFound();
+  if (!club || !isVisibleClub(club.id)) notFound();
   const matches = await listClubMatches(db, club.id);
   const record = recordFor(matches, club.id);
   const seasons = [...new Set(matches.map((m) => m.season))].sort((a, b) => b - a);

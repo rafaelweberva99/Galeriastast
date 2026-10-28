@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getDb } from "@/lib/db/client.ts";
 import { clubsByFans } from "@/lib/repo/rankings.ts";
 import { listClubs } from "@/lib/repo/teams.ts";
+import { visibleClubs } from "@/lib/mvp.ts";
 import { ClubBadge } from "@/components/ClubBadge.tsx";
 
 export const metadata = { title: "Rankings · GaleríaStats" };
@@ -9,7 +10,7 @@ export const metadata = { title: "Rankings · GaleríaStats" };
 export default async function RankingsPage() {
   const db = await getDb();
   const fans = new Map((await clubsByFans(db)).map((c) => [c.clubId, c]));
-  const clubs = (await listClubs(db)).sort((a, b) => (fans.get(b.id)?.fans ?? 0) - (fans.get(a.id)?.fans ?? 0));
+  const clubs = visibleClubs(await listClubs(db)).sort((a, b) => (fans.get(b.id)?.fans ?? 0) - (fans.get(a.id)?.fans ?? 0));
   return (
     <div className="stack">
       <div>

@@ -5,6 +5,7 @@ import { getDb } from "@/lib/db/client.ts";
 import { CONSENT_LABELS } from "@/lib/legal.ts";
 import { listConsents } from "@/lib/repo/account.ts";
 import { listClubs } from "@/lib/repo/teams.ts";
+import { isVisibleClub } from "@/lib/mvp.ts";
 import { DeleteAccountForm } from "./DeleteAccountForm.tsx";
 import { PrivacyForm } from "./PrivacyForm.tsx";
 import { ProfileForm } from "./ProfileForm.tsx";
@@ -14,7 +15,7 @@ export const metadata = { title: "Perfil · GaleríaStats" };
 export default async function ProfilePage() {
   const user = await requireUser();
   const db = await getDb();
-  const clubs = (await listClubs(db)).map((c) => ({ id: c.id, name: c.name }));
+  const clubs = (await listClubs(db)).filter((c) => isVisibleClub(c.id) || c.id === user.clubId).map((c) => ({ id: c.id, name: c.name }));
   const consents = (await listConsents(db, user.id)).slice(-8).reverse();
   return (
     <div className="stack" style={{ maxWidth: 560, margin: "24px auto" }}>

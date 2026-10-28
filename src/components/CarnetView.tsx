@@ -9,6 +9,7 @@ import { formatDate, pct, recordLine, scoreLine } from "./format.ts";
 import { MatchRow } from "./MatchRow.tsx";
 import { Mufometro } from "./Mufometro.tsx";
 import { RecordBar } from "./RecordBar.tsx";
+import { isVisibleClub } from "@/lib/mvp.ts";
 import { ScorersSection } from "./ScorersSection.tsx";
 
 const OUTCOME_LABEL = { G: "Ganado", E: "Empate", P: "Perdido" } as const;
@@ -105,7 +106,7 @@ export function CarnetView({
             <div className="socio-kicker">Carnet de hincha · {id.nickname}</div>
             <div className="socio-name">@{username}</div>
             <div className="socio-meta">
-              <Link href={`/clubes/${club.id}`}>{club.name}</Link>
+              {isVisibleClub(club.id) ? <Link href={`/clubes/${club.id}`}>{club.name}</Link> : club.name}
               {id.stadium ? ` · ${id.stadium}` : ""}
             </div>
             <div className="socio-meta">

@@ -6,6 +6,7 @@ import { getDb } from "@/lib/db/client.ts";
 import { fansOfClub, topCabalas, type FanRanking } from "@/lib/repo/rankings.ts";
 import { getTeam } from "@/lib/repo/teams.ts";
 import { pct } from "@/components/format.ts";
+import { isVisibleClub } from "@/lib/mvp.ts";
 
 type Params = Promise<{ club: string }>;
 
@@ -47,7 +48,7 @@ export default async function ClubRankingPage({ params }: { params: Params }) {
   const { club: clubId } = await params;
   const db = await getDb();
   const club = await getTeam(db, clubId);
-  if (!club) notFound();
+  if (!club || !isVisibleClub(club.id)) notFound();
   const identity = clubIdentity(club);
   const fans = await fansOfClub(db, club.id);
   const cabalas = topCabalas(fans);

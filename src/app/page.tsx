@@ -6,6 +6,7 @@ import { datasetSummary } from "@/lib/repo/matches.ts";
 import { clubsByFans } from "@/lib/repo/rankings.ts";
 import { getTeam, listClubs } from "@/lib/repo/teams.ts";
 import { CURRENT_SEASON } from "@/lib/ticketing.ts";
+import { isVisibleClub, MVP_ACTIVE, MVP_CLUBS, visibleClubs } from "@/lib/mvp.ts";
 import { Jersey } from "@/components/Jersey.tsx";
 
 const BIG_THREE = ["colo-colo", "universidad-de-chile", "universidad-catolica"];
@@ -22,12 +23,14 @@ const FEATURES = [
 export default async function Home({ searchParams }: { searchParams: Promise<{ cuenta?: string }> }) {
   const { cuenta } = await searchParams;
   const db = await getDb();
-  const [user, summary, clubs] = [await currentUser(), await datasetSummary(db), (await clubsByFans(db)).slice(0, 5)];
-  const allClubs = await listClubs(db);
+  const [user, summary, clubs] = [await currentUser(), await datasetSummary(db), (await clubsByFans(db)).filter((c) => isVisibleClub(c.clubId)).slice(0, 5)];
+  const allClubs = visibleClubs(await listClubs(db));
+  // En el MVP las tarjetas grandes son los clubes habilitados; si no, los tres grandes.
+  const featured = MVP_ACTIVE ? [...MVP_CLUBS] : BIG_THREE;
   const latest = CURRENT_SEASON;
-  const current = allClubs.filter((c) => c.current && !BIG_THREE.includes(c.id));
+  const current = allClubs.filter((c) => c.current && !featured.includes(c.id));
   const historic = allClubs.filter((c) => !c.current);
-  const big = (await Promise.all(BIG_THREE.map((id) => getTeam(db, id))))
+  const big = (await Promise.all(featured.map((id) => getTeam(db, id))))
     .filter((t) => t !== null)
     .map(clubIdentity);
 
@@ -86,9 +89,11 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
                   </Link>
                 ))}
               </div>
-              <p className="display" style={{ margin: "26px 0 10px", fontSize: "1rem", letterSpacing: "0.12em" }}>
-                Todos los clubes de Primera {latest}
-              </p>
+              {current.length > 0 && (
+                <p className="display" style={{ margin: "26px 0 10px", fontSize: "1rem", letterSpacing: "0.12em" }}>
+                  Todos los clubes de Primera {latest}
+                </p>
+              )}
               <div className="club-chips">
                 {current.map((t) => {
                   const c = clubIdentity(t);
@@ -109,6 +114,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
                   );
                 })}
               </div>
+              {MVP_ACTIVE && (
+                <p className="small" style={{ marginTop: 14, opacity: 0.9 }}>
+                  Partimos con los clubes cuyo historial en Primera ya está completo y verificado. Colo-Colo, la U,
+                  la UC y el resto llegan pronto.
+                </p>
+              )}
               {historic.length > 0 && (
                 <p className="small" style={{ marginTop: 14, opacity: 0.9 }}>
                   ¿Tu club jugó en Primera antes? También está:{" "}

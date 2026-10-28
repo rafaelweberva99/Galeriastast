@@ -10,9 +10,14 @@ export function pct(value: number | null, digits = 0): string {
   return value === null ? "—" : `${value.toFixed(digits)}%`;
 }
 
+/** Partido sin marcador: "vs" si está por jugarse, "s/r" si ya pasó (suspendido y nunca terminado). */
+export function noResult(m: Match): string {
+  return m.date < new Date().toISOString().slice(0, 10) ? "s/r" : "vs";
+}
+
 export function scoreLine(m: Match): string {
   if (m.homeGoals === null || m.awayGoals === null) {
-    return m.homePens !== null ? `pen. ${m.homePens}-${m.awayPens}` : "vs";
+    return m.homePens !== null ? `pen. ${m.homePens}-${m.awayPens}` : noResult(m);
   }
   const pens = m.homePens !== null ? ` (${m.homePens}-${m.awayPens} pen.)` : "";
   return `${m.homeGoals}-${m.awayGoals}${pens}`;

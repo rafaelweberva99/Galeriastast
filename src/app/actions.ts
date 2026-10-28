@@ -16,6 +16,7 @@ import {
 } from "@/lib/repo/account.ts";
 import { analyzeTicket, TeamMentionIndex } from "@/lib/ingest/tickets.ts";
 import { getTeam, listClubs } from "@/lib/repo/teams.ts";
+import { isVisibleClub } from "@/lib/mvp.ts";
 import {
   attendanceModes,
   AttendanceError,
@@ -35,6 +36,7 @@ export interface FormState {
 
 const echo = (form: FormData, keys: string[]): Record<string, string> =>
   Object.fromEntries(keys.map((k) => [k, String(form.get(k) ?? "")]));
+const CLUB_NOT_YET = "Ese club todavía no está disponible: estamos completando su historial.";
 const REGISTER_ECHO = ["username", "email", "clubId", "acceptTerms", "acceptPrivacy", "isAdult", "isPublic"];
 
 /** Casilla obligatoria: el navegador envía "on" solo si está marcada. */
@@ -61,6 +63,7 @@ export async function register(_: FormState, form: FormData): Promise<FormState>
   const db = await getDb();
   const { username, email, password, clubId } = parsed.data;
   if (!(await getTeam(db, clubId))) return { error: "Club desconocido.", values };
+  if (!isVisibleClub(clubId)) return { error: CLUB_NOT_YET, values };
   try {
     const user = await registerUser(db, {
       username,
@@ -121,6 +124,7 @@ export async function saveProfile(_: FormState, form: FormData): Promise<FormSta
   const clubId = String(form.get("clubId") ?? "");
   const db = await getDb();
   if (!(await getTeam(db, clubId))) return { error: "Club desconocido." };
+  if (!isVisibleClub(clubId) && clubId !== user.clubId) return { error: CLUB_NOT_YET };
   await updateProfile(db, user.id, { clubId });
   revalidatePath("/", "layout");
   redirect("/carnet");

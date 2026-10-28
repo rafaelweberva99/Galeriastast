@@ -1,11 +1,11 @@
 import { outcomeFor } from "@/lib/domain/stats.ts";
 import { scorersLine } from "@/lib/domain/scorers.ts";
 import type { Goal, Match } from "@/lib/domain/types.ts";
-import { formatDate } from "./format.ts";
+import { formatDate, noResult } from "./format.ts";
 
 function Score({ match: m }: { match: Match }) {
   if (m.homeGoals === null || m.awayGoals === null) {
-    return <span className="scoreboard">{m.homePens !== null ? `${m.homePens}-${m.awayPens} pen.` : "vs"}</span>;
+    return <span className="scoreboard">{m.homePens !== null ? `${m.homePens}-${m.awayPens} pen.` : noResult(m)}</span>;
   }
   return (
     <span className="scoreboard">
