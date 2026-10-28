@@ -29,7 +29,13 @@ import {
 export interface FormState {
   error?: string;
   ok?: string;
+  /** Lo que el hincha escribió (nunca contraseñas), para no vaciar el formulario cuando hay un error. */
+  values?: Record<string, string>;
 }
+
+const echo = (form: FormData, keys: string[]): Record<string, string> =>
+  Object.fromEntries(keys.map((k) => [k, String(form.get(k) ?? "")]));
+const REGISTER_ECHO = ["username", "email", "clubId", "acceptTerms", "acceptPrivacy", "isAdult", "isPublic"];
 
 /** Casilla obligatoria: el navegador envía "on" solo si está marcada. */
 const mustCheck = (message: string) => z.literal("on", { errorMap: () => ({ message }) });
@@ -43,17 +49,18 @@ const registerSchema = z.object({
   password: z.string().min(8, "La contraseña debe tener al menos 8 caracteres."),
   clubId: z.string().min(1, "Elige tu club."),
   acceptTerms: mustCheck("Debes aceptar los Términos y Condiciones."),
-  acceptPrivacy: mustCheck("Debes aceptar la Política de Privacidad."),
+  acceptPrivacy: mustCheck("Debes confirmar que leíste la Política de Privacidad."),
   isAdult: mustCheck(`Debes tener ${MIN_AGE} años o más para crear una cuenta.`),
   isPublic: z.literal("on").optional(),
 });
 
 export async function register(_: FormState, form: FormData): Promise<FormState> {
   const parsed = registerSchema.safeParse(Object.fromEntries(form));
-  if (!parsed.success) return { error: parsed.error.issues[0].message };
+  const values = echo(form, REGISTER_ECHO);
+  if (!parsed.success) return { error: parsed.error.issues[0].message, values };
   const db = await getDb();
   const { username, email, password, clubId } = parsed.data;
-  if (!(await getTeam(db, clubId))) return { error: "Club desconocido." };
+  if (!(await getTeam(db, clubId))) return { error: "Club desconocido.", values };
   try {
     const user = await registerUser(db, {
       username,
@@ -67,7 +74,7 @@ export async function register(_: FormState, form: FormData): Promise<FormState>
     });
     await startSession(user.id);
   } catch (e) {
-    if (e instanceof UserExistsError || e instanceof ConsentRequiredError) return { error: e.message };
+    if (e instanceof UserExistsError || e instanceof ConsentRequiredError) return { error: e.message, values };
     throw e;
   }
   redirect("/partidos");
@@ -75,7 +82,7 @@ export async function register(_: FormState, form: FormData): Promise<FormState>
 
 export async function login(_: FormState, form: FormData): Promise<FormState> {
   const user = await authenticate(await getDb(), String(form.get("login") ?? "").trim(), String(form.get("password") ?? ""));
-  if (!user) return { error: "Usuario o contraseña incorrectos." };
+  if (!user) return { error: "Usuario o contraseña incorrectos.", values: echo(form, ["login"]) };
   await startSession(user.id);
   // Si cambió la versión de los Términos o de la Privacidad, hay que aceptarla antes de seguir.
   redirect((await mustAcceptLegal(user.id)) ? "/aceptar" : "/carnet");
@@ -172,7 +179,7 @@ export async function deleteMyAccount(_: FormState, form: FormData): Promise<For
       password: String(form.get("password") ?? ""),
     });
   } catch (e) {
-    if (e instanceof AccountError) return { error: e.message };
+    if (e instanceof AccountError) return { error: e.message, values: echo(form, ["confirmUsername"]) };
     throw e;
   }
   await clearSessionCookie();

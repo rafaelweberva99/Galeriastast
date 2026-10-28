@@ -153,7 +153,8 @@ export async function registerUser(db: Db, input: RegisterInput): Promise<User> 
 export interface UserDataExport {
   format: "galeriastats-export";
   exportedAt: string;
-  legalVersions: { terms: string; privacy: string; date: string };
+  /** Versiones vigentes al momento de la descarga; las que aceptaste están en `consents`. */
+  currentLegalVersions: { terms: string; privacy: string; date: string };
   profile: { id: number; username: string; email: string; clubId: string; isPublic: boolean; createdAt: string };
   attendances: {
     matchId: string;
@@ -193,7 +194,7 @@ export async function exportUserData(db: Db, userId: number): Promise<UserDataEx
   return {
     format: "galeriastats-export",
     exportedAt: new Date().toISOString(),
-    legalVersions: { terms: REQUIRED_DOCS.terms, privacy: REQUIRED_DOCS.privacy, date: LEGAL_DATE },
+    currentLegalVersions: { terms: REQUIRED_DOCS.terms, privacy: REQUIRED_DOCS.privacy, date: LEGAL_DATE },
     profile: {
       id: Number(u.id),
       username: u.username as string,

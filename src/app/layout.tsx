@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Barlow, Oswald } from "next/font/google";
 import Link from "next/link";
 import { logout } from "./actions.ts";
-import { currentUser } from "@/lib/auth.ts";
+import { currentUser, mustAcceptLegal } from "@/lib/auth.ts";
 import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { getTeam } from "@/lib/repo/teams.ts";
@@ -25,6 +25,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   // Todo el sitio se tiñe con los colores del club del hincha conectado.
   const team = user ? await getTeam(await getDb(), user.clubId) : null;
   const theme = team ? clubStyle(clubIdentity(team)) : undefined;
+  // Con condiciones pendientes, el menú solo ofrece lo que se puede usar (todo lo demás lleva a /aceptar).
+  const pendingLegal = user ? await mustAcceptLegal(user.id) : false;
+  const full = !!user && !pendingLegal;
   return (
     <html lang="es-CL" className={`${display.variable} ${body.variable}`}>
       <body style={theme as React.CSSProperties}>
@@ -35,14 +38,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               GaleríaStats
             </Link>
             <nav className="nav" aria-label="Principal">
-              {user && <Link href="/partidos">Marcar partidos</Link>}
-              {user && <Link href="/importar">Importar entradas</Link>}
-              {user && <Link href="/carnet">Mi carnet</Link>}
+              {full && <Link href="/partidos">Marcar partidos</Link>}
+              {full && <Link href="/importar">Importar entradas</Link>}
+              {full && <Link href="/carnet">Mi carnet</Link>}
               <Link href="/rankings">Rankings</Link>
               <Link href="/clubes">Clubes</Link>
               {user ? (
                 <>
-                  <Link href="/perfil">@{user.username}</Link>
+                  {pendingLegal ? <Link href="/aceptar">@{user.username}</Link> : <Link href="/perfil">@{user.username}</Link>}
                   <form action={logout}>
                     <button type="submit">Salir</button>
                   </form>

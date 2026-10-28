@@ -7,10 +7,10 @@ import { login } from "../actions.ts";
 export function LoginForm() {
   const [state, action, pending] = useActionState(login, {});
   return (
-    <form action={action} className="form">
+    <form key={JSON.stringify(state.values ?? {})} action={action} className="form">
       <div className="field">
         <label htmlFor="login">Usuario o correo</label>
-        <input id="login" name="login" required autoComplete="username" />
+        <input id="login" name="login" defaultValue={state.values?.login} required autoComplete="username" />
       </div>
       <div className="field">
         <label htmlFor="password">Contraseña</label>

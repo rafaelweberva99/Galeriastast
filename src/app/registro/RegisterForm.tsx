@@ -8,15 +8,15 @@ import { register } from "../actions.ts";
 export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name: string }[]; defaultClub: string }) {
   const [state, action, pending] = useActionState(register, {});
   return (
-    <form action={action} className="form">
+    <form key={JSON.stringify(state.values ?? {})} action={action} className="form">
       <div className="field">
         <label htmlFor="username">Usuario</label>
-        <input id="username" name="username" required minLength={3} maxLength={20} pattern="[A-Za-z0-9_]+" autoComplete="username" aria-describedby="username-hint" />
+        <input id="username" name="username" defaultValue={state.values?.username} required minLength={3} maxLength={20} pattern="[A-Za-z0-9_]+" autoComplete="username" aria-describedby="username-hint" />
         <span id="username-hint" className="muted small">3 a 20 caracteres: letras, números o guion bajo. Será visible si haces público tu carnet.</span>
       </div>
       <div className="field">
         <label htmlFor="email">Correo</label>
-        <input id="email" name="email" type="email" required autoComplete="email" />
+        <input id="email" name="email" defaultValue={state.values?.email} type="email" required autoComplete="email" />
       </div>
       <div className="field">
         <label htmlFor="password">Contraseña</label>
@@ -25,7 +25,7 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
       </div>
       <div className="field">
         <label htmlFor="clubId">Tu club</label>
-        <select id="clubId" name="clubId" required defaultValue={defaultClub}>
+        <select id="clubId" name="clubId" required defaultValue={state.values?.clubId || defaultClub}>
           <option value="" disabled>
             Elige tu club…
           </option>
@@ -39,7 +39,7 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
       <fieldset className="consents">
         <legend>Tu cuenta y tus datos</legend>
         <label className="check">
-          <input type="checkbox" name="acceptTerms" required />
+          <input type="checkbox" name="acceptTerms" defaultChecked={state.values?.acceptTerms === "on"} required />
           <span>
             Acepto los{" "}
             <a href="/terminos" target="_blank" rel="noopener noreferrer">
@@ -49,7 +49,7 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
           </span>
         </label>
         <label className="check">
-          <input type="checkbox" name="acceptPrivacy" required />
+          <input type="checkbox" name="acceptPrivacy" defaultChecked={state.values?.acceptPrivacy === "on"} required />
           <span>
             He leído la{" "}
             <a href="/privacidad" target="_blank" rel="noopener noreferrer">
@@ -59,11 +59,11 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
           </span>
         </label>
         <label className="check">
-          <input type="checkbox" name="isAdult" required />
+          <input type="checkbox" name="isAdult" defaultChecked={state.values?.isAdult === "on"} required />
           <span>Declaro tener {MIN_AGE} años o más</span>
         </label>
         <label className="check">
-          <input type="checkbox" name="isPublic" />
+          <input type="checkbox" name="isPublic" defaultChecked={state.values?.isPublic === "on"} />
           <span>
             Mostrar mi carnet en los rankings y en mi perfil público <span className="optional">(opcional)</span>
             <br />
