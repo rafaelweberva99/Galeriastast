@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { logout } from "../actions.ts";
+import { logout, logoutEverywhere } from "../actions.ts";
 import { requireUser } from "@/lib/auth.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { legalVersionLabel, REQUIRED_DOCS } from "@/lib/legal.ts";
 import { legalStatus, needsAcceptance } from "@/lib/repo/account.ts";
 import { DeleteAccountForm } from "../perfil/DeleteAccountForm.tsx";
+import { PrivacyForm } from "../perfil/PrivacyForm.tsx";
 import { AcceptForm } from "./AcceptForm.tsx";
 
 export const metadata = { title: "Actualizamos nuestras condiciones · GaleríaStats" };
@@ -63,7 +64,20 @@ export default async function AcceptPage() {
               Salir
             </button>
           </form>
+          <form action={logoutEverywhere}>
+            <button className="btn btn-ghost" type="submit">
+              Cerrar todas mis sesiones
+            </button>
+          </form>
         </div>
+        {user.isPublic && (
+          <div className="stack">
+            <p className="muted small" style={{ margin: 0 }}>
+              Tu carnet hoy se muestra en los rankings. Puedes hacerlo privado sin aceptar nada:
+            </p>
+            <PrivacyForm isPublic={user.isPublic} />
+          </div>
+        )}
         <details>
           <summary>Eliminar mi cuenta</summary>
           <div style={{ marginTop: 12 }}>

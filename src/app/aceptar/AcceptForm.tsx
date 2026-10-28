@@ -17,7 +17,8 @@ export function AcceptForm(props: { askTerms: boolean; askPrivacy: boolean; askA
               Acepto los{" "}
               <a href="/terminos" target="_blank" rel="noopener noreferrer">
                 Términos y Condiciones
-              </a>
+              </a>{" "}
+            <span className="muted small">(se abre en otra pestaña)</span>
             </span>
           </label>
         )}
@@ -25,10 +26,11 @@ export function AcceptForm(props: { askTerms: boolean; askPrivacy: boolean; askA
           <label className="check">
             <input type="checkbox" name="acceptPrivacy" required />
             <span>
-              Acepto la{" "}
-              <a href="/privacidad" target="_blank" rel="noopener noreferrer">
-                Política de Privacidad
-              </a>
+              He leído la{" "}
+            <a href="/privacidad" target="_blank" rel="noopener noreferrer">
+              Política de Privacidad
+            </a>{" "}
+            <span className="muted small">(se abre en otra pestaña)</span>
             </span>
           </label>
         )}
@@ -52,7 +54,7 @@ export function AcceptForm(props: { askTerms: boolean; askPrivacy: boolean; askA
           </>
         )}
       </fieldset>
-      {state.error && <p className="error">{state.error}</p>}
+      {state.error && <p className="error" role="alert">{state.error}</p>}
       <button className="btn" disabled={pending}>
         {pending ? "Guardando…" : "Aceptar y continuar"}
       </button>

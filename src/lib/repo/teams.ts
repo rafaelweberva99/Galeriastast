@@ -30,7 +30,7 @@ export async function listClubs(db: Db): Promise<(Team & { matches: number; fans
   const rows = await db.all(
     `SELECT t.*,
          (SELECT COUNT(*) FROM matches m WHERE m.home_team_id = t.id OR m.away_team_id = t.id) AS matches,
-         (SELECT COUNT(*) FROM users u WHERE u.club_id = t.id) AS fans,
+         (SELECT COUNT(*) FROM users u WHERE u.club_id = t.id AND u.is_public = 1) AS fans,
          (SELECT MAX(m.season) FROM matches m WHERE m.competition_id = 'primera-division'
             AND (m.home_team_id = t.id OR m.away_team_id = t.id)) AS last_season
        FROM teams t

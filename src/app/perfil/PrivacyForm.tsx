@@ -15,8 +15,8 @@ export function PrivacyForm({ isPublic }: { isPublic: boolean }) {
           <span className="muted small">Desmarcada, tu carnet es privado: solo tú lo ves.</span>
         </span>
       </label>
-      {state.error && <p className="error">{state.error}</p>}
-      {state.ok && <p className="ok">{state.ok}</p>}
+      {state.error && <p className="error" role="alert">{state.error}</p>}
+      {state.ok && <p className="ok" role="status">{state.ok}</p>}
       <button className="btn btn-ghost" disabled={pending}>
         {pending ? "Guardando…" : "Guardar preferencia"}
       </button>

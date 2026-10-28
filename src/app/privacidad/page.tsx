@@ -100,12 +100,13 @@ export default function PrivacyPage() {
           contraseña, club, partidos marcados, cookie de sesión y registros técnicos son necesarios para prestarlo.
         </li>
         <li>
-          <strong>Tu consentimiento</strong>, libre, informado, específico e inequívoco: para aceptar esta política y
-          para mostrar tu carnet públicamente. Puedes retirarlo en cualquier momento (sección 8).
+          <strong>Tu consentimiento</strong>, libre, informado, específico e inequívoco: solo para mostrar tu carnet
+          públicamente, que es opcional. Puedes retirarlo en cualquier momento (sección 8). Al registrarte confirmas que
+          leíste esta política; esa confirmación es un acuse de información, no el fundamento del tratamiento.
         </li>
         <li>
-          <strong>Cumplimiento de obligaciones legales</strong>: conservar los registros de consentimiento y responder a
-          requerimientos de autoridades competentes.
+          <strong>Cumplimiento de obligaciones legales</strong>: poder demostrar tus consentimientos mientras tu cuenta
+          exista y responder a requerimientos de autoridades competentes.
         </li>
       </ul>
 
@@ -125,15 +126,11 @@ export default function PrivacyPage() {
       </ul>
 
       <h2>6. Con quién se comparten</h2>
-      <p>No compartimos tus datos con terceros con fines propios de ellos. Usamos estos proveedores (encargados):</p>
-      <ul>
-        <li>
-          <strong>Vercel Inc.</strong>: alojamiento de la aplicación y registros técnicos.
-        </li>
-        <li>
-          <strong>Neon Inc.</strong>: base de datos Postgres donde se guardan los datos de tu cuenta.
-        </li>
-      </ul>
+      <p>
+        No compartimos tus datos con terceros con fines propios de ellos. Usamos proveedores de alojamiento y base de
+        datos (encargados): [proveedores a completar según el despliegue; p. ej. Vercel Inc. para el alojamiento y
+        Neon Inc. para la base de datos, o el proveedor que aloje la aplicación si se despliega de otra forma].
+      </p>
       <p>
         Solo tratan los datos para prestarnos el servicio. Si haces público tu carnet, cualquier persona podrá ver tu
         nombre de usuario, tu club y tus estadísticas de hincha (nunca tu correo).
@@ -142,9 +139,9 @@ export default function PrivacyPage() {
       <h3>Transferencia internacional</h3>
       <p>
         Los servidores de estos proveedores pueden estar <strong>fuera de Chile</strong> (por ejemplo, en Estados Unidos
-        u otros países), en [región de alojamiento a completar]. La transferencia se hace para ejecutar el servicio que
-        solicitaste y con proveedores que ofrecen garantías contractuales de protección de datos. Al aceptar esta
-        política consientes esta transferencia.
+        u otros países), en [región de alojamiento a completar]. La transferencia es necesaria para prestar el servicio
+        que solicitaste y se hace con proveedores que ofrecen garantías contractuales de protección de datos
+        [fundamento y garantías a confirmar por un abogado según la Ley 21.719].
       </p>
 
       <h2>7. Tus derechos</h2>

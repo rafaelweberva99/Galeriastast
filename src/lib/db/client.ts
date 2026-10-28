@@ -39,34 +39,51 @@ export async function openSqlite(file: string): Promise<Db> {
   }
   const raw = new DatabaseSync(file);
   raw.exec("PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON;");
+
+  // node:sqlite es una sola conexión: si dos peticiones abren transacciones a la vez, sus sentencias
+  // se mezclan. Todo pasa por una cola; dentro de una transacción se usa `inTx` sin volver a encolar.
+  let queue: Promise<unknown> = Promise.resolve();
+  const exclusive = <T>(work: () => Promise<T> | T): Promise<T> => {
+    const run = queue.then(work, work);
+    queue = run.catch(() => undefined);
+    return run;
+  };
+
+  const direct = {
+    all: <T>(sql: string, params: Param[]) => raw.prepare(sql).all(...params) as T[],
+    get: <T>(sql: string, params: Param[]) => raw.prepare(sql).get(...params) as T | undefined,
+    run: (sql: string, params: Param[]) => Number(raw.prepare(sql).run(...params).changes),
+  };
+
+  const inTx: Db = {
+    dialect: "sqlite",
+    all: async (sql, ...params) => direct.all(sql, params),
+    get: async (sql, ...params) => direct.get(sql, params),
+    run: async (sql, ...params) => direct.run(sql, params),
+    exec: async (sql) => void raw.exec(sql),
+    transaction: (fn) => fn(inTx),
+    close: async () => raw.close(),
+  };
+
   const db: Db = {
     dialect: "sqlite",
-    async all<T>(sql: string, ...params: Param[]) {
-      return raw.prepare(sql).all(...params) as T[];
-    },
-    async get<T>(sql: string, ...params: Param[]) {
-      return raw.prepare(sql).get(...params) as T | undefined;
-    },
-    async run(sql: string, ...params: Param[]) {
-      return Number(raw.prepare(sql).run(...params).changes);
-    },
-    async exec(sql: string) {
-      raw.exec(sql);
-    },
-    async transaction<T>(fn: (tx: Db) => Promise<T>) {
-      raw.exec("BEGIN");
-      try {
-        const out = await fn(db);
-        raw.exec("COMMIT");
-        return out;
-      } catch (e) {
-        raw.exec("ROLLBACK");
-        throw e;
-      }
-    },
-    async close() {
-      raw.close();
-    },
+    all: (sql, ...params) => exclusive(() => direct.all(sql, params)),
+    get: (sql, ...params) => exclusive(() => direct.get(sql, params)),
+    run: (sql, ...params) => exclusive(() => direct.run(sql, params)),
+    exec: (sql) => exclusive(() => void raw.exec(sql)),
+    transaction: (fn) =>
+      exclusive(async () => {
+        raw.exec("BEGIN");
+        try {
+          const out = await fn(inTx);
+          raw.exec("COMMIT");
+          return out;
+        } catch (e) {
+          raw.exec("ROLLBACK");
+          throw e;
+        }
+      }),
+    close: () => exclusive(() => raw.close()),
   };
   await db.exec(schemaFor("sqlite"));
   return db;

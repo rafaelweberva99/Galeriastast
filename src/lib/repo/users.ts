@@ -48,15 +48,24 @@ export async function createUser(
     input.email,
   );
   if (taken) throw new UserExistsError("El usuario o el correo ya están registrados.");
-  const r = await db.get(
-    "INSERT INTO users (username, email, password_hash, club_id, is_public) VALUES (?, ?, ?, ?, ?) RETURNING *",
-    input.username,
-    input.email,
-    hashPassword(input.password),
-    input.clubId,
-    // Privacidad por defecto: el carnet es privado salvo que el hincha elija mostrarlo.
-    input.isPublic ? 1 : 0,
-  );
+  let r: Row | undefined;
+  try {
+    r = await db.get(
+      "INSERT INTO users (username, email, password_hash, club_id, is_public) VALUES (?, ?, ?, ?, ?) RETURNING *",
+      input.username,
+      input.email,
+      hashPassword(input.password),
+      input.clubId,
+      // Privacidad por defecto: el carnet es privado salvo que el hincha elija mostrarlo.
+      input.isPublic ? 1 : 0,
+    );
+  } catch (e) {
+    // Dos registros simultáneos con el mismo nombre: el índice único decide quién gana.
+    if (/unique|duplicate/i.test(String((e as Error).message))) {
+      throw new UserExistsError("El usuario o el correo ya están registrados.");
+    }
+    throw e;
+  }
   return toUser(r!);
 }
 

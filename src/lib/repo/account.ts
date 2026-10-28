@@ -72,7 +72,7 @@ export async function legalStatus(db: Db, userId: number, current: Record<Requir
   });
   return {
     pending,
-    ageDeclared: latest.get("age")?.granted ?? false,
+    ageDeclared: (latest.get("age")?.granted ?? false) && latest.get("age")?.version === AGE_VERSION,
     publicChoiceMade: latest.has("public_profile"),
   };
 }
@@ -103,15 +103,17 @@ export async function acceptLegal(
   input: { acceptTerms: boolean; acceptPrivacy: boolean; isAdult: boolean; isPublic?: boolean },
   current: Record<RequiredDoc, string> = REQUIRED_DOCS,
 ): Promise<void> {
-  const status = await legalStatus(db, userId, current);
-  if (status.pending.includes("terms") && !input.acceptTerms)
-    throw new ConsentRequiredError("Debes aceptar los Términos y Condiciones para seguir usando tu cuenta.");
-  if (status.pending.includes("privacy") && !input.acceptPrivacy)
-    throw new ConsentRequiredError("Debes aceptar la Política de Privacidad para seguir usando tu cuenta.");
-  if (!status.ageDeclared && !input.isAdult) throw new ConsentRequiredError(`Debes declarar que tienes ${MIN_AGE} años o más.`);
-  await db.transaction(async (tx) => {
-    for (const doc of status.pending) await recordConsent(tx, userId, doc, current[doc], true);
-    if (!status.ageDeclared) await recordConsent(tx, userId, "age", AGE_VERSION, true);
+  // El estado se lee dentro de la transacción: un doble envío no duplica los registros.
+  const status = await db.transaction(async (tx) => {
+    const st = await legalStatus(tx, userId, current);
+    if (st.pending.includes("terms") && !input.acceptTerms)
+      throw new ConsentRequiredError("Debes aceptar los Términos y Condiciones para seguir usando tu cuenta.");
+    if (st.pending.includes("privacy") && !input.acceptPrivacy)
+      throw new ConsentRequiredError("Debes confirmar que leíste la Política de Privacidad para seguir usando tu cuenta.");
+    if (!st.ageDeclared && !input.isAdult) throw new ConsentRequiredError(`Debes declarar que tienes ${MIN_AGE} años o más.`);
+    for (const doc of st.pending) await recordConsent(tx, userId, doc, current[doc], true);
+    if (!st.ageDeclared) await recordConsent(tx, userId, "age", AGE_VERSION, true);
+    return st;
   });
   if (input.isPublic !== undefined && !status.publicChoiceMade) await setPublicProfile(db, userId, input.isPublic);
 }
@@ -133,7 +135,7 @@ export interface RegisterInput {
 /** Crea la cuenta y registra, en la misma transacción, cada consentimiento con su versión. */
 export async function registerUser(db: Db, input: RegisterInput): Promise<User> {
   if (!input.acceptTerms) throw new ConsentRequiredError("Debes aceptar los Términos y Condiciones.");
-  if (!input.acceptPrivacy) throw new ConsentRequiredError("Debes aceptar la Política de Privacidad.");
+  if (!input.acceptPrivacy) throw new ConsentRequiredError("Debes confirmar que leíste la Política de Privacidad.");
   if (!input.isAdult) throw new ConsentRequiredError(`Debes tener ${MIN_AGE} años o más para crear una cuenta.`);
   const isPublic = input.isPublic === true;
   return db.transaction(async (tx) => {

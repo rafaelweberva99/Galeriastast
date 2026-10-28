@@ -142,8 +142,13 @@ export async function acceptLegalAction(_: FormState, form: FormData): Promise<F
 
 /** Cambia la preferencia de perfil público; el cambio queda registrado en consents. */
 export async function savePrivacy(_: FormState, form: FormData): Promise<FormState> {
-  const user = await requireUser();
+  // Retirar el consentimiento debe ser tan fácil como darlo: hacerse privado se permite incluso con
+  // documentos pendientes; hacerse público, solo con las condiciones vigentes aceptadas.
+  const user = await requireUser({ allowPendingLegal: true });
   const isPublic = form.get("isPublic") === "on";
+  if (isPublic && (await mustAcceptLegal(user.id))) {
+    return { error: "Para mostrar tu carnet en público primero acepta las condiciones vigentes." };
+  }
   await setPublicProfile(await getDb(), user.id, isPublic);
   revalidatePath("/", "layout");
   return {

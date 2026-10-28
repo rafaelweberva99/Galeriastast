@@ -190,3 +190,28 @@ describe.each(ENGINES)("cuentas y privacidad: %s", (_name, open) => {
     expect((await listConsents(db, old.id)).map((c) => c.kind)).toEqual(["terms", "privacy", "age", "public_profile"]);
   });
 });
+
+describe("concurrencia (revisión QA)", () => {
+  it("SQLite: una transacción fallida no deshace lo que otra petición escribió al mismo tiempo", async () => {
+    const { openSqlite } = await import("../src/lib/db/client.ts");
+    const db = await seed(() => openSqlite(":memory:"));
+    const other = await registerUser(db, { ...base, username: "otro", email: "o@x.cl" });
+    await registerUser(db, base);
+    const r = await Promise.allSettled([registerUser(db, base), setAttendance(db, other, "a", "propia")]);
+    expect(r[0].status).toBe("rejected");
+    expect(r[1].status).toBe("fulfilled");
+    expect(Number((await db.get("SELECT COUNT(*) AS n FROM attendances WHERE user_id = ?", other.id))?.n)).toBe(1);
+    await db.close();
+  });
+
+  it.each(ENGINES)("%s: aceptar dos veces a la vez no falla ni duplica registros", async (_n, open) => {
+    const db = await seed(open);
+    const u = await createUser(db, { username: "viejo", email: "v@x.cl", password: "secreto123", clubId: "colo-colo" });
+    const input = { acceptTerms: true, acceptPrivacy: true, isAdult: true };
+    const r = await Promise.allSettled([acceptLegal(db, u.id, input), acceptLegal(db, u.id, input)]);
+    if (db.dialect === "sqlite") expect(r.map((x) => x.status)).toEqual(["fulfilled", "fulfilled"]);
+    const kinds = (await listConsents(db, u.id)).map((c) => c.kind).sort();
+    expect(kinds).toEqual(["age", "privacy", "terms"]);
+    await db.close();
+  });
+});

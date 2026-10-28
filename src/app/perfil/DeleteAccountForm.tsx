@@ -21,7 +21,7 @@ export function DeleteAccountForm({ username }: { username: string }) {
         <label htmlFor="deletePassword">Tu contraseña</label>
         <input id="deletePassword" name="password" type="password" required autoComplete="current-password" />
       </div>
-      {state.error && <p className="error">{state.error}</p>}
+      {state.error && <p className="error" role="alert">{state.error}</p>}
       <button className="btn btn-danger" disabled={pending}>
         {pending ? "Eliminando…" : "Eliminar mi cuenta para siempre"}
       </button>

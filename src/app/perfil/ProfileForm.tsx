@@ -17,7 +17,7 @@ export function ProfileForm({ clubs, clubId }: { clubs: { id: string; name: stri
           ))}
         </select>
       </div>
-      {state.error && <p className="error">{state.error}</p>}
+      {state.error && <p className="error" role="alert">{state.error}</p>}
       <button className="btn" disabled={pending}>
         Guardar
       </button>

@@ -11,7 +11,8 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
     <form action={action} className="form">
       <div className="field">
         <label htmlFor="username">Usuario</label>
-        <input id="username" name="username" required minLength={3} maxLength={20} pattern="[A-Za-z0-9_]+" autoComplete="username" />
+        <input id="username" name="username" required minLength={3} maxLength={20} pattern="[A-Za-z0-9_]+" autoComplete="username" aria-describedby="username-hint" />
+        <span id="username-hint" className="muted small">3 a 20 caracteres: letras, números o guion bajo. Será visible si haces público tu carnet.</span>
       </div>
       <div className="field">
         <label htmlFor="email">Correo</label>
@@ -19,7 +20,8 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
       </div>
       <div className="field">
         <label htmlFor="password">Contraseña</label>
-        <input id="password" name="password" type="password" required minLength={8} autoComplete="new-password" />
+        <input id="password" name="password" type="password" required minLength={8} autoComplete="new-password" aria-describedby="password-hint" />
+        <span id="password-hint" className="muted small">Mínimo 8 caracteres.</span>
       </div>
       <div className="field">
         <label htmlFor="clubId">Tu club</label>
@@ -42,16 +44,18 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
             Acepto los{" "}
             <a href="/terminos" target="_blank" rel="noopener noreferrer">
               Términos y Condiciones
-            </a>
+            </a>{" "}
+            <span className="muted small">(se abre en otra pestaña)</span>
           </span>
         </label>
         <label className="check">
           <input type="checkbox" name="acceptPrivacy" required />
           <span>
-            Acepto la{" "}
+            He leído la{" "}
             <a href="/privacidad" target="_blank" rel="noopener noreferrer">
               Política de Privacidad
-            </a>
+            </a>{" "}
+            <span className="muted small">(se abre en otra pestaña)</span>
           </span>
         </label>
         <label className="check">
@@ -67,7 +71,7 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
           </span>
         </label>
       </fieldset>
-      {state.error && <p className="error">{state.error}</p>}
+      {state.error && <p className="error" role="alert">{state.error}</p>}
       <button className="btn" disabled={pending}>
         {pending ? "Creando…" : "Crear carnet"}
       </button>

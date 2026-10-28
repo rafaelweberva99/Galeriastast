@@ -144,7 +144,7 @@ export function TicketImport() {
       </details>
 
       {pending && <p className="muted">Buscando tus partidos…</p>}
-      {state.error && <p className="error">{state.error}</p>}
+      {state.error && <p className="error" role="alert">{state.error}</p>}
 
       {state.candidates && (
         <form action={confirmTicketImport} className="card stack">
