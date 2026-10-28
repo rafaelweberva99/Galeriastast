@@ -60,6 +60,7 @@ const bundle = await build({
   target: "es2020",
   write: false,
   platform: "browser",
+  define: { "process.env.MVP_ALL_CLUBS": JSON.stringify(process.env.MVP_ALL_CLUBS ?? "") },
 });
 const js = bundle.outputFiles[0].text;
 

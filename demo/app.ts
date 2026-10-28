@@ -7,6 +7,7 @@ import { clubIdentity, clubStyle, fansLabel, jerseySvg, type ClubIdentity } from
 import { buildCarnet, decidedOutcome, effectiveness, involves, outcomeFor, recordFor, type Verdict } from "../src/lib/domain/stats.ts";
 import type { AttendanceMode, AttendedMatch, Match, Rivalry, TeamRecord } from "../src/lib/domain/types.ts";
 import { findDates, TeamMentionIndex } from "../src/lib/ingest/tickets.ts";
+import { isVisibleClub, MVP_ACTIVE, MVP_CLUBS } from "../src/lib/mvp.ts";
 
 // --- Datos -------------------------------------------------------------------
 
@@ -55,6 +56,8 @@ const MATCHES: Match[] = DATA.matches.map(([date, c, tournament, stage, h, a, hg
 });
 const byId = new Map(MATCHES.map((m) => [m.id, m]));
 const PRO_CLUBS = DATA.teams.filter((t) => t.pro).sort((a, b) => a.name.localeCompare(b.name, "es"));
+// Clubes que se ofrecen para crear carnet (en el MVP, solo los de historial completo).
+const PICKABLE = PRO_CLUBS.filter((t) => isVisibleClub(t.id));
 const mentionIndex = new TeamMentionIndex(PRO_CLUBS.map((t) => ({ id: t.id, name: t.name, short: t.short })));
 
 const identityOf = (id: string): ClubIdentity => {
@@ -82,6 +85,8 @@ function load(): Saved {
   return { clubId: null, name: "", attended: {} };
 }
 const saved = load();
+// Un carnet guardado de un club que aún no está habilitado vuelve a la elección de club.
+if (saved.clubId && !isVisibleClub(saved.clubId)) saved.clubId = null;
 function persist() {
   try {
     localStorage.setItem(STORE_KEY, JSON.stringify(saved));
@@ -175,7 +180,7 @@ const sectionTitle = (t: string, extra = "") => `<h2 class="section-title" ${ext
 // --- Vistas -----------------------------------------------------------------
 
 function viewInicio() {
-  const big = ["colo-colo", "universidad-de-chile", "universidad-catolica"].map(identityOf);
+  const big = (MVP_ACTIVE ? [...MVP_CLUBS] : ["colo-colo", "universidad-de-chile", "universidad-catolica"]).map(identityOf);
   const seasons = MATCHES.map((m) => m.season);
   const features = [
     ["Mufómetro", "Tu efectividad en los partidos que viste desde la galería. Más de 60%: cábala. Menos de 40%: yeta."],
@@ -196,8 +201,9 @@ function viewInicio() {
         ${jersey(c, 64, "12")}<div><div class="small" style="opacity:.85">Soy</div><p class="display">${esc(c.nickname)}</p><div class="small" style="opacity:.85">${esc(c.short)}</div></div></button>`,
       )
       .join("")}</div>
+    ${MVP_ACTIVE ? `<p class="small" style="margin-top:14px;opacity:.9">Partimos con los clubes cuyo historial en Primera ya está completo y verificado. Colo-Colo, la U, la UC y el resto llegan pronto.</p>` : ""}
     <div class="other-club"><label for="other-club">¿Eres de otro club?</label>
-      <select id="other-club" data-action="pick-select"><option value="">Elige tu club…</option>${PRO_CLUBS.map(
+      <select id="other-club" data-action="pick-select"><option value="">Elige tu club…</option>${PICKABLE.map(
         (t) => `<option value="${t.id}" ${saved.clubId === t.id ? "selected" : ""}>${esc(t.name)}</option>`,
       ).join("")}</select></div>
   </div></section>
@@ -367,7 +373,7 @@ function viewImportar(clubId: string) {
 
 function viewClubes() {
   if (ui.clubDetail) return viewClub(ui.clubDetail);
-  return `<h1 class="section-title">Clubes</h1><div class="grid grid-3">${PRO_CLUBS.map(
+  return `<h1 class="section-title">Clubes</h1><div class="grid grid-3">${PICKABLE.map(
     (t) => `<button type="button" class="card row club-tile" data-action="club" data-club="${t.id}" style="border-top:5px solid ${t.colors[0]}">${jersey(identityOf(t.id), 40)}<div><div style="font-weight:700">${esc(t.name)}</div><div class="muted small">${esc(t.city ?? "—")} · ${clubMatches(t.id).length} partidos</div></div></button>`,
   ).join("")}</div>`;
 }
