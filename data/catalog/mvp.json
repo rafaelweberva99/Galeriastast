@@ -1,13 +1,11 @@
 {
   "enabled": true,
-  "criterio": "Clubes con su historial de Primera División 1995-2026 completo al 100%: todos los partidos de cada temporada en que jugaron en Primera, con resultado y fecha real (sin fechas estimadas) y sin marcadores en duda. Los demás clubes siguen en la base (aparecen como rivales) pero no se ofrecen para crear carnet ni tienen página propia hasta completar su historial.",
-  "clubs": ["nublense", "deportes-limache", "universidad-de-concepcion", "union-la-calera"],
+  "criterio": "Clubes con su historial de Primera División desde 1997 completo al 100%: todos los partidos de cada temporada en que jugaron en Primera, con resultado y fecha real y sin marcadores en duda. Los demás clubes siguen en la base (aparecen como rivales) pero no se ofrecen para crear carnet ni tienen página propia hasta resolver sus dudas.",
+  "clubs": ["nublense", "deportes-limache", "universidad-de-concepcion", "union-la-calera", "ohiggins", "everton"],
   "pendientes": {
-    "1995: falta la fase regular (30 partidos por club)": [
-      "colo-colo", "universidad-de-chile", "universidad-catolica", "ohiggins", "coquimbo-unido", "palestino",
-      "huachipato", "everton", "la-serena", "deportes-concepcion"
-    ],
-    "1996: fechas estimadas; 2001: un marcador en duda (Audax 2-4 Wanderers)": ["audax-italiano"],
-    "1995-1996: fechas estimadas de la promoción; 2002: dos marcadores en duda": ["cobresal"]
+    "marcadores en duda entre 1999 y 2003 (RSSSF y schochastics no coinciden) o fechas de 1997-1998 con un posible día de diferencia": [
+      "colo-colo", "universidad-de-chile", "universidad-catolica", "coquimbo-unido", "audax-italiano", "palestino",
+      "huachipato", "cobresal", "la-serena", "deportes-concepcion"
+    ]
   }
 }
