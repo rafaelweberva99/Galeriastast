@@ -47,6 +47,12 @@ describe("scorersSeen", () => {
     expect(r.idols.find((s) => s.player === "Pérez")).toBeUndefined();
   });
 
+  it("no cuenta como dato un partido sin lista de goles cargada", () => {
+    const empate = match({ id: "m4", homeTeamId: CC, awayTeamId: U, homeGoals: 0, awayGoals: 0 });
+    expect(scorersSeen([empate], new Map(), CC).matchesWithGoals).toBe(0);
+    expect(scorersSeen([empate], new Map([["m4", []]]), CC).matchesWithGoals).toBe(1);
+  });
+
   it("detecta listas de goles que no cuadran con el marcador", () => {
     expect(goalsComplete(m1, goals.get("m1")!)).toBe(true);
     expect(goalsComplete(m3, [])).toBe(false);

@@ -106,7 +106,7 @@ export function ScorersSection({
               title={fan ? "Tu ídolo: máximo goleador que viste" : "Máximo goleador del club"}
               tally={top}
               team={teams.get(clubId)}
-              empty="Aún no viste goles de tu club."
+              empty={fan ? "Aún no viste goles de tu club." : "Sin datos."}
             />
             <Spotlight
               title={fan ? "Tu verdugo" : "Su mayor verdugo"}

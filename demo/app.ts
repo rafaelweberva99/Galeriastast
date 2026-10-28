@@ -278,7 +278,7 @@ function viewCarnet(clubId: string) {
   const mine = attended.filter((m) => involves(m, clubId)).sort((a, b) => b.date.localeCompare(a.date));
 
   const empty = c.total === 0
-    ? `<div class="card notice"><strong>Tu carnet está vacío.</strong> Marca los partidos a los que fuiste en <a href="#partidos" data-nav="partidos">Marcar partidos</a>, pega un correo de compra en <a href="#importar" data-nav="importar">Importar PuntoTicket</a>, o <button type="button" class="linklike" data-action="example">carga un ejemplo</button> para ver cómo se ve.</div>`
+    ? `<div class="card notice"><strong>Tu carnet está vacío.</strong> Marca los partidos a los que fuiste en <a href="#partidos" data-nav="partidos">Marcar partidos</a>, pega un correo de compra en <a href="#importar" data-nav="importar">Importar entradas</a>, o <button type="button" class="linklike" data-action="example">carga un ejemplo</button> para ver cómo se ve.</div>`
     : "";
 
   return `${empty}
@@ -439,7 +439,7 @@ function render() {
   const club = saved.clubId;
   const link = (v: View, label: string) => `<a href="#${v}" data-nav="${v}" ${ui.view === v ? 'aria-current="page"' : ""}>${label}</a>`;
   nav.innerHTML = club
-    ? `${link("partidos", "Marcar partidos")}${link("importar", "Importar PuntoTicket")}${link("carnet", "Mi carnet")}${link("clubes", "Clubes")}<button type="button" data-action="change-club">Cambiar club</button>`
+    ? `${link("partidos", "Marcar partidos")}${link("importar", "Importar entradas")}${link("carnet", "Mi carnet")}${link("clubes", "Clubes")}<button type="button" data-action="change-club">Cambiar club</button>`
     : `${link("clubes", "Clubes")}<a href="#inicio" data-nav="inicio" class="nav-cta">Crear carnet</a>`;
   const view = !club && ["partidos", "carnet", "importar"].includes(ui.view) ? "inicio" : ui.view;
   app.innerHTML =

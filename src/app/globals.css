@@ -261,5 +261,6 @@ textarea { width: 100%; }
 .club-card strong { font-family: var(--font-display), sans-serif; text-transform: uppercase; font-size: 1.1rem; line-height: 1.1; }
 .club-card small { font-size: 0.78rem; opacity: 0.88; }
 @media (prefers-reduced-motion: reduce) { .club-card { transition: none; } }
+.club-banner a.buy-btn { color: #121a15; }
 .buy-btn { margin-top: 10px; text-transform: none; letter-spacing: 0; font-size: 0.95rem; }
 .buy-link { font-weight: 600; }

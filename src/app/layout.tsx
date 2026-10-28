@@ -36,7 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </Link>
             <nav className="nav" aria-label="Principal">
               {user && <Link href="/partidos">Marcar partidos</Link>}
-              {user && <Link href="/importar">Importar PuntoTicket</Link>}
+              {user && <Link href="/importar">Importar entradas</Link>}
               {user && <Link href="/carnet">Mi carnet</Link>}
               <Link href="/rankings">Rankings</Link>
               <Link href="/clubes">Clubes</Link>

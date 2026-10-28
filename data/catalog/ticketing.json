@@ -6,112 +6,112 @@
       "provider": "puntoticket",
       "buyUrl": "https://www.puntoticket.com",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "confirmado"
     },
     {
       "clubId": "universidad-de-chile",
       "provider": "puntoticket",
       "buyUrl": "https://www.puntoticket.com",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "confirmado"
     },
     {
       "clubId": "universidad-catolica",
       "provider": "puntoticket",
-      "buyUrl": "https://cruzados.puntoticket.com",
+      "buyUrl": "https://www.puntoticket.com",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "corregido"
     },
     {
       "clubId": "ohiggins",
       "provider": "ohipass",
       "buyUrl": "https://ohipass.cl",
       "ownPortal": true,
-      "verified": "alta"
+      "verified": "confirmado"
     },
     {
       "clubId": "coquimbo-unido",
       "provider": "ticketplus",
       "buyUrl": "https://coquimbo.ticketplus.cl",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "confirmado"
     },
     {
       "clubId": "audax-italiano",
       "provider": "ticketplus",
-      "buyUrl": "https://audaxitaliano.ticketplus.cl",
+      "buyUrl": "https://ticketplus.cl/companies/audax",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "corregido"
     },
     {
       "clubId": "palestino",
       "provider": "ticketmaster",
       "buyUrl": "https://www.ticketmaster.cl",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "confirmado"
     },
     {
       "clubId": "huachipato",
       "provider": "passline",
       "buyUrl": "https://www.passline.com",
       "ownPortal": false,
-      "verified": "media"
+      "verified": "confirmado (Passline en 2026; confianza subida a alta)"
     },
     {
       "clubId": "cobresal",
       "provider": "passline",
       "buyUrl": "https://www.passline.com/productora/5857847-club-de-deportes-cobresal",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "confirmado"
     },
     {
       "clubId": "everton",
       "provider": "tienda-everton",
-      "buyUrl": "https://www.tiendaeverton.cl",
+      "buyUrl": "https://www.tiendaeverton.cl/entradas_partidos.php",
       "ownPortal": true,
-      "verified": "media"
+      "verified": "confirmado"
     },
     {
       "clubId": "nublense",
       "provider": "passline",
-      "buyUrl": "https://www.passline.com",
+      "buyUrl": "https://www.passline.com/sitio/nublense",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "confirmado"
     },
     {
       "clubId": "union-la-calera",
       "provider": "ticketmaster",
       "buyUrl": "https://www.ticketmaster.cl",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "confirmado"
     },
     {
       "clubId": "la-serena",
       "provider": "ticketmaster",
       "buyUrl": "https://www.ticketmaster.cl",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "confirmado (Ticketmaster); venta presencial en Tienda Granate sin confirmar"
     },
     {
       "clubId": "deportes-limache",
       "provider": "passline",
       "buyUrl": "https://www.passline.com/productora/4934889-limachinos-sadp",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "confirmado"
     },
     {
       "clubId": "universidad-de-concepcion",
       "provider": "ticketmaster",
       "buyUrl": "https://www.ticketmaster.cl",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "confirmado"
     },
     {
       "clubId": "deportes-concepcion",
       "provider": "passline",
-      "buyUrl": "https://www.passline.com",
+      "buyUrl": "https://www.passline.com/productora/7243918-deportes-concepcion-sadp",
       "ownPortal": false,
-      "verified": "alta"
+      "verified": "confirmado (URL afinada a la productora en Passline)"
     }
   ]
 }

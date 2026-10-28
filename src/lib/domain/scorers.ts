@@ -78,8 +78,9 @@ export function scorersSeen(attended: Match[], goalsByMatch: Map<string, Goal[]>
   let goalsAgainst = 0;
 
   for (const m of played) {
-    const goals = goalsByMatch.get(m.id) ?? [];
-    if (!goalsComplete(m, goals)) continue;
+    // Solo cuentan los partidos con lista de goles cargada (un 0-0 sin lista no es "dato").
+    const goals = goalsByMatch.get(m.id);
+    if (!goals || !goalsComplete(m, goals)) continue;
     matchesWithGoals++;
     const rival = m.homeTeamId === clubId ? m.awayTeamId : m.homeTeamId;
     for (const g of goals) {

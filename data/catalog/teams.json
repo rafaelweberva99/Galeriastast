@@ -34,5 +34,6 @@
   {"id": "deportes-iquique", "name": "Deportes Iquique", "short": "Iquique", "city": "Iquique", "colors": ["#00a3e0", "#ffffff"], "aliases": ["Municipal Iquique"]},
   {"id": "san-marcos-de-arica", "name": "San Marcos de Arica", "short": "San Marcos", "city": "Arica", "colors": ["#00a3e0", "#ffffff"], "aliases": ["San Marcos"]},
   {"id": "fernandez-vial", "name": "Fernández Vial", "short": "Fernández Vial", "city": "Concepción", "colors": ["#ffd100", "#111111"]},
-  {"id": "naval", "name": "Naval de Talcahuano", "short": "Naval", "city": "Talcahuano", "colors": ["#003da5", "#ffffff"], "aliases": ["Naval"]}
+  {"id": "naval", "name": "Naval de Talcahuano", "short": "Naval", "city": "Talcahuano", "colors": ["#003da5", "#ffffff"], "aliases": ["Naval"]},
+  {"id": "deportes-limache", "name": "Deportes Limache", "short": "Limache", "city": "Limache", "colors": ["#c8102e", "#111111"], "aliases": ["Limache", "CD Limache", "Club de Deportes Limache"]}
 ]

@@ -213,10 +213,10 @@ export interface TicketProvider {
 }
 
 export const PROVIDERS: (TicketProvider & { pattern: RegExp })[] = [
-  { id: "puntoticket", name: "PuntoTicket", history: "Mi cuenta → Mis compras", pattern: /punto\s*ticket/i },
-  { id: "ticketplus", name: "Ticketplus", history: "Mi cuenta → Mis entradas", pattern: /ticket\s*plus/i },
-  { id: "passline", name: "Passline", history: "Mis e-Tickets", pattern: /passline/i },
-  { id: "ticketmaster", name: "Ticketmaster", history: "Mi cuenta → Mis entradas", pattern: /ticketmaster/i },
+  { id: "puntoticket", name: "PuntoTicket", history: "tu cuenta → historial de compras", pattern: /punto\s*ticket/i },
+  { id: "ticketplus", name: "Ticketplus", history: "tus entradas en la web o la app", pattern: /ticket\s*plus/i },
+  { id: "passline", name: "Passline", history: "Mis eTickets en la web o la app", pattern: /passline/i },
+  { id: "ticketmaster", name: "Ticketmaster", history: "tus entradas en la web o la app (Ticketmaster o Quentro)", pattern: /ticketmaster|quentro/i },
   { id: "ohipass", name: "OHipass", history: "tu cuenta en OHipass", pattern: /ohi\s*pass/i },
   { id: "tienda-everton", name: "Tienda Everton", history: "tu cuenta en la Tienda Everton", pattern: /tienda\s*everton|tiendaeverton/i },
 ];

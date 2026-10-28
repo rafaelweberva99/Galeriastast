@@ -13,7 +13,7 @@ export default async function ImportPage() {
   const user = await requireUser();
   const club = (await getTeam(await getDb(), user.clubId))!;
   const own = clubTicketing(club.id);
-  const seller = own?.provider ?? { id: "puntoticket", name: "PuntoTicket", history: "Mi cuenta → Mis compras" };
+  const seller = own?.provider ?? { id: "puntoticket", name: "PuntoTicket", history: "tu cuenta → historial de compras" };
   const others = providersInUse().filter((p) => p.provider.id !== seller.id);
   return (
     <div className="stack">
