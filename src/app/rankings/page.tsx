@@ -23,7 +23,8 @@ export default async function RankingsPage() {
             <div>
               <div style={{ fontWeight: 700 }}>{c.name}</div>
               <div className="muted small">
-                {fans.get(c.id)?.fans ?? 0} hinchas · {fans.get(c.id)?.attendances ?? 0} partidos marcados
+                {fans.get(c.id)?.fans ?? 0} {(fans.get(c.id)?.fans ?? 0) === 1 ? "hincha" : "hinchas"} ·{" "}
+                {fans.get(c.id)?.attendances ?? 0} partidos marcados
               </div>
             </div>
           </Link>
