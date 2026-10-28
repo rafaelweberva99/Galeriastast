@@ -73,6 +73,20 @@ export async function runQualityChecks(db: Db, today = new Date().toISOString().
     (r) => `${r.tournament}: ${r.teams} equipos, entre ${r.min_n} y ${r.max_n} partidos de fase regular`,
   );
 
+  // El mismo cruce cargado dos veces con fechas distintas (dos fuentes que difieren en un día).
+  add(
+    "posible-duplicado",
+    "warning",
+    await db.all(
+      `SELECT a.id AS a_id, b.id AS b_id FROM matches a JOIN matches b
+         ON a.competition_id = b.competition_id AND a.home_team_id = b.home_team_id
+        AND a.away_team_id = b.away_team_id AND a.id < b.id AND a.season = b.season AND a.date <> b.date
+        AND a.tournament = b.tournament
+        AND a.stage IS NOT NULL AND a.stage = b.stage`,
+    ),
+    (r) => `${r.a_id} y ${r.b_id}`,
+  );
+
   add(
     "goles-no-cuadran",
     "warning",

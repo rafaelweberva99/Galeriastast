@@ -159,3 +159,29 @@ describe.each(ENGINES)("goleadores: %s", (_name, open) => {
     expect((await runQualityChecks(db, "2030-01-01")).filter((i) => i.check === "goles-no-cuadran")).toHaveLength(0);
   });
 });
+
+describe.each(ENGINES)("partidos en CSV: %s", (_name, open) => {
+  let db: Db;
+  afterEach(async () => db?.close());
+
+  it("carga partidos jugados y por jugar, crea rivales extranjeros y rechaza filas malas", async () => {
+    db = await open();
+    const { loadCatalog } = await import("../src/lib/ingest/catalog.ts");
+    const { ingestMatchesCsv } = await import("../src/lib/ingest/load.ts");
+    const resolver = await loadCatalog(db);
+    const csv = [
+      "date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home_pens,away_pens,is_final,venue,source",
+      "2025-11-02,primera-division,2025,Liga de Primera 2025,Fecha 27,coquimbo-unido,union-la-calera,2,0,,,0,,prensa",
+      "2026-04-08,copa-libertadores,2026,Copa Libertadores 2026,Fase de grupos,Colo-Colo,Flamengo (BRA),1,1,,,0,,prensa",
+      "2026-12-06,primera-division,2026,Liga de Primera 2026,Fecha 30,colo-colo,universidad-de-chile,,,,,0,,fixture",
+      "2026-05-01,copa-inventada,2026,X,,colo-colo,everton,1,0,,,0,,x",
+      "2026-05-02,primera-division,2026,X,,colo-colo,everton,1,,,,0,,x",
+    ].join("\n");
+    const r = await ingestMatchesCsv(db, "2025-2026.csv", csv, resolver);
+    expect(r.loaded).toBe(3);
+    expect(r.rejected).toHaveLength(2);
+    const futuro = await db.get("SELECT home_goals FROM matches WHERE id = '2026-12-06_colo-colo_universidad-de-chile'");
+    expect(futuro?.home_goals).toBeNull();
+    expect((await db.get("SELECT is_chilean FROM teams WHERE id = 'flamengo-bra'"))?.is_chilean).toBe(0);
+  });
+});

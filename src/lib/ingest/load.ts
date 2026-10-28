@@ -154,3 +154,93 @@ export async function ingestWfb(
   report.unknownTeams = [...unknownTeams].sort();
   return report;
 }
+
+// ----------------------------------------------------------------------------
+// Partidos en CSV normalizado (data/matches/*.csv): temporadas recientes y competiciones
+// que la fuente principal no cubre, armadas desde varias fuentes y verificadas por agentes.
+//   date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home_pens,away_pens,is_final,venue,source
+
+const intOrNull = (v: string | undefined) => {
+  const n = v === undefined || v.trim() === "" ? NaN : Number.parseInt(v, 10);
+  return Number.isFinite(n) ? n : null;
+};
+
+export async function ingestMatchesCsv(
+  db: Db,
+  file: string,
+  text: string,
+  resolver: TeamResolver,
+): Promise<{ loaded: number; unknownTeams: string[]; rejected: string[] }> {
+  const { parseCsv } = await import("./csv.ts");
+  const competitions = new Set((await db.all<{ id: string }>("SELECT id FROM competitions")).map((c) => c.id));
+  const unknownTeams = new Set<string>();
+  const rejected: string[] = [];
+  const newTeams = new Map<string, { name: string; chilean: boolean }>();
+  const team = (raw: string) => {
+    const { name, country } = splitCountry(raw.trim());
+    const chilean = country === null || country === "CHI";
+    const known = resolver.resolve(name);
+    if (known) return known;
+    if (chilean) unknownTeams.add(name);
+    const id = externalTeamId(name, chilean, country ?? undefined);
+    newTeams.set(id, { name, chilean });
+    return id;
+  };
+
+  const rows = new Map<string, Param[]>();
+  for (const [i, r] of parseCsv(text).entries()) {
+    const where = `${path.basename(file)}#${i + 2}`;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(r.date ?? "")) {
+      rejected.push(`${where}: fecha inválida "${r.date}"`);
+      continue;
+    }
+    if (!competitions.has(r.competition_id)) {
+      rejected.push(`${where}: competición desconocida "${r.competition_id}"`);
+      continue;
+    }
+    const home = team(r.home);
+    const away = team(r.away);
+    if (home === away) {
+      rejected.push(`${where}: local y visita iguales`);
+      continue;
+    }
+    const hg = intOrNull(r.home_goals);
+    const ag = intOrNull(r.away_goals);
+    if ((hg === null) !== (ag === null)) {
+      rejected.push(`${where}: marcador incompleto`);
+      continue;
+    }
+    const id = matchId(r.date, home, away);
+    rows.set(id, [
+      id,
+      r.date,
+      intOrNull(r.season) ?? Number(r.date.slice(0, 4)),
+      r.competition_id,
+      r.tournament || null,
+      r.stage || null,
+      home,
+      away,
+      hg,
+      ag,
+      intOrNull(r.home_pens),
+      intOrNull(r.away_pens),
+      r.is_final === "1" ? 1 : 0,
+      "csv",
+      r.source ? r.source.slice(0, 300) : where,
+    ]);
+  }
+
+  await db.transaction(async (tx) => {
+    for (const [id, t] of newTeams) {
+      await tx.run(
+        "INSERT INTO teams (id, name, short_name, is_chilean) VALUES (?, ?, ?, ?) ON CONFLICT (id) DO NOTHING",
+        id,
+        t.name,
+        t.name,
+        t.chilean ? 1 : 0,
+      );
+    }
+    await upsertMatches(tx, [...rows.values()]);
+  });
+  return { loaded: rows.size, unknownTeams: [...unknownTeams].sort(), rejected };
+}
