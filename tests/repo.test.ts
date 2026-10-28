@@ -5,7 +5,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import type { Db } from "../src/lib/db/client.ts";
 import { TeamResolver } from "../src/lib/domain/normalize.ts";
 import { ingestWfb } from "../src/lib/ingest/load.ts";
-import { crossCheck, runQualityChecks } from "../src/lib/ingest/quality.ts";
+import { applyCorrections, crossCheck, runQualityChecks } from "../src/lib/ingest/quality.ts";
 import { datasetSummary, listAttended, listClubMatches, competitionsForClub } from "../src/lib/repo/matches.ts";
 import { clubsByFans, fansOfClub } from "../src/lib/repo/rankings.ts";
 import { listClubs } from "../src/lib/repo/teams.ts";
@@ -38,6 +38,25 @@ async function seed(open: () => Promise<Db>): Promise<Db> {
 describe.each(ENGINES)("base de datos: %s", (_name, open) => {
   let db: Db;
   afterEach(async () => db?.close());
+
+  it("corrige fecha e invierte la localía conservando el resultado, también tras una recarga", async () => {
+    db = await seed(open);
+    await db.run("UPDATE matches SET id = '2024-05-01_everton_universidad-de-chile' WHERE id = 'c'");
+    const fixes = [
+      { date: "2024-05-01", home: "everton", away: "universidad-de-chile", field: "date" as const, correctValue: "2024-05-02" },
+      { date: "2024-05-02", home: "everton", away: "universidad-de-chile", field: "swap" as const, correctValue: "" },
+    ];
+    const resolve = (n: string) => n;
+    expect(await applyCorrections(db, fixes, resolve)).toBe(2);
+    const fixed = "2024-05-02_universidad-de-chile_everton";
+    expect(await db.get("SELECT home_goals, away_goals FROM matches WHERE id = ?", fixed)).toMatchObject({ home_goals: 0, away_goals: 3 });
+    // Una recarga forzada vuelve a insertar el original: se descarta y la fila corregida queda intacta.
+    await db.run(
+      "INSERT INTO matches (id, date, season, competition_id, home_team_id, away_team_id, home_goals, away_goals, source) VALUES ('2024-05-01_everton_universidad-de-chile', '2024-05-01', 2024, 'primera-division', 'everton', 'universidad-de-chile', 3, 0, 't')",
+    );
+    await applyCorrections(db, fixes, resolve);
+    expect((await db.all("SELECT id FROM matches WHERE date >= '2024-05-01' AND season = 2024")).map((r) => r.id)).toEqual([fixed]);
+  });
 
   it("registra, autentica (sin distinguir mayúsculas) y maneja sesiones", async () => {
     db = await seed(open);

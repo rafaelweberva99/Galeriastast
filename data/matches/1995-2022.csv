@@ -1,6 +1,6 @@
 date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home_pens,away_pens,is_final,venue,source
 1995-12-10,primera-division,1995,Liguilla Libertadores 1995,Liguilla,colo-colo,deportes-temuco,0,0,,,0,Estadio Nacional,RSSSF chile95 vía SoccerStatsUS league/1995; fecha y sede: en.wikipedia/Wikiwand 1995 Primera División
-1995-12-10,primera-division,1995,Liguilla Libertadores 1995,Liguilla,universidad-catolica,cobreloa,2,1,,,0,,RSSSF chile95 vía SoccerStatsUS league/1995; FECHA ESTIMADA (1a fecha de la liguilla)
+1995-12-10,primera-division,1995,Liguilla Libertadores 1995,Liguilla,universidad-catolica,cobreloa,2,1,,,0,Estadio Nacional,"RSSSF chile95 vía SoccerStatsUS league/1995; FECHA ESTIMADA (1a fecha de la liguilla); VERIF: fecha real confirmada (no estimada), Estadio Nacional (es.wikipedia Liguilla Pre-Libertadores 1995)"
 1995-12-10,primera-division,1995,Liguilla de Promoción 1995,Promoción,cobresal,huachipato,1,0,,,0,,RSSSF chile95 ('Cobresal - Huachipato (1-0 1-3)'); FECHA ESTIMADA; localía de la vuelta deducida
 1995-12-10,primera-division,1995,Liguilla de Promoción 1995,Promoción,union-san-felipe,Regional Atacama,2,2,,,0,,RSSSF chile95 ('San Felipe - Atacama (2-2 1-1)'); FECHA ESTIMADA; localía de la vuelta deducida
 1995-12-13,primera-division,1995,Liguilla Libertadores 1995,Liguilla,cobreloa,colo-colo,0,3,,,0,,RSSSF chile95 vía SoccerStatsUS league/1995; FECHA ESTIMADA (2a fecha)
@@ -18,7 +18,7 @@ date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home
 1996-03-17,primera-division,1996,1996,Fecha 1,provincial-osorno,deportes-concepcion,1,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-03-17,primera-division,1996,1996,Fecha 1,universidad-de-chile,deportes-temuco,0,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-03-31,primera-division,1996,1996,Fecha 2,Regional Atacama,palestino,2,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
-1996-03-31,primera-division,1996,1996,Fecha 2,colo-colo,deportes-concepcion,7,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
+1996-03-24,primera-division,1996,1996,Fecha 2,colo-colo,deportes-concepcion,7,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha); VERIF: fecha real 24-mar-1996 (es.wikipedia Temporada 1996: triplete de Basay ante Concepción)
 1996-03-31,primera-division,1996,1996,Fecha 2,deportes-antofagasta,coquimbo-unido,2,3,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-03-31,primera-division,1996,1996,Fecha 2,deportes-temuco,ohiggins,4,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-03-31,primera-division,1996,1996,Fecha 2,huachipato,provincial-osorno,1,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
@@ -91,7 +91,7 @@ date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home
 1996-06-09,primera-division,1996,1996,Fecha 10,universidad-de-chile,deportes-concepcion,2,3,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-06-16,primera-division,1996,1996,Fecha 11,Regional Atacama,huachipato,1,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-06-16,primera-division,1996,1996,Fecha 11,cobreloa,audax-italiano,3,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
-1996-06-16,primera-division,1996,1996,Fecha 11,colo-colo,universidad-de-chile,0,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
+1996-07-24,primera-division,1996,1996,Fecha 11,colo-colo,universidad-de-chile,0,1,,,0,Estadio Nacional,"SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha); VERIF: fecha real 24-jul-1996, Estadio Nacional (alairelibre historial; historiadecolocolo.com)"
 1996-06-16,primera-division,1996,1996,Fecha 11,deportes-concepcion,ohiggins,1,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-06-16,primera-division,1996,1996,Fecha 11,palestino,coquimbo-unido,3,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-06-16,primera-division,1996,1996,Fecha 11,provincial-osorno,deportes-antofagasta,1,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
@@ -177,7 +177,7 @@ date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home
 1996-09-08,primera-division,1996,1996,Fecha 21,deportes-concepcion,deportes-antofagasta,2,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-09-08,primera-division,1996,1996,Fecha 21,palestino,deportes-temuco,2,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-09-08,primera-division,1996,1996,Fecha 21,provincial-osorno,ohiggins,4,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
-1996-09-15,primera-division,1996,1996,Fecha 22,audax-italiano,universidad-de-chile,0,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
+1996-09-15,primera-division,1996,1996,Fecha 22,universidad-de-chile,audax-italiano,0,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha); VERIF: localía invertida: la fecha 22 espeja a la 7 (Audax-U. de Chile 1-2); error de RSSSF
 1996-09-15,primera-division,1996,1996,Fecha 22,deportes-antofagasta,colo-colo,4,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-09-15,primera-division,1996,1996,Fecha 22,deportes-temuco,deportes-concepcion,1,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-09-15,primera-division,1996,1996,Fecha 22,huachipato,cobreloa,1,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
@@ -234,7 +234,7 @@ date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home
 1996-11-10,primera-division,1996,1996,Fecha 28,santiago-wanderers,deportes-antofagasta,3,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-11-10,primera-division,1996,1996,Fecha 28,universidad-de-chile,universidad-catolica,2,5,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-11-17,primera-division,1996,1996,Fecha 29,Regional Atacama,coquimbo-unido,4,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
-1996-11-17,primera-division,1996,1996,Fecha 29,colo-colo,audax-italiano,1,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
+1996-11-11,primera-division,1996,1996,Fecha 29,colo-colo,audax-italiano,1,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha); VERIF: fecha real 11-nov-1996 (en.wikipedia 1996 Campeonato Nacional: título con 1-1 ante Audax)
 1996-11-17,primera-division,1996,1996,Fecha 29,deportes-antofagasta,huachipato,0,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-11-17,primera-division,1996,1996,Fecha 29,deportes-concepcion,cobreloa,1,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
 1996-11-17,primera-division,1996,1996,Fecha 29,deportes-temuco,santiago-wanderers,3,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1996 (RSSSF chile96); FECHA ESTIMADA (RSSSF 1996 no trae fechas: interpolación 16-mar..24-nov por fecha)
@@ -427,7 +427,7 @@ date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home
 1997-09-13,primera-division,1997,Clausura 1997,Fecha 6,la-serena,deportes-temuco,3,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
 1997-09-13,primera-division,1997,Clausura 1997,Fecha 6,puerto-montt,union-espanola,2,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
 1997-09-13,primera-division,1997,Clausura 1997,Fecha 6,santiago-wanderers,coquimbo-unido,1,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
-1997-09-13,primera-division,1997,Clausura 1997,Fecha 6,universidad-catolica,colo-colo,4,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
+1997-09-14,primera-division,1997,Clausura 1997,Fecha 6,universidad-catolica,colo-colo,4,1,,,0,,"SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97); VERIF: jugado el 14-sep-1997 en San Carlos (RSSSF [Sep 13,14] + registro audiovisual)"
 1997-09-13,primera-division,1997,Clausura 1997,Fecha 6,universidad-de-chile,huachipato,0,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
 1997-09-27,primera-division,1997,Clausura 1997,Fecha 7,audax-italiano,deportes-concepcion,6,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
 1997-09-27,primera-division,1997,Clausura 1997,Fecha 7,colo-colo,santiago-wanderers,4,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
@@ -494,7 +494,7 @@ date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home
 1997-12-13,primera-division,1997,Clausura 1997,Fecha 14,union-espanola,colo-colo,2,3,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
 1997-12-13,primera-division,1997,Clausura 1997,Fecha 14,universidad-de-chile,universidad-catolica,0,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
 1997-12-20,primera-division,1997,Clausura 1997,Fecha 15,audax-italiano,huachipato,4,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
-1997-12-20,primera-division,1997,Clausura 1997,Fecha 15,colo-colo,deportes-temuco,4,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
+1997-12-21,primera-division,1997,Clausura 1997,Fecha 15,colo-colo,deportes-temuco,4,0,,,0,,"SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97); VERIF: jugado el 21-dic-1997 (historiadecolocolo.com; RSSSF da la fecha 15 como [Dec 20,21])"
 1997-12-20,primera-division,1997,Clausura 1997,Fecha 15,deportes-antofagasta,union-espanola,2,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
 1997-12-20,primera-division,1997,Clausura 1997,Fecha 15,deportes-concepcion,palestino,2,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
 1997-12-20,primera-division,1997,Clausura 1997,Fecha 15,la-serena,puerto-montt,1,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1997 (RSSSF chile97)
@@ -1103,8 +1103,8 @@ date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home
 1999-12-15,primera-division,1999,Liguilla Descenso 1999,Fecha 14,puerto-montt,deportes-concepcion,3,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1999 (RSSSF chile99)
 1999-12-15,primera-division,1999,Liguilla Descenso 1999,Fecha 14,rangers,cobresal,1,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1999 (RSSSF chile99)
 1999-12-16,primera-division,1999,Liguilla Campeonato 1999,Fecha 14,huachipato,palestino,3,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1999 (RSSSF chile99)
-1999-12-19,primera-division,1999,Liguilla de Promoción 1999,Promoción,cobresal,provincial-osorno,2,3,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1999 (RSSSF chile99)
-1999-12-19,primera-division,1999,Liguilla de Promoción 1999,Promoción,deportes-iquique,everton,0,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1999 (RSSSF chile99)
+1999-12-22,primera-division,1999,Liguilla de Promoción 1999,Promoción,cobresal,provincial-osorno,2,3,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1999 (RSSSF chile99); VERIF: vuelta jugada el 22-dic-1999 en El Salvador (es.wikipedia Anexo Temporada 1999; cdcobresal.cl)
+1999-12-22,primera-division,1999,Liguilla de Promoción 1999,Promoción,deportes-iquique,everton,0,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1999 (RSSSF chile99); VERIF: vuelta jugada el 22-dic-1999 en Iquique (es.wikipedia Anexo Temporada 1999)
 1999-12-19,primera-division,1999,Liguilla de Promoción 1999,Promoción,everton,deportes-iquique,1,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1999 (RSSSF chile99)
 1999-12-19,primera-division,1999,Liguilla de Promoción 1999,Promoción,provincial-osorno,cobresal,4,3,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/1999 (RSSSF chile99)
 2000-04-15,primera-division,2000,2000,Fecha 1,colo-colo,provincial-osorno,2,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
@@ -1318,7 +1318,7 @@ date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home
 2000-11-25,primera-division,2000,2000,Fecha 27,ohiggins,provincial-osorno,2,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
 2000-11-25,primera-division,2000,2000,Fecha 27,palestino,universidad-catolica,0,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
 2000-11-25,primera-division,2000,2000,Fecha 27,puerto-montt,deportes-concepcion,2,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
-2000-11-25,primera-division,2000,2000,Fecha 27,santiago-morning,huachipato,2,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
+2000-11-25,primera-division,2000,2000,Fecha 27,huachipato,santiago-morning,1,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00); VERIF: localía invertida (S. Morning ya fue local en la fecha 12); schochastics: Huachipato 1-2 S. Morning
 2000-11-25,primera-division,2000,2000,Fecha 27,union-espanola,audax-italiano,2,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
 2000-11-25,primera-division,2000,2000,Fecha 27,universidad-de-chile,santiago-wanderers,1,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
 2000-11-29,primera-division,2000,2000,Fecha 25,cobreloa,colo-colo,2,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
@@ -1346,7 +1346,7 @@ date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home
 2000-12-16,primera-division,2000,2000,Fecha 30,provincial-osorno,puerto-montt,2,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
 2000-12-16,primera-division,2000,2000,Fecha 30,santiago-wanderers,everton,1,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
 2000-12-16,primera-division,2000,2000,Fecha 30,universidad-catolica,huachipato,2,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
-2000-12-16,primera-division,2000,2000,Fecha 30,universidad-de-chile,union-espanola,2,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
+2000-12-16,primera-division,2000,2000,Fecha 30,union-espanola,universidad-de-chile,1,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00); VERIF: localía invertida (U. de Chile ya fue local en la fecha 15); schochastics: U. Española 1-2 U. de Chile
 2000-12-19,primera-division,2000,Liguilla Libertadores 2000,Semifinal,audax-italiano,deportes-concepcion,0,1,,,0,Talca,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00); marcador incluye prórroga (gol de oro)
 2000-12-19,primera-division,2000,Liguilla Libertadores 2000,Semifinal,universidad-catolica,santiago-morning,2,1,,,0,Santiago,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00)
 2000-12-21,primera-division,2000,Liguilla Libertadores 2000,Final,universidad-catolica,deportes-concepcion,2,3,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2000 (RSSSF chile00); marcador incluye prórroga (gol de oro)
@@ -1740,8 +1740,8 @@ date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home
 2002-06-20,primera-division,2002,Apertura Playoffs 2002,Semifinal,universidad-de-chile,universidad-catolica,3,3,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2002 (RSSSF chile02)
 2002-06-22,primera-division,2002,Apertura Playoffs 2002,Semifinal,colo-colo,rangers,2,2,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2002 (RSSSF chile02)
 2002-06-23,primera-division,2002,Apertura Playoffs 2002,Semifinal,universidad-catolica,universidad-de-chile,2,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2002 (RSSSF chile02)
-2002-07-26,primera-division,2002,Apertura Playoffs 2002,Final,rangers,universidad-catolica,1,1,,,1,Estadio Fiscal de Talca,SoccerStatsUS/conmebol_data@bb6c8c4 league/2002 (RSSSF chile02)
-2002-07-30,primera-division,2002,Apertura Playoffs 2002,Final,universidad-catolica,rangers,4,0,,,1,Estadio San Carlos de Apoquindo,SoccerStatsUS/conmebol_data@bb6c8c4 league/2002 (RSSSF chile02)
+2002-06-26,primera-division,2002,Apertura Playoffs 2002,Final,rangers,universidad-catolica,1,1,,,1,Estadio Fiscal de Talca,SoccerStatsUS/conmebol_data@bb6c8c4 league/2002 (RSSSF chile02); VERIF: final ida 26-jun-2002 (emol 30-jun-2002; en.wikipedia 2002 Torneo Apertura)
+2002-06-30,primera-division,2002,Apertura Playoffs 2002,Final,universidad-catolica,rangers,4,0,,,1,Estadio San Carlos de Apoquindo,SoccerStatsUS/conmebol_data@bb6c8c4 league/2002 (RSSSF chile02); VERIF: final vuelta 30-jun-2002 (emol 30-jun-2002)
 2002-08-03,primera-division,2002,Clausura 2002,Fecha 1,coquimbo-unido,colo-colo,0,1,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2002 (RSSSF chile02)
 2002-08-03,primera-division,2002,Clausura 2002,Fecha 1,palestino,cobreloa,1,3,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2002 (RSSSF chile02)
 2002-08-03,primera-division,2002,Clausura 2002,Fecha 1,universidad-de-chile,rangers,4,0,,,0,,SoccerStatsUS/conmebol_data@bb6c8c4 league/2002 (RSSSF chile02)

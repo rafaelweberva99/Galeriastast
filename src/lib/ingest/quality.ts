@@ -109,7 +109,8 @@ export interface Correction {
   date: string;
   home: string;
   away: string;
-  field: "home_goals" | "away_goals" | "home_pens" | "away_pens" | "date" | "delete";
+  /** "swap" invierte la localía (equipos, goles y penales): el resultado no cambia. */
+  field: "home_goals" | "away_goals" | "home_pens" | "away_pens" | "date" | "swap" | "delete";
   correctValue: string;
 }
 
@@ -143,8 +144,28 @@ export async function applyCorrections(
       applied += await db.run("DELETE FROM matches WHERE id = ?", id);
       continue;
     }
+    if (c.field === "swap") {
+      const target = `${c.date}_${away}_${home}`;
+      // Si una recarga forzada volvió a insertar el original, se conserva la fila ya corregida (y sus asistencias).
+      if (await db.get("SELECT 1 AS x FROM matches WHERE id = ?", target)) {
+        await db.run("DELETE FROM matches WHERE id = ?", id);
+        continue;
+      }
+      applied += await db.run(
+        `UPDATE matches SET id = ?, home_team_id = away_team_id, away_team_id = home_team_id,
+           home_goals = away_goals, away_goals = home_goals, home_pens = away_pens, away_pens = home_pens, verified = 1
+         WHERE id = ?`,
+        target,
+        id,
+      );
+      continue;
+    }
     if (!CORRECTABLE.has(c.field)) continue;
     const value = c.field === "date" ? c.correctValue : Number(c.correctValue);
+    if (c.field === "date" && (await db.get("SELECT 1 AS x FROM matches WHERE id = ?", `${c.correctValue}_${home}_${away}`))) {
+      await db.run("DELETE FROM matches WHERE id = ?", id);
+      continue;
+    }
     const changes = await db.run(`UPDATE matches SET ${c.field} = ?, verified = 1 WHERE id = ?`, value, id);
     if (c.field === "date" && changes) {
       await db.run("UPDATE matches SET id = ? WHERE id = ?", `${c.correctValue}_${home}_${away}`, id);
