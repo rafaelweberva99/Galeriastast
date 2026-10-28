@@ -53,7 +53,8 @@ describe.each(ENGINES)("base de datos: %s", (_name, open) => {
 
   it("marca partidos solo del propio club y ya jugados, y arma rankings", async () => {
     db = await seed(open);
-    const user = await createUser(db, { username: "garra", email: "g@x.cl", password: "secreto123", clubId: "colo-colo" });
+    // Privacidad por defecto: para salir en los rankings el hincha debe elegir ser público.
+    const user = await createUser(db, { username: "garra", email: "g@x.cl", password: "secreto123", clubId: "colo-colo", isPublic: true });
     await setAttendance(db, user, "a", "propia");
     await setAttendance(db, user, "b", "infiltrado");
     await setAttendance(db, user, "b", "infiltrado"); // idempotente

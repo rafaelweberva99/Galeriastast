@@ -61,6 +61,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <main className="container">{children}</main>
         <footer className="site-footer">
           <div className="container">
+            <nav className="footer-links" aria-label="Legal">
+              <Link href="/terminos">Términos y Condiciones</Link>
+              <Link href="/privacidad">Política de Privacidad</Link>
+              {user && <Link href="/perfil#privacidad-datos">Privacidad y datos</Link>}
+            </nav>
             Resultados históricos: <Link href="/datos">worldfootball.net vía yorobot/cache.wfb.txt</Link>, con
             chequeos de calidad propios. GaleríaStats no está afiliado a la ANFP ni a ningún club; los colores se usan
             solo como referencia de los hinchas.

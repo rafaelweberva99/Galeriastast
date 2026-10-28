@@ -23,6 +23,10 @@ export function LoginForm() {
       <p className="muted small">
         ¿No tienes carnet? <Link href="/registro">Créalo</Link>
       </p>
+      <p className="muted small">
+        Al ingresar se usa solo una cookie de sesión. Revisa los <Link href="/terminos">Términos</Link> y la{" "}
+        <Link href="/privacidad">Política de Privacidad</Link>.
+      </p>
     </form>
   );
 }

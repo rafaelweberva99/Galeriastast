@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS users (
   email         TEXT NOT NULL,
   password_hash TEXT NOT NULL,
   club_id       TEXT NOT NULL REFERENCES teams(id),
-  is_public     INTEGER NOT NULL DEFAULT 1,
+  is_public     INTEGER NOT NULL DEFAULT 0,
   created_at    TEXT NOT NULL DEFAULT {{NOW}}
 );
 CREATE UNIQUE INDEX IF NOT EXISTS idx_users_username ON users (lower(username));
@@ -86,6 +86,24 @@ CREATE TABLE IF NOT EXISTS attendances (
   PRIMARY KEY (user_id, match_id)
 );
 CREATE INDEX IF NOT EXISTS idx_attendances_match ON attendances(match_id);
+
+-- Registro de consentimientos (Ley 19.628 / 21.719): cada aceptación y cada cambio de preferencia
+-- queda como una fila nueva; nunca se edita. kind: 'terms' | 'privacy' | 'age' | 'public_profile'.
+CREATE TABLE IF NOT EXISTS consents (
+  id          {{SERIAL_ID}},
+  user_id     INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  kind        TEXT NOT NULL CHECK (kind IN ('terms', 'privacy', 'age', 'public_profile')),
+  version     TEXT NOT NULL,
+  granted     INTEGER NOT NULL CHECK (granted IN (0, 1)),
+  created_at  TEXT NOT NULL DEFAULT {{NOW}}
+);
+CREATE INDEX IF NOT EXISTS idx_consents_user ON consents(user_id, kind);
+
+-- Privacidad por defecto: los hinchas creados antes de existir el registro de consentimientos nunca eligieron
+-- ser públicos, así que quedan privados hasta que lo acepten en /aceptar o /perfil. Idempotente.
+UPDATE users SET is_public = 0
+ WHERE is_public = 1
+   AND NOT EXISTS (SELECT 1 FROM consents c WHERE c.user_id = users.id AND c.kind = 'public_profile');
 
 -- Goles de cada partido. team_id = equipo al que se le suma el gol en el marcador;
 -- en un autogol (own_goal = 1) el jugador pertenece al equipo rival de team_id.

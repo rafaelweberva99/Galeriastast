@@ -264,3 +264,24 @@ textarea { width: 100%; }
 .club-banner a.buy-btn { color: #121a15; }
 .buy-btn { margin-top: 10px; text-transform: none; letter-spacing: 0; font-size: 0.95rem; }
 .buy-link { font-weight: 600; }
+
+/* --- Cuentas, consentimientos y páginas legales --- */
+.check { display: flex; gap: 10px; align-items: flex-start; line-height: 1.4; cursor: pointer; }
+.check input { margin: 3px 0 0; flex-shrink: 0; width: 18px; height: 18px; padding: 0; accent-color: var(--accent); }
+.check .optional { color: var(--muted); font-size: 0.85rem; }
+fieldset.consents { border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; margin: 0; display: grid; gap: 10px; }
+fieldset.consents legend { font-weight: 600; font-size: 0.9rem; padding: 0 6px; }
+.ok { color: var(--win); font-weight: 600; }
+.notice { border-left: 4px solid var(--draw); background: color-mix(in srgb, var(--draw) 12%, var(--surface)); padding: 12px 14px; border-radius: 10px; }
+.notice.success { border-left-color: var(--win); background: color-mix(in srgb, var(--win) 12%, var(--surface)); }
+.draft-banner { border: 2px dashed var(--draw); background: color-mix(in srgb, var(--draw) 14%, var(--surface)); padding: 10px 14px; border-radius: 10px; font-weight: 700; }
+.legal { max-width: 760px; margin: 0 auto; line-height: 1.6; }
+.legal h2 { margin-top: 1.8em; }
+.legal ul, .legal ol { padding-left: 1.3em; margin: 0 0 1em; }
+.legal li { margin-bottom: 0.35em; }
+.legal .meta { color: var(--muted); font-size: 0.9rem; }
+.legal table { margin-bottom: 1em; }
+.btn-danger { background: var(--loss); color: #fff; }
+.danger-zone { border-color: color-mix(in srgb, var(--loss) 45%, var(--border)); }
+.footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+.footer-links a { font-weight: 600; }

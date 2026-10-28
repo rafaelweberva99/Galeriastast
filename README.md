@@ -21,7 +21,9 @@ chileno.
 | Modo Infiltrado | `/carnet` | Partidos en la galería rival: cuentan para el Mufómetro y además se muestran aparte. |
 | Rachas y partidos memorables | `/carnet` | Racha ganadora / invicta / sin ganar, mayor goleada, peor derrota, primer y último partido. |
 | Desgloses | `/carnet` | Por temporada, competición, rival, local/visita. |
-| Carnet público | `/hincha/[usuario]` | Se puede ocultar desde `/perfil`. |
+| Carnet público | `/hincha/[usuario]` | Privado por defecto; el hincha lo hace público al registrarse o desde `/perfil`. |
+| Términos y privacidad | `/terminos`, `/privacidad`, `/aceptar` | Borradores (Ley 19.628 / 21.719). Versiones en `src/lib/legal.ts`; al subir una versión, el hincha debe aceptarla en `/aceptar`. Consentimientos en la tabla `consents`. |
+| Privacidad y datos | `/perfil`, `/perfil/datos` | Descargar mis datos (JSON), perfil público, cerrar todas las sesiones y eliminar la cuenta. |
 | Rankings | `/rankings`, `/rankings/[club]` | Hinchas que más fueron, mayores cábalas y mayores yetas por club. |
 | Historial de clubes | `/clubes`, `/clubes/[id]` | Récord histórico, por temporada, clásicos y finales. |
 | Transparencia de datos | `/datos` | Cobertura por competición y resultado de los chequeos de calidad. |

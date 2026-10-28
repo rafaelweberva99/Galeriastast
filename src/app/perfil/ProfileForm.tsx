@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { saveProfile } from "../actions.ts";
 
-export function ProfileForm({ clubs, clubId, isPublic }: { clubs: { id: string; name: string }[]; clubId: string; isPublic: boolean }) {
+export function ProfileForm({ clubs, clubId }: { clubs: { id: string; name: string }[]; clubId: string }) {
   const [state, action, pending] = useActionState(saveProfile, {});
   return (
     <form action={action} className="form">
@@ -17,9 +17,6 @@ export function ProfileForm({ clubs, clubId, isPublic }: { clubs: { id: string; 
           ))}
         </select>
       </div>
-      <label className="row">
-        <input type="checkbox" name="isPublic" defaultChecked={isPublic} /> Carnet público y visible en rankings
-      </label>
       {state.error && <p className="error">{state.error}</p>}
       <button className="btn" disabled={pending}>
         Guardar

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useActionState } from "react";
+import { MIN_AGE } from "@/lib/legal.ts";
 import { register } from "../actions.ts";
 
 export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name: string }[]; defaultClub: string }) {
@@ -33,12 +34,46 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
           ))}
         </select>
       </div>
+      <fieldset className="consents">
+        <legend>Tu cuenta y tus datos</legend>
+        <label className="check">
+          <input type="checkbox" name="acceptTerms" required />
+          <span>
+            Acepto los{" "}
+            <a href="/terminos" target="_blank" rel="noopener noreferrer">
+              Términos y Condiciones
+            </a>
+          </span>
+        </label>
+        <label className="check">
+          <input type="checkbox" name="acceptPrivacy" required />
+          <span>
+            Acepto la{" "}
+            <a href="/privacidad" target="_blank" rel="noopener noreferrer">
+              Política de Privacidad
+            </a>
+          </span>
+        </label>
+        <label className="check">
+          <input type="checkbox" name="isAdult" required />
+          <span>Declaro tener {MIN_AGE} años o más</span>
+        </label>
+        <label className="check">
+          <input type="checkbox" name="isPublic" />
+          <span>
+            Mostrar mi carnet en los rankings y en mi perfil público <span className="optional">(opcional)</span>
+            <br />
+            <span className="muted small">Si no la marcas, tu carnet queda privado. Puedes cambiarlo cuando quieras en tu perfil.</span>
+          </span>
+        </label>
+      </fieldset>
       {state.error && <p className="error">{state.error}</p>}
       <button className="btn" disabled={pending}>
         {pending ? "Creando…" : "Crear carnet"}
       </button>
       <p className="muted small">
-        ¿Ya tienes cuenta? <Link href="/ingresar">Ingresa</Link>
+        ¿Ya tienes cuenta? <Link href="/ingresar">Ingresa</Link> · <Link href="/terminos">Términos</Link> ·{" "}
+        <Link href="/privacidad">Privacidad</Link>
       </p>
     </form>
   );

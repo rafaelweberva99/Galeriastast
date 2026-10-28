@@ -19,7 +19,8 @@ const FEATURES = [
   { n: "06", title: "Importa tus entradas", text: "Sube una captura de tus compras en PuntoTicket y marcamos tus partidos solos." },
 ];
 
-export default async function Home() {
+export default async function Home({ searchParams }: { searchParams: Promise<{ cuenta?: string }> }) {
+  const { cuenta } = await searchParams;
   const db = await getDb();
   const [user, summary, clubs] = [await currentUser(), await datasetSummary(db), (await clubsByFans(db)).slice(0, 5)];
   const allClubs = await listClubs(db);
@@ -32,6 +33,12 @@ export default async function Home() {
 
   return (
     <>
+      {cuenta === "eliminada" && !user && (
+        <p className="notice success" role="status" style={{ marginBottom: 48 }}>
+          Tu cuenta fue eliminada junto con tus partidos marcados, tus consentimientos y tus sesiones. Gracias por
+          haber sido parte de GaleríaStats.
+        </p>
+      )}
       <section className="pitch bleed hero">
         <div className="container">
           <p className="display" style={{ fontSize: "1.1rem", letterSpacing: "0.2em", opacity: 0.9, margin: 0 }}>

@@ -3,15 +3,23 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { endSession, requireUser, startSession } from "@/lib/auth.ts";
+import { clearSessionCookie, endAllSessions, endSession, mustAcceptLegal, requireUser, startSession } from "@/lib/auth.ts";
 import { getDb } from "@/lib/db/client.ts";
+import { MIN_AGE } from "@/lib/legal.ts";
+import {
+  acceptLegal,
+  AccountError,
+  ConsentRequiredError,
+  deleteAccount,
+  registerUser,
+  setPublicProfile,
+} from "@/lib/repo/account.ts";
 import { analyzeTicket, TeamMentionIndex } from "@/lib/ingest/tickets.ts";
 import { getTeam, listClubs } from "@/lib/repo/teams.ts";
 import {
   attendanceModes,
   AttendanceError,
   authenticate,
-  createUser,
   removeAttendance,
   setAttendance,
   updateProfile,
@@ -20,7 +28,11 @@ import {
 
 export interface FormState {
   error?: string;
+  ok?: string;
 }
+
+/** Casilla obligatoria: el navegador envía "on" solo si está marcada. */
+const mustCheck = (message: string) => z.literal("on", { errorMap: () => ({ message }) });
 
 const registerSchema = z.object({
   username: z
@@ -30,18 +42,32 @@ const registerSchema = z.object({
   email: z.string().trim().email("Correo inválido."),
   password: z.string().min(8, "La contraseña debe tener al menos 8 caracteres."),
   clubId: z.string().min(1, "Elige tu club."),
+  acceptTerms: mustCheck("Debes aceptar los Términos y Condiciones."),
+  acceptPrivacy: mustCheck("Debes aceptar la Política de Privacidad."),
+  isAdult: mustCheck(`Debes tener ${MIN_AGE} años o más para crear una cuenta.`),
+  isPublic: z.literal("on").optional(),
 });
 
 export async function register(_: FormState, form: FormData): Promise<FormState> {
   const parsed = registerSchema.safeParse(Object.fromEntries(form));
   if (!parsed.success) return { error: parsed.error.issues[0].message };
   const db = await getDb();
-  if (!(await getTeam(db, parsed.data.clubId))) return { error: "Club desconocido." };
+  const { username, email, password, clubId } = parsed.data;
+  if (!(await getTeam(db, clubId))) return { error: "Club desconocido." };
   try {
-    const user = await createUser(db, parsed.data);
+    const user = await registerUser(db, {
+      username,
+      email,
+      password,
+      clubId,
+      acceptTerms: true,
+      acceptPrivacy: true,
+      isAdult: true,
+      isPublic: parsed.data.isPublic === "on",
+    });
     await startSession(user.id);
   } catch (e) {
-    if (e instanceof UserExistsError) return { error: e.message };
+    if (e instanceof UserExistsError || e instanceof ConsentRequiredError) return { error: e.message };
     throw e;
   }
   redirect("/partidos");
@@ -51,7 +77,8 @@ export async function login(_: FormState, form: FormData): Promise<FormState> {
   const user = await authenticate(await getDb(), String(form.get("login") ?? "").trim(), String(form.get("password") ?? ""));
   if (!user) return { error: "Usuario o contraseña incorrectos." };
   await startSession(user.id);
-  redirect("/carnet");
+  // Si cambió la versión de los Términos o de la Privacidad, hay que aceptarla antes de seguir.
+  redirect((await mustAcceptLegal(user.id)) ? "/aceptar" : "/carnet");
 }
 
 export async function logout(): Promise<void> {
@@ -87,9 +114,65 @@ export async function saveProfile(_: FormState, form: FormData): Promise<FormSta
   const clubId = String(form.get("clubId") ?? "");
   const db = await getDb();
   if (!(await getTeam(db, clubId))) return { error: "Club desconocido." };
-  await updateProfile(db, user.id, { clubId, isPublic: form.get("isPublic") === "on" });
+  await updateProfile(db, user.id, { clubId });
   revalidatePath("/", "layout");
   redirect("/carnet");
+}
+
+// --- Privacidad y datos -----------------------------------------------------
+
+/** Aceptar la versión vigente de los documentos (hinchas antiguos o cuando sube la versión). */
+export async function acceptLegalAction(_: FormState, form: FormData): Promise<FormState> {
+  const user = await requireUser({ allowPendingLegal: true });
+  try {
+    await acceptLegal(await getDb(), user.id, {
+      acceptTerms: form.get("acceptTerms") === "on",
+      acceptPrivacy: form.get("acceptPrivacy") === "on",
+      isAdult: form.get("isAdult") === "on",
+      // Solo se pregunta (y se registra) a quien nunca eligió; el campo oculto indica que se mostró.
+      isPublic: form.get("askPublic") === "1" ? form.get("isPublic") === "on" : undefined,
+    });
+  } catch (e) {
+    if (e instanceof ConsentRequiredError) return { error: e.message };
+    throw e;
+  }
+  revalidatePath("/", "layout");
+  redirect("/carnet");
+}
+
+/** Cambia la preferencia de perfil público; el cambio queda registrado en consents. */
+export async function savePrivacy(_: FormState, form: FormData): Promise<FormState> {
+  const user = await requireUser();
+  const isPublic = form.get("isPublic") === "on";
+  await setPublicProfile(await getDb(), user.id, isPublic);
+  revalidatePath("/", "layout");
+  return {
+    ok: isPublic
+      ? "Listo: tu carnet ahora aparece en los rankings y en tu perfil público."
+      : "Listo: tu carnet ahora es privado y no aparece en los rankings.",
+  };
+}
+
+export async function logoutEverywhere(): Promise<void> {
+  const user = await requireUser({ allowPendingLegal: true });
+  await endAllSessions(user.id);
+  redirect("/ingresar?sesiones=cerradas");
+}
+
+export async function deleteMyAccount(_: FormState, form: FormData): Promise<FormState> {
+  const user = await requireUser({ allowPendingLegal: true });
+  try {
+    await deleteAccount(await getDb(), user.id, {
+      username: String(form.get("confirmUsername") ?? ""),
+      password: String(form.get("password") ?? ""),
+    });
+  } catch (e) {
+    if (e instanceof AccountError) return { error: e.message };
+    throw e;
+  }
+  await clearSessionCookie();
+  revalidatePath("/", "layout");
+  redirect("/?cuenta=eliminada");
 }
 
 // --- Importar desde PuntoTicket --------------------------------------------

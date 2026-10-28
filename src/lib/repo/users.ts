@@ -40,7 +40,7 @@ export class UserExistsError extends Error {}
 
 export async function createUser(
   db: Db,
-  input: { username: string; email: string; password: string; clubId: string },
+  input: { username: string; email: string; password: string; clubId: string; isPublic?: boolean },
 ): Promise<User> {
   const taken = await db.get(
     "SELECT 1 AS taken FROM users WHERE lower(username) = lower(?) OR lower(email) = lower(?)",
@@ -49,11 +49,13 @@ export async function createUser(
   );
   if (taken) throw new UserExistsError("El usuario o el correo ya están registrados.");
   const r = await db.get(
-    "INSERT INTO users (username, email, password_hash, club_id) VALUES (?, ?, ?, ?) RETURNING *",
+    "INSERT INTO users (username, email, password_hash, club_id, is_public) VALUES (?, ?, ?, ?, ?) RETURNING *",
     input.username,
     input.email,
     hashPassword(input.password),
     input.clubId,
+    // Privacidad por defecto: el carnet es privado salvo que el hincha elija mostrarlo.
+    input.isPublic ? 1 : 0,
   );
   return toUser(r!);
 }
@@ -69,8 +71,9 @@ export async function getUserByUsername(db: Db, username: string): Promise<User 
   return r ? toUser(r) : null;
 }
 
-export async function updateProfile(db: Db, userId: number, input: { clubId: string; isPublic: boolean }): Promise<void> {
-  await db.run("UPDATE users SET club_id = ?, is_public = ? WHERE id = ?", input.clubId, input.isPublic ? 1 : 0, userId);
+/** Cambia el club. La preferencia de perfil público se cambia con setPublicProfile (queda registrada). */
+export async function updateProfile(db: Db, userId: number, input: { clubId: string }): Promise<void> {
+  await db.run("UPDATE users SET club_id = ? WHERE id = ?", input.clubId, userId);
 }
 
 // --- Sesiones -------------------------------------------------------------
@@ -96,6 +99,11 @@ export async function userForSession(db: Db, token: string): Promise<User | null
 
 export async function deleteSession(db: Db, token: string): Promise<void> {
   await db.run("DELETE FROM sessions WHERE token = ?", token);
+}
+
+/** Cierra todas las sesiones del hincha (en todos sus dispositivos). Devuelve cuántas cerró. */
+export async function deleteUserSessions(db: Db, userId: number): Promise<number> {
+  return db.run("DELETE FROM sessions WHERE user_id = ?", userId);
 }
 
 // --- Asistencias ----------------------------------------------------------
