@@ -16,6 +16,14 @@ describe("findDates", () => {
     expect(findDates("sábado 4 de setiembre")).toEqual([{ year: null, month: 9, day: 4 }]);
     expect(findDates("2024-03-10")).toEqual([{ year: 2024, month: 3, day: 10 }]);
   });
+
+  it("reconoce abreviaturas de capturas de \"Mis compras\" y PDF", () => {
+    expect(findDates("Sáb 10 ago 2024 · 20:00 hrs")).toEqual([{ year: 2024, month: 8, day: 10 }]);
+    expect(findDates("DOM 23 AGO. 20:00")).toEqual([{ year: null, month: 8, day: 23 }]);
+    expect(findDates("10-mar-24")).toEqual([{ year: 2024, month: 3, day: 10 }]);
+    expect(findDates("7 sept, 2025")).toEqual([{ year: 2025, month: 9, day: 7 }]);
+    expect(findDates("mar 10 de diciembre del 2023")).toEqual([{ year: 2023, month: 12, day: 10 }]);
+  });
 });
 
 describe("TeamMentionIndex", () => {

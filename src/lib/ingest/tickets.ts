@@ -73,10 +73,23 @@ export interface FoundDate {
   day: number;
 }
 
-const MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+const MONTH_PATTERNS = [
+  "ene(?:ro)?",
+  "feb(?:rero)?",
+  "mar(?:zo)?",
+  "abr(?:il)?",
+  "may(?:o)?",
+  "jun(?:io)?",
+  "jul(?:io)?",
+  "ago(?:sto)?",
+  "sep(?:t(?:iembre)?)?|set(?:iembre)?",
+  "oct(?:ubre)?",
+  "nov(?:iembre)?",
+  "dic(?:iembre)?",
+];
 
 export function findDates(text: string): FoundDate[] {
-  const t = text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/setiembre/g, "septiembre");
+  const t = text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   const out: FoundDate[] = [];
   const push = (year: number | null, month: number, day: number) => {
     if (month < 1 || month > 12 || day < 1 || day > 31) return;
@@ -85,10 +98,11 @@ export function findDates(text: string): FoundDate[] {
   };
   for (const m of t.matchAll(/\b(\d{4})-(\d{2})-(\d{2})\b/g)) push(+m[1], +m[2], +m[3]);
   for (const m of t.matchAll(/\b(\d{1,2})[/.-](\d{1,2})[/.-](\d{4}|\d{2})\b/g)) push(+m[3], +m[2], +m[1]);
-  const monthRe = MONTHS.join("|");
-  for (const m of t.matchAll(new RegExp(`\\b(\\d{1,2}) de (${monthRe})(?:,? (?:de(?:l)? )?(\\d{4}))?`, "g"))) {
-    push(m[3] ? +m[3] : null, MONTHS.indexOf(m[2]) + 1, +m[1]);
-  }
+  // "10 de agosto de 2024", "10 ago 2024", "sáb 10 ago.", "10-ago-24" (correos, capturas de "Mis compras", PDF).
+  MONTH_PATTERNS.forEach((pattern, i) => {
+    const re = new RegExp(`\\b(\\d{1,2})(?:\\s+de)?[\\s./-]+(?:${pattern})\\.?(?![a-z])(?:,?[\\s./-]*(?:de(?:l)?\\s+)?(\\d{4}|\\d{2}(?![\\d:])))?`, "g");
+    for (const m of t.matchAll(re)) push(m[2] ? +m[2] : null, i + 1, +m[1]);
+  });
   return out;
 }
 
@@ -133,35 +147,54 @@ export interface TicketCandidate {
 const pad = (n: number) => String(n).padStart(2, "0");
 const dayDiff = (a: string, b: string) => Math.abs(Date.parse(a) - Date.parse(b)) / 86_400_000;
 
+export interface TicketAnalysis {
+  candidates: TicketCandidate[];
+  /** Fechas del comprobante sin partido del club en la base (p. ej. temporadas aún no cargadas). */
+  unmatchedDates: string[];
+}
+
 /**
  * Busca, entre los partidos del club del hincha, los que coinciden con las fechas y rivales del comprobante.
  * Tolera ±1 día (eventos que terminan pasada la medianoche o fechas de compra vs. de partido).
  */
+export async function analyzeTicket(db: Db, clubId: string, text: string, index: TeamMentionIndex): Promise<TicketAnalysis> {
+  const plain = emailToText(text);
+  const dates = findDates(plain);
+  const rivals = index.find(plain).filter((id) => id !== clubId);
+  if (!dates.length) return { candidates: [], unmatchedDates: [] };
+
+  const clubMatches = await listClubMatches(db, clubId);
+  const candidates = new Map<string, TicketCandidate>();
+  const unmatchedDates: string[] = [];
+  for (const d of dates) {
+    const when = d.year !== null ? `${pad(d.day)}/${pad(d.month)}/${d.year}` : `${pad(d.day)}/${pad(d.month)}`;
+    let found = false;
+    for (const m of clubMatches) {
+      const rival = m.homeTeamId === clubId ? m.awayTeamId : m.homeTeamId;
+      const rivalOk = rivals.length === 0 || rivals.includes(rival);
+      const dateOk =
+        d.year !== null
+          ? dayDiff(m.date, `${d.year}-${pad(d.month)}-${pad(d.day)}`) <= 1
+          : rivals.length > 0 && m.date.slice(5) === `${pad(d.month)}-${pad(d.day)}`;
+      if (!dateOk || !rivalOk) continue;
+      found = true;
+      if (!candidates.has(m.id)) {
+        candidates.set(m.id, { match: m, reason: rivals.length ? `fecha ${when} y rival mencionado` : `fecha ${when}` });
+      }
+    }
+    if (!found && d.year !== null) unmatchedDates.push(when);
+  }
+  return {
+    candidates: [...candidates.values()].sort((a, b) => b.match.date.localeCompare(a.match.date)),
+    unmatchedDates,
+  };
+}
+
 export async function findTicketMatches(
   db: Db,
   clubId: string,
   text: string,
   index: TeamMentionIndex,
 ): Promise<TicketCandidate[]> {
-  const plain = emailToText(text);
-  const dates = findDates(plain);
-  const rivals = index.find(plain).filter((id) => id !== clubId);
-  if (!dates.length) return [];
-
-  const clubMatches = await listClubMatches(db, clubId);
-  const candidates = new Map<string, TicketCandidate>();
-  for (const d of dates) {
-    for (const m of clubMatches) {
-      const rival = m.homeTeamId === clubId ? m.awayTeamId : m.homeTeamId;
-      const rivalOk = rivals.length === 0 || rivals.includes(rival);
-      let dateOk: boolean;
-      if (d.year !== null) dateOk = dayDiff(m.date, `${d.year}-${pad(d.month)}-${pad(d.day)}`) <= 1;
-      else dateOk = rivals.length > 0 && m.date.slice(5) === `${pad(d.month)}-${pad(d.day)}`;
-      if (!dateOk || !rivalOk || candidates.has(m.id)) continue;
-      const when = d.year !== null ? `${pad(d.day)}/${pad(d.month)}/${d.year}` : `${pad(d.day)}/${pad(d.month)}`;
-      const reason = rivals.length ? `fecha ${when} y rival mencionado` : `fecha ${when}`;
-      candidates.set(m.id, { match: m, reason });
-    }
-  }
-  return [...candidates.values()].sort((a, b) => b.match.date.localeCompare(a.match.date));
+  return (await analyzeTicket(db, clubId, text, index)).candidates;
 }

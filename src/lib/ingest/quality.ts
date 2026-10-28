@@ -73,6 +73,21 @@ export async function runQualityChecks(db: Db, today = new Date().toISOString().
     (r) => `${r.tournament}: ${r.teams} equipos, entre ${r.min_n} y ${r.max_n} partidos de fase regular`,
   );
 
+  add(
+    "goles-no-cuadran",
+    "warning",
+    await db.all(
+      `SELECT m.id, m.home_goals, m.away_goals,
+              SUM(CASE WHEN g.team_id = m.home_team_id THEN 1 ELSE 0 END) AS hg,
+              SUM(CASE WHEN g.team_id = m.away_team_id THEN 1 ELSE 0 END) AS ag
+       FROM matches m JOIN goals g ON g.match_id = m.id
+       GROUP BY m.id, m.home_goals, m.away_goals
+       HAVING SUM(CASE WHEN g.team_id = m.home_team_id THEN 1 ELSE 0 END) <> m.home_goals
+           OR SUM(CASE WHEN g.team_id = m.away_team_id THEN 1 ELSE 0 END) <> m.away_goals`,
+    ),
+    (r) => `${r.id}: goleadores ${r.hg}-${r.ag} vs marcador ${r.home_goals}-${r.away_goals}`,
+  );
+
   return issues;
 }
 

@@ -42,3 +42,14 @@ export interface TeamRecord {
   goalsFor: number;
   goalsAgainst: number;
 }
+
+/** Gol de un partido. `teamId` es el equipo al que se le suma en el marcador. */
+export interface Goal {
+  matchId: string;
+  teamId: string;
+  player: string;
+  minute: number | null;
+  /** Autogol: `player` jugaba en el equipo rival de `teamId`. */
+  ownGoal: boolean;
+  penalty: boolean;
+}

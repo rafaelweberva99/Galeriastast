@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { endSession, requireUser, startSession } from "@/lib/auth.ts";
 import { getDb } from "@/lib/db/client.ts";
-import { findTicketMatches, TeamMentionIndex } from "@/lib/ingest/tickets.ts";
+import { analyzeTicket, TeamMentionIndex } from "@/lib/ingest/tickets.ts";
 import { getTeam, listClubs } from "@/lib/repo/teams.ts";
 import {
   attendanceModes,
@@ -104,6 +104,8 @@ export interface ImportPreview {
     reason: string;
     alreadyMarked: boolean;
   }[];
+  /** Fechas encontradas sin partido del club en la base. */
+  unmatchedDates?: string[];
 }
 
 let mentionIndex: TeamMentionIndex | null = null;
@@ -112,22 +114,25 @@ let mentionIndex: TeamMentionIndex | null = null;
 export async function previewTicketImport(_: ImportPreview, form: FormData): Promise<ImportPreview> {
   const user = await requireUser();
   const text = String(form.get("text") ?? "");
-  if (text.trim().length < 10) return { error: "Pega el correo de confirmación de tu compra o sube el archivo .eml." };
+  if (text.trim().length < 10)
+    return { error: "Sube una captura de “Mis compras”, el PDF de tu entrada o el correo de confirmación." };
   if (text.length > 2_000_000) return { error: "El archivo es demasiado grande." };
   const db = await getDb();
   mentionIndex ??= new TeamMentionIndex(
     (await listClubs(db)).map((t) => ({ id: t.id, name: t.name, short: t.shortName })),
   );
   const modes = await attendanceModes(db, user.id);
-  const found = await findTicketMatches(db, user.clubId, text, mentionIndex);
+  const { candidates: found, unmatchedDates } = await analyzeTicket(db, user.clubId, text, mentionIndex);
   if (!found.length) {
     return {
-      error:
-        "No encontramos partidos de tu club con esas fechas. Revisa que el correo incluya la fecha del evento; " +
-        "por ahora la base cubre partidos hasta mediados de 2024.",
+      unmatchedDates,
+      error: unmatchedDates.length
+        ? `Leímos ${unmatchedDates.length === 1 ? "la fecha" : "las fechas"} ${unmatchedDates.join(", ")}, pero no hay partidos de tu club ese día en la base (por ahora cubre hasta mediados de 2024).`
+        : "No encontramos fechas de partidos en lo que subiste. Prueba con una captura donde se vea el nombre del partido y la fecha.",
     };
   }
   return {
+    unmatchedDates,
     candidates: found.map(({ match: m, reason }) => ({
       id: m.id,
       date: m.date,

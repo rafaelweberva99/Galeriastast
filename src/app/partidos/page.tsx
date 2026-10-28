@@ -6,6 +6,7 @@ import { getDb } from "@/lib/db/client.ts";
 import { competitionsForClub, listClubMatches, seasonsForClub } from "@/lib/repo/matches.ts";
 import { getTeam, listClubs } from "@/lib/repo/teams.ts";
 import { attendanceModes } from "@/lib/repo/users.ts";
+import { goalsForMatches } from "@/lib/repo/goals.ts";
 import { AttendanceToggle } from "@/components/AttendanceToggle.tsx";
 import { MatchRow } from "@/components/MatchRow.tsx";
 
@@ -28,6 +29,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
     opponent: sp.rival || undefined,
   })).filter((m) => m.date <= today);
   if (sp.solo === "1") matches = matches.filter((m) => modes.has(m.id));
+  const goals = await goalsForMatches(db, matches.map((m) => m.id));
   const rivals = (await listClubs(db)).filter((c) => c.id !== club.id);
 
   return (
@@ -89,7 +91,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
           <p className="muted">No hay partidos con esos filtros.</p>
         ) : (
           matches.map((m) => (
-            <MatchRow key={m.id} match={m} highlight={club.id}>
+            <MatchRow key={m.id} match={m} highlight={club.id} goals={goals.get(m.id)}>
               <AttendanceToggle matchId={m.id} initial={modes.get(m.id) ?? "ninguno"} />
             </MatchRow>
           ))

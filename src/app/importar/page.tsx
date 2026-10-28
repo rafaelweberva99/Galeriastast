@@ -1,6 +1,8 @@
 import { requireUser } from "@/lib/auth.ts";
+import { clubIdentity } from "@/lib/clubTheme.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { getTeam } from "@/lib/repo/teams.ts";
+import { Jersey } from "@/components/Jersey.tsx";
 import { TicketImport } from "./TicketImport.tsx";
 
 export const metadata = { title: "Importar desde PuntoTicket · GaleríaStats" };
@@ -10,28 +12,33 @@ export default async function ImportPage() {
   const club = (await getTeam(await getDb(), user.clubId))!;
   return (
     <div className="stack">
-      <div>
-        <h1 className="section-title">Importar desde PuntoTicket</h1>
-        <p className="muted" style={{ maxWidth: 720 }}>
-          ¿Compraste tus entradas en PuntoTicket? Pega el correo de confirmación de la compra (o sube el archivo
-          .eml) y buscamos los partidos de {club.name} que coinciden. Tú confirmas cuáles marcar. No guardamos el
-          contenido del correo.
-        </p>
+      <div className="club-banner row">
+        <Jersey club={clubIdentity(club)} size={72} number="12" />
+        <div>
+          <div className="small">Importar entradas · {club.name}</div>
+          <h1>Tus entradas de PuntoTicket</h1>
+          <p className="muted" style={{ margin: 0 }}>
+            Sube una captura de tus compras y marcamos los partidos solos.
+          </p>
+        </div>
       </div>
+      <ol className="steps">
+        <li>
+          <strong>Abre PuntoTicket</strong> en la app o en la web y entra a tu historial de compras (Mi cuenta → Mis
+          compras).
+        </li>
+        <li>
+          <strong>Toma una captura de pantalla.</strong> Si tienes muchas compras, toma varias.
+        </li>
+        <li>
+          <strong>Súbelas aquí.</strong> También sirve el PDF de la entrada o el correo de confirmación.
+        </li>
+      </ol>
       <TicketImport />
-      <details className="card">
-        <summary style={{ fontWeight: 700, cursor: "pointer" }}>¿Cómo exporto el correo?</summary>
-        <ol className="muted">
-          <li>Busca en tu correo “PuntoTicket” y abre la confirmación de compra del partido.</li>
-          <li>
-            <strong>Gmail:</strong> menú ⋮ → “Descargar mensaje” (.eml) y súbelo aquí, o copia y pega el texto.
-          </li>
-          <li>
-            <strong>Outlook / Apple Mail:</strong> arrastra el correo al escritorio para obtener el .eml, o copia el texto.
-          </li>
-          <li>Puedes pegar varios correos seguidos: detectamos todas las fechas.</li>
-        </ol>
-      </details>
+      <p className="muted small">
+        Las imágenes y PDF se leen en tu teléfono: no se suben a ningún servidor. Solo enviamos el texto leído para
+        buscar los partidos, y no lo guardamos.
+      </p>
     </div>
   );
 }

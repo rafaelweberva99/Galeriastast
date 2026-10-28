@@ -122,3 +122,40 @@ describe.each(ENGINES)("base de datos: %s", (_name, open) => {
     expect(cc[0].stage).toBe("Fecha 1");
   });
 });
+
+describe.each(ENGINES)("goleadores: %s", (_name, open) => {
+  let db: Db;
+  afterEach(async () => db?.close());
+
+  it("carga goles, aplica correcciones y alias, y rechaza filas inválidas", async () => {
+    db = await seed(open);
+    const { loadGoals, parseGoalsCsv, parsePlayersCsv } = await import("../src/lib/ingest/goals.ts");
+    const { goalsForMatches } = await import("../src/lib/repo/goals.ts");
+    const players = parsePlayersCsv("player,canonical_name,notes\nE. Paredes,Esteban Paredes,\n");
+    const csv = [
+      "match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,penalty,source",
+      "a,2024-03-01,colo-colo,universidad-de-chile,colo-colo,E. Paredes,10,0,1,test",
+      "a,2024-03-01,colo-colo,universidad-de-chile,colo-colo,Pérez,50,1,0,test",
+      "b,2024-04-01,everton,colo-colo,everton,Fulano,3,0,0,test",
+      "c,2024-05-01,everton,universidad-de-chile,colo-colo,Intruso,1,0,0,test",
+      "zzz,2024-05-01,everton,colo-colo,everton,Fantasma,1,0,0,test",
+    ].join("\n");
+    const corrections = parseGoalsCsv(
+      "match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,penalty,source\n" +
+        "b,2024-04-01,everton,colo-colo,everton,Fulano,3,0,0,prensa\nb,2024-04-01,everton,colo-colo,colo-colo,Esteban Paredes,88,0,0,prensa\n",
+    );
+    const report = await loadGoals(db, parseGoalsCsv(csv, players), corrections);
+    expect(report.rejected).toHaveLength(2);
+    expect(report.complete).toBe(2);
+    const goals = await goalsForMatches(db, ["a", "b"]);
+    expect(goals.get("a")!.map((g) => [g.player, g.penalty, g.ownGoal])).toEqual([
+      ["Esteban Paredes", true, false],
+      ["Pérez", false, true],
+    ]);
+    expect(goals.get("b")).toHaveLength(2);
+    // recargar reemplaza, no duplica
+    await loadGoals(db, parseGoalsCsv(csv, players), corrections);
+    expect((await goalsForMatches(db, ["a"])).get("a")).toHaveLength(2);
+    expect((await runQualityChecks(db, "2030-01-01")).filter((i) => i.check === "goles-no-cuadran")).toHaveLength(0);
+  });
+});

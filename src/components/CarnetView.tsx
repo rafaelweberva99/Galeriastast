@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { effectiveness, type Breakdown, type Carnet } from "@/lib/domain/stats.ts";
-import type { AttendedMatch } from "@/lib/domain/types.ts";
+import type { ScorersReport } from "@/lib/domain/scorers.ts";
+import type { AttendedMatch, Goal } from "@/lib/domain/types.ts";
 import type { Team } from "@/lib/repo/teams.ts";
 import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
 import { Jersey } from "./Jersey.tsx";
@@ -8,6 +9,7 @@ import { formatDate, pct, recordLine, scoreLine } from "./format.ts";
 import { MatchRow } from "./MatchRow.tsx";
 import { Mufometro } from "./Mufometro.tsx";
 import { RecordBar } from "./RecordBar.tsx";
+import { ScorersSection } from "./ScorersSection.tsx";
 
 const OUTCOME_LABEL = { G: "Ganado", E: "Empate", P: "Perdido" } as const;
 
@@ -69,6 +71,9 @@ export function CarnetView({
   club,
   carnet,
   attended,
+  scorers,
+  goals,
+  clubs,
   isOwner,
 }: {
   username: string;
@@ -76,6 +81,9 @@ export function CarnetView({
   club: Team;
   carnet: Carnet;
   attended: AttendedMatch[];
+  scorers: ScorersReport;
+  goals: Map<string, Goal[]>;
+  clubs: Team[];
   isOwner: boolean;
 }) {
   const c = carnet;
@@ -249,6 +257,8 @@ export function CarnetView({
         <Memorable title="Último partido" match={c.last} />
       </section>
 
+      <ScorersSection report={scorers} clubId={club.id} clubs={clubs} />
+
       <section className="grid grid-2">
         <div className="card">
           <h2 className="section-title">Por temporada</h2>
@@ -275,7 +285,7 @@ export function CarnetView({
           <p className="muted">Aún no hay partidos marcados.</p>
         ) : (
           [...attended].reverse().map((m) => (
-            <MatchRow key={m.id} match={m} highlight={club.id}>
+            <MatchRow key={m.id} match={m} highlight={club.id} goals={goals.get(m.id)}>
               {m.mode === "infiltrado" && <span className="pill infiltrado">Infiltrado</span>}
             </MatchRow>
           ))

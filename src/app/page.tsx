@@ -4,7 +4,7 @@ import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { datasetSummary } from "@/lib/repo/matches.ts";
 import { clubsByFans } from "@/lib/repo/rankings.ts";
-import { getTeam } from "@/lib/repo/teams.ts";
+import { getTeam, listClubs } from "@/lib/repo/teams.ts";
 import { Jersey } from "@/components/Jersey.tsx";
 
 const BIG_THREE = ["colo-colo", "universidad-de-chile", "universidad-catolica"];
@@ -15,12 +15,16 @@ const FEATURES = [
   { n: "03", title: "Finales", text: "Las finales a las que fuiste, con penales incluidos. ¿Viste dar la vuelta o te tocó llorar?" },
   { n: "04", title: "Modo Infiltrado", text: "¿Fuiste escondido a la galería rival? También cuenta, y lo separamos aparte." },
   { n: "05", title: "Impacto real", text: "Comparamos tu efectividad con la de tu club en esas mismas temporadas: ¿sumas o restas?" },
-  { n: "06", title: "Importa tus entradas", text: "Pega el correo de compra de PuntoTicket y marcamos tus partidos solos." },
+  { n: "06", title: "Importa tus entradas", text: "Sube una captura de tus compras en PuntoTicket y marcamos tus partidos solos." },
 ];
 
 export default async function Home() {
   const db = await getDb();
   const [user, summary, clubs] = [await currentUser(), await datasetSummary(db), (await clubsByFans(db)).slice(0, 5)];
+  const allClubs = await listClubs(db);
+  const latest = Math.max(...allClubs.map((c) => c.lastSeason));
+  const current = allClubs.filter((c) => c.lastSeason === latest && !BIG_THREE.includes(c.id));
+  const historic = allClubs.filter((c) => c.lastSeason !== latest);
   const big = (await Promise.all(BIG_THREE.map((id) => getTeam(db, id))))
     .filter((t) => t !== null)
     .map(clubIdentity);
@@ -74,11 +78,42 @@ export default async function Home() {
                   </Link>
                 ))}
               </div>
-              <p style={{ marginTop: 16 }}>
-                <Link href="/registro" style={{ color: "#fff", fontWeight: 600 }}>
-                  ¿Eres de otro club? Elige el tuyo →
-                </Link>
+              <p className="display" style={{ margin: "26px 0 10px", fontSize: "1rem", letterSpacing: "0.12em" }}>
+                Todos los clubes de Primera {latest}
               </p>
+              <div className="club-chips">
+                {current.map((t) => {
+                  const c = clubIdentity(t);
+                  return (
+                    <Link
+                      key={t.id}
+                      href={`/registro?club=${t.id}`}
+                      className="club-chip"
+                      style={clubStyle(c) as React.CSSProperties}
+                      title={`Soy hincha de ${t.name}`}
+                    >
+                      <Jersey club={c} size={40} />
+                      <span>
+                        <strong>{t.shortName}</strong>
+                        <small>{c.fansPlural ?? c.alias ?? ""}</small>
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+              {historic.length > 0 && (
+                <p className="small" style={{ marginTop: 14, opacity: 0.9 }}>
+                  ¿Tu club jugó en Primera antes? También está:{" "}
+                  {historic.map((t, i) => (
+                    <span key={t.id}>
+                      {i > 0 && " · "}
+                      <Link href={`/registro?club=${t.id}`} style={{ color: "#fff" }}>
+                        {t.shortName}
+                      </Link>
+                    </span>
+                  ))}
+                </p>
+              )}
             </>
           )}
         </div>
@@ -130,7 +165,8 @@ export default async function Home() {
               <li key={c.clubId}>
                 <Link href={`/rankings/${c.clubId}`}>{c.name}</Link>{" "}
                 <span className="muted">
-                  · {c.fans} hinchas · {c.attendances} partidos marcados
+                  · {c.fans} {c.fans === 1 ? "hincha" : "hinchas"} · {c.attendances}{" "}
+                  {c.attendances === 1 ? "partido marcado" : "partidos marcados"}
                 </span>
               </li>
             ))}

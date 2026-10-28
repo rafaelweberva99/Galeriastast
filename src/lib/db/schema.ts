@@ -87,6 +87,22 @@ CREATE TABLE IF NOT EXISTS attendances (
 );
 CREATE INDEX IF NOT EXISTS idx_attendances_match ON attendances(match_id);
 
+-- Goles de cada partido. team_id = equipo al que se le suma el gol en el marcador;
+-- en un autogol (own_goal = 1) el jugador pertenece al equipo rival de team_id.
+CREATE TABLE IF NOT EXISTS goals (
+  id          {{SERIAL_ID}},
+  match_id    TEXT NOT NULL REFERENCES matches(id) ON DELETE CASCADE,
+  team_id     TEXT NOT NULL REFERENCES teams(id),
+  player      TEXT NOT NULL,
+  minute      INTEGER,
+  own_goal    INTEGER NOT NULL DEFAULT 0,
+  penalty     INTEGER NOT NULL DEFAULT 0,
+  source      TEXT NOT NULL,
+  verified    INTEGER NOT NULL DEFAULT 0
+);
+CREATE INDEX IF NOT EXISTS idx_goals_match ON goals(match_id);
+CREATE INDEX IF NOT EXISTS idx_goals_team_player ON goals(team_id, player);
+
 -- Bitácora de cargas de datos, para trazabilidad y para no recargar archivos sin cambios.
 CREATE TABLE IF NOT EXISTS ingestion_runs (
   id          {{SERIAL_ID}},

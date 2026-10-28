@@ -25,18 +25,25 @@ function toTeam(r: Row): Team {
  * Clubes chilenos profesionales (con al menos un partido en Primera División),
  * ordenados alfabéticamente. Los clubes amateur que solo aparecen en Copa Chile quedan fuera.
  */
-export async function listClubs(db: Db): Promise<(Team & { matches: number; fans: number })[]> {
+export async function listClubs(db: Db): Promise<(Team & { matches: number; fans: number; lastSeason: number })[]> {
   const rows = await db.all(
     `SELECT t.*,
          (SELECT COUNT(*) FROM matches m WHERE m.home_team_id = t.id OR m.away_team_id = t.id) AS matches,
-         (SELECT COUNT(*) FROM users u WHERE u.club_id = t.id) AS fans
+         (SELECT COUNT(*) FROM users u WHERE u.club_id = t.id) AS fans,
+         (SELECT MAX(m.season) FROM matches m WHERE m.competition_id = 'primera-division'
+            AND (m.home_team_id = t.id OR m.away_team_id = t.id)) AS last_season
        FROM teams t
        WHERE t.is_chilean = 1 AND EXISTS (
          SELECT 1 FROM matches m WHERE m.competition_id = 'primera-division'
            AND (m.home_team_id = t.id OR m.away_team_id = t.id))
        ORDER BY t.name`,
   );
-  return rows.map((r) => ({ ...toTeam(r), matches: Number(r.matches), fans: Number(r.fans) }));
+  return rows.map((r) => ({
+    ...toTeam(r),
+    matches: Number(r.matches),
+    fans: Number(r.fans),
+    lastSeason: Number(r.last_season),
+  }));
 }
 
 export async function getTeam(db: Db, id: string): Promise<Team | null> {

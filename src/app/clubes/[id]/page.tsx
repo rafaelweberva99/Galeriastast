@@ -5,7 +5,10 @@ import { notFound } from "next/navigation";
 import { getDb } from "@/lib/db/client.ts";
 import { decidedOutcome, effectiveness, involves, recordFor } from "@/lib/domain/stats.ts";
 import { listClubMatches } from "@/lib/repo/matches.ts";
-import { getTeam, listRivalries } from "@/lib/repo/teams.ts";
+import { getTeam, listClubs, listRivalries } from "@/lib/repo/teams.ts";
+import { goalsForClub } from "@/lib/repo/goals.ts";
+import { scorersSeen } from "@/lib/domain/scorers.ts";
+import { ScorersSection } from "@/components/ScorersSection.tsx";
 import { pct, recordLine, scoreLine } from "@/components/format.ts";
 import { RecordBar } from "@/components/RecordBar.tsx";
 
@@ -23,6 +26,8 @@ export default async function ClubPage({ params }: { params: Params }) {
   const seasons = [...new Set(matches.map((m) => m.season))].sort((a, b) => b - a);
   const finals = matches.filter((m) => m.isFinal);
   const identity = clubIdentity(club);
+  const [clubGoals, clubs] = await Promise.all([goalsForClub(db, club.id), listClubs(db)]);
+  const scorers = scorersSeen(matches, clubGoals, club.id);
   const rivalries = (await listRivalries(db)).filter((r) => r.teamA === club.id || r.teamB === club.id);
 
   return (
@@ -96,6 +101,8 @@ export default async function ClubPage({ params }: { params: Params }) {
           })}
         </div>
       </section>
+
+      <ScorersSection report={scorers} clubId={club.id} clubs={clubs} perspective="club" />
 
       <section className="card">
         <h2 className="section-title">Por temporada</h2>

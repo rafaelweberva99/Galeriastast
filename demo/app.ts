@@ -3,7 +3,7 @@
  * Reutiliza la lógica real de la app (Mufómetro, clásicos, finales, temas de club, lector de correos)
  * y guarda los partidos marcados en el navegador del hincha.
  */
-import { clubIdentity, clubStyle, fansLabel, type ClubIdentity } from "../src/lib/clubTheme.ts";
+import { clubIdentity, clubStyle, fansLabel, jerseySvg, type ClubIdentity } from "../src/lib/clubTheme.ts";
 import { buildCarnet, decidedOutcome, effectiveness, involves, outcomeFor, recordFor, type Verdict } from "../src/lib/domain/stats.ts";
 import type { AttendanceMode, AttendedMatch, Match, Rivalry, TeamRecord } from "../src/lib/domain/types.ts";
 import { findDates, TeamMentionIndex } from "../src/lib/ingest/tickets.ts";
@@ -115,28 +115,8 @@ const fdate = (iso: string) => dateFmt.format(new Date(`${iso}T00:00:00Z`));
 const pct = (v: number | null) => (v === null ? "—" : `${v.toFixed(0)}%`);
 const recLine = (r: TeamRecord) => `${r.won}G ${r.drawn}E ${r.lost}P`;
 
-function jersey(c: ClubIdentity, size = 48, num?: string) {
-  const j = c.jersey;
-  const body = "M20 6 L26 4 Q32 10 38 4 L44 6 L58 17 L51 28 L46 24 L46 60 L18 60 L18 24 L13 28 L6 17 Z";
-  const clip = `j${Math.random().toString(36).slice(2, 8)}`;
-  const motif =
-    j.motif === "chest-band"
-      ? `<rect x="0" y="25" width="64" height="11" fill="${j.motifColor}"/>`
-      : j.motif === "stripes"
-        ? [20, 28, 36, 44].map((x) => `<rect x="${x}" y="0" width="4" height="64" fill="${j.motifColor}"/>`).join("")
-        : "";
-  const number = num
-    ? `<text x="32" y="${j.motif === "chest-band" ? 52 : 46}" text-anchor="middle" font-size="17" font-weight="700" font-family="Oswald, 'Arial Narrow', sans-serif" fill="${j.motif === "chest-band" ? j.motifColor : j.collar}">${esc(num)}</text>`
-    : "";
-  return `<svg viewBox="0 0 64 64" width="${size}" height="${size}" role="img" aria-label="Camiseta de ${esc(c.short)}" style="flex-shrink:0">
-    <defs><clipPath id="${clip}"><path d="${body}"/></clipPath></defs>
-    <path d="${body}" fill="${j.body}"/>
-    <g clip-path="url(#${clip})">${motif}
-      <path d="M20 6 L6 17 L13 28 L18 24 L18 12 Z" fill="${j.sleeves}"/><path d="M44 6 L58 17 L51 28 L46 24 L46 12 Z" fill="${j.sleeves}"/>
-      <path d="M6 17 L13 28" stroke="${j.trim}" stroke-width="3"/><path d="M58 17 L51 28" stroke="${j.trim}" stroke-width="3"/></g>
-    <path d="M26 4 Q32 10 38 4" fill="none" stroke="${j.collar}" stroke-width="3.5" stroke-linecap="round"/>
-    <path d="${body}" fill="none" stroke="rgb(0 0 0 / 0.35)" stroke-width="1.2" stroke-linejoin="round"/>${number}</svg>`;
-}
+let jerseySeq = 0;
+const jersey = (c: ClubIdentity, size = 48, num?: string) => jerseySvg(c, size, num, `${c.id}-${jerseySeq++}`);
 
 const BALL = `<svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#111" stroke-width="1.5"/><path d="M16 9.5 L21.5 13.5 L19.4 20 L12.6 20 L10.5 13.5 Z" fill="#111"/><path d="M16 9.5 V3 M21.5 13.5 L27.6 11.3 M19.4 20 L23.3 25.4 M12.6 20 L8.7 25.4 M10.5 13.5 L4.4 11.3" stroke="#111" stroke-width="1.5"/></svg>`;
 

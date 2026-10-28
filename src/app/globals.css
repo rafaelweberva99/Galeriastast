@@ -182,6 +182,9 @@ td.num, th.num { text-align: right; }
 .match-date { color: var(--muted); font-size: 0.85rem; }
 .match-teams { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 .match-meta { color: var(--muted); font-size: 0.8rem; width: 100%; }
+.match-goals { display: flex; flex-direction: column; gap: 2px; width: 100%; font-size: 0.82rem; color: var(--text); opacity: 0.85; }
+.pill.og { background: color-mix(in srgb, var(--draw) 25%, transparent); color: var(--text); font-size: 0.7rem; }
+.spotlight .display { overflow-wrap: anywhere; }
 .match-final { color: var(--draw); font-weight: 700; }
 @media (max-width: 560px) {
   .match { grid-template-columns: 1fr; gap: 6px; }
@@ -229,3 +232,32 @@ td.num, th.num { text-align: right; }
 .club-banner h1 { margin: 0; }
 .club-banner a { color: inherit; }
 .club-banner .muted { color: inherit; opacity: 0.85; }
+
+/* --- Importar entradas ------------------------------------------------------ */
+.steps { margin: 0; padding-left: 1.4em; display: grid; gap: 6px; }
+.dropzone { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; padding: 32px 16px; border: 3px dashed var(--accent); border-radius: 18px; background: color-mix(in srgb, var(--accent) 7%, var(--surface)); cursor: pointer; transition: background 0.15s ease; }
+.dropzone:hover, .dropzone.dragging { background: color-mix(in srgb, var(--accent) 16%, var(--surface)); }
+.dropzone:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
+.dropzone-icon { font-size: 2.4rem; line-height: 1; }
+.progress { height: 6px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.progress > span { display: block; height: 100%; background: var(--accent); transition: width 0.2s ease; }
+textarea { width: 100%; }
+@media (prefers-reduced-motion: reduce) { .dropzone, .progress > span { transition: none; } }
+
+/* --- Selector de clubes en la portada --------------------------------------- */
+.club-chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 10px; }
+.club-chip { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 12px; text-decoration: none; background: var(--club-card); color: var(--club-ink); border: 1px solid rgb(255 255 255 / 0.25); position: relative; overflow: hidden; min-width: 0; transition: transform 0.15s ease; }
+.club-chip:hover { transform: translateY(-2px); }
+.club-chip::after { content: ""; position: absolute; right: 8px; top: -6px; bottom: -6px; width: 8px; background: var(--club-band); transform: skewX(-18deg); opacity: 0.85; }
+.club-chip span { display: flex; flex-direction: column; min-width: 0; line-height: 1.15; }
+.club-chip strong { font-family: var(--font-display), sans-serif; text-transform: uppercase; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.club-chip small { font-size: 0.72rem; opacity: 0.85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (prefers-reduced-motion: reduce) { .club-chip { transition: none; } }
+.club-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.club-card { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 16px; text-decoration: none; background: var(--club-card); color: var(--club-ink); position: relative; overflow: hidden; min-width: 0; box-shadow: var(--shadow); transition: transform 0.15s ease; }
+.club-card:hover { transform: translateY(-2px); }
+.club-card::after { content: ""; position: absolute; right: 14px; top: -10px; bottom: -10px; width: 12px; background: var(--club-band); transform: skewX(-18deg); opacity: 0.85; }
+.club-card span { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding-right: 22px; position: relative; z-index: 1; }
+.club-card strong { font-family: var(--font-display), sans-serif; text-transform: uppercase; font-size: 1.1rem; line-height: 1.1; }
+.club-card small { font-size: 0.78rem; opacity: 0.88; }
+@media (prefers-reduced-motion: reduce) { .club-card { transition: none; } }
