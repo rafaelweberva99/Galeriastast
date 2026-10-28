@@ -151,6 +151,11 @@ export function TicketImport() {
           <h2 style={{ margin: 0 }}>
             Encontramos {state.candidates.length} {state.candidates.length === 1 ? "partido" : "partidos"}
           </h2>
+          {state.providers && state.providers.length > 0 && (
+            <p className="muted small" style={{ margin: 0 }}>
+              Comprobantes de {state.providers.join(" y ")}
+            </p>
+          )}
           {state.candidates.map((c) => (
             <label key={c.id} className="match" style={{ cursor: "pointer" }}>
               <span className="match-date">{formatDate(c.date)}</span>

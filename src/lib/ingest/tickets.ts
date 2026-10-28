@@ -149,6 +149,7 @@ const dayDiff = (a: string, b: string) => Math.abs(Date.parse(a) - Date.parse(b)
 
 export interface TicketAnalysis {
   candidates: TicketCandidate[];
+  providers: string[];
   /** Fechas del comprobante sin partido del club en la base (p. ej. temporadas aún no cargadas). */
   unmatchedDates: string[];
 }
@@ -161,7 +162,8 @@ export async function analyzeTicket(db: Db, clubId: string, text: string, index:
   const plain = emailToText(text);
   const dates = findDates(plain);
   const rivals = index.find(plain).filter((id) => id !== clubId);
-  if (!dates.length) return { candidates: [], unmatchedDates: [] };
+  const providers = detectProviders(plain).map((p) => p.name);
+  if (!dates.length) return { candidates: [], unmatchedDates: [], providers };
 
   const clubMatches = await listClubMatches(db, clubId);
   const candidates = new Map<string, TicketCandidate>();
@@ -187,6 +189,7 @@ export async function analyzeTicket(db: Db, clubId: string, text: string, index:
   return {
     candidates: [...candidates.values()].sort((a, b) => b.match.date.localeCompare(a.match.date)),
     unmatchedDates,
+    providers,
   };
 }
 
@@ -197,4 +200,28 @@ export async function findTicketMatches(
   index: TeamMentionIndex,
 ): Promise<TicketCandidate[]> {
   return (await analyzeTicket(db, clubId, text, index)).candidates;
+}
+
+// ----------------------------------------------------------------------------
+// Ticketeras
+
+export interface TicketProvider {
+  id: string;
+  name: string;
+  /** Dónde encuentra el hincha su historial de compras. */
+  history: string;
+}
+
+export const PROVIDERS: (TicketProvider & { pattern: RegExp })[] = [
+  { id: "puntoticket", name: "PuntoTicket", history: "Mi cuenta → Mis compras", pattern: /punto\s*ticket/i },
+  { id: "ticketplus", name: "Ticketplus", history: "Mi cuenta → Mis entradas", pattern: /ticket\s*plus/i },
+  { id: "passline", name: "Passline", history: "Mis e-Tickets", pattern: /passline/i },
+  { id: "ticketmaster", name: "Ticketmaster", history: "Mi cuenta → Mis entradas", pattern: /ticketmaster/i },
+  { id: "ohipass", name: "OHipass", history: "tu cuenta en OHipass", pattern: /ohi\s*pass/i },
+  { id: "tienda-everton", name: "Tienda Everton", history: "tu cuenta en la Tienda Everton", pattern: /tienda\s*everton|tiendaeverton/i },
+];
+
+/** Ticketeras que aparecen en el texto de un comprobante (para mostrar "Leímos una entrada de Passline"). */
+export function detectProviders(text: string): TicketProvider[] {
+  return PROVIDERS.filter((p) => p.pattern.test(text)).map(({ id, name, history }) => ({ id, name, history }));
 }

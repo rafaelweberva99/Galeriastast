@@ -1,0 +1,117 @@
+{
+  "season": 2026,
+  "clubs": [
+    {
+      "clubId": "colo-colo",
+      "provider": "puntoticket",
+      "buyUrl": "https://www.puntoticket.com",
+      "ownPortal": false,
+      "verified": "alta"
+    },
+    {
+      "clubId": "universidad-de-chile",
+      "provider": "puntoticket",
+      "buyUrl": "https://www.puntoticket.com",
+      "ownPortal": false,
+      "verified": "alta"
+    },
+    {
+      "clubId": "universidad-catolica",
+      "provider": "puntoticket",
+      "buyUrl": "https://cruzados.puntoticket.com",
+      "ownPortal": false,
+      "verified": "alta"
+    },
+    {
+      "clubId": "ohiggins",
+      "provider": "ohipass",
+      "buyUrl": "https://ohipass.cl",
+      "ownPortal": true,
+      "verified": "alta"
+    },
+    {
+      "clubId": "coquimbo-unido",
+      "provider": "ticketplus",
+      "buyUrl": "https://coquimbo.ticketplus.cl",
+      "ownPortal": false,
+      "verified": "alta"
+    },
+    {
+      "clubId": "audax-italiano",
+      "provider": "ticketplus",
+      "buyUrl": "https://audaxitaliano.ticketplus.cl",
+      "ownPortal": false,
+      "verified": "alta"
+    },
+    {
+      "clubId": "palestino",
+      "provider": "ticketmaster",
+      "buyUrl": "https://www.ticketmaster.cl",
+      "ownPortal": false,
+      "verified": "alta"
+    },
+    {
+      "clubId": "huachipato",
+      "provider": "passline",
+      "buyUrl": "https://www.passline.com",
+      "ownPortal": false,
+      "verified": "media"
+    },
+    {
+      "clubId": "cobresal",
+      "provider": "passline",
+      "buyUrl": "https://www.passline.com/productora/5857847-club-de-deportes-cobresal",
+      "ownPortal": false,
+      "verified": "alta"
+    },
+    {
+      "clubId": "everton",
+      "provider": "tienda-everton",
+      "buyUrl": "https://www.tiendaeverton.cl",
+      "ownPortal": true,
+      "verified": "media"
+    },
+    {
+      "clubId": "nublense",
+      "provider": "passline",
+      "buyUrl": "https://www.passline.com",
+      "ownPortal": false,
+      "verified": "alta"
+    },
+    {
+      "clubId": "union-la-calera",
+      "provider": "ticketmaster",
+      "buyUrl": "https://www.ticketmaster.cl",
+      "ownPortal": false,
+      "verified": "alta"
+    },
+    {
+      "clubId": "la-serena",
+      "provider": "ticketmaster",
+      "buyUrl": "https://www.ticketmaster.cl",
+      "ownPortal": false,
+      "verified": "alta"
+    },
+    {
+      "clubId": "deportes-limache",
+      "provider": "passline",
+      "buyUrl": "https://www.passline.com/productora/4934889-limachinos-sadp",
+      "ownPortal": false,
+      "verified": "alta"
+    },
+    {
+      "clubId": "universidad-de-concepcion",
+      "provider": "ticketmaster",
+      "buyUrl": "https://www.ticketmaster.cl",
+      "ownPortal": false,
+      "verified": "alta"
+    },
+    {
+      "clubId": "deportes-concepcion",
+      "provider": "passline",
+      "buyUrl": "https://www.passline.com",
+      "ownPortal": false,
+      "verified": "alta"
+    }
+  ]
+}

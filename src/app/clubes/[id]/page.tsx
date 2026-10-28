@@ -9,6 +9,7 @@ import { getTeam, listClubs, listRivalries } from "@/lib/repo/teams.ts";
 import { goalsForClub } from "@/lib/repo/goals.ts";
 import { scorersSeen } from "@/lib/domain/scorers.ts";
 import { ScorersSection } from "@/components/ScorersSection.tsx";
+import { BuyTickets } from "@/components/BuyTickets.tsx";
 import { pct, recordLine, scoreLine } from "@/components/format.ts";
 import { RecordBar } from "@/components/RecordBar.tsx";
 
@@ -40,6 +41,9 @@ export default async function ClubPage({ params }: { params: Params }) {
           <span className="muted">
             <Link href={`/rankings/${club.id}`}>Ranking de {fansLabel(identity)}</Link>
           </span>
+          <div>
+            <BuyTickets clubId={club.id} />
+          </div>
         </div>
       </div>
 

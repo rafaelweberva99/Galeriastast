@@ -106,6 +106,8 @@ export interface ImportPreview {
   }[];
   /** Fechas encontradas sin partido del club en la base. */
   unmatchedDates?: string[];
+  /** Ticketeras reconocidas en los comprobantes. */
+  providers?: string[];
 }
 
 let mentionIndex: TeamMentionIndex | null = null;
@@ -122,10 +124,11 @@ export async function previewTicketImport(_: ImportPreview, form: FormData): Pro
     (await listClubs(db)).map((t) => ({ id: t.id, name: t.name, short: t.shortName })),
   );
   const modes = await attendanceModes(db, user.id);
-  const { candidates: found, unmatchedDates } = await analyzeTicket(db, user.clubId, text, mentionIndex);
+  const { candidates: found, unmatchedDates, providers } = await analyzeTicket(db, user.clubId, text, mentionIndex);
   if (!found.length) {
     return {
       unmatchedDates,
+      providers,
       error: unmatchedDates.length
         ? `Leímos ${unmatchedDates.length === 1 ? "la fecha" : "las fechas"} ${unmatchedDates.join(", ")}, pero no hay partidos de tu club ese día en la base (por ahora cubre hasta mediados de 2024).`
         : "No encontramos fechas de partidos en lo que subiste. Prueba con una captura donde se vea el nombre del partido y la fecha.",
@@ -133,6 +136,7 @@ export async function previewTicketImport(_: ImportPreview, form: FormData): Pro
   }
   return {
     unmatchedDates,
+    providers,
     candidates: found.map(({ match: m, reason }) => ({
       id: m.id,
       date: m.date,

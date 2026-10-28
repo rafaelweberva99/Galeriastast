@@ -5,6 +5,7 @@ import { getDb } from "@/lib/db/client.ts";
 import { datasetSummary } from "@/lib/repo/matches.ts";
 import { clubsByFans } from "@/lib/repo/rankings.ts";
 import { getTeam, listClubs } from "@/lib/repo/teams.ts";
+import { CURRENT_SEASON } from "@/lib/ticketing.ts";
 import { Jersey } from "@/components/Jersey.tsx";
 
 const BIG_THREE = ["colo-colo", "universidad-de-chile", "universidad-catolica"];
@@ -22,9 +23,9 @@ export default async function Home() {
   const db = await getDb();
   const [user, summary, clubs] = [await currentUser(), await datasetSummary(db), (await clubsByFans(db)).slice(0, 5)];
   const allClubs = await listClubs(db);
-  const latest = Math.max(...allClubs.map((c) => c.lastSeason));
-  const current = allClubs.filter((c) => c.lastSeason === latest && !BIG_THREE.includes(c.id));
-  const historic = allClubs.filter((c) => c.lastSeason !== latest);
+  const latest = CURRENT_SEASON;
+  const current = allClubs.filter((c) => c.current && !BIG_THREE.includes(c.id));
+  const historic = allClubs.filter((c) => !c.current);
   const big = (await Promise.all(BIG_THREE.map((id) => getTeam(db, id))))
     .filter((t) => t !== null)
     .map(clubIdentity);

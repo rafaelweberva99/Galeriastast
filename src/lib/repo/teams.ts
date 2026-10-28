@@ -1,5 +1,6 @@
 import type { Db, Row } from "../db/client.ts";
 import type { Rivalry } from "../domain/types.ts";
+import { CURRENT_CLUBS } from "../ticketing.ts";
 
 export interface Team {
   id: string;
@@ -25,7 +26,7 @@ function toTeam(r: Row): Team {
  * Clubes chilenos profesionales (con al menos un partido en Primera División),
  * ordenados alfabéticamente. Los clubes amateur que solo aparecen en Copa Chile quedan fuera.
  */
-export async function listClubs(db: Db): Promise<(Team & { matches: number; fans: number; lastSeason: number })[]> {
+export async function listClubs(db: Db): Promise<(Team & { matches: number; fans: number; lastSeason: number; current: boolean })[]> {
   const rows = await db.all(
     `SELECT t.*,
          (SELECT COUNT(*) FROM matches m WHERE m.home_team_id = t.id OR m.away_team_id = t.id) AS matches,
@@ -33,16 +34,19 @@ export async function listClubs(db: Db): Promise<(Team & { matches: number; fans
          (SELECT MAX(m.season) FROM matches m WHERE m.competition_id = 'primera-division'
             AND (m.home_team_id = t.id OR m.away_team_id = t.id)) AS last_season
        FROM teams t
-       WHERE t.is_chilean = 1 AND EXISTS (
+       WHERE t.is_chilean = 1 AND (EXISTS (
          SELECT 1 FROM matches m WHERE m.competition_id = 'primera-division'
            AND (m.home_team_id = t.id OR m.away_team_id = t.id))
+         OR t.id IN (${CURRENT_CLUBS.map(() => "?").join(", ")}))
        ORDER BY t.name`,
+    ...CURRENT_CLUBS,
   );
   return rows.map((r) => ({
     ...toTeam(r),
     matches: Number(r.matches),
     fans: Number(r.fans),
-    lastSeason: Number(r.last_season),
+    lastSeason: r.last_season === null ? 0 : Number(r.last_season),
+    current: CURRENT_CLUBS.includes(r.id as string),
   }));
 }
 

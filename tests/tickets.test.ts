@@ -66,3 +66,14 @@ describe("findTicketMatches", () => {
     expect(await findTicketMatches(db, "colo-colo", "sin fechas", index)).toEqual([]);
   });
 });
+
+describe("detectProviders", () => {
+  it("reconoce las ticketeras de los clubes de Primera", async () => {
+    const { detectProviders } = await import("../src/lib/ingest/tickets.ts");
+    expect(detectProviders("Tu compra en Passline: Ñublense vs Cobresal").map((p) => p.id)).toEqual(["passline"]);
+    expect(detectProviders("OHIPASS · O'Higgins vs Palestino").map((p) => p.id)).toEqual(["ohipass"]);
+    expect(detectProviders("coquimbo.ticketplus.cl").map((p) => p.id)).toEqual(["ticketplus"]);
+    expect(detectProviders("Ticketmaster Chile - Mis entradas").map((p) => p.id)).toEqual(["ticketmaster"]);
+    expect(detectProviders("www.tiendaeverton.cl").map((p) => p.id)).toEqual(["tienda-everton"]);
+  });
+});

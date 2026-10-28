@@ -2,16 +2,16 @@ import Link from "next/link";
 import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { listClubs } from "@/lib/repo/teams.ts";
+import { CURRENT_SEASON } from "@/lib/ticketing.ts";
 import { Jersey } from "@/components/Jersey.tsx";
 
 export const metadata = { title: "Clubes · GaleríaStats" };
 
 export default async function ClubsPage() {
   const clubs = await listClubs(await getDb());
-  const latest = Math.max(...clubs.map((c) => c.lastSeason));
   const groups: [string, typeof clubs][] = [
-    [`En Primera ${latest}`, clubs.filter((c) => c.lastSeason === latest)],
-    ["Pasaron por Primera", clubs.filter((c) => c.lastSeason !== latest)],
+    [`En Primera ${CURRENT_SEASON}`, clubs.filter((c) => c.current)],
+    ["Pasaron por Primera", clubs.filter((c) => !c.current)],
   ];
   return (
     <div className="stack">
