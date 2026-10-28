@@ -180,7 +180,8 @@ const sectionTitle = (t: string, extra = "") => `<h2 class="section-title" ${ext
 // --- Vistas -----------------------------------------------------------------
 
 function viewInicio() {
-  const big = (MVP_ACTIVE ? [...MVP_CLUBS] : ["colo-colo", "universidad-de-chile", "universidad-catolica"]).map(identityOf);
+  const bigVisible = ["colo-colo", "universidad-de-chile", "universidad-catolica"].filter(isVisibleClub);
+  const big = (bigVisible.length ? bigVisible : [...MVP_CLUBS]).map(identityOf);
   const seasons = MATCHES.map((m) => m.season);
   const features = [
     ["Mufómetro", "Tu efectividad en los partidos que viste desde la galería. Más de 60%: cábala. Menos de 40%: yeta."],
@@ -201,7 +202,7 @@ function viewInicio() {
         ${jersey(c, 64, "12")}<div><div class="small" style="opacity:.85">Soy</div><p class="display">${esc(c.nickname)}</p><div class="small" style="opacity:.85">${esc(c.short)}</div></div></button>`,
       )
       .join("")}</div>
-    ${MVP_ACTIVE ? `<p class="small" style="margin-top:14px;opacity:.9">Partimos con los clubes cuyo historial en Primera ya está completo y verificado. Colo-Colo, la U, la UC y el resto llegan pronto.</p>` : ""}
+    ${MVP_ACTIVE ? `<p class="small" style="margin-top:14px;opacity:.9">Partimos con los clubes cuyo historial en Primera ya está completo y verificado. El resto de los clubes llega pronto.</p>` : ""}
     <div class="other-club"><label for="other-club">¿Eres de otro club?</label>
       <select id="other-club" data-action="pick-select"><option value="">Elige tu club…</option>${PICKABLE.map(
         (t) => `<option value="${t.id}" ${saved.clubId === t.id ? "selected" : ""}>${esc(t.name)}</option>`,

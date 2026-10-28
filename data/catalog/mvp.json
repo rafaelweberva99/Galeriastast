@@ -1,11 +1,29 @@
 {
   "enabled": true,
   "criterio": "Clubes con su historial de Primera División desde 1997 completo al 100%: todos los partidos de cada temporada en que jugaron en Primera, con resultado y fecha real y sin marcadores en duda. Los demás clubes siguen en la base (aparecen como rivales) pero no se ofrecen para crear carnet ni tienen página propia hasta resolver sus dudas.",
-  "clubs": ["nublense", "deportes-limache", "universidad-de-concepcion", "union-la-calera", "ohiggins", "everton"],
+  "clubs": [
+    "colo-colo",
+    "universidad-catolica",
+    "cobresal",
+    "ohiggins",
+    "everton",
+    "nublense",
+    "deportes-limache",
+    "universidad-de-concepcion",
+    "union-la-calera"
+  ],
   "pendientes": {
-    "marcadores en duda entre 1999 y 2003 (RSSSF y schochastics no coinciden) o fechas de 1997-1998 con un posible día de diferencia": [
-      "colo-colo", "universidad-de-chile", "universidad-catolica", "coquimbo-unido", "audax-italiano", "palestino",
-      "huachipato", "cobresal", "la-serena", "deportes-concepcion"
+    "fechas de 1997-1998 sin confirmar (la fuente da la jornada en un rango de días)": [
+      "universidad-de-chile",
+      "coquimbo-unido",
+      "audax-italiano",
+      "palestino",
+      "la-serena",
+      "deportes-concepcion"
+    ],
+    "marcador 2001 Huachipato 2-2 Deportes Concepción sin segunda fuente": [
+      "huachipato",
+      "deportes-concepcion"
     ]
   }
 }

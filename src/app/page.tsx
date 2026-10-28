@@ -25,8 +25,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   const db = await getDb();
   const [user, summary, clubs] = [await currentUser(), await datasetSummary(db), (await clubsByFans(db)).filter((c) => isVisibleClub(c.clubId)).slice(0, 5)];
   const allClubs = visibleClubs(await listClubs(db));
-  // En el MVP las tarjetas grandes son los clubes habilitados; si no, los tres grandes.
-  const featured = MVP_ACTIVE ? [...MVP_CLUBS] : BIG_THREE;
+  // Tarjetas grandes: los grandes habilitados (o, si ninguno lo está, los clubes del MVP).
+  const bigVisible = BIG_THREE.filter(isVisibleClub);
+  const featured = bigVisible.length ? bigVisible : [...MVP_CLUBS];
   const latest = CURRENT_SEASON;
   const current = allClubs.filter((c) => c.current && !featured.includes(c.id));
   const historic = allClubs.filter((c) => !c.current);
@@ -116,8 +117,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               </div>
               {MVP_ACTIVE && (
                 <p className="small" style={{ marginTop: 14, opacity: 0.9 }}>
-                  Partimos con los clubes cuyo historial en Primera ya está completo y verificado. Colo-Colo, la U,
-                  la UC y el resto llegan pronto.
+                  Partimos con los clubes cuyo historial en Primera ya está completo y verificado. El resto de los
+                  clubes llega pronto.
                 </p>
               )}
               {historic.length > 0 && (
