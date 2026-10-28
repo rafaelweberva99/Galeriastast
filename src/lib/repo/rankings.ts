@@ -11,16 +11,13 @@ export interface FanRanking {
   effectiveness: number | null;
 }
 
-type Row = Record<string, unknown>;
-
 /**
  * Hinchas públicos de un club con su récord en los partidos a los que fueron.
  * El cálculo de G/E/P se hace en SQL para que el ranking escale con muchos hinchas.
  */
-export function fansOfClub(db: Db, clubId: string, limit = 100): FanRanking[] {
-  const rows = db
-    .prepare(
-      `SELECT u.username, u.club_id,
+export async function fansOfClub(db: Db, clubId: string, limit = 100): Promise<FanRanking[]> {
+  const rows = await db.all(
+    `SELECT u.username, u.club_id,
          COUNT(a.match_id) AS attended,
          SUM(CASE WHEN m.home_goals IS NOT NULL AND
                ((m.home_team_id = u.club_id AND m.home_goals > m.away_goals) OR
@@ -36,8 +33,9 @@ export function fansOfClub(db: Db, clubId: string, limit = 100): FanRanking[] {
        GROUP BY u.id
        ORDER BY attended DESC, u.username
        LIMIT ?`,
-    )
-    .all(clubId, limit) as Row[];
+    clubId,
+    limit,
+  );
   return rows.map((r) => {
     const won = Number(r.won);
     const drawn = Number(r.drawn);
@@ -63,16 +61,14 @@ export function topCabalas(fans: FanRanking[], minMatches = MIN_MATCHES_FOR_VERD
 }
 
 /** Clubes ordenados por cantidad de hinchas registrados. */
-export function clubsByFans(db: Db): { clubId: string; name: string; fans: number; attendances: number }[] {
+export async function clubsByFans(db: Db): Promise<{ clubId: string; name: string; fans: number; attendances: number }[]> {
   return (
-    db
-      .prepare(
-        `SELECT t.id AS club_id, t.name, COUNT(DISTINCT u.id) AS fans, COUNT(a.match_id) AS attendances
+    await db.all(
+      `SELECT t.id AS club_id, t.name, COUNT(DISTINCT u.id) AS fans, COUNT(a.match_id) AS attendances
          FROM teams t JOIN users u ON u.club_id = t.id AND u.is_public = 1
          LEFT JOIN attendances a ON a.user_id = u.id
          GROUP BY t.id ORDER BY fans DESC, attendances DESC`,
-      )
-      .all() as Row[]
+    )
   ).map((r) => ({
     clubId: r.club_id as string,
     name: r.name as string,

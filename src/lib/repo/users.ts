@@ -1,5 +1,5 @@
 import { randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
-import type { Db } from "../db/client.ts";
+import type { Db, Row } from "../db/client.ts";
 import type { AttendanceMode } from "../domain/types.ts";
 
 export interface User {
@@ -10,8 +10,6 @@ export interface User {
   isPublic: boolean;
   createdAt: string;
 }
-
-type Row = Record<string, unknown>;
 
 function toUser(r: Row): User {
   return {
@@ -40,63 +38,64 @@ export function verifyPassword(password: string, stored: string): boolean {
 
 export class UserExistsError extends Error {}
 
-export function createUser(db: Db, input: { username: string; email: string; password: string; clubId: string }): User {
-  const taken = db
-    .prepare("SELECT 1 FROM users WHERE username = ? OR email = ?")
-    .get(input.username, input.email);
+export async function createUser(
+  db: Db,
+  input: { username: string; email: string; password: string; clubId: string },
+): Promise<User> {
+  const taken = await db.get(
+    "SELECT 1 AS taken FROM users WHERE lower(username) = lower(?) OR lower(email) = lower(?)",
+    input.username,
+    input.email,
+  );
   if (taken) throw new UserExistsError("El usuario o el correo ya están registrados.");
-  const r = db
-    .prepare("INSERT INTO users (username, email, password_hash, club_id) VALUES (?, ?, ?, ?) RETURNING *")
-    .get(input.username, input.email, hashPassword(input.password), input.clubId) as Row;
-  return toUser(r);
+  const r = await db.get(
+    "INSERT INTO users (username, email, password_hash, club_id) VALUES (?, ?, ?, ?) RETURNING *",
+    input.username,
+    input.email,
+    hashPassword(input.password),
+    input.clubId,
+  );
+  return toUser(r!);
 }
 
-export function authenticate(db: Db, login: string, password: string): User | null {
-  const r = db.prepare("SELECT * FROM users WHERE username = ? OR email = ?").get(login, login) as Row | undefined;
+export async function authenticate(db: Db, login: string, password: string): Promise<User | null> {
+  const r = await db.get("SELECT * FROM users WHERE lower(username) = lower(?) OR lower(email) = lower(?)", login, login);
   if (!r || !verifyPassword(password, r.password_hash as string)) return null;
   return toUser(r);
 }
 
-export function getUserByUsername(db: Db, username: string): User | null {
-  const r = db.prepare("SELECT * FROM users WHERE username = ?").get(username) as Row | undefined;
+export async function getUserByUsername(db: Db, username: string): Promise<User | null> {
+  const r = await db.get("SELECT * FROM users WHERE lower(username) = lower(?)", username);
   return r ? toUser(r) : null;
 }
 
-export function updateProfile(db: Db, userId: number, input: { clubId: string; isPublic: boolean }): void {
-  db.prepare("UPDATE users SET club_id = ?, is_public = ? WHERE id = ?").run(
-    input.clubId,
-    input.isPublic ? 1 : 0,
-    userId,
-  );
+export async function updateProfile(db: Db, userId: number, input: { clubId: string; isPublic: boolean }): Promise<void> {
+  await db.run("UPDATE users SET club_id = ?, is_public = ? WHERE id = ?", input.clubId, input.isPublic ? 1 : 0, userId);
 }
 
 // --- Sesiones -------------------------------------------------------------
 
 const SESSION_DAYS = 30;
 
-export function createSession(db: Db, userId: number): { token: string; expiresAt: Date } {
+export async function createSession(db: Db, userId: number): Promise<{ token: string; expiresAt: Date }> {
   const token = randomBytes(32).toString("base64url");
   const expiresAt = new Date(Date.now() + SESSION_DAYS * 86_400_000);
-  db.prepare("INSERT INTO sessions (token, user_id, expires_at) VALUES (?, ?, ?)").run(
-    token,
-    userId,
-    expiresAt.toISOString(),
-  );
+  await db.run("INSERT INTO sessions (token, user_id, expires_at) VALUES (?, ?, ?)", token, userId, expiresAt.toISOString());
   return { token, expiresAt };
 }
 
-export function userForSession(db: Db, token: string): User | null {
-  const r = db
-    .prepare(
-      `SELECT u.* FROM sessions s JOIN users u ON u.id = s.user_id
-       WHERE s.token = ? AND s.expires_at > ?`,
-    )
-    .get(token, new Date().toISOString()) as Row | undefined;
+export async function userForSession(db: Db, token: string): Promise<User | null> {
+  const r = await db.get(
+    `SELECT u.* FROM sessions s JOIN users u ON u.id = s.user_id
+     WHERE s.token = ? AND s.expires_at > ?`,
+    token,
+    new Date().toISOString(),
+  );
   return r ? toUser(r) : null;
 }
 
-export function deleteSession(db: Db, token: string): void {
-  db.prepare("DELETE FROM sessions WHERE token = ?").run(token);
+export async function deleteSession(db: Db, token: string): Promise<void> {
+  await db.run("DELETE FROM sessions WHERE token = ?", token);
 }
 
 // --- Asistencias ----------------------------------------------------------
@@ -104,26 +103,27 @@ export function deleteSession(db: Db, token: string): void {
 export class AttendanceError extends Error {}
 
 /** Marca (o actualiza el modo de) un partido al que el hincha fue. Solo partidos de su club. */
-export function setAttendance(db: Db, user: User, matchId: string, mode: AttendanceMode): void {
-  const m = db
-    .prepare("SELECT home_team_id, away_team_id, date FROM matches WHERE id = ?")
-    .get(matchId) as Row | undefined;
+export async function setAttendance(db: Db, user: User, matchId: string, mode: AttendanceMode): Promise<void> {
+  const m = await db.get("SELECT home_team_id, away_team_id, date FROM matches WHERE id = ?", matchId);
   if (!m) throw new AttendanceError("Partido no encontrado.");
   if (m.home_team_id !== user.clubId && m.away_team_id !== user.clubId)
     throw new AttendanceError("Solo puedes marcar partidos de tu club.");
   if ((m.date as string) > new Date().toISOString().slice(0, 10))
     throw new AttendanceError("No puedes marcar un partido que aún no se juega.");
-  db.prepare(
+  await db.run(
     `INSERT INTO attendances (user_id, match_id, mode) VALUES (?, ?, ?)
-     ON CONFLICT(user_id, match_id) DO UPDATE SET mode = excluded.mode`,
-  ).run(user.id, matchId, mode);
+     ON CONFLICT (user_id, match_id) DO UPDATE SET mode = excluded.mode`,
+    user.id,
+    matchId,
+    mode,
+  );
 }
 
-export function removeAttendance(db: Db, userId: number, matchId: string): void {
-  db.prepare("DELETE FROM attendances WHERE user_id = ? AND match_id = ?").run(userId, matchId);
+export async function removeAttendance(db: Db, userId: number, matchId: string): Promise<void> {
+  await db.run("DELETE FROM attendances WHERE user_id = ? AND match_id = ?", userId, matchId);
 }
 
-export function attendanceModes(db: Db, userId: number): Map<string, AttendanceMode> {
-  const rows = db.prepare("SELECT match_id, mode FROM attendances WHERE user_id = ?").all(userId) as Row[];
+export async function attendanceModes(db: Db, userId: number): Promise<Map<string, AttendanceMode>> {
+  const rows = await db.all("SELECT match_id, mode FROM attendances WHERE user_id = ?", userId);
   return new Map(rows.map((r) => [r.match_id as string, r.mode as AttendanceMode]));
 }

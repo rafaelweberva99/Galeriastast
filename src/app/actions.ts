@@ -5,9 +5,8 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { endSession, requireUser, startSession } from "@/lib/auth.ts";
 import { getDb } from "@/lib/db/client.ts";
-import { readJson, type CatalogTeam } from "@/lib/ingest/catalog.ts";
 import { findTicketMatches, TeamMentionIndex } from "@/lib/ingest/tickets.ts";
-import { getTeam } from "@/lib/repo/teams.ts";
+import { getTeam, listClubs } from "@/lib/repo/teams.ts";
 import {
   attendanceModes,
   AttendanceError,
@@ -36,10 +35,10 @@ const registerSchema = z.object({
 export async function register(_: FormState, form: FormData): Promise<FormState> {
   const parsed = registerSchema.safeParse(Object.fromEntries(form));
   if (!parsed.success) return { error: parsed.error.issues[0].message };
-  const db = getDb();
-  if (!getTeam(db, parsed.data.clubId)) return { error: "Club desconocido." };
+  const db = await getDb();
+  if (!(await getTeam(db, parsed.data.clubId))) return { error: "Club desconocido." };
   try {
-    const user = createUser(db, parsed.data);
+    const user = await createUser(db, parsed.data);
     await startSession(user.id);
   } catch (e) {
     if (e instanceof UserExistsError) return { error: e.message };
@@ -49,7 +48,7 @@ export async function register(_: FormState, form: FormData): Promise<FormState>
 }
 
 export async function login(_: FormState, form: FormData): Promise<FormState> {
-  const user = authenticate(getDb(), String(form.get("login") ?? "").trim(), String(form.get("password") ?? ""));
+  const user = await authenticate(await getDb(), String(form.get("login") ?? "").trim(), String(form.get("password") ?? ""));
   if (!user) return { error: "Usuario o contraseña incorrectos." };
   await startSession(user.id);
   redirect("/carnet");
@@ -70,10 +69,10 @@ export async function toggleAttendance(form: FormData): Promise<{ error?: string
   const user = await requireUser();
   const parsed = attendanceSchema.safeParse(Object.fromEntries(form));
   if (!parsed.success) return { error: "Solicitud inválida." };
-  const db = getDb();
+  const db = await getDb();
   try {
-    if (parsed.data.mode === "ninguno") removeAttendance(db, user.id, parsed.data.matchId);
-    else setAttendance(db, user, parsed.data.matchId, parsed.data.mode);
+    if (parsed.data.mode === "ninguno") await removeAttendance(db, user.id, parsed.data.matchId);
+    else await setAttendance(db, user, parsed.data.matchId, parsed.data.mode);
   } catch (e) {
     if (e instanceof AttendanceError) return { error: e.message };
     throw e;
@@ -86,9 +85,9 @@ export async function toggleAttendance(form: FormData): Promise<{ error?: string
 export async function saveProfile(_: FormState, form: FormData): Promise<FormState> {
   const user = await requireUser();
   const clubId = String(form.get("clubId") ?? "");
-  const db = getDb();
-  if (!getTeam(db, clubId)) return { error: "Club desconocido." };
-  updateProfile(db, user.id, { clubId, isPublic: form.get("isPublic") === "on" });
+  const db = await getDb();
+  if (!(await getTeam(db, clubId))) return { error: "Club desconocido." };
+  await updateProfile(db, user.id, { clubId, isPublic: form.get("isPublic") === "on" });
   revalidatePath("/", "layout");
   redirect("/carnet");
 }
@@ -115,10 +114,12 @@ export async function previewTicketImport(_: ImportPreview, form: FormData): Pro
   const text = String(form.get("text") ?? "");
   if (text.trim().length < 10) return { error: "Pega el correo de confirmación de tu compra o sube el archivo .eml." };
   if (text.length > 2_000_000) return { error: "El archivo es demasiado grande." };
-  mentionIndex ??= new TeamMentionIndex(readJson<CatalogTeam[]>("catalog/teams.json"));
-  const db = getDb();
-  const modes = attendanceModes(db, user.id);
-  const found = findTicketMatches(db, user.clubId, text, mentionIndex);
+  const db = await getDb();
+  mentionIndex ??= new TeamMentionIndex(
+    (await listClubs(db)).map((t) => ({ id: t.id, name: t.name, short: t.shortName })),
+  );
+  const modes = await attendanceModes(db, user.id);
+  const found = await findTicketMatches(db, user.clubId, text, mentionIndex);
   if (!found.length) {
     return {
       error:
@@ -142,10 +143,10 @@ export async function previewTicketImport(_: ImportPreview, form: FormData): Pro
 export async function confirmTicketImport(form: FormData): Promise<void> {
   const user = await requireUser();
   const mode = form.get("mode") === "infiltrado" ? "infiltrado" : "propia";
-  const db = getDb();
+  const db = await getDb();
   for (const id of form.getAll("matchId").map(String)) {
     try {
-      setAttendance(db, user, id, mode);
+      await setAttendance(db, user, id, mode);
     } catch (e) {
       if (!(e instanceof AttendanceError)) throw e;
     }

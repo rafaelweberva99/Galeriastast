@@ -15,15 +15,15 @@ const OUTCOME_LABEL = { G: "Ganada", E: "Empate", P: "Perdida" } as const;
 
 export default async function ClubPage({ params }: { params: Params }) {
   const { id } = await params;
-  const db = getDb();
-  const club = getTeam(db, id);
+  const db = await getDb();
+  const club = await getTeam(db, id);
   if (!club) notFound();
-  const matches = listClubMatches(db, club.id);
+  const matches = await listClubMatches(db, club.id);
   const record = recordFor(matches, club.id);
   const seasons = [...new Set(matches.map((m) => m.season))].sort((a, b) => b - a);
   const finals = matches.filter((m) => m.isFinal);
   const identity = clubIdentity(club);
-  const rivalries = listRivalries(db).filter((r) => r.teamA === club.id || r.teamB === club.id);
+  const rivalries = (await listRivalries(db)).filter((r) => r.teamA === club.id || r.teamB === club.id);
 
   return (
     <div className="stack" style={clubStyle(identity) as React.CSSProperties}>

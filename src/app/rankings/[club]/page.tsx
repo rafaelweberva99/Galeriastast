@@ -45,11 +45,11 @@ function FanTable({ rows, empty }: { rows: FanRanking[]; empty: string }) {
 
 export default async function ClubRankingPage({ params }: { params: Params }) {
   const { club: clubId } = await params;
-  const db = getDb();
-  const club = getTeam(db, clubId);
+  const db = await getDb();
+  const club = await getTeam(db, clubId);
   if (!club) notFound();
   const identity = clubIdentity(club);
-  const fans = fansOfClub(db, club.id);
+  const fans = await fansOfClub(db, club.id);
   const cabalas = topCabalas(fans);
   return (
     <div className="stack" style={clubStyle(identity) as React.CSSProperties}>

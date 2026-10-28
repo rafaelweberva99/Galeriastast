@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { openDb } from "../src/lib/db/client.ts";
+import { openSqlite } from "../src/lib/db/client.ts";
 import { emailToText, findDates, findTicketMatches, TeamMentionIndex } from "../src/lib/ingest/tickets.ts";
 
 const index = new TeamMentionIndex([
@@ -41,9 +41,9 @@ describe("emailToText", () => {
 });
 
 describe("findTicketMatches", () => {
-  it("propone el partido del club que coincide con fecha (±1 día) y rival", () => {
-    const db = openDb(":memory:");
-    db.exec(`
+  it("propone el partido del club que coincide con fecha (±1 día) y rival", async () => {
+    const db = await openSqlite(":memory:");
+    await db.exec(`
       INSERT INTO competitions VALUES ('primera-division', 'Primera División', 'liga', 1);
       INSERT INTO teams (id, name, short_name) VALUES ('colo-colo', 'Colo-Colo', 'Colo-Colo'),
         ('universidad-de-chile', 'Universidad de Chile', 'U. de Chile'), ('everton', 'Everton', 'Everton');
@@ -53,8 +53,8 @@ describe("findTicketMatches", () => {
         ('otro', '2024-04-10', 2024, 'primera-division', 'everton', 'colo-colo', 2, 2, 't');
     `);
     const email = "Tu compra en PuntoTicket\nEvento: Colo-Colo vs. Universidad de Chile\nFecha: 11/03/2024 00:30\nOrden 123456";
-    const found = findTicketMatches(db, "colo-colo", email, index);
+    const found = await findTicketMatches(db, "colo-colo", email, index);
     expect(found.map((c) => c.match.id)).toEqual(["sc"]);
-    expect(findTicketMatches(db, "colo-colo", "sin fechas", index)).toEqual([]);
+    expect(await findTicketMatches(db, "colo-colo", "sin fechas", index)).toEqual([]);
   });
 });

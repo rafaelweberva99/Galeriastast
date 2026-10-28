@@ -16,19 +16,19 @@ type Search = Promise<{ temporada?: string; competicion?: string; rival?: string
 export default async function MatchesPage({ searchParams }: { searchParams: Search }) {
   const user = await requireUser();
   const sp = await searchParams;
-  const db = getDb();
-  const club = getTeam(db, user.clubId)!;
-  const seasons = seasonsForClub(db, club.id);
+  const db = await getDb();
+  const club = (await getTeam(db, user.clubId))!;
+  const seasons = await seasonsForClub(db, club.id);
   const season = sp.temporada === "todas" ? undefined : Number(sp.temporada) || seasons[0];
-  const modes = attendanceModes(db, user.id);
+  const modes = await attendanceModes(db, user.id);
   const today = new Date().toISOString().slice(0, 10);
-  let matches = listClubMatches(db, club.id, {
+  let matches = (await listClubMatches(db, club.id, {
     season,
     competitionId: sp.competicion || undefined,
     opponent: sp.rival || undefined,
-  }).filter((m) => m.date <= today);
+  })).filter((m) => m.date <= today);
   if (sp.solo === "1") matches = matches.filter((m) => modes.has(m.id));
-  const rivals = listClubs(db).filter((c) => c.id !== club.id);
+  const rivals = (await listClubs(db)).filter((c) => c.id !== club.id);
 
   return (
     <div className="stack">
@@ -60,7 +60,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
           <label htmlFor="competicion">Competición</label>
           <select id="competicion" name="competicion" defaultValue={sp.competicion ?? ""}>
             <option value="">Todas</option>
-            {competitionsForClub(db, club.id).map((c) => (
+            {(await competitionsForClub(db, club.id)).map((c) => (
               <option key={c.id} value={c.id}>
                 {c.name}
               </option>

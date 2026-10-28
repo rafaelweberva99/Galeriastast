@@ -23,7 +23,7 @@ export const dynamic = "force-dynamic";
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const user = await currentUser();
   // Todo el sitio se tiñe con los colores del club del hincha conectado.
-  const team = user ? getTeam(getDb(), user.clubId) : null;
+  const team = user ? await getTeam(await getDb(), user.clubId) : null;
   const theme = team ? clubStyle(clubIdentity(team)) : undefined;
   return (
     <html lang="es-CL" className={`${display.variable} ${body.variable}`}>

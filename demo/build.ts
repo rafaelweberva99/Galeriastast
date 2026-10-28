@@ -7,24 +7,23 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { build } from "esbuild";
-import { openDb } from "../src/lib/db/client.ts";
+import { openDb, type Row } from "../src/lib/db/client.ts";
 
-type Row = Record<string, unknown>;
-const db = openDb();
+const db = await openDb();
 
 const pro = new Set(
-  (db
-    .prepare(
+  (
+    await db.all(
       `SELECT DISTINCT team FROM (SELECT home_team_id AS team FROM matches WHERE competition_id = 'primera-division'
-       UNION SELECT away_team_id FROM matches WHERE competition_id = 'primera-division')`,
+       UNION SELECT away_team_id FROM matches WHERE competition_id = 'primera-division') AS pro`,
     )
-    .all() as Row[]).map((r) => r.team as string),
+  ).map((r) => r.team as string),
 );
-const teamRows = db.prepare("SELECT * FROM teams ORDER BY id").all() as Row[];
+const teamRows = await db.all("SELECT * FROM teams ORDER BY id");
 const teamIndex = new Map(teamRows.map((t, i) => [t.id as string, i]));
-const compRows = db.prepare("SELECT * FROM competitions ORDER BY tier").all() as Row[];
+const compRows = await db.all("SELECT * FROM competitions ORDER BY tier");
 const compIndex = new Map(compRows.map((c, i) => [c.id as string, i]));
-const matches = (db.prepare("SELECT * FROM matches WHERE home_goals IS NOT NULL OR home_pens IS NOT NULL ORDER BY date").all() as Row[]).map((m) => [
+const matches = (await db.all("SELECT * FROM matches WHERE home_goals IS NOT NULL OR home_pens IS NOT NULL ORDER BY date")).map((m: Row) => [
   m.date,
   compIndex.get(m.competition_id as string),
   m.tournament,
@@ -49,7 +48,7 @@ const data = {
     pro: pro.has(t.id as string),
   })),
   competitions: compRows.map((c) => ({ id: c.id, name: c.name, kind: c.kind })),
-  rivalries: (db.prepare("SELECT * FROM rivalries").all() as Row[]).map((r) => ({ id: r.id, name: r.name, teamA: r.team_a, teamB: r.team_b })),
+  rivalries: (await db.all("SELECT * FROM rivalries")).map((r) => ({ id: r.id, name: r.name, teamA: r.team_a, teamB: r.team_b })),
   matches,
 };
 

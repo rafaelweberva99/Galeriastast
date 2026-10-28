@@ -12,10 +12,10 @@ type Search = Promise<{ club?: string }>;
 
 export default async function RegisterPage({ searchParams }: { searchParams: Search }) {
   if (await currentUser()) redirect("/carnet");
-  const db = getDb();
-  const clubs = listClubs(db).map((c) => ({ id: c.id, name: c.name }));
+  const db = await getDb();
+  const clubs = (await listClubs(db)).map((c) => ({ id: c.id, name: c.name }));
   const { club: clubParam } = await searchParams;
-  const team = clubParam ? getTeam(db, clubParam) : null;
+  const team = clubParam ? await getTeam(db, clubParam) : null;
   const club = team && clubs.some((c) => c.id === team.id) ? clubIdentity(team) : null;
 
   return (

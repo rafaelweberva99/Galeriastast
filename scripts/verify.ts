@@ -12,12 +12,12 @@ import { loadCatalog } from "../src/lib/ingest/catalog.ts";
 import { parseCsv } from "../src/lib/ingest/csv.ts";
 import { applyCorrections, crossCheck, loadCorrections, runQualityChecks } from "../src/lib/ingest/quality.ts";
 
-const db = openDb();
-const resolver = loadCatalog(db);
+const db = await openDb();
+const resolver = await loadCatalog(db);
 const resolve = (name: string) => resolver.resolve(name);
 
 const corrections = loadCorrections();
-console.log(`Correcciones aplicadas: ${applyCorrections(db, corrections, resolve)} de ${corrections.length}`);
+console.log(`Correcciones aplicadas: ${await applyCorrections(db, corrections, resolve)} de ${corrections.length}`);
 
 const crossDir = path.resolve("data/crosscheck");
 if (existsSync(crossDir)) {
@@ -29,15 +29,18 @@ if (existsSync(crossDir)) {
       homeGoals: Number(r.home_goals),
       awayGoals: Number(r.away_goals),
     }));
-    const res = crossCheck(db, rows, resolve);
+    const res = await crossCheck(db, rows, resolve);
     console.log(`${file}: ${res.matched} coinciden, ${res.mismatched.length} discrepan, ${res.notFound} no encontrados`);
     res.mismatched.slice(0, 20).forEach((m) => console.log(`  ≠ ${m}`));
   }
 }
 
-const issues = runQualityChecks(db);
+const issues = await runQualityChecks(db);
 const errors = issues.filter((i) => i.severity === "error");
 for (const i of issues) console.log(`[${i.severity}] ${i.check}: ${i.detail}`);
-const { n, v } = db.prepare("SELECT COUNT(*) AS n, SUM(verified) AS v FROM matches").get() as { n: number; v: number };
+const counts = (await db.get("SELECT COUNT(*) AS n, SUM(verified) AS v FROM matches"))!;
+const n = Number(counts.n);
+const v = Number(counts.v ?? 0);
 console.log(`\n${n} partidos, ${v ?? 0} verificados con segunda fuente. ${errors.length} errores, ${issues.length - errors.length} advertencias.`);
+await db.close();
 process.exit(errors.length ? 1 : 0);

@@ -7,16 +7,14 @@ export const metadata = { title: "Fuentes y calidad de datos · GaleríaStats" }
 
 type Row = { competition: string; first: number; last: number; n: number };
 
-export default function DataPage() {
-  const db = getDb();
-  const summary = datasetSummary(db);
-  const coverage = db
-    .prepare(
-      `SELECT c.name AS competition, MIN(m.season) AS first, MAX(m.season) AS last, COUNT(*) AS n
-       FROM matches m JOIN competitions c ON c.id = m.competition_id GROUP BY c.id ORDER BY c.tier`,
-    )
-    .all() as Row[];
-  const issues = runQualityChecks(db);
+export default async function DataPage() {
+  const db = await getDb();
+  const summary = await datasetSummary(db);
+  const coverage = await db.all<Row>(
+    `SELECT c.name AS competition, MIN(m.season) AS first, MAX(m.season) AS last, COUNT(*) AS n
+     FROM matches m JOIN competitions c ON c.id = m.competition_id GROUP BY c.id ORDER BY c.tier`,
+  );
+  const issues = await runQualityChecks(db);
   return (
     <div className="stack">
       <h1>Fuentes y calidad de datos</h1>

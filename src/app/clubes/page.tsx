@@ -5,8 +5,8 @@ import { ClubBadge } from "@/components/ClubBadge.tsx";
 
 export const metadata = { title: "Clubes · GaleríaStats" };
 
-export default function ClubsPage() {
-  const clubs = listClubs(getDb());
+export default async function ClubsPage() {
+  const clubs = await listClubs(await getDb());
   return (
     <div className="stack">
       <h1 className="section-title">Clubes</h1>

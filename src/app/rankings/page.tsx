@@ -6,10 +6,10 @@ import { ClubBadge } from "@/components/ClubBadge.tsx";
 
 export const metadata = { title: "Rankings · GaleríaStats" };
 
-export default function RankingsPage() {
-  const db = getDb();
-  const fans = new Map(clubsByFans(db).map((c) => [c.clubId, c]));
-  const clubs = listClubs(db).sort((a, b) => (fans.get(b.id)?.fans ?? 0) - (fans.get(a.id)?.fans ?? 0));
+export default async function RankingsPage() {
+  const db = await getDb();
+  const fans = new Map((await clubsByFans(db)).map((c) => [c.clubId, c]));
+  const clubs = (await listClubs(db)).sort((a, b) => (fans.get(b.id)?.fans ?? 0) - (fans.get(a.id)?.fans ?? 0));
   return (
     <div className="stack">
       <div>

@@ -1,4 +1,4 @@
-import type { Db } from "../db/client.ts";
+import type { Db, Param, Row } from "../db/client.ts";
 import type { AttendanceMode, AttendedMatch, Match } from "../domain/types.ts";
 
 const SELECT_MATCH = `
@@ -11,7 +11,7 @@ const SELECT_MATCH = `
   JOIN teams at ON at.id = m.away_team_id
   LEFT JOIN venues v ON v.id = m.venue_id`;
 
-type Row = Record<string, unknown>;
+const num = (v: unknown) => (v === null || v === undefined ? null : Number(v));
 
 export function toMatch(r: Row): Match {
   return {
@@ -27,10 +27,10 @@ export function toMatch(r: Row): Match {
     homeTeamName: r.home_team_name as string,
     awayTeamId: r.away_team_id as string,
     awayTeamName: r.away_team_name as string,
-    homeGoals: r.home_goals === null ? null : Number(r.home_goals),
-    awayGoals: r.away_goals === null ? null : Number(r.away_goals),
-    homePens: r.home_pens === null ? null : Number(r.home_pens),
-    awayPens: r.away_pens === null ? null : Number(r.away_pens),
+    homeGoals: num(r.home_goals),
+    awayGoals: num(r.away_goals),
+    homePens: num(r.home_pens),
+    awayPens: num(r.away_pens),
     venueName: (r.venue_name as string | null) ?? null,
     isFinal: Number(r.is_final) === 1,
   };
@@ -43,9 +43,9 @@ export interface MatchFilter {
   limit?: number;
 }
 
-export function listClubMatches(db: Db, clubId: string, f: MatchFilter = {}): Match[] {
+export async function listClubMatches(db: Db, clubId: string, f: MatchFilter = {}): Promise<Match[]> {
   const where = ["(m.home_team_id = ? OR m.away_team_id = ?)"];
-  const params: (string | number)[] = [clubId, clubId];
+  const params: Param[] = [clubId, clubId];
   if (f.season) {
     where.push("m.season = ?");
     params.push(f.season);
@@ -60,30 +60,30 @@ export function listClubMatches(db: Db, clubId: string, f: MatchFilter = {}): Ma
   }
   const sql = `${SELECT_MATCH} WHERE ${where.join(" AND ")} ORDER BY m.date DESC LIMIT ?`;
   params.push(f.limit ?? 5000);
-  return (db.prepare(sql).all(...params) as Row[]).map(toMatch);
+  return (await db.all(sql, ...params)).map(toMatch);
 }
 
-export function getMatch(db: Db, id: string): Match | null {
-  const row = db.prepare(`${SELECT_MATCH} WHERE m.id = ?`).get(id) as Row | undefined;
+export async function getMatch(db: Db, id: string): Promise<Match | null> {
+  const row = await db.get(`${SELECT_MATCH} WHERE m.id = ?`, id);
   return row ? toMatch(row) : null;
 }
 
-export function seasonsForClub(db: Db, clubId: string): number[] {
-  const rows = db
-    .prepare(
-      "SELECT DISTINCT season FROM matches WHERE home_team_id = ? OR away_team_id = ? ORDER BY season DESC",
-    )
-    .all(clubId, clubId) as Row[];
+export async function seasonsForClub(db: Db, clubId: string): Promise<number[]> {
+  const rows = await db.all(
+    "SELECT DISTINCT season FROM matches WHERE home_team_id = ? OR away_team_id = ? ORDER BY season DESC",
+    clubId,
+    clubId,
+  );
   return rows.map((r) => Number(r.season));
 }
 
-export function competitionsForClub(db: Db, clubId: string): { id: string; name: string }[] {
-  return db
-    .prepare(
-      `SELECT DISTINCT c.id, c.name FROM matches m JOIN competitions c ON c.id = m.competition_id
-       WHERE m.home_team_id = ? OR m.away_team_id = ? ORDER BY c.tier, c.name`,
-    )
-    .all(clubId, clubId) as { id: string; name: string }[];
+export async function competitionsForClub(db: Db, clubId: string): Promise<{ id: string; name: string }[]> {
+  return db.all<{ id: string; name: string }>(
+    `SELECT DISTINCT c.id, c.name, c.tier FROM matches m JOIN competitions c ON c.id = m.competition_id
+     WHERE m.home_team_id = ? OR m.away_team_id = ? ORDER BY c.tier, c.name`,
+    clubId,
+    clubId,
+  );
 }
 
 export interface DatasetSummary {
@@ -95,29 +95,27 @@ export interface DatasetSummary {
   verifiedPct: number | null;
 }
 
-export function datasetSummary(db: Db): DatasetSummary {
-  const r = db
-    .prepare(
-      `SELECT COUNT(*) AS matches, MIN(season) AS first, MAX(season) AS last, AVG(verified) AS verified,
-              (SELECT COUNT(DISTINCT team) FROM (
-                 SELECT home_team_id AS team FROM matches WHERE competition_id = 'primera-division'
-                 UNION SELECT away_team_id FROM matches WHERE competition_id = 'primera-division')) AS teams,
-              (SELECT COUNT(*) FROM competitions) AS competitions
-       FROM matches`,
-    )
-    .get() as Row;
+export async function datasetSummary(db: Db): Promise<DatasetSummary> {
+  const r = (await db.get(
+    `SELECT COUNT(*) AS matches, MIN(season) AS first_season, MAX(season) AS last_season, AVG(verified) AS verified,
+            (SELECT COUNT(DISTINCT team) FROM (
+               SELECT home_team_id AS team FROM matches WHERE competition_id = 'primera-division'
+               UNION SELECT away_team_id FROM matches WHERE competition_id = 'primera-division') AS pro) AS teams,
+            (SELECT COUNT(*) FROM competitions) AS competitions
+     FROM matches`,
+  ))!;
   return {
     matches: Number(r.matches),
     teams: Number(r.teams),
     competitions: Number(r.competitions),
-    firstSeason: r.first === null ? null : Number(r.first),
-    lastSeason: r.last === null ? null : Number(r.last),
+    firstSeason: num(r.first_season),
+    lastSeason: num(r.last_season),
     verifiedPct: r.verified === null ? null : Number(r.verified) * 100,
   };
 }
 
-export function listAttended(db: Db, userId: number): AttendedMatch[] {
+export async function listAttended(db: Db, userId: number): Promise<AttendedMatch[]> {
   const sql = `${SELECT_MATCH.replace("SELECT m.id", "SELECT a.mode, m.id")}
     JOIN attendances a ON a.match_id = m.id WHERE a.user_id = ? ORDER BY m.date`;
-  return (db.prepare(sql).all(userId) as Row[]).map((r) => ({ ...toMatch(r), mode: r.mode as AttendanceMode }));
+  return (await db.all(sql, userId)).map((r) => ({ ...toMatch(r), mode: r.mode as AttendanceMode }));
 }

@@ -8,7 +8,7 @@ export const metadata = { title: "Mi carnet · GaleríaStats" };
 
 export default async function MyCarnetPage() {
   const user = await requireUser();
-  const data = loadCarnet(getDb(), user);
+  const data = await loadCarnet(await getDb(), user);
   return (
     <div className="stack">
       {user.isPublic && (

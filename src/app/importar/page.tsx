@@ -7,7 +7,7 @@ export const metadata = { title: "Importar desde PuntoTicket · GaleríaStats" }
 
 export default async function ImportPage() {
   const user = await requireUser();
-  const club = getTeam(getDb(), user.clubId)!;
+  const club = (await getTeam(await getDb(), user.clubId))!;
   return (
     <div className="stack">
       <div>

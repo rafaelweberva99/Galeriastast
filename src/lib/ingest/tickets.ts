@@ -137,13 +137,18 @@ const dayDiff = (a: string, b: string) => Math.abs(Date.parse(a) - Date.parse(b)
  * Busca, entre los partidos del club del hincha, los que coinciden con las fechas y rivales del comprobante.
  * Tolera ±1 día (eventos que terminan pasada la medianoche o fechas de compra vs. de partido).
  */
-export function findTicketMatches(db: Db, clubId: string, text: string, index: TeamMentionIndex): TicketCandidate[] {
+export async function findTicketMatches(
+  db: Db,
+  clubId: string,
+  text: string,
+  index: TeamMentionIndex,
+): Promise<TicketCandidate[]> {
   const plain = emailToText(text);
   const dates = findDates(plain);
   const rivals = index.find(plain).filter((id) => id !== clubId);
   if (!dates.length) return [];
 
-  const clubMatches = listClubMatches(db, clubId);
+  const clubMatches = await listClubMatches(db, clubId);
   const candidates = new Map<string, TicketCandidate>();
   for (const d of dates) {
     for (const m of clubMatches) {

@@ -7,7 +7,7 @@ export const metadata = { title: "Perfil · GaleríaStats" };
 
 export default async function ProfilePage() {
   const user = await requireUser();
-  const clubs = listClubs(getDb()).map((c) => ({ id: c.id, name: c.name }));
+  const clubs = (await listClubs(await getDb())).map((c) => ({ id: c.id, name: c.name }));
   return (
     <div className="card" style={{ maxWidth: 480, margin: "24px auto" }}>
       <h1>@{user.username}</h1>

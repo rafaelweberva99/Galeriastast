@@ -40,7 +40,7 @@ scripts/
   ingest.ts             parsea, normaliza nombres y carga partidos (idempotente)
   verify.ts             correcciones + verificación cruzada + chequeos de consistencia
 src/
-  lib/db/               esquema SQL y conexión (node:sqlite, sin dependencias nativas)
+  lib/db/               esquema SQL (SQLite y Postgres) y conexión con una interfaz común
   lib/domain/           lógica pura: Mufómetro, rachas, clásicos, finales, normalización
   lib/ingest/           parser Football.TXT, catálogo, CSV, chequeos de calidad
   lib/repo/             acceso a datos (partidos, clubes, usuarios/asistencias, rankings)
@@ -53,9 +53,10 @@ tests/                  Vitest: dominio, parser, repositorios y calidad de datos
 - **Next.js 15 (App Router) + React 19 + TypeScript.** Páginas renderizadas en el servidor; las
   mutaciones son Server Actions validadas con zod. El único componente interactivo pesado es el selector
   de asistencia, con actualización optimista.
-- **SQLite vía `node:sqlite`** (Node ≥ 22.13). Datos deportivos de solo lectura (cargados por scripts)
-  y datos de hinchas (escritos por la app) en el mismo archivo. La capa `lib/repo` aísla el SQL, de modo
-  que migrar a Postgres solo toca esa carpeta.
+- **Dos motores, un mismo SQL.** En producción se usa **Postgres** (Vercel + Neon) cuando existe
+  `DATABASE_URL`. En desarrollo y en los tests se usa **SQLite** vía `node:sqlite` (Node 22.13 o superior).
+  - El SQL se escribe en el subconjunto común a ambos motores.
+  - Los tests de repositorios corren contra los dos: SQLite y Postgres en memoria con PGlite.
 - **Dominio puro y testeado.** `lib/domain/stats.ts` no conoce la base de datos: recibe partidos y
   devuelve el carnet completo.
 - **Ids determinísticos de partido** (`fecha_local_visita`) para deduplicar entre fuentes y hacer la
@@ -143,21 +144,28 @@ Requiere Node 22.13 o superior.
 - Sirve para mostrar la app sin desplegar nada. No incluye cuentas ni rankings, porque esas funciones
   necesitan el servidor.
 
-## Publicar en Railway
+## Publicar en Vercel (gratis)
 
-El repo trae `Dockerfile`, `railway.json` y `scripts/start.sh`. En el primer arranque se descargan y cargan
-los partidos solos; los usuarios quedan guardados en un volumen persistente.
+Vercel publica la app y su panel crea una base Postgres gratuita (Neon). En cada despliegue, el build
+descarga y carga los partidos (`vercel-build`). Los archivos sin cambios se omiten, así que los despliegues
+siguientes son rápidos.
 
-1. Entra a <https://railway.com>, inicia sesión con GitHub y elige **New Project → Deploy from GitHub repo**.
-   Elige este repositorio (rama `main`).
-2. En el servicio creado: **Settings → Volumes → Add Volume**, con *mount path* `/data`.
-3. **Settings → Networking → Generate Domain** para obtener la URL pública
-   (`https://<algo>.up.railway.app`).
-4. Espera el primer despliegue: la carga de datos toma alrededor de un minuto. Luego abre la URL.
+1. Entra a <https://vercel.com/signup> y crea la cuenta con **Continue with GitHub**.
+2. Presiona **Add New… → Project**, elige este repositorio y presiona **Deploy**. El primer intento falla
+   con el mensaje "Falta la base de datos": es lo esperado.
+3. En el proyecto, ve a **Storage → Create Database → Neon (Serverless Postgres) → Continue**. Deja la
+   región sugerida, acepta el plan gratis y conéctala al proyecto. Esto crea `DATABASE_URL` sola.
+4. Ve a **Deployments**, abre el último y presiona **⋯ → Redeploy**. En 1 o 2 minutos queda la URL pública
+   (`https://<proyecto>.vercel.app`).
+
+Variable opcional: `INGEST_FORCE=1` recarga todos los partidos en el próximo despliegue.
+
+## Alternativa con Docker (Railway, Render, Fly.io)
+
+El repo también trae `Dockerfile`, `railway.json` y `scripts/start.sh`. Con ellos la app usa SQLite en
+un volumen persistente montado en `/data`. En el primer arranque se descargan y cargan los partidos solos.
 
 Variables opcionales:
 - `DATABASE_PATH`: por defecto es `/data/galeriastats.db`.
 - `REINGEST=1`: fuerza a recargar los partidos en el próximo arranque.
-
-El mismo `Dockerfile` sirve para Render o Fly.io (con un volumen en `/data`).
-
+- `DATABASE_URL`: si la defines, la app usa Postgres en vez de SQLite.

@@ -8,7 +8,7 @@ const COOKIE = "galeria_session";
 
 export async function currentUser(): Promise<User | null> {
   const token = (await cookies()).get(COOKIE)?.value;
-  return token ? userForSession(getDb(), token) : null;
+  return token ? userForSession(await getDb(), token) : null;
 }
 
 export async function requireUser(): Promise<User> {
@@ -18,7 +18,7 @@ export async function requireUser(): Promise<User> {
 }
 
 export async function startSession(userId: number): Promise<void> {
-  const { token, expiresAt } = createSession(getDb(), userId);
+  const { token, expiresAt } = await createSession(await getDb(), userId);
   (await cookies()).set(COOKIE, token, {
     httpOnly: true,
     sameSite: "lax",
@@ -31,6 +31,6 @@ export async function startSession(userId: number): Promise<void> {
 export async function endSession(): Promise<void> {
   const jar = await cookies();
   const token = jar.get(COOKIE)?.value;
-  if (token) deleteSession(getDb(), token);
+  if (token) await deleteSession(await getDb(), token);
   jar.delete(COOKIE);
 }

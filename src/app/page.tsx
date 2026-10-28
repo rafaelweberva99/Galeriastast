@@ -19,9 +19,9 @@ const FEATURES = [
 ];
 
 export default async function Home() {
-  const db = getDb();
-  const [user, summary, clubs] = [await currentUser(), datasetSummary(db), clubsByFans(db).slice(0, 5)];
-  const big = BIG_THREE.map((id) => getTeam(db, id))
+  const db = await getDb();
+  const [user, summary, clubs] = [await currentUser(), await datasetSummary(db), (await clubsByFans(db)).slice(0, 5)];
+  const big = (await Promise.all(BIG_THREE.map((id) => getTeam(db, id))))
     .filter((t) => t !== null)
     .map(clubIdentity);
 
