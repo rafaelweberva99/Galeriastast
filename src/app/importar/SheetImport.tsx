@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useActionState, useState } from "react";
+import { startTransition, useActionState, useEffect, useState } from "react";
 import { previewSheetImport } from "../actions.ts";
 import { ImportCandidates } from "./ImportCandidates.tsx";
 
@@ -14,6 +14,17 @@ export function SheetImport() {
     form.set("text", value);
     startTransition(() => analyze(form));
   };
+
+  // Un CSV soltado en el recuadro de comprobantes llega aquí.
+  useEffect(() => {
+    const onSheet = (e: Event) => {
+      const content = (e as CustomEvent<string>).detail;
+      setText(content);
+      submit(content);
+    };
+    window.addEventListener("galucha:sheet", onSheet);
+    return () => window.removeEventListener("galucha:sheet", onSheet);
+  });
 
   return (
     <div className="stack">

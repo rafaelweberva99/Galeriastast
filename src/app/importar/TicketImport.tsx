@@ -27,7 +27,15 @@ export function TicketImport() {
     startTransition(() => analyze(form));
   };
 
-  const processFiles = async (files: File[]) => {
+  const processFiles = async (picked: File[]) => {
+    // Las planillas (CSV) van a la importación de Excel, más abajo en la página.
+    const sheets = picked.filter((f) => /\.(csv|tsv)$/i.test(f.name) || f.type === "text/csv");
+    if (sheets.length) {
+      const text = (await Promise.all(sheets.map((f) => f.text()))).join("\n");
+      window.dispatchEvent(new CustomEvent("galucha:sheet", { detail: text }));
+      document.getElementById("planilla")?.scrollIntoView({ behavior: "smooth" });
+    }
+    const files = picked.filter((f) => !sheets.includes(f));
     if (!files.length) return;
     setJobs(files.map((f) => ({ name: f.name || "captura", status: "pendiente", label: "En espera", ratio: null })));
     const texts: string[] = [];
@@ -87,7 +95,7 @@ export function TicketImport() {
           ref={fileRef}
           id="ticket-files"
           type="file"
-          accept="image/*,.pdf,application/pdf,.eml,message/rfc822,.txt,.html"
+          accept="image/*,.pdf,application/pdf,.eml,message/rfc822,.txt,.html,.csv,text/csv"
           multiple
           hidden
           onChange={(e) => {
