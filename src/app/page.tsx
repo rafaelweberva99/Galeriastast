@@ -24,7 +24,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   const { cuenta } = await searchParams;
   const db = await getDb();
   const [user, summary, clubs] = [await currentUser(), await datasetSummary(db), (await clubsByFans(db)).filter((c) => isVisibleClub(c.clubId)).slice(0, 5)];
-  const allClubs = visibleClubs(await listClubs(db));
+  const everyClub = await listClubs(db);
+  const allClubs = visibleClubs(everyClub);
+  // Aviso de "pronto más clubes" solo mientras algún club de Primera siga oculto.
+  const someHidden = everyClub.some((c) => c.current && !isVisibleClub(c.id));
   // Tarjetas grandes: los grandes habilitados (o, si ninguno lo está, los clubes del MVP).
   const bigVisible = BIG_THREE.filter(isVisibleClub);
   const featured = bigVisible.length ? bigVisible : [...MVP_CLUBS];
@@ -115,7 +118,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
                   );
                 })}
               </div>
-              {MVP_ACTIVE && (
+              {MVP_ACTIVE && someHidden && (
                 <p className="small" style={{ marginTop: 14, opacity: 0.9 }}>
                   Partimos con los clubes cuyo historial en Primera ya está completo y verificado. El resto de los
                   clubes llega pronto.

@@ -8,6 +8,7 @@ import { buildCarnet, decidedOutcome, effectiveness, involves, outcomeFor, recor
 import type { AttendanceMode, AttendedMatch, Match, Rivalry, TeamRecord } from "../src/lib/domain/types.ts";
 import { findDates, TeamMentionIndex } from "../src/lib/ingest/tickets.ts";
 import { isVisibleClub, MVP_ACTIVE, MVP_CLUBS } from "../src/lib/mvp.ts";
+import { CURRENT_CLUBS } from "../src/lib/ticketing.ts";
 import { CENTENARIO_GOAL, centenarioTeaser } from "../src/lib/domain/centenario.ts";
 
 // --- Datos -------------------------------------------------------------------
@@ -204,7 +205,7 @@ function viewInicio() {
         ${jersey(c, 64, "12")}<div><div class="small" style="opacity:.85">Soy</div><p class="display">${esc(c.nickname)}</p><div class="small" style="opacity:.85">${esc(c.short)}</div></div></button>`,
       )
       .join("")}</div>
-    ${MVP_ACTIVE ? `<p class="small" style="margin-top:14px;opacity:.9">Partimos con los clubes cuyo historial en Primera ya está completo y verificado. El resto de los clubes llega pronto.</p>` : ""}
+    ${MVP_ACTIVE && CURRENT_CLUBS.some((id) => !isVisibleClub(id)) ? `<p class="small" style="margin-top:14px;opacity:.9">Partimos con los clubes cuyo historial en Primera ya está completo y verificado. El resto de los clubes llega pronto.</p>` : ""}
     <div class="other-club"><label for="other-club">¿Eres de otro club?</label>
       <select id="other-club" data-action="pick-select"><option value="">Elige tu club…</option>${PICKABLE.map(
         (t) => `<option value="${t.id}" ${saved.clubId === t.id ? "selected" : ""}>${esc(t.name)}</option>`,
