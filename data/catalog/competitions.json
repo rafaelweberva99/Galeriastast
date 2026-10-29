@@ -5,6 +5,7 @@
   {"id": "supercopa", "name": "Supercopa de Chile", "kind": "supercopa", "tier": 4},
   {"id": "copa-libertadores", "name": "Copa Libertadores", "kind": "internacional", "tier": 5},
   {"id": "copa-sudamericana", "name": "Copa Sudamericana", "kind": "internacional", "tier": 6},
+  {"id": "recopa-sudamericana", "name": "Recopa Sudamericana", "kind": "internacional", "tier": 6},
   {"id": "copa-de-la-liga", "name": "Copa de la Liga", "kind": "copa", "tier": 3},
   {"id": "liguilla-ascenso", "name": "Liguilla de ascenso", "kind": "copa", "tier": 7}
 ]
