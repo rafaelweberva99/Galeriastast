@@ -8,6 +8,7 @@ import { getDb } from "@/lib/db/client.ts";
 import { getTeam } from "@/lib/repo/teams.ts";
 import { CONTACT_EMAIL } from "@/lib/legal.ts";
 import { isAdmin } from "@/lib/admin.ts";
+import { siteUrl } from "@/lib/site.ts";
 import { Ball } from "@/components/Ball.tsx";
 import "./globals.css";
 
@@ -15,6 +16,7 @@ const display = Oswald({ subsets: ["latin"], weight: ["500", "600", "700"], vari
 const body = Barlow({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-body" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl()),
   title: "GaluchaStats · ¿Eres cábala o yeta?",
   description:
     "Tu carnet de hincha del fútbol chileno. Marca los partidos a los que fuiste al estadio y descubre si eres cábala o yeta.",

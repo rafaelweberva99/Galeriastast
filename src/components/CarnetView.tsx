@@ -12,6 +12,9 @@ import { RecordBar } from "./RecordBar.tsx";
 import { isVisibleClub } from "@/lib/mvp.ts";
 import { ScorersSection } from "./ScorersSection.tsx";
 import { Centenario } from "./Centenario.tsx";
+import { ShareCarnet } from "./ShareCarnet.tsx";
+import { shareText } from "@/lib/shareText.ts";
+import { siteUrl } from "@/lib/site.ts";
 
 const OUTCOME_LABEL = { G: "Ganado", E: "Empate", P: "Perdido" } as const;
 
@@ -77,6 +80,7 @@ export function CarnetView({
   goals,
   clubs,
   isOwner,
+  isPublic = false,
 }: {
   username: string;
   memberId: number;
@@ -87,6 +91,8 @@ export function CarnetView({
   goals: Map<string, Goal[]>;
   clubs: Team[];
   isOwner: boolean;
+  /** Si el carnet es público (para ofrecer compartir el link). */
+  isPublic?: boolean;
 }) {
   const c = carnet;
   const impact = c.impact;
@@ -130,6 +136,14 @@ export function CarnetView({
       </section>
 
       <Centenario club={id} total={c.total} owner={isOwner} />
+      {isOwner && (
+        <ShareCarnet
+          username={username}
+          isPublic={isPublic}
+          text={shareText(c, id.short)}
+          url={`${siteUrl()}/hincha/${encodeURIComponent(username)}`}
+        />
+      )}
 
       <section className="grid grid-4">
         <div className="card stat">

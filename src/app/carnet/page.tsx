@@ -17,7 +17,7 @@ export default async function MyCarnetPage() {
           cambiarlo en tu <Link href="/perfil">perfil</Link>.
         </p>
       )}
-      <CarnetView username={user.username} memberId={user.id} {...data} isOwner />
+      <CarnetView username={user.username} memberId={user.id} {...data} isOwner isPublic={user.isPublic} />
     </div>
   );
 }

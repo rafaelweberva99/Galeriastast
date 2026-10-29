@@ -12,7 +12,7 @@ export function pct(value: number | null, digits = 0): string {
 
 /** Partido sin marcador: "vs" si está por jugarse, "s/r" si ya pasó (suspendido y nunca terminado). */
 export function noResult(m: Match): string {
-  return m.date < new Date().toISOString().slice(0, 10) ? "s/r" : "vs";
+  return m.date < new Date().toISOString().slice(0, 10) ? "susp." : "vs";
 }
 
 export function scoreLine(m: Match): string {

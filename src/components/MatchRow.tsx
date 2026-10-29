@@ -68,6 +68,12 @@ export function MatchRow({
           {match.tournament ? ` · ${match.tournament}` : ""}
           {match.stage ? ` · ${match.stage}` : ""}
           {match.isFinal && <span className="match-final"> · 🏆 Final</span>}
+          {match.homeGoals === null && match.homePens === null && noResult(match) === "susp." && (
+            <span title="Se suspendió y no se terminó: si fuiste, márcalo igual. Cuenta para la camiseta de los 100, no para el Mufómetro.">
+              {" "}
+              · Suspendido: cuenta como asistencia, no para el Mufómetro
+            </span>
+          )}
         </span>
         {goals && goals.length > 0 && <GoalsLine match={match} goals={goals} />}
       </div>

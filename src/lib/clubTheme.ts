@@ -191,14 +191,18 @@ function motifSvg(j: Jersey): string {
 }
 
 /** Camiseta genérica del club en SVG. `number` va en el pecho (el 12 es la hinchada). */
+/** Color del número en el pecho: el primero de la camiseta que contraste con el fondo. */
+export function jerseyNumberColor(club: ClubIdentity): string {
+  const j = club.jersey;
+  const bg = j.motif === "chest-band" ? j.motifColor : j.body;
+  const candidates = [j.collar, j.trim, j.motifColor, "#111111", "#ffffff"];
+  return candidates.find((c) => Math.abs(luminance(c) - luminance(bg)) > 0.35) ?? inkFor(bg);
+}
+
 export function jerseySvg(club: ClubIdentity, size: number, number?: string, uid = club.id): string {
   const j = club.jersey;
   const clip = `jc-${uid.replace(/[^a-z0-9-]/gi, "")}-${size}`;
-  const numberFill = (() => {
-    const bg = j.motif === "chest-band" ? j.motifColor : j.body;
-    const candidates = [j.collar, j.trim, j.motifColor, "#111111", "#ffffff"];
-    return candidates.find((c) => Math.abs(luminance(c) - luminance(bg)) > 0.35) ?? inkFor(bg);
-  })();
+  const numberFill = jerseyNumberColor(club);
   const plate =
     number && (j.motif === "stripes" || j.motif === "hoops" || j.motif === "halves")
       ? `<rect x="22" y="33" width="20" height="17" rx="3" fill="${j.body}"/>`
@@ -206,12 +210,12 @@ export function jerseySvg(club: ClubIdentity, size: number, number?: string, uid
   const num = number
     ? `${plate}<text x="32" y="${j.motif === "chest-band" ? 52 : 46}" text-anchor="middle" font-size="${number.length > 2 ? 13 : 17}" font-weight="700" font-family="var(--font-display), Oswald, 'Arial Narrow', sans-serif" fill="${numberFill}">${number}</text>`
     : "";
-  return `<svg viewBox="0 0 64 64" width="${size}" height="${size}" role="img" aria-label="Camiseta de ${club.short.replace(/"/g, "")}" style="flex-shrink:0;display:block">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="${size}" height="${size}" role="img" aria-label="Camiseta de ${club.short.replace(/"/g, "")}" style="flex-shrink:0;display:block">
 <defs><clipPath id="${clip}"><path d="${BODY}"/></clipPath></defs>
 <path d="${BODY}" fill="${j.body}"/>
 <g clip-path="url(#${clip})">${motifSvg(j)}
 <path d="M20 6 L6 17 L13 28 L18 24 L18 12 Z" fill="${j.sleeves}"/><path d="M44 6 L58 17 L51 28 L46 24 L46 12 Z" fill="${j.sleeves}"/>
 <path d="M6 17 L13 28" stroke="${j.trim}" stroke-width="3"/><path d="M58 17 L51 28" stroke="${j.trim}" stroke-width="3"/></g>
 <path d="M26 4 Q32 10 38 4" fill="none" stroke="${j.collar}" stroke-width="3.5" stroke-linecap="round"/>
-<path d="${BODY}" fill="none" stroke="rgb(0 0 0 / 0.35)" stroke-width="1.2" stroke-linejoin="round"/>${num}</svg>`;
+<path d="${BODY}" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="1.2" stroke-linejoin="round"/>${num}</svg>`;
 }
