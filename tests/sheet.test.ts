@@ -98,3 +98,47 @@ describe("carga de CSV de partidos", () => {
     await db.close();
   });
 });
+
+describe("planillas con otros formatos", () => {
+  it("usa solo la tabla de partidos (título, tablas al costado), reconoce nombres con errores, avisa amistosos y sugiere el año", async () => {
+    const db = await openSqlite(":memory:");
+    await db.exec(`
+      INSERT INTO competitions VALUES ('primera-division', 'Primera División', 'liga', 1), ('copa-chile', 'Copa Chile', 'copa', 3),
+        ('copa-libertadores', 'Copa Libertadores', 'internacional', 5);
+      INSERT INTO teams (id, name, short_name) VALUES ('colo-colo', 'Colo-Colo', 'Colo-Colo'), ('ohiggins', 'O''Higgins', 'O''Higgins'),
+        ('nublense', 'Ñublense', 'Ñublense');
+      INSERT INTO teams (id, name, short_name, is_chilean) VALUES ('fbc-melgar-per', 'FBC Melgar', 'FBC Melgar', 0), ('fortaleza-bra', 'Fortaleza', 'Fortaleza', 0);
+      INSERT INTO matches (id, date, season, competition_id, home_team_id, away_team_id, home_goals, away_goals, source) VALUES
+        ('m1', '2016-03-10', 2016, 'copa-libertadores', 'colo-colo', 'fbc-melgar-per', 1, 0, 't'),
+        ('m2', '2022-05-01', 2022, 'primera-division', 'colo-colo', 'ohiggins', 2, 0, 't'),
+        ('m3', '2022-06-01', 2022, 'primera-division', 'colo-colo', 'nublense', 0, 0, 't'),
+        ('m4', '2022-07-01', 2022, 'copa-chile', 'colo-colo', 'nublense', 1, 1, 't'),
+        ('m5', '2025-04-10', 2025, 'copa-libertadores', 'colo-colo', 'fortaleza-bra', 0, 3, 't');
+    `);
+    const teams = [
+      { id: "colo-colo", name: "Colo-Colo", short: "Colo-Colo" },
+      { id: "ohiggins", name: "O'Higgins", short: "O'Higgins" },
+      { id: "nublense", name: "Ñublense", short: "Ñublense" },
+    ];
+    const sheet = [
+      "PARTIDOS CHIPI EN LA RUKA",
+      "\t\t\t\t\t\t\t\t\tMONUMENTAL\tESTADISTICAS\t\tCompetición\tPartidos",
+      "AÑO\tLOCAL\tRESULTADO\tRIVAL\tGOLES CC\tGOLES RIVAL\tCAMPEONATO\tResultado\t\tPARTIDOS JUGADOS\t54\t\tLiga\t33",
+      "2016\tCC\t1-0\tMELGAR\t1\t0\tLibertadores\tVictoria\t\tVICTORIAS\t33\t\tCopa Chile\t5",
+      "2022\tCC\t2-0\tOHIGIGINS\t2\t0\tLiga\tVictoria\t\tJUGADOR\tGoles",
+      "2022\tCC\t1-1\tÑUBLENSE\t1\t1\tCOPA CHILE\tEmpate\t\tj.m lucero\t10",
+      "2024\tDPM\t1-0\tPUERTO MONTT\t1\t0\tAmistoso\tVictoria",
+      "2024\tCC\t0-3\tFortaleza\t0\t3\tLibertadores\tSuspendido*",
+    ].join("\n");
+    const rows = await analyzeSheet(db, "colo-colo", sheet, teams);
+    expect(rows.map((r) => r.match?.id ?? r.problem)).toEqual([
+      "m1",
+      "m2",
+      "m4",
+      "los amistosos no se cuentan (no están en la base)",
+      "no hay partido contra ese rival en 2024; ¿quizás fue en 2025?",
+    ]);
+    expect(rows[4].options?.map((m) => m.id)).toEqual(["m5"]);
+    await db.close();
+  });
+});

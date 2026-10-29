@@ -30,9 +30,10 @@ export function ImportCandidates({ state, note }: { state: ImportPreview; note?:
 
       {review.length > 0 && (
         <>
-          <h3 style={{ margin: "12px 0 0" }}>Revisa estas filas</h3>
+          <h3 style={{ margin: "12px 0 0" }}>Revisa estas filas ({review.length})</h3>
           <p className="muted small" style={{ margin: 0 }}>
-            No calzaron con un solo partido. Marca el que corresponde, si está.
+            No calzaron del todo (la fecha, el año o el resultado no coinciden, o hay más de un partido posible). Te
+            sugerimos el más probable: márcalo si es el tuyo.
           </p>
           {review.map((r) => (
             <div key={r.line} className="stack" style={{ gap: 4 }}>

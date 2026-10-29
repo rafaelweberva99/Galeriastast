@@ -178,9 +178,10 @@ function opponentIndex(clubMatches: Match[], clubId: string): TeamMentionIndex {
   );
 }
 
-/** Competición sugerida por el texto de una compra ("Copa Libertadores", "Campeonato PlanVital - Fecha 17"…). */
-function competitionHint(text: string): string | null {
+/** Competición sugerida por el texto de una compra o una fila ("Copa Libertadores", "Campeonato PlanVital - Fecha 17"…). */
+export function competitionHint(text: string): string | null {
   const t = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  if (/amistos/.test(t)) return "amistoso";
   if (/libertadores/.test(t)) return "copa-libertadores";
   if (/sudamericana/.test(t)) return "copa-sudamericana";
   if (/recopa/.test(t)) return "recopa-sudamericana";

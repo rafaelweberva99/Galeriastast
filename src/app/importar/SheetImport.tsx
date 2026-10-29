@@ -3,11 +3,13 @@
 import { startTransition, useActionState, useEffect, useState } from "react";
 import { previewSheetImport } from "../actions.ts";
 import { ImportCandidates } from "./ImportCandidates.tsx";
+import { readSheetFile, SHEET_ACCEPT } from "@/lib/client/sheetFile.ts";
 
 /** Importa una planilla personal: filas copiadas desde Excel/Google Sheets o un archivo CSV. */
 export function SheetImport() {
   const [state, analyze, pending] = useActionState(previewSheetImport, {});
   const [text, setText] = useState("");
+  const [fileError, setFileError] = useState<string | null>(null);
 
   const submit = (value: string) => {
     const form = new FormData();
@@ -51,16 +53,23 @@ export function SheetImport() {
             {pending ? "Buscando…" : "Buscar mis partidos"}
           </button>
           <label className="btn btn-ghost" style={{ cursor: "pointer" }}>
-            Subir CSV
+            Subir Excel o CSV
             <input
               type="file"
-              accept=".csv,.tsv,.txt,text/csv,text/plain"
+              accept={SHEET_ACCEPT}
               hidden
               onChange={async (e) => {
                 const file = e.target.files?.[0];
                 e.target.value = "";
                 if (!file) return;
-                const content = await file.text();
+                let content: string;
+                try {
+                  content = await readSheetFile(file);
+                } catch (err) {
+                  setFileError(err instanceof Error ? err.message : "No pudimos leer ese archivo.");
+                  return;
+                }
+                setFileError(null);
                 setText(content);
                 submit(content);
               }}
@@ -68,6 +77,11 @@ export function SheetImport() {
           </label>
         </div>
       </form>
+      {fileError && (
+        <p className="error" role="alert">
+          {fileError}
+        </p>
+      )}
       {state.error && (
         <p className="error" role="alert">
           {state.error}

@@ -3,6 +3,7 @@
 import { startTransition, useActionState, useEffect, useRef, useState } from "react";
 import { previewTicketImport } from "../actions.ts";
 import { ImportCandidates } from "./ImportCandidates.tsx";
+import { isSheetFile, readSheetFile } from "@/lib/client/sheetFile.ts";
 import { readTicketFile } from "@/lib/client/ticketReader.ts";
 
 interface Job {
@@ -29,9 +30,9 @@ export function TicketImport() {
 
   const processFiles = async (picked: File[]) => {
     // Las planillas (CSV) van a la importación de Excel, más abajo en la página.
-    const sheets = picked.filter((f) => /\.(csv|tsv)$/i.test(f.name) || f.type === "text/csv");
+    const sheets = picked.filter(isSheetFile);
     if (sheets.length) {
-      const text = (await Promise.all(sheets.map((f) => f.text()))).join("\n");
+      const text = (await Promise.all(sheets.map((f) => readSheetFile(f).catch(() => "")))).join("\n");
       window.dispatchEvent(new CustomEvent("galucha:sheet", { detail: text }));
       document.getElementById("planilla")?.scrollIntoView({ behavior: "smooth" });
     }
@@ -95,7 +96,7 @@ export function TicketImport() {
           ref={fileRef}
           id="ticket-files"
           type="file"
-          accept="image/*,.pdf,application/pdf,.eml,message/rfc822,.txt,.html,.csv,text/csv"
+          accept="image/*,.pdf,application/pdf,.eml,message/rfc822,.txt,.html,.csv,text/csv,.xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
           multiple
           hidden
           onChange={(e) => {
