@@ -1,15 +1,17 @@
 # Hilo instructivo: cómo cargar tus partidos
 
+Todos los posts instructivos abren con la misma pregunta: "¿Quieres tener tu carnet y saber cómo te va en el estadio?".
+
 Publica el post 1 y responde cada post al anterior para armar el hilo. Ninguno pasa de 280 caracteres.
 
 ## Post 1
 
 ```
-¿Cómo cargar tus partidos en Galucha? 🧵
+¿Quieres tener tu carnet y saber cómo te va en el estadio? 🏟️
 
-Tienes 3 formas: con una foto de tus entradas, con tu Excel o marcándolos a mano.
+Carga tus partidos en Galucha de 3 formas: con una foto de tus entradas, con tu Excel o marcándolos a mano.
 
-Te explico paso a paso 👇
+Te explico paso a paso 🧵👇
 #CabalaOYeta
 ```
 
@@ -75,7 +77,7 @@ Arma tu carnet y descubre si eres cábala o yeta 👉 [link]
 ## Versión en un solo post
 
 ```
-¿Cómo cargar tus partidos en Galucha? 👇
+¿Quieres tener tu carnet y saber cómo te va en el estadio? 🏟️
 
 📸 Foto: sube la captura de tus compras en "Importar entradas"
 📊 Excel: copia y pega tus filas en la misma sección
