@@ -10,6 +10,7 @@ import { findDates, TeamMentionIndex } from "../src/lib/ingest/tickets.ts";
 import { isVisibleClub, MVP_ACTIVE, MVP_CLUBS } from "../src/lib/mvp.ts";
 import { CURRENT_CLUBS } from "../src/lib/ticketing.ts";
 import { CENTENARIO_GOAL, centenarioTeaser } from "../src/lib/domain/centenario.ts";
+import { computeAchievements, RUEDA_COMPLETA, TIERS, type Achievements } from "../src/lib/domain/achievements.ts";
 
 // --- Datos -------------------------------------------------------------------
 
@@ -270,6 +271,26 @@ function memorable(title: string, m: Match | null) {
   }</div>`;
 }
 
+/** Premios (misma sección que en el sitio). */
+function premios(a: Achievements): string {
+  const ladder = TIERS.map(
+    (t) => `<div role="listitem" class="tier-step tier-${t.key} ${a.total >= t.min ? "got" : ""}"><span class="tier-chip" aria-hidden="true"></span><strong>${t.key === "socio" ? "Socio" : t.label.replace("Carnet ", "")}</strong><span class="small muted">${t.min === 0 ? "al registrarte" : `${t.min} partidos`}</span></div>`,
+  ).join("");
+  const next = a.next
+    ? `Tu carnet es ${a.tier.key === "socio" ? "de socio" : a.tier.label.replace("Carnet ", "").toLowerCase()}. Te faltan ${a.next.min - a.total} para el ${a.next.label.replace("Carnet ", "").toLowerCase()}.`
+    : "Tu carnet es Leyenda: más de 200 partidos en la galería.";
+  const seasons = (l: { season: number }[]) => l.map((x) => x.season).join(", ");
+  const item = (got: boolean, icon: string, title: string, text: string, extra = "") =>
+    `<div class="premio ${extra} ${got ? "got" : ""}"><span class="premio-icon" aria-hidden="true">${icon}</span><div><strong>${title}</strong><p class="small muted" style="margin:0">${esc(text)}</p></div></div>`;
+  return `<section class="card premios"><h2 class="section-title" style="margin:0">Premios</h2>
+    <div class="tier-ladder" role="list">${ladder}</div><p class="small" style="margin:0">${esc(next)}</p>
+    <div class="premio-grid">
+      ${item(a.rueda.done, "🔄", "Una rueda completa", `${RUEDA_COMPLETA} partidos en la galería, de local o de visita. ${a.rueda.done ? "¡Logrado!" : `Te ${a.rueda.missing === 1 ? "falta 1" : `faltan ${a.rueda.missing}`}.`}`)}
+      ${item(a.perfectLeague.length > 0, "🏟️", "Temporada perfecta", a.perfectLeague.length ? `Fuiste a todos los partidos de liga de tu club en ${seasons(a.perfectLeague)}.` : a.closest ? `Ir al 100% de los partidos de liga de una temporada. Lo más cerca: ${a.closest.attended} de ${a.closest.matches} en ${a.closest.season}.` : "Ir al 100% de los partidos de liga de una temporada.")}
+      ${item(a.perfectTotal.length > 0, "👑", "Temporada perfecta total", a.perfectTotal.length ? `Todos los partidos oficiales del año en ${seasons(a.perfectTotal)}.` : "Todos los partidos oficiales de un año: liga, copas e internacionales.", "especial")}
+    </div></section>`;
+}
+
 /** La camiseta de los 100 (misma tarjeta que en el sitio). */
 function centenario(id: ClubIdentity, total: number): string {
   const G = CENTENARIO_GOAL;
@@ -305,13 +326,14 @@ function viewCarnet(clubId: string) {
   const name = saved.name.trim() || "hincha";
   const impact = c.impact;
   const mine = attended.filter((m) => involves(m, clubId)).sort((a, b) => b.date.localeCompare(a.date));
+  const ach = computeAchievements(c.total, new Set(mine.map((m) => m.id)), clubMatches(clubId), new Date().toISOString().slice(0, 10));
 
   const empty = c.total === 0
     ? `<div class="card notice"><strong>Tu carnet está vacío.</strong> Marca los partidos a los que fuiste en <a href="#partidos" data-nav="partidos">Marcar partidos</a>, pega un correo de compra en <a href="#importar" data-nav="importar">Importar entradas</a>, o <button type="button" class="linklike" data-action="example">carga un ejemplo</button> para ver cómo se ve.</div>`
     : "";
 
   return `${empty}
-  <section class="socio-card">
+  <section class="socio-card tier-${ach.tier.key}">${ach.tier.key !== "socio" ? `<div class="tier-ribbon">${ach.tier.label.replace("Carnet ", "")}</div>` : ""}
     <div class="row" style="align-items:center;gap:20px">${jersey(id, 110, "12")}<div>
       <div class="socio-kicker">Carnet de hincha · ${esc(id.nickname)}</div>
       <div class="socio-name"><label class="sr-only" for="fan-name">Tu nombre de hincha</label>@<input id="fan-name" class="name-input" value="${esc(name)}" maxlength="20" data-action="name" aria-label="Tu nombre de hincha"></div>
@@ -322,6 +344,7 @@ function viewCarnet(clubId: string) {
       <p class="verdict">${esc(c.verdict.label)}</p><p class="small" style="margin:4px 0 0;max-width:240px;color:#56655c">${esc(phrase)}</p></div>
   </section>
   ${centenario(id, c.total)}
+  ${premios(ach)}
   <section class="grid grid-4">
     <div class="card stat"><span class="stat-value">${c.total}</span><span class="stat-label">partidos en la galería</span></div>
     <div class="card stat"><span class="stat-value">${pct(c.effectiveness)}</span><span class="stat-label">efectividad cuando vas</span></div>

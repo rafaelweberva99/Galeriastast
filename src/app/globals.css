@@ -390,3 +390,41 @@ fieldset.consents legend { font-weight: 600; font-size: 0.9rem; padding: 0 6px; 
   .share-preview { flex-basis: 100%; min-width: 0; }
   .share-actions .btn { flex: 1 1 140px; }
 }
+
+/* Niveles del carnet: Bronce 25, Plata 50, Oro 100, Leyenda 200 (borde metálico + cinta) */
+.socio-card.tier-bronce { --tier-metal: linear-gradient(135deg, #7a4a22, #e0a36b 35%, #8a5426 55%, #f0bf8a 80%, #7a4a22); --tier-ink: #3b2210; }
+.socio-card.tier-plata { --tier-metal: linear-gradient(135deg, #7d858c, #f2f5f7 35%, #9aa3ab 55%, #ffffff 80%, #7d858c); --tier-ink: #2b3136; }
+.socio-card.tier-oro { --tier-metal: linear-gradient(135deg, #8a6514, #f6d77a 35%, #b8871f 55%, #fff1b8 80%, #8a6514); --tier-ink: #3d2b05; }
+.socio-card.tier-leyenda { --tier-metal: linear-gradient(135deg, #111, #7b5cff 25%, #00d1c1 50%, #ff4fa3 75%, #111); --tier-ink: #ffffff; }
+.socio-card[class*="tier-"]:not(.tier-socio) { border: 5px solid transparent; background: var(--club-card) padding-box, var(--tier-metal) border-box; }
+.socio-card.tier-leyenda { box-shadow: 0 10px 30px rgb(0 0 0 / 0.25), 0 0 24px rgb(123 92 255 / 0.45); }
+.tier-ribbon {
+  position: absolute !important; top: 18px; right: -42px; z-index: 2 !important; transform: rotate(35deg);
+  width: 170px; text-align: center; padding: 5px 0; background: var(--tier-metal); color: var(--tier-ink);
+  font-family: var(--font-display), sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  font-size: 0.85rem; box-shadow: 0 2px 6px rgb(0 0 0 / 0.3);
+}
+
+/* Premios */
+.premios { display: flex; flex-direction: column; gap: 14px; }
+.tier-ladder { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.tier-step { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; opacity: 0.45; filter: grayscale(0.8); }
+.tier-step.got { opacity: 1; filter: none; }
+.tier-chip { width: 44px; height: 30px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.15); }
+.tier-step.tier-socio .tier-chip { background: var(--club-card, var(--surface-2)); }
+.tier-step.tier-bronce .tier-chip { background: linear-gradient(135deg, #7a4a22, #e0a36b 40%, #8a5426 60%, #f0bf8a); }
+.tier-step.tier-plata .tier-chip { background: linear-gradient(135deg, #7d858c, #f2f5f7 40%, #9aa3ab 60%, #fff); }
+.tier-step.tier-oro .tier-chip { background: linear-gradient(135deg, #8a6514, #f6d77a 40%, #b8871f 60%, #fff1b8); }
+.tier-step.tier-leyenda .tier-chip { background: linear-gradient(135deg, #111, #7b5cff 30%, #00d1c1 55%, #ff4fa3 80%, #111); }
+.premio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.premio { display: flex; gap: 12px; align-items: flex-start; padding: 12px; border-radius: 12px; border: 1px dashed var(--border); opacity: 0.6; filter: grayscale(1); }
+.premio.got { opacity: 1; filter: none; border-style: solid; border-color: var(--club-accent, var(--accent)); background: var(--surface-2); }
+.premio.especial.got { border-width: 2px; box-shadow: 0 0 0 3px rgb(246 215 122 / 0.5); }
+.premio-icon { font-size: 1.8rem; line-height: 1; }
+@media (max-width: 560px) {
+  .tier-ladder { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+  .tier-step strong { font-size: 0.8rem; }
+  .tier-step .small { font-size: 0.68rem; }
+  .tier-chip { width: 34px; height: 24px; }
+  .tier-ribbon { right: -50px; top: 14px; font-size: 0.75rem; }
+}

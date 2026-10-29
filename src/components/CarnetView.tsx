@@ -12,6 +12,8 @@ import { RecordBar } from "./RecordBar.tsx";
 import { isVisibleClub } from "@/lib/mvp.ts";
 import { ScorersSection } from "./ScorersSection.tsx";
 import { Centenario } from "./Centenario.tsx";
+import { Premios } from "./Premios.tsx";
+import type { Achievements } from "@/lib/domain/achievements.ts";
 import { ShareCarnet } from "./ShareCarnet.tsx";
 import { shareText } from "@/lib/shareText.ts";
 import { siteUrl } from "@/lib/site.ts";
@@ -80,6 +82,7 @@ export function CarnetView({
   goals,
   clubs,
   isOwner,
+  achievements,
   isPublic = false,
 }: {
   username: string;
@@ -91,6 +94,7 @@ export function CarnetView({
   goals: Map<string, Goal[]>;
   clubs: Team[];
   isOwner: boolean;
+  achievements: Achievements;
   /** Si el carnet es público (para ofrecer compartir el link). */
   isPublic?: boolean;
 }) {
@@ -106,7 +110,12 @@ export function CarnetView({
         : c.verdict.description;
   return (
     <div className="stack" style={clubStyle(id) as React.CSSProperties}>
-      <section className="socio-card">
+      <section className={`socio-card tier-${achievements.tier.key}`}>
+        {achievements.tier.key !== "socio" && (
+          <div className="tier-ribbon" aria-label={achievements.tier.label}>
+            {achievements.tier.label.replace("Carnet ", "")}
+          </div>
+        )}
         <div className="row" style={{ alignItems: "center", gap: 20 }}>
           <Jersey club={id} size={110} number="12" />
           <div>
@@ -136,6 +145,7 @@ export function CarnetView({
       </section>
 
       <Centenario club={id} total={c.total} owner={isOwner} />
+      <Premios a={achievements} owner={isOwner} />
       {isOwner && (
         <ShareCarnet
           username={username}

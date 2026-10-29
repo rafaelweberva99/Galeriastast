@@ -9,6 +9,7 @@ import path from "node:path";
 import { ImageResponse } from "next/og";
 import type { ClubIdentity } from "./clubTheme.ts";
 import { jerseyNumberColor, jerseySvg, luminance, mix } from "./clubTheme.ts";
+import { tierFor, type TierKey } from "./domain/achievements.ts";
 import { CENTENARIO_GOAL } from "./domain/centenario.ts";
 import type { Carnet } from "./domain/stats.ts";
 
@@ -39,6 +40,14 @@ function alpha(hex: string, a: number): string {
   return `rgba(${r},${g},${b},${a})`;
 }
 
+/** Degradados metálicos de cada nivel del carnet (como en el sitio). */
+const METAL: Record<Exclude<TierKey, "socio">, { bg: string; solid: string; ink: string }> = {
+  bronce: { bg: "linear-gradient(135deg, #7a4a22, #e0a36b 35%, #8a5426 55%, #f0bf8a 80%, #7a4a22)", solid: "#c4834a", ink: "#3b2210" },
+  plata: { bg: "linear-gradient(135deg, #7d858c, #f2f5f7 35%, #9aa3ab 55%, #ffffff 80%, #7d858c)", solid: "#c9d0d5", ink: "#2b3136" },
+  oro: { bg: "linear-gradient(135deg, #8a6514, #f6d77a 35%, #b8871f 55%, #fff1b8 80%, #8a6514)", solid: "#e0b43f", ink: "#3d2b05" },
+  leyenda: { bg: "linear-gradient(135deg, #111111, #7b5cff 25%, #00d1c1 50%, #ff4fa3 75%, #111111)", solid: "#7b5cff", ink: "#ffffff" },
+};
+
 const DISPLAY = "Oswald";
 const BODY = "Barlow";
 const JERSEY = 250;
@@ -59,6 +68,8 @@ export async function shareCardImage(opts: {
   // En base64: satori no muestra los SVG "utf8" con caracteres no ASCII (p. ej. "Concepción" en el aria-label).
   const jersey = `data:image/svg+xml;base64,${Buffer.from(jerseySvg(club, JERSEY, undefined, "share")).toString("base64")}`;
   const unlocked = c.total >= CENTENARIO_GOAL;
+  const tier = tierFor(c.total);
+  const metal = tier.key === "socio" ? null : METAL[tier.key];
   const toShirt = Math.min(c.total, CENTENARIO_GOAL);
   const eff = c.effectiveness === null ? "—" : `${Math.round(c.effectiveness)}%`;
   const handle = `@${username}`.toUpperCase();
@@ -106,6 +117,8 @@ export async function shareCardImage(opts: {
           fontWeight: 500,
           padding: "52px 60px 48px",
           position: "relative",
+          // Nivel del carnet: borde del color del metal (Bronce, Plata, Oro, Leyenda).
+          border: metal ? `12px solid ${metal.solid}` : "none",
         }}
       >
         {/* Líneas de cancha: mitad y círculo central detrás de la camiseta, como en el carnet del sitio. */}
@@ -140,8 +153,29 @@ export async function shareCardImage(opts: {
 
         <div style={{ display: "flex", flexDirection: "column", flex: 1, justifyContent: "space-between" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: 5, textTransform: "uppercase", opacity: 0.85 }}>
-              {`Carnet de hincha · ${club.nickname}`}
+            <div style={{ display: "flex", alignItems: "center" }}>
+              {metal && (
+                <div
+                  style={{
+                    display: "flex",
+                    background: metal.bg,
+                    color: metal.ink,
+                    fontFamily: DISPLAY,
+                    fontSize: 24,
+                    fontWeight: 700,
+                    letterSpacing: 3,
+                    textTransform: "uppercase",
+                    padding: "4px 14px",
+                    borderRadius: 6,
+                    marginRight: 16,
+                  }}
+                >
+                  {tier.label.replace("Carnet ", "")}
+                </div>
+              )}
+              <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: 5, textTransform: "uppercase", opacity: 0.85 }}>
+                {`Carnet de hincha · ${club.nickname}`}
+              </div>
             </div>
             <div style={{ fontFamily: DISPLAY, fontSize: handleSize, fontWeight: 700, lineHeight: 1.05, marginTop: 6 }}>{handle}</div>
             <div style={{ display: "flex", alignItems: "center", marginTop: 12 }}>
