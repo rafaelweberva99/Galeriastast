@@ -204,7 +204,7 @@ export function jerseySvg(club: ClubIdentity, size: number, number?: string, uid
       ? `<rect x="22" y="33" width="20" height="17" rx="3" fill="${j.body}"/>`
       : "";
   const num = number
-    ? `${plate}<text x="32" y="${j.motif === "chest-band" ? 52 : 46}" text-anchor="middle" font-size="17" font-weight="700" font-family="var(--font-display), Oswald, 'Arial Narrow', sans-serif" fill="${numberFill}">${number}</text>`
+    ? `${plate}<text x="32" y="${j.motif === "chest-band" ? 52 : 46}" text-anchor="middle" font-size="${number.length > 2 ? 13 : 17}" font-weight="700" font-family="var(--font-display), Oswald, 'Arial Narrow', sans-serif" fill="${numberFill}">${number}</text>`
     : "";
   return `<svg viewBox="0 0 64 64" width="${size}" height="${size}" role="img" aria-label="Camiseta de ${club.short.replace(/"/g, "")}" style="flex-shrink:0;display:block">
 <defs><clipPath id="${clip}"><path d="${BODY}"/></clipPath></defs>

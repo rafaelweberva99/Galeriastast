@@ -287,3 +287,11 @@ fieldset.consents legend { font-weight: 600; font-size: 0.9rem; padding: 0 6px; 
 .footer-links a { font-weight: 600; }
 .footer-contact { margin: 0 0 8px; }
 .footer-contact a { font-weight: 600; }
+
+/* La camiseta de los 100 */
+.centenario { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.centenario-jersey { position: relative; flex-shrink: 0; }
+.centenario.locked .centenario-jersey > span:first-child { filter: grayscale(1); opacity: 0.45; }
+.centenario-lock { position: absolute; right: -4px; bottom: -2px; font-size: 1.5rem; }
+.centenario-progress { height: 10px; }
+.centenario.unlocked { border: 2px solid var(--club-accent, var(--accent)); }

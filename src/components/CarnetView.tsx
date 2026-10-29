@@ -11,6 +11,7 @@ import { Mufometro } from "./Mufometro.tsx";
 import { RecordBar } from "./RecordBar.tsx";
 import { isVisibleClub } from "@/lib/mvp.ts";
 import { ScorersSection } from "./ScorersSection.tsx";
+import { Centenario } from "./Centenario.tsx";
 
 const OUTCOME_LABEL = { G: "Ganado", E: "Empate", P: "Perdido" } as const;
 
@@ -127,6 +128,8 @@ export function CarnetView({
           </p>
         </div>
       </section>
+
+      <Centenario club={id} total={c.total} owner={isOwner} />
 
       <section className="grid grid-4">
         <div className="card stat">

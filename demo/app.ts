@@ -8,6 +8,7 @@ import { buildCarnet, decidedOutcome, effectiveness, involves, outcomeFor, recor
 import type { AttendanceMode, AttendedMatch, Match, Rivalry, TeamRecord } from "../src/lib/domain/types.ts";
 import { findDates, TeamMentionIndex } from "../src/lib/ingest/tickets.ts";
 import { isVisibleClub, MVP_ACTIVE, MVP_CLUBS } from "../src/lib/mvp.ts";
+import { CENTENARIO_GOAL, centenarioTeaser } from "../src/lib/domain/centenario.ts";
 
 // --- Datos -------------------------------------------------------------------
 
@@ -267,6 +268,25 @@ function memorable(title: string, m: Match | null) {
   }</div>`;
 }
 
+/** La camiseta de los 100 (misma tarjeta que en el sitio). */
+function centenario(id: ClubIdentity, total: number): string {
+  const G = CENTENARIO_GOAL;
+  const unlocked = total >= G;
+  const next = Math.floor(total / G) * G + G;
+  const shown = unlocked ? total % G : total;
+  return `<section class="card centenario ${unlocked ? "unlocked" : "locked"}">
+    <div class="centenario-jersey" aria-hidden="true"><span>${jersey(id, 92, String(unlocked ? Math.floor(total / G) * G : G))}</span>${unlocked ? "" : '<span class="centenario-lock">🔒</span>'}</div>
+    <div class="stack" style="gap:6px;flex:1;min-width:220px">
+      <h2 class="section-title" style="margin:0">La camiseta de los ${G}</h2>
+      ${unlocked
+        ? `<p style="margin:0"><strong>¡Desbloqueada!</strong> Como el jugador que llega a ${G} partidos y el club le regala la camiseta con el número, te la ganaste: ${total} partidos en la galería. (Es simbólica: no esperes que llegue por correo.)</p><p class="muted small" style="margin:0">Próxima: la de los ${next}. Te faltan ${next - total}.</p>`
+        : `<p style="margin:0">A los jugadores que cumplen ${G} partidos les regalan una camiseta con el número. Aquí también: llega a ${G} partidos en la galería y se desbloquea.</p><p class="muted small" style="margin:0">${esc(centenarioTeaser(total, true))}</p>`}
+      <div class="progress centenario-progress" role="progressbar" aria-valuemin="0" aria-valuemax="${G}" aria-valuenow="${shown}"><span style="width:${Math.round((shown / G) * 100)}%"></span></div>
+      <div class="small" style="display:flex;justify-content:space-between"><span><strong>${shown}</strong> de ${G}</span><span class="muted">${unlocked ? `rumbo a los ${next}` : `${G - total} por jugar`}</span></div>
+    </div>
+  </section>`;
+}
+
 function viewCarnet(clubId: string) {
   const id = identityOf(clubId);
   const team = teams.get(clubId)!;
@@ -299,6 +319,7 @@ function viewCarnet(clubId: string) {
     <div class="mufometro-panel"><div class="socio-kicker" style="opacity:.6">Mufómetro</div>${mufometro(c.effectiveness, c.verdict)}
       <p class="verdict">${esc(c.verdict.label)}</p><p class="small" style="margin:4px 0 0;max-width:240px;color:#56655c">${esc(phrase)}</p></div>
   </section>
+  ${centenario(id, c.total)}
   <section class="grid grid-4">
     <div class="card stat"><span class="stat-value">${c.total}</span><span class="stat-label">partidos en la galería</span></div>
     <div class="card stat"><span class="stat-value">${pct(c.effectiveness)}</span><span class="stat-label">efectividad cuando vas</span></div>
