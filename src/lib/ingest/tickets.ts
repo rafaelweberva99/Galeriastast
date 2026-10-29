@@ -154,37 +154,108 @@ export interface TicketAnalysis {
   unmatchedDates: string[];
 }
 
+/** Índice con los rivales que enfrentó el club, por nombre y por prefijos no ambiguos ("River Plate", "Alianza"). */
+function opponentIndex(clubMatches: Match[], clubId: string): TeamMentionIndex {
+  const names = new Map<string, string>();
+  for (const m of clubMatches) {
+    if (m.homeTeamId !== clubId) names.set(m.homeTeamId, m.homeTeamName);
+    if (m.awayTeamId !== clubId) names.set(m.awayTeamId, m.awayTeamName);
+  }
+  const prefixes = new Map<string, Set<string>>();
+  for (const [id, name] of names) {
+    const words = name.split(/\s+/);
+    for (let n = 1; n < words.length; n++) {
+      const prefix = words.slice(0, n).join(" ");
+      if (prefix.length >= 5) prefixes.set(prefix, (prefixes.get(prefix) ?? new Set()).add(id));
+    }
+  }
+  return new TeamMentionIndex(
+    [...names].map(([id, name]) => ({
+      id,
+      name,
+      aliases: [...prefixes].filter(([, ids]) => ids.size === 1 && ids.has(id)).map(([prefix]) => prefix),
+    })),
+  );
+}
+
+/** Competición sugerida por el texto de una compra ("Copa Libertadores", "Campeonato PlanVital - Fecha 17"…). */
+function competitionHint(text: string): string | null {
+  const t = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  if (/libertadores/.test(t)) return "copa-libertadores";
+  if (/sudamericana/.test(t)) return "copa-sudamericana";
+  if (/recopa/.test(t)) return "recopa-sudamericana";
+  if (/supercopa/.test(t)) return "supercopa";
+  if (/copa (de la )?liga/.test(t)) return "copa-de-la-liga";
+  if (/copa chile/.test(t)) return "copa-chile";
+  if (/campeonato|primera division|fecha \d+|torneo|apertura|clausura/.test(t)) return "primera-division";
+  return null;
+}
+
+/** Ventana para la fecha de compra: se compra antes del partido (a veces semanas antes). */
+const PURCHASE_WINDOW_DAYS = 45;
+
 /**
  * Busca, entre los partidos del club del hincha, los que coinciden con las fechas y rivales del comprobante.
- * Tolera ±1 día (eventos que terminan pasada la medianoche o fechas de compra vs. de partido).
+ * Se lee por compra: cada fecha va con el texto que la sigue (la misma fila del historial o del correo).
+ * - Si en esa compra aparece el rival, se busca el partido contra ese rival desde un día antes de la fecha
+ *   hasta {@link PURCHASE_WINDOW_DAYS} días después (en "Mis compras" la fecha es la de compra), el más cercano,
+ *   y la competición mencionada ayuda a elegir.
+ * - Si no aparece el rival, se acepta solo el partido de esa fecha (± 1 día).
  */
 export async function analyzeTicket(db: Db, clubId: string, text: string, index: TeamMentionIndex): Promise<TicketAnalysis> {
   const plain = emailToText(text);
-  const dates = findDates(plain);
-  const rivals = index.find(plain).filter((id) => id !== clubId);
   const providers = detectProviders(plain).map((p) => p.name);
-  if (!dates.length) return { candidates: [], unmatchedDates: [], providers };
+  // Agrupa líneas: cada grupo parte en una línea con fecha y sigue hasta la próxima fecha.
+  const groups: string[] = [];
+  for (const line of plain.split(/\r?\n/)) {
+    if (findDates(line).length || !groups.length) groups.push(line);
+    else groups[groups.length - 1] += `\n${line}`;
+  }
+  if (!findDates(plain).length) return { candidates: [], unmatchedDates: [], providers };
 
   const clubMatches = await listClubMatches(db, clubId);
+  // Además de los clubes del catálogo, todos los rivales que alguna vez enfrentó el club (extranjeros incluidos).
+  const opponents = opponentIndex(clubMatches, clubId);
+  const findRivals = (t: string) => [...new Set([...index.find(t), ...opponents.find(t)])].filter((id) => id !== clubId);
+  const globalRivals = findRivals(plain);
   const candidates = new Map<string, TicketCandidate>();
   const unmatchedDates: string[] = [];
-  for (const d of dates) {
-    const when = d.year !== null ? `${pad(d.day)}/${pad(d.month)}/${d.year}` : `${pad(d.day)}/${pad(d.month)}`;
-    let found = false;
-    for (const m of clubMatches) {
-      const rival = m.homeTeamId === clubId ? m.awayTeamId : m.homeTeamId;
-      const rivalOk = rivals.length === 0 || rivals.includes(rival);
-      const dateOk =
-        d.year !== null
-          ? dayDiff(m.date, `${d.year}-${pad(d.month)}-${pad(d.day)}`) <= 1
-          : rivals.length > 0 && m.date.slice(5) === `${pad(d.month)}-${pad(d.day)}`;
-      if (!dateOk || !rivalOk) continue;
-      found = true;
-      if (!candidates.has(m.id)) {
-        candidates.set(m.id, { match: m, reason: rivals.length ? `fecha ${when} y rival mencionado` : `fecha ${when}` });
+  for (const group of groups) {
+    const rivals = findRivals(group);
+    // Una compra que nombra un partido ("X vs. Y") con un rival que no reconocemos no se adivina por fecha.
+    const namesUnknownMatch = !rivals.length && /\bvs\.?\s/i.test(group);
+    const hint = competitionHint(group);
+    for (const d of findDates(group)) {
+      const when = d.year !== null ? `${pad(d.day)}/${pad(d.month)}/${d.year}` : `${pad(d.day)}/${pad(d.month)}`;
+      const iso = d.year !== null ? `${d.year}-${pad(d.month)}-${pad(d.day)}` : null;
+      const rivalOf = (m: Match) => (m.homeTeamId === clubId ? m.awayTeamId : m.homeTeamId);
+      let found: TicketCandidate[] = [];
+      if (iso && rivals.length) {
+        const start = Date.parse(iso) - 86_400_000;
+        const end = Date.parse(iso) + PURCHASE_WINDOW_DAYS * 86_400_000;
+        let pool = clubMatches.filter((m) => rivals.includes(rivalOf(m)) && Date.parse(m.date) >= start && Date.parse(m.date) <= end);
+        if (hint && pool.some((m) => m.competitionId === hint)) pool = pool.filter((m) => m.competitionId === hint);
+        // Para cada rival, el partido más cercano a la fecha.
+        for (const rival of rivals) {
+          const best = pool.filter((m) => rivalOf(m) === rival).sort((a, b) => a.date.localeCompare(b.date))[0];
+          if (best) {
+            const exact = dayDiff(best.date, iso) <= 1;
+            found.push({ match: best, reason: exact ? `fecha ${when} y rival` : `compra del ${when} y rival` });
+          }
+        }
+      } else if (!namesUnknownMatch) {
+        const rivalsHere = rivals.length ? rivals : globalRivals;
+        found = clubMatches
+          .filter((m) => {
+            const rivalOk = rivalsHere.length === 0 || rivalsHere.includes(rivalOf(m));
+            const dateOk = iso ? dayDiff(m.date, iso) <= 1 : rivalsHere.length > 0 && m.date.slice(5) === `${pad(d.month)}-${pad(d.day)}`;
+            return rivalOk && dateOk;
+          })
+          .map((m) => ({ match: m, reason: rivalsHere.length ? `fecha ${when} y rival mencionado` : `fecha ${when}` }));
       }
+      for (const c of found) if (!candidates.has(c.match.id)) candidates.set(c.match.id, c);
+      if (!found.length && iso) unmatchedDates.push(when);
     }
-    if (!found && d.year !== null) unmatchedDates.push(when);
   }
   return {
     candidates: [...candidates.values()].sort((a, b) => b.match.date.localeCompare(a.match.date)),
