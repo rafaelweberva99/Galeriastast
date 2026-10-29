@@ -31,7 +31,7 @@ export const CONSENT_LABELS: Record<ConsentKind, string> = {
 export const HOSTING = {
   database: "Neon Inc. (PostgreSQL)",
   app: "Vercel Inc.",
-  region: "Estados Unidos (costa este)",
+  region: "Estados Unidos (Virginia del Norte, costa este)",
 } as const;
 
 /** Correo de contacto, sugerencias y ejercicio de derechos. */
