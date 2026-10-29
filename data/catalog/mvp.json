@@ -1,6 +1,6 @@
 {
   "enabled": true,
-  "criterio": "Los 16 clubes de Primera División 2026 están habilitados. Su historial de Primera desde 1997 tiene todos los partidos con resultado; quedan pendientes menores documentados abajo (fechas que pueden diferir en un día y un marcador por confirmar con segunda fuente).",
+  "criterio": "Los 16 clubes de Primera División 2026 están habilitados. Su historial de Primera desde 1997 tiene todos los partidos con resultado; quedan pendientes menores documentados abajo (fechas que pueden diferir en un día).",
   "clubs": [
     "colo-colo",
     "universidad-de-chile",
@@ -25,10 +25,6 @@
       "audax-italiano",
       "palestino",
       "la-serena",
-      "deportes-concepcion"
-    ],
-    "marcador 2001-07-01 Huachipato 2-2 Deportes Concepción sin segunda fuente (otra fuente dice 1-1)": [
-      "huachipato",
       "deportes-concepcion"
     ]
   }
