@@ -38,10 +38,9 @@ export const HOSTING = {
 export const CONTACT_EMAIL = "galuchastats@gmail.com";
 
 /** Marcadores a completar por el responsable antes de publicar. */
+/** Responsable del tratamiento: el equipo de GaluchaStats, ubicable en su correo de contacto. */
 export const CONTROLLER = {
-  name: "[Nombre del responsable]",
-  rut: "[RUT]",
-  address: "[domicilio]",
+  name: "el equipo de GaluchaStats",
   email: CONTACT_EMAIL,
 } as const;
 

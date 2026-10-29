@@ -25,9 +25,8 @@ export default function PrivacyPage() {
 
       <h2>1. Quién es responsable de tus datos</h2>
       <p>
-        El responsable del tratamiento es <strong>{CONTROLLER.name}</strong>, RUT {CONTROLLER.rut}, con domicilio en{" "}
-        {CONTROLLER.address}. Para cualquier consulta sobre tus datos o para ejercer tus derechos escribe a{" "}
-        <strong>{CONTROLLER.email}</strong>.
+        El responsable del tratamiento es {CONTROLLER.name}. Para cualquier consulta sobre tus datos o para ejercer tus
+        derechos escribe a <strong>{CONTROLLER.email}</strong>.
       </p>
 
       <h2>2. Qué datos tratamos</h2>
@@ -88,7 +87,13 @@ export default function PrivacyPage() {
         <li>Mantener la seguridad del servicio y prevenir abusos.</li>
       </ul>
       <p>
-        No vendemos tus datos, no los usamos para publicidad y no hacemos perfiles comerciales. El Mufómetro es un
+        Hoy el servicio <strong>no tiene fines de lucro</strong>: no vendemos tus datos, no los usamos para publicidad y no
+        hacemos perfiles comerciales. Podemos elaborar estadísticas <strong>agregadas y anónimas</strong> (que no
+        identifican a nadie) y usarlas o compartirlas con cualquier fin, incluso comercial. Si en el futuro quisiéramos
+        usar o compartir tus datos personales para un fin nuevo (por ejemplo, alianzas comerciales o publicidad), te lo
+        informaremos antes y te pediremos tu consentimiento expreso; podrás negarte sin perder tu cuenta (ver los{" "}
+        <Link href="/terminos">Términos</Link>, sección 9). Si el proyecto se transfiere a otro titular, tus datos pasarán
+        a él con la obligación de respetar esta política, y te avisaremos antes para que puedas eliminarlos. El Mufómetro es un
         cálculo automático y lúdico (porcentaje de puntos obtenidos en los partidos que marcaste), igual que los niveles
         del carnet y los premios: son solo para fines de entretención, no producen efectos jurídicos ni te afectan de
         manera significativa.

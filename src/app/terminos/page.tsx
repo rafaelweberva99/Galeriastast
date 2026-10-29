@@ -18,7 +18,7 @@ export default function TermsPage() {
 
       <p style={{ marginTop: 20 }}>
         Estos términos regulan el uso de GaluchaStats (el “servicio”), un carnet de hincha del fútbol chileno ofrecido
-        por <strong>{CONTROLLER.name}</strong> (contacto: {CONTROLLER.email}). Al crear una cuenta declaras haberlos
+        por {CONTROLLER.name} (contacto: <strong>{CONTROLLER.email}</strong>). Al crear una cuenta declaras haberlos
         leído y aceptado. Si no estás de acuerdo, no uses el servicio.
       </p>
 
@@ -107,8 +107,13 @@ export default function TermsPage() {
       <h2>8. Contenido y propiedad</h2>
       <ul>
         <li>
-          Los datos que ingresas (tus partidos marcados y tu preferencia de club) son tuyos. Nos autorizas a usarlos solo
-          para prestar el servicio, incluyendo mostrarlos en rankings y en tu perfil público si así lo eliges.
+          Los datos que ingresas (tus partidos marcados y tu preferencia de club) son tuyos. Nos autorizas a usarlos para
+          prestar el servicio, incluyendo mostrarlos en rankings y en tu perfil público si así lo eliges.
+        </li>
+        <li>
+          También podemos elaborar <strong>estadísticas agregadas y anónimas</strong> a partir del uso del servicio (por
+          ejemplo, cuántos hinchas de cada club marcaron partidos en una temporada), que no permiten identificar a nadie,
+          y usarlas o compartirlas con cualquier fin, incluso comercial.
         </li>
         <li>
           El diseño, el código y las marcas propias de GaluchaStats nos pertenecen o los usamos con licencia. Los datos
@@ -116,7 +121,31 @@ export default function TermsPage() {
         </li>
       </ul>
 
-      <h2>9. Suspensión y cierre de cuenta</h2>
+      <h2>9. Gratuidad, fines no lucrativos y evolución del servicio</h2>
+      <p>
+        Hoy GaluchaStats <strong>no tiene fines de lucro</strong>: es gratuito, sin publicidad, sin pagos y sin venta de
+        datos. Para que el proyecto pueda crecer y sostenerse, nos reservamos la posibilidad de incorporar en el futuro
+        modelos comerciales lícitos, como auspicios, publicidad, alianzas con clubes, ticketeras u otras empresas, o
+        funciones adicionales de pago. Si eso ocurre:
+      </p>
+      <ul>
+        <li>Te avisaremos con anticipación y actualizaremos estos términos y la Política de Privacidad.</li>
+        <li>
+          Lo que hoy es gratis seguirá siéndolo para tu carnet básico: tus partidos marcados, tu Mufómetro y la descarga de
+          tus datos.
+        </li>
+        <li>
+          Si un nuevo uso requiere tratar o compartir tus <strong>datos personales</strong> para fines distintos de los
+          actuales, te pediremos tu <strong>consentimiento expreso</strong> antes, y podrás negarte sin perder tu cuenta.
+        </li>
+        <li>
+          Si el proyecto se transfiere a otra persona o empresa (por ejemplo, por venta o fusión), los datos pasarán al
+          nuevo titular, que deberá respetar la Política de Privacidad vigente. Te avisaremos antes, con la opción de
+          descargar tus datos y eliminar tu cuenta.
+        </li>
+      </ul>
+
+      <h2>10. Suspensión y cierre de cuenta</h2>
       <ul>
         <li>
           Puedes cerrar tu cuenta cuando quieras desde <Link href="/perfil#eliminar-cuenta">tu perfil</Link>; se
@@ -128,7 +157,7 @@ export default function TermsPage() {
         </li>
       </ul>
 
-      <h2>10. Limitación de responsabilidad</h2>
+      <h2>11. Limitación de responsabilidad</h2>
       <p>
         El servicio se entrega “tal como está”, sin garantías de disponibilidad continua ni de exactitud de los datos. En
         la medida que la ley lo permita, no respondemos por daños indirectos derivados del uso o de la imposibilidad de
@@ -136,14 +165,14 @@ export default function TermsPage() {
         irrenunciables que te reconozca la ley chilena.
       </p>
 
-      <h2>11. Cambios a estos términos</h2>
+      <h2>12. Cambios a estos términos</h2>
       <p>
         Podemos actualizar estos términos. Publicaremos la nueva versión con su fecha y, si el cambio es relevante, te
         pediremos aceptarla al ingresar antes de seguir usando tu cuenta. Si no la aceptas, puedes descargar tus datos y
         eliminar tu cuenta.
       </p>
 
-      <h2>12. Ley aplicable y contacto</h2>
+      <h2>13. Ley aplicable y contacto</h2>
       <p>
         Estos términos se rigen por las leyes de la República de Chile. Cualquier controversia se someterá a los
         tribunales competentes de Chile, sin perjuicio de los derechos que te correspondan como usuario. Para dudas o
