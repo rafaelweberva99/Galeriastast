@@ -325,9 +325,14 @@ textarea { width: 100%; }
 .club-chip::after { content: ""; position: absolute; right: 8px; top: -6px; bottom: -6px; width: 8px; background: var(--club-band); transform: skewX(-18deg); opacity: 0.85; }
 .club-chip span { display: flex; flex-direction: column; min-width: 0; line-height: 1.15; }
 .club-chip > span:last-child { padding-right: 16px; }
-@media (max-width: 560px) { .club-chips { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); } }
 .club-chip strong { font-family: var(--font-display), sans-serif; text-transform: uppercase; font-size: 0.95rem; line-height: 1.1; overflow-wrap: break-word; }
 .club-chip small { font-size: 0.72rem; opacity: 0.85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 560px) {
+  .club-chips { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .club-chip { gap: 8px; padding: 8px; }
+  .club-chip svg { width: 30px; height: 30px; }
+  .club-chip strong { font-size: 0.82rem; hyphens: auto; }
+}
 @media (prefers-reduced-motion: reduce) { .club-chip { transition: none; } }
 .club-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
 .club-card { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 16px; text-decoration: none; background: var(--club-card); color: var(--club-ink); position: relative; overflow: hidden; min-width: 0; box-shadow: var(--shadow); transition: transform 0.15s ease; }
