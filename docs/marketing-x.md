@@ -20,7 +20,7 @@ provocar ese gesto y darle eco: citar, responder y armar rankings con esas captu
 | Elemento | Propuesta |
 |---|---|
 | Nombre visible | `Galucha ⚽ ¿Cábala o yeta?` |
-| Bio | `Carnet de hincha del fútbol chileno 🇨🇱 Marca los partidos que viste en la galería y descubre si eres cábala o yeta 🍀 #CábalaOYeta` (máximo 160 caracteres) |
+| Bio | `Carnet de hincha del fútbol chileno 🇨🇱 Marca los partidos que viste en la galería y descubre si eres cábala o yeta 🍀 #CabalaOYeta` (máximo 160 caracteres) |
 | Enlace | La URL pública de GaluchaStats |
 | Foto de perfil | El logo, legible en tamaño chico |
 | Portada | Mufómetro + el texto "¿Eres cábala o yeta?" |
@@ -74,13 +74,13 @@ En X los hashtags pesan menos que antes. Usa **uno o dos por post**, nunca más 
 
 | Uso | Hashtags |
 |---|---|
-| Marca (siempre) | `#CábalaOYeta` · `#Galucha` |
+| Marca (siempre) | `#CabalaOYeta` · `#Galucha` |
 | Liga | `#LigaDePrimera` · `#CampeonatoNacional` · `#FútbolChileno` · `#CopaChile` · `#LigaDeAscenso` |
 | Clubes | `#ColoColo` · `#LaU` / `#UdeChile` · `#Cruzados` / `#UC` · `#Wanderers` · `#Cobreloa` · `#Palestino` · `#Huachipato` · `#OHiggins` · `#Everton` · `#Cobresal` |
 | Clásicos | `#Superclásico` · `#ClásicoUniversitario` · `#ClásicoPorteño` · `#ClásicoDeColonias` |
 | Comunidad | `#Galería` · `#HinchaDeEstadio` · `#Infiltrado` |
 
-Para que `#CábalaOYeta` sea tuyo, pide que cada hincha lo use al subir su captura. Así puedes buscar las
+Para que `#CabalaOYeta` sea tuyo, pide que cada hincha lo use al subir su captura. Así puedes buscar las
 capturas y armar rankings.
 
 ## 5. Contenido: cinco pilares
@@ -105,13 +105,13 @@ capturas y armar rankings.
 > ¿Cuántos partidos de tu club viste en el estadio? ¿Ganaste más de los que perdiste?
 > Marca los partidos que fuiste y descubre si eres cábala o yeta 🍀🐈‍⬛
 > Clásicos, finales, rachas y modo Infiltrado para cuando te metiste en la galería rival.
-> #CábalaOYeta
+> #CabalaOYeta
 
 **Post 2:**
 > Más de 60% = cábala 🍀
 > Entre 40% y 60% = neutro 😐
 > Menos de 40% = yeta 🐈‍⬛
-> Sube tu captura con #CábalaOYeta y armamos el ranking de yetas del fútbol chileno.
+> Sube tu captura con #CabalaOYeta y armamos el ranking de yetas del fútbol chileno.
 
 **Post 3 (encuesta):**
 > Pregunta seria: ¿cuántas veces fuiste al estadio este 2026?
@@ -155,7 +155,7 @@ no en el texto principal.
 | Semana | Foco | Acciones |
 |---|---|---|
 | 1 | Montar y sembrar | Perfil completo, post fijado, 10–15 posts con capturas y datos, seguir 150 cuentas, responder en partidos. |
-| 2 | Primeros carnets | Pedir capturas con `#CábalaOYeta`, citar cada una, primera encuesta, DMs a 10 hinchas medianos. |
+| 2 | Primeros carnets | Pedir capturas con `#CabalaOYeta`, citar cada una, primera encuesta, DMs a 10 hinchas medianos. |
 | 3 | Clubes | Un post por club grande con datos históricos, primer "ranking de yetas", publicar en Comunidades. |
 | 4 | Cierre de temporada | Contenido en vivo de la definición y preparar "Tu temporada 2026". |
 
@@ -165,7 +165,7 @@ no en el texto principal.
 |---|---|
 | Seguidores | 500 |
 | Hinchas registrados en la app | 150 |
-| Capturas publicadas con `#CábalaOYeta` | 30 |
+| Capturas publicadas con `#CabalaOYeta` | 30 |
 | Post con más de 10.000 impresiones | Al menos 1 |
 
 Repite lo que funcionó (formato, hora y club) y deja lo que no.
