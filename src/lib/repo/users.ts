@@ -125,7 +125,17 @@ export async function authenticate(db: Db, login: string, password: string): Pro
   return toUser(r);
 }
 
+/** decodeURIComponent que no revienta (un "%" suelto en la URL daría error 500). */
+export function safeDecode(v: string): string {
+  try {
+    return decodeURIComponent(v);
+  } catch {
+    return v;
+  }
+}
+
 export async function getUserByUsername(db: Db, username: string): Promise<User | null> {
+  if (username.length > 40) return null;
   const r = await db.get("SELECT * FROM users WHERE lower(username) = lower(?)", username);
   return r ? toUser(r) : null;
 }

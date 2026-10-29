@@ -99,7 +99,7 @@ async function ocr(canvas: HTMLCanvasElement, onProgress: Progress): Promise<str
 
 interface PdfJs {
   GlobalWorkerOptions: { workerSrc: string };
-  getDocument(src: { data: ArrayBuffer }): {
+  getDocument(src: { data: ArrayBuffer; isEvalSupported?: boolean }): {
     promise: Promise<{
       numPages: number;
       getPage(n: number): Promise<{
@@ -115,7 +115,8 @@ async function pdfToText(file: Blob, onProgress: Progress): Promise<string> {
   onProgress("Abriendo el PDF", null);
   const pdfjs = (await import(/* webpackIgnore: true */ "/vendor/pdfjs/pdf.min.mjs" as string)) as PdfJs;
   pdfjs.GlobalWorkerOptions.workerSrc = "/vendor/pdfjs/pdf.worker.min.mjs";
-  const doc = await pdfjs.getDocument({ data: await file.arrayBuffer() }).promise;
+  // Sin eval: la CSP del sitio no lo permite (pdf.js usa otro camino para dibujar las fuentes).
+  const doc = await pdfjs.getDocument({ data: await file.arrayBuffer(), isEvalSupported: false }).promise;
   const pages = Math.min(doc.numPages, 10);
   let text = "";
   for (let n = 1; n <= pages; n++) {

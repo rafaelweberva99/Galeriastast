@@ -2,7 +2,7 @@ import { currentUser } from "@/lib/auth.ts";
 import { loadCarnet } from "@/lib/carnet.ts";
 import { clubIdentity } from "@/lib/clubTheme.ts";
 import { getDb } from "@/lib/db/client.ts";
-import { getUserByUsername } from "@/lib/repo/users.ts";
+import { getUserByUsername, safeDecode } from "@/lib/repo/users.ts";
 import { shareCardImage } from "@/lib/shareCard.tsx";
 import { siteUrl } from "@/lib/site.ts";
 
@@ -10,7 +10,7 @@ import { siteUrl } from "@/lib/site.ts";
 export async function GET(req: Request, { params }: { params: Promise<{ username: string }> }) {
   const { username } = await params;
   const db = await getDb();
-  const fan = await getUserByUsername(db, decodeURIComponent(username));
+  const fan = await getUserByUsername(db, safeDecode(username));
   const viewer = fan && !fan.isPublic ? await currentUser() : null;
   if (!fan || (!fan.isPublic && viewer?.id !== fan.id)) return new Response("No encontrado", { status: 404 });
   const { club, carnet } = await loadCarnet(db, fan);
