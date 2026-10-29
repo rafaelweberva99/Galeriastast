@@ -28,7 +28,7 @@ export const CONSENT_LABELS: Record<ConsentKind, string> = {
 };
 
 /** Correo de contacto, sugerencias y ejercicio de derechos. */
-export const CONTACT_EMAIL = "galuchastast@gmail.com";
+export const CONTACT_EMAIL = "galuchastats@gmail.com";
 
 /** Marcadores a completar por el responsable antes de publicar. */
 export const CONTROLLER = {

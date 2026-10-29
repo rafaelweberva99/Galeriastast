@@ -89,7 +89,7 @@ const html = `<title>GaluchaStats</title>
 </div></header>
 <div class="preview-note"><div class="container">Vista previa: tus partidos marcados se guardan solo en este navegador.</div></div>
 <main class="container" id="app"></main>
-<footer class="site-footer"><div class="container"><p class="footer-contact">¿Ideas para que GaluchaStats siga creciendo? Escríbenos a <a href="mailto:galuchastast@gmail.com">galuchastast@gmail.com</a></p>Resultados históricos de worldfootball.net (vía yorobot/cache.wfb.txt), con chequeos de calidad propios. GaluchaStats no está afiliado a la ANFP ni a ningún club; los colores se usan solo como referencia de los hinchas.</div></footer>
+<footer class="site-footer"><div class="container"><p class="footer-contact">¿Ideas para que GaluchaStats siga creciendo? Escríbenos a <a href="mailto:galuchastats@gmail.com">galuchastats@gmail.com</a></p>Resultados históricos de worldfootball.net (vía yorobot/cache.wfb.txt), con chequeos de calidad propios. GaluchaStats no está afiliado a la ANFP ni a ningún club; los colores se usan solo como referencia de los hinchas.</div></footer>
 <script type="application/json" id="data">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>
 <script>${js.replace(/<\/script/gi, "<\\/script")}</script>
 `;
