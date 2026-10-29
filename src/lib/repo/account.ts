@@ -13,7 +13,7 @@ import {
   type ConsentKind,
   type RequiredDoc,
 } from "../legal.ts";
-import { createUser, verifyPassword, type User } from "./users.ts";
+import { createUser, hashPassword, verifyPassword, type User } from "./users.ts";
 
 export class ConsentRequiredError extends Error {}
 export class AccountError extends Error {}
@@ -138,8 +138,10 @@ export async function registerUser(db: Db, input: RegisterInput): Promise<User> 
   if (!input.acceptPrivacy) throw new ConsentRequiredError("Debes confirmar que leíste la Política de Privacidad.");
   if (!input.isAdult) throw new ConsentRequiredError(`Debes tener ${MIN_AGE} años o más para crear una cuenta.`);
   const isPublic = input.isPublic === true;
+  // El hash (lento a propósito) se calcula fuera de la transacción para no bloquear la base mientras tanto.
+  const passwordHash = await hashPassword(input.password);
   return db.transaction(async (tx) => {
-    const user = await createUser(tx, { ...input, isPublic });
+    const user = await createUser(tx, { ...input, isPublic, passwordHash });
     await recordConsent(tx, user.id, "terms", REQUIRED_DOCS.terms, true);
     await recordConsent(tx, user.id, "privacy", REQUIRED_DOCS.privacy, true);
     await recordConsent(tx, user.id, "age", AGE_VERSION, true);
@@ -229,6 +231,6 @@ export async function deleteAccount(db: Db, userId: number, confirm: { username:
   if (!r) throw new AccountError("Cuenta no encontrada.");
   if (confirm.username.trim().toLowerCase() !== String(r.username).toLowerCase())
     throw new AccountError("El nombre de usuario no coincide.");
-  if (!verifyPassword(confirm.password, r.password_hash as string)) throw new AccountError("La contraseña no es correcta.");
+  if (!(await verifyPassword(confirm.password, r.password_hash as string))) throw new AccountError("La contraseña no es correcta.");
   await db.run("DELETE FROM users WHERE id = ?", userId);
 }

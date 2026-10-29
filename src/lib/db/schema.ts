@@ -77,6 +77,16 @@ CREATE TABLE IF NOT EXISTS sessions (
   expires_at  TEXT NOT NULL
 );
 
+-- Freno a la fuerza bruta en el ingreso y el registro (funciona con varias instancias serverless).
+-- key = tipo + SHA-256 del correo/usuario o de la IP: no se guardan en claro. Las filas viejas se borran solas.
+CREATE TABLE IF NOT EXISTS login_attempts (
+  key           TEXT PRIMARY KEY,
+  failures      INTEGER NOT NULL DEFAULT 0,
+  last_failure  TEXT NOT NULL,
+  locked_until  TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_login_attempts_last ON login_attempts(last_failure);
+
 -- mode = 'propia' (galería de su club) | 'infiltrado' (galería rival; igual cuenta para el Mufómetro)
 CREATE TABLE IF NOT EXISTS attendances (
   user_id     INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,

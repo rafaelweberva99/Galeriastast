@@ -200,8 +200,26 @@ export function jerseyNumberColor(club: ClubIdentity): string {
 }
 
 /** Camiseta genérica del club en SVG. `number` va en el pecho (el 12 es la hinchada). */
+/** El SVG va como HTML crudo: solo pasan colores con forma de color y números de dorsal; el texto se escapa. */
+const safeColor = (c: string | undefined, fallback = "#1f2937"): string =>
+  c && /^(#[0-9a-f]{3,8}|rgba?\([\d.,\s%]+\))$/i.test(c.trim()) ? c.trim() : fallback;
+const escapeXml = (t: string): string =>
+  t.replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch]!);
+
 export function jerseySvg(club: ClubIdentity, size: number, number?: string, uid = club.id): string {
-  const j = club.jersey;
+  const raw = club.jersey;
+  const j: Jersey = {
+    ...raw,
+    body: safeColor(raw.body),
+    sleeves: safeColor(raw.sleeves),
+    collar: safeColor(raw.collar),
+    trim: safeColor(raw.trim),
+    motifColor: safeColor(raw.motifColor),
+    motifColor2: raw.motifColor2 ? safeColor(raw.motifColor2) : undefined,
+  };
+  club = { ...club, jersey: j };
+  size = Math.max(1, Math.min(Math.round(Number(size) || 48), 1024));
+  if (number !== undefined && !/^\d{1,4}$/.test(number)) number = undefined;
   const clip = `jc-${uid.replace(/[^a-z0-9-]/gi, "")}-${size}`;
   const numberFill = jerseyNumberColor(club);
   const plate =
@@ -211,7 +229,7 @@ export function jerseySvg(club: ClubIdentity, size: number, number?: string, uid
   const num = number
     ? `${plate}<text x="32" y="${j.motif === "chest-band" ? 52 : 46}" text-anchor="middle" font-size="${number.length > 2 ? 13 : 17}" font-weight="700" font-family="var(--font-display), Oswald, 'Arial Narrow', sans-serif" fill="${numberFill}">${number}</text>`
     : "";
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="${size}" height="${size}" role="img" aria-label="Camiseta de ${club.short.replace(/"/g, "")}" style="flex-shrink:0;display:block">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="${size}" height="${size}" role="img" aria-label="Camiseta de ${escapeXml(club.short)}" style="flex-shrink:0;display:block">
 <defs><clipPath id="${clip}"><path d="${BODY}"/></clipPath></defs>
 <path d="${BODY}" fill="${j.body}"/>
 <g clip-path="url(#${clip})">${motifSvg(j)}

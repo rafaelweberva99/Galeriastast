@@ -1,4 +1,4 @@
-import { randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
+import { createHash, randomBytes, scrypt, timingSafeEqual, type ScryptOptions } from "node:crypto";
 import type { Db, Row } from "../db/client.ts";
 import type { AttendanceMode } from "../domain/types.ts";
 
@@ -22,25 +22,68 @@ function toUser(r: Row): User {
   };
 }
 
-export function hashPassword(password: string): string {
-  const salt = randomBytes(16);
-  const hash = scryptSync(password, salt, 64);
-  return `scrypt$${salt.toString("hex")}$${hash.toString("hex")}`;
+// --- Contraseñas ------------------------------------------------------------
+// scrypt con parámetros de OWASP (N=2^14, r=8, p=5: 16 MiB, ~0,2 s). El hash guarda sus parámetros
+// ("scrypt$N,r,p$sal$hash"); los hashes antiguos ("scrypt$sal$hash") usan N=2^14, r=8, p=1 y se
+// actualizan solos en el siguiente ingreso correcto (needsRehash).
+
+interface ScryptParams {
+  N: number;
+  r: number;
+  p: number;
+}
+const CURRENT: ScryptParams = { N: 2 ** 14, r: 8, p: 5 };
+const LEGACY: ScryptParams = { N: 2 ** 14, r: 8, p: 1 };
+/** Límite de largo: scrypt procesa la contraseña completa; nadie necesita más que esto. */
+export const MAX_PASSWORD_LENGTH = 256;
+
+function scryptAsync(password: string, salt: Buffer, len: number, { N, r, p }: ScryptParams): Promise<Buffer> {
+  const opts: ScryptOptions = { N, r, p, maxmem: 256 * N * r + 1024 * 1024 };
+  return new Promise((resolve, reject) => scrypt(password, salt, len, opts, (e, key) => (e ? reject(e) : resolve(key))));
 }
 
-export function verifyPassword(password: string, stored: string): boolean {
-  const [scheme, saltHex, hashHex] = stored.split("$");
-  if (scheme !== "scrypt" || !saltHex || !hashHex) return false;
-  const expected = Buffer.from(hashHex, "hex");
-  const actual = scryptSync(password, Buffer.from(saltHex, "hex"), expected.length);
-  return timingSafeEqual(expected, actual);
+function parseHash(stored: string): { params: ScryptParams; salt: Buffer; hash: Buffer } | null {
+  const parts = stored.split("$");
+  if (parts[0] !== "scrypt") return null;
+  let params = LEGACY;
+  if (parts.length === 4) {
+    const [N, r, p] = parts[1].split(",").map(Number);
+    // Parámetros acotados: un hash manipulado no puede pedir memoria o CPU sin límite.
+    if (![N, r, p].every(Number.isInteger) || N < 2 ** 10 || N > 2 ** 17 || r < 1 || r > 16 || p < 1 || p > 16) return null;
+    params = { N, r, p };
+  } else if (parts.length !== 3) return null;
+  const [saltHex, hashHex] = parts.slice(-2);
+  if (!saltHex || !hashHex) return null;
+  return { params, salt: Buffer.from(saltHex, "hex"), hash: Buffer.from(hashHex, "hex") };
 }
+
+export async function hashPassword(password: string): Promise<string> {
+  const salt = randomBytes(16);
+  const hash = await scryptAsync(password, salt, 64, CURRENT);
+  return `scrypt$${CURRENT.N},${CURRENT.r},${CURRENT.p}$${salt.toString("hex")}$${hash.toString("hex")}`;
+}
+
+export async function verifyPassword(password: string, stored: string): Promise<boolean> {
+  const parsed = parseHash(stored);
+  if (!parsed || !parsed.hash.length || password.length > MAX_PASSWORD_LENGTH) return false;
+  const actual = await scryptAsync(password, parsed.salt, parsed.hash.length, parsed.params);
+  return timingSafeEqual(parsed.hash, actual);
+}
+
+/** Si el hash usa parámetros más débiles que los vigentes (se recalcula al ingresar). */
+export function needsRehash(stored: string): boolean {
+  const parsed = parseHash(stored);
+  return !parsed || parsed.params.N < CURRENT.N || parsed.params.r < CURRENT.r || parsed.params.p < CURRENT.p;
+}
+
+/** Hash de relleno: cuando el usuario no existe se verifica igual, para que el tiempo de respuesta no lo delate. */
+let dummyHash: Promise<string> | null = null;
 
 export class UserExistsError extends Error {}
 
 export async function createUser(
   db: Db,
-  input: { username: string; email: string; password: string; clubId: string; isPublic?: boolean },
+  input: { username: string; email: string; password: string; clubId: string; isPublic?: boolean; passwordHash?: string },
 ): Promise<User> {
   const taken = await db.get(
     "SELECT 1 AS taken FROM users WHERE lower(username) = lower(?) OR lower(email) = lower(?)",
@@ -54,7 +97,7 @@ export async function createUser(
       "INSERT INTO users (username, email, password_hash, club_id, is_public) VALUES (?, ?, ?, ?, ?) RETURNING *",
       input.username,
       input.email,
-      hashPassword(input.password),
+      input.passwordHash ?? (await hashPassword(input.password)),
       input.clubId,
       // Privacidad por defecto: el carnet es privado salvo que el hincha elija mostrarlo.
       input.isPublic ? 1 : 0,
@@ -71,7 +114,14 @@ export async function createUser(
 
 export async function authenticate(db: Db, login: string, password: string): Promise<User | null> {
   const r = await db.get("SELECT * FROM users WHERE lower(username) = lower(?) OR lower(email) = lower(?)", login, login);
-  if (!r || !verifyPassword(password, r.password_hash as string)) return null;
+  if (!r) {
+    dummyHash ??= hashPassword("galuchastats-relleno");
+    await verifyPassword(password, await dummyHash);
+    return null;
+  }
+  const stored = r.password_hash as string;
+  if (!(await verifyPassword(password, stored))) return null;
+  if (needsRehash(stored)) await db.run("UPDATE users SET password_hash = ? WHERE id = ?", await hashPassword(password), Number(r.id));
   return toUser(r);
 }
 
@@ -101,25 +151,35 @@ export async function updateProfile(db: Db, userId: number, input: { clubId: str
 
 const SESSION_DAYS = 30;
 
+/**
+ * En la base solo se guarda el SHA-256 del token: si alguien llegara a leer la tabla sessions
+ * (un respaldo filtrado, por ejemplo), no podría usar esas sesiones.
+ */
+export const hashToken = (token: string): string => createHash("sha256").update(token).digest("hex");
+
 export async function createSession(db: Db, userId: number): Promise<{ token: string; expiresAt: Date }> {
   const token = randomBytes(32).toString("base64url");
-  const expiresAt = new Date(Date.now() + SESSION_DAYS * 86_400_000);
-  await db.run("INSERT INTO sessions (token, user_id, expires_at) VALUES (?, ?, ?)", token, userId, expiresAt.toISOString());
+  const now = new Date();
+  const expiresAt = new Date(now.getTime() + SESSION_DAYS * 86_400_000);
+  // De paso se limpian las sesiones vencidas del hincha.
+  await db.run("DELETE FROM sessions WHERE user_id = ? AND expires_at <= ?", userId, now.toISOString());
+  await db.run("INSERT INTO sessions (token, user_id, expires_at) VALUES (?, ?, ?)", hashToken(token), userId, expiresAt.toISOString());
   return { token, expiresAt };
 }
 
 export async function userForSession(db: Db, token: string): Promise<User | null> {
+  if (token.length > 100) return null;
   const r = await db.get(
     `SELECT u.* FROM sessions s JOIN users u ON u.id = s.user_id
      WHERE s.token = ? AND s.expires_at > ?`,
-    token,
+    hashToken(token),
     new Date().toISOString(),
   );
   return r ? toUser(r) : null;
 }
 
 export async function deleteSession(db: Db, token: string): Promise<void> {
-  await db.run("DELETE FROM sessions WHERE token = ?", token);
+  await db.run("DELETE FROM sessions WHERE token = ?", hashToken(token));
 }
 
 /** Cierra todas las sesiones del hincha (en todos sus dispositivos). Devuelve cuántas cerró. */

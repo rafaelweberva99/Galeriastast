@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { clearSessionCookie, endAllSessions, endSession, mustAcceptLegal, requireUser, startSession } from "@/lib/auth.ts";
+import { clearSessionCookie, clientIp, endAllSessions, endSession, mustAcceptLegal, requireUser, startSession } from "@/lib/auth.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { MIN_AGE } from "@/lib/legal.ts";
 import {
@@ -23,11 +23,13 @@ import {
   attendanceModes,
   AttendanceError,
   authenticate,
+  MAX_PASSWORD_LENGTH,
   removeAttendance,
   setAttendance,
   updateProfile,
   UserExistsError,
 } from "@/lib/repo/users.ts";
+import { clearFailures, lockedMessage, lockedUntil, recordFailure, throttleKey } from "@/lib/repo/throttle.ts";
 
 export interface FormState {
   error?: string;
@@ -51,9 +53,12 @@ const usernameSchema = z
 
 const registerSchema = z.object({
   username: usernameSchema,
-  email: z.string().trim().email("Correo inválido."),
-  password: z.string().min(8, "La contraseña debe tener al menos 8 caracteres."),
-  clubId: z.string().min(1, "Elige tu club."),
+  email: z.string().trim().max(254, "Correo inválido.").email("Correo inválido."),
+  password: z
+    .string()
+    .min(8, "La contraseña debe tener al menos 8 caracteres.")
+    .max(MAX_PASSWORD_LENGTH, `La contraseña puede tener hasta ${MAX_PASSWORD_LENGTH} caracteres.`),
+  clubId: z.string().min(1, "Elige tu club.").max(64, "Club desconocido."),
   acceptTerms: mustCheck("Debes aceptar los Términos y Condiciones."),
   acceptPrivacy: mustCheck("Debes confirmar que leíste la Política de Privacidad."),
   isAdult: mustCheck(`Debes tener ${MIN_AGE} años o más para crear una cuenta.`),
@@ -68,6 +73,11 @@ export async function register(_: FormState, form: FormData): Promise<FormState>
   const { username, email, password, clubId } = parsed.data;
   if (!(await getTeam(db, clubId))) return { error: "Club desconocido.", values };
   if (!isVisibleClub(clubId)) return { error: CLUB_NOT_YET, values };
+  // Límite de cuentas por IP: cada intento que llega a la base (creado o con usuario/correo repetido) cuenta.
+  const ipKey = throttleKey("register", await clientIp());
+  const until = await lockedUntil(db, [ipKey]);
+  if (until) return { error: lockedMessage(until), values };
+  await recordFailure(db, ipKey);
   try {
     const user = await registerUser(db, {
       username,
@@ -87,9 +97,27 @@ export async function register(_: FormState, form: FormData): Promise<FormState>
   redirect("/partidos");
 }
 
+const LOGIN_FAILED = "Usuario o contraseña incorrectos.";
+
 export async function login(_: FormState, form: FormData): Promise<FormState> {
-  const user = await authenticate(await getDb(), String(form.get("login") ?? "").trim(), String(form.get("password") ?? ""));
-  if (!user) return { error: "Usuario o contraseña incorrectos.", values: echo(form, ["login"]) };
+  const name = String(form.get("login") ?? "").trim();
+  const password = String(form.get("password") ?? "");
+  const values = { login: name.slice(0, 254) };
+  if (!name || !password || name.length > 254 || password.length > MAX_PASSWORD_LENGTH) return { error: LOGIN_FAILED, values };
+  const db = await getDb();
+  // Freno a la fuerza bruta: por cuenta (lo escrito) y por IP. El mensaje es igual exista o no la cuenta.
+  const accountKey = throttleKey("login", name);
+  const ipKey = throttleKey("ip", await clientIp());
+  const until = await lockedUntil(db, [accountKey, ipKey]);
+  if (until) return { error: lockedMessage(until), values };
+  const user = await authenticate(db, name, password);
+  if (!user) {
+    const a = await recordFailure(db, accountKey);
+    const b = await recordFailure(db, ipKey);
+    const locked = [a.lockedUntil, b.lockedUntil].filter((d): d is Date => !!d).sort((x, y) => +y - +x)[0];
+    return { error: locked ? lockedMessage(locked) : LOGIN_FAILED, values };
+  }
+  await clearFailures(db, accountKey);
   await startSession(user.id);
   // Si cambió la versión de los Términos o de la Privacidad, hay que aceptarla antes de seguir.
   redirect((await mustAcceptLegal(user.id)) ? "/aceptar" : "/carnet");
@@ -101,7 +129,7 @@ export async function logout(): Promise<void> {
 }
 
 const attendanceSchema = z.object({
-  matchId: z.string().min(1),
+  matchId: z.string().min(1).max(200),
   mode: z.enum(["propia", "infiltrado", "ninguno"]),
 });
 
@@ -189,13 +217,21 @@ export async function logoutEverywhere(): Promise<void> {
 
 export async function deleteMyAccount(_: FormState, form: FormData): Promise<FormState> {
   const user = await requireUser({ allowPendingLegal: true });
+  const db = await getDb();
+  // La contraseña que se pide aquí también tiene freno (una sesión robada no permite adivinarla sin límite).
+  const accountKey = throttleKey("login", user.username);
+  const until = await lockedUntil(db, [accountKey]);
+  if (until) return { error: lockedMessage(until), values: echo(form, ["confirmUsername"]) };
   try {
-    await deleteAccount(await getDb(), user.id, {
+    await deleteAccount(db, user.id, {
       username: String(form.get("confirmUsername") ?? ""),
       password: String(form.get("password") ?? ""),
     });
   } catch (e) {
-    if (e instanceof AccountError) return { error: e.message, values: echo(form, ["confirmUsername"]) };
+    if (e instanceof AccountError) {
+      if (/contraseña/.test(e.message)) await recordFailure(db, accountKey);
+      return { error: e.message, values: echo(form, ["confirmUsername"]) };
+    }
     throw e;
   }
   await clearSessionCookie();
@@ -301,7 +337,9 @@ export async function confirmTicketImport(form: FormData): Promise<void> {
   const user = await requireUser();
   const mode = form.get("mode") === "infiltrado" ? "infiltrado" : "propia";
   const db = await getDb();
-  for (const id of form.getAll("matchId").map(String)) {
+  // Tope de partidos por envío (una importación real trae decenas, no miles).
+  for (const id of [...new Set(form.getAll("matchId").map(String))].slice(0, 1000)) {
+    if (id.length > 200) continue;
     try {
       await setAttendance(db, user, id, mode);
     } catch (e) {

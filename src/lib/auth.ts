@@ -1,5 +1,5 @@
 import "server-only";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getDb } from "./db/client.ts";
 import { legalStatus, needsAcceptance } from "./repo/account.ts";
@@ -28,9 +28,14 @@ export async function mustAcceptLegal(userId: number): Promise<boolean> {
   return needsAcceptance(await legalStatus(await getDb(), userId));
 }
 
+/** Al ingresar siempre se crea un token nuevo y se invalida el que hubiera en el navegador. */
 export async function startSession(userId: number): Promise<void> {
-  const { token, expiresAt } = await createSession(await getDb(), userId);
-  (await cookies()).set(COOKIE, token, {
+  const db = await getDb();
+  const jar = await cookies();
+  const previous = jar.get(COOKIE)?.value;
+  if (previous) await deleteSession(db, previous);
+  const { token, expiresAt } = await createSession(db, userId);
+  jar.set(COOKIE, token, {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
@@ -55,4 +60,14 @@ export async function endAllSessions(userId: number): Promise<void> {
 /** Borra la cookie de sesión (por ejemplo, después de eliminar la cuenta). */
 export async function clearSessionCookie(): Promise<void> {
   (await cookies()).delete(COOKIE);
+}
+
+/**
+ * IP del visitante para el freno a la fuerza bruta. En Vercel, x-real-ip y x-forwarded-for los pone la
+ * plataforma (no los puede falsificar el cliente); fuera de Vercel se confía en el proxy que haya delante.
+ */
+export async function clientIp(): Promise<string> {
+  const h = await headers();
+  const ip = h.get("x-real-ip")?.trim() || h.get("x-forwarded-for")?.split(",")[0]?.trim();
+  return ip ? ip.slice(0, 64) : "desconocida";
 }

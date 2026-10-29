@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@tesseract.js-data/spa": "^1.0.0",
-    "fflate": "^0.8.2",
+    "fflate": "^0.8.3",
     "next": "^15.5.28",
     "pdfjs-dist": "^4.10.38",
     "postgres": "^3.4.5",
