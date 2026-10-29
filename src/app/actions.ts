@@ -44,11 +44,13 @@ const REGISTER_ECHO = ["username", "email", "clubId", "acceptTerms", "acceptPriv
 /** Casilla obligatoria: el navegador envía "on" solo si está marcada. */
 const mustCheck = (message: string) => z.literal("on", { errorMap: () => ({ message }) });
 
+const usernameSchema = z
+  .string()
+  .trim()
+  .regex(/^[a-zA-Z0-9_]{3,20}$/, "El usuario debe tener 3 a 20 caracteres: letras, números o _.");
+
 const registerSchema = z.object({
-  username: z
-    .string()
-    .trim()
-    .regex(/^[a-zA-Z0-9_]{3,20}$/, "El usuario debe tener 3 a 20 caracteres: letras, números o _."),
+  username: usernameSchema,
   email: z.string().trim().email("Correo inválido."),
   password: z.string().min(8, "La contraseña debe tener al menos 8 caracteres."),
   clubId: z.string().min(1, "Elige tu club."),
@@ -123,11 +125,19 @@ export async function toggleAttendance(form: FormData): Promise<{ error?: string
 
 export async function saveProfile(_: FormState, form: FormData): Promise<FormState> {
   const user = await requireUser();
+  const values = echo(form, ["username", "clubId"]);
   const clubId = String(form.get("clubId") ?? "");
+  const name = usernameSchema.safeParse(String(form.get("username") ?? user.username));
+  if (!name.success) return { error: name.error.issues[0].message, values };
   const db = await getDb();
-  if (!(await getTeam(db, clubId))) return { error: "Club desconocido." };
-  if (!isVisibleClub(clubId) && clubId !== user.clubId) return { error: CLUB_NOT_YET };
-  await updateProfile(db, user.id, { clubId });
+  if (!(await getTeam(db, clubId))) return { error: "Club desconocido.", values };
+  if (!isVisibleClub(clubId) && clubId !== user.clubId) return { error: CLUB_NOT_YET, values };
+  try {
+    await updateProfile(db, user.id, { clubId, username: name.data });
+  } catch (e) {
+    if (e instanceof UserExistsError) return { error: e.message, values };
+    throw e;
+  }
   revalidatePath("/", "layout");
   redirect("/carnet");
 }

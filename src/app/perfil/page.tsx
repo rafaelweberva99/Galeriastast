@@ -22,7 +22,7 @@ export default async function ProfilePage() {
       <div className="card">
         <h1>@{user.username}</h1>
         <p className="muted">Si cambias de club, solo se contarán los partidos marcados que involucren a tu nuevo club.</p>
-        <ProfileForm clubs={clubs} clubId={user.clubId} />
+        <ProfileForm clubs={clubs} clubId={user.clubId} username={user.username} />
       </div>
 
       <section className="card stack" aria-labelledby="privacidad-datos">

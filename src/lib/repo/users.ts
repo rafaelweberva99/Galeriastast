@@ -81,8 +81,20 @@ export async function getUserByUsername(db: Db, username: string): Promise<User 
 }
 
 /** Cambia el club. La preferencia de perfil público se cambia con setPublicProfile (queda registrada). */
-export async function updateProfile(db: Db, userId: number, input: { clubId: string }): Promise<void> {
-  await db.run("UPDATE users SET club_id = ? WHERE id = ?", input.clubId, userId);
+export async function updateProfile(db: Db, userId: number, input: { clubId: string; username?: string }): Promise<void> {
+  const username = input.username?.trim();
+  if (username) {
+    const taken = await db.get("SELECT 1 AS taken FROM users WHERE lower(username) = lower(?) AND id <> ?", username, userId);
+    if (taken) throw new UserExistsError("Ese nombre de usuario ya está en uso.");
+  }
+  try {
+    if (username) await db.run("UPDATE users SET club_id = ?, username = ? WHERE id = ?", input.clubId, username, userId);
+    else await db.run("UPDATE users SET club_id = ? WHERE id = ?", input.clubId, userId);
+  } catch (e) {
+    // Dos hinchas eligiendo el mismo nombre a la vez: el índice único decide.
+    if (/unique|duplicate/i.test(String((e as Error).message))) throw new UserExistsError("Ese nombre de usuario ya está en uso.");
+    throw e;
+  }
 }
 
 // --- Sesiones -------------------------------------------------------------

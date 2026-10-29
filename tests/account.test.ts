@@ -215,3 +215,22 @@ describe("concurrencia (revisión QA)", () => {
     await db.close();
   });
 });
+
+describe("cambio de nombre de usuario", () => {
+  it("cambia el nombre, rechaza uno tomado (sin importar mayúsculas) y deja ingresar con el nuevo", async () => {
+    const { openSqlite } = await import("../src/lib/db/client.ts");
+    const { createUser, updateProfile, authenticate, UserExistsError } = await import("../src/lib/repo/users.ts");
+    const db = await openSqlite(":memory:");
+    await db.exec(
+      "INSERT INTO competitions VALUES ('primera-division', 'Primera División', 'liga', 1); INSERT INTO teams (id, name, short_name) VALUES ('colo-colo', 'Colo-Colo', 'Colo-Colo');",
+    );
+    const a = await createUser(db, { username: "rafael", email: "a@example.com", password: "clave-segura-1", clubId: "colo-colo" });
+    await createUser(db, { username: "otro", email: "b@example.com", password: "clave-segura-2", clubId: "colo-colo" });
+    await expect(updateProfile(db, a.id, { clubId: "colo-colo", username: "OTRO" })).rejects.toBeInstanceOf(UserExistsError);
+    await updateProfile(db, a.id, { clubId: "colo-colo", username: "RafaelAzul" });
+    expect((await authenticate(db, "rafaelazul", "clave-segura-1"))?.username).toBe("RafaelAzul");
+    expect(await authenticate(db, "rafael", "clave-segura-1")).toBeNull();
+    await updateProfile(db, a.id, { clubId: "colo-colo", username: "RafaelAzul" });
+    await db.close();
+  });
+});
