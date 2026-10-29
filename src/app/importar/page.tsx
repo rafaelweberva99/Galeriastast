@@ -7,7 +7,7 @@ import { clubTicketing, providersInUse } from "@/lib/ticketing.ts";
 import { BuyTickets } from "@/components/BuyTickets.tsx";
 import { TicketImport } from "./TicketImport.tsx";
 
-export const metadata = { title: "Importar desde PuntoTicket · GaleríaStats" };
+export const metadata = { title: "Importar desde PuntoTicket · GaluchaStats" };
 
 export default async function ImportPage() {
   const user = await requireUser();

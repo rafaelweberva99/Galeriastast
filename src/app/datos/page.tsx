@@ -3,7 +3,7 @@ import { runQualityChecks } from "@/lib/ingest/quality.ts";
 import { datasetSummary } from "@/lib/repo/matches.ts";
 import { pct } from "@/components/format.ts";
 
-export const metadata = { title: "Fuentes y calidad de datos · GaleríaStats" };
+export const metadata = { title: "Fuentes y calidad de datos · GaluchaStats" };
 
 type Row = { competition: string; first: number; last: number; n: number };
 

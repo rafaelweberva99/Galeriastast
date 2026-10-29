@@ -6,6 +6,7 @@ import { currentUser, mustAcceptLegal } from "@/lib/auth.ts";
 import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { getTeam } from "@/lib/repo/teams.ts";
+import { CONTACT_EMAIL } from "@/lib/legal.ts";
 import { Ball } from "@/components/Ball.tsx";
 import "./globals.css";
 
@@ -13,7 +14,7 @@ const display = Oswald({ subsets: ["latin"], weight: ["500", "600", "700"], vari
 const body = Barlow({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-body" });
 
 export const metadata: Metadata = {
-  title: "GaleríaStats · ¿Eres cábala o yeta?",
+  title: "GaluchaStats · ¿Eres cábala o yeta?",
   description:
     "Tu carnet de hincha del fútbol chileno. Marca los partidos a los que fuiste al estadio y descubre si eres cábala o yeta.",
 };
@@ -35,7 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <div className="container">
             <Link href="/" className="brand">
               <Ball size={26} />
-              GaleríaStats
+              GaluchaStats
             </Link>
             <nav className="nav" aria-label="Principal">
               {full && <Link href="/partidos">Marcar partidos</Link>}
@@ -69,8 +70,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               <Link href="/privacidad">Política de Privacidad</Link>
               {user && <Link href="/perfil#privacidad-datos">Privacidad y datos</Link>}
             </nav>
+            <p className="footer-contact">
+              ¿Ideas para que GaluchaStats siga creciendo? Escríbenos a{" "}
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            </p>
             Resultados históricos: <Link href="/datos">worldfootball.net vía yorobot/cache.wfb.txt</Link>, con
-            chequeos de calidad propios. GaleríaStats no está afiliado a la ANFP ni a ningún club; los colores se usan
+            chequeos de calidad propios. GaluchaStats no está afiliado a la ANFP ni a ningún club; los colores se usan
             solo como referencia de los hinchas.
           </div>
         </footer>

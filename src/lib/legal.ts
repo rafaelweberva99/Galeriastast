@@ -7,7 +7,7 @@
 export const TERMS_VERSION = "1.0";
 export const PRIVACY_VERSION = "1.0";
 /** Fecha de la última versión publicada (yyyy-mm-dd). */
-export const LEGAL_DATE = "2026-10-28";
+export const LEGAL_DATE = "2026-10-29";
 /** Edad mínima para crear una cuenta sin intervención de padres o tutores. */
 export const MIN_AGE = 14;
 /** "Versión" de la declaración de edad: la edad mínima declarada. */
@@ -27,12 +27,15 @@ export const CONSENT_LABELS: Record<ConsentKind, string> = {
   public_profile: "Mostrar mi carnet en los rankings y en mi perfil público",
 };
 
+/** Correo de contacto, sugerencias y ejercicio de derechos. */
+export const CONTACT_EMAIL = "galuchastast@gmail.com";
+
 /** Marcadores a completar por el responsable antes de publicar. */
 export const CONTROLLER = {
   name: "[Nombre del responsable]",
   rut: "[RUT]",
   address: "[domicilio]",
-  email: "[correo de contacto]",
+  email: CONTACT_EMAIL,
 } as const;
 
 export function legalVersionLabel(version: string): string {

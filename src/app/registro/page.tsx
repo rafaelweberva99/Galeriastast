@@ -7,7 +7,7 @@ import { visibleClubs } from "@/lib/mvp.ts";
 import { Jersey } from "@/components/Jersey.tsx";
 import { RegisterForm } from "./RegisterForm.tsx";
 
-export const metadata = { title: "Crear carnet · GaleríaStats" };
+export const metadata = { title: "Crear carnet · GaluchaStats" };
 
 type Search = Promise<{ club?: string }>;
 

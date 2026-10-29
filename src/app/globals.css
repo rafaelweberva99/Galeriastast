@@ -285,3 +285,5 @@ fieldset.consents legend { font-weight: 600; font-size: 0.9rem; padding: 0 6px; 
 .danger-zone { border-color: color-mix(in srgb, var(--loss) 45%, var(--border)); }
 .footer-links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
 .footer-links a { font-weight: 600; }
+.footer-contact { margin: 0 0 8px; }
+.footer-contact a { font-weight: 600; }

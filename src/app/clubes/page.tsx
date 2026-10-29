@@ -6,7 +6,7 @@ import { visibleClubs } from "@/lib/mvp.ts";
 import { CURRENT_SEASON } from "@/lib/ticketing.ts";
 import { Jersey } from "@/components/Jersey.tsx";
 
-export const metadata = { title: "Clubes · GaleríaStats" };
+export const metadata = { title: "Clubes · GaluchaStats" };
 
 export default async function ClubsPage() {
   const clubs = visibleClubs(await listClubs(await getDb()));

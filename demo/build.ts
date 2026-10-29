@@ -1,5 +1,5 @@
 /**
- * Genera demo/dist/index.html: la vista previa de GaleríaStats en un solo archivo
+ * Genera demo/dist/index.html: la vista previa de GaluchaStats en un solo archivo
  * (datos + lógica + estilos), lista para abrir en cualquier navegador o publicar como página.
  * Requiere la base cargada (npm run data:fetch && npm run data:ingest).
  * Uso: npm run demo:build
@@ -78,18 +78,18 @@ function adaptCss(css: string): string {
 }
 const css = adaptCss(readFileSync(path.resolve("src/app/globals.css"), "utf8")) + readFileSync(path.resolve("demo/extra.css"), "utf8");
 
-const html = `<title>GaleríaStats</title>
+const html = `<title>GaluchaStats</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap">
 <style>${css}</style>
 <header class="site-header"><div class="container">
-  <a href="#inicio" data-nav="inicio" class="brand"><svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#111" stroke-width="1.5"/><path d="M16 9.5 L21.5 13.5 L19.4 20 L12.6 20 L10.5 13.5 Z" fill="#111"/><path d="M16 9.5 V3 M21.5 13.5 L27.6 11.3 M19.4 20 L23.3 25.4 M12.6 20 L8.7 25.4 M10.5 13.5 L4.4 11.3" stroke="#111" stroke-width="1.5"/></svg>GaleríaStats</a>
+  <a href="#inicio" data-nav="inicio" class="brand"><svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#111" stroke-width="1.5"/><path d="M16 9.5 L21.5 13.5 L19.4 20 L12.6 20 L10.5 13.5 Z" fill="#111"/><path d="M16 9.5 V3 M21.5 13.5 L27.6 11.3 M19.4 20 L23.3 25.4 M12.6 20 L8.7 25.4 M10.5 13.5 L4.4 11.3" stroke="#111" stroke-width="1.5"/></svg>GaluchaStats</a>
   <nav class="nav" id="nav" aria-label="Principal"></nav>
 </div></header>
 <div class="preview-note"><div class="container">Vista previa: tus partidos marcados se guardan solo en este navegador.</div></div>
 <main class="container" id="app"></main>
-<footer class="site-footer"><div class="container">Resultados históricos de worldfootball.net (vía yorobot/cache.wfb.txt), con chequeos de calidad propios. GaleríaStats no está afiliado a la ANFP ni a ningún club; los colores se usan solo como referencia de los hinchas.</div></footer>
+<footer class="site-footer"><div class="container"><p class="footer-contact">¿Ideas para que GaluchaStats siga creciendo? Escríbenos a <a href="mailto:galuchastast@gmail.com">galuchastast@gmail.com</a></p>Resultados históricos de worldfootball.net (vía yorobot/cache.wfb.txt), con chequeos de calidad propios. GaluchaStats no está afiliado a la ANFP ni a ningún club; los colores se usan solo como referencia de los hinchas.</div></footer>
 <script type="application/json" id="data">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>
 <script>${js.replace(/<\/script/gi, "<\\/script")}</script>
 `;

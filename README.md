@@ -1,4 +1,4 @@
-# GaleríaStats · ¿Eres cábala o yeta?
+# GaluchaStats · ¿Eres cábala o yeta?
 
 Carnet de hincha del fútbol chileno. Marcas los partidos de tu club a los que fuiste al estadio y la app
 calcula tu efectividad como hincha (**Mufómetro**), tus clásicos, finales, rachas, el modo **Infiltrado**

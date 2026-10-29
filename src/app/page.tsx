@@ -40,7 +40,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
       {cuenta === "eliminada" && !user && (
         <p className="notice success" role="status" style={{ marginBottom: 48 }}>
           Tu cuenta fue eliminada junto con tus partidos marcados, tus consentimientos y tus sesiones. Gracias por
-          haber sido parte de GaleríaStats.
+          haber sido parte de GaluchaStats.
         </p>
       )}
       <section className="pitch bleed hero">

@@ -10,7 +10,7 @@ import { DeleteAccountForm } from "./DeleteAccountForm.tsx";
 import { PrivacyForm } from "./PrivacyForm.tsx";
 import { ProfileForm } from "./ProfileForm.tsx";
 
-export const metadata = { title: "Perfil · GaleríaStats" };
+export const metadata = { title: "Perfil · GaluchaStats" };
 
 export default async function ProfilePage() {
   const user = await requireUser();

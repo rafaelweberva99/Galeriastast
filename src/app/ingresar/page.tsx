@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { currentUser } from "@/lib/auth.ts";
 import { LoginForm } from "./LoginForm.tsx";
 
-export const metadata = { title: "Ingresar · GaleríaStats" };
+export const metadata = { title: "Ingresar · GaluchaStats" };
 
 export default async function LoginPage({ searchParams }: { searchParams: Promise<{ sesiones?: string }> }) {
   if (await currentUser()) redirect("/carnet");

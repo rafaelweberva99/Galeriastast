@@ -1,5 +1,5 @@
 /**
- * Esquema relacional de GaleríaStats, válido para SQLite (desarrollo, tests) y Postgres (producción).
+ * Esquema relacional de GaluchaStats, válido para SQLite (desarrollo, tests) y Postgres (producción).
  * Datos deportivos (solo lectura para la app, cargados por scripts/ingest.ts) y datos de hinchas.
  * Va embebido como texto para que viaje dentro del bundle serverless.
  */

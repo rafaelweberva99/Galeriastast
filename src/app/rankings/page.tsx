@@ -5,7 +5,7 @@ import { listClubs } from "@/lib/repo/teams.ts";
 import { visibleClubs } from "@/lib/mvp.ts";
 import { ClubBadge } from "@/components/ClubBadge.tsx";
 
-export const metadata = { title: "Rankings · GaleríaStats" };
+export const metadata = { title: "Rankings · GaluchaStats" };
 
 export default async function RankingsPage() {
   const db = await getDb();

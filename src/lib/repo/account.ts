@@ -151,7 +151,7 @@ export async function registerUser(db: Db, input: RegisterInput): Promise<User> 
 // --- Exportación (derecho de acceso y portabilidad) --------------------------
 
 export interface UserDataExport {
-  format: "galeriastats-export";
+  format: "galuchastats-export";
   exportedAt: string;
   /** Versiones vigentes al momento de la descarga; las que aceptaste están en `consents`. */
   currentLegalVersions: { terms: string; privacy: string; date: string };
@@ -192,7 +192,7 @@ export async function exportUserData(db: Db, userId: number): Promise<UserDataEx
   );
   const num = (v: unknown) => (v === null || v === undefined ? null : Number(v));
   return {
-    format: "galeriastats-export",
+    format: "galuchastats-export",
     exportedAt: new Date().toISOString(),
     currentLegalVersions: { terms: REQUIRED_DOCS.terms, privacy: REQUIRED_DOCS.privacy, date: LEGAL_DATE },
     profile: {

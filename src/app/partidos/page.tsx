@@ -11,7 +11,7 @@ import { goalsForMatches } from "@/lib/repo/goals.ts";
 import { AttendanceToggle } from "@/components/AttendanceToggle.tsx";
 import { MatchRow } from "@/components/MatchRow.tsx";
 
-export const metadata = { title: "Marcar partidos · GaleríaStats" };
+export const metadata = { title: "Marcar partidos · GaluchaStats" };
 
 type Search = Promise<{ temporada?: string; competicion?: string; rival?: string; solo?: string }>;
 

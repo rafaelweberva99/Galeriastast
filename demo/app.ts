@@ -1,5 +1,5 @@
 /**
- * Vista previa de GaleríaStats que corre entera en el navegador (sin servidor).
+ * Vista previa de GaluchaStats que corre entera en el navegador (sin servidor).
  * Reutiliza la lógica real de la app (Mufómetro, clásicos, finales, temas de club, lector de correos)
  * y guarda los partidos marcados en el navegador del hincha.
  */

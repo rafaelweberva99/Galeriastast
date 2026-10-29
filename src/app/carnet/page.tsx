@@ -4,7 +4,7 @@ import { loadCarnet } from "@/lib/carnet.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { CarnetView } from "@/components/CarnetView.tsx";
 
-export const metadata = { title: "Mi carnet · GaleríaStats" };
+export const metadata = { title: "Mi carnet · GaluchaStats" };
 
 export default async function MyCarnetPage() {
   const user = await requireUser();

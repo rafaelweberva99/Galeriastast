@@ -3,8 +3,8 @@ import { CONTROLLER, MIN_AGE, TERMS_VERSION } from "@/lib/legal.ts";
 import { LegalHeader } from "@/components/legal/LegalHeader.tsx";
 
 export const metadata = {
-  title: "Términos y Condiciones · GaleríaStats",
-  description: "Condiciones de uso del carnet de hincha GaleríaStats.",
+  title: "Términos y Condiciones · GaluchaStats",
+  description: "Condiciones de uso del carnet de hincha GaluchaStats.",
 };
 
 export default function TermsPage() {
@@ -17,14 +17,14 @@ export default function TermsPage() {
       />
 
       <p style={{ marginTop: 20 }}>
-        Estos términos regulan el uso de GaleríaStats (el “servicio”), un carnet de hincha del fútbol chileno ofrecido
+        Estos términos regulan el uso de GaluchaStats (el “servicio”), un carnet de hincha del fútbol chileno ofrecido
         por <strong>{CONTROLLER.name}</strong> (contacto: {CONTROLLER.email}). Al crear una cuenta declaras haberlos
         leído y aceptado. Si no estás de acuerdo, no uses el servicio.
       </p>
 
       <h2>1. El servicio</h2>
       <p>
-        GaleríaStats te permite marcar los partidos a los que fuiste al estadio y ver estadísticas sobre ellos (como el
+        GaluchaStats te permite marcar los partidos a los que fuiste al estadio y ver estadísticas sobre ellos (como el
         Mufómetro, clásicos, finales y rankings). El servicio es <strong>gratuito</strong>, sin publicidad ni pagos. Es
         un proyecto con fines de entretenimiento y puede cambiar, interrumpirse o terminar en cualquier momento; en ese
         caso intentaremos avisarte con anticipación y darte la opción de descargar tus datos.
@@ -63,7 +63,7 @@ export default function TermsPage() {
 
       <h2>6. Sin afiliación</h2>
       <p>
-        GaleríaStats es independiente: <strong>no está afiliado, patrocinado ni respaldado por la ANFP</strong>, ni por
+        GaluchaStats es independiente: <strong>no está afiliado, patrocinado ni respaldado por la ANFP</strong>, ni por
         ningún club, estadio o ticketera. Los nombres y colores de los clubes se usan solo como referencia para los
         hinchas y pertenecen a sus titulares. Los enlaces a ticketeras son informativos; cualquier compra es entre tú y
         ellas.
@@ -76,7 +76,7 @@ export default function TermsPage() {
           para prestar el servicio, incluyendo mostrarlos en rankings y en tu perfil público si así lo eliges.
         </li>
         <li>
-          El diseño, el código y las marcas propias de GaleríaStats nos pertenecen o los usamos con licencia. Los datos
+          El diseño, el código y las marcas propias de GaluchaStats nos pertenecen o los usamos con licencia. Los datos
           deportivos de terceros mantienen sus licencias de origen.
         </li>
       </ul>

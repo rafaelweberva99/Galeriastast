@@ -9,7 +9,7 @@ import { DeleteAccountForm } from "../perfil/DeleteAccountForm.tsx";
 import { PrivacyForm } from "../perfil/PrivacyForm.tsx";
 import { AcceptForm } from "./AcceptForm.tsx";
 
-export const metadata = { title: "Actualizamos nuestras condiciones · GaleríaStats" };
+export const metadata = { title: "Actualizamos nuestras condiciones · GaluchaStats" };
 
 export default async function AcceptPage() {
   const user = await requireUser({ allowPendingLegal: true });

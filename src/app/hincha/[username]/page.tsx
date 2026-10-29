@@ -9,7 +9,7 @@ type Params = Promise<{ username: string }>;
 
 export async function generateMetadata({ params }: { params: Params }) {
   const { username } = await params;
-  return { title: `@${username} · GaleríaStats` };
+  return { title: `@${username} · GaluchaStats` };
 }
 
 export default async function FanPage({ params }: { params: Params }) {

@@ -3,8 +3,8 @@ import { CONTROLLER, MIN_AGE, PRIVACY_VERSION } from "@/lib/legal.ts";
 import { LegalHeader } from "@/components/legal/LegalHeader.tsx";
 
 export const metadata = {
-  title: "Política de Privacidad · GaleríaStats",
-  description: "Cómo GaleríaStats trata tus datos personales, conforme a la Ley 19.628 reformada por la Ley 21.719.",
+  title: "Política de Privacidad · GaluchaStats",
+  description: "Cómo GaluchaStats trata tus datos personales, conforme a la Ley 19.628 reformada por la Ley 21.719.",
 };
 
 export default function PrivacyPage() {
@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       />
 
       <p style={{ marginTop: 20 }}>
-        En GaleríaStats (el “servicio”) cuidamos tus datos personales. Esta política explica, en simple, qué datos
+        En GaluchaStats (el “servicio”) cuidamos tus datos personales. Esta política explica, en simple, qué datos
         tratamos, para qué, por cuánto tiempo, con quién se comparten y cómo puedes ejercer tus derechos. Se rige por la
         Ley N° 19.628 sobre Protección de la Vida Privada, con las modificaciones de la Ley N° 21.719, que rigen
         plenamente desde el 1 de diciembre de 2026.
