@@ -192,6 +192,15 @@ export function competitionHint(text: string): string | null {
   return null;
 }
 
+const WEEKDAYS: Record<string, number> = { dom: 0, lun: 1, mar: 2, mie: 3, jue: 4, vie: 5, sab: 6 };
+
+/** Día de la semana escrito junto a la fecha ("lun. 24 feb.", "Sábado 3 de mayo"), o null. */
+function weekdayOf(line: string): number | null {
+  const t = line.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const m = t.match(/\b(dom|lun|mar|mie|jue|vie|sab)[a-z]*\.?,?\s+\d{1,2}\b/);
+  return m ? WEEKDAYS[m[1]] : null;
+}
+
 /** Ventana para la fecha de compra: se compra antes del partido (a veces semanas antes). */
 const PURCHASE_WINDOW_DAYS = 45;
 
@@ -206,12 +215,6 @@ const PURCHASE_WINDOW_DAYS = 45;
 export async function analyzeTicket(db: Db, clubId: string, text: string, index: TeamMentionIndex): Promise<TicketAnalysis> {
   const plain = emailToText(text);
   const providers = detectProviders(plain).map((p) => p.name);
-  // Agrupa líneas: cada grupo parte en una línea con fecha y sigue hasta la próxima fecha.
-  const groups: string[] = [];
-  for (const line of plain.split(/\r?\n/)) {
-    if (findDates(line).length || !groups.length) groups.push(line);
-    else groups[groups.length - 1] += `\n${line}`;
-  }
   if (!findDates(plain).length) return { candidates: [], unmatchedDates: [], providers };
 
   const clubMatches = await listClubMatches(db, clubId);
@@ -219,17 +222,32 @@ export async function analyzeTicket(db: Db, clubId: string, text: string, index:
   const opponents = opponentIndex(clubMatches, clubId);
   const findRivals = (t: string) => [...new Set([...index.find(t), ...opponents.find(t)])].filter((id) => id !== clubId);
   const globalRivals = findRivals(plain);
+  const rivalOf = (m: Match) => (m.homeTeamId === clubId ? m.awayTeamId : m.homeTeamId);
+  const today = new Date().toISOString().slice(0, 10);
+
+  // Cada compra es una línea con fecha y el texto que la acompaña. En la tabla de "Mis compras" (escritorio) el
+  // partido va en la misma línea que la fecha; en las tarjetas de la app, el nombre del partido va ARRIBA de la fecha.
+  const lines = plain.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+  const dateLines = lines.flatMap((l, i) => (findDates(l).length ? [i] : []));
+  const inline = dateLines.filter((i) => findRivals(lines[i]).length).length;
+  const firstRivalLine = lines.findIndex((l) => findRivals(l).length > 0);
+  const titleFirst = inline < dateLines.length / 2 && firstRivalLine >= 0 && firstRivalLine < dateLines[0];
+
   const candidates = new Map<string, TicketCandidate>();
   const unmatchedDates: string[] = [];
-  for (const group of groups) {
+  dateLines.forEach((i, k) => {
+    const own = lines[i];
+    const before = lines.slice(k === 0 ? 0 : dateLines[k - 1] + 1, i).join("\n");
+    const after = lines.slice(i + 1, k + 1 < dateLines.length ? dateLines[k + 1] : lines.length).join("\n");
+    const group = findRivals(own).length ? `${own}\n${after}` : titleFirst ? `${before}\n${own}` : `${own}\n${after}`;
     const rivals = findRivals(group);
     // Una compra que nombra un partido ("X vs. Y") con un rival que no reconocemos no se adivina por fecha.
     const namesUnknownMatch = !rivals.length && /\bvs\.?\s/i.test(group);
     const hint = competitionHint(group);
-    for (const d of findDates(group)) {
+    const weekday = weekdayOf(own);
+    for (const d of findDates(own)) {
       const when = d.year !== null ? `${pad(d.day)}/${pad(d.month)}/${d.year}` : `${pad(d.day)}/${pad(d.month)}`;
       const iso = d.year !== null ? `${d.year}-${pad(d.month)}-${pad(d.day)}` : null;
-      const rivalOf = (m: Match) => (m.homeTeamId === clubId ? m.awayTeamId : m.homeTeamId);
       let found: TicketCandidate[] = [];
       if (iso && rivals.length) {
         const start = Date.parse(iso) - 86_400_000;
@@ -244,20 +262,31 @@ export async function analyzeTicket(db: Db, clubId: string, text: string, index:
             found.push({ match: best, reason: exact ? `fecha ${when} y rival` : `compra del ${when} y rival` });
           }
         }
-      } else if (!namesUnknownMatch) {
+      } else if (!iso && rivals.length) {
+        // Fecha sin año (tarjetas de la app: "lun. 24 feb."): el partido contra ese rival ese día; el día de la
+        // semana define el año y, si no está, se toma el más reciente ya jugado.
+        const md = `${pad(d.month)}-${pad(d.day)}`;
+        for (const rival of rivals) {
+          const pool = clubMatches.filter(
+            (m) =>
+              rivalOf(m) === rival &&
+              m.date <= today &&
+              m.date.slice(5) === md &&
+              (weekday === null || new Date(`${m.date}T12:00:00Z`).getUTCDay() === weekday),
+          );
+          const best = pool.sort((a, b) => b.date.localeCompare(a.date))[0];
+          if (best) found.push({ match: best, reason: `fecha ${when}${weekday === null ? "" : " (día de la semana)"} y rival` });
+        }
+      } else if (iso && !namesUnknownMatch) {
         const rivalsHere = rivals.length ? rivals : globalRivals;
         found = clubMatches
-          .filter((m) => {
-            const rivalOk = rivalsHere.length === 0 || rivalsHere.includes(rivalOf(m));
-            const dateOk = iso ? dayDiff(m.date, iso) <= 1 : rivalsHere.length > 0 && m.date.slice(5) === `${pad(d.month)}-${pad(d.day)}`;
-            return rivalOk && dateOk;
-          })
+          .filter((m) => (rivalsHere.length === 0 || rivalsHere.includes(rivalOf(m))) && dayDiff(m.date, iso) <= 1)
           .map((m) => ({ match: m, reason: rivalsHere.length ? `fecha ${when} y rival mencionado` : `fecha ${when}` }));
       }
       for (const c of found) if (!candidates.has(c.match.id)) candidates.set(c.match.id, c);
-      if (!found.length && iso) unmatchedDates.push(when);
+      if (!found.length) unmatchedDates.push(when);
     }
-  }
+  });
   return {
     candidates: [...candidates.values()].sort((a, b) => b.match.date.localeCompare(a.match.date)),
     unmatchedDates,

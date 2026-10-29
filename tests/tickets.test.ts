@@ -124,3 +124,37 @@ Libertadores Jornada 2 Fase de Grupos`;
     await db.close();
   });
 });
+
+describe("captura de la app (tarjetas: partido arriba, fecha sin año abajo)", () => {
+  it("empareja cada fecha con el partido de su tarjeta y usa el día de la semana para el año", async () => {
+    const { analyzeTicket } = await import("../src/lib/ingest/tickets.ts");
+    const db = await openSqlite(":memory:");
+    await db.exec(`
+      INSERT INTO competitions VALUES ('primera-division', 'Primera División', 'liga', 1);
+      INSERT INTO teams (id, name, short_name) VALUES ('colo-colo', 'Colo-Colo', 'Colo-Colo'), ('ohiggins', 'O''Higgins', 'O''Higgins'),
+        ('nublense', 'Ñublense', 'Ñublense'), ('union-la-calera', 'Unión La Calera', 'La Calera');
+      INSERT INTO matches (id, date, season, competition_id, home_team_id, away_team_id, home_goals, away_goals, source) VALUES
+        ('ohi-2025', '2025-02-24', 2025, 'primera-division', 'colo-colo', 'ohiggins', 0, 0, 't'),
+        ('ohi-2020', '2020-02-24', 2020, 'primera-division', 'colo-colo', 'ohiggins', 1, 0, 't'),
+        ('nub-2025', '2025-05-19', 2025, 'primera-division', 'colo-colo', 'nublense', 2, 0, 't'),
+        ('cal-2026', '2026-02-15', 2026, 'primera-division', 'colo-colo', 'union-la-calera', 1, 0, 't'),
+        ('cal-2015', '2015-09-14', 2015, 'primera-division', 'colo-colo', 'union-la-calera', 1, 1, 't');
+    `);
+    const ocr = `Colo-Colo vs. O'Higgins
+lun. 24 feb. - 20:00 hrs
+Estadio Monumental - E-Ticket
+Entregada
+Colo-Colo vs. Ñublense
+lun. 19 may. - 20:00 hrs
+Estadio Monumental - E-Ticket
+Entregada
+Colo-Colo vs. Unión La Calera
+dom. 15 feb. - 20:00 hrs
+Estadio Monumental - E-Ticket`;
+    const idx = new TeamMentionIndex((await db.all("SELECT id, name, short_name FROM teams")).map((t) => ({ id: String(t.id), name: String(t.name), short: String(t.short_name) })));
+    const r = await analyzeTicket(db, "colo-colo", ocr, idx);
+    // 24-feb fue lunes en 2025 (no en 2020); cada fecha va con el partido de su propia tarjeta.
+    expect(r.candidates.map((c) => c.match.id).sort()).toEqual(["cal-2026", "nub-2025", "ohi-2025"]);
+    await db.close();
+  });
+});
