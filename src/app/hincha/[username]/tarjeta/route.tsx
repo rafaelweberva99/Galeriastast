@@ -14,7 +14,14 @@ export async function GET(req: Request, { params }: { params: Promise<{ username
   const viewer = fan && !fan.isPublic ? await currentUser() : null;
   if (!fan || (!fan.isPublic && viewer?.id !== fan.id)) return new Response("No encontrado", { status: 404 });
   const { club, carnet } = await loadCarnet(db, fan);
-  const image = shareCardImage({ username: fan.username, club: clubIdentity(club), clubName: club.name, carnet, site: siteUrl() });
+  const image = await shareCardImage({
+    username: fan.username,
+    memberId: fan.id,
+    club: clubIdentity(club),
+    clubName: club.name,
+    carnet,
+    site: siteUrl(),
+  });
   const headers = new Headers(image.headers);
   headers.set("Cache-Control", fan.isPublic ? "public, max-age=600" : "private, no-store");
   if (new URL(req.url).searchParams.has("descargar")) {

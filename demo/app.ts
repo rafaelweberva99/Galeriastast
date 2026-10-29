@@ -161,11 +161,12 @@ function score(m: Match) {
 }
 
 function matchRow(m: Match, highlight: string | null, extra = "") {
-  const name = (id: string, label: string) => (id === highlight ? `<strong>${esc(label)}</strong>` : `<span>${esc(label)}</span>`);
+  const name = (id: string, label: string, side: string) =>
+    id === highlight ? `<strong class="team ${side}">${esc(label)}</strong>` : `<span class="team ${side}">${esc(label)}</span>`;
   const o = highlight ? outcomeFor(m, highlight) : null;
   const meta = [m.competitionName, m.tournament, m.stage].filter(Boolean).map(esc).join(" · ");
   return `<div class="match ${o ?? ""}"><div class="match-date">${fdate(m.date)}</div>
-    <div class="match-teams">${name(m.homeTeamId, m.homeTeamName)}${score(m)}${name(m.awayTeamId, m.awayTeamName)}
+    <div class="match-teams versus">${name(m.homeTeamId, m.homeTeamName, "home")}${score(m)}${name(m.awayTeamId, m.awayTeamName, "away")}
     <span class="match-meta">${meta}${m.isFinal ? ` <span class="match-final">· 🏆 Final</span>` : ""}</span></div><div>${extra}</div></div>`;
 }
 
@@ -384,7 +385,7 @@ function viewImportar(clubId: string) {
       ? `<form class="card stack" data-form="import-confirm"><h2 style="margin:0">Encontramos ${cands.length} ${cands.length === 1 ? "partido" : "partidos"}</h2>
       ${cands
         .map(
-          (m) => `<label class="match" style="cursor:pointer"><span class="match-date">${fdate(m.date)}</span><span class="match-teams"><strong>${esc(m.homeTeamName)} ${m.homeGoals}-${m.awayGoals} ${esc(m.awayTeamName)}</strong><span class="match-meta">${[m.competitionName, m.tournament, m.stage].filter(Boolean).map(esc).join(" · ")}${saved.attended[m.id] ? " · ya estaba marcado" : ""}</span></span><input type="checkbox" name="matchId" value="${esc(m.id)}" ${saved.attended[m.id] ? "" : "checked"}></label>`,
+          (m) => `<label class="match match-pick" style="cursor:pointer"><span class="match-date">${fdate(m.date)}</span><span class="match-teams"><strong>${esc(m.homeTeamName)} ${m.homeGoals}-${m.awayGoals} ${esc(m.awayTeamName)}</strong><span class="match-meta">${[m.competitionName, m.tournament, m.stage].filter(Boolean).map(esc).join(" · ")}${saved.attended[m.id] ? " · ya estaba marcado" : ""}</span></span><input type="checkbox" name="matchId" value="${esc(m.id)}" ${saved.attended[m.id] ? "" : "checked"}></label>`,
         )
         .join("")}
       <div class="row"><select id="import-mode" aria-label="¿Dónde estuviste?"><option value="propia">Fui a la galería de mi club</option><option value="infiltrado">Fui de infiltrado</option></select><button class="btn" type="submit">Marcar seleccionados</button></div></form>`

@@ -17,7 +17,7 @@ export function Mufometro({ value, verdict }: { value: number | null; verdict: V
   const shown = verdict.key === "sin-datos" ? null : value;
   const [nx, ny] = point(shown ?? 50);
   return (
-    <svg viewBox="0 0 200 120" width="220" role="img" aria-label={`Mufómetro: ${verdict.label}`}>
+    <svg viewBox="0 0 200 128" width="220" style={{ maxWidth: "100%", height: "auto" }} role="img" aria-label={`Mufómetro: ${verdict.label}`}>
       <path d={arc(0, 40)} stroke="var(--loss)" strokeWidth="14" fill="none" />
       <path d={arc(40, 60)} stroke="var(--draw)" strokeWidth="14" fill="none" />
       <path d={arc(60, 100)} stroke="var(--win)" strokeWidth="14" fill="none" />
@@ -27,7 +27,15 @@ export function Mufometro({ value, verdict }: { value: number | null; verdict: V
           <circle cx={cx} cy={cy} r="6" fill="var(--text)" />
         </>
       )}
-      <text x={cx} y={cy + 22} textAnchor="middle" fontSize="18" fontWeight="800" fill="var(--text)">
+      <text
+        x={cx}
+        y={cy + 30}
+        textAnchor="middle"
+        fontSize="20"
+        fontWeight="700"
+        fontFamily="var(--font-display), 'Arial Narrow', sans-serif"
+        fill="var(--text)"
+      >
         {shown === null ? "?" : `${shown.toFixed(0)}%`}
       </text>
     </svg>

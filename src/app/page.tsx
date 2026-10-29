@@ -45,7 +45,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
       )}
       <section className="pitch bleed hero">
         <div className="container">
-          <p className="display" style={{ fontSize: "1.1rem", letterSpacing: "0.2em", opacity: 0.9, margin: 0 }}>
+          <p className="display hero-kicker">
             Carnet de hincha · Fútbol chileno
           </p>
           <h1>¿Eres cábala o yeta?</h1>

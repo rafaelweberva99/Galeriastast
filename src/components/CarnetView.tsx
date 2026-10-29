@@ -285,7 +285,7 @@ export function CarnetView({
         <div className="card">
           <h2 className="section-title">Por competición</h2>
           <BreakdownTable rows={c.byCompetition} label="Competición" />
-          <h2 className="section">Rivales más vistos</h2>
+          <h2 className="section-title section">Rivales más vistos</h2>
           <BreakdownTable rows={c.byOpponent.slice(0, 10)} label="Rival" />
         </div>
       </section>

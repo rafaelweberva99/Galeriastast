@@ -54,15 +54,16 @@ export function MatchRow({
   highlight?: string;
   goals?: Goal[];
 }) {
-  const name = (id: string, label: string) => (id === highlight ? <strong>{label}</strong> : <span>{label}</span>);
+  const name = (id: string, label: string, side: "home" | "away") =>
+    id === highlight ? <strong className={`team ${side}`}>{label}</strong> : <span className={`team ${side}`}>{label}</span>;
   const outcome = highlight ? outcomeFor(match, highlight) : null;
   return (
     <div className={`match ${outcome ?? ""}`}>
       <div className="match-date">{formatDate(match.date)}</div>
-      <div className="match-teams">
-        {name(match.homeTeamId, match.homeTeamName)}
+      <div className="match-teams versus">
+        {name(match.homeTeamId, match.homeTeamName, "home")}
         <Score match={match} />
-        {name(match.awayTeamId, match.awayTeamName)}
+        {name(match.awayTeamId, match.awayTeamName, "away")}
         <span className="match-meta">
           {match.competitionName}
           {match.tournament ? ` · ${match.tournament}` : ""}

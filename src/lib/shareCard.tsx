@@ -1,28 +1,98 @@
 /**
  * Imagen para compartir el carnet (1200×630, formato de tarjeta de X/Twitter, WhatsApp, etc.).
- * Sin datos personales más allá del nombre de usuario y las cifras del carnet.
+ * Sin datos personales más allá del nombre de usuario, el N° de socio y las cifras del carnet.
+ * Tipografías: Oswald y Barlow (SIL OFL, ver src/lib/fonts/), recortadas a Latin-1 y empaquetadas
+ * con el proyecto para no depender de la red al generar la imagen.
  */
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import type { ClubIdentity } from "./clubTheme.ts";
-import { jerseyNumberColor, jerseySvg } from "./clubTheme.ts";
+import { jerseyNumberColor, jerseySvg, luminance, mix } from "./clubTheme.ts";
 import { CENTENARIO_GOAL } from "./domain/centenario.ts";
 import type { Carnet } from "./domain/stats.ts";
 
 export const SHARE_SIZE = { width: 1200, height: 630 };
 
-export function shareCardImage(opts: { username: string; club: ClubIdentity; clubName: string; carnet: Carnet; site: string }) {
-  const { username, club, clubName, carnet: c, site } = opts;
+const FONT_DIR = path.join(process.cwd(), "src/lib/fonts");
+const FONT_FILES = [
+  { name: "Oswald", file: "Oswald-Bold.ttf", weight: 700 },
+  { name: "Barlow", file: "Barlow-Medium.ttf", weight: 500 },
+  { name: "Barlow", file: "Barlow-Bold.ttf", weight: 700 },
+] as const;
+
+let fontsPromise: Promise<{ name: string; data: Buffer; weight: 500 | 700; style: "normal" }[]> | null = null;
+function loadFonts() {
+  fontsPromise ??= Promise.all(
+    FONT_FILES.map(async (f) => ({ name: f.name, weight: f.weight, style: "normal" as const, data: await readFile(path.join(FONT_DIR, f.file)) })),
+  ).catch((err) => {
+    fontsPromise = null;
+    throw err;
+  });
+  return fontsPromise;
+}
+
+/** "#rrggbb" + opacidad -> "rgba(...)" (satori no entiende color-mix). */
+function alpha(hex: string, a: number): string {
+  const n = hex.replace("#", "");
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(n.slice(i, i + 2), 16));
+  return `rgba(${r},${g},${b},${a})`;
+}
+
+const DISPLAY = "Oswald";
+const BODY = "Barlow";
+const JERSEY = 250;
+const MEDAL = 300;
+
+export async function shareCardImage(opts: {
+  username: string;
+  memberId: number;
+  club: ClubIdentity;
+  clubName: string;
+  carnet: Carnet;
+  site: string;
+}) {
+  const { username, memberId, club, clubName, carnet: c, site } = opts;
+  const fonts = await loadFonts();
   const ink = club.colors.ink;
-  const jersey = `data:image/svg+xml;utf8,${encodeURIComponent(jerseySvg(club, 330, undefined, "share"))}`;
+  const j = club.jersey;
+  // En base64: satori no muestra los SVG "utf8" con caracteres no ASCII (p. ej. "Concepción" en el aria-label).
+  const jersey = `data:image/svg+xml;base64,${Buffer.from(jerseySvg(club, JERSEY, undefined, "share")).toString("base64")}`;
   const unlocked = c.total >= CENTENARIO_GOAL;
   const toShirt = Math.min(c.total, CENTENARIO_GOAL);
   const eff = c.effectiveness === null ? "—" : `${Math.round(c.effectiveness)}%`;
-  const stat = (value: string, label: string) => (
-    <div style={{ display: "flex", flexDirection: "column", marginRight: 48 }}>
-      <div style={{ fontSize: 84, fontWeight: 800, lineHeight: 1 }}>{value}</div>
-      <div style={{ fontSize: 26, opacity: 0.85, marginTop: 6 }}>{label}</div>
+  const handle = `@${username}`.toUpperCase();
+  // Oswald en mayúsculas mide ~0,55 em por carácter: achica los usuarios largos para que quepan en 700 px.
+  const handleSize = Math.max(56, Math.min(104, Math.floor(700 / (handle.length * 0.56))));
+  // La camiseta va sobre un medallón; si su color se confunde con el fondo, el medallón es sólido.
+  const bodyLum = luminance(j.body);
+  const medal =
+    Math.abs(bodyLum - luminance(club.colors.primary)) > 0.3
+      ? alpha(ink, 0.12)
+      : Math.abs(bodyLum - luminance(ink)) > 0.3
+        ? ink
+        : mix(club.colors.primary, -0.5);
+  const plate = j.motif === "stripes" || j.motif === "hoops" || j.motif === "halves";
+  const numberTop = (j.motif === "chest-band" ? 52 : 46) / 64;
+  const numberSize = Math.round((17 / 64) * JERSEY * 1.05);
+
+  const stat = (value: string, label: string, divider: boolean) => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        paddingRight: 32,
+        marginRight: 32,
+        borderRight: divider ? `2px solid ${alpha(ink, 0.3)}` : "none",
+      }}
+    >
+      <div style={{ fontFamily: DISPLAY, fontSize: 112, fontWeight: 700, lineHeight: 1 }}>{value}</div>
+      <div style={{ fontSize: 22, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1.5, opacity: 0.85, marginTop: 8 }}>
+        {label}
+      </div>
     </div>
   );
+
   return new ImageResponse(
     (
       <div
@@ -32,87 +102,153 @@ export function shareCardImage(opts: { username: string; club: ClubIdentity; clu
           display: "flex",
           background: club.colors.card,
           color: ink,
-          fontFamily: "sans-serif",
-          padding: "56px 64px",
+          fontFamily: BODY,
+          fontWeight: 500,
+          padding: "52px 60px 48px",
           position: "relative",
         }}
       >
+        {/* Líneas de cancha: mitad y círculo central detrás de la camiseta, como en el carnet del sitio. */}
+        <div style={{ position: "absolute", left: 959, top: 0, width: 2, height: 630, background: alpha(ink, 0.12) }} />
+        <div
+          style={{
+            position: "absolute",
+            left: 960 - 210,
+            top: 210 - 210,
+            width: 420,
+            height: 420,
+            borderRadius: 999,
+            border: `2px solid ${alpha(ink, 0.12)}`,
+          }}
+        />
         {club.colors.band && (
           <div
             style={{
               position: "absolute",
               right: 300,
-              top: -40,
-              width: 70,
-              height: 760,
+              top: -60,
+              width: 64,
+              height: 780,
               background: club.colors.band,
               transform: "rotate(18deg)",
               opacity: 0.9,
             }}
           />
         )}
+        {/* Franja inferior tipo carnet. */}
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 12, background: club.colors.band ?? ink, opacity: 0.95 }} />
+
         <div style={{ display: "flex", flexDirection: "column", flex: 1, justifyContent: "space-between" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 26, letterSpacing: 4, textTransform: "uppercase", opacity: 0.85 }}>
+            <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: 5, textTransform: "uppercase", opacity: 0.85 }}>
               {`Carnet de hincha · ${club.nickname}`}
             </div>
-            <div style={{ fontSize: 76, fontWeight: 800, marginTop: 8, lineHeight: 1.05 }}>{`@${username}`}</div>
-            <div style={{ fontSize: 30, opacity: 0.9, marginTop: 6 }}>{clubName}</div>
-          </div>
-          <div style={{ display: "flex", alignItems: "flex-end" }}>
-            {stat(String(c.total), c.total === 1 ? "partido en la galería" : "partidos en la galería")}
-            {stat(eff, "efectividad cuando va")}
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", alignItems: "center", fontSize: 30, fontWeight: 700 }}>
+            <div style={{ fontFamily: DISPLAY, fontSize: handleSize, fontWeight: 700, lineHeight: 1.05, marginTop: 6 }}>{handle}</div>
+            <div style={{ display: "flex", alignItems: "center", marginTop: 12 }}>
               <div
                 style={{
                   display: "flex",
+                  fontFamily: DISPLAY,
+                  fontSize: 28,
+                  letterSpacing: 2,
+                  padding: "4px 14px",
+                  borderRadius: 8,
+                  border: `3px solid ${ink}`,
+                  marginRight: 18,
+                }}
+              >
+                {`SOCIO N° ${String(memberId).padStart(6, "0")}`}
+              </div>
+              <div style={{ fontSize: 30, opacity: 0.92 }}>{clubName}</div>
+            </div>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "flex-end" }}>
+            {stat(String(c.total), c.total === 1 ? "partido en la galería" : "partidos en la galería", true)}
+            {stat(eff, "efectividad cuando va", false)}
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", width: 620 }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: DISPLAY,
+                  fontSize: 30,
+                  textTransform: "uppercase",
+                  letterSpacing: 1,
                   background: ink,
                   color: club.colors.primary,
-                  padding: "6px 18px",
+                  padding: "4px 20px",
                   borderRadius: 999,
                   marginRight: 18,
                 }}
               >
                 {c.effectiveness === null ? "Sin partidos aún" : c.verdict.label}
               </div>
-              <div style={{ display: "flex", fontSize: 26, fontWeight: 400, opacity: 0.9 }}>
-                {unlocked ? "Camiseta de los 100: desbloqueada" : `Camiseta de los 100: ${toShirt}/100`}
+              <div style={{ display: "flex", fontSize: 24, fontWeight: 700, opacity: 0.92 }}>
+                {unlocked ? "Camiseta de los 100: ¡desbloqueada!" : `Camiseta de los 100: ${toShirt}/100`}
               </div>
             </div>
-            <div style={{ display: "flex", width: 640, height: 14, borderRadius: 999, background: "rgba(255,255,255,0.35)", marginTop: 14 }}>
+            <div style={{ display: "flex", width: 620, height: 14, borderRadius: 999, background: alpha(ink, 0.25), marginTop: 16 }}>
               <div style={{ width: `${(toShirt / CENTENARIO_GOAL) * 100}%`, height: 14, borderRadius: 999, background: ink }} />
             </div>
           </div>
         </div>
+
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between", width: 360 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <div style={{ display: "flex", position: "relative", width: 330, height: 330 }}>
-            <img src={jersey} width={330} height={330} alt="" />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: MEDAL,
+              height: MEDAL,
+              borderRadius: 999,
+              background: medal,
+              marginTop: 8,
+              position: "relative",
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={jersey} width={JERSEY} height={JERSEY} alt="" />
             {/* El número va como texto de la imagen: dentro del SVG no hay fuentes. */}
             <div
               style={{
                 position: "absolute",
-                top: 158,
+                top: (MEDAL - JERSEY) / 2 + numberTop * JERSEY - numberSize * 0.98,
                 left: 0,
-                width: 330,
+                width: MEDAL,
                 display: "flex",
                 justifyContent: "center",
-                fontSize: 92,
-                color: jerseyNumberColor(club),
               }}
             >
-              12
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: DISPLAY,
+                  fontSize: numberSize,
+                  fontWeight: 700,
+                  lineHeight: 1.1,
+                  color: jerseyNumberColor(club),
+                  background: plate ? j.body : "transparent",
+                  borderRadius: 10,
+                  padding: plate ? "0 10px" : 0,
+                }}
+              >
+                12
+              </div>
             </div>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", alignSelf: "flex-end" }}>
-            <div style={{ fontSize: 40, fontWeight: 800, letterSpacing: 1 }}>GaluchaStats</div>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", alignSelf: "flex-end", marginBottom: 8 }}>
+            <div style={{ fontFamily: DISPLAY, fontSize: 42, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase" }}>
+              GaluchaStats
+            </div>
             <div style={{ fontSize: 22, opacity: 0.85 }}>{site.replace(/^https?:\/\//, "")}</div>
           </div>
         </div>
       </div>
     ),
-    SHARE_SIZE,
+    { ...SHARE_SIZE, fonts },
   );
 }

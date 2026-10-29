@@ -190,15 +190,16 @@ function motifSvg(j: Jersey): string {
   }
 }
 
-/** Camiseta genérica del club en SVG. `number` va en el pecho (el 12 es la hinchada). */
 /** Color del número en el pecho: el primero de la camiseta que contraste con el fondo. */
 export function jerseyNumberColor(club: ClubIdentity): string {
   const j = club.jersey;
-  const bg = j.motif === "chest-band" ? j.motifColor : j.body;
+  // Con banda en el pecho el número va debajo de la banda, sobre el cuerpo de la camiseta.
+  const bg = j.body;
   const candidates = [j.collar, j.trim, j.motifColor, "#111111", "#ffffff"];
   return candidates.find((c) => Math.abs(luminance(c) - luminance(bg)) > 0.35) ?? inkFor(bg);
 }
 
+/** Camiseta genérica del club en SVG. `number` va en el pecho (el 12 es la hinchada). */
 export function jerseySvg(club: ClubIdentity, size: number, number?: string, uid = club.id): string {
   const j = club.jersey;
   const clip = `jc-${uid.replace(/[^a-z0-9-]/gi, "")}-${size}`;

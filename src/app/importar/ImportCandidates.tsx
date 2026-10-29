@@ -15,7 +15,7 @@ export function ImportCandidates({ state, note }: { state: ImportPreview; note?:
       </h2>
       {note}
       {candidates.map((c) => (
-        <label key={c.id} className="match" style={{ cursor: "pointer" }}>
+        <label key={c.id} className="match match-pick" style={{ cursor: "pointer" }}>
           <span className="match-date">{formatDate(c.date)}</span>
           <span className="match-teams">
             <strong>{c.label}</strong>
@@ -40,7 +40,7 @@ export function ImportCandidates({ state, note }: { state: ImportPreview; note?:
                 <strong>Fila {r.line}:</strong> {r.text} <span className="muted">— {r.problem}</span>
               </p>
               {r.options.map((c) => (
-                <label key={c.id} className="match" style={{ cursor: "pointer" }}>
+                <label key={c.id} className="match match-pick" style={{ cursor: "pointer" }}>
                   <span className="match-date">{formatDate(c.date)}</span>
                   <span className="match-teams">
                     <strong>{c.label}</strong>
