@@ -4,8 +4,8 @@
  * todos los hinchas deberán aceptarla de nuevo en /aceptar antes de seguir usando las páginas privadas.
  */
 
-export const TERMS_VERSION = "1.0";
-export const PRIVACY_VERSION = "1.0";
+export const TERMS_VERSION = "1.1";
+export const PRIVACY_VERSION = "1.1";
 /** Fecha de la última versión publicada (yyyy-mm-dd). */
 export const LEGAL_DATE = "2026-10-29";
 /** Edad mínima para crear una cuenta sin intervención de padres o tutores. */
@@ -26,6 +26,13 @@ export const CONSENT_LABELS: Record<ConsentKind, string> = {
   age: `Declaración de tener ${MIN_AGE} años o más`,
   public_profile: "Mostrar mi carnet en los rankings y en mi perfil público",
 };
+
+/** Dónde se aloja el servicio y se guardan los datos (Términos §6 y Privacidad §6). */
+export const HOSTING = {
+  database: "Neon Inc. (PostgreSQL)",
+  app: "Vercel Inc.",
+  region: "Estados Unidos (costa este)",
+} as const;
 
 /** Correo de contacto, sugerencias y ejercicio de derechos. */
 export const CONTACT_EMAIL = "galuchastats@gmail.com";

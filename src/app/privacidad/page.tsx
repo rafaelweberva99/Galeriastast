@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CONTROLLER, MIN_AGE, PRIVACY_VERSION } from "@/lib/legal.ts";
+import { CONTROLLER, HOSTING, MIN_AGE, PRIVACY_VERSION } from "@/lib/legal.ts";
 import { LegalHeader } from "@/components/legal/LegalHeader.tsx";
 
 export const metadata = {
@@ -89,8 +89,9 @@ export default function PrivacyPage() {
       </ul>
       <p>
         No vendemos tus datos, no los usamos para publicidad y no hacemos perfiles comerciales. El Mufómetro es un
-        cálculo automático y lúdico (porcentaje de puntos obtenidos en los partidos que marcaste): no produce efectos
-        jurídicos ni te afecta de manera significativa.
+        cálculo automático y lúdico (porcentaje de puntos obtenidos en los partidos que marcaste), igual que los niveles
+        del carnet y los premios: son solo para fines de entretención, no producen efectos jurídicos ni te afectan de
+        manera significativa.
       </p>
 
       <h2>4. Base de licitud</h2>
@@ -118,7 +119,7 @@ export default function PrivacyPage() {
         <li>
           Si eliminas tu cuenta, se borran de inmediato de la base de datos: usuario, correo, contraseña cifrada,
           partidos marcados, consentimientos y sesiones. Las copias de respaldo del proveedor de base de datos pueden
-          conservarlos hasta [plazo de respaldos, p. ej. 7] días, tras lo cual se sobrescriben.
+          conservarlos hasta 7 días, tras lo cual se sobrescriben.
         </li>
         <li>Las sesiones vencen a los 30 días o cuando cierras sesión.</li>
         <li>El texto de los comprobantes de entradas no se guarda.</li>
@@ -127,9 +128,20 @@ export default function PrivacyPage() {
 
       <h2>6. Con quién se comparten</h2>
       <p>
-        No compartimos tus datos con terceros con fines propios de ellos. Usamos proveedores de alojamiento y base de
-        datos (encargados): [proveedores a completar según el despliegue; p. ej. Vercel Inc. para el alojamiento y
-        Neon Inc. para la base de datos, o el proveedor que aloje la aplicación si se despliega de otra forma].
+        No compartimos tus datos con terceros con fines propios de ellos. Usamos dos proveedores (encargados del
+        tratamiento):
+      </p>
+      <ul>
+        <li>
+          <strong>{HOSTING.database}</strong>: base de datos PostgreSQL donde se <strong>guardan</strong> tu cuenta, tu
+          club, tus partidos marcados y tus consentimientos.
+        </li>
+        <li>
+          <strong>{HOSTING.app}</strong>: alojamiento y ejecución del sitio. No guarda tus datos de cuenta; registra por
+          poco tiempo datos técnicos de las visitas.
+        </li>
+      </ul>
+      <p>
       </p>
       <p>
         Solo tratan los datos para prestarnos el servicio. Si haces público tu carnet, cualquier persona podrá ver tu
@@ -138,10 +150,10 @@ export default function PrivacyPage() {
 
       <h3>Transferencia internacional</h3>
       <p>
-        Los servidores de estos proveedores pueden estar <strong>fuera de Chile</strong> (por ejemplo, en Estados Unidos
-        u otros países), en [región de alojamiento a completar]. La transferencia es necesaria para prestar el servicio
-        que solicitaste y se hace con proveedores que ofrecen garantías contractuales de protección de datos
-        [fundamento y garantías a confirmar por un abogado según la Ley 21.719].
+        Tus datos se guardan <strong>fuera de Chile</strong>, en servidores de estos proveedores ubicados en{" "}
+        <strong>{HOSTING.region}</strong>. La transferencia es necesaria para prestar el servicio que solicitaste y se
+        hace con proveedores que se obligan contractualmente a proteger los datos (sus acuerdos de tratamiento de
+        datos) y a usarlos solo para prestarnos el servicio.
       </p>
 
       <h2>7. Tus derechos</h2>

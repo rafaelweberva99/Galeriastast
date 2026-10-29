@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CONTROLLER, MIN_AGE, TERMS_VERSION } from "@/lib/legal.ts";
+import { CONTROLLER, HOSTING, MIN_AGE, TERMS_VERSION } from "@/lib/legal.ts";
 import { LegalHeader } from "@/components/legal/LegalHeader.tsx";
 
 export const metadata = {
@@ -22,11 +22,18 @@ export default function TermsPage() {
         leído y aceptado. Si no estás de acuerdo, no uses el servicio.
       </p>
 
+      <p className="notice" role="note">
+        <strong>Solo entretención.</strong> Todas las estadísticas de GaluchaStats (Mufómetro, “cábala” o “yeta”,
+        rankings, niveles del carnet, premios y la camiseta de los 100) son <strong>exclusivamente para fines de
+        entretención</strong>. No tienen valor oficial, no miden nada real sobre ti ni sobre tu club, y no deben usarse
+        para apuestas ni para tomar decisiones de ningún tipo.
+      </p>
+
       <h2>1. El servicio</h2>
       <p>
         GaluchaStats te permite marcar los partidos a los que fuiste al estadio y ver estadísticas sobre ellos (como el
         Mufómetro, clásicos, finales y rankings). El servicio es <strong>gratuito</strong>, sin publicidad ni pagos. Es
-        un proyecto con fines de entretenimiento y puede cambiar, interrumpirse o terminar en cualquier momento; en ese
+        un proyecto con fines exclusivamente de entretención y puede cambiar, interrumpirse o terminar en cualquier momento; en ese
         caso intentaremos avisarte con anticipación y darte la opción de descargar tus datos.
       </p>
 
@@ -53,15 +60,43 @@ export default function TermsPage() {
         <li>Crear cuentas falsas o marcar partidos de forma fraudulenta para manipular los rankings.</li>
       </ul>
 
-      <h2>5. Datos deportivos</h2>
+      <h2>5. Datos deportivos y estadísticas: solo entretención</h2>
       <p>
         Los resultados, goles y demás datos deportivos provienen de fuentes públicas y se revisan con chequeos propios
         (ver <Link href="/datos">Datos</Link>), pero <strong>no garantizamos que sean exactos, completos ni
-        actualizados</strong>. Las estadísticas, incluido el Mufómetro, son lúdicas y no tienen valor oficial. Si
-        encuentras un error, avísanos.
+        actualizados</strong>. Si encuentras un error, avísanos.
+      </p>
+      <p>
+        Las estadísticas que calcula el servicio (el Mufómetro y su veredicto de “cábala” o “yeta”, los rankings, los
+        niveles del carnet, los premios y la camiseta de los 100) son un juego basado en los partidos que tú marcas:
+        <strong> sirven solo para fines de entretención</strong>, no tienen valor oficial ni estadístico, no son
+        consejos ni predicciones, y no deben usarse para apuestas ni para tomar decisiones. Que tu club gane o pierda
+        no depende de que vayas al estadio.
       </p>
 
-      <h2>6. Sin afiliación</h2>
+      <h2>6. Dónde se guardan tus datos</h2>
+      <ul>
+        <li>
+          <strong>Base de datos</strong>: tu cuenta (usuario, correo, contraseña cifrada), tu club, los partidos que
+          marcas y tus consentimientos se guardan en una base de datos PostgreSQL administrada por{" "}
+          <strong>{HOSTING.database}</strong>, con servidores en <strong>{HOSTING.region}</strong>.
+        </li>
+        <li>
+          <strong>Sitio y servidores</strong>: la aplicación funciona en <strong>{HOSTING.app}</strong>, también en{" "}
+          {HOSTING.region}. Ahí no se guardan tus datos de cuenta; solo registros técnicos breves de las visitas.
+        </li>
+        <li>
+          <strong>Tu navegador</strong>: solo guarda la cookie de sesión que te mantiene conectado. Las capturas, PDF,
+          correos y planillas que usas para importar partidos se leen en tu propio dispositivo y{" "}
+          <strong>no se suben ni se guardan</strong>; solo se guardan los partidos que confirmas.
+        </li>
+      </ul>
+      <p>
+        El detalle (qué datos, para qué, por cuánto tiempo y tus derechos) está en la{" "}
+        <Link href="/privacidad">Política de Privacidad</Link>.
+      </p>
+
+      <h2>7. Sin afiliación</h2>
       <p>
         GaluchaStats es independiente: <strong>no está afiliado, patrocinado ni respaldado por la ANFP</strong>, ni por
         ningún club, estadio o ticketera. Los nombres y colores de los clubes se usan solo como referencia para los
@@ -69,7 +104,7 @@ export default function TermsPage() {
         ellas.
       </p>
 
-      <h2>7. Contenido y propiedad</h2>
+      <h2>8. Contenido y propiedad</h2>
       <ul>
         <li>
           Los datos que ingresas (tus partidos marcados y tu preferencia de club) son tuyos. Nos autorizas a usarlos solo
@@ -81,7 +116,7 @@ export default function TermsPage() {
         </li>
       </ul>
 
-      <h2>8. Suspensión y cierre de cuenta</h2>
+      <h2>9. Suspensión y cierre de cuenta</h2>
       <ul>
         <li>
           Puedes cerrar tu cuenta cuando quieras desde <Link href="/perfil#eliminar-cuenta">tu perfil</Link>; se
@@ -93,22 +128,22 @@ export default function TermsPage() {
         </li>
       </ul>
 
-      <h2>9. Limitación de responsabilidad</h2>
+      <h2>10. Limitación de responsabilidad</h2>
       <p>
         El servicio se entrega “tal como está”, sin garantías de disponibilidad continua ni de exactitud de los datos. En
         la medida que la ley lo permita, no respondemos por daños indirectos derivados del uso o de la imposibilidad de
-        usar el servicio, ni por decisiones que tomes basándote en sus estadísticas. Nada de esto limita los derechos
+        usar el servicio, ni por decisiones que tomes basándote en sus estadísticas, que son solo de entretención. Nada de esto limita los derechos
         irrenunciables que te reconozca la ley chilena.
       </p>
 
-      <h2>10. Cambios a estos términos</h2>
+      <h2>11. Cambios a estos términos</h2>
       <p>
         Podemos actualizar estos términos. Publicaremos la nueva versión con su fecha y, si el cambio es relevante, te
         pediremos aceptarla al ingresar antes de seguir usando tu cuenta. Si no la aceptas, puedes descargar tus datos y
         eliminar tu cuenta.
       </p>
 
-      <h2>11. Ley aplicable y contacto</h2>
+      <h2>12. Ley aplicable y contacto</h2>
       <p>
         Estos términos se rigen por las leyes de la República de Chile. Cualquier controversia se someterá a los
         tribunales competentes de Chile, sin perjuicio de los derechos que te correspondan como usuario. Para dudas o
