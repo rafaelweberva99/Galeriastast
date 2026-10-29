@@ -77,3 +77,24 @@ describe("administradores", () => {
     expect(isAdmin({ email: "galuchastats@gmail.com" })).toBe(false);
   });
 });
+
+describe("carga de CSV de partidos", () => {
+  it("un club extranjero con el mismo nombre que uno chileno no se confunde (Universidad Católica de Ecuador)", async () => {
+    const { ingestMatchesCsv } = await import("../src/lib/ingest/load.ts");
+    const { TeamResolver } = await import("../src/lib/domain/normalize.ts");
+    const db = await openSqlite(":memory:");
+    await db.exec(`INSERT INTO competitions VALUES ('copa-sudamericana', 'Copa Sudamericana', 'internacional', 4);
+      INSERT INTO teams (id, name, short_name) VALUES ('universidad-catolica', 'Universidad Católica', 'U. Católica'), ('huachipato', 'Huachipato', 'Huachipato');`);
+    const resolver = new TeamResolver([
+      { id: "universidad-catolica", name: "Universidad Católica" },
+      { id: "huachipato", name: "Huachipato" },
+    ]);
+    const csv = "date,competition_id,season,tournament,stage,home,away,home_goals,away_goals,home_pens,away_pens,is_final,venue,source\n" +
+      "2014-08-20,copa-sudamericana,2014,Copa Sudamericana 2014,Primera fase,Universidad Catolica (ECU),huachipato,1,0,,,0,,t\n";
+    const r = await ingestMatchesCsv(db, "t.csv", csv, resolver);
+    expect(r.rejected).toEqual([]);
+    const m = await db.get("SELECT home_team_id FROM matches");
+    expect(m?.home_team_id).not.toBe("universidad-catolica");
+    await db.close();
+  });
+});

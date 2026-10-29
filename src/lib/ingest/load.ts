@@ -179,7 +179,8 @@ export async function ingestMatchesCsv(
   const team = (raw: string) => {
     const { name, country } = splitCountry(raw.trim());
     const chilean = country === null || country === "CHI";
-    const known = resolver.resolve(name);
+    // Solo los clubes chilenos se buscan en el catálogo: "Universidad Católica (ECU)" no es la UC.
+    const known = chilean ? resolver.resolve(name) : null;
     if (known) return known;
     if (chilean) unknownTeams.add(name);
     const id = externalTeamId(name, chilean, country ?? undefined);
