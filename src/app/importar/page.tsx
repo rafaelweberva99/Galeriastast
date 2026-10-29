@@ -6,6 +6,7 @@ import { Jersey } from "@/components/Jersey.tsx";
 import { clubTicketing, providersInUse } from "@/lib/ticketing.ts";
 import { BuyTickets } from "@/components/BuyTickets.tsx";
 import { TicketImport } from "./TicketImport.tsx";
+import { SheetImport } from "./SheetImport.tsx";
 
 export const metadata = { title: "Importar desde PuntoTicket · GaluchaStats" };
 
@@ -61,6 +62,10 @@ export default async function ImportPage() {
         </ul>
         <BuyTickets clubId={club.id} compact />
       </details>
+      <section className="stack" id="planilla">
+        <h2 className="section-title">¿Llevas tus partidos en un Excel?</h2>
+        <SheetImport />
+      </section>
       <p className="muted small">
         Las imágenes y PDF se leen en tu teléfono: no se suben a ningún servidor. Solo enviamos el texto leído para
         buscar los partidos, y no lo guardamos.

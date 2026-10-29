@@ -1,8 +1,8 @@
 "use client";
 
 import { startTransition, useActionState, useEffect, useRef, useState } from "react";
-import { confirmTicketImport, previewTicketImport } from "../actions.ts";
-import { formatDate } from "@/components/format.ts";
+import { previewTicketImport } from "../actions.ts";
+import { ImportCandidates } from "./ImportCandidates.tsx";
 import { readTicketFile } from "@/lib/client/ticketReader.ts";
 
 interface Job {
@@ -147,42 +147,16 @@ export function TicketImport() {
       {state.error && <p className="error" role="alert">{state.error}</p>}
 
       {state.candidates && (
-        <form action={confirmTicketImport} className="card stack">
-          <h2 style={{ margin: 0 }}>
-            Encontramos {state.candidates.length} {state.candidates.length === 1 ? "partido" : "partidos"}
-          </h2>
-          {state.providers && state.providers.length > 0 && (
-            <p className="muted small" style={{ margin: 0 }}>
-              Comprobantes de {state.providers.join(" y ")}
-            </p>
-          )}
-          {state.candidates.map((c) => (
-            <label key={c.id} className="match" style={{ cursor: "pointer" }}>
-              <span className="match-date">{formatDate(c.date)}</span>
-              <span className="match-teams">
-                <strong>{c.label}</strong>
-                <span className="match-meta">
-                  {c.detail} · coincide por {c.reason}
-                  {c.alreadyMarked ? " · ya estaba marcado" : ""}
-                </span>
-              </span>
-              <input type="checkbox" name="matchId" value={c.id} defaultChecked={!c.alreadyMarked} />
-            </label>
-          ))}
-          {state.unmatchedDates && state.unmatchedDates.length > 0 && (
-            <p className="muted small">
-              También leímos {state.unmatchedDates.join(", ")}, pero no hay partidos de tu club esos días en la base (por
-              ahora llega hasta mediados de 2024).
-            </p>
-          )}
-          <div className="row">
-            <select name="mode" defaultValue="propia" aria-label="¿Dónde estuviste?">
-              <option value="propia">Fui a la galería de mi club</option>
-              <option value="infiltrado">Fui de infiltrado</option>
-            </select>
-            <button className="btn">Marcar seleccionados</button>
-          </div>
-        </form>
+        <ImportCandidates
+          state={state}
+          note={
+            state.providers && state.providers.length > 0 ? (
+              <p className="muted small" style={{ margin: 0 }}>
+                Comprobantes de {state.providers.join(" y ")}
+              </p>
+            ) : undefined
+          }
+        />
       )}
     </div>
   );

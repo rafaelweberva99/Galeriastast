@@ -14,7 +14,9 @@ import {
   registerUser,
   setPublicProfile,
 } from "@/lib/repo/account.ts";
+import { analyzeSheet } from "@/lib/ingest/sheet.ts";
 import { analyzeTicket, TeamMentionIndex } from "@/lib/ingest/tickets.ts";
+import type { Match } from "@/lib/domain/types.ts";
 import { getTeam, listClubs } from "@/lib/repo/teams.ts";
 import { isVisibleClub } from "@/lib/mvp.ts";
 import {
@@ -193,18 +195,22 @@ export async function deleteMyAccount(_: FormState, form: FormData): Promise<For
 
 // --- Importar desde PuntoTicket --------------------------------------------
 
+export interface ImportCandidate {
+  id: string;
+  date: string;
+  label: string;
+  detail: string;
+  reason: string;
+  alreadyMarked: boolean;
+}
+
 export interface ImportPreview {
   error?: string;
-  candidates?: {
-    id: string;
-    date: string;
-    label: string;
-    detail: string;
-    reason: string;
-    alreadyMarked: boolean;
-  }[];
+  candidates?: ImportCandidate[];
   /** Fechas encontradas sin partido del club en la base. */
   unmatchedDates?: string[];
+  /** Filas de la planilla que no calzaron con un solo partido (con los partidos posibles, sin marcar). */
+  review?: { line: number; text: string; problem: string; options: ImportCandidate[] }[];
   /** Ticketeras reconocidas en los comprobantes. */
   providers?: string[];
 }
@@ -229,22 +235,55 @@ export async function previewTicketImport(_: ImportPreview, form: FormData): Pro
       unmatchedDates,
       providers,
       error: unmatchedDates.length
-        ? `Leímos ${unmatchedDates.length === 1 ? "la fecha" : "las fechas"} ${unmatchedDates.join(", ")}, pero no hay partidos de tu club ese día en la base (por ahora cubre hasta mediados de 2024).`
+        ? `Leímos ${unmatchedDates.length === 1 ? "la fecha" : "las fechas"} ${unmatchedDates.join(", ")}, pero no hay partidos de tu club ese día en la base.`
         : "No encontramos fechas de partidos en lo que subiste. Prueba con una captura donde se vea el nombre del partido y la fecha.",
     };
   }
   return {
     unmatchedDates,
     providers,
-    candidates: found.map(({ match: m, reason }) => ({
-      id: m.id,
-      date: m.date,
-      label: `${m.homeTeamName} ${m.homeGoals ?? ""}-${m.awayGoals ?? ""} ${m.awayTeamName}`,
-      detail: [m.competitionName, m.tournament, m.stage].filter(Boolean).join(" · "),
-      reason,
-      alreadyMarked: modes.has(m.id),
-    })),
+    candidates: found.map(({ match: m, reason }) => toCandidate(m, reason, modes)),
   };
+}
+
+function toCandidate(m: Match, reason: string, modes: Map<string, unknown>): ImportCandidate {
+  return {
+    id: m.id,
+    date: m.date,
+    label: `${m.homeTeamName} ${m.homeGoals ?? ""}-${m.awayGoals ?? ""} ${m.awayTeamName}`,
+    detail: [m.competitionName, m.tournament, m.stage].filter(Boolean).join(" · "),
+    reason,
+    alreadyMarked: modes.has(m.id),
+  };
+}
+
+/** Analiza una planilla (Excel copiado y pegado o CSV) y propone los partidos. No guarda el texto. */
+export async function previewSheetImport(_: ImportPreview, form: FormData): Promise<ImportPreview> {
+  const user = await requireUser();
+  const text = String(form.get("text") ?? "");
+  if (text.trim().length < 6) return { error: "Pega las filas de tu planilla o sube el archivo CSV." };
+  if (text.length > 1_000_000) return { error: "La planilla es demasiado grande (máximo 2.000 filas)." };
+  const db = await getDb();
+  const teams = (await listClubs(db)).map((t) => ({ id: t.id, name: t.name, short: t.shortName }));
+  const modes = await attendanceModes(db, user.id);
+  const rows = await analyzeSheet(db, user.clubId, text, teams);
+  const seen = new Set<string>();
+  const candidates: ImportCandidate[] = [];
+  for (const r of rows) {
+    if (!r.match || seen.has(r.match.id)) continue;
+    seen.add(r.match.id);
+    candidates.push(toCandidate(r.match, `fila ${r.line}: ${r.reason}`, modes));
+  }
+  const review = rows
+    .filter((r) => !r.match)
+    .map((r) => ({
+      line: r.line,
+      text: r.text,
+      problem: r.problem ?? "no calzó",
+      options: (r.options ?? []).filter((m) => !seen.has(m.id)).map((m) => toCandidate(m, `posible para la fila ${r.line}`, modes)),
+    }));
+  if (!candidates.length && !review.length) return { error: "No encontramos filas con partidos en lo que pegaste." };
+  return { candidates: candidates.sort((a, b) => b.date.localeCompare(a.date)), review };
 }
 
 /** Marca de una vez los partidos confirmados por el hincha. */

@@ -7,6 +7,7 @@ import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { getTeam } from "@/lib/repo/teams.ts";
 import { CONTACT_EMAIL } from "@/lib/legal.ts";
+import { isAdmin } from "@/lib/admin.ts";
 import { Ball } from "@/components/Ball.tsx";
 import "./globals.css";
 
@@ -42,6 +43,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               {full && <Link href="/partidos">Marcar partidos</Link>}
               {full && <Link href="/importar">Importar entradas</Link>}
               {full && <Link href="/carnet">Mi carnet</Link>}
+              {full && isAdmin(user) && <Link href="/admin">Admin</Link>}
               <Link href="/rankings">Rankings</Link>
               <Link href="/clubes">Clubes</Link>
               {user ? (
