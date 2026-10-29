@@ -27,9 +27,12 @@ export interface IngestReport {
 const BATCH = 250;
 const MATCH_COLUMNS = 15;
 
+/** Clubes extranjeros que cambiaron de nombre (data/catalog/foreign-aliases.json): se usa el actual. */
+const FOREIGN_ALIASES: Record<string, string> = readJson<{ aliases: Record<string, string> }>("catalog/foreign-aliases.json").aliases;
+
 /** "Colo-Colo (CHI)" -> { name: "Colo-Colo", country: "CHI" } */
 function splitCountry(raw: string): { name: string; country: string | null } {
-  const m = raw.match(/^(.*) \(([A-Z]{3})\)$/);
+  const m = (FOREIGN_ALIASES[raw] ?? raw).match(/^(.*) \(([A-Z]{3})\)$/);
   return m ? { name: m[1], country: m[2] } : { name: raw, country: null };
 }
 
@@ -256,4 +259,63 @@ export async function ingestMatchesCsv(
     for (const [mid, vid] of matchVenue) await tx.run("UPDATE matches SET venue_id = ? WHERE id = ?", vid, mid);
   });
   return { loaded: rows.size, unknownTeams: [...unknownTeams].sort(), rejected };
+}
+
+// ----------------------------------------------------------------------------
+// Clubes extranjeros renombrados: los partidos ya cargados con el nombre antiguo (y lo que los
+// hinchas marcaron en ellos) pasan al nombre actual. Idempotente: si no queda nada antiguo, no hace nada.
+
+export async function migrateForeignAliases(db: Db): Promise<number> {
+  let moved = 0;
+  for (const [oldRaw, newRaw] of Object.entries(FOREIGN_ALIASES)) {
+    const [o, n] = [oldRaw, newRaw].map((raw) => raw.match(/^(.*) \(([A-Z]{3})\)$/));
+    if (!o || !n) continue;
+    const oldId = externalTeamId(o[1], false, o[2]);
+    const newId = externalTeamId(n[1], false, n[2]);
+    const old = await db.all<{ id: string; date: string; home_team_id: string; away_team_id: string }>(
+      "SELECT id, date, home_team_id, away_team_id FROM matches WHERE home_team_id = ? OR away_team_id = ?",
+      oldId,
+      oldId,
+    );
+    if (!old.length && !(await db.get("SELECT 1 AS x FROM teams WHERE id = ?", oldId))) continue;
+    await db.transaction(async (tx) => {
+      await tx.run(
+        "INSERT INTO teams (id, name, short_name, is_chilean) VALUES (?, ?, ?, 0) ON CONFLICT (id) DO NOTHING",
+        newId,
+        n[1],
+        n[1],
+      );
+      for (const m of old) {
+        const home = m.home_team_id === oldId ? newId : m.home_team_id;
+        const away = m.away_team_id === oldId ? newId : m.away_team_id;
+        const id = matchId(m.date, home, away);
+        await tx.run(
+          `INSERT INTO matches (id, date, season, competition_id, tournament, stage, home_team_id, away_team_id, home_goals,
+                                away_goals, home_pens, away_pens, venue_id, is_final, source, source_ref, verified)
+           SELECT ?, date, season, competition_id, tournament, stage, ?, ?, home_goals, away_goals, home_pens, away_pens,
+                  venue_id, is_final, source, source_ref, verified
+             FROM matches WHERE id = ?
+           ON CONFLICT (id) DO NOTHING`,
+          id,
+          home,
+          away,
+          m.id,
+        );
+        await tx.run(
+          `UPDATE attendances SET match_id = ? WHERE match_id = ?
+             AND user_id NOT IN (SELECT user_id FROM attendances WHERE match_id = ?)`,
+          id,
+          m.id,
+          id,
+        );
+        await tx.run("DELETE FROM attendances WHERE match_id = ?", m.id);
+        await tx.run("UPDATE goals SET match_id = ? WHERE match_id = ?", id, m.id);
+        await tx.run("DELETE FROM matches WHERE id = ?", m.id);
+        moved++;
+      }
+      await tx.run("UPDATE goals SET team_id = ? WHERE team_id = ?", newId, oldId);
+      await tx.run("DELETE FROM teams WHERE id = ?", oldId);
+    });
+  }
+  return moved;
 }

@@ -7,7 +7,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { openDb } from "../src/lib/db/client.ts";
 import { loadCatalog } from "../src/lib/ingest/catalog.ts";
-import { ingestMatchesCsv, ingestWfb } from "../src/lib/ingest/load.ts";
+import { ingestMatchesCsv, ingestWfb, migrateForeignAliases } from "../src/lib/ingest/load.ts";
 
 const rawDir = path.resolve("data/raw/wfb");
 if (!existsSync(rawDir)) {
@@ -38,4 +38,6 @@ if (existsSync(csvDir)) {
     if (r.unknownTeams.length) console.log(`  clubes chilenos fuera del catálogo: ${r.unknownTeams.join(", ")}`);
   }
 }
+const renamed = await migrateForeignAliases(db);
+if (renamed) console.log(`${renamed} partidos pasaron al nombre actual de su club (data/catalog/foreign-aliases.json)`);
 await db.close();
