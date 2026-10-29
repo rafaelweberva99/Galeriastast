@@ -7,7 +7,7 @@ Todo listo para copiar y pegar en **Perfil → Editar perfil**.
 | Foto | `foto-perfil.png` (400 × 400) |
 | Portada | `portada.png` (1500 × 500) |
 | Nombre | `Galucha ⚽ ¿Cábala o yeta?` |
-| Bio | `Tu carnet de hincha del fútbol chileno 🇨🇱 Marca los partidos que viste en la galería y descubre si eres cábala o yeta. Clásicos, finales, rachas y modo Infiltrado 🕵️ #CábalaOYeta` |
+| Bio (máx. 160 caracteres) | `Carnet de hincha del fútbol chileno 🇨🇱 Marca los partidos que viste en la galería y descubre si eres cábala o yeta 🍀 #CábalaOYeta` |
 | Ubicación | `Chile` |
 | Sitio web | La URL pública de GaluchaStats |
 

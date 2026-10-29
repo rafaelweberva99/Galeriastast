@@ -20,7 +20,7 @@ provocar ese gesto y darle eco: citar, responder y armar rankings con esas captu
 | Elemento | Propuesta |
 |---|---|
 | Nombre visible | `Galucha ⚽ ¿Cábala o yeta?` |
-| Bio | `Tu carnet de hincha del fútbol chileno. Marca los partidos que viste en la galería y descubre si eres cábala o yeta. Clásicos, finales, rachas y modo Infiltrado 🕵️` |
+| Bio | `Carnet de hincha del fútbol chileno 🇨🇱 Marca los partidos que viste en la galería y descubre si eres cábala o yeta 🍀 #CábalaOYeta` (máximo 160 caracteres) |
 | Enlace | La URL pública de GaluchaStats |
 | Foto de perfil | El logo, legible en tamaño chico |
 | Portada | Mufómetro + el texto "¿Eres cábala o yeta?" |
