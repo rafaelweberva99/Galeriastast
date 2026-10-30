@@ -9,7 +9,7 @@ Todo listo para copiar y pegar en **Perfil → Editar perfil**.
 | Nombre | `Galucha ⚽ ¿Cábala o yeta?` |
 | Bio (máx. 160 caracteres) | `Carnet de hincha del fútbol chileno 🇨🇱 Marca los partidos que viste en la galería y descubre si eres cábala o yeta 🍀 #CabalaOYeta` |
 | Ubicación | `Chile` |
-| Sitio web | La URL pública de GaluchaStats |
+| Sitio web | `https://galeriastast.vercel.app/` |
 
 Las imágenes salen de `imagenes.html`. Para regenerarlas, abre ese archivo en Chrome y toma una captura de cada
 bloque, o renderízalo con Playwright.
@@ -24,4 +24,4 @@ Publica este texto con 4 capturas de `docs/capturas/`: `1-inicio.png`, `2-carnet
 > Clásicos, finales, rachas y modo Infiltrado para cuando te metiste en la galería rival.
 > #CabalaOYeta
 
-Responde a tu propio post con el link de la app.
+Responde a tu propio post con el link: https://galeriastast.vercel.app/

@@ -70,7 +70,7 @@ Galucha te muestra los partidos que encontró. Tú eliges cuáles son tuyos y tu
 
 Las fotos y los PDF se leen en tu teléfono: no se suben a ningún servidor. Solo usamos el texto para encontrar tus partidos y no lo guardamos.
 
-Arma tu carnet y descubre si eres cábala o yeta 👉 [link]
+Arma tu carnet y descubre si eres cábala o yeta 👉 https://galeriastast.vercel.app/
 #CabalaOYeta
 ```
 
@@ -83,6 +83,6 @@ Arma tu carnet y descubre si eres cábala o yeta 👉 [link]
 📊 Excel: copia y pega tus filas en la misma sección
 ✋ A mano: en "Marcar partidos"
 
-¿Cábala o yeta? Descúbrelo 👉 [link]
+¿Cábala o yeta? Descúbrelo 👉 https://galeriastast.vercel.app/
 #CabalaOYeta
 ```

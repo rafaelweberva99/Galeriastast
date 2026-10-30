@@ -2,7 +2,7 @@
 
 Antes de publicar, en Vercel agrega la variable `MVP_ALL_CLUBS` con el valor `1` y haz **Redeploy**. Sin eso, la app solo muestra 10 clubes.
 
-Cambia `[link]` por el link de la app. Ningún post pasa de 280 caracteres.
+Ningún post pasa de 280 caracteres.
 
 ## 1. Post principal (fijado) y su hilo
 
@@ -15,7 +15,7 @@ Fotos del post 1: `clubes/0-anuncio-16-clubes.png` y `clubes/0-pasos.png`. Los p
 
 Si eres hincha de uno de los 16 clubes de Primera, tu carnet ya está disponible:
 
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo
 
@@ -27,7 +27,7 @@ Si eres hincha de uno de los 16 clubes de Primera, tu carnet ya está disponible
 ```
 📝 Paso 1: crea tu cuenta
 
-Entra a [link] y toca "Crear carnet". Eliges tu usuario, tu club y listo.
+Entra a https://galeriastast.vercel.app/ y toca "Crear carnet". Eliges tu usuario, tu club y listo.
 
 Tu carnet es privado. Si quieres mostrarlo, lo haces público desde tu perfil.
 ```
@@ -77,7 +77,7 @@ Foto: `clubes/colo-colo.png`
 Albos ⚫⚪ ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -92,7 +92,7 @@ Foto: `clubes/universidad-de-chile.png`
 Azules 💙❤️ ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -107,7 +107,7 @@ Foto: `clubes/universidad-catolica.png`
 Cruzados 💙🤍 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -122,7 +122,7 @@ Foto: `clubes/cobresal.png`
 Mineros 🧡🤍 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -137,7 +137,7 @@ Foto: `clubes/ohiggins.png`
 Celestes 🩵🤍 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -152,7 +152,7 @@ Foto: `clubes/everton.png`
 Ruleteros 💙💛 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -167,7 +167,7 @@ Foto: `clubes/nublense.png`
 Diablos rojos ❤️🤍 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -182,7 +182,7 @@ Foto: `clubes/deportes-limache.png`
 Limachinos ❤️🖤 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -197,7 +197,7 @@ Foto: `clubes/universidad-de-concepcion.png`
 Auricielos 💛🩵 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -212,7 +212,7 @@ Foto: `clubes/union-la-calera.png`
 Cementeros ❤️🤍 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -227,7 +227,7 @@ Foto: `clubes/coquimbo-unido.png`
 Piratas 💛🖤 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -242,7 +242,7 @@ Foto: `clubes/audax-italiano.png`
 Audinos 💚🤍 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -257,7 +257,7 @@ Foto: `clubes/palestino.png`
 Árabes 💚❤️ ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -272,7 +272,7 @@ Foto: `clubes/la-serena.png`
 Granates ❤️🤍 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -287,7 +287,7 @@ Foto: `clubes/deportes-concepcion.png`
 Lilas 💜🤍 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
@@ -302,7 +302,7 @@ Foto: `clubes/huachipato.png`
 Acereros 💙🖤 ¿Quieres tener tu carnet y saber cómo te va en el estadio?
 
 Tu carnet ya está disponible:
-1️⃣ Crea tu cuenta en [link]
+1️⃣ Crea tu cuenta en https://galeriastast.vercel.app/
 2️⃣ Sube el pantallazo de tus idas al estadio
 3️⃣ Listo: ¿eres cábala o yeta?
 
