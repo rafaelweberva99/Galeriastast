@@ -207,8 +207,9 @@ export async function setAttendance(db: Db, user: User, matchId: string, mode: A
   if (!m) throw new AttendanceError("Partido no encontrado.");
   if (m.home_team_id !== user.clubId && m.away_team_id !== user.clubId)
     throw new AttendanceError("Solo puedes marcar partidos de tu club.");
-  if ((m.date as string) > new Date().toISOString().slice(0, 10))
-    throw new AttendanceError("No puedes marcar un partido que aún no se juega.");
+  // Los partidos que vienen se pueden marcar ("Voy") hasta un año antes; cuentan en el carnet cuando se juegan.
+  const limit = new Date(Date.now() + 365 * 86_400_000).toISOString().slice(0, 10);
+  if ((m.date as string) > limit) throw new AttendanceError("Ese partido es demasiado lejano para marcarlo.");
   await db.run(
     `INSERT INTO attendances (user_id, match_id, mode) VALUES (?, ?, ?)
      ON CONFLICT (user_id, match_id) DO UPDATE SET mode = excluded.mode`,

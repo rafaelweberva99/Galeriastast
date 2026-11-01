@@ -28,7 +28,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
     season,
     competitionId: sp.competicion || undefined,
     opponent: sp.rival || undefined,
-  })).filter((m) => m.date <= today);
+  }));
   if (sp.solo === "1") matches = matches.filter((m) => modes.has(m.id));
   const goals = await goalsForMatches(db, matches.map((m) => m.id));
   const upcoming = await upcomingClubMatches(db, club.id, today, 5);
@@ -96,7 +96,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
         ) : (
           matches.map((m) => (
             <MatchRow key={m.id} match={m} highlight={club.id} goals={goals.get(m.id)}>
-              <AttendanceToggle matchId={m.id} initial={modes.get(m.id) ?? "ninguno"} />
+              <AttendanceToggle matchId={m.id} initial={modes.get(m.id) ?? "ninguno"} upcoming={m.date > today} />
             </MatchRow>
           ))
         )}

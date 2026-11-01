@@ -11,16 +11,20 @@ import type { User } from "./repo/users.ts";
 export async function loadCarnet(db: Db, user: User) {
   const club = await getTeam(db, user.clubId);
   if (!club) throw new Error(`Club ${user.clubId} no existe`);
-  const [attended, rivalries, clubMatches, goals, clubs] = await Promise.all([
+  const [allAttended, rivalries, clubMatches, goals, clubs] = await Promise.all([
     listAttended(db, user.id),
     listRivalries(db),
     listClubMatches(db, club.id),
     goalsForAttended(db, user.id),
     listClubs(db),
   ]);
+  // Los partidos marcados que todavía no se juegan ("Voy") se muestran aparte y cuentan cuando se jueguen.
+  const today = new Date().toISOString().slice(0, 10);
+  const upcoming = allAttended.filter((m) => m.date > today && involves(m, club.id)).sort((a, b) => a.date.localeCompare(b.date));
+  const attended = allAttended.filter((m) => m.date <= today);
   const carnet = buildCarnet(attended, club.id, rivalries, clubMatches);
   const scorers = scorersSeen(attended, goals, club.id);
   const mine = new Set(attended.filter((m) => involves(m, club.id)).map((m) => m.id));
-  const achievements = computeAchievements(carnet.total, mine, clubMatches, new Date().toISOString().slice(0, 10));
-  return { club, carnet, attended, scorers, goals, clubs, achievements };
+  const achievements = computeAchievements(carnet.total, mine, clubMatches, today);
+  return { club, carnet, attended, upcoming, scorers, goals, clubs, achievements };
 }

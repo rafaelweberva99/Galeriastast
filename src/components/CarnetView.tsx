@@ -83,6 +83,7 @@ export function CarnetView({
   clubs,
   isOwner,
   achievements,
+  upcoming = [],
   isPublic = false,
 }: {
   username: string;
@@ -95,6 +96,8 @@ export function CarnetView({
   clubs: Team[];
   isOwner: boolean;
   achievements: Achievements;
+  /** Partidos marcados que todavía no se juegan ("Voy"). */
+  upcoming?: AttendedMatch[];
   /** Si el carnet es público (para ofrecer compartir el link). */
   isPublic?: boolean;
 }) {
@@ -146,6 +149,21 @@ export function CarnetView({
 
       <Centenario club={id} total={c.total} owner={isOwner} />
       <Premios a={achievements} owner={isOwner} />
+      {upcoming.length > 0 && (
+        <section className="card">
+          <h2 className="section-title" style={{ marginTop: 0 }}>
+            {isOwner ? "Próximos partidos a los que vas" : "Próximos partidos a los que va"}
+          </h2>
+          <p className="muted small" style={{ marginTop: 0 }}>
+            Cuentan en el carnet y en el Mufómetro cuando se jueguen.
+          </p>
+          {upcoming.map((m) => (
+            <MatchRow key={m.id} match={m} highlight={club.id}>
+              {m.mode === "infiltrado" && <span className="pill infiltrado">Infiltrado</span>}
+            </MatchRow>
+          ))}
+        </section>
+      )}
       {isOwner && (
         <ShareCarnet
           username={username}

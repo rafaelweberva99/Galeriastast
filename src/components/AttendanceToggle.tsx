@@ -12,7 +12,14 @@ const OPTIONS: { value: State; label: string; title: string; className?: string 
   { value: "infiltrado", label: "Infiltrado", title: "Fui escondido a la galería rival", className: "inf" },
 ];
 
-export function AttendanceToggle({ matchId, initial }: { matchId: string; initial: State }) {
+/** Para partidos que todavía no se juegan: se marca que vas a ir; cuenta en el carnet cuando se juegue. */
+const UPCOMING_OPTIONS: typeof OPTIONS = [
+  { value: "ninguno", label: "No voy", title: "No voy a este partido" },
+  { value: "propia", label: "Voy", title: "Voy a la galería de mi club (cuenta cuando se juegue)" },
+  { value: "infiltrado", label: "Infiltrado", title: "Voy escondido a la galería rival", className: "inf" },
+];
+
+export function AttendanceToggle({ matchId, initial, upcoming = false }: { matchId: string; initial: State; upcoming?: boolean }) {
   const [saved, setSaved] = useState<State>(initial);
   const [optimistic, setOptimistic] = useOptimistic(saved);
   const [pending, start] = useTransition();
@@ -34,8 +41,8 @@ export function AttendanceToggle({ matchId, initial }: { matchId: string; initia
 
   return (
     <div>
-      <div className="toggle" role="group" aria-label="¿Fuiste a este partido?" aria-busy={pending}>
-        {OPTIONS.map((o) => (
+      <div className="toggle" role="group" aria-label={upcoming ? "¿Vas a ir a este partido?" : "¿Fuiste a este partido?"} aria-busy={pending}>
+        {(upcoming ? UPCOMING_OPTIONS : OPTIONS).map((o) => (
           <button
             key={o.value}
             type="button"

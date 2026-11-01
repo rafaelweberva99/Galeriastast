@@ -173,7 +173,7 @@ export async function ingestMatchesCsv(
   file: string,
   text: string,
   resolver: TeamResolver,
-): Promise<{ loaded: number; unknownTeams: string[]; rejected: string[] }> {
+): Promise<{ loaded: number; ids: string[]; unknownTeams: string[]; rejected: string[] }> {
   const { parseCsv } = await import("./csv.ts");
   const competitions = new Set((await db.all<{ id: string }>("SELECT id FROM competitions")).map((c) => c.id));
   const unknownTeams = new Set<string>();
@@ -258,7 +258,7 @@ export async function ingestMatchesCsv(
     }
     for (const [mid, vid] of matchVenue) await tx.run("UPDATE matches SET venue_id = ? WHERE id = ?", vid, mid);
   });
-  return { loaded: rows.size, unknownTeams: [...unknownTeams].sort(), rejected };
+  return { loaded: rows.size, ids: [...rows.keys()], unknownTeams: [...unknownTeams].sort(), rejected };
 }
 
 // ----------------------------------------------------------------------------
@@ -316,6 +316,45 @@ export async function migrateForeignAliases(db: Db): Promise<number> {
       await tx.run("UPDATE goals SET team_id = ? WHERE team_id = ?", newId, oldId);
       await tx.run("DELETE FROM teams WHERE id = ?", oldId);
     });
+  }
+  return moved;
+}
+
+// ----------------------------------------------------------------------------
+// Partidos reprogramados: el código de un partido incluye su fecha, así que si un CSV cambia la fecha de un partido
+// (la ANFP mueve días y horarios), en la base queda el registro con la fecha antigua. Se reemplaza por el nuevo
+// (mismo torneo, temporada, local, visita y fase), llevando consigo las asistencias marcadas y los goles.
+
+export async function reconcileRescheduled(db: Db, csvIds: Set<string>): Promise<number> {
+  const stale = (await db.all<{ id: string; competition_id: string; season: number; home_team_id: string; away_team_id: string; stage: string | null }>(
+    "SELECT id, competition_id, season, home_team_id, away_team_id, stage FROM matches WHERE source = 'csv'",
+  )).filter((m) => !csvIds.has(m.id));
+  let moved = 0;
+  for (const m of stale) {
+    const replacement = await db.get(
+      `SELECT id FROM matches WHERE source = 'csv' AND id <> ? AND competition_id = ? AND season = ? AND home_team_id = ?
+         AND away_team_id = ? AND COALESCE(stage, '') = COALESCE(?, '')`,
+      m.id,
+      m.competition_id,
+      m.season,
+      m.home_team_id,
+      m.away_team_id,
+      m.stage,
+    );
+    if (!replacement || !csvIds.has(replacement.id as string)) continue; // sin reemplazo claro: se deja como está
+    const id = replacement.id as string;
+    await db.transaction(async (tx) => {
+      await tx.run(
+        "UPDATE attendances SET match_id = ? WHERE match_id = ? AND user_id NOT IN (SELECT user_id FROM attendances WHERE match_id = ?)",
+        id,
+        m.id,
+        id,
+      );
+      await tx.run("DELETE FROM attendances WHERE match_id = ?", m.id);
+      await tx.run("UPDATE goals SET match_id = ? WHERE match_id = ?", id, m.id);
+      await tx.run("DELETE FROM matches WHERE id = ?", m.id);
+    });
+    moved++;
   }
   return moved;
 }

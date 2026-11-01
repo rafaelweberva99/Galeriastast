@@ -29,11 +29,12 @@ export async function fansOfClub(db: Db, clubId: string, limit = 100): Promise<F
        FROM users u
        JOIN attendances a ON a.user_id = u.id
        JOIN matches m ON m.id = a.match_id AND (m.home_team_id = u.club_id OR m.away_team_id = u.club_id)
-       WHERE u.club_id = ? AND u.is_public = 1
+       WHERE u.club_id = ? AND u.is_public = 1 AND m.date <= ?
        GROUP BY u.id
        ORDER BY attended DESC, u.username
        LIMIT ?`,
     clubId,
+    new Date().toISOString().slice(0, 10), // los partidos marcados que aún no se juegan no cuentan
     limit,
   );
   return rows.map((r) => {
@@ -67,7 +68,9 @@ export async function clubsByFans(db: Db): Promise<{ clubId: string; name: strin
       `SELECT t.id AS club_id, t.name, COUNT(DISTINCT u.id) AS fans, COUNT(a.match_id) AS attendances
          FROM teams t JOIN users u ON u.club_id = t.id AND u.is_public = 1
          LEFT JOIN attendances a ON a.user_id = u.id
+           AND a.match_id IN (SELECT id FROM matches WHERE date <= ?)
          GROUP BY t.id ORDER BY fans DESC, attendances DESC`,
+      new Date().toISOString().slice(0, 10),
     )
   ).map((r) => ({
     clubId: r.club_id as string,
