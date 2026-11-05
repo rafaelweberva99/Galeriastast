@@ -968,3 +968,19 @@ a.cm-bar-name:hover { text-decoration: underline; }
 .sc-year .sc-cap { color: rgb(255 255 255 / 0.9); }
 .sc-badges { display: flex; flex-wrap: wrap; gap: 8px; }
 .sc-badges span { background: rgb(255 255 255 / 0.16); border: 1px solid rgb(255 255 255 / 0.3); padding: 6px 12px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; }
+
+/* === auth pro === */
+.auth-grid { display: grid; gap: 20px; margin: 24px auto; max-width: 520px; }
+.auth-card { width: 100%; min-width: 0; }
+.auth-card .form { max-width: none; }
+.auth-perks { display: none; border-radius: 20px; padding: 32px 28px; align-content: start; }
+.auth-perks h2 { margin: 12px 0 16px; font-size: 1.8rem; }
+.auth-perks ul { list-style: none; padding: 0; margin: 0 0 18px; display: grid; gap: 14px; }
+.auth-perks li { display: flex; flex-direction: column; gap: 2px; padding-left: 14px; border-left: 3px solid rgb(255 255 255 / 0.6); }
+.auth-perks li b { font: 700 1.1rem var(--font-display), sans-serif; text-transform: uppercase; letter-spacing: 0.03em; }
+.auth-perks li span { color: rgb(255 255 255 / 0.9); }
+.auth-perks .small { opacity: 0.85; margin: 0; }
+@media (min-width: 900px) {
+  .auth-grid { max-width: 980px; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); align-items: start; }
+  .auth-perks { display: grid; position: sticky; top: 90px; }
+}

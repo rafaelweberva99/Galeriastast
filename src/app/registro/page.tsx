@@ -5,6 +5,7 @@ import { getDb } from "@/lib/db/client.ts";
 import { getTeam, listClubs } from "@/lib/repo/teams.ts";
 import { visibleClubs } from "@/lib/mvp.ts";
 import { Jersey } from "@/components/Jersey.tsx";
+import { AuthPerks } from "@/components/AuthPerks.tsx";
 import { RegisterForm } from "./RegisterForm.tsx";
 
 export const metadata = { title: "Crear carnet · GaluchaStats" };
@@ -20,7 +21,8 @@ export default async function RegisterPage({ searchParams }: { searchParams: Sea
   const club = team && clubs.some((c) => c.id === team.id) ? clubIdentity(team) : null;
 
   return (
-    <div style={{ maxWidth: 520, margin: "24px auto", ...(club ? clubStyle(club) : {}) } as React.CSSProperties} className="stack">
+    <div className="auth-grid" style={(club ? clubStyle(club) : {}) as React.CSSProperties}>
+    <div className="stack auth-card">
       {club && (
         <div className="club-banner row">
           <Jersey club={club} size={72} number="12" />
@@ -38,6 +40,8 @@ export default async function RegisterPage({ searchParams }: { searchParams: Sea
         <p className="muted">Solo podrás marcar partidos de tu club. El 12 de la camiseta eres tú: la hinchada.</p>
         <RegisterForm clubs={clubs} defaultClub={club?.id ?? ""} />
       </div>
+    </div>
+    <AuthPerks />
     </div>
   );
 }

@@ -19,7 +19,7 @@ export default async function RankingsPage() {
       </div>
       <div className="grid grid-3">
         {clubs.map((c) => (
-          <Link key={c.id} href={`/rankings/${c.id}`} className="card row" style={{ textDecoration: "none", borderTop: `5px solid ${c.colorPrimary}` }}>
+          <Link key={c.id} href={`/rankings/${c.id}`} className="card row" style={{ textDecoration: "none", borderTop: `5px solid ${c.colorPrimary}`, opacity: (fans.get(c.id)?.fans ?? 0) === 0 ? 0.6 : 1 }}>
             <ClubBadge team={c} size={40} />
             <div>
               <div style={{ fontWeight: 700 }}>{c.name}</div>
