@@ -15,6 +15,8 @@ export interface ScorerTally {
   decisive: number;
   /** Fecha del último partido en que marcó (desempate: el más reciente). */
   lastDate: string;
+  /** Partidos en que sumó goles (para que el hincha pueda revisar de dónde sale cada número). */
+  games: { matchId: string; date: string; label: string; goals: number }[];
 }
 
 export interface OwnGoalSeen {
@@ -41,6 +43,8 @@ export interface ScorersReport {
 /** Qué pasó con el club del hincha en cada partido visto: sirve para desempatar ídolos y verdugos. */
 interface MatchMeta {
   date: string;
+  /** "Local 2-1 Visita", para mostrar el partido. */
+  label: string;
   /** Diferencia de goles desde el punto de vista del club del hincha. */
   margin: number;
 }
@@ -50,7 +54,7 @@ function tally(entries: { goal: Goal; scorerTeam: string }[], meta: Map<string, 
   for (const { goal, scorerTeam } of entries) {
     const key = `${goal.player}|${scorerTeam}`;
     const e = by.get(key) ?? {
-      t: { player: goal.player, teamId: scorerTeam, goals: 0, penalties: 0, matches: 0, hatTricks: 0, decisive: 0, lastDate: "" },
+      t: { player: goal.player, teamId: scorerTeam, goals: 0, penalties: 0, matches: 0, hatTricks: 0, decisive: 0, lastDate: "", games: [] },
       perMatch: new Map<string, number>(),
     };
     const m = meta.get(goal.matchId);
@@ -66,6 +70,9 @@ function tally(entries: { goal: Goal; scorerTeam: string }[], meta: Map<string, 
   return [...by.values()]
     .map(({ t, perMatch }) => ({
       ...t,
+      games: [...perMatch]
+        .map(([matchId, goals]) => ({ matchId, goals, date: meta.get(matchId)?.date ?? "", label: meta.get(matchId)?.label ?? matchId }))
+        .sort((a, b) => b.date.localeCompare(a.date)),
       matches: perMatch.size,
       hatTricks: [...perMatch.values()].filter((n) => n >= 3).length,
     }))
@@ -118,7 +125,7 @@ export function scorersSeen(attended: Match[], goalsByMatch: Map<string, Goal[]>
     matchesWithGoals++;
     const mine = m.homeTeamId === clubId ? m.homeGoals : m.awayGoals;
     const theirs = m.homeTeamId === clubId ? m.awayGoals : m.homeGoals;
-    meta.set(m.id, { date: m.date, margin: (mine ?? 0) - (theirs ?? 0) });
+    meta.set(m.id, { date: m.date, label: `${m.homeTeamName} ${m.homeGoals}-${m.awayGoals} ${m.awayTeamName}`, margin: (mine ?? 0) - (theirs ?? 0) });
     const rival = m.homeTeamId === clubId ? m.awayTeamId : m.homeTeamId;
     for (const g of goals) {
       const inFavor = g.teamId === clubId;
