@@ -47,6 +47,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               {full && <Link href="/carnet">Mi carnet</Link>}
               {full && isAdmin(user) && <Link href="/admin">Admin</Link>}
               <Link href="/rankings">Rankings</Link>
+              <Link href="/estadisticas">Estadísticas</Link>
               <Link href="/clubes">Clubes</Link>
               {user ? (
                 <>
