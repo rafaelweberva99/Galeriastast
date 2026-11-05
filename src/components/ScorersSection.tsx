@@ -1,4 +1,5 @@
 import { tiedWithFirst } from "@/lib/domain/scorers.ts";
+import { ScorerTable } from "./ScorerTable.tsx";
 import { clubIdentity } from "@/lib/clubTheme.ts";
 import type { ScorersReport, ScorerTally } from "@/lib/domain/scorers.ts";
 import type { Team } from "@/lib/repo/teams.ts";
@@ -38,72 +39,6 @@ function Spotlight({ title, tally, team, empty, tied = 0 }: { title: string; tal
   );
 }
 
-function ScorerTable({ rows, teams, showTeam }: { rows: ScorerTally[]; teams: Map<string, Team>; showTeam: boolean }) {
-  if (!rows.length) return <p className="muted">Sin goles registrados todavía.</p>;
-  return (
-    <div className="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Jugador</th>
-            {showTeam && <th>Equipo</th>}
-            <th className="num">Goles</th>
-            <th className="num">PJ</th>
-            <th className="num">Pen.</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.slice(0, 10).map((s) => (
-            <tr key={`${s.player}|${s.teamId}`}>
-              <td>{s.player}</td>
-              {showTeam && <td className="muted">{teams.get(s.teamId)?.shortName ?? s.teamId}</td>}
-              <td className="num">
-                <strong>{s.goals}</strong>
-              </td>
-              <td className="num">{s.matches}</td>
-              <td className="num">{s.penalties || "—"}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-/** Lista completa: cada jugador se abre y muestra los partidos donde suma sus goles (para revisar de dónde sale el número). */
-function FullList({ rows, teams, showTeam }: { rows: ScorerTally[]; teams: Map<string, Team>; showTeam: boolean }) {
-  if (rows.length <= 10) return null;
-  return (
-    <details style={{ marginTop: 10 }}>
-      <summary style={{ cursor: "pointer", fontWeight: 700 }}>Ver toda la lista ({rows.length} jugadores)</summary>
-      <div className="stack" style={{ gap: 0, marginTop: 8 }}>
-        {rows.map((s, i) => (
-          <details key={`${s.player}|${s.teamId}`} style={{ borderTop: "1px dashed var(--line, #ccc)", padding: "6px 0" }}>
-            <summary style={{ cursor: "pointer" }}>
-              <span className="muted small">{i + 1}. </span>
-              <strong>{s.player}</strong>
-              {showTeam && <span className="muted small"> · {teams.get(s.teamId)?.shortName ?? s.teamId}</span>}
-              <span className="muted small">
-                {" "}
-                — {s.goals} {s.goals === 1 ? "gol" : "goles"} en {s.matches} {s.matches === 1 ? "partido" : "partidos"}
-              </span>
-            </summary>
-            <ul className="small" style={{ margin: "6px 0 0 18px" }}>
-              {s.games.map((g) => (
-                <li key={g.matchId}>
-                  <span className="muted">{formatDate(g.date)} · </span>
-                  {g.label}
-                  <span className="muted"> · {g.goals} {g.goals === 1 ? "gol" : "goles"}</span>
-                </li>
-              ))}
-            </ul>
-          </details>
-        ))}
-      </div>
-    </details>
-  );
-}
-
 /** "Goleadores que viste": ídolo, verdugo, rankings y autogoles. */
 export function ScorersSection({
   report,
@@ -118,6 +53,7 @@ export function ScorersSection({
   perspective?: "fan" | "club";
 }) {
   const teams = new Map(clubs.map((t) => [t.id, t]));
+  const teamNames = Object.fromEntries(clubs.map((t) => [t.id, t.shortName]));
   const fan = perspective === "fan";
   const top = report.idols[0];
   const verdugo = report.executioners[0];
@@ -174,13 +110,11 @@ export function ScorersSection({
           <div className="grid grid-2">
             <div className="card">
               <h3>{fan ? "Tus goleadores" : "Goleadores históricos"}</h3>
-              <ScorerTable rows={report.idols} teams={teams} showTeam={false} />
-              <FullList rows={report.idols} teams={teams} showTeam={false} />
+              <ScorerTable rows={report.idols} teamNames={teamNames} showTeam={false} />
             </div>
             <div className="card">
               <h3>{fan ? "Verdugos que viste" : "Rivales que más le marcaron"}</h3>
-              <ScorerTable rows={report.executioners} teams={teams} showTeam />
-              <FullList rows={report.executioners} teams={teams} showTeam />
+              <ScorerTable rows={report.executioners} teamNames={teamNames} showTeam />
             </div>
           </div>
           {report.ownGoals.length > 0 && (
