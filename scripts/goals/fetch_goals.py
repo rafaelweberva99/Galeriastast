@@ -58,6 +58,7 @@ ESPN_LEAGUE = {
     "primera-division": "chi.1",
     "copa-chile": "chi.copa_chi",
     "copa-libertadores": "conmebol.libertadores",
+    "copa-sudamericana": "conmebol.sudamericana",
 }
 ESPN_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/soccer/{league}/scoreboard?dates={ymd}&limit=200"
 ESPN_SUMMARY = "https://site.api.espn.com/apis/site/v2/sports/soccer/{league}/summary?event={event}"
@@ -673,7 +674,7 @@ def main():
     ap.add_argument("--backends", default="espn,wfb,manual")
     ap.add_argument("--manual", default=None, help="CSV de goles curados (columnas de goals.csv)")
     ap.add_argument("--seasons", default=None, help="ej. 2003-2024 o 2009,2011")
-    ap.add_argument("--competitions", default="primera-division,copa-chile,copa-libertadores")
+    ap.add_argument("--competitions", default="primera-division,copa-chile,copa-libertadores,copa-sudamericana")
     ap.add_argument("--priority", action="store_true", help="solo Colo-Colo, U. de Chile, U. Catolica y finales")
     ap.add_argument("--offline", action="store_true", help="no descargar; usar solo el cache")
     ap.add_argument("--delay", type=float, default=1.0, help="segundos entre requests")
