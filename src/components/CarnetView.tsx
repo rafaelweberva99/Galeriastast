@@ -1,16 +1,14 @@
 import { AttendanceToggle } from "./AttendanceToggle.tsx";
 import Link from "next/link";
-import { effectiveness, type Breakdown, type Carnet } from "@/lib/domain/stats.ts";
+import type { Carnet } from "@/lib/domain/stats.ts";
+import { outcomeFor } from "@/lib/domain/stats.ts";
 import type { ScorersReport } from "@/lib/domain/scorers.ts";
 import type { AttendedMatch, Goal } from "@/lib/domain/types.ts";
+import type { Insights } from "@/lib/domain/insights/types.ts";
 import type { Team } from "@/lib/repo/teams.ts";
 import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
-import { Jersey } from "./Jersey.tsx";
-import { formatDate, pct, recordLine, scoreLine } from "./format.ts";
+import { scoreLine } from "./format.ts";
 import { MatchRow } from "./MatchRow.tsx";
-import { Mufometro } from "./Mufometro.tsx";
-import { RecordBar } from "./RecordBar.tsx";
-import { isVisibleClub } from "@/lib/mvp.ts";
 import { ScorersSection } from "./ScorersSection.tsx";
 import { Centenario } from "./Centenario.tsx";
 import { Premios } from "./Premios.tsx";
@@ -18,58 +16,24 @@ import type { Achievements } from "@/lib/domain/achievements.ts";
 import { ShareCarnet } from "./ShareCarnet.tsx";
 import { shareText } from "@/lib/shareText.ts";
 import { siteUrl } from "@/lib/site.ts";
+import { sampleInsights } from "./carnet/fixtures/insights.sample.ts";
+import { CarnetTabs } from "./carnet/CarnetTabs.tsx";
+import { Hero } from "./carnet/Hero.tsx";
+import { Highlights } from "./carnet/Highlights.tsx";
+import { LogrosStrip } from "./carnet/LogrosStrip.tsx";
+import { MatchList, type MatchItem } from "./carnet/MatchList.tsx";
+import { GoalsPanel, MissedPanel, Memorable, RecordsPanel, PHASE_LABEL, eff01, MONTHS_LETTER, MONTHS_SHORT, WEEKDAYS_FULL, WEEKDAYS_SHORT } from "./carnet/StatsPanels.tsx";
+import { ColumnChart, Donut, FormCurve, RecordRows, RivalBars, ResultStrip, SeasonBars } from "./carnet/charts/index.ts";
 
 const OUTCOME_LABEL = { G: "Ganado", E: "Empate", P: "Perdido" } as const;
 
-function BreakdownTable({ rows, label }: { rows: Breakdown[]; label: string }) {
-  if (!rows.length) return <p className="muted">Sin datos todavía.</p>;
+function Card({ title, hint, children, id }: { title: string; hint?: string; children: React.ReactNode; id?: string }) {
   return (
-    <div className="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>{label}</th>
-            <th className="num">PJ</th>
-            <th className="num">G</th>
-            <th className="num">E</th>
-            <th className="num">P</th>
-            <th className="num">Efect.</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((r) => (
-            <tr key={r.key}>
-              <td>{r.label}</td>
-              <td className="num">{r.record.played}</td>
-              <td className="num">{r.record.won}</td>
-              <td className="num">{r.record.drawn}</td>
-              <td className="num">{r.record.lost}</td>
-              <td className="num">{pct(r.effectiveness)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-function Memorable({ title, match }: { title: string; match: AttendedMatch | null }) {
-  return (
-    <div className="card">
-      <div className="stat-label">{title}</div>
-      {match ? (
-        <>
-          <div style={{ fontWeight: 700 }}>
-            {match.homeTeamName} {scoreLine(match)} {match.awayTeamName}
-          </div>
-          <div className="muted small">
-            {formatDate(match.date)} · {match.competitionName}
-          </div>
-        </>
-      ) : (
-        <div className="muted">—</div>
-      )}
-    </div>
+    <section className="card cv-card" id={id}>
+      <h2 className="section-title cv-card-title">{title}</h2>
+      {hint && <p className="muted small cv-card-hint">{hint}</p>}
+      {children}
+    </section>
   );
 }
 
@@ -86,6 +50,7 @@ export function CarnetView({
   achievements,
   upcoming = [],
   isPublic = false,
+  insights,
 }: {
   username: string;
   memberId: number;
@@ -101,71 +66,67 @@ export function CarnetView({
   upcoming?: AttendedMatch[];
   /** Si el carnet es público (para ofrecer compartir el link). */
   isPublic?: boolean;
+  /** Estadísticas avanzadas (buildInsights). Mientras no estén conectadas se dibuja con una muestra. */
+  insights?: Insights;
 }) {
   const c = carnet;
-  const impact = c.impact;
   const id = clubIdentity(club);
-  const since = c.first ? c.first.season : null;
-  const phrase =
-    c.verdict.key === "cabala" || c.verdict.key === "cabala-absoluta"
-      ? id.needsYou
-      : c.verdict.key === "yeta" || c.verdict.key === "yeta-total"
-        ? "Quizás conviene verlo por la tele…"
-        : c.verdict.description;
-  return (
-    <div className="stack" style={clubStyle(id) as React.CSSProperties}>
-      <section className={`socio-card tier-${achievements.tier.key}`}>
-        {achievements.tier.key !== "socio" && (
-          <div className="tier-ribbon" aria-label={achievements.tier.label}>
-            {achievements.tier.label.replace("Carnet ", "")}
-          </div>
-        )}
-        <div className="row" style={{ alignItems: "center", gap: 20 }}>
-          <Jersey club={id} size={110} number="12" />
-          <div>
-            <div className="socio-kicker">Carnet de hincha · {id.nickname}</div>
-            <div className="socio-name">@{username}</div>
-            <div className="socio-meta">
-              {isVisibleClub(club.id) ? <Link href={`/clubes/${club.id}`}>{club.name}</Link> : club.name}
-              {id.stadium ? ` · ${id.stadium}` : ""}
-            </div>
-            <div className="socio-meta">
-              Socio N° {String(memberId).padStart(6, "0")}
-              {since ? ` · En la galería desde ${since}` : ""}
-            </div>
-            <div className="cheer">{id.cheer}</div>
-          </div>
-        </div>
-        <div className="mufometro-panel">
-          <div className="socio-kicker" style={{ opacity: 0.6 }}>
-            Mufómetro
-          </div>
-          <Mufometro value={c.effectiveness} verdict={c.verdict} />
-          <p className="verdict">{c.verdict.label}</p>
-          <p className="small" style={{ margin: "4px 0 0", maxWidth: 240, color: "#56655c" }}>
-            {phrase}
-          </p>
-        </div>
-      </section>
+  const ins = insights ?? sampleInsights;
+  const hasData = c.total > 0;
 
-      <Centenario club={id} total={c.total} owner={isOwner} />
-      <Premios a={achievements} owner={isOwner} />
-      {upcoming.length > 0 && (
-        <section className="card">
-          <h2 className="section-title" style={{ marginTop: 0 }}>
-            {isOwner ? "Próximos partidos a los que vas" : "Próximos partidos a los que va"}
-          </h2>
-          <p className="muted small" style={{ marginTop: 0 }}>
-            Cuentan en el carnet y en el Mufómetro cuando se jueguen.
-          </p>
-          {upcoming.map((m) => (
-            <MatchRow key={m.id} match={m} highlight={club.id}>
-              {m.mode === "infiltrado" && <span className="pill infiltrado">Infiltrado</span>}
-              {isOwner && <AttendanceToggle matchId={m.id} initial={m.mode === "infiltrado" ? "infiltrado" : "propia"} upcoming />}
-            </MatchRow>
-          ))}
-        </section>
-      )}
+  const items: MatchItem[] = [...attended].reverse().map((m) => ({
+    id: m.id,
+    season: m.season,
+    competition: m.competitionName,
+    outcome: outcomeFor(m, club.id),
+    search: [m.homeTeamName, m.awayTeamName, m.competitionName, m.tournament, m.stage, m.season, ...(goals.get(m.id) ?? []).map((g) => g.player)].filter(Boolean).join(" "),
+    node: (
+      <MatchRow match={m} highlight={club.id} goals={goals.get(m.id)}>
+        {m.mode === "infiltrado" && <span className="pill infiltrado">Infiltrado</span>}
+        {/* En tu propio carnet puedes corregir una marca equivocada sin salir de aquí ("No fui" lo quita). */}
+        {isOwner && <AttendanceToggle matchId={m.id} initial={m.mode === "infiltrado" ? "infiltrado" : "propia"} />}
+      </MatchRow>
+    ),
+  }));
+
+  const upcomingCard = upcoming.length > 0 && (
+    <section className="card cv-card">
+      <h2 className="section-title cv-card-title">{isOwner ? "Próximos partidos a los que vas" : "Próximos partidos a los que va"}</h2>
+      <p className="muted small cv-card-hint">Cuentan en el carnet y en el Mufómetro cuando se jueguen.</p>
+      {upcoming.map((m) => (
+        <MatchRow key={m.id} match={m} highlight={club.id}>
+          {m.mode === "infiltrado" && <span className="pill infiltrado">Infiltrado</span>}
+          {isOwner && <AttendanceToggle matchId={m.id} initial={m.mode === "infiltrado" ? "infiltrado" : "propia"} upcoming />}
+        </MatchRow>
+      ))}
+    </section>
+  );
+
+  const resumen = (
+    <>
+      {upcomingCard}
+      <Card title="Lo más destacado" hint="Lo que más se repite (o más sorprende) en los partidos que marcaste.">
+        <Highlights highlights={ins.highlights} />
+      </Card>
+      <div className="grid cv-grid-2">
+        <Card title="Curva de forma" hint="Cómo va tu efectividad partido a partido. Toca o desliza para ver cada uno.">
+          <FormCurve points={ins.form} />
+        </Card>
+        <Card title="Últimos 20 resultados" hint="De izquierda a derecha, del más antiguo al más reciente.">
+          <ResultStrip points={ins.form} last={20} />
+          <div className="cv-legend cv-legend-results">
+            <span><i className="cv-dot-key win" /> Ganado</span>
+            <span><i className="cv-dot-key draw" /> Empate</span>
+            <span><i className="cv-dot-key loss" /> Perdido</span>
+          </div>
+        </Card>
+      </div>
+      <Card title="Logros" hint="Niveles del carnet, camiseta de los 100, rueda completa y temporadas perfectas.">
+        <LogrosStrip a={achievements} />
+        <a className="cv-link cv-block-link" href="#logros">
+          Ver todos los logros ›
+        </a>
+      </Card>
       {isOwner && (
         <ShareCarnet
           username={username}
@@ -174,95 +135,95 @@ export function CarnetView({
           url={`${siteUrl()}/hincha/${encodeURIComponent(username)}`}
         />
       )}
+    </>
+  );
 
-      <section className="grid grid-4">
-        <div className="card stat">
-          <span className="stat-value">{c.total}</span>
-          <span className="stat-label">partidos en la galería</span>
-        </div>
-        <div className="card stat">
-          <span className="stat-value">{pct(c.effectiveness)}</span>
-          <span className="stat-label">efectividad cuando vas</span>
-        </div>
-        <div className="card stat">
-          <span className="stat-value" style={{ color: impact === null ? undefined : impact >= 0 ? "var(--win)" : "var(--loss)" }}>
-            {impact === null ? "—" : `${impact >= 0 ? "+" : ""}${impact.toFixed(1)} pts`}
-          </span>
-          <span className="stat-label">vs. tu club esas temporadas ({pct(c.baselineEffectiveness)})</span>
-        </div>
-        <div className="card stat">
-          <span className="stat-value sm">{recordLine(c.record)}</span>
-          <span className="stat-label">
-            goles {c.record.goalsFor}-{c.record.goalsAgainst}
-          </span>
-          <RecordBar record={c.record} />
-        </div>
-      </section>
-
-      <section className="grid grid-3">
-        <div className="card">
-          <h3>De local</h3>
-          <p className="muted">
-            {recordLine(c.home)} · {pct(effectiveness(c.home))}
-          </p>
-          <RecordBar record={c.home} />
-        </div>
-        <div className="card">
-          <h3>De visita</h3>
-          <p className="muted">
-            {recordLine(c.away)} · {pct(effectiveness(c.away))}
-          </p>
-          <RecordBar record={c.away} />
-        </div>
-        <div className="card">
-          <h3>
-            <span className="pill infiltrado">Modo Infiltrado</span>
-          </h3>
-          <p className="muted">
-            {c.infiltrado.played
-              ? `${c.infiltrado.played} ${c.infiltrado.played === 1 ? "partido" : "partidos"} escondido en la galería rival · ${recordLine(c.infiltrado)}`
-              : "¿Fuiste escondido a la galería rival? También cuenta."}
-          </p>
-          <RecordBar record={c.infiltrado} />
-        </div>
-      </section>
-
-      <section className="grid grid-2">
-        <div className="card">
-          <h2 className="section-title">Clásicos</h2>
-          {c.classics.length === 0 ? (
-            <p className="muted">Tu club no tiene clásicos registrados.</p>
-          ) : (
-            <div className="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Clásico</th>
-                    <th className="num">PJ</th>
-                    <th className="num">G-E-P</th>
-                    <th className="num">Efect.</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {c.classics.map((k) => (
-                    <tr key={k.rivalry.id}>
-                      <td>{k.rivalry.name}</td>
-                      <td className="num">{k.record.played}</td>
-                      <td className="num">
-                        {k.record.won}-{k.record.drawn}-{k.record.lost}
-                      </td>
-                      <td className="num">{pct(k.effectiveness)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+  const estadisticas = (
+    <>
+      <div className="grid cv-grid-2">
+        <Card title="Por temporada" hint="Tu efectividad cada año frente a la del club en esa temporada.">
+          <SeasonBars seasons={ins.seasons} />
+        </Card>
+        <Card title="Rivales" hint="Con quién eres cábala y con quién eres yeta.">
+          <RivalBars rivals={ins.rivals} />
+        </Card>
+      </div>
+      <div className="grid cv-grid-2">
+        <Card title="Local, visita e infiltrado">
+          <div className="cv-split">
+            <Donut g={c.record.won} e={c.record.drawn} p={c.record.lost} />
+            <div className="cv-split-bars">
+              <RecordRows
+                aria="Resultados de local, de visita e infiltrado"
+                rows={[
+                  { label: "De local", g: c.home.won, e: c.home.drawn, p: c.home.lost, eff: eff01(c.home) },
+                  { label: "De visita", g: c.away.won, e: c.away.drawn, p: c.away.lost, eff: eff01(c.away) },
+                  { label: "Infiltrado", g: c.infiltrado.won, e: c.infiltrado.drawn, p: c.infiltrado.lost, eff: eff01(c.infiltrado) },
+                ]}
+              />
             </div>
+          </div>
+          {c.infiltrado.played === 0 && <p className="muted small cv-card-hint">¿Fuiste escondido a la galería rival? También cuenta (modo Infiltrado).</p>}
+        </Card>
+        <Card title="Por competición y fase">
+          <RecordRows
+            aria="Resultados por competición"
+            rows={ins.competitions.map((k) => ({ label: k.name, sub: `${k.pj} PJ`, g: k.g, e: k.e, p: k.p, eff: k.effectiveness }))}
+          />
+          {ins.phases.length > 1 && (
+            <>
+              <h3 className="cv-sub">Por fase</h3>
+              <RecordRows
+                aria="Resultados por fase"
+                rows={ins.phases.map((k) => ({ label: PHASE_LABEL[k.phase], sub: `${k.pj} PJ`, g: k.g, e: k.e, p: k.p, eff: k.effectiveness }))}
+              />
+            </>
           )}
+        </Card>
+      </div>
+      <div className="grid cv-grid-2">
+        <Card title="Cuándo vas al estadio" hint="Partidos vistos por mes y por día de la semana.">
+          <h3 className="cv-sub">Por mes</h3>
+          <ColumnChart
+            values={ins.distributions.byMonth}
+            labels={MONTHS_LETTER}
+            titles={MONTHS_SHORT}
+            aria="Partidos vistos por mes del año"
+          />
+          <h3 className="cv-sub">Por día de la semana</h3>
+          <ColumnChart
+            values={[1, 2, 3, 4, 5, 6, 0].map((d) => ins.distributions.byWeekday[d])}
+            labels={[1, 2, 3, 4, 5, 6, 0].map((d) => WEEKDAYS_SHORT[d])}
+            titles={[1, 2, 3, 4, 5, 6, 0].map((d) => WEEKDAYS_FULL[d])}
+            aria="Partidos vistos por día de la semana"
+          />
+        </Card>
+        <div className="stack">
+          <Card title="Goles">
+            <GoalsPanel insights={ins} />
+          </Card>
+          <Card title="Contigo y sin ti" hint="Partidos de tu club en las temporadas en que fuiste a algún partido.">
+            <MissedPanel insights={ins} owner={isOwner} />
+          </Card>
         </div>
-        <div className="card">
-          <h2 className="section-title">Finales</h2>
+      </div>
+      <Card title="Rachas y récords">
+        <RecordsPanel carnet={c} insights={ins} />
+      </Card>
+      <div className="grid cv-grid-2">
+        <Card title="Clásicos">
+          {c.classics.length === 0 ? (
+            <p className="muted cv-empty">Tu club no tiene clásicos registrados.</p>
+          ) : (
+            <RecordRows
+              aria="Resultados en los clásicos"
+              rows={c.classics.map((k) => ({ label: k.rivalry.name, sub: `${k.record.played} PJ`, g: k.record.won, e: k.record.drawn, p: k.record.lost, eff: eff01(k.record) }))}
+            />
+          )}
+        </Card>
+        <Card title="Finales">
           {c.finals.length === 0 ? (
-            <p className="muted">Todavía no marcas ninguna final.</p>
+            <p className="muted cv-empty">Todavía no marcas ninguna final.</p>
           ) : (
             c.finals.map(({ match, outcome }) => (
               <div key={match.id} className="final-row">
@@ -274,73 +235,74 @@ export function CarnetView({
               </div>
             ))
           )}
+        </Card>
+      </div>
+      <Card title="Partidos para el recuerdo">
+        <div className="cv-memos">
+          <Memorable title="Mayor goleada vista" match={c.biggestWin} />
+          <Memorable title="Peor derrota vista" match={c.worstDefeat} />
+          <Memorable title="Primer partido" match={c.first} />
+          <Memorable title="Último partido" match={c.last} />
         </div>
-      </section>
+      </Card>
+      <Card title="Todos tus resultados" hint="Un cuadrito por partido, año por año.">
+        <ResultStrip points={ins.form} bySeason />
+      </Card>
+    </>
+  );
 
-      <section className="grid grid-4">
-        <div className="card stat">
-          <span className="stat-value">{c.streaks.longestWin}</span>
-          <span className="stat-label">racha más larga ganando</span>
-        </div>
-        <div className="card stat">
-          <span className="stat-value">{c.streaks.longestUnbeaten}</span>
-          <span className="stat-label">racha más larga invicto</span>
-        </div>
-        <div className="card stat">
-          <span className="stat-value">{c.streaks.longestWinless}</span>
-          <span className="stat-label">racha más larga sin ganar</span>
-        </div>
-        <div className="card stat">
-          <span className="stat-value">
-            {c.streaks.current ? `${c.streaks.current.length} ${c.streaks.current.outcome}` : "—"}
-          </span>
-          <span className="stat-label">racha actual</span>
-        </div>
-      </section>
+  const logros = (
+    <>
+      <Centenario club={id} total={c.total} owner={isOwner} />
+      <Premios a={achievements} owner={isOwner} />
+    </>
+  );
 
-      <section className="grid grid-4">
-        <Memorable title="Mayor goleada vista" match={c.biggestWin} />
-        <Memorable title="Peor derrota vista" match={c.worstDefeat} />
-        <Memorable title="Primer partido" match={c.first} />
-        <Memorable title="Último partido" match={c.last} />
-      </section>
+  const partidos = (
+    <section className="card cv-card">
+      <div className="row cv-card-head">
+        <h2 className="section-title cv-card-title">{isOwner ? "Tus partidos" : "Sus partidos"}</h2>
+        {isOwner && (
+          <Link className="btn btn-ghost" href="/partidos">
+            Marcar más partidos
+          </Link>
+        )}
+      </div>
+      <MatchList items={items} />
+    </section>
+  );
 
-      <ScorersSection report={scorers} clubId={club.id} clubs={clubs} />
-
-      <section className="grid grid-2">
-        <div className="card">
-          <h2 className="section-title">Por temporada</h2>
-          <BreakdownTable rows={c.bySeason} label="Año" />
-        </div>
-        <div className="card">
-          <h2 className="section-title">Por competición</h2>
-          <BreakdownTable rows={c.byCompetition} label="Competición" />
-          <h2 className="section-title section">Rivales más vistos</h2>
-          <BreakdownTable rows={c.byOpponent.slice(0, 10)} label="Rival" />
-        </div>
-      </section>
-
-      <section className="card">
-        <div className="row" style={{ justifyContent: "space-between" }}>
-          <h2 className="section-title" style={{ margin: 0 }}>Partidos a los que fue</h2>
+  return (
+    <div className="stack cv" style={clubStyle(id) as React.CSSProperties}>
+      <Hero username={username} memberId={memberId} club={club} carnet={c} achievements={achievements} />
+      {!hasData && (
+        <div className="card cv-card cv-empty-hero">
+          <strong>{isOwner ? "Tu carnet está en cero." : "Este carnet todavía está en cero."}</strong>
+          <p className="muted" style={{ margin: "4px 0 0" }}>
+            {isOwner ? "Marca los partidos a los que has ido al estadio y aquí aparecerán tu Mufómetro, tus gráficos y tus frases destacadas." : "Cuando marque partidos aparecerán sus estadísticas."}
+          </p>
           {isOwner && (
-            <Link className="btn btn-ghost" href="/partidos">
-              Marcar más partidos
+            <Link className="btn" href="/partidos" style={{ marginTop: 12 }}>
+              Marcar mis partidos
             </Link>
           )}
         </div>
-        {attended.length === 0 ? (
-          <p className="muted">Aún no hay partidos marcados.</p>
-        ) : (
-          [...attended].reverse().map((m) => (
-            <MatchRow key={m.id} match={m} highlight={club.id} goals={goals.get(m.id)}>
-              {m.mode === "infiltrado" && <span className="pill infiltrado">Infiltrado</span>}
-              {/* En tu propio carnet puedes corregir una marca equivocada sin salir de aquí ("No fui" lo quita). */}
-              {isOwner && <AttendanceToggle matchId={m.id} initial={m.mode === "infiltrado" ? "infiltrado" : "propia"} />}
-            </MatchRow>
-          ))
-        )}
-      </section>
+      )}
+      {hasData && (
+        <CarnetTabs
+          tabs={[
+            { id: "resumen", label: "Resumen", content: resumen },
+            { id: "estadisticas", label: "Estadísticas", content: estadisticas },
+            { id: "goleadores", label: "Goleadores", content: <ScorersSection report={scorers} clubId={club.id} clubs={clubs} /> },
+            { id: "partidos", label: "Partidos", badge: attended.length, content: partidos },
+            { id: "logros", label: "Logros", content: logros },
+          ]}
+        />
+      )}
+      {!hasData && upcomingCard}
+      <p className="muted small cv-foot">
+        {isOwner ? "Tus" : "Sus"} estadísticas son solo para entretención: la cábala y la yeta no existen (o eso dicen).
+      </p>
     </div>
   );
 }
