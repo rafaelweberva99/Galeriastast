@@ -933,3 +933,38 @@ a.cm-bar-name:hover { text-decoration: underline; }
 .cmp-box-form .btn { min-height: 44px; }
 @media (min-width: 700px) { .cmp-hero { padding: 24px; } .cmp-vs-badge { width: 60px; height: 60px; font-size: 1.6rem; } .cmp-vs { gap: 16px; } }
 .cmp .share-preview { min-width: 0; max-width: 100%; } .cmp .share-preview img { max-width: 100%; height: auto; display: block; }
+
+/* === vitrina portada === */
+.sc-note { text-align: center; color: var(--muted); margin: -12px 0 22px; font-size: 0.95rem; }
+.sc-grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 700px) { .sc-grid { grid-template-columns: repeat(2, 1fr); } .sc-wide { grid-column: span 2; } }
+@media (min-width: 1000px) { .sc-grid { grid-template-columns: repeat(3, 1fr); } .sc-wide { grid-column: span 2; } .sc-year { grid-column: span 3; } }
+.sc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 20px; box-shadow: var(--shadow); min-width: 0; }
+.sc-q { margin: 0 0 12px; font: 700 1.25rem/1.15 var(--font-display), sans-serif; text-transform: uppercase; }
+.sc-cap { margin: 10px 0 0; color: var(--muted); font-size: 0.92rem; }
+.sc-foot { margin: 12px 0 0; color: var(--muted); font-size: 0.92rem; }
+.sc-scorer { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; background: linear-gradient(90deg, #fff6d6, #fff); border: 1px solid #ecd88a; margin-bottom: 8px; }
+.sc-scorer.alt { background: var(--surface-2); border-color: transparent; }
+.sc-scorer div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.sc-scorer small { color: var(--muted); }
+.sc-scorer strong { font: 700 1.2rem var(--font-display), sans-serif; white-space: nowrap; }
+.sc-rank { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font: 700 1rem var(--font-display), sans-serif; flex-shrink: 0; }
+.sc-big { font: 700 4rem/1 var(--font-display), sans-serif; }
+.sc-big.win, .sc-versus .win { color: var(--win); } .sc-versus .draw { color: var(--draw-ink); } .sc-versus .loss { color: var(--loss); }
+.sc-meter { position: relative; height: 10px; border-radius: 6px; margin-top: 12px; background: linear-gradient(90deg, var(--loss) 0 40%, var(--draw) 40% 60%, var(--win) 60% 100%); }
+.sc-meter i { position: absolute; top: -4px; width: 4px; height: 18px; background: var(--text); border-radius: 2px; transform: translateX(-2px); }
+.sc-scale { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
+.sc-score { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 14px; border-radius: 12px; background: var(--surface-2); font-size: 0.9rem; }
+.sc-score b { font: 700 1.8rem var(--font-display), sans-serif; background: var(--text); color: #fff; padding: 2px 12px; border-radius: 8px; white-space: nowrap; }
+.sc-bars { display: flex; align-items: flex-end; gap: 6px; height: 130px; }
+.sc-bars div { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; }
+.sc-bars i { width: 100%; background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 60%, #000)); border-radius: 5px 5px 0 0; }
+.sc-bars span { font-size: 0.68rem; color: var(--muted); }
+.sc-versus { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-radius: 10px; background: var(--surface-2); margin-bottom: 8px; font-size: 0.92rem; }
+.sc-versus b { font: 700 1.4rem var(--font-display), sans-serif; }
+.sc-vs { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 14px; border-radius: 12px; background: var(--surface-2); font-size: 1.1rem; }
+.sc-vs span { background: var(--text); color: #fff; border-radius: 50%; width: 34px; height: 34px; display: grid; place-items: center; font: 700 0.8rem var(--font-display), sans-serif; }
+.sc-year { display: flex; flex-direction: column; gap: 14px; background: linear-gradient(135deg, var(--grass-1), var(--grass-2)); color: #fff; border: 0; }
+.sc-year .sc-cap { color: rgb(255 255 255 / 0.9); }
+.sc-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+.sc-badges span { background: rgb(255 255 255 / 0.16); border: 1px solid rgb(255 255 255 / 0.3); padding: 6px 12px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; }

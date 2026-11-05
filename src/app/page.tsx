@@ -8,18 +8,11 @@ import { getTeam, listClubs } from "@/lib/repo/teams.ts";
 import { CURRENT_SEASON } from "@/lib/ticketing.ts";
 import { isVisibleClub, MVP_ACTIVE, MVP_CLUBS, visibleClubs } from "@/lib/mvp.ts";
 import { Jersey } from "@/components/Jersey.tsx";
+import { LandingShowcase } from "@/components/LandingShowcase.tsx";
 import { LandingPreview } from "@/components/LandingPreview.tsx";
 
 const BIG_THREE = ["colo-colo", "universidad-de-chile", "universidad-catolica"];
 
-const FEATURES = [
-  { icon: "🎯", title: "Mufómetro", text: "Tu efectividad en los partidos que viste desde la galería. Más de 60%: cábala. Menos de 40%: yeta." },
-  { icon: "⚽", title: "Ídolos y verdugos", text: "El goleador que más gritaste y el que más te hizo sufrir, con cada partido a mano." },
-  { icon: "🔥", title: "Clásicos y rivales", text: "Superclásico, Clásico Universitario… ¿cómo le va a tu club contra cada rival cuando tú vas?" },
-  { icon: "📈", title: "Gráficos por temporada", text: "Tu curva de efectividad, rachas, mejores y peores años, local y visita." },
-  { icon: "🏆", title: "Finales y premios", text: "Las finales que viviste, tu nivel de carnet (Bronce a Oro) y logros por desbloquear." },
-  { icon: "🎁", title: "Resumen del año", text: "Tu año de hincha en una imagen lista para compartir. Y compárate con la comunidad." },
-];
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ cuenta?: string }> }) {
   const { cuenta } = await searchParams;
@@ -161,19 +154,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
         </div>
       </section>
 
-      <section className="section" id="que-veras">
-        <p className="lp-eyebrow">Lo que vas a ver</p>
-        <h2 className="lp-h2">Mucho más que un carnet</h2>
-        <div className="grid grid-3">
-          {FEATURES.map((f) => (
-            <div key={f.title} className="card feat">
-              <div className="feat-ico" aria-hidden="true">{f.icon}</div>
-              <h3>{f.title}</h3>
-              <p className="muted" style={{ margin: 0 }}>{f.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <LandingShowcase />
 
       <section className="section steps">
         <p className="lp-eyebrow">Así de simple</p>
