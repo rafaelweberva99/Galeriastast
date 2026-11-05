@@ -1,3 +1,4 @@
+import { Paged, PagedTable } from "@/components/Paged.tsx";
 import Link from "next/link";
 import { clubIdentity, clubStyle, fansLabel } from "@/lib/clubTheme.ts";
 import { Jersey } from "@/components/Jersey.tsx";
@@ -109,7 +110,7 @@ export default async function ClubPage({ params }: { params: Params }) {
         <div className="card">
           <h2 className="section-title">Finales</h2>
           {finals.length === 0 && <p className="muted">Sin finales registradas.</p>}
-          <div className="scroll-list">
+          <Paged>
           {finals.map((m) => {
             const o = decidedOutcome(m, club.id);
             return (
@@ -122,7 +123,7 @@ export default async function ClubPage({ params }: { params: Params }) {
               </div>
             );
           })}
-          </div>
+          </Paged>
         </div>
       </section>
 
@@ -130,8 +131,8 @@ export default async function ClubPage({ params }: { params: Params }) {
 
       <section className="card">
         <h2 className="section-title">Por temporada</h2>
-        <div className="table-wrap">
-          <table>
+        <PagedTable
+          head={
             <thead>
               <tr>
                 <th>Año</th>
@@ -141,7 +142,8 @@ export default async function ClubPage({ params }: { params: Params }) {
                 <th className="num">Efect.</th>
               </tr>
             </thead>
-            <tbody>
+          }
+        >
               {seasons.map((s) => {
                 const r = recordFor(matches.filter((m) => m.season === s), club.id);
                 return (
@@ -158,9 +160,7 @@ export default async function ClubPage({ params }: { params: Params }) {
                   </tr>
                 );
               })}
-            </tbody>
-          </table>
-        </div>
+        </PagedTable>
       </section>
     </div>
   );

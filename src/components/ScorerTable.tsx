@@ -1,23 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { ScorerTally } from "@/lib/domain/scorers.ts";
 import { formatDate } from "./format.ts";
 
 const TOP = 10;
 
 /**
- * Tabla de goleadores (o verdugos): los 10 primeros y un botón para ver a todos. Al tocar un jugador se abren, debajo de su
+ * Tabla de goleadores (o verdugos): de 10 en 10, con opción de volver a los primeros. Al tocar un jugador se abren, debajo de su
  * fila, los partidos donde suma sus goles, para que el hincha pueda revisar de dónde sale cada número.
  */
 export function ScorerTable({ rows, teamNames, showTeam }: { rows: ScorerTally[]; teamNames: Record<string, string>; showTeam: boolean }) {
-  const [all, setAll] = useState(false);
+  const [n, setN] = useState(TOP);
+  const top = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<string | null>(null);
   if (!rows.length) return <p className="muted">Sin goles registrados todavía.</p>;
-  const shown = all ? rows : rows.slice(0, TOP);
+  const shown = rows.slice(0, n);
   return (
     <>
-      <div className="table-wrap">
+      <div className="table-wrap" ref={top}>
         <table className="scorer-table">
           <thead>
             <tr>
@@ -40,9 +41,29 @@ export function ScorerTable({ rows, teamNames, showTeam }: { rows: ScorerTally[]
         </table>
       </div>
       {rows.length > TOP && (
-        <button type="button" className="btn btn-ghost scorer-more" onClick={() => setAll((v) => !v)} aria-expanded={all}>
-          {all ? `Ver solo los ${TOP} primeros` : `Ver toda la lista (${rows.length} jugadores)`}
-        </button>
+        <div className="paged-ctl">
+          <span className="muted small paged-count">
+            Mostrando {shown.length} de {rows.length}
+          </span>
+          {shown.length < rows.length && (
+            <button type="button" className="btn btn-ghost paged-btn" onClick={() => setN((v) => v + TOP)}>
+              Ver {Math.min(TOP, rows.length - shown.length)} más
+            </button>
+          )}
+          {shown.length > TOP && (
+            <button
+              type="button"
+              className="btn btn-ghost paged-btn"
+              onClick={() => {
+                setN(TOP);
+                setOpen(null);
+                top.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+              }}
+            >
+              ↑ Volver a los primeros {TOP}
+            </button>
+          )}
+        </div>
       )}
     </>
   );

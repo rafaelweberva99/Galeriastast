@@ -1,3 +1,4 @@
+import { Paged } from "@/components/Paged.tsx";
 import Link from "next/link";
 import { clubIdentity } from "@/lib/clubTheme.ts";
 import { Jersey } from "@/components/Jersey.tsx";
@@ -94,11 +95,13 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
         {matches.length === 0 ? (
           <p className="muted">No hay partidos con esos filtros.</p>
         ) : (
-          matches.map((m) => (
-            <MatchRow key={m.id} match={m} highlight={club.id} goals={goals.get(m.id)}>
-              <AttendanceToggle matchId={m.id} initial={modes.get(m.id) ?? "ninguno"} upcoming={m.date > today} />
-            </MatchRow>
-          ))
+          <Paged>
+            {matches.map((m) => (
+              <MatchRow key={m.id} match={m} highlight={club.id} goals={goals.get(m.id)}>
+                <AttendanceToggle matchId={m.id} initial={modes.get(m.id) ?? "ninguno"} upcoming={m.date > today} />
+              </MatchRow>
+            ))}
+          </Paged>
         )}
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { Paged } from "./Paged.tsx";
 import { tiedWithFirst } from "@/lib/domain/scorers.ts";
 import { ScorerTable } from "./ScorerTable.tsx";
 import { clubIdentity } from "@/lib/clubTheme.ts";
@@ -120,6 +121,7 @@ export function ScorersSection({
           {report.ownGoals.length > 0 && (
             <div className="card">
               <h3>Autogoles</h3>
+              <Paged>
               {report.ownGoals.map(({ goal, match, inFavor }) => (
                 <div key={`${match.id}-${goal.player}-${goal.minute}`} className="final-row">
                   <span>
@@ -131,6 +133,7 @@ export function ScorersSection({
                   <span className={`pill ${inFavor ? "G" : "P"}`}>{inFavor ? "A favor" : "En contra"}</span>
                 </div>
               ))}
+              </Paged>
             </div>
           )}
         </>

@@ -1,4 +1,5 @@
 "use client";
+import { Paged } from "../Paged.tsx";
 import { useMemo, useState, type ReactNode } from "react";
 import { groupBySeason } from "./helpers.ts";
 
@@ -113,9 +114,11 @@ export function MatchList({ items }: { items: MatchItem[] }) {
               </h3>
               {isOpen && (
                 <div id={`temp-${season}`} className="cv-season-body">
-                  {list.map((i) => (
-                    <div key={i.id}>{i.node}</div>
-                  ))}
+                  <Paged>
+                    {list.map((i) => (
+                      <div key={i.id}>{i.node}</div>
+                    ))}
+                  </Paged>
                 </div>
               )}
             </section>

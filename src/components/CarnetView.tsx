@@ -1,3 +1,4 @@
+import { Paged } from "./Paged.tsx";
 import { AttendanceToggle } from "./AttendanceToggle.tsx";
 import Link from "next/link";
 import type { Carnet } from "@/lib/domain/stats.ts";
@@ -240,7 +241,7 @@ export function CarnetView({
           {c.finals.length === 0 ? (
             <p className="muted cv-empty">Todavía no marcas ninguna final.</p>
           ) : (
-            c.finals.map(({ match, outcome }) => (
+            <Paged>{c.finals.map(({ match, outcome }) => (
               <div key={match.id} className="final-row">
                 <span>
                   {match.homeTeamName} {scoreLine(match)} {match.awayTeamName}
@@ -248,7 +249,7 @@ export function CarnetView({
                 </span>
                 {outcome && <span className={`pill ${outcome}`}>{OUTCOME_LABEL[outcome]}</span>}
               </div>
-            ))
+            ))}</Paged>
           )}
         </Card>
       </div>

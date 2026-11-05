@@ -1,3 +1,4 @@
+import { PagedTable } from "@/components/Paged.tsx";
 import Link from "next/link";
 import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
 import { Jersey } from "@/components/Jersey.tsx";
@@ -13,8 +14,8 @@ type Params = Promise<{ club: string }>;
 function FanTable({ rows, empty }: { rows: FanRanking[]; empty: string }) {
   if (!rows.length) return <p className="muted">{empty}</p>;
   return (
-    <div className="table-wrap">
-      <table>
+    <PagedTable
+      head={
         <thead>
           <tr>
             <th>#</th>
@@ -24,23 +25,22 @@ function FanTable({ rows, empty }: { rows: FanRanking[]; empty: string }) {
             <th className="num">Efect.</th>
           </tr>
         </thead>
-        <tbody>
-          {rows.map((f, i) => (
-            <tr key={f.username}>
-              <td>{i + 1}</td>
-              <td>
-                <Link href={`/hincha/${f.username}`}>@{f.username}</Link>
-              </td>
-              <td className="num">{f.attended}</td>
-              <td className="num">
-                {f.won}-{f.drawn}-{f.lost}
-              </td>
-              <td className="num">{pct(f.effectiveness)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+      }
+    >
+      {rows.map((f, i) => (
+        <tr key={f.username}>
+          <td>{i + 1}</td>
+          <td>
+            <Link href={`/hincha/${f.username}`}>@{f.username}</Link>
+          </td>
+          <td className="num">{f.attended}</td>
+          <td className="num">
+            {f.won}-{f.drawn}-{f.lost}
+          </td>
+          <td className="num">{pct(f.effectiveness)}</td>
+        </tr>
+      ))}
+    </PagedTable>
   );
 }
 
