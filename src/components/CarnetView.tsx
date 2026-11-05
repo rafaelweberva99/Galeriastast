@@ -1,3 +1,4 @@
+import { AttendanceToggle } from "./AttendanceToggle.tsx";
 import Link from "next/link";
 import { effectiveness, type Breakdown, type Carnet } from "@/lib/domain/stats.ts";
 import type { ScorersReport } from "@/lib/domain/scorers.ts";
@@ -160,6 +161,7 @@ export function CarnetView({
           {upcoming.map((m) => (
             <MatchRow key={m.id} match={m} highlight={club.id}>
               {m.mode === "infiltrado" && <span className="pill infiltrado">Infiltrado</span>}
+              {isOwner && <AttendanceToggle matchId={m.id} initial={m.mode === "infiltrado" ? "infiltrado" : "propia"} upcoming />}
             </MatchRow>
           ))}
         </section>
@@ -333,6 +335,8 @@ export function CarnetView({
           [...attended].reverse().map((m) => (
             <MatchRow key={m.id} match={m} highlight={club.id} goals={goals.get(m.id)}>
               {m.mode === "infiltrado" && <span className="pill infiltrado">Infiltrado</span>}
+              {/* En tu propio carnet puedes corregir una marca equivocada sin salir de aquí ("No fui" lo quita). */}
+              {isOwner && <AttendanceToggle matchId={m.id} initial={m.mode === "infiltrado" ? "infiltrado" : "propia"} />}
             </MatchRow>
           ))
         )}
