@@ -1200,3 +1200,37 @@ a.cm-bar-name:hover { text-decoration: underline; }
   .hero-roll, .hero-dust { display: none; }
 }
 .sc + .section.steps { margin-top: 64px; }
+
+/* === carnet rotativo === */
+.lp-tag { display: none; }
+.lp-card { animation: lpSwap 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); border-top: 6px solid var(--lp-c1, #1c6b3c); }
+@keyframes lpSwap { from { opacity: 0; transform: translateY(14px) scale(0.97); } to { opacity: 1; transform: none; } }
+.lp-head { align-items: center; }
+.lp-jersey { display: inline-flex; flex-shrink: 0; }
+.lp-who { flex: 1; min-width: 0; }
+.lp-name { overflow-wrap: anywhere; }
+.lp-silver, .lp-plata { background: linear-gradient(135deg, #eef1f4, #aeb6bf); color: #2b3138; }
+.lp-bronce { background: linear-gradient(135deg, #e7b98c, #a8672c); color: #3a1d05; }
+.lp-verdict.mid { color: var(--draw-ink); } .lp-verdict.bad { color: var(--loss); }
+.lp-bars i { background: linear-gradient(var(--lp-c1, #2f9e5f), color-mix(in srgb, var(--lp-c1, #1c6b3c) 65%, #000)); }
+.lp-dots { display: flex; justify-content: center; gap: 6px; margin-top: 16px; }
+.lp-dots i { width: 7px; height: 7px; border-radius: 50%; background: rgb(255 255 255 / 0.4); transition: width 0.3s, background 0.3s; }
+.lp-dots i.on { width: 22px; border-radius: 4px; background: #fff; }
+@media (prefers-reduced-motion: reduce) { .lp-card { animation: none; } }
+
+/* === fondos con profundidad === */
+:root { --bg: #f2f1ec; --glow: 15%; --dot: rgb(20 30 25 / 0.07); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --glow: 22%; --dot: rgb(255 255 255 / 0.05); } }
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1000px 520px at 6% -4%, color-mix(in srgb, var(--club-primary, #4a6fa5) var(--glow), transparent), transparent 65%),
+    radial-gradient(900px 520px at 104% 6%, color-mix(in srgb, var(--club-secondary, #d9a441) var(--glow), transparent), transparent 62%),
+    radial-gradient(1100px 600px at 50% 112%, color-mix(in srgb, var(--club-primary, #4a6fa5) calc(var(--glow) * 0.7), transparent), transparent 65%);
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+/* Trama de puntos muy tenue (como la grada), fija detrás del contenido. */
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: radial-gradient(var(--dot) 1.2px, transparent 1.4px); background-size: 22px 22px; -webkit-mask-image: linear-gradient(#000, transparent 75%); mask-image: linear-gradient(#000, transparent 75%); }
+.card { background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 100%, #fff) 0%, color-mix(in srgb, var(--surface) 94%, var(--club-primary, #4a6fa5)) 100%); }
+.site-footer { background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--club-primary, #4a6fa5) 7%, transparent)); border-top: 1px solid var(--border); margin-top: 48px; }

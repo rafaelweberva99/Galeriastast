@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { currentUser } from "@/lib/auth.ts";
-import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
+import { clubIdentity, clubStyle, jerseySvg } from "@/lib/clubTheme.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { datasetSummary } from "@/lib/repo/matches.ts";
 import { clubsByFans } from "@/lib/repo/rankings.ts";
@@ -34,6 +34,19 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   const big = (await Promise.all(featured.map((id) => getTeam(db, id))))
     .filter((t) => t !== null)
     .map(clubIdentity);
+
+  const previewClubs = (
+    await Promise.all(
+      ["universidad-de-chile", "colo-colo", "universidad-catolica", "ohiggins", "palestino", "huachipato", "coquimbo-unido"].map(
+        async (id) => (isVisibleClub(id) ? getTeam(db, id) : null),
+      ),
+    )
+  )
+    .filter((t) => t !== null)
+    .map((t) => {
+      const c = clubIdentity(t);
+      return { id: t.id, primary: c.colors.primary, secondary: c.colors.secondary, svg: jerseySvg(c, 46, "12") };
+    });
 
   return (
     <>
@@ -80,7 +93,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               <li><b>+<CountUp value={8000} /></b> con goleadores</li>
             </ul>
           </div>
-          <LandingPreview />
+          <LandingPreview clubs={previewClubs} />
         </div>
       </section>
 
