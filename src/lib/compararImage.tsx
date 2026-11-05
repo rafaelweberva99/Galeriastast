@@ -20,7 +20,7 @@ function panel(fan: FanSide, club: ClubIdentity, winner: boolean) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        width: 540,
+        width: 600,
         height: 470,
         background: club.colors.card,
         color: club.colors.ink,
@@ -57,7 +57,7 @@ export async function duelImage(d: Duelo, site: string) {
         <div
           style={{
             position: "absolute",
-            left: 540 - 55,
+            left: 600 - 55,
             top: 235 - 55,
             width: 110,
             height: 110,
