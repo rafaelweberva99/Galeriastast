@@ -7,6 +7,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { openDb } from "../src/lib/db/client.ts";
 import { loadCatalog } from "../src/lib/ingest/catalog.ts";
+import { loadGoals, parseGoalsCsv, parsePlayersCsv } from "../src/lib/ingest/goals.ts";
 import { ingestMatchesCsv, ingestWfb, migrateForeignAliases, reconcileRescheduled } from "../src/lib/ingest/load.ts";
 
 const rawDir = path.resolve("data/raw/wfb");
@@ -45,4 +46,16 @@ if (existsSync(csvDir)) {
 }
 const renamed = await migrateForeignAliases(db);
 if (renamed) console.log(`${renamed} partidos pasaron al nombre actual de su club (data/catalog/foreign-aliases.json)`);
+
+// Goleadores (data/goals/goals.csv, opcional): cada partido listado reemplaza sus goles; la carga avisa si no suman el marcador.
+const goalsFile = path.resolve("data/goals/goals.csv");
+if (existsSync(goalsFile)) {
+  const read = (f: string) => (existsSync(f) ? readFileSync(f, "utf8") : "");
+  const canonical = parsePlayersCsv(read(path.resolve("data/goals/players.csv")));
+  const rows = parseGoalsCsv(readFileSync(goalsFile, "utf8"), canonical);
+  const fixes = parseGoalsCsv(read(path.resolve("data/goal-corrections.csv")), canonical);
+  const g = await loadGoals(db, rows, fixes);
+  console.log(`Goleadores: ${g.rows} goles en ${g.matches} partidos (${g.complete} suman el marcador)`);
+  for (const line of [...g.incomplete, ...g.rejected].slice(0, 20)) console.log(`  ${line}`);
+}
 await db.close();
