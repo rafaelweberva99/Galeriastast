@@ -9,6 +9,7 @@ import { CURRENT_SEASON } from "@/lib/ticketing.ts";
 import { isVisibleClub, MVP_ACTIVE, MVP_CLUBS, visibleClubs } from "@/lib/mvp.ts";
 import { Jersey } from "@/components/Jersey.tsx";
 import { LandingShowcase } from "@/components/LandingShowcase.tsx";
+import { Marquee } from "@/components/Marquee.tsx";
 import { LandingPreview } from "@/components/LandingPreview.tsx";
 import { CountUp } from "@/components/CountUp.tsx";
 import { Reveal } from "@/components/Reveal.tsx";
@@ -98,8 +99,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
       </section>
 
       {allClubs.length > 3 && (
-        <div className="marquee bleed" aria-label="Clubes del fútbol chileno">
-          <div className="marquee-track">
+        <Marquee label="Clubes del fútbol chileno">
             {[0, 1].map((copy) => (
               <ul key={copy} className="marquee-set" aria-hidden={copy === 1 ? true : undefined}>
                 {allClubs.map((t) => {
@@ -120,8 +120,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
                 })}
               </ul>
             ))}
-          </div>
-        </div>
+        </Marquee>
       )}
 
       <section className="pitch bleed pick-section" id="elige-tu-club">

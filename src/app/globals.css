@@ -1277,3 +1277,8 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 .cv-hero .socio-name { padding-right: 44px; }
 @media (min-width: 700px) { .cv-hero .socio-name { padding-right: 0; } }
 @media (max-width: 560px) { .card.stack > .stack > .btn, .card.stack > .stack > a.btn, .card.stack > .stack > form > .btn { width: 100%; justify-content: center; text-align: center; } }
+
+/* La cinta la mueve Marquee.tsx (JS); sin JS queda quieta y se puede desplazar con el dedo. */
+.marquee-track { animation: none; will-change: transform; }
+.marquee { cursor: ew-resize; }
+@media (hover: none) { .marquee { cursor: auto; } }
