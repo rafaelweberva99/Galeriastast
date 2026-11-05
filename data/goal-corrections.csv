@@ -3,3 +3,65 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2025-06-03_union-espanola_deportes-limache,2025-06-03,union-espanola,deportes-limache,deportes-limache,Luis Guerra,,0,0,prensa (ESPN omitía un gol; confirmado por 2 fuentes)
 2025-06-03_union-espanola_deportes-limache,2025-06-03,union-espanola,deportes-limache,union-espanola,Felipe Espinoza,,0,0,prensa (ESPN omitía un gol; confirmado por 2 fuentes)
 2025-06-03_union-espanola_deportes-limache,2025-06-03,union-espanola,deportes-limache,union-espanola,Ignacio Jeraldino,,0,0,prensa (ESPN omitía un gol; confirmado por 2 fuentes)
+2003-08-31_colo-colo_universidad-de-chile,2003-08-31,colo-colo,universidad-de-chile,colo-colo,Miguel Aceval,,0,0,RSSSF + es.wikipedia
+2003-08-31_colo-colo_universidad-de-chile,2003-08-31,colo-colo,universidad-de-chile,universidad-de-chile,Cristián Thompson,4,0,0,RSSSF + es.wikipedia
+2012-09-26_santos-fc-bra_universidad-de-chile,2012-09-26,santos-fc-bra,universidad-de-chile,santos-fc-bra,Neymar,27,0,0,RSSSF + es.wikipedia Recopa 2012 (en.wikipedia dice Bruno Rodrigo en el 2do)
+2012-09-26_santos-fc-bra_universidad-de-chile,2012-09-26,santos-fc-bra,universidad-de-chile,santos-fc-bra,Bruno Rodrigo,60,0,0,en.wikipedia + Anexo U 2012 (RSSSF y es.wikipedia dicen Bruno Peres)
+2017-03-05_palestino_universidad-de-chile,2017-03-05,palestino,universidad-de-chile,universidad-de-chile,Felipe Mora,5,0,0,ESPN + es.wikipedia
+2017-03-05_palestino_universidad-de-chile,2017-03-05,palestino,universidad-de-chile,palestino,Mauro Caballero,18,0,0,ESPN + es.wikipedia
+2017-03-05_palestino_universidad-de-chile,2017-03-05,palestino,universidad-de-chile,universidad-de-chile,Felipe Mora,27,0,0,ESPN + es.wikipedia
+2017-03-05_palestino_universidad-de-chile,2017-03-05,palestino,universidad-de-chile,universidad-de-chile,Matías Rodríguez,75,0,0,ESPN + es.wikipedia
+2018-04-07_universidad-de-chile_curico-unido,2018-04-07,universidad-de-chile,curico-unido,universidad-de-chile,Jorge Deschamps,28,1,0,ESPN + es.wikipedia
+2018-04-07_universidad-de-chile_curico-unido,2018-04-07,universidad-de-chile,curico-unido,universidad-de-chile,Yeferson Soteldo,42,0,0,ESPN + es.wikipedia
+2018-04-07_universidad-de-chile_curico-unido,2018-04-07,universidad-de-chile,curico-unido,curico-unido,Sebastián Zúñiga,47,0,0,ESPN + es.wikipedia
+2018-08-11_union-espanola_universidad-de-chile,2018-08-11,union-espanola,universidad-de-chile,universidad-de-chile,Ángelo Henríquez,19,0,0,ESPN + es.wikipedia
+2018-08-11_union-espanola_universidad-de-chile,2018-08-11,union-espanola,universidad-de-chile,universidad-de-chile,Ángelo Henríquez,29,0,0,ESPN + es.wikipedia
+2018-08-11_union-espanola_universidad-de-chile,2018-08-11,union-espanola,universidad-de-chile,union-espanola,Christian Vilches,38,1,0,ESPN + es.wikipedia
+2018-08-11_union-espanola_universidad-de-chile,2018-08-11,union-espanola,universidad-de-chile,universidad-de-chile,Matías Rodríguez,45,0,1,ESPN + es.wikipedia
+2018-08-11_union-espanola_universidad-de-chile,2018-08-11,union-espanola,universidad-de-chile,universidad-de-chile,Francisco Arancibia,53,0,0,ESPN + es.wikipedia
+2018-08-31_universidad-de-chile_deportes-temuco,2018-08-31,universidad-de-chile,deportes-temuco,universidad-de-chile,Felipe Saavedra,35,0,0,ESPN + es.wikipedia
+2018-08-31_universidad-de-chile_deportes-temuco,2018-08-31,universidad-de-chile,deportes-temuco,universidad-de-chile,Gonzalo Espinoza,50,0,0,ESPN + es.wikipedia
+2018-08-31_universidad-de-chile_deportes-temuco,2018-08-31,universidad-de-chile,deportes-temuco,deportes-temuco,Matías Donoso,63,0,0,ESPN + es.wikipedia
+2019-03-02_universidad-de-chile_huachipato,2019-03-02,universidad-de-chile,huachipato,universidad-de-chile,Matías Rodríguez,13,0,0,ESPN + es.wikipedia
+2019-03-02_universidad-de-chile_huachipato,2019-03-02,universidad-de-chile,huachipato,universidad-de-chile,Johnny Herrera,30,0,1,ESPN + es.wikipedia
+2019-03-02_universidad-de-chile_huachipato,2019-03-02,universidad-de-chile,huachipato,universidad-de-chile,Nicolás Guerra,33,0,0,ESPN + es.wikipedia
+2019-03-10_universidad-de-chile_union-espanola,2019-03-10,universidad-de-chile,union-espanola,universidad-de-chile,Matías Rodríguez,37,0,0,ESPN + es.wikipedia
+2019-03-10_universidad-de-chile_union-espanola,2019-03-10,universidad-de-chile,union-espanola,union-espanola,Yulián Mejía,71,0,0,ESPN + es.wikipedia
+2019-03-10_universidad-de-chile_union-espanola,2019-03-10,universidad-de-chile,union-espanola,union-espanola,Mauro Caballero,89,0,0,ESPN + es.wikipedia
+2019-10-17_universidad-de-chile_deportes-iquique,2019-10-17,universidad-de-chile,deportes-iquique,universidad-de-chile,Marcos Riquelme,3,0,0,ESPN + es.wikipedia
+2019-10-17_universidad-de-chile_deportes-iquique,2019-10-17,universidad-de-chile,deportes-iquique,deportes-iquique,Matías Donoso,33,0,0,ESPN + es.wikipedia
+2019-10-17_universidad-de-chile_deportes-iquique,2019-10-17,universidad-de-chile,deportes-iquique,universidad-de-chile,Mauricio Zenteno,84,1,0,ESPN + es.wikipedia
+2023-03-02_universidad-de-chile_union-la-calera,2023-03-02,universidad-de-chile,union-la-calera,universidad-de-chile,Leandro Fernández,23,0,0,ESPN + es.wikipedia
+2023-03-02_universidad-de-chile_union-la-calera,2023-03-02,universidad-de-chile,union-la-calera,union-la-calera,César Pérez,63,0,0,ESPN + es.wikipedia
+2024-03-25_universidad-de-chile_cobresal,2024-03-25,universidad-de-chile,cobresal,universidad-de-chile,Cristian Palacios,2,0,0,ESPN + es.wikipedia
+2024-03-25_universidad-de-chile_cobresal,2024-03-25,universidad-de-chile,cobresal,cobresal,César Munder,7,0,0,ESPN + es.wikipedia
+2024-03-25_universidad-de-chile_cobresal,2024-03-25,universidad-de-chile,cobresal,universidad-de-chile,Fabián Hormazábal,52,0,0,ESPN + es.wikipedia
+2024-03-25_universidad-de-chile_cobresal,2024-03-25,universidad-de-chile,cobresal,cobresal,César Munder,58,0,0,ESPN + es.wikipedia
+2024-05-18_universidad-de-chile_universidad-catolica,2024-05-18,universidad-de-chile,universidad-catolica,universidad-de-chile,Leandro Fernández,9,0,0,ESPN + es.wikipedia
+2024-05-18_universidad-de-chile_universidad-catolica,2024-05-18,universidad-de-chile,universidad-catolica,universidad-catolica,Alexander Aravena,22,0,0,ESPN + es.wikipedia
+2024-05-18_universidad-de-chile_universidad-catolica,2024-05-18,universidad-de-chile,universidad-catolica,universidad-catolica,Fernando Zampedri,61,0,0,ESPN + es.wikipedia
+2024-08-04_universidad-de-chile_copiapo,2024-08-04,universidad-de-chile,copiapo,universidad-de-chile,Franco Calderón,90,0,0,ESPN + es.wikipedia
+2024-08-27_universidad-de-chile_union-espanola,2024-08-27,universidad-de-chile,union-espanola,universidad-de-chile,Israel Poblete,23,0,0,ESPN + es.wikipedia
+2024-08-27_universidad-de-chile_union-espanola,2024-08-27,universidad-de-chile,union-espanola,universidad-de-chile,Leandro Fernández,74,0,0,ESPN + es.wikipedia
+2024-09-24_universidad-de-chile_huachipato,2024-09-24,universidad-de-chile,huachipato,universidad-de-chile,Leandro Fernández,18,0,1,ESPN + es.wikipedia
+2024-09-24_universidad-de-chile_huachipato,2024-09-24,universidad-de-chile,huachipato,huachipato,Thiago Vecino,58,0,0,ESPN + es.wikipedia
+2024-09-24_universidad-de-chile_huachipato,2024-09-24,universidad-de-chile,huachipato,universidad-de-chile,Nicolás Guerra,88,0,0,ESPN + es.wikipedia
+2024-10-05_universidad-de-chile_union-la-calera,2024-10-05,universidad-de-chile,union-la-calera,universidad-de-chile,Fabián Hormazábal,38,0,0,ESPN + es.wikipedia
+2025-07-17_universidad-de-chile_guarani-par,2025-07-17,universidad-de-chile,guarani-par,universidad-de-chile,Charles Aránguiz,22,0,1,ESPN + en.wikipedia
+2025-07-17_universidad-de-chile_guarani-par,2025-07-17,universidad-de-chile,guarani-par,universidad-de-chile,Javier Altamirano,57,0,0,ESPN + en.wikipedia
+2025-07-17_universidad-de-chile_guarani-par,2025-07-17,universidad-de-chile,guarani-par,universidad-de-chile,Lucas Assadi,60,0,0,ESPN + en.wikipedia
+2025-07-17_universidad-de-chile_guarani-par,2025-07-17,universidad-de-chile,guarani-par,universidad-de-chile,Fabián Hormazábal,65,0,0,ESPN + en.wikipedia
+2025-07-17_universidad-de-chile_guarani-par,2025-07-17,universidad-de-chile,guarani-par,universidad-de-chile,Nicolás Guerra,87,0,0,ESPN + en.wikipedia
+2025-11-09_universidad-de-chile_deportes-limache,2025-11-09,universidad-de-chile,deportes-limache,deportes-limache,Bastián Silva,11,0,0,ESPN + Calciomercato/T13/Chilevision
+2025-11-09_universidad-de-chile_deportes-limache,2025-11-09,universidad-de-chile,deportes-limache,deportes-limache,Facundo Pons,15,0,0,ESPN + Calciomercato/T13/Chilevision
+2025-11-09_universidad-de-chile_deportes-limache,2025-11-09,universidad-de-chile,deportes-limache,universidad-de-chile,Charles Aránguiz,39,0,1,ESPN + Calciomercato/T13/Chilevision
+2025-11-09_universidad-de-chile_deportes-limache,2025-11-09,universidad-de-chile,deportes-limache,universidad-de-chile,Leandro Fernández,46,0,0,ESPN + Calciomercato/T13/Chilevision
+2025-11-09_universidad-de-chile_deportes-limache,2025-11-09,universidad-de-chile,deportes-limache,universidad-de-chile,Javier Altamirano,56,0,0,ESPN + Calciomercato/T13/Chilevision
+2025-11-09_universidad-de-chile_deportes-limache,2025-11-09,universidad-de-chile,deportes-limache,deportes-limache,Facundo Pons,65,0,0,ESPN + Calciomercato/T13/Chilevision
+2025-11-09_universidad-de-chile_deportes-limache,2025-11-09,universidad-de-chile,deportes-limache,universidad-de-chile,Leandro Fernández,67,0,0,ESPN + Calciomercato/T13/Chilevision
+2026-08-09_universidad-de-chile_palestino,2026-08-09,universidad-de-chile,palestino,universidad-de-chile,Agustín Arce,18,0,0,ESPN + Emol/AlAireLibre/T13
+2026-08-09_universidad-de-chile_palestino,2026-08-09,universidad-de-chile,palestino,universidad-de-chile,Eduardo Vargas,26,0,0,ESPN + Emol/AlAireLibre/T13
+2026-08-09_universidad-de-chile_palestino,2026-08-09,universidad-de-chile,palestino,palestino,Nelson da Silva,78,0,1,ESPN + Emol/AlAireLibre/T13
+2026-08-23_universidad-de-chile_colo-colo,2026-08-23,universidad-de-chile,colo-colo,colo-colo,Álvaro Madrid,29,0,0,ESPN + TheClinic/Pauta
+2026-08-23_universidad-de-chile_colo-colo,2026-08-23,universidad-de-chile,colo-colo,universidad-de-chile,Charles Aránguiz,45,0,1,ESPN + TheClinic/Pauta
+2026-08-23_universidad-de-chile_colo-colo,2026-08-23,universidad-de-chile,colo-colo,colo-colo,Javier Correa,53,0,0,ESPN + TheClinic/Pauta
