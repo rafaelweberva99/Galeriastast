@@ -20,7 +20,7 @@ const FONT_FILES = [
   { name: "Barlow", file: "Barlow-Bold.ttf", weight: 700 },
 ] as const;
 let fontsPromise: Promise<{ name: string; data: Buffer; weight: 500 | 700; style: "normal" }[]> | null = null;
-function loadFonts() {
+export function loadFonts() {
   fontsPromise ??= Promise.all(
     FONT_FILES.map(async (f) => ({
       name: f.name,
@@ -35,7 +35,7 @@ function loadFonts() {
   return fontsPromise;
 }
 
-function alpha(hex: string, a: number): string {
+export function alpha(hex: string, a: number): string {
   const n = hex.replace("#", "");
   const [r, g, b] = [0, 2, 4].map((i) => parseInt(n.slice(i, i + 2), 16));
   return `rgba(${r},${g},${b},${a})`;

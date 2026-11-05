@@ -17,8 +17,22 @@ import { Waiting } from "@/components/community/Waiting.tsx";
 type Params = Promise<{ club: string }>;
 
 export async function generateMetadata({ params }: { params: Params }) {
-  const team = await getTeam(await getDb(), (await params).club);
-  return { title: team ? `Estadísticas de la hinchada de ${team.shortName} · GaluchaStats` : "Estadísticas · GaluchaStats" };
+  const db = await getDb();
+  const team = await getTeam(db, (await params).club);
+  if (!team || !isVisibleClub(team.id)) return { title: "Estadísticas · GaluchaStats" };
+  const d = await clubCommunityDetail(db, team.id);
+  const title = `Estadísticas de la hinchada de ${team.shortName} · GaluchaStats`;
+  const description =
+    d.avgEffectiveness !== null
+      ? `${d.fans} hinchas de ${team.shortName} con perfil público: Mufómetro medio de ${Math.round(d.avgEffectiveness)}%. ¿Cábalas o yetas? Míralo y arma tu carnet.`
+      : `La hinchada de ${team.shortName} se está armando en GaluchaStats (${d.fans} ${d.fans === 1 ? "hincha" : "hinchas"}). Súmate y descubre si eres cábala o yeta.`;
+  const images = [{ url: `/estadisticas/${team.id}/imagen`, width: 1200, height: 630, alt: `Hinchada de ${team.shortName}` }];
+  return {
+    title,
+    description,
+    openGraph: { title, description, images, type: "website" as const },
+    twitter: { card: "summary_large_image" as const, title, description, images: images.map((i) => i.url) },
+  };
 }
 
 const matchLabel = (m: MostMarkedMatch) =>

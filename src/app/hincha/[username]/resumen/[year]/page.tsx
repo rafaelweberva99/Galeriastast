@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Params }) {
   if (!resumen.played) return { title: `@${fan.username} · ${year} · GaluchaStats`, robots: { index: false } };
   const title = `@${fan.username} · Su ${year} en la galería`;
   const description = resumenShareText(resumen, club.shortName);
-  const images = [{ url: `/hincha/${encodeURIComponent(fan.username)}/resumen/${year}/imagen`, width: 1080, height: 1350 }];
+  const images = [{ url: `/hincha/${encodeURIComponent(fan.username)}/resumen/${year}/imagen-x`, width: 1200, height: 630, alt: title }];
   return {
     title: `${title} · GaluchaStats`,
     description,
@@ -94,7 +94,7 @@ export default async function ResumenPage({ params }: { params: Params }) {
         {yearNav}
       </header>
       <ResumenDeck username={fan.username} club={identity} clubName={club.name} r={resumen} cta={isOwner ? <ShareAnchor /> : <CtaCrear />} />
-      <ResumenShare image={`${base}/resumen/${year}/imagen`} text={resumenShareText(resumen, club.shortName)} url={url} isPublic={fan.isPublic} year={year} />
+      <ResumenShare imageX={`${base}/resumen/${year}/imagen-x`} image={`${base}/resumen/${year}/imagen`} text={resumenShareText(resumen, club.shortName)} url={url} isPublic={fan.isPublic} year={year} />
       <p className="muted small" style={{ textAlign: "center" }}>
         Estadísticas solo para entretención. Cuentan los partidos de {club.shortName} que marcaste con fecha de {year}.
       </p>

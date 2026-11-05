@@ -8,10 +8,18 @@ import { pct } from "@/components/format.ts";
 import { HBars } from "@/components/community/Bars.tsx";
 import { ClubCard } from "@/components/community/ClubCard.tsx";
 
-export const metadata = {
-  title: "Estadísticas de la comunidad · GaluchaStats",
-  description: "Cómo está cada hinchada: partidos marcados, Mufómetro medio, cábalas y yetas. Solo perfiles públicos.",
-};
+const OG_TITLE = "Estadísticas de la comunidad · GaluchaStats";
+const OG_DESC = "Cómo está cada hinchada: partidos marcados, Mufómetro medio, cábalas y yetas. Solo perfiles públicos.";
+
+export async function generateMetadata() {
+  const images = [{ url: "/estadisticas/imagen", width: 1200, height: 630, alt: "Estadísticas de la comunidad de GaluchaStats" }];
+  return {
+    title: OG_TITLE,
+    description: OG_DESC,
+    openGraph: { title: OG_TITLE, description: OG_DESC, images, type: "website" as const },
+    twitter: { card: "summary_large_image" as const, title: OG_TITLE, description: OG_DESC, images: images.map((i) => i.url) },
+  };
+}
 
 export default async function CommunityPage() {
   const db = await getDb();
