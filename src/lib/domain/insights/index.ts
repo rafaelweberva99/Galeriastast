@@ -189,12 +189,22 @@ function missedOf(attendedIds: Set<string>, mine: Match[], clubPlayed: Match[], 
     without: rated(absent, clubId),
     biggestWinMissed: bigWin,
     biggestLossMissed: bigLoss,
-    finalsMissed: clubPlayedFinals(clubPlayed, attendedIds),
+    finalsMissed: clubPlayedFinals(clubPlayed, attendedIds, seasons),
   };
 }
 
-function clubPlayedFinals(clubPlayed: Match[], attendedIds: Set<string>): Match[] {
-  return clubPlayed.filter((m) => m.isFinal && !attendedIds.has(m.id));
+/**
+ * Finales del club que el hincha no vio, solo de las temporadas en que sí fue a algún partido. Una final a doble partido
+ * (ida y vuelta) cuenta una vez, con el partido decisivo (el último); si vio alguno de los dos partidos, no se cuenta.
+ */
+function clubPlayedFinals(clubPlayed: Match[], attendedIds: Set<string>, seasons: Set<number>): Match[] {
+  const series = new Map<string, Match[]>();
+  for (const m of clubPlayed) {
+    if (!m.isFinal || !seasons.has(m.season)) continue;
+    const key = `${m.competitionId}|${m.tournament ?? ""}|${m.season}`;
+    series.set(key, [...(series.get(key) ?? []), m]);
+  }
+  return [...series.values()].filter((legs) => !legs.some((m) => attendedIds.has(m.id))).map((legs) => legs[legs.length - 1]);
 }
 
 /** Racha más larga que cumple `pred`; en empate gana la más antigua. */

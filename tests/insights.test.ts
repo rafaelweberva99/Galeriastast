@@ -258,3 +258,19 @@ describe("buildInsights: highlights", () => {
     expect(h.matchIds).toHaveLength(6);
   });
 });
+
+describe("finales que no viste", () => {
+  it("solo cuenta temporadas en que fuiste, y una final a ida y vuelta cuenta una vez", () => {
+    const seen = g("2024-03-01", "1-0");
+    const fin = (d: string, id: string, season: number) =>
+      g(d, "1-0", "rival", { isFinal: true, season, competitionId: "copa-x", tournament: `Copa ${season}`, stage: "Final" });
+    const old1 = fin("2005-06-01", "a", 2005); // temporada en que no fuiste: no cuenta
+    const ida = fin("2024-11-01", "b", 2024);
+    const vuelta = fin("2024-11-08", "c", 2024);
+    const i = run([seen], [seen, old1, ida, vuelta]);
+    expect(i.missed?.finalsMissed.map((m) => m.id)).toEqual([vuelta.id]);
+    // si viste uno de los dos partidos de la final, no se cuenta como perdida
+    const j = run([seen, ida], [seen, old1, ida, vuelta]);
+    expect(j.missed?.finalsMissed).toEqual([]);
+  });
+});

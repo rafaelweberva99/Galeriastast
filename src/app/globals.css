@@ -767,3 +767,15 @@ a.cm-bar-name:hover { text-decoration: underline; }
 .cv-hero .tier-ribbon { top: 14px; }
 @media (min-width: 860px) { .cv-hero { padding-top: 26px; } .cv-hero .socio-kicker { padding-right: 0; font-size: 0.8rem; } }
 @media (max-width: 420px) { .cv-tablist button { padding: 0 6px; font-size: 0.78rem; letter-spacing: 0.01em; flex: 1 1 auto; } .cv-tabbar { padding-left: 8px; padding-right: 8px; } }
+
+/* === integración carnet + comunidad + resumen === */
+.cv-community .cv-year-links { gap: 8px; flex-wrap: wrap; margin: 8px 0 4px; }
+.cv-community .cv-sub { margin: 14px 0 6px; font: 700 1rem var(--font-display), sans-serif; text-transform: uppercase; letter-spacing: 0.02em; }
+.cv-compare { list-style: none; margin: 0 0 6px; padding: 0; display: grid; gap: 6px; }
+@media (max-width: 640px) {
+  /* El menú del sitio ya no se corta: pasa a una franja que se desliza con el dedo. */
+  .site-header .container { gap: 8px; padding-bottom: 8px; }
+  .nav { margin-left: 0; width: 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a, .nav button { white-space: nowrap; flex: 0 0 auto; }
+}

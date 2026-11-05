@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { currentUser } from "@/lib/auth.ts";
 import { loadCarnet } from "@/lib/carnet.ts";
 import { getDb } from "@/lib/db/client.ts";
+import { communityComparison } from "@/lib/repo/community.ts";
 import { getUserByUsername, safeDecode } from "@/lib/repo/users.ts";
 import { CarnetView } from "@/components/CarnetView.tsx";
 import { shareText } from "@/lib/shareText.ts";
@@ -32,5 +33,6 @@ export default async function FanPage({ params }: { params: Params }) {
   const viewer = await currentUser();
   const isOwner = !!viewer && viewer.id === fan?.id;
   if (!fan || (!fan.isPublic && !isOwner)) notFound();
-  return <CarnetView username={fan.username} memberId={fan.id} {...(await loadCarnet(db, fan))} isOwner={isOwner} isPublic={fan.isPublic} />;
+  const community = await communityComparison(db, fan.id);
+  return <CarnetView username={fan.username} memberId={fan.id} {...(await loadCarnet(db, fan))} isOwner={isOwner} isPublic={fan.isPublic} community={community} />;
 }

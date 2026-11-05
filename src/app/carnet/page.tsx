@@ -2,13 +2,16 @@ import Link from "next/link";
 import { requireUser } from "@/lib/auth.ts";
 import { loadCarnet } from "@/lib/carnet.ts";
 import { getDb } from "@/lib/db/client.ts";
+import { communityComparison } from "@/lib/repo/community.ts";
 import { CarnetView } from "@/components/CarnetView.tsx";
 
 export const metadata = { title: "Mi carnet · GaluchaStats" };
 
 export default async function MyCarnetPage() {
   const user = await requireUser();
-  const data = await loadCarnet(await getDb(), user);
+  const db = await getDb();
+  const data = await loadCarnet(db, user);
+  const community = await communityComparison(db, user.id);
   return (
     <div className="stack">
       {user.isPublic && (
@@ -17,7 +20,7 @@ export default async function MyCarnetPage() {
           cambiarlo en tu <Link href="/perfil">perfil</Link>.
         </p>
       )}
-      <CarnetView username={user.username} memberId={user.id} {...data} isOwner isPublic={user.isPublic} />
+      <CarnetView username={user.username} memberId={user.id} {...data} isOwner isPublic={user.isPublic} community={community} />
     </div>
   );
 }

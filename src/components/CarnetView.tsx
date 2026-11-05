@@ -5,6 +5,9 @@ import { outcomeFor } from "@/lib/domain/stats.ts";
 import type { ScorersReport } from "@/lib/domain/scorers.ts";
 import type { AttendedMatch, Goal } from "@/lib/domain/types.ts";
 import type { Insights } from "@/lib/domain/insights/types.ts";
+import type { CommunityComparison } from "@/lib/domain/community.ts";
+import { yearsWithMatches } from "@/lib/domain/resumen.ts";
+import { CommunityCard } from "./carnet/CommunityCard.tsx";
 import type { Team } from "@/lib/repo/teams.ts";
 import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
 import { scoreLine } from "./format.ts";
@@ -16,7 +19,6 @@ import type { Achievements } from "@/lib/domain/achievements.ts";
 import { ShareCarnet } from "./ShareCarnet.tsx";
 import { shareText } from "@/lib/shareText.ts";
 import { siteUrl } from "@/lib/site.ts";
-import { sampleInsights } from "./carnet/fixtures/insights.sample.ts";
 import { CarnetTabs } from "./carnet/CarnetTabs.tsx";
 import { Hero } from "./carnet/Hero.tsx";
 import { Highlights } from "./carnet/Highlights.tsx";
@@ -51,6 +53,7 @@ export function CarnetView({
   upcoming = [],
   isPublic = false,
   insights,
+  community = null,
 }: {
   username: string;
   memberId: number;
@@ -67,11 +70,13 @@ export function CarnetView({
   /** Si el carnet es público (para ofrecer compartir el link). */
   isPublic?: boolean;
   /** Estadísticas avanzadas (buildInsights). Mientras no estén conectadas se dibuja con una muestra. */
-  insights?: Insights;
+  insights: Insights;
+  /** Comparación con los demás hinchas públicos del club (null si hay menos de 5). */
+  community?: CommunityComparison | null;
 }) {
   const c = carnet;
   const id = clubIdentity(club);
-  const ins = insights ?? sampleInsights;
+  const ins = insights;
   const hasData = c.total > 0;
 
   const items: MatchItem[] = [...attended].reverse().map((m) => ({
@@ -127,6 +132,14 @@ export function CarnetView({
           Ver todos los logros ›
         </a>
       </Card>
+      <CommunityCard
+        username={username}
+        clubId={club.id}
+        clubName={club.shortName}
+        years={yearsWithMatches(attended, club.id)}
+        comparison={community}
+        owner={isOwner}
+      />
       {isOwner && (
         <ShareCarnet
           username={username}
