@@ -12609,8 +12609,8 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2007-09-22_audax-italiano_palestino,2007-09-22,audax-italiano,palestino,audax-italiano,Fabián Orellana,20,0,0,https://www.espn.com/soccer/match/_/gameId/221982
 2007-09-22_audax-italiano_palestino,2007-09-22,audax-italiano,palestino,audax-italiano,Leonardo Andres Medina,33,0,0,https://www.espn.com/soccer/match/_/gameId/221982
 2007-09-22_cobreloa_santiago-wanderers,2007-09-22,cobreloa,santiago-wanderers,cobreloa,Cristián Canío,90,0,0,https://www.espn.com/soccer/match/_/gameId/221984
-2007-09-22_colo-colo_la-serena,2007-09-22,colo-colo,la-serena,colo-colo,Gustavo Biscayzacu,6,0,0,https://www.espn.com/soccer/match/_/gameId/221988
-2007-09-22_colo-colo_la-serena,2007-09-22,colo-colo,la-serena,colo-colo,Gustavo Biscayzacu,90,0,0,https://www.espn.com/soccer/match/_/gameId/221988
+2007-09-22_colo-colo_la-serena,2007-09-22,colo-colo,la-serena,colo-colo,Gustavo Biscayzacú,6,0,0,https://www.espn.com/soccer/match/_/gameId/221988
+2007-09-22_colo-colo_la-serena,2007-09-22,colo-colo,la-serena,colo-colo,Gustavo Biscayzacú,90,0,0,https://www.espn.com/soccer/match/_/gameId/221988
 2007-09-22_coquimbo-unido_lota-schwager,2007-09-22,coquimbo-unido,lota-schwager,lota-schwager,Víctor Sarabia,32,0,0,https://www.espn.com/soccer/match/_/gameId/221985
 2007-09-22_everton_puerto-montt,2007-09-22,everton,puerto-montt,everton,Cristián Uribe,42,0,0,https://www.espn.com/soccer/match/_/gameId/221980
 2007-09-22_ohiggins_deportes-concepcion,2007-09-22,ohiggins,deportes-concepcion,ohiggins,Daniel González,57,0,0,https://www.espn.com/soccer/match/_/gameId/221983
@@ -12730,7 +12730,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2007-10-07_huachipato_lota-schwager,2007-10-07,huachipato,lota-schwager,lota-schwager,Rubén Castillo,59,0,0,https://www.espn.com/soccer/match/_/gameId/222019
 2007-10-07_la-serena_deportes-antofagasta,2007-10-07,la-serena,deportes-antofagasta,deportes-antofagasta,Mauricio Donoso,58,0,0,https://www.espn.com/soccer/match/_/gameId/222024
 2007-10-07_la-serena_deportes-antofagasta,2007-10-07,la-serena,deportes-antofagasta,deportes-antofagasta,Eduardo Arancibia,90,0,0,https://www.espn.com/soccer/match/_/gameId/222024
-2007-10-07_ohiggins_colo-colo,2007-10-07,ohiggins,colo-colo,colo-colo,Gustavo Biscayzacu,21,0,0,https://www.espn.com/soccer/match/_/gameId/222020
+2007-10-07_ohiggins_colo-colo,2007-10-07,ohiggins,colo-colo,colo-colo,Gustavo Biscayzacú,21,0,0,https://www.espn.com/soccer/match/_/gameId/222020
 2007-10-07_ohiggins_colo-colo,2007-10-07,ohiggins,colo-colo,ohiggins,Daniel González,29,0,0,https://www.espn.com/soccer/match/_/gameId/222020
 2007-10-07_ohiggins_colo-colo,2007-10-07,ohiggins,colo-colo,ohiggins,Sebastián Varas,42,0,0,https://www.espn.com/soccer/match/_/gameId/222020
 2007-10-07_puerto-montt_cobresal,2007-10-07,puerto-montt,cobresal,puerto-montt,Rodrigo Mannara,83,0,0,https://www.espn.com/soccer/match/_/gameId/222027
@@ -12950,10 +12950,10 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2007-12-12_universidad-de-concepcion_audax-italiano,2007-12-12,universidad-de-concepcion,audax-italiano,universidad-de-concepcion,Cristián Reynero,83,1,0,https://www.espn.com/soccer/match/_/gameId/233167
 2007-12-13_colo-colo_universidad-de-chile,2007-12-13,colo-colo,universidad-de-chile,colo-colo,Gonzalo Fierro,15,0,0,https://www.espn.com/soccer/match/_/gameId/233165
 2007-12-13_colo-colo_universidad-de-chile,2007-12-13,colo-colo,universidad-de-chile,colo-colo,Eduardo Rubio,21,0,0,https://www.espn.com/soccer/match/_/gameId/233165
-2007-12-16_universidad-de-chile_colo-colo,2007-12-16,universidad-de-chile,colo-colo,colo-colo,Gustavo Biscayzacu,53,0,0,https://www.espn.com/soccer/match/_/gameId/233166
-2007-12-20_universidad-de-concepcion_colo-colo,2007-12-20,universidad-de-concepcion,colo-colo,colo-colo,Gustavo Biscayzacu,48,0,0,https://www.espn.com/soccer/match/_/gameId/233425
+2007-12-16_universidad-de-chile_colo-colo,2007-12-16,universidad-de-chile,colo-colo,colo-colo,Gustavo Biscayzacú,53,0,0,https://www.espn.com/soccer/match/_/gameId/233166
+2007-12-20_universidad-de-concepcion_colo-colo,2007-12-20,universidad-de-concepcion,colo-colo,colo-colo,Gustavo Biscayzacú,48,0,0,https://www.espn.com/soccer/match/_/gameId/233425
 2007-12-23_colo-colo_universidad-de-concepcion,2007-12-23,colo-colo,universidad-de-concepcion,colo-colo,Gonzalo Fierro,19,0,0,https://www.espn.com/soccer/match/_/gameId/233448
-2007-12-23_colo-colo_universidad-de-concepcion,2007-12-23,colo-colo,universidad-de-concepcion,colo-colo,Gustavo Biscayzacu,88,0,0,https://www.espn.com/soccer/match/_/gameId/233448
+2007-12-23_colo-colo_universidad-de-concepcion,2007-12-23,colo-colo,universidad-de-concepcion,colo-colo,Gustavo Biscayzacú,88,0,0,https://www.espn.com/soccer/match/_/gameId/233448
 2007-12-23_colo-colo_universidad-de-concepcion,2007-12-23,colo-colo,universidad-de-concepcion,colo-colo,Claudio Bieler,90,0,0,https://www.espn.com/soccer/match/_/gameId/233448
 2008-01-25_provincial-osorno_colo-colo,2008-01-25,provincial-osorno,colo-colo,colo-colo,Jorge Aguilar,13,1,0,https://www.espn.com/soccer/match/_/gameId/235638
 2008-01-25_provincial-osorno_colo-colo,2008-01-25,provincial-osorno,colo-colo,colo-colo,Daniel González,22,0,0,https://www.espn.com/soccer/match/_/gameId/235638
@@ -12985,10 +12985,10 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2008-02-02_colo-colo_melipilla,2008-02-02,colo-colo,melipilla,colo-colo,Lucas Barrios,22,0,0,https://www.espn.com/soccer/match/_/gameId/235651
 2008-02-02_colo-colo_melipilla,2008-02-02,colo-colo,melipilla,melipilla,Cristián Marcelo Muñoz,26,0,0,https://www.espn.com/soccer/match/_/gameId/235651
 2008-02-02_colo-colo_melipilla,2008-02-02,colo-colo,melipilla,melipilla,César Díaz,31,0,1,https://www.espn.com/soccer/match/_/gameId/235651
-2008-02-02_colo-colo_melipilla,2008-02-02,colo-colo,melipilla,colo-colo,Gustavo Biscayzacu,52,0,0,https://www.espn.com/soccer/match/_/gameId/235651
+2008-02-02_colo-colo_melipilla,2008-02-02,colo-colo,melipilla,colo-colo,Gustavo Biscayzacú,52,0,0,https://www.espn.com/soccer/match/_/gameId/235651
 2008-02-02_colo-colo_melipilla,2008-02-02,colo-colo,melipilla,colo-colo,Lucas Barrios,67,0,0,https://www.espn.com/soccer/match/_/gameId/235651
 2008-02-02_colo-colo_melipilla,2008-02-02,colo-colo,melipilla,melipilla,Cristián Marcelo Muñoz,71,0,0,https://www.espn.com/soccer/match/_/gameId/235651
-2008-02-02_colo-colo_melipilla,2008-02-02,colo-colo,melipilla,colo-colo,Gustavo Biscayzacu,90,0,0,https://www.espn.com/soccer/match/_/gameId/235651
+2008-02-02_colo-colo_melipilla,2008-02-02,colo-colo,melipilla,colo-colo,Gustavo Biscayzacú,90,0,0,https://www.espn.com/soccer/match/_/gameId/235651
 2008-02-02_deportes-concepcion_santiago-morning,2008-02-02,deportes-concepcion,santiago-morning,santiago-morning,Washington Torres,25,0,0,https://www.espn.com/soccer/match/_/gameId/235654
 2008-02-02_deportes-concepcion_santiago-morning,2008-02-02,deportes-concepcion,santiago-morning,deportes-concepcion,Daud Gazale,48,0,0,https://www.espn.com/soccer/match/_/gameId/235654
 2008-02-02_deportes-concepcion_santiago-morning,2008-02-02,deportes-concepcion,santiago-morning,deportes-concepcion,Daud Gazale,55,0,0,https://www.espn.com/soccer/match/_/gameId/235654
@@ -13178,7 +13178,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2008-03-09_nublense_santiago-morning,2008-03-09,nublense,santiago-morning,santiago-morning,Esteban Paredes,10,0,0,https://www.espn.com/soccer/match/_/gameId/235724
 2008-03-09_nublense_santiago-morning,2008-03-09,nublense,santiago-morning,nublense,Luis Flores,54,0,0,https://www.espn.com/soccer/match/_/gameId/235724
 2008-03-09_nublense_santiago-morning,2008-03-09,nublense,santiago-morning,nublense,Juan Viveros,90,0,0,https://www.espn.com/soccer/match/_/gameId/235724
-2008-03-09_union-espanola_colo-colo,2008-03-09,union-espanola,colo-colo,colo-colo,Gustavo Biscayzacu,17,0,0,https://www.espn.com/soccer/match/_/gameId/235718
+2008-03-09_union-espanola_colo-colo,2008-03-09,union-espanola,colo-colo,colo-colo,Gustavo Biscayzacú,17,0,0,https://www.espn.com/soccer/match/_/gameId/235718
 2008-03-09_union-espanola_colo-colo,2008-03-09,union-espanola,colo-colo,colo-colo,Lucas Barrios,18,0,0,https://www.espn.com/soccer/match/_/gameId/235718
 2008-03-09_union-espanola_colo-colo,2008-03-09,union-espanola,colo-colo,union-espanola,Mario Cáceres,58,0,0,https://www.espn.com/soccer/match/_/gameId/235718
 2008-03-09_union-espanola_colo-colo,2008-03-09,union-espanola,colo-colo,colo-colo,Carlos Salazar,67,0,0,https://www.espn.com/soccer/match/_/gameId/235718
@@ -13302,7 +13302,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2008-03-30_cobreloa_universidad-de-concepcion,2008-03-30,cobreloa,universidad-de-concepcion,universidad-de-concepcion,Gabriel Vargas,44,0,0,https://www.espn.com/soccer/match/_/gameId/235764
 2008-03-30_cobreloa_universidad-de-concepcion,2008-03-30,cobreloa,universidad-de-concepcion,cobreloa,Rodrigo Rain,50,0,0,https://www.espn.com/soccer/match/_/gameId/235764
 2008-03-30_cobreloa_universidad-de-concepcion,2008-03-30,cobreloa,universidad-de-concepcion,universidad-de-concepcion,Juan Cabral,86,0,0,https://www.espn.com/soccer/match/_/gameId/235764
-2008-03-30_deportes-concepcion_colo-colo,2008-03-30,deportes-concepcion,colo-colo,colo-colo,Gustavo Biscayzacu,12,0,0,https://www.espn.com/soccer/match/_/gameId/235758
+2008-03-30_deportes-concepcion_colo-colo,2008-03-30,deportes-concepcion,colo-colo,colo-colo,Gustavo Biscayzacú,12,0,0,https://www.espn.com/soccer/match/_/gameId/235758
 2008-03-30_deportes-concepcion_colo-colo,2008-03-30,deportes-concepcion,colo-colo,deportes-concepcion,Daud Gazale,34,0,0,https://www.espn.com/soccer/match/_/gameId/235758
 2008-03-30_deportes-concepcion_colo-colo,2008-03-30,deportes-concepcion,colo-colo,colo-colo,Lucas Barrios,51,0,0,https://www.espn.com/soccer/match/_/gameId/235758
 2008-03-30_deportes-concepcion_colo-colo,2008-03-30,deportes-concepcion,colo-colo,deportes-concepcion,Patricio Almendra,56,0,1,https://www.espn.com/soccer/match/_/gameId/235758
@@ -13426,9 +13426,9 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2008-04-27_universidad-catolica_universidad-de-chile,2008-04-27,universidad-catolica,universidad-de-chile,universidad-catolica,Roberto Gutiérrez,10,0,0,https://www.espn.com/soccer/match/_/gameId/235798
 2008-04-27_universidad-catolica_universidad-de-chile,2008-04-27,universidad-catolica,universidad-de-chile,universidad-catolica,Gary Medel,41,0,0,https://www.espn.com/soccer/match/_/gameId/235798
 2008-04-29_colo-colo_huachipato,2008-04-29,colo-colo,huachipato,huachipato,Leonardo Monje,36,0,0,https://www.espn.com/soccer/match/_/gameId/235817
-2008-04-29_colo-colo_huachipato,2008-04-29,colo-colo,huachipato,colo-colo,Gustavo Biscayzacu,56,0,0,https://www.espn.com/soccer/match/_/gameId/235817
+2008-04-29_colo-colo_huachipato,2008-04-29,colo-colo,huachipato,colo-colo,Gustavo Biscayzacú,56,0,0,https://www.espn.com/soccer/match/_/gameId/235817
 2008-04-29_colo-colo_huachipato,2008-04-29,colo-colo,huachipato,huachipato,Leonardo Monje,68,0,0,https://www.espn.com/soccer/match/_/gameId/235817
-2008-04-29_colo-colo_huachipato,2008-04-29,colo-colo,huachipato,colo-colo,Gustavo Biscayzacu,87,0,0,https://www.espn.com/soccer/match/_/gameId/235817
+2008-04-29_colo-colo_huachipato,2008-04-29,colo-colo,huachipato,colo-colo,Gustavo Biscayzacú,87,0,0,https://www.espn.com/soccer/match/_/gameId/235817
 2008-04-30_cobreloa_universidad-catolica,2008-04-30,cobreloa,universidad-catolica,universidad-catolica,Julio Brian Gutierrez,29,0,0,https://www.espn.com/soccer/match/_/gameId/235809
 2008-04-30_deportes-antofagasta_deportes-concepcion,2008-04-30,deportes-antofagasta,deportes-concepcion,deportes-antofagasta,Héctor Suazo,29,0,0,https://www.espn.com/soccer/match/_/gameId/235816
 2008-04-30_deportes-antofagasta_deportes-concepcion,2008-04-30,deportes-antofagasta,deportes-concepcion,deportes-concepcion,Patricio Almendra,46,0,1,https://www.espn.com/soccer/match/_/gameId/235816
@@ -16905,11 +16905,11 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2007-08-09_colo-colo_real-potosi-bol,2007-08-09,colo-colo,real-potosi-bol,colo-colo,Gonzalo Fierro,45,0,1,https://www.espn.com/soccer/match/_/gameId/223169
 2007-08-09_colo-colo_real-potosi-bol,2007-08-09,colo-colo,real-potosi-bol,colo-colo,Rodolfo Moya,90,0,0,https://www.espn.com/soccer/match/_/gameId/223169
 2007-09-04_audax-italiano_colo-colo,2007-09-04,audax-italiano,colo-colo,audax-italiano,Franco Di Santo,3,0,0,https://www.espn.com/soccer/match/_/gameId/229001
-2007-09-04_audax-italiano_colo-colo,2007-09-04,audax-italiano,colo-colo,colo-colo,Gustavo Biscayzacu,87,0,0,https://www.espn.com/soccer/match/_/gameId/229001
+2007-09-04_audax-italiano_colo-colo,2007-09-04,audax-italiano,colo-colo,colo-colo,Gustavo Biscayzacú,87,0,0,https://www.espn.com/soccer/match/_/gameId/229001
 2007-09-25_millonarios-col_colo-colo,2007-09-25,millonarios-col,colo-colo,colo-colo,Eduardo Rubio,30,0,0,https://www.espn.com/soccer/match/_/gameId/223204
 2007-09-25_millonarios-col_colo-colo,2007-09-25,millonarios-col,colo-colo,millonarios-col,Ricardo Ciciliano,67,0,0,https://www.espn.com/soccer/match/_/gameId/223204
 2007-10-04_colo-colo_millonarios-col,2007-10-04,colo-colo,millonarios-col,millonarios-col,David Mosquera Silva,38,0,0,https://www.espn.com/soccer/match/_/gameId/223205
-2007-10-04_colo-colo_millonarios-col,2007-10-04,colo-colo,millonarios-col,colo-colo,Gustavo Biscayzacu,42,0,0,https://www.espn.com/soccer/match/_/gameId/223205
+2007-10-04_colo-colo_millonarios-col,2007-10-04,colo-colo,millonarios-col,colo-colo,Gustavo Biscayzacú,42,0,0,https://www.espn.com/soccer/match/_/gameId/223205
 2008-02-07_boyaca-chico-col_audax-italiano,2008-02-07,boyaca-chico-col,audax-italiano,audax-italiano,Jules Erik Ntamak,2,1,0,https://www.espn.com/soccer/match/_/gameId/235293
 2008-02-07_boyaca-chico-col_audax-italiano,2008-02-07,boyaca-chico-col,audax-italiano,boyaca-chico-col,Néstor Salazar,9,0,0,https://www.espn.com/soccer/match/_/gameId/235293
 2008-02-07_boyaca-chico-col_audax-italiano,2008-02-07,boyaca-chico-col,audax-italiano,audax-italiano,Carlos Villanueva,22,0,0,https://www.espn.com/soccer/match/_/gameId/235293
@@ -16929,7 +16929,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2008-02-21_cf-america-mex_universidad-catolica,2008-02-21,cf-america-mex,universidad-catolica,cf-america-mex,Federico Higuaín,90,0,0,https://www.espn.com/soccer/match/_/gameId/235344
 2008-02-26_universidad-san-martin-per_universidad-catolica,2008-02-26,universidad-san-martin-per,universidad-catolica,universidad-catolica,Darío Bottinelli,30,0,0,https://www.espn.com/soccer/match/_/gameId/235345
 2008-02-28_ua-maracaibo-ven_colo-colo,2008-02-28,ua-maracaibo-ven,colo-colo,colo-colo,Gonzalo Fierro,48,0,0,https://www.espn.com/soccer/match/_/gameId/235321
-2008-02-28_ua-maracaibo-ven_colo-colo,2008-02-28,ua-maracaibo-ven,colo-colo,colo-colo,Gustavo Biscayzacu,69,0,0,https://www.espn.com/soccer/match/_/gameId/235321
+2008-02-28_ua-maracaibo-ven_colo-colo,2008-02-28,ua-maracaibo-ven,colo-colo,colo-colo,Gustavo Biscayzacú,69,0,0,https://www.espn.com/soccer/match/_/gameId/235321
 2008-02-28_ua-maracaibo-ven_colo-colo,2008-02-28,ua-maracaibo-ven,colo-colo,colo-colo,Gregory Lancken,86,1,0,https://www.espn.com/soccer/match/_/gameId/235321
 2008-02-28_ua-maracaibo-ven_colo-colo,2008-02-28,ua-maracaibo-ven,colo-colo,ua-maracaibo-ven,Heiber Díaz,90,0,0,https://www.espn.com/soccer/match/_/gameId/235321
 2008-03-05_sao-paulo-fc-bra_audax-italiano,2008-03-05,sao-paulo-fc-bra,audax-italiano,audax-italiano,Carlos Villanueva,62,0,0,https://www.espn.com/soccer/match/_/gameId/235369
@@ -16940,12 +16940,12 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2008-03-12_universidad-catolica_river-plate-arg,2008-03-12,universidad-catolica,river-plate-arg,river-plate-arg,Mauro Rosales,87,0,0,https://www.espn.com/soccer/match/_/gameId/235347
 2008-03-18_audax-italiano_atletico-nacional-col,2008-03-18,audax-italiano,atletico-nacional-col,audax-italiano,Fabián Orellana,48,0,0,https://www.espn.com/soccer/match/_/gameId/235371
 2008-03-20_colo-colo_boca-juniors-arg,2008-03-20,colo-colo,boca-juniors-arg,colo-colo,Cristóbal Jorquera,2,0,0,https://www.espn.com/soccer/match/_/gameId/235324
-2008-03-20_colo-colo_boca-juniors-arg,2008-03-20,colo-colo,boca-juniors-arg,colo-colo,Gustavo Biscayzacu,34,0,0,https://www.espn.com/soccer/match/_/gameId/235324
+2008-03-20_colo-colo_boca-juniors-arg,2008-03-20,colo-colo,boca-juniors-arg,colo-colo,Gustavo Biscayzacú,34,0,0,https://www.espn.com/soccer/match/_/gameId/235324
 2008-03-26_river-plate-arg_universidad-catolica,2008-03-26,river-plate-arg,universidad-catolica,river-plate-arg,Radamel Falcao,1,0,0,https://www.espn.com/soccer/match/_/gameId/235349
 2008-03-26_river-plate-arg_universidad-catolica,2008-03-26,river-plate-arg,universidad-catolica,river-plate-arg,Sebastián Abreu,71,0,0,https://www.espn.com/soccer/match/_/gameId/235349
-2008-03-27_boca-juniors-arg_colo-colo,2008-03-27,boca-juniors-arg,colo-colo,colo-colo,Gustavo Biscayzacu,25,0,0,https://www.espn.com/soccer/match/_/gameId/235326
+2008-03-27_boca-juniors-arg_colo-colo,2008-03-27,boca-juniors-arg,colo-colo,colo-colo,Gustavo Biscayzacú,25,0,0,https://www.espn.com/soccer/match/_/gameId/235326
 2008-03-27_boca-juniors-arg_colo-colo,2008-03-27,boca-juniors-arg,colo-colo,boca-juniors-arg,Martín Palermo,29,0,0,https://www.espn.com/soccer/match/_/gameId/235326
-2008-03-27_boca-juniors-arg_colo-colo,2008-03-27,boca-juniors-arg,colo-colo,colo-colo,Gustavo Biscayzacu,42,0,0,https://www.espn.com/soccer/match/_/gameId/235326
+2008-03-27_boca-juniors-arg_colo-colo,2008-03-27,boca-juniors-arg,colo-colo,colo-colo,Gustavo Biscayzacú,42,0,0,https://www.espn.com/soccer/match/_/gameId/235326
 2008-03-27_boca-juniors-arg_colo-colo,2008-03-27,boca-juniors-arg,colo-colo,boca-juniors-arg,Leandro Gracián,49,0,0,https://www.espn.com/soccer/match/_/gameId/235326
 2008-03-27_boca-juniors-arg_colo-colo,2008-03-27,boca-juniors-arg,colo-colo,boca-juniors-arg,Rodrigo Palacio,65,0,0,https://www.espn.com/soccer/match/_/gameId/235326
 2008-03-27_boca-juniors-arg_colo-colo,2008-03-27,boca-juniors-arg,colo-colo,boca-juniors-arg,Neri Cardozo,88,0,0,https://www.espn.com/soccer/match/_/gameId/235326
@@ -16954,7 +16954,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2008-04-03_atletico-nacional-col_audax-italiano,2008-04-03,atletico-nacional-col,audax-italiano,atletico-nacional-col,Carlos Villagra,60,0,0,https://www.espn.com/soccer/match/_/gameId/235374
 2008-04-03_atletico-nacional-col_audax-italiano,2008-04-03,atletico-nacional-col,audax-italiano,audax-italiano,Fabián Orellana,78,0,0,https://www.espn.com/soccer/match/_/gameId/235374
 2008-04-10_audax-italiano_sao-paulo-fc-bra,2008-04-10,audax-italiano,sao-paulo-fc-bra,audax-italiano,Renato Ramos,77,0,0,https://www.espn.com/soccer/match/_/gameId/235375
-2008-04-10_colo-colo_ua-maracaibo-ven,2008-04-10,colo-colo,ua-maracaibo-ven,colo-colo,Gustavo Biscayzacu,47,0,0,https://www.espn.com/soccer/match/_/gameId/235328
+2008-04-10_colo-colo_ua-maracaibo-ven,2008-04-10,colo-colo,ua-maracaibo-ven,colo-colo,Gustavo Biscayzacú,47,0,0,https://www.espn.com/soccer/match/_/gameId/235328
 2008-04-10_colo-colo_ua-maracaibo-ven,2008-04-10,colo-colo,ua-maracaibo-ven,colo-colo,Lucas Barrios,50,0,0,https://www.espn.com/soccer/match/_/gameId/235328
 2008-04-17_universidad-catolica_cf-america-mex,2008-04-17,universidad-catolica,cf-america-mex,universidad-catolica,Gary Medel,52,0,0,https://www.espn.com/soccer/match/_/gameId/235353
 2008-04-17_universidad-catolica_cf-america-mex,2008-04-17,universidad-catolica,cf-america-mex,universidad-catolica,Darío Bottinelli,90,0,0,https://www.espn.com/soccer/match/_/gameId/235353
@@ -21084,8 +21084,8 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-03-15_universidad-catolica_union-espanola,2003-03-15,universidad-catolica,union-espanola,universidad-catolica,Eduardo Rubio,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-03-15_universidad-catolica_union-espanola,2003-03-15,universidad-catolica,union-espanola,universidad-catolica,Mark González,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-03-15_universidad-catolica_union-espanola,2003-03-15,universidad-catolica,union-espanola,universidad-catolica,Miguel Ramírez,,0,1,https://rsssf.org/tablesc/chile03.html
-2003-03-15_universidad-catolica_union-espanola,2003-03-15,universidad-catolica,union-espanola,union-espanola,Gustavo Bizcayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-03-15_universidad-catolica_union-espanola,2003-03-15,universidad-catolica,union-espanola,union-espanola,Gustavo Bizcayzacú,,0,1,https://rsssf.org/tablesc/chile03.html
+2003-03-15_universidad-catolica_union-espanola,2003-03-15,universidad-catolica,union-espanola,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-03-15_universidad-catolica_union-espanola,2003-03-15,universidad-catolica,union-espanola,union-espanola,Gustavo Biscayzacú,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-03-15_rangers_huachipato,2003-03-15,rangers,huachipato,rangers,Ramón Avila,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-03-15_rangers_huachipato,2003-03-15,rangers,huachipato,huachipato,Federico Bongioanni,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-03-15_cobreloa_puerto-montt,2003-03-15,cobreloa,puerto-montt,cobreloa,Jaime González,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21154,7 +21154,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-04-06_coquimbo-unido_colo-colo,2003-04-06,coquimbo-unido,colo-colo,colo-colo,Iván Zamorano,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-04-06_coquimbo-unido_colo-colo,2003-04-06,coquimbo-unido,colo-colo,colo-colo,Iván Zamorano,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-04-06_coquimbo-unido_colo-colo,2003-04-06,coquimbo-unido,colo-colo,colo-colo,Luis Quinteros,,0,1,https://rsssf.org/tablesc/chile03.html
-2003-04-12_union-espanola_universidad-de-chile,2003-04-12,union-espanola,universidad-de-chile,union-espanola,Gustavo Biscayzacu,,0,1,https://rsssf.org/tablesc/chile03.html
+2003-04-12_union-espanola_universidad-de-chile,2003-04-12,union-espanola,universidad-de-chile,union-espanola,Gustavo Biscayzacú,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-04-12_union-espanola_universidad-de-chile,2003-04-12,union-espanola,universidad-de-chile,universidad-de-chile,Mauricio Pinilla,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-04-12_union-san-felipe_palestino,2003-04-12,union-san-felipe,palestino,palestino,Fernando López,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-04-13_huachipato_santiago-wanderers,2003-04-13,huachipato,santiago-wanderers,huachipato,Federico Bongioanni,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21191,7 +21191,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-04-20_rangers_union-espanola,2003-04-20,rangers,union-espanola,rangers,Marco Bautista,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-04-20_rangers_union-espanola,2003-04-20,rangers,union-espanola,rangers,Rodrigo Garrido,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-04-20_rangers_union-espanola,2003-04-20,rangers,union-espanola,union-espanola,German Tagle,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-04-20_rangers_union-espanola,2003-04-20,rangers,union-espanola,union-espanola,Gustavo Biscayzacu,,0,1,https://rsssf.org/tablesc/chile03.html
+2003-04-20_rangers_union-espanola,2003-04-20,rangers,union-espanola,union-espanola,Gustavo Biscayzacú,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-04-20_deportes-temuco_union-san-felipe,2003-04-20,deportes-temuco,union-san-felipe,deportes-temuco,Elton Troncoso,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-04-20_deportes-temuco_union-san-felipe,2003-04-20,deportes-temuco,union-san-felipe,deportes-temuco,Elton Troncoso,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-04-20_deportes-temuco_union-san-felipe,2003-04-20,deportes-temuco,union-san-felipe,deportes-temuco,Paulo Pérez,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21199,7 +21199,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-04-26_universidad-catolica_rangers,2003-04-26,universidad-catolica,rangers,rangers,Moisés Avila,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-04-26_universidad-catolica_rangers,2003-04-26,universidad-catolica,rangers,rangers,Moisés Avila,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-04-26_universidad-catolica_rangers,2003-04-26,universidad-catolica,rangers,rangers,Juan José Albornoz,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-04-26_union-espanola_coquimbo-unido,2003-04-26,union-espanola,coquimbo-unido,union-espanola,Gustavo Bizcayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-26_union-espanola_coquimbo-unido,2003-04-26,union-espanola,coquimbo-unido,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-04-26_union-espanola_coquimbo-unido,2003-04-26,union-espanola,coquimbo-unido,union-espanola,José Luis Sierra,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-04-26_union-espanola_coquimbo-unido,2003-04-26,union-espanola,coquimbo-unido,coquimbo-unido,Germán Tagle,,1,0,https://rsssf.org/tablesc/chile03.html
 2003-04-26_palestino_universidad-de-chile,2003-04-26,palestino,universidad-de-chile,palestino,Jorge Muñoz,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21235,7 +21235,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-05-03_coquimbo-unido_universidad-catolica,2003-05-03,coquimbo-unido,universidad-catolica,universidad-catolica,Mark González,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-05-03_cobreloa_union-espanola,2003-05-03,cobreloa,union-espanola,cobreloa,Fernando Martel,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-05-03_cobreloa_union-espanola,2003-05-03,cobreloa,union-espanola,cobreloa,Rodrigo Pérez,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-05-03_cobreloa_union-espanola,2003-05-03,cobreloa,union-espanola,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-05-03_cobreloa_union-espanola,2003-05-03,cobreloa,union-espanola,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-05-04_huachipato_union-san-felipe,2003-05-04,huachipato,union-san-felipe,huachipato,Rodrigo Millar,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-05-04_puerto-montt_cobresal,2003-05-04,puerto-montt,cobresal,puerto-montt,Alvaro Sarabia,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-05-04_puerto-montt_cobresal,2003-05-04,puerto-montt,cobresal,puerto-montt,Marcelo Corrales,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21311,7 +21311,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-05-24_audax-italiano_huachipato,2003-05-24,audax-italiano,huachipato,huachipato,Roberto Bassaletti,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-05-25_palestino_santiago-wanderers,2003-05-25,palestino,santiago-wanderers,palestino,Mario Núñez,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-05-25_palestino_santiago-wanderers,2003-05-25,palestino,santiago-wanderers,santiago-wanderers,Joel Soto,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-05-25_union-espanola_deportes-temuco,2003-05-25,union-espanola,deportes-temuco,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-05-25_union-espanola_deportes-temuco,2003-05-25,union-espanola,deportes-temuco,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-05-25_union-espanola_deportes-temuco,2003-05-25,union-espanola,deportes-temuco,union-espanola,Pedro González,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-05-25_union-espanola_deportes-temuco,2003-05-25,union-espanola,deportes-temuco,union-espanola,Pedro González,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-05-25_union-espanola_deportes-temuco,2003-05-25,union-espanola,deportes-temuco,deportes-temuco,Paulo Pérez,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21324,8 +21324,8 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-05-31_cobresal_colo-colo,2003-05-31,cobresal,colo-colo,cobresal,Fernando Rodríguez,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-05-31_cobresal_colo-colo,2003-05-31,cobresal,colo-colo,cobresal,Juan Quiroga,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-05-31_cobresal_colo-colo,2003-05-31,cobresal,colo-colo,cobresal,Juan Quiroga,,0,1,https://rsssf.org/tablesc/chile03.html
-2003-06-01_union-espanola_cobreloa,2003-06-01,union-espanola,cobreloa,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-06-01_union-espanola_cobreloa,2003-06-01,union-espanola,cobreloa,union-espanola,Gustavo Biscayzacu,,0,1,https://rsssf.org/tablesc/chile03.html
+2003-06-01_union-espanola_cobreloa,2003-06-01,union-espanola,cobreloa,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-01_union-espanola_cobreloa,2003-06-01,union-espanola,cobreloa,union-espanola,Gustavo Biscayzacú,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-06-01_union-espanola_cobreloa,2003-06-01,union-espanola,cobreloa,union-espanola,Pedro Reyes,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-06-01_union-espanola_cobreloa,2003-06-01,union-espanola,cobreloa,cobreloa,Darío Verón,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-06-01_union-espanola_cobreloa,2003-06-01,union-espanola,cobreloa,cobreloa,Patricio Galaz,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21390,8 +21390,8 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-07-26_palestino_puerto-montt,2003-07-26,palestino,puerto-montt,palestino,Juan Abarca,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-07-26_palestino_puerto-montt,2003-07-26,palestino,puerto-montt,palestino,José Luis Villanueva,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-07-26_palestino_puerto-montt,2003-07-26,palestino,puerto-montt,puerto-montt,Johnny Lillo,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-07-26_union-espanola_huachipato,2003-07-26,union-espanola,huachipato,union-espanola,Gustavo Bizcayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-07-26_union-espanola_huachipato,2003-07-26,union-espanola,huachipato,union-espanola,Gustavo Bizcayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-07-26_union-espanola_huachipato,2003-07-26,union-espanola,huachipato,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-07-26_union-espanola_huachipato,2003-07-26,union-espanola,huachipato,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-07-26_union-espanola_huachipato,2003-07-26,union-espanola,huachipato,union-espanola,José Luis Jerez,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-07-26_union-espanola_huachipato,2003-07-26,union-espanola,huachipato,union-espanola,David Cordova,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-07-26_union-espanola_huachipato,2003-07-26,union-espanola,huachipato,huachipato,Rodrigo Millar,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21417,7 +21417,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-08-02_colo-colo_union-espanola,2003-08-02,colo-colo,union-espanola,union-espanola,José Luis Jerez,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-08-02_huachipato_universidad-catolica,2003-08-02,huachipato,universidad-catolica,huachipato,Héctor Mancilla,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-08-02_huachipato_universidad-catolica,2003-08-02,huachipato,universidad-catolica,universidad-catolica,Sergio Gioino,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-08-02_huachipato_universidad-catolica,2003-08-02,huachipato,universidad-catolica,universidad-catolica,Sebastian Rozental,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-08-02_huachipato_universidad-catolica,2003-08-02,huachipato,universidad-catolica,universidad-catolica,Sebastián Rozental,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-08-02_huachipato_universidad-catolica,2003-08-02,huachipato,universidad-catolica,universidad-catolica,Jorge Campos,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-08-03_cobresal_audax-italiano,2003-08-03,cobresal,audax-italiano,cobresal,Rodrigo Viligrón,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-08-03_cobresal_audax-italiano,2003-08-03,cobresal,audax-italiano,cobresal,Juan Quiroga,,0,1,https://rsssf.org/tablesc/chile03.html
@@ -21499,9 +21499,9 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-08-24_cobreloa_santiago-wanderers,2003-08-24,cobreloa,santiago-wanderers,cobreloa,José Luis Díaz,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-08-24_cobreloa_santiago-wanderers,2003-08-24,cobreloa,santiago-wanderers,cobreloa,Mauricio Dinamarca,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-08-24_cobreloa_santiago-wanderers,2003-08-24,cobreloa,santiago-wanderers,santiago-wanderers,Elton Troncoso,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-08-24_union-espanola_union-san-felipe,2003-08-24,union-espanola,union-san-felipe,union-espanola,Gustavo Biscayzacu,,0,1,https://rsssf.org/tablesc/chile03.html
-2003-08-24_union-espanola_union-san-felipe,2003-08-24,union-espanola,union-san-felipe,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-08-24_union-espanola_union-san-felipe,2003-08-24,union-espanola,union-san-felipe,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-08-24_union-espanola_union-san-felipe,2003-08-24,union-espanola,union-san-felipe,union-espanola,Gustavo Biscayzacú,,0,1,https://rsssf.org/tablesc/chile03.html
+2003-08-24_union-espanola_union-san-felipe,2003-08-24,union-espanola,union-san-felipe,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-08-24_union-espanola_union-san-felipe,2003-08-24,union-espanola,union-san-felipe,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-08-24_union-espanola_union-san-felipe,2003-08-24,union-espanola,union-san-felipe,union-espanola,Pedro Reyes,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-08-24_union-espanola_union-san-felipe,2003-08-24,union-espanola,union-san-felipe,union-san-felipe,Juan Cruz Real,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-08-24_universidad-de-chile_huachipato,2003-08-24,universidad-de-chile,huachipato,universidad-de-chile,Nelson Pinto,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21537,8 +21537,8 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-09-12_universidad-catolica_union-san-felipe,2003-09-12,universidad-catolica,union-san-felipe,union-san-felipe,Francis Ferrero,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-09-12_universidad-catolica_union-san-felipe,2003-09-12,universidad-catolica,union-san-felipe,union-san-felipe,Juan Luis Lobos,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-09-13_palestino_union-espanola,2003-09-13,palestino,union-espanola,palestino,Joel Estay,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-09-13_palestino_union-espanola,2003-09-13,palestino,union-espanola,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-09-13_palestino_union-espanola,2003-09-13,palestino,union-espanola,union-espanola,Gustavo Biscayzacu,,0,1,https://rsssf.org/tablesc/chile03.html
+2003-09-13_palestino_union-espanola,2003-09-13,palestino,union-espanola,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-13_palestino_union-espanola,2003-09-13,palestino,union-espanola,union-espanola,Gustavo Biscayzacú,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-09-13_coquimbo-unido_huachipato,2003-09-13,coquimbo-unido,huachipato,coquimbo-unido,Bruno Pesce,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-09-13_coquimbo-unido_huachipato,2003-09-13,coquimbo-unido,huachipato,huachipato,Héctor Mancilla,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-09-13_coquimbo-unido_huachipato,2003-09-13,coquimbo-unido,huachipato,huachipato,Rodrigo Millar,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21587,7 +21587,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-09-21_cobresal_rangers,2003-09-21,cobresal,rangers,cobresal,Fernando Rodríguez,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-09-21_cobresal_rangers,2003-09-21,cobresal,rangers,rangers,Fabián Ibarra,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-09-21_cobresal_rangers,2003-09-21,cobresal,rangers,rangers,Miguel Romero,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-09-21_union-espanola_universidad-de-concepcion,2003-09-21,union-espanola,universidad-de-concepcion,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-21_union-espanola_universidad-de-concepcion,2003-09-21,union-espanola,universidad-de-concepcion,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-09-21_union-espanola_universidad-de-concepcion,2003-09-21,union-espanola,universidad-de-concepcion,union-espanola,Carlos Cáceres,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-09-21_union-espanola_universidad-de-concepcion,2003-09-21,union-espanola,universidad-de-concepcion,universidad-de-concepcion,Andrés Oroz,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-09-21_union-espanola_universidad-de-concepcion,2003-09-21,union-espanola,universidad-de-concepcion,universidad-de-concepcion,Jorge Valdívia,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21613,7 +21613,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-09-28_puerto-montt_deportes-temuco,2003-09-28,puerto-montt,deportes-temuco,puerto-montt,Fabio Escobar,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-09-28_puerto-montt_deportes-temuco,2003-09-28,puerto-montt,deportes-temuco,puerto-montt,David Reyes,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-09-28_puerto-montt_deportes-temuco,2003-09-28,puerto-montt,deportes-temuco,deportes-temuco,Patricio Monsálvez,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-10-03_union-espanola_rangers,2003-10-03,union-espanola,rangers,union-espanola,Gustavo Bizcayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-10-03_union-espanola_rangers,2003-10-03,union-espanola,rangers,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-10-03_union-espanola_rangers,2003-10-03,union-espanola,rangers,union-espanola,José Luis Jerez,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-10-03_union-espanola_rangers,2003-10-03,union-espanola,rangers,rangers,Mario Núñez,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-10-04_colo-colo_santiago-wanderers,2003-10-04,colo-colo,santiago-wanderers,colo-colo,Marcelo Espina,,0,1,https://rsssf.org/tablesc/chile03.html
@@ -21680,8 +21680,8 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-10-18_union-san-felipe_huachipato,2003-10-18,union-san-felipe,huachipato,huachipato,Cristián Torres,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-10-18_union-san-felipe_huachipato,2003-10-18,union-san-felipe,huachipato,huachipato,Héctor Mancilla,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-10-18_union-san-felipe_huachipato,2003-10-18,union-san-felipe,huachipato,huachipato,Nelson Lizana,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-10-18_union-espanola_cobreloa,2003-10-18,union-espanola,cobreloa,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-10-18_union-espanola_cobreloa,2003-10-18,union-espanola,cobreloa,union-espanola,Gustavo Biscayzacu,,0,1,https://rsssf.org/tablesc/chile03.html
+2003-10-18_union-espanola_cobreloa,2003-10-18,union-espanola,cobreloa,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-10-18_union-espanola_cobreloa,2003-10-18,union-espanola,cobreloa,union-espanola,Gustavo Biscayzacú,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-10-18_union-espanola_cobreloa,2003-10-18,union-espanola,cobreloa,union-espanola,Pedro González,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-10-18_union-espanola_cobreloa,2003-10-18,union-espanola,cobreloa,cobreloa,Lisandro Sacripanti,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-10-19_cobresal_puerto-montt,2003-10-19,cobresal,puerto-montt,cobresal,Damián Yáñez,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21734,7 +21734,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-11-01_universidad-catolica_santiago-wanderers,2003-11-01,universidad-catolica,santiago-wanderers,santiago-wanderers,Fabián Muñoz,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-01_union-espanola_puerto-montt,2003-11-01,union-espanola,puerto-montt,union-espanola,Pedro González,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-01_union-espanola_puerto-montt,2003-11-01,union-espanola,puerto-montt,union-espanola,Carlos Cáceres,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-11-01_union-espanola_puerto-montt,2003-11-01,union-espanola,puerto-montt,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-01_union-espanola_puerto-montt,2003-11-01,union-espanola,puerto-montt,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-01_union-espanola_puerto-montt,2003-11-01,union-espanola,puerto-montt,puerto-montt,Johnny Lillo,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-11-02_cobresal_huachipato,2003-11-02,cobresal,huachipato,cobresal,Fernando Rodríguez,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-02_cobresal_huachipato,2003-11-02,cobresal,huachipato,cobresal,Fernando Rodríguez,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21769,8 +21769,8 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-11-09_huachipato_audax-italiano,2003-11-09,huachipato,audax-italiano,huachipato,Héctor Mancilla,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-09_huachipato_audax-italiano,2003-11-09,huachipato,audax-italiano,audax-italiano,Luis Medina,,0,1,https://rsssf.org/tablesc/chile03.html
 2003-11-09_deportes-temuco_union-espanola,2003-11-09,deportes-temuco,union-espanola,deportes-temuco,Felipe Siles,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-11-09_deportes-temuco_union-espanola,2003-11-09,deportes-temuco,union-espanola,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-11-09_deportes-temuco_union-espanola,2003-11-09,deportes-temuco,union-espanola,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-09_deportes-temuco_union-espanola,2003-11-09,deportes-temuco,union-espanola,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-09_deportes-temuco_union-espanola,2003-11-09,deportes-temuco,union-espanola,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-09_rangers_union-san-felipe,2003-11-09,rangers,union-san-felipe,rangers,Fabián Ibarra,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-09_rangers_union-san-felipe,2003-11-09,rangers,union-san-felipe,rangers,Mauricio Pozo,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-09_rangers_union-san-felipe,2003-11-09,rangers,union-san-felipe,rangers,Iván Alvarez,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21787,9 +21787,9 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-11-23_audax-italiano_colo-colo,2003-11-23,audax-italiano,colo-colo,audax-italiano,Jorge Guzmán,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-23_audax-italiano_colo-colo,2003-11-23,audax-italiano,colo-colo,colo-colo,Silvio Fernández,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-23_huachipato_union-espanola,2003-11-23,huachipato,union-espanola,huachipato,Luis Chavarría,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-11-23_huachipato_union-espanola,2003-11-23,huachipato,union-espanola,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-23_huachipato_union-espanola,2003-11-23,huachipato,union-espanola,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-23_huachipato_union-espanola,2003-11-23,huachipato,union-espanola,union-espanola,Rodrigo Ríos,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-11-28_union-espanola_huachipato,2003-11-28,union-espanola,huachipato,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-28_union-espanola_huachipato,2003-11-28,union-espanola,huachipato,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-28_union-espanola_huachipato,2003-11-28,union-espanola,huachipato,union-espanola,José Luis Sierra,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-28_union-espanola_huachipato,2003-11-28,union-espanola,huachipato,union-espanola,Pedro González,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-11-28_union-espanola_huachipato,2003-11-28,union-espanola,huachipato,huachipato,Rodrigo Millar,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21809,7 +21809,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-12-03_cobreloa_union-espanola,2003-12-03,cobreloa,union-espanola,cobreloa,Mauricio Dinamarca,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-12-03_cobreloa_union-espanola,2003-12-03,cobreloa,union-espanola,cobreloa,Patricio Galaz,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-12-03_cobreloa_union-espanola,2003-12-03,cobreloa,union-espanola,cobreloa,Juan Carlos Madrid,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-12-03_cobreloa_union-espanola,2003-12-03,cobreloa,union-espanola,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-03_cobreloa_union-espanola,2003-12-03,cobreloa,union-espanola,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-12-03_cobresal_universidad-de-concepcion,2003-12-03,cobresal,universidad-de-concepcion,cobresal,Juan Cisternas,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-12-03_cobresal_universidad-de-concepcion,2003-12-03,cobresal,universidad-de-concepcion,cobresal,Juan Cisternas,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-12-03_cobresal_universidad-de-concepcion,2003-12-03,cobresal,universidad-de-concepcion,universidad-de-concepcion,Eduardo Hurtado,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -21817,7 +21817,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2003-12-04_universidad-catolica_colo-colo,2003-12-04,universidad-catolica,colo-colo,colo-colo,Manuel Neira,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-12-04_universidad-catolica_colo-colo,2003-12-04,universidad-catolica,colo-colo,colo-colo,Silvio Fernández,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-12-06_union-espanola_cobreloa,2003-12-06,union-espanola,cobreloa,union-espanola,José Luis Jerez,,0,0,https://rsssf.org/tablesc/chile03.html
-2003-12-06_union-espanola_cobreloa,2003-12-06,union-espanola,cobreloa,union-espanola,Gustavo Biscayzacu,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-06_union-espanola_cobreloa,2003-12-06,union-espanola,cobreloa,union-espanola,Gustavo Biscayzacú,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-12-06_union-espanola_cobreloa,2003-12-06,union-espanola,cobreloa,cobreloa,Patricio Galaz,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-12-06_union-espanola_cobreloa,2003-12-06,union-espanola,cobreloa,cobreloa,Patricio Galaz,,0,0,https://rsssf.org/tablesc/chile03.html
 2003-12-06_union-espanola_cobreloa,2003-12-06,union-espanola,cobreloa,cobreloa,Jonathan Cisternas,,0,0,https://rsssf.org/tablesc/chile03.html
@@ -24073,7 +24073,7 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2008-03-30_everton_nublense,2008-03-30,everton,nublense,nublense,Luis Flores Abarca,63,0,1,https://www.espn.com/soccer/match/_/gameId/235765
 2008-03-30_union-espanola_deportes-antofagasta,2008-03-30,union-espanola,deportes-antofagasta,union-espanola,Mario Cáceres,65,0,0,https://www.espn.com/soccer/match/_/gameId/235759
 2008-04-05_colo-colo_everton,2008-04-05,colo-colo,everton,colo-colo,Daniel González,60,0,0,https://www.espn.com/soccer/match/_/gameId/235773
-2008-04-05_colo-colo_everton,2008-04-05,colo-colo,everton,colo-colo,Gustavo Biscayzacu,62,0,0,https://www.espn.com/soccer/match/_/gameId/235773
+2008-04-05_colo-colo_everton,2008-04-05,colo-colo,everton,colo-colo,Gustavo Biscayzacú,62,0,0,https://www.espn.com/soccer/match/_/gameId/235773
 2008-04-05_colo-colo_everton,2008-04-05,colo-colo,everton,colo-colo,Lucas Barrios,69,0,0,https://www.espn.com/soccer/match/_/gameId/235773
 2008-04-05_colo-colo_everton,2008-04-05,colo-colo,everton,everton,Francisco Sá,55,0,0,https://www.espn.com/soccer/match/_/gameId/235773
 2008-04-20_deportes-concepcion_everton,2008-04-20,deportes-concepcion,everton,deportes-concepcion,Daniel Pereyra,90,0,0,https://www.espn.com/soccer/match/_/gameId/235792
@@ -24195,3 +24195,85 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2019-02-27_palestino_talleres-de-cordoba-arg,2019-02-27,palestino,talleres-de-cordoba-arg,palestino,Cristóbal Jorquera,90,0,0,https://www.espn.com/soccer/match/_/gameId/537066
 2025-08-20_independiente-arg_universidad-de-chile,2025-08-20,independiente-arg,universidad-de-chile,universidad-de-chile,Lucas Assadi,11,0,0,ESPN Copa Sudamericana 2025-08-20 (partido suspendido, 1-1); Assadi confirmado por el hincha
 2025-08-20_independiente-arg_universidad-de-chile,2025-08-20,independiente-arg,universidad-de-chile,independiente-arg,Santiago Montiel,27,0,0,ESPN Copa Sudamericana 2025-08-20 (partido suspendido, 1-1); Assadi confirmado por el hincha
+2001-03-11_huachipato_colo-colo,2001-03-11,huachipato,colo-colo,huachipato,Luis Avelino Ceballos,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-03-18_colo-colo_rangers,2001-03-18,colo-colo,rangers,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-03-18_colo-colo_rangers,2001-03-18,colo-colo,rangers,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-03-18_colo-colo_rangers,2001-03-18,colo-colo,rangers,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-03-18_colo-colo_rangers,2001-03-18,colo-colo,rangers,colo-colo,Raúl Muñoz,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-03-18_colo-colo_rangers,2001-03-18,colo-colo,rangers,colo-colo,Sebastián Rozental,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-03-18_colo-colo_rangers,2001-03-18,colo-colo,rangers,rangers,Ramón Tapia Allende,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-03-18_colo-colo_rangers,2001-03-18,colo-colo,rangers,rangers,Ramón Tapia Allende,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-03-18_colo-colo_rangers,2001-03-18,colo-colo,rangers,rangers,César Muena,,0,1,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-03-31_universidad-de-chile_colo-colo,2001-03-31,universidad-de-chile,colo-colo,universidad-de-chile,Pedro González Vera,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-03-31_universidad-de-chile_colo-colo,2001-03-31,universidad-de-chile,colo-colo,colo-colo,Marcelo Miranda,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-04-08_colo-colo_palestino,2001-04-08,colo-colo,palestino,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-04-08_colo-colo_palestino,2001-04-08,colo-colo,palestino,colo-colo,Sebastián Rozental,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-04-15_cobreloa_colo-colo,2001-04-15,cobreloa,colo-colo,cobreloa,Paolo Vivar,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-04-15_cobreloa_colo-colo,2001-04-15,cobreloa,colo-colo,cobreloa,Nicolás Tagliani,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-05_union-espanola_colo-colo,2001-05-05,union-espanola,colo-colo,union-espanola,Manuel Neira,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-05_union-espanola_colo-colo,2001-05-05,union-espanola,colo-colo,union-espanola,Manuel Neira,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-05_union-espanola_colo-colo,2001-05-05,union-espanola,colo-colo,union-espanola,Víctor Fuentes,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-05_union-espanola_colo-colo,2001-05-05,union-espanola,colo-colo,colo-colo,Sebastian González,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-05_union-espanola_colo-colo,2001-05-05,union-espanola,colo-colo,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-05_union-espanola_colo-colo,2001-05-05,union-espanola,colo-colo,colo-colo,Sebastián Rozental,,0,1,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-20_deportes-concepcion_colo-colo,2001-05-20,deportes-concepcion,colo-colo,deportes-concepcion,Carlos Verdugo,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-20_deportes-concepcion_colo-colo,2001-05-20,deportes-concepcion,colo-colo,deportes-concepcion,Marco Bautista,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-20_deportes-concepcion_colo-colo,2001-05-20,deportes-concepcion,colo-colo,colo-colo,José Luis Sierra,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-20_deportes-concepcion_colo-colo,2001-05-20,deportes-concepcion,colo-colo,colo-colo,Sebastian González,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-26_colo-colo_santiago-morning,2001-05-26,colo-colo,santiago-morning,colo-colo,Sebastian González,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-26_colo-colo_santiago-morning,2001-05-26,colo-colo,santiago-morning,colo-colo,Sebastián Rozental,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-05-26_colo-colo_santiago-morning,2001-05-26,colo-colo,santiago-morning,santiago-morning,Gustavo Biscayzacú,,0,1,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-06-10_colo-colo_ohiggins,2001-06-10,colo-colo,ohiggins,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-06-10_colo-colo_ohiggins,2001-06-10,colo-colo,ohiggins,colo-colo,Sebastian González,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-06-17_audax-italiano_colo-colo,2001-06-17,audax-italiano,colo-colo,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-06-17_audax-italiano_colo-colo,2001-06-17,audax-italiano,colo-colo,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-06-17_audax-italiano_colo-colo,2001-06-17,audax-italiano,colo-colo,colo-colo,Sebastian González,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-06-24_colo-colo_santiago-wanderers,2001-06-24,colo-colo,santiago-wanderers,colo-colo,Sebastián Rozental,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-07-01_universidad-catolica_colo-colo,2001-07-01,universidad-catolica,colo-colo,universidad-catolica,Miguel Ramírez,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-07-01_universidad-catolica_colo-colo,2001-07-01,universidad-catolica,colo-colo,colo-colo,José Luis Sierra,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-08-04_puerto-montt_colo-colo,2001-08-04,puerto-montt,colo-colo,puerto-montt,Carlos Fuentes Ramos,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-08-04_puerto-montt_colo-colo,2001-08-04,puerto-montt,colo-colo,puerto-montt,Juan José Ribera,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-08-04_puerto-montt_colo-colo,2001-08-04,puerto-montt,colo-colo,puerto-montt,Juan Quiroga,,0,1,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-08-04_puerto-montt_colo-colo,2001-08-04,puerto-montt,colo-colo,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-08-04_puerto-montt_colo-colo,2001-08-04,puerto-montt,colo-colo,colo-colo,Carlos Reyes,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-09-09_colo-colo_universidad-de-chile,2001-09-09,colo-colo,universidad-de-chile,colo-colo,Sebastian González,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-09-09_colo-colo_universidad-de-chile,2001-09-09,colo-colo,universidad-de-chile,colo-colo,Cristián Castañeda,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-09-09_colo-colo_universidad-de-chile,2001-09-09,colo-colo,universidad-de-chile,universidad-de-chile,Diego Rivarola,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-09-09_colo-colo_universidad-de-chile,2001-09-09,colo-colo,universidad-de-chile,universidad-de-chile,Arílson,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-09-09_colo-colo_universidad-de-chile,2001-09-09,colo-colo,universidad-de-chile,universidad-de-chile,Carlos Garrido,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-09-15_palestino_colo-colo,2001-09-15,palestino,colo-colo,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-09-15_palestino_colo-colo,2001-09-15,palestino,colo-colo,colo-colo,Carlos Reyes,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-09-22_colo-colo_cobreloa,2001-09-22,colo-colo,cobreloa,colo-colo,Carlos Reyes,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-09-30_union-san-felipe_colo-colo,2001-09-30,union-san-felipe,colo-colo,union-san-felipe,John Ahumada,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-09-30_union-san-felipe_colo-colo,2001-09-30,union-san-felipe,colo-colo,union-san-felipe,Miguel Angel Romero,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-09-30_union-san-felipe_colo-colo,2001-09-30,union-san-felipe,colo-colo,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-09-30_union-san-felipe_colo-colo,2001-09-30,union-san-felipe,colo-colo,colo-colo,Sebastian González,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-14_colo-colo_union-espanola,2001-10-14,colo-colo,union-espanola,colo-colo,Héctor Tapia,,0,1,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-14_colo-colo_union-espanola,2001-10-14,colo-colo,union-espanola,colo-colo,Héctor Tapia,,0,1,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-14_colo-colo_union-espanola,2001-10-14,colo-colo,union-espanola,colo-colo,Carlos Reyes,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-14_colo-colo_union-espanola,2001-10-14,colo-colo,union-espanola,colo-colo,Marcelo Espina,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-14_colo-colo_union-espanola,2001-10-14,colo-colo,union-espanola,colo-colo,Sebastián Rozental,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-14_colo-colo_union-espanola,2001-10-14,colo-colo,union-espanola,union-espanola,Juan Pablo Ubeda,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-21_coquimbo-unido_colo-colo,2001-10-21,coquimbo-unido,colo-colo,coquimbo-unido,Ariel Roberto Pereyra,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-21_coquimbo-unido_colo-colo,2001-10-21,coquimbo-unido,colo-colo,colo-colo,David Henríquez,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-21_coquimbo-unido_colo-colo,2001-10-21,coquimbo-unido,colo-colo,colo-colo,Luis Guajardo,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-21_coquimbo-unido_colo-colo,2001-10-21,coquimbo-unido,colo-colo,colo-colo,Sebastian González,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-27_colo-colo_deportes-concepcion,2001-10-27,colo-colo,deportes-concepcion,colo-colo,Gabriel Mendoza,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-27_colo-colo_deportes-concepcion,2001-10-27,colo-colo,deportes-concepcion,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-27_colo-colo_deportes-concepcion,2001-10-27,colo-colo,deportes-concepcion,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-10-27_colo-colo_deportes-concepcion,2001-10-27,colo-colo,deportes-concepcion,colo-colo,Marco Villaseca,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-11-04_santiago-morning_colo-colo,2001-11-04,santiago-morning,colo-colo,santiago-morning,Fernando Martel,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-11-04_santiago-morning_colo-colo,2001-11-04,santiago-morning,colo-colo,santiago-morning,Gustavo Biscayzacú,,0,1,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-11-04_santiago-morning_colo-colo,2001-11-04,santiago-morning,colo-colo,santiago-morning,Gustavo Biscayzacú,,0,1,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-11-04_santiago-morning_colo-colo,2001-11-04,santiago-morning,colo-colo,colo-colo,Carlos Reyes,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-11-04_santiago-morning_colo-colo,2001-11-04,santiago-morning,colo-colo,colo-colo,José Luis Sierra,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-11-04_santiago-morning_colo-colo,2001-11-04,santiago-morning,colo-colo,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-11-24_colo-colo_audax-italiano,2001-11-24,colo-colo,audax-italiano,colo-colo,Carlos Reyes,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-11-24_colo-colo_audax-italiano,2001-11-24,colo-colo,audax-italiano,colo-colo,Héctor Tapia,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-11-24_colo-colo_audax-italiano,2001-11-24,colo-colo,audax-italiano,audax-italiano,Marco Olea,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-12-02_santiago-wanderers_colo-colo,2001-12-02,santiago-wanderers,colo-colo,santiago-wanderers,Jaime Riveros,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-12-09_colo-colo_universidad-catolica,2001-12-09,colo-colo,universidad-catolica,colo-colo,Héctor Tapia,,0,1,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-12-09_colo-colo_universidad-catolica,2001-12-09,colo-colo,universidad-catolica,colo-colo,Héctor Tapia,,0,1,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-12-09_colo-colo_universidad-catolica,2001-12-09,colo-colo,universidad-catolica,colo-colo,Marcelo Espina,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-12-09_colo-colo_universidad-catolica,2001-12-09,colo-colo,universidad-catolica,colo-colo,Mario Cáceres,,0,0,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
+2001-12-09_colo-colo_universidad-catolica,2001-12-09,colo-colo,universidad-catolica,universidad-catolica,Miguel Ramírez,,0,1,https://es.wikipedia.org/wiki/Anexo:Temporada_2001_del_Club_Social_y_Deportivo_Colo-Colo (contrastado con RSSSF chile01)
