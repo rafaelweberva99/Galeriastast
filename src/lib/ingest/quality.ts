@@ -1,3 +1,4 @@
+import { slugify } from "../domain/normalize.ts";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import type { Db, Row } from "../db/client.ts";
@@ -136,8 +137,9 @@ export async function applyCorrections(
 ): Promise<number> {
   let applied = 0;
   for (const c of corrections) {
-    const home = resolve(c.home);
-    const away = resolve(c.away);
+    // Un equipo extranjero no está en el catálogo chileno: su id es el nombre con país ("Talleres de Córdoba (ARG)").
+    const home = resolve(c.home) ?? slugify(c.home);
+    const away = resolve(c.away) ?? slugify(c.away);
     if (!home || !away) continue;
     const id = `${c.date}_${home}_${away}`;
     if (c.field === "delete") {

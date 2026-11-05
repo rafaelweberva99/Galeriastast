@@ -23705,3 +23705,491 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2026-11-02_colo-colo_puerto-montt,2026-11-02,colo-colo,puerto-montt,colo-colo,Maxi Romero,89,0,0,https://www.espn.com/soccer/match/_/gameId/401925581
 2026-11-04_union-la-calera_coquimbo-unido,2026-11-04,union-la-calera,coquimbo-unido,coquimbo-unido,Elvis Hernandez,27,0,0,https://www.espn.com/soccer/match/_/gameId/401929680
 2026-11-04_union-la-calera_coquimbo-unido,2026-11-04,union-la-calera,coquimbo-unido,coquimbo-unido,Alejandro Camargo,53,0,0,https://www.espn.com/soccer/match/_/gameId/401929680
+2014-03-23_union-la-calera_cobreloa,2014-03-23,union-la-calera,cobreloa,cobreloa,Cristian Gaitán,70,0,0,https://www.espn.com/soccer/match/_/gameId/385228
+2014-04-06_cobresal_palestino,2014-04-06,cobresal,palestino,cobresal,Luca Parodi,81,0,0,https://www.espn.com/soccer/match/_/gameId/385216
+2014-04-06_cobresal_palestino,2014-04-06,cobresal,palestino,palestino,Wladimir Herrera,20,1,0,https://www.espn.com/soccer/match/_/gameId/385216
+2014-04-20_cobreloa_deportes-antofagasta,2014-04-20,cobreloa,deportes-antofagasta,deportes-antofagasta,Javier Aníbal Elizondo,33,0,0,https://www.espn.com/soccer/match/_/gameId/385192
+2014-04-26_audax-italiano_palestino,2014-04-26,audax-italiano,palestino,audax-italiano,Juan Cornejo,16,0,0,https://www.espn.com/soccer/match/_/gameId/385186
+2014-04-26_audax-italiano_palestino,2014-04-26,audax-italiano,palestino,palestino,Marcelo Morales,84,0,0,https://www.espn.com/soccer/match/_/gameId/385186
+2014-07-20_deportes-iquique_universidad-de-concepcion,2014-07-20,deportes-iquique,universidad-de-concepcion,deportes-iquique,Francisco Castro,49,0,0,https://www.espn.com/soccer/match/_/gameId/400437
+2014-07-20_deportes-iquique_universidad-de-concepcion,2014-07-20,deportes-iquique,universidad-de-concepcion,universidad-de-concepcion,Gabriel Vargas,28,0,0,https://www.espn.com/soccer/match/_/gameId/400437
+2014-07-20_huachipato_nublense,2014-07-20,huachipato,nublense,huachipato,Francisco Arrué,14,0,0,https://www.espn.com/soccer/match/_/gameId/400438
+2014-07-20_huachipato_nublense,2014-07-20,huachipato,nublense,huachipato,Lucas Garcia Simon,31,0,0,https://www.espn.com/soccer/match/_/gameId/400438
+2014-07-20_huachipato_nublense,2014-07-20,huachipato,nublense,huachipato,Martín Rodríguez,64,0,0,https://www.espn.com/soccer/match/_/gameId/400438
+2014-07-27_nublense_san-marcos-de-arica,2014-07-27,nublense,san-marcos-de-arica,nublense,Mathias Riquero,65,0,0,https://www.espn.com/soccer/match/_/gameId/400429
+2014-07-27_nublense_san-marcos-de-arica,2014-07-27,nublense,san-marcos-de-arica,nublense,Sebastián Montesinos,81,0,0,https://www.espn.com/soccer/match/_/gameId/400429
+2014-07-27_nublense_san-marcos-de-arica,2014-07-27,nublense,san-marcos-de-arica,san-marcos-de-arica,Emilio Rentería,58,0,0,https://www.espn.com/soccer/match/_/gameId/400429
+2014-08-02_universidad-catolica_cobreloa,2014-08-02,universidad-catolica,cobreloa,cobreloa,Rodolfo González,26,0,0,https://www.espn.com/soccer/match/_/gameId/400422
+2014-08-02_universidad-catolica_cobreloa,2014-08-02,universidad-catolica,cobreloa,universidad-catolica,Alfonso Parot,33,0,0,https://www.espn.com/soccer/match/_/gameId/400422
+2014-08-02_universidad-catolica_cobreloa,2014-08-02,universidad-catolica,cobreloa,universidad-catolica,David Llanos,55,0,0,https://www.espn.com/soccer/match/_/gameId/400422
+2014-08-02_universidad-catolica_cobreloa,2014-08-02,universidad-catolica,cobreloa,universidad-catolica,David Llanos,61,0,0,https://www.espn.com/soccer/match/_/gameId/400422
+2014-08-02_universidad-catolica_cobreloa,2014-08-02,universidad-catolica,cobreloa,universidad-catolica,Fernando Cordero,82,0,0,https://www.espn.com/soccer/match/_/gameId/400422
+2014-08-02_universidad-catolica_cobreloa,2014-08-02,universidad-catolica,cobreloa,universidad-catolica,Mark González,22,0,0,https://www.espn.com/soccer/match/_/gameId/400422
+2014-08-10_cobreloa_universidad-de-concepcion,2014-08-10,cobreloa,universidad-de-concepcion,universidad-de-concepcion,Leonardo Monje,87,0,0,https://www.espn.com/soccer/match/_/gameId/400410
+2014-08-10_cobreloa_universidad-de-concepcion,2014-08-10,cobreloa,universidad-de-concepcion,universidad-de-concepcion,Pedro Muñoz,72,0,1,https://www.espn.com/soccer/match/_/gameId/400410
+2014-08-10_cobresal_huachipato,2014-08-10,cobresal,huachipato,cobresal,Víctor Sarabia,67,0,0,https://www.espn.com/soccer/match/_/gameId/400409
+2014-08-10_cobresal_huachipato,2014-08-10,cobresal,huachipato,cobresal,Éver Cantero,23,0,0,https://www.espn.com/soccer/match/_/gameId/400409
+2014-08-10_cobresal_huachipato,2014-08-10,cobresal,huachipato,huachipato,Andrés Vilches,56,0,0,https://www.espn.com/soccer/match/_/gameId/400409
+2014-08-10_cobresal_huachipato,2014-08-10,cobresal,huachipato,huachipato,Andrés Vilches,65,0,0,https://www.espn.com/soccer/match/_/gameId/400409
+2014-08-15_huachipato_palestino,2014-08-15,huachipato,palestino,huachipato,Lucas Garcia Simon,27,0,0,https://www.espn.com/soccer/match/_/gameId/400406
+2014-08-15_huachipato_palestino,2014-08-15,huachipato,palestino,huachipato,Lucas Garcia Simon,81,0,0,https://www.espn.com/soccer/match/_/gameId/400406
+2014-09-14_nublense_barnechea,2014-09-14,nublense,barnechea,barnechea,Francisco Ibáñez,88,0,0,https://www.espn.com/soccer/match/_/gameId/400373
+2014-09-27_san-marcos-de-arica_cobreloa,2014-09-27,san-marcos-de-arica,cobreloa,cobreloa,Fernando Cornejo,24,0,0,https://www.espn.com/soccer/match/_/gameId/400364
+2014-09-28_deportes-iquique_palestino,2014-09-28,deportes-iquique,palestino,deportes-iquique,Manuel Villalobos,80,0,0,https://www.espn.com/soccer/match/_/gameId/400366
+2014-09-28_deportes-iquique_palestino,2014-09-28,deportes-iquique,palestino,deportes-iquique,Rodrigo Díaz,68,0,1,https://www.espn.com/soccer/match/_/gameId/400366
+2014-09-28_deportes-iquique_palestino,2014-09-28,deportes-iquique,palestino,palestino,Diego Torres,40,0,0,https://www.espn.com/soccer/match/_/gameId/400366
+2014-09-28_deportes-iquique_palestino,2014-09-28,deportes-iquique,palestino,palestino,Leonardo Valencia,82,0,0,https://www.espn.com/soccer/match/_/gameId/400366
+2014-09-28_deportes-iquique_palestino,2014-09-28,deportes-iquique,palestino,palestino,Renato Ramos,58,0,0,https://www.espn.com/soccer/match/_/gameId/400366
+2014-09-28_deportes-iquique_palestino,2014-09-28,deportes-iquique,palestino,palestino,Renato Ramos,73,0,0,https://www.espn.com/soccer/match/_/gameId/400366
+2014-10-05_cobreloa_barnechea,2014-10-05,cobreloa,barnechea,barnechea,Nicolás Maturana,19,0,0,https://www.espn.com/soccer/match/_/gameId/400354
+2014-10-05_cobreloa_barnechea,2014-10-05,cobreloa,barnechea,barnechea,Nicolás Maturana,68,0,0,https://www.espn.com/soccer/match/_/gameId/400354
+2014-10-05_cobreloa_barnechea,2014-10-05,cobreloa,barnechea,cobreloa,Gabriel Méndez,60,0,0,https://www.espn.com/soccer/match/_/gameId/400354
+2014-10-18_san-marcos-de-arica_union-la-calera,2014-10-18,san-marcos-de-arica,union-la-calera,san-marcos-de-arica,Nicolás Medina,80,0,0,https://www.espn.com/soccer/match/_/gameId/400352
+2014-10-18_san-marcos-de-arica_union-la-calera,2014-10-18,san-marcos-de-arica,union-la-calera,san-marcos-de-arica,Pablo Gonzalez,40,0,0,https://www.espn.com/soccer/match/_/gameId/400352
+2014-10-18_san-marcos-de-arica_union-la-calera,2014-10-18,san-marcos-de-arica,union-la-calera,union-la-calera,Carlos Sepúlveda,72,0,0,https://www.espn.com/soccer/match/_/gameId/400352
+2014-10-26_cobreloa_deportes-iquique,2014-10-26,cobreloa,deportes-iquique,cobreloa,Jair Reynoso,2,0,0,https://www.espn.com/soccer/match/_/gameId/400341
+2014-10-26_cobreloa_deportes-iquique,2014-10-26,cobreloa,deportes-iquique,cobreloa,Jair Reynoso,33,0,0,https://www.espn.com/soccer/match/_/gameId/400341
+2014-10-26_cobreloa_deportes-iquique,2014-10-26,cobreloa,deportes-iquique,cobreloa,Sebastián Roco,90,0,0,https://www.espn.com/soccer/match/_/gameId/400341
+2014-10-26_cobreloa_deportes-iquique,2014-10-26,cobreloa,deportes-iquique,deportes-iquique,Boris Rieloff,45,0,0,https://www.espn.com/soccer/match/_/gameId/400341
+2014-10-26_cobreloa_deportes-iquique,2014-10-26,cobreloa,deportes-iquique,deportes-iquique,Manuel Villalobos,32,0,0,https://www.espn.com/soccer/match/_/gameId/400341
+2014-10-26_cobreloa_deportes-iquique,2014-10-26,cobreloa,deportes-iquique,deportes-iquique,Manuel Villalobos,54,0,0,https://www.espn.com/soccer/match/_/gameId/400341
+2014-10-26_deportes-antofagasta_barnechea,2014-10-26,deportes-antofagasta,barnechea,barnechea,Francisco Levipán,87,0,0,https://www.espn.com/soccer/match/_/gameId/400337
+2014-10-26_deportes-antofagasta_barnechea,2014-10-26,deportes-antofagasta,barnechea,deportes-antofagasta,Javier Aníbal Elizondo,88,0,0,https://www.espn.com/soccer/match/_/gameId/400337
+2014-11-02_deportes-iquique_nublense,2014-11-02,deportes-iquique,nublense,deportes-iquique,Misael Dávila,45,0,0,https://www.espn.com/soccer/match/_/gameId/400335
+2014-11-02_deportes-iquique_nublense,2014-11-02,deportes-iquique,nublense,nublense,Sebastián Varas,40,0,0,https://www.espn.com/soccer/match/_/gameId/400335
+2014-11-23_cobresal_ohiggins,2014-11-23,cobresal,ohiggins,cobresal,Alexis Salazar,49,0,0,https://www.espn.com/soccer/match/_/gameId/400313
+2014-11-23_cobresal_ohiggins,2014-11-23,cobresal,ohiggins,cobresal,Hans Salinas,66,0,0,https://www.espn.com/soccer/match/_/gameId/400313
+2014-11-23_cobresal_ohiggins,2014-11-23,cobresal,ohiggins,cobresal,Johan Fuentes,52,0,0,https://www.espn.com/soccer/match/_/gameId/400313
+2014-11-23_cobresal_ohiggins,2014-11-23,cobresal,ohiggins,ohiggins,Diego Chaves,64,0,0,https://www.espn.com/soccer/match/_/gameId/400313
+2014-12-05_cobreloa_nublense,2014-12-05,cobreloa,nublense,cobreloa,Diego Silva,87,0,1,https://www.espn.com/soccer/match/_/gameId/400299
+2014-12-05_cobreloa_nublense,2014-12-05,cobreloa,nublense,cobreloa,Gustavo Cristaldo,25,0,0,https://www.espn.com/soccer/match/_/gameId/400299
+2014-12-05_cobreloa_nublense,2014-12-05,cobreloa,nublense,cobreloa,Jose Pérez,79,0,0,https://www.espn.com/soccer/match/_/gameId/400299
+2014-12-05_cobreloa_nublense,2014-12-05,cobreloa,nublense,cobreloa,José Luis Jiménez,84,0,0,https://www.espn.com/soccer/match/_/gameId/400299
+2014-12-05_cobreloa_nublense,2014-12-05,cobreloa,nublense,nublense,Jose Rojas,45,0,0,https://www.espn.com/soccer/match/_/gameId/400299
+2014-12-05_cobreloa_nublense,2014-12-05,cobreloa,nublense,nublense,Sebastián Varas,90,0,1,https://www.espn.com/soccer/match/_/gameId/400299
+2015-02-08_deportes-iquique_deportes-antofagasta,2015-02-08,deportes-iquique,deportes-antofagasta,deportes-antofagasta,Marco Bolados,23,0,0,https://www.espn.com/soccer/match/_/gameId/411185
+2015-02-08_deportes-iquique_deportes-antofagasta,2015-02-08,deportes-iquique,deportes-antofagasta,deportes-antofagasta,Rodrigo Riquelme,71,0,0,https://www.espn.com/soccer/match/_/gameId/411185
+2015-02-08_deportes-iquique_deportes-antofagasta,2015-02-08,deportes-iquique,deportes-antofagasta,deportes-iquique,Cristian Bogado,76,0,0,https://www.espn.com/soccer/match/_/gameId/411185
+2015-04-19_deportes-iquique_san-marcos-de-arica,2015-04-19,deportes-iquique,san-marcos-de-arica,deportes-iquique,Cesar Pinares,54,0,0,https://www.espn.com/soccer/match/_/gameId/411100
+2015-04-19_deportes-iquique_san-marcos-de-arica,2015-04-19,deportes-iquique,san-marcos-de-arica,deportes-iquique,Francisco Castro,4,0,0,https://www.espn.com/soccer/match/_/gameId/411100
+2015-04-19_deportes-iquique_san-marcos-de-arica,2015-04-19,deportes-iquique,san-marcos-de-arica,deportes-iquique,Manuel Villalobos,42,0,0,https://www.espn.com/soccer/match/_/gameId/411100
+2015-04-19_deportes-iquique_san-marcos-de-arica,2015-04-19,deportes-iquique,san-marcos-de-arica,deportes-iquique,Rafael Caroca,78,0,0,https://www.espn.com/soccer/match/_/gameId/411100
+2015-04-19_deportes-iquique_san-marcos-de-arica,2015-04-19,deportes-iquique,san-marcos-de-arica,san-marcos-de-arica,Renato González,18,0,0,https://www.espn.com/soccer/match/_/gameId/411100
+2015-05-02_deportes-iquique_huachipato,2015-05-02,deportes-iquique,huachipato,deportes-iquique,Cristian Bogado,30,0,0,https://www.espn.com/soccer/match/_/gameId/411085
+2015-05-02_deportes-iquique_huachipato,2015-05-02,deportes-iquique,huachipato,huachipato,Andrés Vilches,48,0,0,https://www.espn.com/soccer/match/_/gameId/411085
+2015-05-02_deportes-iquique_huachipato,2015-05-02,deportes-iquique,huachipato,huachipato,Martín Rodríguez,41,0,0,https://www.espn.com/soccer/match/_/gameId/411085
+2006-02-10_santiago-morning_cobreloa,2006-02-10,santiago-morning,cobreloa,cobreloa,Rubén Ramírez,24,0,0,https://www.espn.com/soccer/match/_/gameId/194518
+2006-02-10_santiago-morning_cobreloa,2006-02-10,santiago-morning,cobreloa,santiago-morning,Felipe Díaz,57,0,0,https://www.espn.com/soccer/match/_/gameId/194518
+2006-02-11_puerto-montt_rangers,2006-02-11,puerto-montt,rangers,puerto-montt,Jorge Alvarado,84,0,0,https://www.espn.com/soccer/match/_/gameId/194524
+2006-02-11_puerto-montt_rangers,2006-02-11,puerto-montt,rangers,puerto-montt,Leonardo Monje,34,0,1,https://www.espn.com/soccer/match/_/gameId/194524
+2006-02-11_puerto-montt_rangers,2006-02-11,puerto-montt,rangers,puerto-montt,Leonardo Monje,88,0,0,https://www.espn.com/soccer/match/_/gameId/194524
+2006-02-11_puerto-montt_rangers,2006-02-11,puerto-montt,rangers,puerto-montt,Maximiliano Mejias,56,0,1,https://www.espn.com/soccer/match/_/gameId/194524
+2006-02-11_puerto-montt_rangers,2006-02-11,puerto-montt,rangers,rangers,Gianni Fournier,51,0,0,https://www.espn.com/soccer/match/_/gameId/194524
+2006-02-18_colo-colo_everton,2006-02-18,colo-colo,everton,colo-colo,Gonzalo Fierro,34,0,0,https://www.espn.com/soccer/match/_/gameId/194529
+2006-02-18_colo-colo_everton,2006-02-18,colo-colo,everton,colo-colo,Humberto Suazo,81,0,0,https://www.espn.com/soccer/match/_/gameId/194529
+2006-02-18_colo-colo_everton,2006-02-18,colo-colo,everton,colo-colo,Héctor Mancilla,16,0,1,https://www.espn.com/soccer/match/_/gameId/194529
+2006-02-18_colo-colo_everton,2006-02-18,colo-colo,everton,colo-colo,Héctor Mancilla,25,0,0,https://www.espn.com/soccer/match/_/gameId/194529
+2006-02-18_colo-colo_everton,2006-02-18,colo-colo,everton,colo-colo,Matías Fernández,50,0,0,https://www.espn.com/soccer/match/_/gameId/194529
+2006-02-18_colo-colo_everton,2006-02-18,colo-colo,everton,everton,Cristián Uribe,40,0,0,https://www.espn.com/soccer/match/_/gameId/194529
+2006-02-18_colo-colo_everton,2006-02-18,colo-colo,everton,everton,Cristián Uribe,59,0,0,https://www.espn.com/soccer/match/_/gameId/194529
+2006-02-18_colo-colo_everton,2006-02-18,colo-colo,everton,everton,Cristián Uribe,77,0,0,https://www.espn.com/soccer/match/_/gameId/194529
+2006-02-19_cobresal_puerto-montt,2006-02-19,cobresal,puerto-montt,cobresal,Iván Guillauma,47,0,0,https://www.espn.com/soccer/match/_/gameId/194535
+2006-02-19_cobresal_puerto-montt,2006-02-19,cobresal,puerto-montt,cobresal,Iván Guillauma,52,0,0,https://www.espn.com/soccer/match/_/gameId/194535
+2006-02-19_cobresal_puerto-montt,2006-02-19,cobresal,puerto-montt,cobresal,Iván Guillauma,90,0,0,https://www.espn.com/soccer/match/_/gameId/194535
+2006-02-19_cobresal_puerto-montt,2006-02-19,cobresal,puerto-montt,puerto-montt,Leonardo Monje,10,0,1,https://www.espn.com/soccer/match/_/gameId/194535
+2006-02-19_cobresal_puerto-montt,2006-02-19,cobresal,puerto-montt,puerto-montt,Leonardo Monje,76,0,0,https://www.espn.com/soccer/match/_/gameId/194535
+2006-02-25_santiago-morning_cobresal,2006-02-25,santiago-morning,cobresal,cobresal,Juan Quiroga,28,0,1,https://www.espn.com/soccer/match/_/gameId/194539
+2006-02-25_santiago-morning_cobresal,2006-02-25,santiago-morning,cobresal,santiago-morning,Pedro Mauricio Acevedo,67,0,0,https://www.espn.com/soccer/match/_/gameId/194539
+2006-03-11_rangers_union-espanola,2006-03-11,rangers,union-espanola,rangers,Horacio Chiorazzo,2,0,0,https://www.espn.com/soccer/match/_/gameId/194563
+2006-03-11_rangers_union-espanola,2006-03-11,rangers,union-espanola,union-espanola,Gonzalo Villagra,54,0,0,https://www.espn.com/soccer/match/_/gameId/194563
+2006-03-11_rangers_union-espanola,2006-03-11,rangers,union-espanola,union-espanola,Héctor Santibáñez,22,1,0,https://www.espn.com/soccer/match/_/gameId/194563
+2006-03-11_rangers_union-espanola,2006-03-11,rangers,union-espanola,union-espanola,Héctor Tapia,12,1,0,https://www.espn.com/soccer/match/_/gameId/194563
+2006-03-18_coquimbo-unido_ohiggins,2006-03-18,coquimbo-unido,ohiggins,coquimbo-unido,Marcelo Corrales,47,0,0,https://www.espn.com/soccer/match/_/gameId/194572
+2006-03-18_coquimbo-unido_ohiggins,2006-03-18,coquimbo-unido,ohiggins,coquimbo-unido,Mario Aravena,78,0,0,https://www.espn.com/soccer/match/_/gameId/194572
+2006-03-18_coquimbo-unido_ohiggins,2006-03-18,coquimbo-unido,ohiggins,ohiggins,Marco Olea,6,0,0,https://www.espn.com/soccer/match/_/gameId/194572
+2006-03-18_union-espanola_santiago-wanderers,2006-03-18,union-espanola,santiago-wanderers,union-espanola,Luis Oyarzún,20,1,0,https://www.espn.com/soccer/match/_/gameId/194569
+2006-03-19_cobreloa_rangers,2006-03-19,cobreloa,rangers,cobreloa,Jonatan Cisternas,47,0,0,https://www.espn.com/soccer/match/_/gameId/194573
+2006-03-19_cobreloa_rangers,2006-03-19,cobreloa,rangers,cobreloa,José Luis Díaz,43,0,0,https://www.espn.com/soccer/match/_/gameId/194573
+2006-03-19_cobreloa_rangers,2006-03-19,cobreloa,rangers,cobreloa,José Luis Díaz,73,0,1,https://www.espn.com/soccer/match/_/gameId/194573
+2006-03-19_cobreloa_rangers,2006-03-19,cobreloa,rangers,cobreloa,Mauricio Aros,71,0,0,https://www.espn.com/soccer/match/_/gameId/194573
+2006-03-19_cobreloa_rangers,2006-03-19,cobreloa,rangers,cobreloa,Nicolás Asensio,31,0,0,https://www.espn.com/soccer/match/_/gameId/194573
+2006-03-19_cobreloa_rangers,2006-03-19,cobreloa,rangers,rangers,Manuel Avendaño,44,0,0,https://www.espn.com/soccer/match/_/gameId/194573
+2006-03-26_puerto-montt_everton,2006-03-26,puerto-montt,everton,everton,Francisco Sá,90,0,0,https://www.espn.com/soccer/match/_/gameId/194581
+2006-03-26_puerto-montt_everton,2006-03-26,puerto-montt,everton,puerto-montt,Mauro Marchano,13,0,0,https://www.espn.com/soccer/match/_/gameId/194581
+2006-04-09_cobresal_palestino,2006-04-09,cobresal,palestino,cobresal,Claudio Videla,61,0,0,https://www.espn.com/soccer/match/_/gameId/194603
+2006-04-09_cobresal_palestino,2006-04-09,cobresal,palestino,cobresal,Juan Quiroga,23,0,0,https://www.espn.com/soccer/match/_/gameId/194603
+2006-04-09_cobresal_palestino,2006-04-09,cobresal,palestino,cobresal,Juan Quiroga,26,0,1,https://www.espn.com/soccer/match/_/gameId/194603
+2006-04-09_cobresal_palestino,2006-04-09,cobresal,palestino,cobresal,Juan Quiroga,43,0,0,https://www.espn.com/soccer/match/_/gameId/194603
+2006-04-22_ohiggins_union-espanola,2006-04-22,ohiggins,union-espanola,ohiggins,Marco Rodríguez,80,0,0,https://www.espn.com/soccer/match/_/gameId/194623
+2006-04-22_ohiggins_union-espanola,2006-04-22,ohiggins,union-espanola,union-espanola,Clarence Williams Acuña,13,0,0,https://www.espn.com/soccer/match/_/gameId/194623
+2006-04-22_ohiggins_union-espanola,2006-04-22,ohiggins,union-espanola,union-espanola,Matías Vidangozzi,86,0,0,https://www.espn.com/soccer/match/_/gameId/194623
+2006-04-22_ohiggins_union-espanola,2006-04-22,ohiggins,union-espanola,union-espanola,Matías Vidangozzi,88,0,0,https://www.espn.com/soccer/match/_/gameId/194623
+2006-04-23_santiago-morning_everton,2006-04-23,santiago-morning,everton,everton,Francisco Sá,29,0,0,https://www.espn.com/soccer/match/_/gameId/194621
+2006-04-23_santiago-morning_everton,2006-04-23,santiago-morning,everton,everton,Juan Pablo Ubeda,10,0,0,https://www.espn.com/soccer/match/_/gameId/194621
+2006-04-23_santiago-morning_everton,2006-04-23,santiago-morning,everton,santiago-morning,Pedro González,69,0,1,https://www.espn.com/soccer/match/_/gameId/194621
+2006-04-29_rangers_cobresal,2006-04-29,rangers,cobresal,cobresal,Cristóbal Aliste,28,0,0,https://www.espn.com/soccer/match/_/gameId/194627
+2006-04-29_rangers_cobresal,2006-04-29,rangers,cobresal,cobresal,Juan Quiroga,68,0,0,https://www.espn.com/soccer/match/_/gameId/194627
+2006-04-29_rangers_cobresal,2006-04-29,rangers,cobresal,rangers,Fabián Ibarra,66,0,0,https://www.espn.com/soccer/match/_/gameId/194627
+2006-05-07_cobresal_santiago-wanderers,2006-05-07,cobresal,santiago-wanderers,cobresal,César Díaz,83,0,0,https://www.espn.com/soccer/match/_/gameId/194641
+2006-05-07_cobresal_santiago-wanderers,2006-05-07,cobresal,santiago-wanderers,cobresal,Patricio Lira,7,0,0,https://www.espn.com/soccer/match/_/gameId/194641
+2006-05-07_cobresal_santiago-wanderers,2006-05-07,cobresal,santiago-wanderers,santiago-wanderers,Michael Silva,40,0,0,https://www.espn.com/soccer/match/_/gameId/194641
+2006-05-07_colo-colo_cobreloa,2006-05-07,colo-colo,cobreloa,colo-colo,Gonzalo Fierro,24,0,0,https://www.espn.com/soccer/match/_/gameId/194639
+2006-05-07_colo-colo_cobreloa,2006-05-07,colo-colo,cobreloa,colo-colo,Moisés Villarroel,86,0,0,https://www.espn.com/soccer/match/_/gameId/194639
+2006-05-07_puerto-montt_deportes-antofagasta,2006-05-07,puerto-montt,deportes-antofagasta,deportes-antofagasta,Elías Alonso Soto,51,0,0,https://www.espn.com/soccer/match/_/gameId/194638
+2006-05-07_puerto-montt_deportes-antofagasta,2006-05-07,puerto-montt,deportes-antofagasta,deportes-antofagasta,Gonzalo Klusener,28,0,0,https://www.espn.com/soccer/match/_/gameId/194638
+2006-05-07_puerto-montt_deportes-antofagasta,2006-05-07,puerto-montt,deportes-antofagasta,deportes-antofagasta,Mauricio Donoso,36,0,0,https://www.espn.com/soccer/match/_/gameId/194638
+2006-05-07_puerto-montt_deportes-antofagasta,2006-05-07,puerto-montt,deportes-antofagasta,puerto-montt,Gabriel 2Vargas,26,0,0,https://www.espn.com/soccer/match/_/gameId/194638
+2006-05-07_puerto-montt_deportes-antofagasta,2006-05-07,puerto-montt,deportes-antofagasta,puerto-montt,Leonardo Monje,64,0,0,https://www.espn.com/soccer/match/_/gameId/194638
+2006-05-07_puerto-montt_deportes-antofagasta,2006-05-07,puerto-montt,deportes-antofagasta,puerto-montt,Luis Guajardo,88,0,0,https://www.espn.com/soccer/match/_/gameId/194638
+2006-05-13_ohiggins_puerto-montt,2006-05-13,ohiggins,puerto-montt,ohiggins,Mariano Messera,17,0,0,https://www.espn.com/soccer/match/_/gameId/194655
+2006-05-13_ohiggins_puerto-montt,2006-05-13,ohiggins,puerto-montt,puerto-montt,Walter Vega,70,0,0,https://www.espn.com/soccer/match/_/gameId/194655
+2006-05-13_rangers_huachipato,2006-05-13,rangers,huachipato,huachipato,Juan Gonzalo Lorca,67,0,0,https://www.espn.com/soccer/match/_/gameId/194654
+2006-05-13_rangers_huachipato,2006-05-13,rangers,huachipato,huachipato,Rodrigo Millar,29,0,0,https://www.espn.com/soccer/match/_/gameId/194654
+2006-05-13_rangers_huachipato,2006-05-13,rangers,huachipato,huachipato,Rodrigo Millar,40,0,0,https://www.espn.com/soccer/match/_/gameId/194654
+2006-05-13_rangers_huachipato,2006-05-13,rangers,huachipato,rangers,Nino Rojas,74,0,0,https://www.espn.com/soccer/match/_/gameId/194654
+2006-05-14_santiago-wanderers_universidad-de-concepcion,2006-05-14,santiago-wanderers,universidad-de-concepcion,santiago-wanderers,Pablo Contreras,89,0,0,https://www.espn.com/soccer/match/_/gameId/194653
+2006-05-14_santiago-wanderers_universidad-de-concepcion,2006-05-14,santiago-wanderers,universidad-de-concepcion,universidad-de-concepcion,Juan Ribera,9,0,0,https://www.espn.com/soccer/match/_/gameId/194653
+2006-05-14_santiago-wanderers_universidad-de-concepcion,2006-05-14,santiago-wanderers,universidad-de-concepcion,universidad-de-concepcion,Luís Bernardo Aguiar,44,0,0,https://www.espn.com/soccer/match/_/gameId/194653
+2006-05-14_santiago-wanderers_universidad-de-concepcion,2006-05-14,santiago-wanderers,universidad-de-concepcion,universidad-de-concepcion,Luís Bernardo Aguiar,83,0,0,https://www.espn.com/soccer/match/_/gameId/194653
+2006-05-14_santiago-wanderers_universidad-de-concepcion,2006-05-14,santiago-wanderers,universidad-de-concepcion,universidad-de-concepcion,Ricardo Viveros,23,0,0,https://www.espn.com/soccer/match/_/gameId/194653
+2006-05-27_cobreloa_universidad-de-chile,2006-05-27,cobreloa,universidad-de-chile,cobreloa,José Luis Díaz,45,0,1,https://www.espn.com/soccer/match/_/gameId/194666
+2006-05-27_cobreloa_universidad-de-chile,2006-05-27,cobreloa,universidad-de-chile,cobreloa,Nicolás Asensio,63,0,0,https://www.espn.com/soccer/match/_/gameId/194666
+2006-05-27_cobreloa_universidad-de-chile,2006-05-27,cobreloa,universidad-de-chile,universidad-de-chile,Marcelo Salas,18,0,0,https://www.espn.com/soccer/match/_/gameId/194666
+2006-05-28_universidad-catolica_cobresal,2006-05-28,universidad-catolica,cobresal,universidad-catolica,Iván Vásquez,84,0,0,https://www.espn.com/soccer/match/_/gameId/194668
+2006-05-28_universidad-catolica_cobresal,2006-05-28,universidad-catolica,cobresal,universidad-catolica,Nicolás Núñez,27,0,0,https://www.espn.com/soccer/match/_/gameId/194668
+2006-06-03_huachipato_universidad-catolica,2006-06-03,huachipato,universidad-catolica,huachipato,Gabriel Sandoval,88,0,0,https://www.espn.com/soccer/match/_/gameId/194677
+2006-06-03_huachipato_universidad-catolica,2006-06-03,huachipato,universidad-catolica,universidad-catolica,Francisco Arrué,55,0,0,https://www.espn.com/soccer/match/_/gameId/194677
+2006-06-03_huachipato_universidad-catolica,2006-06-03,huachipato,universidad-catolica,universidad-catolica,Horacio del Valle,8,1,0,https://www.espn.com/soccer/match/_/gameId/194677
+2006-06-04_cobresal_audax-italiano,2006-06-04,cobresal,audax-italiano,audax-italiano,Carlos Villanueva,68,0,0,https://www.espn.com/soccer/match/_/gameId/194681
+2006-06-04_cobresal_audax-italiano,2006-06-04,cobresal,audax-italiano,audax-italiano,Carlos Villanueva,90,0,0,https://www.espn.com/soccer/match/_/gameId/194681
+2006-06-04_cobresal_audax-italiano,2006-06-04,cobresal,audax-italiano,audax-italiano,Jaime González,66,0,0,https://www.espn.com/soccer/match/_/gameId/194681
+2006-06-04_cobresal_audax-italiano,2006-06-04,cobresal,audax-italiano,audax-italiano,Rodrigo Núñez,10,1,0,https://www.espn.com/soccer/match/_/gameId/194681
+2006-06-04_cobresal_audax-italiano,2006-06-04,cobresal,audax-italiano,cobresal,Juan Quiroga,45,0,0,https://www.espn.com/soccer/match/_/gameId/194681
+2006-06-04_cobresal_audax-italiano,2006-06-04,cobresal,audax-italiano,cobresal,Néstor Contreras,85,0,0,https://www.espn.com/soccer/match/_/gameId/194681
+2006-06-04_deportes-antofagasta_union-espanola,2006-06-04,deportes-antofagasta,union-espanola,deportes-antofagasta,Diego Agüero,90,0,0,https://www.espn.com/soccer/match/_/gameId/194682
+2006-06-04_deportes-antofagasta_union-espanola,2006-06-04,deportes-antofagasta,union-espanola,deportes-antofagasta,Renato Ramos,13,0,0,https://www.espn.com/soccer/match/_/gameId/194682
+2006-06-04_deportes-antofagasta_union-espanola,2006-06-04,deportes-antofagasta,union-espanola,deportes-antofagasta,Rubén Eduardo Bascuñan,77,0,0,https://www.espn.com/soccer/match/_/gameId/194682
+2006-07-29_palestino_deportes-antofagasta,2006-07-29,palestino,deportes-antofagasta,deportes-antofagasta,Rubén Eduardo Bascuñan,59,0,0,https://www.espn.com/soccer/match/_/gameId/203519
+2006-07-29_palestino_deportes-antofagasta,2006-07-29,palestino,deportes-antofagasta,palestino,Germán Arangio,4,0,0,https://www.espn.com/soccer/match/_/gameId/203519
+2006-08-26_union-espanola_deportes-antofagasta,2006-08-26,union-espanola,deportes-antofagasta,deportes-antofagasta,Gonzalo Klusener,90,0,0,https://www.espn.com/soccer/match/_/gameId/203556
+2006-08-26_union-espanola_deportes-antofagasta,2006-08-26,union-espanola,deportes-antofagasta,deportes-antofagasta,Luis Flores Abarca,67,0,0,https://www.espn.com/soccer/match/_/gameId/203556
+2006-08-26_union-espanola_deportes-antofagasta,2006-08-26,union-espanola,deportes-antofagasta,deportes-antofagasta,Renato Ramos,18,0,1,https://www.espn.com/soccer/match/_/gameId/203556
+2006-08-26_union-espanola_deportes-antofagasta,2006-08-26,union-espanola,deportes-antofagasta,union-espanola,Julio Brian Gutierrez,42,0,0,https://www.espn.com/soccer/match/_/gameId/203556
+2006-08-26_union-espanola_deportes-antofagasta,2006-08-26,union-espanola,deportes-antofagasta,union-espanola,Manuel Neira,80,0,1,https://www.espn.com/soccer/match/_/gameId/203556
+2006-08-26_union-espanola_deportes-antofagasta,2006-08-26,union-espanola,deportes-antofagasta,union-espanola,Manuel Neira,86,0,0,https://www.espn.com/soccer/match/_/gameId/203556
+2006-08-26_universidad-de-concepcion_santiago-wanderers,2006-08-26,universidad-de-concepcion,santiago-wanderers,santiago-wanderers,2,10,0,0,https://www.espn.com/soccer/match/_/gameId/203559
+2006-08-26_universidad-de-concepcion_santiago-wanderers,2006-08-26,universidad-de-concepcion,santiago-wanderers,santiago-wanderers,Luis Oyarzún,9,0,0,https://www.espn.com/soccer/match/_/gameId/203559
+2006-08-26_universidad-de-concepcion_santiago-wanderers,2006-08-26,universidad-de-concepcion,santiago-wanderers,universidad-de-concepcion,Luís Bernardo Aguiar,18,0,0,https://www.espn.com/soccer/match/_/gameId/203559
+2006-09-03_colo-colo_puerto-montt,2006-09-03,colo-colo,puerto-montt,colo-colo,Andrés Felipe González,58,0,0,https://www.espn.com/soccer/match/_/gameId/203571
+2006-09-03_colo-colo_puerto-montt,2006-09-03,colo-colo,puerto-montt,colo-colo,Matías Fernández,79,0,0,https://www.espn.com/soccer/match/_/gameId/203571
+2006-09-03_colo-colo_puerto-montt,2006-09-03,colo-colo,puerto-montt,colo-colo,Miguel Caneo,5,0,0,https://www.espn.com/soccer/match/_/gameId/203571
+2006-09-03_colo-colo_puerto-montt,2006-09-03,colo-colo,puerto-montt,colo-colo,Miguel Ángel Aceval,90,0,0,https://www.espn.com/soccer/match/_/gameId/203571
+2006-09-03_colo-colo_puerto-montt,2006-09-03,colo-colo,puerto-montt,puerto-montt,Fernando Giménez,45,0,0,https://www.espn.com/soccer/match/_/gameId/203571
+2006-09-15_colo-colo_universidad-de-concepcion,2006-09-15,colo-colo,universidad-de-concepcion,colo-colo,Humberto Suazo,32,0,0,https://www.espn.com/soccer/match/_/gameId/203588
+2006-09-15_colo-colo_universidad-de-concepcion,2006-09-15,colo-colo,universidad-de-concepcion,colo-colo,Humberto Suazo,89,0,0,https://www.espn.com/soccer/match/_/gameId/203588
+2006-09-15_colo-colo_universidad-de-concepcion,2006-09-15,colo-colo,universidad-de-concepcion,colo-colo,Matías Fernández,42,0,0,https://www.espn.com/soccer/match/_/gameId/203588
+2006-09-15_colo-colo_universidad-de-concepcion,2006-09-15,colo-colo,universidad-de-concepcion,colo-colo,Matías Fernández,73,0,1,https://www.espn.com/soccer/match/_/gameId/203588
+2006-09-15_colo-colo_universidad-de-concepcion,2006-09-15,colo-colo,universidad-de-concepcion,universidad-de-concepcion,Eduardo Arancibia,64,0,0,https://www.espn.com/soccer/match/_/gameId/203588
+2006-09-15_colo-colo_universidad-de-concepcion,2006-09-15,colo-colo,universidad-de-concepcion,universidad-de-concepcion,Juan Ribera,66,0,0,https://www.espn.com/soccer/match/_/gameId/203588
+2006-09-24_deportes-antofagasta_huachipato,2006-09-24,deportes-antofagasta,huachipato,deportes-antofagasta,Luis Flores Abarca,43,0,0,https://www.espn.com/soccer/match/_/gameId/203598
+2006-09-24_deportes-antofagasta_huachipato,2006-09-24,deportes-antofagasta,huachipato,deportes-antofagasta,Renato Ramos,44,0,0,https://www.espn.com/soccer/match/_/gameId/203598
+2006-09-24_universidad-de-chile_coquimbo-unido,2006-09-24,universidad-de-chile,coquimbo-unido,coquimbo-unido,Luciano Alvarez,68,0,0,https://www.espn.com/soccer/match/_/gameId/203593
+2006-09-24_universidad-de-chile_coquimbo-unido,2006-09-24,universidad-de-chile,coquimbo-unido,coquimbo-unido,Luciano Alvarez,71,0,0,https://www.espn.com/soccer/match/_/gameId/203593
+2006-09-24_universidad-de-chile_coquimbo-unido,2006-09-24,universidad-de-chile,coquimbo-unido,universidad-de-chile,Sergio Gioino,24,0,0,https://www.espn.com/soccer/match/_/gameId/203593
+2006-09-30_ohiggins_deportes-antofagasta,2006-09-30,ohiggins,deportes-antofagasta,deportes-antofagasta,Eduardo Cusso,76,0,0,https://www.espn.com/soccer/match/_/gameId/203601
+2006-09-30_ohiggins_deportes-antofagasta,2006-09-30,ohiggins,deportes-antofagasta,ohiggins,Fernándo Meneses,38,0,0,https://www.espn.com/soccer/match/_/gameId/203601
+2006-09-30_ohiggins_deportes-antofagasta,2006-09-30,ohiggins,deportes-antofagasta,ohiggins,Giancarlo Maldonado,90,0,0,https://www.espn.com/soccer/match/_/gameId/203601
+2006-09-30_ohiggins_deportes-antofagasta,2006-09-30,ohiggins,deportes-antofagasta,ohiggins,Luis,16,0,0,https://www.espn.com/soccer/match/_/gameId/203601
+2006-10-28_cobreloa_ohiggins,2006-10-28,cobreloa,ohiggins,cobreloa,José Luis Díaz,90,0,0,https://www.espn.com/soccer/match/_/gameId/203631
+2006-10-28_cobreloa_ohiggins,2006-10-28,cobreloa,ohiggins,cobreloa,Juan Luis González,36,0,0,https://www.espn.com/soccer/match/_/gameId/203631
+2006-10-28_cobreloa_ohiggins,2006-10-28,cobreloa,ohiggins,cobreloa,Patricio Rubina,81,0,0,https://www.espn.com/soccer/match/_/gameId/203631
+2006-10-28_cobreloa_ohiggins,2006-10-28,cobreloa,ohiggins,ohiggins,Luis Flores Manzor,61,0,0,https://www.espn.com/soccer/match/_/gameId/203631
+2006-11-01_union-espanola_universidad-de-chile,2006-11-01,union-espanola,universidad-de-chile,union-espanola,Roberto Ordenes,21,0,0,https://www.espn.com/soccer/match/_/gameId/203635
+2006-11-01_union-espanola_universidad-de-chile,2006-11-01,union-espanola,universidad-de-chile,union-espanola,Roberto Ordenes,27,0,0,https://www.espn.com/soccer/match/_/gameId/203635
+2006-11-01_union-espanola_universidad-de-chile,2006-11-01,union-espanola,universidad-de-chile,universidad-de-chile,Héctor Suazo,84,0,0,https://www.espn.com/soccer/match/_/gameId/203635
+2006-11-01_union-espanola_universidad-de-chile,2006-11-01,union-espanola,universidad-de-chile,universidad-de-chile,Manuel Iturra,58,0,0,https://www.espn.com/soccer/match/_/gameId/203635
+2006-11-01_union-espanola_universidad-de-chile,2006-11-01,union-espanola,universidad-de-chile,universidad-de-chile,Patricio Ormazábal,28,0,0,https://www.espn.com/soccer/match/_/gameId/203635
+2006-11-01_union-espanola_universidad-de-chile,2006-11-01,union-espanola,universidad-de-chile,universidad-de-chile,Rodrigo Daniel Astudillo,2,0,0,https://www.espn.com/soccer/match/_/gameId/203635
+2006-11-01_union-espanola_universidad-de-chile,2006-11-01,union-espanola,universidad-de-chile,universidad-de-chile,Rodrigo Daniel Astudillo,13,0,0,https://www.espn.com/soccer/match/_/gameId/203635
+2006-11-01_union-espanola_universidad-de-chile,2006-11-01,union-espanola,universidad-de-chile,universidad-de-chile,Rodrigo Daniel Astudillo,90,0,0,https://www.espn.com/soccer/match/_/gameId/203635
+2006-11-04_ohiggins_huachipato,2006-11-04,ohiggins,huachipato,huachipato,Gabriel Sandoval,79,0,0,https://www.espn.com/soccer/match/_/gameId/203652
+2006-11-04_ohiggins_huachipato,2006-11-04,ohiggins,huachipato,huachipato,Jaime Eduardo Riveros,37,0,0,https://www.espn.com/soccer/match/_/gameId/203652
+2006-11-04_ohiggins_huachipato,2006-11-04,ohiggins,huachipato,ohiggins,César Henríquez,90,0,0,https://www.espn.com/soccer/match/_/gameId/203652
+2006-11-04_ohiggins_huachipato,2006-11-04,ohiggins,huachipato,ohiggins,Giancarlo Maldonado,81,0,0,https://www.espn.com/soccer/match/_/gameId/203652
+2006-11-04_ohiggins_huachipato,2006-11-04,ohiggins,huachipato,ohiggins,Marco Olea,4,0,0,https://www.espn.com/soccer/match/_/gameId/203652
+2006-11-05_cobreloa_cobresal,2006-11-05,cobreloa,cobresal,cobreloa,Charles Aránguiz,49,0,0,https://www.espn.com/soccer/match/_/gameId/203646
+2006-11-05_cobreloa_cobresal,2006-11-05,cobreloa,cobresal,cobreloa,José Luis Díaz,14,0,0,https://www.espn.com/soccer/match/_/gameId/203646
+2006-11-05_cobreloa_cobresal,2006-11-05,cobreloa,cobresal,cobreloa,Rodrigo Mannara,54,0,0,https://www.espn.com/soccer/match/_/gameId/203646
+2006-11-05_cobreloa_cobresal,2006-11-05,cobreloa,cobresal,cobresal,Rodrigo Núñez,58,0,0,https://www.espn.com/soccer/match/_/gameId/203646
+2006-12-09_colo-colo_cobreloa,2006-12-09,colo-colo,cobreloa,colo-colo,Gonzalo Fierro,32,0,0,https://www.espn.com/soccer/match/_/gameId/211842
+2006-12-09_colo-colo_cobreloa,2006-12-09,colo-colo,cobreloa,colo-colo,Mario Cáceres,5,0,0,https://www.espn.com/soccer/match/_/gameId/211842
+2006-12-09_colo-colo_cobreloa,2006-12-09,colo-colo,cobreloa,colo-colo,Matías Fernández,28,0,0,https://www.espn.com/soccer/match/_/gameId/211842
+2006-12-16_ohiggins_audax-italiano,2006-12-16,ohiggins,audax-italiano,audax-italiano,Carlos Villanueva,57,0,0,https://www.espn.com/soccer/match/_/gameId/211841
+2006-12-16_ohiggins_audax-italiano,2006-12-16,ohiggins,audax-italiano,audax-italiano,Franco Di Santo,63,0,0,https://www.espn.com/soccer/match/_/gameId/211841
+2006-12-16_ohiggins_audax-italiano,2006-12-16,ohiggins,audax-italiano,ohiggins,Giancarlo Maldonado,72,0,0,https://www.espn.com/soccer/match/_/gameId/211841
+2006-12-16_ohiggins_audax-italiano,2006-12-16,ohiggins,audax-italiano,ohiggins,Giancarlo Maldonado,80,0,0,https://www.espn.com/soccer/match/_/gameId/211841
+2006-12-16_ohiggins_audax-italiano,2006-12-16,ohiggins,audax-italiano,ohiggins,Marco Olea,22,0,0,https://www.espn.com/soccer/match/_/gameId/211841
+2006-12-16_ohiggins_audax-italiano,2006-12-16,ohiggins,audax-italiano,ohiggins,Marco Olea,74,0,0,https://www.espn.com/soccer/match/_/gameId/211841
+2006-12-17_cobreloa_colo-colo,2006-12-17,cobreloa,colo-colo,cobreloa,Charles Aránguiz,76,0,0,https://www.espn.com/soccer/match/_/gameId/211843
+2006-12-17_cobreloa_colo-colo,2006-12-17,cobreloa,colo-colo,cobreloa,Lucas Barrios,24,0,0,https://www.espn.com/soccer/match/_/gameId/211843
+2006-12-17_cobreloa_colo-colo,2006-12-17,cobreloa,colo-colo,cobreloa,Lucas Barrios,53,0,0,https://www.espn.com/soccer/match/_/gameId/211843
+2006-12-17_cobreloa_colo-colo,2006-12-17,cobreloa,colo-colo,colo-colo,Humberto Suazo,39,0,0,https://www.espn.com/soccer/match/_/gameId/211843
+2006-12-17_cobreloa_colo-colo,2006-12-17,cobreloa,colo-colo,colo-colo,Humberto Suazo,74,0,0,https://www.espn.com/soccer/match/_/gameId/211843
+2006-12-17_cobreloa_colo-colo,2006-12-17,cobreloa,colo-colo,colo-colo,Matías Fernández,42,0,1,https://www.espn.com/soccer/match/_/gameId/211843
+2007-02-18_audax-italiano_everton,2007-02-18,audax-italiano,everton,audax-italiano,Braulio Leal,70,0,0,https://www.espn.com/soccer/match/_/gameId/213330
+2007-02-18_audax-italiano_everton,2007-02-18,audax-italiano,everton,audax-italiano,Leonardo Andres Medina,8,0,0,https://www.espn.com/soccer/match/_/gameId/213330
+2007-02-18_audax-italiano_everton,2007-02-18,audax-italiano,everton,audax-italiano,Leonardo Andres Medina,48,0,0,https://www.espn.com/soccer/match/_/gameId/213330
+2007-02-18_audax-italiano_everton,2007-02-18,audax-italiano,everton,audax-italiano,Rodolfo Moya,76,0,0,https://www.espn.com/soccer/match/_/gameId/213330
+2007-02-18_audax-italiano_everton,2007-02-18,audax-italiano,everton,everton,Eder Villavicencio,65,0,0,https://www.espn.com/soccer/match/_/gameId/213330
+2007-02-18_audax-italiano_everton,2007-02-18,audax-italiano,everton,everton,Fernando López,20,0,0,https://www.espn.com/soccer/match/_/gameId/213330
+2007-02-24_union-espanola_audax-italiano,2007-02-24,union-espanola,audax-italiano,audax-italiano,Leonardo Andres Medina,34,0,0,https://www.espn.com/soccer/match/_/gameId/213341
+2007-02-24_union-espanola_audax-italiano,2007-02-24,union-espanola,audax-italiano,audax-italiano,Leonardo Andres Medina,48,0,0,https://www.espn.com/soccer/match/_/gameId/213341
+2007-02-24_union-espanola_audax-italiano,2007-02-24,union-espanola,audax-italiano,union-espanola,José Sierra,26,0,0,https://www.espn.com/soccer/match/_/gameId/213341
+2007-02-24_union-espanola_audax-italiano,2007-02-24,union-espanola,audax-italiano,union-espanola,Matías Vidangozzi,72,0,0,https://www.espn.com/soccer/match/_/gameId/213341
+2007-02-28_palestino_huachipato,2007-02-28,palestino,huachipato,huachipato,Jaime Eduardo Riveros,59,0,0,https://www.espn.com/soccer/match/_/gameId/213355
+2007-02-28_palestino_huachipato,2007-02-28,palestino,huachipato,palestino,Ever Cantero,41,0,0,https://www.espn.com/soccer/match/_/gameId/213355
+2007-03-17_palestino_melipilla,2007-03-17,palestino,melipilla,melipilla,Alejandro Vrsalovic,90,0,0,https://www.espn.com/soccer/match/_/gameId/213381
+2007-03-17_palestino_melipilla,2007-03-17,palestino,melipilla,palestino,2,60,0,0,https://www.espn.com/soccer/match/_/gameId/213381
+2007-03-17_union-espanola_nublense,2007-03-17,union-espanola,nublense,nublense,Danilo Vicente Aceval,83,0,1,https://www.espn.com/soccer/match/_/gameId/213383
+2007-03-17_union-espanola_nublense,2007-03-17,union-espanola,nublense,nublense,Luis Flores,71,0,0,https://www.espn.com/soccer/match/_/gameId/213383
+2007-03-17_union-espanola_nublense,2007-03-17,union-espanola,nublense,union-espanola,Julio Brian Gutierrez,15,0,0,https://www.espn.com/soccer/match/_/gameId/213383
+2007-03-17_union-espanola_nublense,2007-03-17,union-espanola,nublense,union-espanola,Julio Brian Gutierrez,72,0,0,https://www.espn.com/soccer/match/_/gameId/213383
+2007-03-18_everton_santiago-wanderers,2007-03-18,everton,santiago-wanderers,everton,Francisco Sá,32,0,0,https://www.espn.com/soccer/match/_/gameId/213380
+2007-03-18_everton_santiago-wanderers,2007-03-18,everton,santiago-wanderers,santiago-wanderers,Sebastián Roco,68,0,0,https://www.espn.com/soccer/match/_/gameId/213380
+2007-03-25_puerto-montt_union-espanola,2007-03-25,puerto-montt,union-espanola,puerto-montt,César Talma,29,0,0,https://www.espn.com/soccer/match/_/gameId/213372
+2007-03-25_puerto-montt_union-espanola,2007-03-25,puerto-montt,union-espanola,puerto-montt,Luis Guajardo,86,0,0,https://www.espn.com/soccer/match/_/gameId/213372
+2007-03-25_puerto-montt_union-espanola,2007-03-25,puerto-montt,union-espanola,union-espanola,Claudio Calderón,32,0,0,https://www.espn.com/soccer/match/_/gameId/213372
+2007-03-25_puerto-montt_union-espanola,2007-03-25,puerto-montt,union-espanola,union-espanola,Claudio Calderón,83,0,0,https://www.espn.com/soccer/match/_/gameId/213372
+2007-03-25_puerto-montt_union-espanola,2007-03-25,puerto-montt,union-espanola,union-espanola,Julio Brian Gutierrez,49,0,0,https://www.espn.com/soccer/match/_/gameId/213372
+2007-03-25_puerto-montt_union-espanola,2007-03-25,puerto-montt,union-espanola,union-espanola,Julio Brian Gutierrez,58,0,0,https://www.espn.com/soccer/match/_/gameId/213372
+2007-03-25_puerto-montt_union-espanola,2007-03-25,puerto-montt,union-espanola,union-espanola,Matías Vidangozzi,39,0,0,https://www.espn.com/soccer/match/_/gameId/213372
+2007-03-31_deportes-concepcion_ohiggins,2007-03-31,deportes-concepcion,ohiggins,deportes-concepcion,Jimmy Ortiz,72,0,0,https://www.espn.com/soccer/match/_/gameId/213393
+2007-03-31_deportes-concepcion_ohiggins,2007-03-31,deportes-concepcion,ohiggins,ohiggins,Felipe Ignacio Flores,3,0,0,https://www.espn.com/soccer/match/_/gameId/213393
+2007-03-31_deportes-concepcion_ohiggins,2007-03-31,deportes-concepcion,ohiggins,ohiggins,Luis Flores Manzor,9,0,0,https://www.espn.com/soccer/match/_/gameId/213393
+2007-04-08_colo-colo_puerto-montt,2007-04-08,colo-colo,puerto-montt,colo-colo,Giovanni Hernández,90,0,0,https://www.espn.com/soccer/match/_/gameId/213415
+2007-04-08_colo-colo_puerto-montt,2007-04-08,colo-colo,puerto-montt,colo-colo,Humberto Suazo,56,0,0,https://www.espn.com/soccer/match/_/gameId/213415
+2007-04-08_colo-colo_puerto-montt,2007-04-08,colo-colo,puerto-montt,colo-colo,Humberto Suazo,60,0,0,https://www.espn.com/soccer/match/_/gameId/213415
+2007-04-15_cobreloa_coquimbo-unido,2007-04-15,cobreloa,coquimbo-unido,cobreloa,José Luis Díaz,12,0,0,https://www.espn.com/soccer/match/_/gameId/213420
+2007-04-15_cobreloa_coquimbo-unido,2007-04-15,cobreloa,coquimbo-unido,cobreloa,José Luis Díaz,49,0,0,https://www.espn.com/soccer/match/_/gameId/213420
+2007-04-15_cobreloa_coquimbo-unido,2007-04-15,cobreloa,coquimbo-unido,cobreloa,José Luis Díaz,62,0,1,https://www.espn.com/soccer/match/_/gameId/213420
+2007-04-15_cobreloa_coquimbo-unido,2007-04-15,cobreloa,coquimbo-unido,cobreloa,Lucas Barrios,51,0,0,https://www.espn.com/soccer/match/_/gameId/213420
+2007-04-15_cobreloa_coquimbo-unido,2007-04-15,cobreloa,coquimbo-unido,cobreloa,Rodrigo Mannara,90,0,0,https://www.espn.com/soccer/match/_/gameId/213420
+2007-04-15_cobreloa_coquimbo-unido,2007-04-15,cobreloa,coquimbo-unido,coquimbo-unido,Nicolás Corvetto,31,0,0,https://www.espn.com/soccer/match/_/gameId/213420
+2007-04-15_universidad-de-chile_nublense,2007-04-15,universidad-de-chile,nublense,nublense,Luis Flores,23,0,0,https://www.espn.com/soccer/match/_/gameId/213425
+2007-04-15_universidad-de-chile_nublense,2007-04-15,universidad-de-chile,nublense,universidad-de-chile,Sebastián Pinto,84,0,0,https://www.espn.com/soccer/match/_/gameId/213425
+2007-04-22_deportes-concepcion_union-espanola,2007-04-22,deportes-concepcion,union-espanola,deportes-concepcion,Jaison Ibarrola,51,0,0,https://www.espn.com/soccer/match/_/gameId/213431
+2007-04-22_deportes-concepcion_union-espanola,2007-04-22,deportes-concepcion,union-espanola,deportes-concepcion,Jaison Ibarrola,90,0,0,https://www.espn.com/soccer/match/_/gameId/213431
+2007-04-22_deportes-concepcion_union-espanola,2007-04-22,deportes-concepcion,union-espanola,deportes-concepcion,Raúl Román,33,0,0,https://www.espn.com/soccer/match/_/gameId/213431
+2007-04-22_deportes-concepcion_union-espanola,2007-04-22,deportes-concepcion,union-espanola,union-espanola,David Cordova,76,0,0,https://www.espn.com/soccer/match/_/gameId/213431
+2007-04-22_deportes-concepcion_union-espanola,2007-04-22,deportes-concepcion,union-espanola,union-espanola,Sergio Gioino,39,0,0,https://www.espn.com/soccer/match/_/gameId/213431
+2007-04-28_palestino_deportes-antofagasta,2007-04-28,palestino,deportes-antofagasta,deportes-antofagasta,Roberto Castillo,85,0,0,https://www.espn.com/soccer/match/_/gameId/213438
+2007-04-28_palestino_deportes-antofagasta,2007-04-28,palestino,deportes-antofagasta,palestino,Héctor Santiago 2Tapia,61,0,0,https://www.espn.com/soccer/match/_/gameId/213438
+2007-04-28_palestino_deportes-antofagasta,2007-04-28,palestino,deportes-antofagasta,palestino,Héctor Santiago 2Tapia,65,0,0,https://www.espn.com/soccer/match/_/gameId/213438
+2007-04-28_palestino_deportes-antofagasta,2007-04-28,palestino,deportes-antofagasta,palestino,Héctor Santiago 2Tapia,75,0,0,https://www.espn.com/soccer/match/_/gameId/213438
+2007-04-28_palestino_deportes-antofagasta,2007-04-28,palestino,deportes-antofagasta,palestino,Jean Pineda,33,0,0,https://www.espn.com/soccer/match/_/gameId/213438
+2007-05-06_huachipato_everton,2007-05-06,huachipato,everton,huachipato,Diego Ruiz,90,0,1,https://www.espn.com/soccer/match/_/gameId/213449
+2007-05-06_huachipato_everton,2007-05-06,huachipato,everton,huachipato,Jaime Eduardo Riveros,74,0,0,https://www.espn.com/soccer/match/_/gameId/213449
+2007-05-06_huachipato_everton,2007-05-06,huachipato,everton,huachipato,Renzo Yáñez,18,0,0,https://www.espn.com/soccer/match/_/gameId/213449
+2007-05-26_union-espanola_universidad-de-chile,2007-05-26,union-espanola,universidad-de-chile,union-espanola,Julio Brian Gutierrez,37,0,0,https://www.espn.com/soccer/match/_/gameId/213476
+2007-05-26_union-espanola_universidad-de-chile,2007-05-26,union-espanola,universidad-de-chile,union-espanola,Matías Vidangozzi,71,0,0,https://www.espn.com/soccer/match/_/gameId/213476
+2007-05-26_union-espanola_universidad-de-chile,2007-05-26,union-espanola,universidad-de-chile,universidad-de-chile,Patricio Galaz,84,0,0,https://www.espn.com/soccer/match/_/gameId/213476
+2007-05-27_nublense_deportes-concepcion,2007-05-27,nublense,deportes-concepcion,deportes-concepcion,Carlos Cisternas,80,1,0,https://www.espn.com/soccer/match/_/gameId/213485
+2007-05-27_nublense_deportes-concepcion,2007-05-27,nublense,deportes-concepcion,deportes-concepcion,Cristian Antonio Montecinos,89,0,1,https://www.espn.com/soccer/match/_/gameId/213485
+2007-05-27_nublense_deportes-concepcion,2007-05-27,nublense,deportes-concepcion,deportes-concepcion,Gerardo Cortés,14,0,0,https://www.espn.com/soccer/match/_/gameId/213485
+2007-05-27_nublense_deportes-concepcion,2007-05-27,nublense,deportes-concepcion,nublense,Manuel Villalobos,83,0,0,https://www.espn.com/soccer/match/_/gameId/213485
+2007-05-27_nublense_deportes-concepcion,2007-05-27,nublense,deportes-concepcion,nublense,Oscar Fabián Ibarra,86,0,1,https://www.espn.com/soccer/match/_/gameId/213485
+2007-06-17_melipilla_huachipato,2007-06-17,melipilla,huachipato,huachipato,2,66,0,0,https://www.espn.com/soccer/match/_/gameId/213532
+2007-06-17_melipilla_huachipato,2007-06-17,melipilla,huachipato,huachipato,Jaime Eduardo Riveros,71,0,1,https://www.espn.com/soccer/match/_/gameId/213532
+2007-06-17_melipilla_huachipato,2007-06-17,melipilla,huachipato,huachipato,Jaime González,28,0,0,https://www.espn.com/soccer/match/_/gameId/213532
+2007-06-17_melipilla_huachipato,2007-06-17,melipilla,huachipato,huachipato,Jaime González,36,0,0,https://www.espn.com/soccer/match/_/gameId/213532
+2007-06-17_melipilla_huachipato,2007-06-17,melipilla,huachipato,melipilla,Alejandro Ulises Carrasco,52,0,0,https://www.espn.com/soccer/match/_/gameId/213532
+2007-06-17_melipilla_huachipato,2007-06-17,melipilla,huachipato,melipilla,Román Marcelo Cuello,81,0,0,https://www.espn.com/soccer/match/_/gameId/213532
+2007-08-12_cobresal_colo-colo,2007-08-12,cobresal,colo-colo,cobresal,Gabriel Vargas,71,0,0,https://www.espn.com/soccer/match/_/gameId/221920
+2007-08-12_cobresal_colo-colo,2007-08-12,cobresal,colo-colo,cobresal,Julio Laffatigue,60,0,0,https://www.espn.com/soccer/match/_/gameId/221920
+2007-08-12_cobresal_colo-colo,2007-08-12,cobresal,colo-colo,colo-colo,Jorge Carrasco,36,0,0,https://www.espn.com/soccer/match/_/gameId/221920
+2007-08-15_palestino_nublense,2007-08-15,palestino,nublense,nublense,Luis Flores,68,0,0,https://www.espn.com/soccer/match/_/gameId/221937
+2007-08-15_palestino_nublense,2007-08-15,palestino,nublense,palestino,Juan Pablo Ubeda,79,0,0,https://www.espn.com/soccer/match/_/gameId/221937
+2007-08-19_union-espanola_colo-colo,2007-08-19,union-espanola,colo-colo,colo-colo,Eduardo Rubio,16,0,0,https://www.espn.com/soccer/match/_/gameId/221944
+2007-08-19_union-espanola_colo-colo,2007-08-19,union-espanola,colo-colo,colo-colo,Giovanni Hernández,50,0,0,https://www.espn.com/soccer/match/_/gameId/221944
+2007-08-19_union-espanola_colo-colo,2007-08-19,union-espanola,colo-colo,union-espanola,Johan Fuentes,77,0,0,https://www.espn.com/soccer/match/_/gameId/221944
+2007-08-19_union-espanola_colo-colo,2007-08-19,union-espanola,colo-colo,union-espanola,Manuel Neira,90,0,0,https://www.espn.com/soccer/match/_/gameId/221944
+2007-08-26_puerto-montt_cobreloa,2007-08-26,puerto-montt,cobreloa,cobreloa,Fernándo Meneses,76,0,0,https://www.espn.com/soccer/match/_/gameId/221953
+2007-09-01_union-espanola_puerto-montt,2007-09-01,union-espanola,puerto-montt,puerto-montt,Fabio Lemes,18,0,0,https://www.espn.com/soccer/match/_/gameId/221968
+2007-09-01_union-espanola_puerto-montt,2007-09-01,union-espanola,puerto-montt,union-espanola,Johan Fuentes,66,0,0,https://www.espn.com/soccer/match/_/gameId/221968
+2007-09-01_union-espanola_puerto-montt,2007-09-01,union-espanola,puerto-montt,union-espanola,Manuel Neira,49,0,0,https://www.espn.com/soccer/match/_/gameId/221968
+2007-09-01_union-espanola_puerto-montt,2007-09-01,union-espanola,puerto-montt,union-espanola,Manuel Neira,68,0,0,https://www.espn.com/soccer/match/_/gameId/221968
+2007-09-01_union-espanola_puerto-montt,2007-09-01,union-espanola,puerto-montt,union-espanola,Mario Cáceres,54,0,0,https://www.espn.com/soccer/match/_/gameId/221968
+2007-09-08_cobresal_huachipato,2007-09-08,cobresal,huachipato,cobresal,César Díaz,87,0,0,https://www.espn.com/soccer/match/_/gameId/221907
+2007-09-08_cobresal_huachipato,2007-09-08,cobresal,huachipato,cobresal,Gabriel Vargas,15,0,0,https://www.espn.com/soccer/match/_/gameId/221907
+2007-09-08_cobresal_huachipato,2007-09-08,cobresal,huachipato,huachipato,Luis Peña,76,0,0,https://www.espn.com/soccer/match/_/gameId/221907
+2007-09-16_melipilla_palestino,2007-09-16,melipilla,palestino,melipilla,Diego De Gregorio,71,0,0,https://www.espn.com/soccer/match/_/gameId/221969
+2007-09-16_melipilla_palestino,2007-09-16,melipilla,palestino,palestino,2,55,0,0,https://www.espn.com/soccer/match/_/gameId/221969
+2007-09-16_melipilla_palestino,2007-09-16,melipilla,palestino,palestino,Juan Pablo Ubeda,6,0,0,https://www.espn.com/soccer/match/_/gameId/221969
+2007-10-06_universidad-de-chile_palestino,2007-10-06,universidad-de-chile,palestino,palestino,2,3,0,0,https://www.espn.com/soccer/match/_/gameId/222026
+2007-10-06_universidad-de-chile_palestino,2007-10-06,universidad-de-chile,palestino,universidad-de-chile,Angel Rojas,8,0,0,https://www.espn.com/soccer/match/_/gameId/222026
+2007-10-06_universidad-de-chile_palestino,2007-10-06,universidad-de-chile,palestino,universidad-de-chile,Marco Estrada,22,0,0,https://www.espn.com/soccer/match/_/gameId/222026
+2007-10-06_universidad-de-chile_palestino,2007-10-06,universidad-de-chile,palestino,universidad-de-chile,Pedro Morales,45,0,0,https://www.espn.com/soccer/match/_/gameId/222026
+2007-10-15_nublense_ohiggins,2007-10-15,nublense,ohiggins,nublense,Marco Millape,26,0,0,https://www.espn.com/soccer/match/_/gameId/222034
+2007-10-15_nublense_ohiggins,2007-10-15,nublense,ohiggins,ohiggins,Luis Flores Manzor,30,0,0,https://www.espn.com/soccer/match/_/gameId/222034
+2007-10-23_union-espanola_universidad-catolica,2007-10-23,union-espanola,universidad-catolica,union-espanola,Vergara,76,0,0,https://www.espn.com/soccer/match/_/gameId/222046
+2007-10-23_union-espanola_universidad-catolica,2007-10-23,union-espanola,universidad-catolica,universidad-catolica,Esteban Fuertes,38,0,0,https://www.espn.com/soccer/match/_/gameId/222046
+2007-10-23_union-espanola_universidad-catolica,2007-10-23,union-espanola,universidad-catolica,universidad-catolica,Hector Santiago Tapia,33,0,0,https://www.espn.com/soccer/match/_/gameId/222046
+2007-10-23_union-espanola_universidad-catolica,2007-10-23,union-espanola,universidad-catolica,universidad-catolica,Hector Santiago Tapia,54,0,0,https://www.espn.com/soccer/match/_/gameId/222046
+2007-10-24_cobresal_nublense,2007-10-24,cobresal,nublense,cobresal,Diego Silva,52,0,0,https://www.espn.com/soccer/match/_/gameId/222042
+2007-10-24_cobresal_nublense,2007-10-24,cobresal,nublense,cobresal,Julio Laffatigue,70,0,0,https://www.espn.com/soccer/match/_/gameId/222042
+2007-10-24_cobresal_nublense,2007-10-24,cobresal,nublense,nublense,Manuel Villalobos,33,0,0,https://www.espn.com/soccer/match/_/gameId/222042
+2007-10-24_cobresal_nublense,2007-10-24,cobresal,nublense,nublense,Rodrigo Barra,90,0,1,https://www.espn.com/soccer/match/_/gameId/222042
+2007-10-24_lota-schwager_deportes-concepcion,2007-10-24,lota-schwager,deportes-concepcion,deportes-concepcion,Jaison Ibarrola,5,0,0,https://www.espn.com/soccer/match/_/gameId/222040
+2007-10-24_lota-schwager_deportes-concepcion,2007-10-24,lota-schwager,deportes-concepcion,lota-schwager,Luis Chavarría,45,1,0,https://www.espn.com/soccer/match/_/gameId/222040
+2007-10-24_lota-schwager_deportes-concepcion,2007-10-24,lota-schwager,deportes-concepcion,lota-schwager,Víctor Sarabia,44,0,0,https://www.espn.com/soccer/match/_/gameId/222040
+2007-10-28_nublense_deportes-antofagasta,2007-10-28,nublense,deportes-antofagasta,nublense,Luis Flores,82,0,1,https://www.espn.com/soccer/match/_/gameId/222056
+2007-10-28_nublense_deportes-antofagasta,2007-10-28,nublense,deportes-antofagasta,nublense,Manuel Villalobos,17,0,0,https://www.espn.com/soccer/match/_/gameId/222056
+2007-10-28_nublense_deportes-antofagasta,2007-10-28,nublense,deportes-antofagasta,nublense,Manuel Villalobos,90,0,0,https://www.espn.com/soccer/match/_/gameId/222056
+2007-10-28_nublense_deportes-antofagasta,2007-10-28,nublense,deportes-antofagasta,nublense,Rodrigo Barra,45,0,1,https://www.espn.com/soccer/match/_/gameId/222056
+2007-12-09_universidad-de-chile_cobresal,2007-12-09,universidad-de-chile,cobresal,cobresal,Victor Oyarzún,24,0,0,https://www.espn.com/soccer/match/_/gameId/232012
+2007-12-09_universidad-de-chile_cobresal,2007-12-09,universidad-de-chile,cobresal,universidad-de-chile,Emilio Hernández,43,0,0,https://www.espn.com/soccer/match/_/gameId/232012
+2007-12-09_universidad-de-chile_cobresal,2007-12-09,universidad-de-chile,cobresal,universidad-de-chile,Joel Soto,75,0,0,https://www.espn.com/soccer/match/_/gameId/232012
+2007-12-15_audax-italiano_universidad-de-concepcion,2007-12-15,audax-italiano,universidad-de-concepcion,audax-italiano,Carlos Villanueva,12,0,0,https://www.espn.com/soccer/match/_/gameId/233168
+2007-12-15_audax-italiano_universidad-de-concepcion,2007-12-15,audax-italiano,universidad-de-concepcion,universidad-de-concepcion,Mauricio Aros,34,0,0,https://www.espn.com/soccer/match/_/gameId/233168
+2007-12-15_audax-italiano_universidad-de-concepcion,2007-12-15,audax-italiano,universidad-de-concepcion,universidad-de-concepcion,Mauricio Aros,68,0,0,https://www.espn.com/soccer/match/_/gameId/233168
+2007-12-15_audax-italiano_universidad-de-concepcion,2007-12-15,audax-italiano,universidad-de-concepcion,universidad-de-concepcion,Álex Hidalgo,90,0,0,https://www.espn.com/soccer/match/_/gameId/233168
+2008-02-10_nublense_provincial-osorno,2008-02-10,nublense,provincial-osorno,nublense,Jonatan Cisternas,17,0,0,https://www.espn.com/soccer/match/_/gameId/235667
+2008-02-10_nublense_provincial-osorno,2008-02-10,nublense,provincial-osorno,nublense,Luis Flores Abarca,66,0,0,https://www.espn.com/soccer/match/_/gameId/235667
+2008-02-13_huachipato_deportes-antofagasta,2008-02-13,huachipato,deportes-antofagasta,deportes-antofagasta,Eduardo Arancibia,89,0,0,https://www.espn.com/soccer/match/_/gameId/235670
+2008-02-13_huachipato_deportes-antofagasta,2008-02-13,huachipato,deportes-antofagasta,huachipato,Gamadiel García,8,0,0,https://www.espn.com/soccer/match/_/gameId/235670
+2008-02-13_huachipato_deportes-antofagasta,2008-02-13,huachipato,deportes-antofagasta,huachipato,Gamadiel García,55,0,0,https://www.espn.com/soccer/match/_/gameId/235670
+2008-02-13_huachipato_deportes-antofagasta,2008-02-13,huachipato,deportes-antofagasta,huachipato,José Burgos,63,0,0,https://www.espn.com/soccer/match/_/gameId/235670
+2008-02-13_provincial-osorno_rangers,2008-02-13,provincial-osorno,rangers,provincial-osorno,Federico Carballo,30,0,1,https://www.espn.com/soccer/match/_/gameId/235675
+2008-02-13_provincial-osorno_rangers,2008-02-13,provincial-osorno,rangers,provincial-osorno,Federico Carballo,85,0,0,https://www.espn.com/soccer/match/_/gameId/235675
+2008-02-13_provincial-osorno_rangers,2008-02-13,provincial-osorno,rangers,rangers,Gaston Cellerino,84,0,0,https://www.espn.com/soccer/match/_/gameId/235675
+2008-03-02_colo-colo_universidad-catolica,2008-03-02,colo-colo,universidad-catolica,universidad-catolica,Darío Bottinelli,27,0,0,https://www.espn.com/soccer/match/_/gameId/235699
+2008-03-12_provincial-osorno_audax-italiano,2008-03-12,provincial-osorno,audax-italiano,audax-italiano,Carlos Villanueva,90,0,1,https://www.espn.com/soccer/match/_/gameId/235732
+2008-03-12_provincial-osorno_audax-italiano,2008-03-12,provincial-osorno,audax-italiano,audax-italiano,Fabián Orellana,80,0,0,https://www.espn.com/soccer/match/_/gameId/235732
+2008-03-12_provincial-osorno_audax-italiano,2008-03-12,provincial-osorno,audax-italiano,audax-italiano,Miguel Romero,63,0,0,https://www.espn.com/soccer/match/_/gameId/235732
+2008-03-12_provincial-osorno_audax-italiano,2008-03-12,provincial-osorno,audax-italiano,provincial-osorno,Brandán Fernando,8,0,0,https://www.espn.com/soccer/match/_/gameId/235732
+2008-03-30_cobresal_rangers,2008-03-30,cobresal,rangers,cobresal,Diego Silva,11,0,0,https://www.espn.com/soccer/match/_/gameId/235763
+2008-03-30_cobresal_rangers,2008-03-30,cobresal,rangers,cobresal,Julio Laffatigue,5,0,0,https://www.espn.com/soccer/match/_/gameId/235763
+2008-03-30_everton_nublense,2008-03-30,everton,nublense,everton,Cristián Canío,9,0,0,https://www.espn.com/soccer/match/_/gameId/235765
+2008-03-30_everton_nublense,2008-03-30,everton,nublense,nublense,Luis Flores Abarca,63,0,1,https://www.espn.com/soccer/match/_/gameId/235765
+2008-03-30_union-espanola_deportes-antofagasta,2008-03-30,union-espanola,deportes-antofagasta,union-espanola,Mario Cáceres,65,0,0,https://www.espn.com/soccer/match/_/gameId/235759
+2008-04-05_colo-colo_everton,2008-04-05,colo-colo,everton,colo-colo,Daniel González,60,0,0,https://www.espn.com/soccer/match/_/gameId/235773
+2008-04-05_colo-colo_everton,2008-04-05,colo-colo,everton,colo-colo,Gustavo Biscayzacu,62,0,0,https://www.espn.com/soccer/match/_/gameId/235773
+2008-04-05_colo-colo_everton,2008-04-05,colo-colo,everton,colo-colo,Lucas Barrios,69,0,0,https://www.espn.com/soccer/match/_/gameId/235773
+2008-04-05_colo-colo_everton,2008-04-05,colo-colo,everton,everton,Francisco Sá,55,0,0,https://www.espn.com/soccer/match/_/gameId/235773
+2008-04-20_deportes-concepcion_everton,2008-04-20,deportes-concepcion,everton,deportes-concepcion,Daniel Pereyra,90,0,0,https://www.espn.com/soccer/match/_/gameId/235792
+2008-04-20_deportes-concepcion_everton,2008-04-20,deportes-concepcion,everton,deportes-concepcion,Daud Gazale,8,0,0,https://www.espn.com/soccer/match/_/gameId/235792
+2008-04-20_deportes-concepcion_everton,2008-04-20,deportes-concepcion,everton,deportes-concepcion,Francisco Castillo,58,0,0,https://www.espn.com/soccer/match/_/gameId/235792
+2008-04-20_deportes-concepcion_everton,2008-04-20,deportes-concepcion,everton,everton,Cristián Canío,40,0,0,https://www.espn.com/soccer/match/_/gameId/235792
+2008-04-20_deportes-concepcion_everton,2008-04-20,deportes-concepcion,everton,everton,Dario Gigena,18,0,0,https://www.espn.com/soccer/match/_/gameId/235792
+2008-04-30_nublense_audax-italiano,2008-04-30,nublense,audax-italiano,audax-italiano,Renato Ramos,15,0,0,https://www.espn.com/soccer/match/_/gameId/235814
+2008-04-30_nublense_audax-italiano,2008-04-30,nublense,audax-italiano,audax-italiano,Sebastián Roco,85,0,0,https://www.espn.com/soccer/match/_/gameId/235814
+2008-04-30_nublense_audax-italiano,2008-04-30,nublense,audax-italiano,nublense,Fernando López,51,0,0,https://www.espn.com/soccer/match/_/gameId/235814
+2008-04-30_nublense_audax-italiano,2008-04-30,nublense,audax-italiano,nublense,Luis Flores,87,0,0,https://www.espn.com/soccer/match/_/gameId/235814
+2008-04-30_nublense_audax-italiano,2008-04-30,nublense,audax-italiano,nublense,Pedro Rivera,68,0,0,https://www.espn.com/soccer/match/_/gameId/235814
+2008-04-30_provincial-osorno_everton,2008-04-30,provincial-osorno,everton,everton,Ezequiel Miralles,65,0,0,https://www.espn.com/soccer/match/_/gameId/235812
+2008-04-30_provincial-osorno_everton,2008-04-30,provincial-osorno,everton,provincial-osorno,Sebastián Páez,57,0,0,https://www.espn.com/soccer/match/_/gameId/235812
+2008-04-30_provincial-osorno_everton,2008-04-30,provincial-osorno,everton,provincial-osorno,Sebastián Teuber,16,0,0,https://www.espn.com/soccer/match/_/gameId/235812
+2008-08-02_audax-italiano_everton,2008-08-02,audax-italiano,everton,audax-italiano,Braulio Leal,90,0,0,https://www.espn.com/soccer/match/_/gameId/241645
+2008-08-02_audax-italiano_everton,2008-08-02,audax-italiano,everton,audax-italiano,Cristián Reynero,37,0,0,https://www.espn.com/soccer/match/_/gameId/241645
+2008-08-02_audax-italiano_everton,2008-08-02,audax-italiano,everton,everton,Francisco Sá,76,0,0,https://www.espn.com/soccer/match/_/gameId/241645
+2008-08-10_ohiggins_universidad-catolica,2008-08-10,ohiggins,universidad-catolica,ohiggins,Hans Gómez,59,0,0,https://www.espn.com/soccer/match/_/gameId/241656
+2008-08-10_ohiggins_universidad-catolica,2008-08-10,ohiggins,universidad-catolica,universidad-catolica,Facundo Jorge Imboden,26,0,0,https://www.espn.com/soccer/match/_/gameId/241656
+2008-08-23_huachipato_palestino,2008-08-23,huachipato,palestino,huachipato,Leonardo Monje,21,0,0,https://www.espn.com/soccer/match/_/gameId/241679
+2008-08-23_huachipato_palestino,2008-08-23,huachipato,palestino,palestino,Francisco Ibañez Campos,45,0,0,https://www.espn.com/soccer/match/_/gameId/241679
+2008-08-23_huachipato_palestino,2008-08-23,huachipato,palestino,palestino,Héctor Pericás,36,0,0,https://www.espn.com/soccer/match/_/gameId/241679
+2008-08-30_palestino_cobreloa,2008-08-30,palestino,cobreloa,cobreloa,Charles Aránguiz,34,0,0,https://www.espn.com/soccer/match/_/gameId/241684
+2008-08-30_palestino_cobreloa,2008-08-30,palestino,cobreloa,cobreloa,Daniel González,31,0,0,https://www.espn.com/soccer/match/_/gameId/241684
+2008-08-30_palestino_cobreloa,2008-08-30,palestino,cobreloa,cobreloa,Daniel González,81,0,0,https://www.espn.com/soccer/match/_/gameId/241684
+2008-08-30_palestino_cobreloa,2008-08-30,palestino,cobreloa,cobreloa,E Vargas,32,0,0,https://www.espn.com/soccer/match/_/gameId/241684
+2008-08-30_palestino_cobreloa,2008-08-30,palestino,cobreloa,palestino,Francisco Ibañez Campos,45,0,0,https://www.espn.com/soccer/match/_/gameId/241684
+2008-08-30_palestino_cobreloa,2008-08-30,palestino,cobreloa,palestino,Francisco Ibañez Campos,75,0,0,https://www.espn.com/soccer/match/_/gameId/241684
+2008-08-30_palestino_cobreloa,2008-08-30,palestino,cobreloa,palestino,Víctor Aquino,8,0,0,https://www.espn.com/soccer/match/_/gameId/241684
+2008-08-31_nublense_deportes-antofagasta,2008-08-31,nublense,deportes-antofagasta,nublense,Bruno Martelotto,61,0,0,https://www.espn.com/soccer/match/_/gameId/241687
+2008-08-31_nublense_deportes-antofagasta,2008-08-31,nublense,deportes-antofagasta,nublense,Jonatan Cisternas,57,0,0,https://www.espn.com/soccer/match/_/gameId/241687
+2008-08-31_rangers_ohiggins,2008-08-31,rangers,ohiggins,ohiggins,Jean Beausejour,90,0,1,https://www.espn.com/soccer/match/_/gameId/241685
+2008-08-31_rangers_ohiggins,2008-08-31,rangers,ohiggins,rangers,Andrés Oroz,44,0,0,https://www.espn.com/soccer/match/_/gameId/241685
+2008-08-31_rangers_ohiggins,2008-08-31,rangers,ohiggins,rangers,Gaston Cellerino,18,0,0,https://www.espn.com/soccer/match/_/gameId/241685
+2008-08-31_rangers_ohiggins,2008-08-31,rangers,ohiggins,rangers,Luis Ramírez,52,0,0,https://www.espn.com/soccer/match/_/gameId/241685
+2008-08-31_universidad-catolica_audax-italiano,2008-08-31,universidad-catolica,audax-italiano,audax-italiano,Fabián Orellana,40,0,0,https://www.espn.com/soccer/match/_/gameId/241681
+2008-08-31_universidad-catolica_audax-italiano,2008-08-31,universidad-catolica,audax-italiano,audax-italiano,Renato Ramos,53,0,0,https://www.espn.com/soccer/match/_/gameId/241681
+2008-08-31_universidad-catolica_audax-italiano,2008-08-31,universidad-catolica,audax-italiano,audax-italiano,Renzo Yáñez,62,0,0,https://www.espn.com/soccer/match/_/gameId/241681
+2008-08-31_universidad-catolica_audax-italiano,2008-08-31,universidad-catolica,audax-italiano,audax-italiano,Renzo Yáñez,90,0,0,https://www.espn.com/soccer/match/_/gameId/241681
+2008-08-31_universidad-catolica_audax-italiano,2008-08-31,universidad-catolica,audax-italiano,universidad-catolica,Milovan Mirosevic,13,0,0,https://www.espn.com/soccer/match/_/gameId/241681
+2008-08-31_universidad-catolica_audax-italiano,2008-08-31,universidad-catolica,audax-italiano,universidad-catolica,Nicolas Gianni,88,0,0,https://www.espn.com/soccer/match/_/gameId/241681
+2008-09-14_union-espanola_palestino,2008-09-14,union-espanola,palestino,palestino,Carlos Pérez,74,0,1,https://www.espn.com/soccer/match/_/gameId/241697
+2008-09-14_union-espanola_palestino,2008-09-14,union-espanola,palestino,palestino,Héctor Pericás,60,0,0,https://www.espn.com/soccer/match/_/gameId/241697
+2008-09-14_union-espanola_palestino,2008-09-14,union-espanola,palestino,palestino,Víctor Aquino,26,0,0,https://www.espn.com/soccer/match/_/gameId/241697
+2008-09-14_union-espanola_palestino,2008-09-14,union-espanola,palestino,union-espanola,Manuel Neira,86,0,0,https://www.espn.com/soccer/match/_/gameId/241697
+2008-09-20_provincial-osorno_ohiggins,2008-09-20,provincial-osorno,ohiggins,ohiggins,Jose Pedro Fuenzalida,9,0,0,https://www.espn.com/soccer/match/_/gameId/241709
+2008-09-20_provincial-osorno_ohiggins,2008-09-20,provincial-osorno,ohiggins,provincial-osorno,Mario Alberto Núñez,84,0,1,https://www.espn.com/soccer/match/_/gameId/241709
+2008-09-20_rangers_cobresal,2008-09-20,rangers,cobresal,cobresal,Marco Olea,51,0,0,https://www.espn.com/soccer/match/_/gameId/241705
+2008-09-20_rangers_cobresal,2008-09-20,rangers,cobresal,rangers,Gaston Cellerino,30,0,0,https://www.espn.com/soccer/match/_/gameId/241705
+2008-09-20_rangers_cobresal,2008-09-20,rangers,cobresal,rangers,Luis Ramírez,5,0,0,https://www.espn.com/soccer/match/_/gameId/241705
+2008-10-04_ohiggins_everton,2008-10-04,ohiggins,everton,everton,Ezequiel Miralles,21,0,0,https://www.espn.com/soccer/match/_/gameId/241724
+2008-10-04_ohiggins_everton,2008-10-04,ohiggins,everton,everton,Jaime Eduardo Riveros,8,0,0,https://www.espn.com/soccer/match/_/gameId/241724
+2008-10-04_ohiggins_everton,2008-10-04,ohiggins,everton,everton,Jaime Eduardo Riveros,10,0,0,https://www.espn.com/soccer/match/_/gameId/241724
+2008-10-04_ohiggins_everton,2008-10-04,ohiggins,everton,ohiggins,Ailton,63,0,1,https://www.espn.com/soccer/match/_/gameId/241724
+2008-10-04_ohiggins_everton,2008-10-04,ohiggins,everton,ohiggins,Ailton,70,0,0,https://www.espn.com/soccer/match/_/gameId/241724
+2008-10-04_ohiggins_everton,2008-10-04,ohiggins,everton,ohiggins,Nicolás Diez,5,0,0,https://www.espn.com/soccer/match/_/gameId/241724
+2008-10-04_ohiggins_everton,2008-10-04,ohiggins,everton,ohiggins,Néstor Bareiro,74,0,0,https://www.espn.com/soccer/match/_/gameId/241724
+2008-10-04_palestino_cobresal,2008-10-04,palestino,cobresal,cobresal,Rodrigo Núñez,57,0,0,https://www.espn.com/soccer/match/_/gameId/241722
+2008-10-04_palestino_cobresal,2008-10-04,palestino,cobresal,palestino,Cristián Vilches,28,0,0,https://www.espn.com/soccer/match/_/gameId/241722
+2008-10-04_palestino_cobresal,2008-10-04,palestino,cobresal,palestino,Francisco Ibañez Campos,86,0,0,https://www.espn.com/soccer/match/_/gameId/241722
+2008-10-04_palestino_cobresal,2008-10-04,palestino,cobresal,palestino,Víctor Aquino,78,0,0,https://www.espn.com/soccer/match/_/gameId/241722
+2008-10-25_palestino_provincial-osorno,2008-10-25,palestino,provincial-osorno,palestino,Francisco Ibañez Campos,33,0,0,https://www.espn.com/soccer/match/_/gameId/241744
+2008-11-01_universidad-catolica_cobreloa,2008-11-01,universidad-catolica,cobreloa,cobreloa,Daniel González,14,0,0,https://www.espn.com/soccer/match/_/gameId/241751
+2008-11-01_universidad-catolica_cobreloa,2008-11-01,universidad-catolica,cobreloa,cobreloa,Daniel González,47,0,0,https://www.espn.com/soccer/match/_/gameId/241751
+2008-11-01_universidad-catolica_cobreloa,2008-11-01,universidad-catolica,cobreloa,cobreloa,Felipe Salinas,8,0,0,https://www.espn.com/soccer/match/_/gameId/241751
+2008-11-01_universidad-catolica_cobreloa,2008-11-01,universidad-catolica,cobreloa,universidad-catolica,Luis Ramírez,11,0,0,https://www.espn.com/soccer/match/_/gameId/241751
+2008-11-01_universidad-catolica_cobreloa,2008-11-01,universidad-catolica,cobreloa,universidad-catolica,Luis2 Núñez,33,0,1,https://www.espn.com/soccer/match/_/gameId/241751
+2008-11-01_universidad-catolica_cobreloa,2008-11-01,universidad-catolica,cobreloa,universidad-catolica,Milovan Mirosevic,42,0,0,https://www.espn.com/soccer/match/_/gameId/241751
+2008-11-01_universidad-catolica_cobreloa,2008-11-01,universidad-catolica,cobreloa,universidad-catolica,Rodrigo Toloza,67,0,0,https://www.espn.com/soccer/match/_/gameId/241751
+2008-11-29_cobreloa_colo-colo,2008-11-29,cobreloa,colo-colo,cobreloa,C. Delgado,20,0,0,https://www.espn.com/soccer/match/_/gameId/258869
+2008-11-29_cobreloa_colo-colo,2008-11-29,cobreloa,colo-colo,cobreloa,Gustavo Savoia,35,0,0,https://www.espn.com/soccer/match/_/gameId/258869
+2008-11-29_cobreloa_colo-colo,2008-11-29,cobreloa,colo-colo,cobreloa,Gustavo Savoia,75,0,0,https://www.espn.com/soccer/match/_/gameId/258869
+2008-11-29_cobreloa_colo-colo,2008-11-29,cobreloa,colo-colo,colo-colo,Daud Gazale,70,0,0,https://www.espn.com/soccer/match/_/gameId/258869
+2008-11-29_cobreloa_colo-colo,2008-11-29,cobreloa,colo-colo,colo-colo,Macnelly Torres,43,0,0,https://www.espn.com/soccer/match/_/gameId/258869
+2008-11-29_cobreloa_colo-colo,2008-11-29,cobreloa,colo-colo,colo-colo,Rodolfo Moya,9,0,0,https://www.espn.com/soccer/match/_/gameId/258869
+2008-11-30_rangers_palestino,2008-11-30,rangers,palestino,palestino,Francisco Ibañez Campos,57,0,0,https://www.espn.com/soccer/match/_/gameId/258870
+2008-11-30_rangers_palestino,2008-11-30,rangers,palestino,palestino,Rodolfo Martin Ferrando,90,1,0,https://www.espn.com/soccer/match/_/gameId/258870
+2008-11-30_rangers_palestino,2008-11-30,rangers,palestino,rangers,Luis Ramírez,45,0,0,https://www.espn.com/soccer/match/_/gameId/258870
+2008-11-30_rangers_palestino,2008-11-30,rangers,palestino,rangers,Marcelo Lucero,40,0,0,https://www.espn.com/soccer/match/_/gameId/258870
+2009-03-13_huachipato_ohiggins,2009-03-13,huachipato,ohiggins,huachipato,Gamadiel García,75,0,0,https://www.espn.com/soccer/match/_/gameId/261643
+2009-03-13_huachipato_ohiggins,2009-03-13,huachipato,ohiggins,huachipato,Leonardo Monje,59,0,0,https://www.espn.com/soccer/match/_/gameId/261643
+2009-03-13_huachipato_ohiggins,2009-03-13,huachipato,ohiggins,huachipato,Pérez Jansse,90,0,0,https://www.espn.com/soccer/match/_/gameId/261643
+2009-03-22_rangers_huachipato,2009-03-22,rangers,huachipato,huachipato,Leonardo Monje,44,0,0,https://www.espn.com/soccer/match/_/gameId/261651
+2009-03-22_rangers_huachipato,2009-03-22,rangers,huachipato,rangers,Pablo Vranjican,20,0,0,https://www.espn.com/soccer/match/_/gameId/261651
+2009-04-12_universidad-catolica_palestino,2009-04-12,universidad-catolica,palestino,palestino,Francisco Ibañez Campos,65,0,0,https://www.espn.com/soccer/match/_/gameId/261677
+2009-04-12_universidad-catolica_palestino,2009-04-12,universidad-catolica,palestino,universidad-catolica,Carlos Cancino,69,1,0,https://www.espn.com/soccer/match/_/gameId/261677
+2009-04-12_universidad-catolica_palestino,2009-04-12,universidad-catolica,palestino,universidad-catolica,Milovan Mirosevic,38,0,0,https://www.espn.com/soccer/match/_/gameId/261677
+2009-04-12_universidad-catolica_palestino,2009-04-12,universidad-catolica,palestino,universidad-catolica,Rodrigo Toloza,4,0,0,https://www.espn.com/soccer/match/_/gameId/261677
+2009-04-12_universidad-catolica_palestino,2009-04-12,universidad-catolica,palestino,universidad-catolica,Rodrigo Toloza,42,0,1,https://www.espn.com/soccer/match/_/gameId/261677
+2009-04-19_palestino_nublense,2009-04-19,palestino,nublense,nublense,Esteban González,30,0,0,https://www.espn.com/soccer/match/_/gameId/261690
+2009-04-19_palestino_nublense,2009-04-19,palestino,nublense,palestino,Francisco Ibañez Campos,64,0,0,https://www.espn.com/soccer/match/_/gameId/261690
+2009-05-02_everton_palestino,2009-05-02,everton,palestino,everton,Fernando Saavedra,54,0,0,https://www.espn.com/soccer/match/_/gameId/261705
+2009-05-02_everton_palestino,2009-05-02,everton,palestino,palestino,Francisco Ibañez Campos,90,0,0,https://www.espn.com/soccer/match/_/gameId/261705
+2009-05-09_huachipato_palestino,2009-05-09,huachipato,palestino,huachipato,Leonardo Monje,2,0,0,https://www.espn.com/soccer/match/_/gameId/261716
+2009-05-09_huachipato_palestino,2009-05-09,huachipato,palestino,huachipato,Leonardo Monje,22,0,0,https://www.espn.com/soccer/match/_/gameId/261716
+2009-05-09_huachipato_palestino,2009-05-09,huachipato,palestino,huachipato,Leonardo Monje,72,0,0,https://www.espn.com/soccer/match/_/gameId/261716
+2009-05-09_huachipato_palestino,2009-05-09,huachipato,palestino,huachipato,Luis Quinteros,69,0,0,https://www.espn.com/soccer/match/_/gameId/261716
+2009-05-09_huachipato_palestino,2009-05-09,huachipato,palestino,palestino,Francisco Ibañez Campos,45,0,0,https://www.espn.com/soccer/match/_/gameId/261716
+2009-07-25_audax-italiano_palestino,2009-07-25,audax-italiano,palestino,audax-italiano,Marco Antonio Medel,49,0,0,https://www.espn.com/soccer/match/_/gameId/275422
+2009-07-25_audax-italiano_palestino,2009-07-25,audax-italiano,palestino,audax-italiano,Rodrigo Riquelme,84,1,0,https://www.espn.com/soccer/match/_/gameId/275422
+2009-07-25_audax-italiano_palestino,2009-07-25,audax-italiano,palestino,palestino,Francisco Ibañez Campos,69,0,0,https://www.espn.com/soccer/match/_/gameId/275422
+2009-07-25_audax-italiano_palestino,2009-07-25,audax-italiano,palestino,palestino,Marco Olea,42,0,0,https://www.espn.com/soccer/match/_/gameId/275422
+2009-10-18_cobresal_everton,2009-10-18,cobresal,everton,cobresal,Hugo Díaz,58,0,0,https://www.espn.com/soccer/match/_/gameId/275522
+2009-10-18_cobresal_everton,2009-10-18,cobresal,everton,cobresal,Lino Alvarado,70,0,0,https://www.espn.com/soccer/match/_/gameId/275522
+2009-11-07_colo-colo_palestino,2009-11-07,colo-colo,palestino,colo-colo,Phillipe Araos,61,0,0,https://www.espn.com/soccer/match/_/gameId/275545
+2009-11-07_colo-colo_palestino,2009-11-07,colo-colo,palestino,palestino,Francisco Ibañez Campos,13,0,0,https://www.espn.com/soccer/match/_/gameId/275545
+2009-11-07_colo-colo_palestino,2009-11-07,colo-colo,palestino,palestino,Francisco Ibañez Campos,59,0,0,https://www.espn.com/soccer/match/_/gameId/275545
+2011-12-10_santiago-wanderers_naval,2011-12-10,santiago-wanderers,naval,santiago-wanderers,Sebastián Rusculleda,3,0,0,https://www.espn.com/soccer/match/_/gameId/334306
+2011-12-10_santiago-wanderers_naval,2011-12-10,santiago-wanderers,naval,naval,Minor Lopez,27,0,0,https://www.espn.com/soccer/match/_/gameId/334306
+2011-12-10_santiago-wanderers_naval,2011-12-10,santiago-wanderers,naval,naval,Patricio Peralta,45,0,0,https://www.espn.com/soccer/match/_/gameId/334306
+2011-12-10_santiago-wanderers_naval,2011-12-10,santiago-wanderers,naval,santiago-wanderers,Sebastián Ubilla,54,0,0,https://www.espn.com/soccer/match/_/gameId/334306
+2019-02-20_talleres-de-cordoba-arg_palestino,2019-02-20,talleres-de-cordoba-arg,palestino,talleres-de-cordoba-arg,Dayro Moreno,3,0,0,https://www.espn.com/soccer/match/_/gameId/537070
+2019-02-20_talleres-de-cordoba-arg_palestino,2019-02-20,talleres-de-cordoba-arg,palestino,talleres-de-cordoba-arg,Juan Edgardo Ramírez,35,0,1,https://www.espn.com/soccer/match/_/gameId/537070
+2019-02-20_talleres-de-cordoba-arg_palestino,2019-02-20,talleres-de-cordoba-arg,palestino,palestino,César Cortés,45,0,0,https://www.espn.com/soccer/match/_/gameId/537070
+2019-02-20_talleres-de-cordoba-arg_palestino,2019-02-20,talleres-de-cordoba-arg,palestino,palestino,Guillermo Soto,68,0,0,https://www.espn.com/soccer/match/_/gameId/537070
+2019-02-27_palestino_talleres-de-cordoba-arg,2019-02-27,palestino,talleres-de-cordoba-arg,talleres-de-cordoba-arg,Dayro Moreno,21,0,0,https://www.espn.com/soccer/match/_/gameId/537066
+2019-02-27_palestino_talleres-de-cordoba-arg,2019-02-27,palestino,talleres-de-cordoba-arg,palestino,Luis Jimenez,71,0,0,https://www.espn.com/soccer/match/_/gameId/537066
+2019-02-27_palestino_talleres-de-cordoba-arg,2019-02-27,palestino,talleres-de-cordoba-arg,palestino,Cristóbal Jorquera,90,0,0,https://www.espn.com/soccer/match/_/gameId/537066
