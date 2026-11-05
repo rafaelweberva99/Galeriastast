@@ -1234,3 +1234,27 @@ body {
 body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: radial-gradient(var(--dot) 1.2px, transparent 1.4px); background-size: 22px 22px; -webkit-mask-image: linear-gradient(#000, transparent 75%); mask-image: linear-gradient(#000, transparent 75%); }
 .card { background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 100%, #fff) 0%, color-mix(in srgb, var(--surface) 94%, var(--club-primary, #4a6fa5)) 100%); }
 .site-footer { background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--club-primary, #4a6fa5) 7%, transparent)); border-top: 1px solid var(--border); margin-top: 48px; }
+
+/* === qa visual === */
+.club-stats { grid-template-columns: repeat(4, 1fr); align-items: stretch; }
+.club-stats > .card.stat { text-align: left; justify-content: center; gap: 8px; padding: 18px 20px; min-height: 124px; }
+.club-stats > .card.stat .stat-value { font-size: 2.3rem; color: var(--ink, inherit); white-space: nowrap; }
+.club-stats > .card.stat .stat-value.sm { font-size: 1.7rem; }
+.club-stats > .card.stat .stat-label { margin-top: 0; }
+@media (max-width: 900px) { .club-stats { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) {
+  .club-stats > .card.stat { min-height: 108px; padding: 14px 16px; }
+  .club-stats > .card.stat .stat-value { font-size: 1.9rem; }
+  .club-stats > .card.stat .stat-value.sm { font-size: 1.35rem; }
+}
+.club-duo { align-items: stretch; }
+.scroll-list { max-height: 460px; overflow-y: auto; padding-right: 6px; overscroll-behavior: contain; }
+.club-banner { padding-top: 26px; padding-bottom: 26px; gap: 20px; }
+.club-banner.row { flex-wrap: nowrap; align-items: center; }
+.club-banner.row > div { flex: 1 1 auto; min-width: 0; }
+.club-banner.row > svg, .club-banner.row > :first-child:not(div) { flex-shrink: 0; }
+@media (max-width: 560px) { .club-banner.row { flex-wrap: wrap; gap: 12px; } }
+.card .form { max-width: none; }
+@media (min-width: 700px) { .cv-grid-2 { grid-template-columns: minmax(0, 1fr); } }
+.club-duo { align-items: start; }
+.club-duo .scroll-list { max-height: 330px; }

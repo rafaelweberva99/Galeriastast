@@ -17,7 +17,7 @@ export default async function ClubsPage() {
   return (
     <div className="stack">
       <h1 className="section-title">Clubes</h1>
-      {groups.map(([title, list]) => (
+      {groups.filter(([, list]) => list.length > 0).map(([title, list]) => (
         <section key={title} className="stack">
           <h2 style={{ margin: 0 }}>{title}</h2>
           <div className="club-cards">

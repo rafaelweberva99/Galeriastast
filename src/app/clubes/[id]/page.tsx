@@ -65,7 +65,7 @@ export default async function ClubPage({ params }: { params: Params }) {
         </div>
       </div>
 
-      <section className="grid grid-4">
+      <section className="grid grid-4 club-stats">
         <div className="card stat">
           <span className="stat-value">{record.played}</span>
           <span className="stat-label">partidos registrados</span>
@@ -86,7 +86,7 @@ export default async function ClubPage({ params }: { params: Params }) {
         </div>
       </section>
 
-      <section className="grid grid-2">
+      <section className="grid grid-2 club-duo">
         <div className="card">
           <h2 className="section-title">Clásicos (historial completo)</h2>
           {rivalries.length === 0 && <p className="muted">Sin clásicos registrados.</p>}
@@ -109,6 +109,7 @@ export default async function ClubPage({ params }: { params: Params }) {
         <div className="card">
           <h2 className="section-title">Finales</h2>
           {finals.length === 0 && <p className="muted">Sin finales registradas.</p>}
+          <div className="scroll-list">
           {finals.map((m) => {
             const o = decidedOutcome(m, club.id);
             return (
@@ -121,6 +122,7 @@ export default async function ClubPage({ params }: { params: Params }) {
               </div>
             );
           })}
+          </div>
         </div>
       </section>
 
