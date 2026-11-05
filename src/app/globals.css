@@ -1253,8 +1253,27 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 .club-banner.row { flex-wrap: nowrap; align-items: center; }
 .club-banner.row > div { flex: 1 1 auto; min-width: 0; }
 .club-banner.row > svg, .club-banner.row > :first-child:not(div) { flex-shrink: 0; }
-@media (max-width: 560px) { .club-banner.row { flex-wrap: wrap; gap: 12px; } }
+@media (max-width: 560px) { .club-banner.row { gap: 14px; } .club-banner.row > span:first-child svg { width: 56px; height: auto; } }
 .card .form { max-width: none; }
 @media (min-width: 700px) { .cv-grid-2 { grid-template-columns: minmax(0, 1fr); } }
 .club-duo { align-items: start; }
 .club-duo .scroll-list { max-height: 330px; }
+/* Filtros de partidos: 2 columnas en celular, botón al ancho. */
+.filters .field { flex: 1 1 150px; min-width: 0; }
+.filters .field select { width: 100%; }
+@media (max-width: 560px) {
+  .filters { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: end; }
+  .filters .field:nth-of-type(3), .filters > label, .filters > .btn { grid-column: 1 / -1; }
+  .filters > .btn { width: 100%; min-height: 46px; }
+  .section-title { line-height: 1.12; }
+  .cm-totals { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .cm-totals > .card.stat { padding: 12px 10px; }
+  .cm-totals .stat-value { font-size: 1.7rem; }
+  .cm-totals .stat-label { font-size: 0.75rem; }
+  .card form .btn:not(.btn-ghost), .card .btn-ghost { min-height: 44px; }
+  .card .btn { max-width: 100%; }
+}
+/* La cinta PLATA/ORO no tapa el nombre. */
+.cv-hero .socio-name { padding-right: 44px; }
+@media (min-width: 700px) { .cv-hero .socio-name { padding-right: 0; } }
+@media (max-width: 560px) { .card.stack > .stack > .btn, .card.stack > .stack > a.btn, .card.stack > .stack > form > .btn { width: 100%; justify-content: center; text-align: center; } }
