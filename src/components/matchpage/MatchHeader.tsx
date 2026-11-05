@@ -37,7 +37,9 @@ export function MatchHeader({
   rivalry: string | null;
 }) {
   const sale = phase === "futuro" ? clubTicketing(m.homeTeamId) : null;
-  const meta = [m.competitionName, m.tournament, m.stage, m.venueName].filter(Boolean).join(" · ");
+  // El torneo a veces repite la competición ("Copa Sudamericana 2025"): no se muestra dos veces.
+  const tournament = m.tournament && !m.tournament.startsWith(m.competitionName) ? m.tournament : null;
+  const meta = [m.competitionName, tournament, m.stage, m.venueName].filter(Boolean).join(" · ");
   return (
     <header className="card mp-head">
       <div className="mp-kicker">

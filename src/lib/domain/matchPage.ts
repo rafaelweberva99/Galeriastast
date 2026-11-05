@@ -136,5 +136,6 @@ export function summarizeCrowd(fans: CrowdFan[]): CrowdSummary | null {
       return { clubId, fans: list.length, pct: share(list.length), effectiveness: privacyGate(effs.length, mean(effs)) };
     })
     .sort((a, b) => b.fans - a.fans || a.clubId.localeCompare(b.clubId));
-  return { fans: fans.length, clubs, others: smallCount > 0 ? { fans: smallCount, pct: share(smallCount) } : null };
+  return { fans: fans.length, clubs, // "Otros" se calcula por resto para que la suma dé 100.
+    others: smallCount > 0 ? { fans: smallCount, pct: 100 - clubs.reduce((t, c) => t + c.pct, 0) } : null };
 }
