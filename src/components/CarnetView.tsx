@@ -8,6 +8,7 @@ import type { Insights } from "@/lib/domain/insights/types.ts";
 import type { CommunityComparison } from "@/lib/domain/community.ts";
 import { yearsWithMatches } from "@/lib/domain/resumen.ts";
 import { CommunityCard } from "./carnet/CommunityCard.tsx";
+import { CompararBox } from "./comparar/CompararBox.tsx";
 import type { Team } from "@/lib/repo/teams.ts";
 import { clubIdentity, clubStyle } from "@/lib/clubTheme.ts";
 import { scoreLine } from "./format.ts";
@@ -140,6 +141,7 @@ export function CarnetView({
         comparison={community}
         owner={isOwner}
       />
+      {isOwner && <CompararBox from={username} />}
       {isOwner && (
         <ShareCarnet
           username={username}
