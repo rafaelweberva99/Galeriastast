@@ -1,25 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { ShareButtons } from "../ShareCarnet.tsx";
 
 /** Compartir el resumen anual: X, menú del teléfono, copiar link y descargar la imagen 1080×1350. */
 export function ResumenShare({
   image,
+  imageX,
   text,
   url,
   isPublic,
   year,
 }: {
   image: string;
+  imageX: string;
   text: string;
   url: string;
   isPublic: boolean;
   year: number;
 }) {
-  const [copied, setCopied] = useState(false);
-  const tweet = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=GaluchaStats`;
-  const canNativeShare = typeof navigator !== "undefined" && "share" in navigator;
   return (
     <section className="card rs-share" aria-labelledby="rs-share-title">
       <div className="rs-share-preview">
@@ -34,36 +33,12 @@ export function ResumenShare({
           {text}
         </p>
         {isPublic ? (
-          <div className="share-actions">
-            <a className="btn" href={tweet} target="_blank" rel="noopener noreferrer">
-              Compartir en X
-            </a>
-            {canNativeShare && (
-              <button
-                type="button"
-                className="btn btn-ghost"
-                onClick={() => navigator.share({ title: `Mi ${year} en la galería`, text, url }).catch(() => {})}
-              >
-                Compartir…
-              </button>
-            )}
-            <button
-              type="button"
-              className="btn btn-ghost"
-              onClick={async () => {
-                try {
-                  await navigator.clipboard.writeText(url);
-                  setCopied(true);
-                  setTimeout(() => setCopied(false), 2000);
-                } catch {}
-              }}
-            >
-              {copied ? "¡Link copiado!" : "Copiar link"}
-            </button>
-            <a className="btn btn-ghost" href={`${image}?descargar=1`}>
-              Descargar imagen
-            </a>
-          </div>
+          <>
+            <ShareButtons text={text} url={url} shareTitle={`Mi ${year} en la galería`} downloadHref={`${image}?descargar=1`} downloadLabel="Para historias" />
+            <p className="muted small" style={{ margin: 0 }}>
+              También hay una <a href={`${imageX}?descargar=1`}>versión horizontal</a> (1200×630) para X y WhatsApp.
+            </p>
+          </>
         ) : (
           <>
             <div className="share-actions">

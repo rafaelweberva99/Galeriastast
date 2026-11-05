@@ -779,3 +779,14 @@ a.cm-bar-name:hover { text-decoration: underline; }
   .nav::-webkit-scrollbar { display: none; }
   .nav a, .nav button { white-space: nowrap; flex: 0 0 auto; }
 }
+
+/* === compartir === */
+.share-actions .btn { white-space: nowrap; }
+.btn-wa { background: #1fa855; color: #ffffff; }
+.btn-wa:hover { filter: brightness(1.08); }
+@media (max-width: 560px) {
+  .share-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .share-actions .btn { flex: none; min-height: 44px; padding-inline: 8px; font-size: 0.92rem; }
+  .share-actions .btn:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+/* === fin compartir === */

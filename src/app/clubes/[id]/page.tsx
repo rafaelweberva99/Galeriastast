@@ -20,6 +20,20 @@ type Params = Promise<{ id: string }>;
 
 const OUTCOME_LABEL = { G: "Ganada", E: "Empate", P: "Perdida" } as const;
 
+export async function generateMetadata({ params }: { params: Params }) {
+  const team = await getTeam(await getDb(), (await params).id);
+  if (!team || !isVisibleClub(team.id)) return { title: "Club · GaluchaStats" };
+  const title = `${team.name} · historial y estadísticas · GaluchaStats`;
+  const description = `Todos los partidos de ${team.shortName} desde 1997, goleadores y el Mufómetro: ¿eres cábala o yeta cuando vas al estadio?`;
+  const images = [{ url: `/estadisticas/${team.id}/imagen`, width: 1200, height: 630, alt: team.name }];
+  return {
+    title,
+    description,
+    openGraph: { title, description, images, type: "website" as const },
+    twitter: { card: "summary_large_image" as const, title, description, images: images.map((i) => i.url) },
+  };
+}
+
 export default async function ClubPage({ params }: { params: Params }) {
   const { id } = await params;
   const db = await getDb();
@@ -42,7 +56,8 @@ export default async function ClubPage({ params }: { params: Params }) {
           <div className="small">{[identity.alias, identity.stadium ?? club.city].filter(Boolean).join(" · ")}</div>
           <h1>{club.name}</h1>
           <span className="muted">
-            <Link href={`/rankings/${club.id}`}>Ranking de {fansLabel(identity)}</Link>
+            <Link href={`/rankings/${club.id}`}>Ranking de {fansLabel(identity)}</Link> ·{" "}
+            <Link href={`/estadisticas/${club.id}`}>Estadísticas de la hinchada</Link>
           </span>
           <div>
             <BuyTickets clubId={club.id} />
