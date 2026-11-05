@@ -10,6 +10,7 @@ import { CONTACT_EMAIL } from "@/lib/legal.ts";
 import { isAdmin } from "@/lib/admin.ts";
 import { siteUrl } from "@/lib/site.ts";
 import { Ball } from "@/components/Ball.tsx";
+import { SiteNav, type NavItem } from "@/components/SiteNav.tsx";
 import { BackBar } from "@/components/BackBar.tsx";
 import "./globals.css";
 
@@ -33,6 +34,25 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   // Con condiciones pendientes, el menú solo ofrece lo que se puede usar (todo lo demás lleva a /aceptar).
   const pendingLegal = user ? await mustAcceptLegal(user.id) : false;
   const full = !!user && !pendingLegal;
+  const navItems: NavItem[] = [
+    ...(full
+      ? [
+          { href: "/partidos", label: "Marcar partidos" },
+          { href: "/importar", label: "Importar entradas" },
+          { href: "/carnet", label: "Mi carnet" },
+        ]
+      : []),
+    ...(full && isAdmin(user) ? [{ href: "/admin", label: "Admin" }] : []),
+    { href: "/rankings", label: "Rankings" },
+    { href: "/estadisticas", label: "Estadísticas" },
+    { href: "/clubes", label: "Clubes" },
+    ...(user
+      ? [pendingLegal ? { href: "/aceptar", label: `@${user.username}` } : { href: "/perfil", label: `@${user.username}` }]
+      : [
+          { href: "/ingresar", label: "Ingresar" },
+          { href: "/registro", label: "Crear carnet", cta: true },
+        ]),
+  ];
   return (
     <html lang="es-CL" className={`${display.variable} ${body.variable}`}>
       <body style={theme as React.CSSProperties}>
@@ -42,30 +62,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               <Ball size={26} />
               GaluchaStats
             </Link>
-            <nav className="nav" aria-label="Principal">
-              {full && <Link href="/partidos">Marcar partidos</Link>}
-              {full && <Link href="/importar">Importar entradas</Link>}
-              {full && <Link href="/carnet">Mi carnet</Link>}
-              {full && isAdmin(user) && <Link href="/admin">Admin</Link>}
-              <Link href="/rankings">Rankings</Link>
-              <Link href="/estadisticas">Estadísticas</Link>
-              <Link href="/clubes">Clubes</Link>
-              {user ? (
-                <>
-                  {pendingLegal ? <Link href="/aceptar">@{user.username}</Link> : <Link href="/perfil">@{user.username}</Link>}
-                  <form action={logout}>
-                    <button type="submit">Salir</button>
-                  </form>
-                </>
-              ) : (
-                <>
-                  <Link href="/ingresar">Ingresar</Link>
-                  <Link href="/registro" className="nav-cta">
-                    Crear carnet
-                  </Link>
-                </>
+            <SiteNav items={navItems}>
+              {user && (
+                <form action={logout}>
+                  <button type="submit">Salir</button>
+                </form>
               )}
-            </nav>
+            </SiteNav>
           </div>
         </header>
         <BackBar />

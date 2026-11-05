@@ -10,6 +10,9 @@ import { isVisibleClub, MVP_ACTIVE, MVP_CLUBS, visibleClubs } from "@/lib/mvp.ts
 import { Jersey } from "@/components/Jersey.tsx";
 import { LandingShowcase } from "@/components/LandingShowcase.tsx";
 import { LandingPreview } from "@/components/LandingPreview.tsx";
+import { CountUp } from "@/components/CountUp.tsx";
+import { Reveal } from "@/components/Reveal.tsx";
+import { Ball } from "@/components/Ball.tsx";
 
 const BIG_THREE = ["colo-colo", "universidad-de-chile", "universidad-catolica"];
 
@@ -41,10 +44,25 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
         </p>
       )}
       <section className="pitch bleed hero">
+        {/* Fondo vivo: focos de luz, polvo de cancha y un balón que rueda. Todo decorativo. */}
+        <div className="hero-fx" aria-hidden="true">
+          <span className="hero-beam hero-beam-a" />
+          <span className="hero-beam hero-beam-b" />
+          {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+            <span key={i} className="hero-dust" style={{ "--k": i } as React.CSSProperties} />
+          ))}
+          <span className="hero-roll">
+            <span className="hero-roll-ball">
+              <Ball size={34} />
+            </span>
+          </span>
+        </div>
         <div className="container hero-grid">
           <div className="hero-copy">
             <p className="display hero-kicker">Carnet de hincha · Fútbol chileno</p>
-            <h1>¿Eres cábala o yeta?</h1>
+            <h1>
+              ¿Eres <em className="hl">cábala</em> o <em className="hl hl-2">yeta</em>?
+            </h1>
             <p className="lead">
               Marca los partidos a los que fuiste al estadio y recibe tu carnet con el Mufómetro, tus goleadores, tus
               clásicos y tu resumen del año. Con {summary.matches.toLocaleString("es-CL")} partidos reales desde{" "}
@@ -57,14 +75,41 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               </div>
             )}
             <ul className="hero-proof">
-              <li><b>{summary.matches.toLocaleString("es-CL")}</b> partidos</li>
-              <li><b>{summary.teams}</b> clubes</li>
-              <li><b>+8.000</b> con goleadores</li>
+              <li><b><CountUp value={summary.matches} /></b> partidos</li>
+              <li><b><CountUp value={summary.teams} duration={1000} /></b> clubes</li>
+              <li><b>+<CountUp value={8000} /></b> con goleadores</li>
             </ul>
           </div>
           <LandingPreview />
         </div>
       </section>
+
+      {allClubs.length > 3 && (
+        <div className="marquee bleed" aria-label="Clubes del fútbol chileno">
+          <div className="marquee-track">
+            {[0, 1].map((copy) => (
+              <ul key={copy} className="marquee-set" aria-hidden={copy === 1 ? true : undefined}>
+                {allClubs.map((t) => {
+                  const c = clubIdentity(t);
+                  return (
+                    <li key={t.id}>
+                      <Link
+                        href={user ? `/clubes/${t.id}` : `/registro?club=${t.id}`}
+                        className="marquee-item"
+                        style={clubStyle(c) as React.CSSProperties}
+                        tabIndex={copy === 1 ? -1 : undefined}
+                      >
+                        <Jersey club={c} size={34} />
+                        <span>{t.shortName}</span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            ))}
+          </div>
+        </div>
+      )}
 
       <section className="pitch bleed pick-section" id="elige-tu-club">
         <div className="container">
@@ -157,8 +202,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
       <LandingShowcase />
 
       <section className="section steps">
-        <p className="lp-eyebrow">Así de simple</p>
-        <h2 className="lp-h2">Tu carnet en tres pasos</h2>
+        <Reveal>
+          <p className="lp-eyebrow">Así de simple</p>
+          <h2 className="lp-h2">Tu carnet en tres pasos</h2>
+        </Reveal>
         <ol className="steps-list">
           <li><span>1</span><div><h3>Elige tu club</h3><p className="muted">Crea tu cuenta en un minuto y el sitio se viste con los colores de tu equipo.</p></div></li>
           <li><span>2</span><div><h3>Marca tus partidos</h3><p className="muted">A mano, o sube una captura de tus entradas de PuntoTicket y los marcamos solos.</p></div></li>
@@ -168,15 +215,15 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
 
       <section className="grid grid-4 section">
         <div className="card stat">
-          <span className="stat-value">{summary.matches.toLocaleString("es-CL")}</span>
+          <span className="stat-value"><CountUp value={summary.matches} /></span>
           <span className="stat-label">partidos históricos</span>
         </div>
         <div className="card stat">
-          <span className="stat-value">{summary.teams}</span>
+          <span className="stat-value"><CountUp value={summary.teams} /></span>
           <span className="stat-label">clubes de Primera División</span>
         </div>
         <div className="card stat">
-          <span className="stat-value">{summary.competitions}</span>
+          <span className="stat-value"><CountUp value={summary.competitions} /></span>
           <span className="stat-label">competiciones</span>
         </div>
         <div className="card stat">
