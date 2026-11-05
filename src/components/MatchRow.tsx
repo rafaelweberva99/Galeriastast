@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { outcomeFor } from "@/lib/domain/stats.ts";
 import { scorersLine } from "@/lib/domain/scorers.ts";
 import type { Goal, Match } from "@/lib/domain/types.ts";
@@ -59,7 +60,11 @@ export function MatchRow({
   const outcome = highlight ? outcomeFor(match, highlight) : null;
   return (
     <div className={`match ${outcome ?? ""}`}>
-      <div className="match-date">{formatDate(match.date)}</div>
+      <div className="match-date">
+        <Link href={`/partidos/${match.id}`} title="Ver la ficha del partido">
+          {formatDate(match.date)}
+        </Link>
+      </div>
       <div className="match-teams versus">
         {name(match.homeTeamId, match.homeTeamName, "home")}
         <Score match={match} />
