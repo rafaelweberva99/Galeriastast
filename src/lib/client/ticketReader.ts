@@ -6,6 +6,8 @@
  * Los archivos de las librerías los copia scripts/copy-vendor.mjs a public/vendor.
  */
 
+import { liftLightText, needsContrastRetry, ocrQuality } from "../ticketText.ts";
+
 type Progress = (label: string, ratio: number | null) => void;
 
 interface TesseractWorker {
@@ -90,6 +92,19 @@ async function ocrWorker(): Promise<TesseractWorker> {
   return workerPromise;
 }
 
+/** Copia de la imagen con el texto gris claro oscurecido (null si la captura no es de fondo claro). */
+function liftedCopy(canvas: HTMLCanvasElement): HTMLCanvasElement | null {
+  const copy = document.createElement("canvas");
+  copy.width = canvas.width;
+  copy.height = canvas.height;
+  const ctx = copy.getContext("2d", { willReadFrequently: true })!;
+  ctx.drawImage(canvas, 0, 0);
+  const img = ctx.getImageData(0, 0, copy.width, copy.height);
+  if (!liftLightText(img.data)) return null;
+  ctx.putImageData(img, 0, 0);
+  return copy;
+}
+
 async function ocr(canvas: HTMLCanvasElement, onProgress: Progress): Promise<string> {
   progressSink = onProgress;
   const worker = await ocrWorker();
@@ -143,7 +158,18 @@ export async function readTicketFile(file: Blob & { name?: string }, onProgress:
   const name = (file.name ?? "").toLowerCase();
   if (file.type.startsWith("image/") || /\.(png|jpe?g|webp|heic|gif)$/.test(name)) {
     onProgress("Preparando la imagen", null);
-    return ocr(await imageToCanvas(file), onProgress);
+    const canvas = await imageToCanvas(file);
+    const text = await ocr(canvas, onProgress);
+    // "Mis compras" muestra los datos en gris claro: si no se entendió ninguna fecha o partido, se reintenta con más contraste.
+    if (needsContrastRetry(text)) {
+      const lifted = liftedCopy(canvas);
+      if (lifted) {
+        onProgress("Reforzando el contraste", null);
+        const retry = await ocr(lifted, onProgress);
+        if (ocrQuality(retry).score > ocrQuality(text).score) return retry;
+      }
+    }
+    return text;
   }
   if (file.type === "application/pdf" || name.endsWith(".pdf")) return pdfToText(file, onProgress);
   return file.text();

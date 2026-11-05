@@ -5,6 +5,7 @@ import { previewTicketImport } from "../actions.ts";
 import { ImportCandidates } from "./ImportCandidates.tsx";
 import { isSheetFile, readSheetFile } from "@/lib/client/sheetFile.ts";
 import { readTicketFile } from "@/lib/client/ticketReader.ts";
+import { CAPTURE_BREAK } from "@/lib/ticketText.ts";
 
 interface Job {
   name: string;
@@ -51,7 +52,7 @@ export function TicketImport() {
         update({ status: "error", label: e instanceof Error ? e.message : "No se pudo leer" });
       }
     }
-    const all = [text, ...texts].filter((t) => t.trim()).join("\n\n");
+    const all = [text, ...texts].filter((t) => t.trim()).join(CAPTURE_BREAK);
     setText(all);
     if (all.trim()) submit(all);
   };

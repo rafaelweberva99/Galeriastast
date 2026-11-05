@@ -158,3 +158,68 @@ Estadio Monumental - E-Ticket`;
     await db.close();
   });
 });
+
+describe("captura de 'Mis compras' en fichas (N° de Orden / Fecha Compra / Evento)", () => {
+  it("lee cada ficha por rival, temporada y fecha del campeonato, aunque falte la fecha de compra", async () => {
+    const { analyzeTicket } = await import("../src/lib/ingest/tickets.ts");
+    const { CAPTURE_BREAK } = await import("../src/lib/ticketText.ts");
+    const db = await openSqlite(":memory:");
+    await db.exec(`
+      INSERT INTO competitions VALUES ('primera-division', 'Primera División', 'liga', 1), ('copa-sudamericana', 'Copa Sudamericana', 'internacional', 6);
+      INSERT INTO teams (id, name, short_name) VALUES ('universidad-de-chile', 'Universidad de Chile', 'U. de Chile'),
+        ('universidad-de-concepcion', 'Universidad de Concepción', 'U. de Concepción'), ('cobresal', 'Cobresal', 'Cobresal'),
+        ('everton', 'Everton', 'Everton'), ('universidad-catolica', 'Universidad Católica', 'U. Católica');
+      INSERT INTO teams (id, name, short_name, is_chilean) VALUES ('guarani-par', 'Guaraní', 'Guaraní', 0);
+      INSERT INTO matches (id, date, season, competition_id, stage, home_team_id, away_team_id, home_goals, away_goals, source) VALUES
+        ('cob-25', '2025-08-04', 2025, 'primera-division', 'Fecha 18', 'universidad-de-chile', 'cobresal', 0, 1, 't'),
+        ('cob-24', '2024-08-04', 2024, 'primera-division', 'Fecha 18', 'universidad-de-chile', 'cobresal', 2, 0, 't'),
+        ('gua-ida', '2025-07-17', 2025, 'copa-sudamericana', 'Ida', 'universidad-de-chile', 'guarani-par', 5, 0, 't'),
+        ('gua-vuelta', '2025-07-24', 2025, 'copa-sudamericana', 'Vuelta', 'guarani-par', 'universidad-de-chile', 1, 1, 't'),
+        ('eve-25', '2025-11-05', 2025, 'primera-division', 'Fecha 21', 'universidad-de-chile', 'everton', 2, 0, 't'),
+        ('cat-26', '2026-04-25', 2026, 'primera-division', 'Fecha 11', 'universidad-de-chile', 'universidad-catolica', 1, 0, 't'),
+        ('con-26', '2026-04-27', 2026, 'primera-division', 'Fecha 21', 'universidad-de-concepcion', 'universidad-de-chile', 2, 1, 't');
+    `);
+    const idx = new TeamMentionIndex((await db.all("SELECT id, name, short_name FROM teams")).map((t) => ({ id: String(t.id), name: String(t.name), short: String(t.short_name) })));
+    const shot1 = `20:58
+N* de Orden 1111
+Fecha Compra 29-07-2025
+Evento Universidad de Chile
+vs. Cobresal - Liga de
+Primera ltaú 2025 -
+Fecha 18
+Medio Pago Otro
+Estado Pago Aprobado
+N* de Orden 2222
+Fecha Compra 08-07-2025
+Evento Universidad de Chile
+vs. Guaraní - Conmebol
+Sudamericana
+Medio Pago Otro
+Tipo Envío E-Ticket`;
+    // El borde superior corta la ficha: no se ve la fecha de compra ni el nombre del club, solo "Temporada + Fecha 21".
+    const shot2 = `Os = il 7 ED
+vs. Everton - Liga de
+Primera ltaú 2025 -
+Fecha 21
+Medio Pago Otro
+Estado Pago Aprobado
+N* de Orden 3333
+Fecha Compra 06-10-2025
+Evento Despedida Walter
+Montillo - Volveremos
+Otra Vez
+Medio Pago Webpay
+Estado Pago Aprobado
+N* de Orden 4444
+Fecha Compra 15-04-2026
+Evento Universidad de Chile
+vs. U. Católica - Liga de
+Primera - Fecha 11
+Medio Pago Mach`;
+    const r = await analyzeTicket(db, "universidad-de-chile", [shot1, shot2].join(CAPTURE_BREAK), idx);
+    // Sin el partido de Concepción (confundido por "Universidad de"), sin la despedida de Montillo y con la ida (local) de Guaraní.
+    expect(r.candidates.map((c) => c.match.id).sort()).toEqual(["cat-26", "cob-25", "eve-25", "gua-ida"]);
+    expect(r.unmatchedDates).toEqual([]);
+    await db.close();
+  });
+});
