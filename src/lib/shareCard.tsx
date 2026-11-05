@@ -23,7 +23,7 @@ const FONT_FILES = [
 ] as const;
 
 let fontsPromise: Promise<{ name: string; data: Buffer; weight: 500 | 700; style: "normal" }[]> | null = null;
-function loadFonts() {
+export function loadFonts() {
   fontsPromise ??= Promise.all(
     FONT_FILES.map(async (f) => ({ name: f.name, weight: f.weight, style: "normal" as const, data: await readFile(path.join(FONT_DIR, f.file)) })),
   ).catch((err) => {
