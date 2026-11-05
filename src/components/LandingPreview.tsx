@@ -57,8 +57,8 @@ export function LandingPreview() {
         </div>
         <p className="lp-cap">Efectividad por temporada</p>
         <div className="lp-rows">
-          <div><span>Ídolo de galería</span><b>Pinilla · 9 goles</b></div>
-          <div><span>Tu verdugo</span><b>Munder · 3 goles</b></div>
+          <div><span>Ídolo de galería</span><b>M. Pinilla · 9 goles</b></div>
+          <div><span>Tu verdugo</span><b>E. Paredes · 3 goles</b></div>
           <div><span>Clásico favorito</span><b>vs Colo-Colo · 61%</b></div>
         </div>
       </div>

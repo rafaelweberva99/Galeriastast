@@ -18,12 +18,12 @@ export function LandingShowcase() {
           </div>
           <div className="sc-scorer alt">
             <span className="sc-rank">2</span>
-            <div><b>Junior Fernandes</b><small>Universidad Católica</small></div>
+            <div><b>Fernando Zampedri</b><small>Universidad Católica</small></div>
             <strong>9 goles</strong>
           </div>
           <div className="sc-scorer alt">
             <span className="sc-rank">3</span>
-            <div><b>Sebastián Pinilla</b><small>Universidad de Chile</small></div>
+            <div><b>Mauricio Pinilla</b><small>Universidad de Chile</small></div>
             <strong>8 goles</strong>
           </div>
           <p className="sc-foot">…y también tu <b>verdugo</b>: el que más te amargó la tarde.</p>
