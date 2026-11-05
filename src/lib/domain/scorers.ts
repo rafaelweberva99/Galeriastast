@@ -109,7 +109,9 @@ export function goalsComplete(m: Match, goals: Goal[]): boolean {
  * Solo se cuentan partidos cuya lista de goles cuadra con el marcador.
  */
 export function scorersSeen(attended: Match[], goalsByMatch: Map<string, Goal[]>, clubId: string): ScorersReport {
-  const played = attended.filter((m) => involves(m, clubId) && isPlayed(m));
+  // Un partido suspendido (sin resultado final) con goles registrados cuenta: lo que se jugó hasta la suspensión pasó en la galería.
+  const suspended = (m: Match) => !isPlayed(m) && m.homePens === null && (goalsByMatch.get(m.id)?.length ?? 0) > 0;
+  const played = attended.filter((m) => involves(m, clubId) && (isPlayed(m) || suspended(m)));
   const forEntries: { goal: Goal; scorerTeam: string }[] = [];
   const againstEntries: { goal: Goal; scorerTeam: string }[] = [];
   const ownGoals: OwnGoalSeen[] = [];
@@ -121,11 +123,17 @@ export function scorersSeen(attended: Match[], goalsByMatch: Map<string, Goal[]>
   for (const m of played) {
     // Solo cuentan los partidos con lista de goles cargada (un 0-0 sin lista no es "dato").
     const goals = goalsByMatch.get(m.id);
-    if (!goals || !goalsComplete(m, goals)) continue;
+    if (!goals || (!suspended(m) && !goalsComplete(m, goals))) continue;
     matchesWithGoals++;
-    const mine = m.homeTeamId === clubId ? m.homeGoals : m.awayGoals;
-    const theirs = m.homeTeamId === clubId ? m.awayGoals : m.homeGoals;
-    meta.set(m.id, { date: m.date, label: `${m.homeTeamName} ${m.homeGoals}-${m.awayGoals} ${m.awayTeamName}`, margin: (mine ?? 0) - (theirs ?? 0) });
+    const homeG = suspended(m) ? goals.filter((g) => g.teamId === m.homeTeamId).length : m.homeGoals;
+    const awayG = suspended(m) ? goals.filter((g) => g.teamId === m.awayTeamId).length : m.awayGoals;
+    const mine = m.homeTeamId === clubId ? homeG : awayG;
+    const theirs = m.homeTeamId === clubId ? awayG : homeG;
+    meta.set(m.id, {
+      date: m.date,
+      label: `${m.homeTeamName} ${homeG}-${awayG} ${m.awayTeamName}${suspended(m) ? " (suspendido)" : ""}`,
+      margin: (mine ?? 0) - (theirs ?? 0),
+    });
     const rival = m.homeTeamId === clubId ? m.awayTeamId : m.homeTeamId;
     for (const g of goals) {
       const inFavor = g.teamId === clubId;

@@ -94,3 +94,22 @@ describe("verdugo e ídolo: desempate con sentido (no por orden alfabético)", (
     expect(tiedWithFirst(r.executioners)).toBe(1);
   });
 });
+
+describe("partido suspendido con goles", () => {
+  const susp = match({ id: "susp", date: "2025-08-20", homeTeamId: "independiente", awayTeamId: U, homeGoals: null, awayGoals: null });
+  const goals = new Map<string, Goal[]>([["susp", [g("susp", U, "Assadi", 11), g("susp", "independiente", "Montiel", 27)]]]);
+
+  it("cuenta lo que pasó hasta la suspensión en 'goleadores que viste'", () => {
+    const r = scorersSeen([susp], goals, U);
+    expect(r.matchesWithGoals).toBe(1);
+    expect(r.goalsFor).toBe(1);
+    expect(r.goalsAgainst).toBe(1);
+    expect(r.idols[0]).toMatchObject({ player: "Assadi", goals: 1 });
+    expect(r.executioners[0]).toMatchObject({ player: "Montiel", goals: 1 });
+    expect(r.idols[0].games[0].label).toContain("(suspendido)");
+  });
+
+  it("sin lista de goles, un partido suspendido no suma datos", () => {
+    expect(scorersSeen([susp], new Map(), U).matchesWithGoals).toBe(0);
+  });
+});
