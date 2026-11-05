@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { goalsComplete, scorersLine, scorersSeen } from "../src/lib/domain/scorers.ts";
+import { goalsComplete, scorersLine, scorersSeen, tiedWithFirst } from "../src/lib/domain/scorers.ts";
 import type { Goal } from "../src/lib/domain/types.ts";
 import { match } from "./fixtures.ts";
 
@@ -61,5 +61,36 @@ describe("scorersSeen", () => {
   it("arma la línea de goleadores marcando penales y autogoles", () => {
     expect(scorersLine(goals.get("m1")!, CC)).toBe("Paredes 10', 30' (p) · Pérez (autogol) 55'");
     expect(scorersLine(goals.get("m1")!, U)).toBe("Vargas 80'");
+  });
+});
+
+describe("verdugo e ídolo: desempate con sentido (no por orden alfabético)", () => {
+  // Cuatro rivales con 2 goles en un partido cada uno; solo uno fue en una derrota del club.
+  const mk = (id: string, date: string, ownGoals: number, rivalGoals: number, scorer: string) =>
+    ({ m: match({ id, date, homeTeamId: U, awayTeamId: "rival", homeGoals: ownGoals, awayGoals: rivalGoals }), scorer, rivalGoals, ownGoals });
+  const games = [
+    mk("a", "2020-05-01", 2, 2, "Aarón Empate"), // 2-2: sus goles no fueron en derrota
+    mk("b", "2022-05-01", 0, 2, "Zacarías Derrota"), // 0-2: derrota
+    mk("c", "2021-05-01", 1, 2, "Bruno Derrota"), // 1-2: derrota, pero más antigua que la de Zacarías
+    mk("d", "2023-05-01", 3, 2, "Carlos Victoria"), // 3-2: ganó
+  ];
+  const goals = new Map<string, Goal[]>();
+  for (const { m, scorer, rivalGoals, ownGoals } of games) {
+    goals.set(m.id, [
+      ...Array.from({ length: ownGoals }, (_, i) => g(m.id, U, "Local " + (i + 1), 10 + i)),
+      ...Array.from({ length: rivalGoals }, (_, i) => g(m.id, "rival", scorer, 20 + i)),
+    ]);
+  }
+  const r = scorersSeen(games.map((x) => x.m), goals, U);
+
+  it("el verdugo es quien marcó en derrotas, y entre ellos el más reciente (no el primero del abecedario)", () => {
+    expect(r.executioners.map((e) => e.player)).toEqual(["Zacarías Derrota", "Bruno Derrota", "Carlos Victoria", "Aarón Empate"]);
+    expect(r.executioners[0].player).toBe("Zacarías Derrota");
+    expect(r.executioners[0].decisive).toBe(2);
+  });
+
+  it("avisa cuántos jugadores empatan con el primero", () => {
+    // Zacarías y Bruno: 2 goles, 0 hat-tricks, 2 decisivos, 1 partido → empatan.
+    expect(tiedWithFirst(r.executioners)).toBe(1);
   });
 });

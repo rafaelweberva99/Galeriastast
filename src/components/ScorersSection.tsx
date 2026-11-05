@@ -1,10 +1,11 @@
+import { tiedWithFirst } from "@/lib/domain/scorers.ts";
 import { clubIdentity } from "@/lib/clubTheme.ts";
 import type { ScorersReport, ScorerTally } from "@/lib/domain/scorers.ts";
 import type { Team } from "@/lib/repo/teams.ts";
 import { formatDate } from "./format.ts";
 import { Jersey } from "./Jersey.tsx";
 
-function Spotlight({ title, tally, team, empty }: { title: string; tally?: ScorerTally; team?: Team; empty: string }) {
+function Spotlight({ title, tally, team, empty, tied = 0 }: { title: string; tally?: ScorerTally; team?: Team; empty: string; tied?: number }) {
   return (
     <div className="card spotlight">
       <div className="stat-label">{title}</div>
@@ -21,6 +22,11 @@ function Spotlight({ title, tally, team, empty }: { title: string; tally?: Score
               {tally.hatTricks ? ` · ${tally.hatTricks} hat-trick${tally.hatTricks > 1 ? "s" : ""}` : ""}
               {team && !title.includes("ídolo") ? ` · ${team.name}` : ""}
             </div>
+            {tied > 0 && (
+              <div className="muted small" style={{ marginTop: 2 }}>
+                Empatado con {tied} {tied === 1 ? "jugador más" : "jugadores más"} (mira la tabla)
+              </div>
+            )}
           </div>
         </div>
       ) : (
@@ -105,12 +111,14 @@ export function ScorersSection({
             <Spotlight
               title={fan ? "Tu ídolo: máximo goleador que viste" : "Máximo goleador del club"}
               tally={top}
+              tied={tiedWithFirst(report.idols)}
               team={teams.get(clubId)}
               empty={fan ? "Aún no viste goles de tu club." : "Sin datos."}
             />
             <Spotlight
               title={fan ? "Tu verdugo" : "Su mayor verdugo"}
               tally={verdugo}
+              tied={tiedWithFirst(report.executioners)}
               team={verdugo ? teams.get(verdugo.teamId) : undefined}
               empty={fan ? "Ningún rival te ha hecho goles en la galería. ¡Bien!" : "Sin datos."}
             />

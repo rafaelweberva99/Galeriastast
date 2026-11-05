@@ -11,6 +11,10 @@ export interface ScorerTally {
   matches: number;
   /** Partidos con 3 o más goles del jugador. */
   hatTricks: number;
+  /** Goles que pesaron más para el hincha: en victorias de su club (ídolos) o en derrotas (verdugos). */
+  decisive: number;
+  /** Fecha del último partido en que marcó (desempate: el más reciente). */
+  lastDate: string;
 }
 
 export interface OwnGoalSeen {
@@ -34,26 +38,55 @@ export interface ScorersReport {
   ownGoals: OwnGoalSeen[];
 }
 
-function tally(entries: { goal: Goal; scorerTeam: string }[]): ScorerTally[] {
+/** Qué pasó con el club del hincha en cada partido visto: sirve para desempatar ídolos y verdugos. */
+interface MatchMeta {
+  date: string;
+  /** Diferencia de goles desde el punto de vista del club del hincha. */
+  margin: number;
+}
+
+function tally(entries: { goal: Goal; scorerTeam: string }[], meta: Map<string, MatchMeta>, decisiveWhen: "win" | "loss"): ScorerTally[] {
   const by = new Map<string, { t: ScorerTally; perMatch: Map<string, number> }>();
   for (const { goal, scorerTeam } of entries) {
     const key = `${goal.player}|${scorerTeam}`;
     const e = by.get(key) ?? {
-      t: { player: goal.player, teamId: scorerTeam, goals: 0, penalties: 0, matches: 0, hatTricks: 0 },
+      t: { player: goal.player, teamId: scorerTeam, goals: 0, penalties: 0, matches: 0, hatTricks: 0, decisive: 0, lastDate: "" },
       perMatch: new Map<string, number>(),
     };
+    const m = meta.get(goal.matchId);
     e.t.goals++;
     if (goal.penalty) e.t.penalties++;
+    if (m && (decisiveWhen === "win" ? m.margin > 0 : m.margin < 0)) e.t.decisive++;
+    if (m && m.date > e.t.lastDate) e.t.lastDate = m.date;
     e.perMatch.set(goal.matchId, (e.perMatch.get(goal.matchId) ?? 0) + 1);
     by.set(key, e);
   }
+  // Primero goles y hat-tricks; si siguen empatados pesa lo que más le dolió (o alegró) al hincha, luego en cuántos
+  // partidos marcó y el más reciente. El nombre solo desempata al final, para que el orden sea estable.
   return [...by.values()]
     .map(({ t, perMatch }) => ({
       ...t,
       matches: perMatch.size,
       hatTricks: [...perMatch.values()].filter((n) => n >= 3).length,
     }))
-    .sort((a, b) => b.goals - a.goals || b.hatTricks - a.hatTricks || a.player.localeCompare(b.player, "es"));
+    .sort(
+      (a, b) =>
+        b.goals - a.goals ||
+        b.hatTricks - a.hatTricks ||
+        b.decisive - a.decisive ||
+        b.matches - a.matches ||
+        b.lastDate.localeCompare(a.lastDate) ||
+        a.player.localeCompare(b.player, "es"),
+    );
+}
+
+/** Cuántos jugadores igualan al primero en goles, hat-tricks, goles decisivos y partidos (solo los separa el más reciente). */
+export function tiedWithFirst(rows: ScorerTally[]): number {
+  const [first, ...rest] = rows;
+  if (!first) return 0;
+  const same = (r: ScorerTally) =>
+    r.goals === first.goals && r.hatTricks === first.hatTricks && r.decisive === first.decisive && r.matches === first.matches;
+  return rest.filter(same).length;
 }
 
 /** ¿La lista de goles del partido calza con el marcador? (si no, no se usa para estadísticas). */
@@ -73,6 +106,7 @@ export function scorersSeen(attended: Match[], goalsByMatch: Map<string, Goal[]>
   const forEntries: { goal: Goal; scorerTeam: string }[] = [];
   const againstEntries: { goal: Goal; scorerTeam: string }[] = [];
   const ownGoals: OwnGoalSeen[] = [];
+  const meta = new Map<string, MatchMeta>();
   let matchesWithGoals = 0;
   let goalsFor = 0;
   let goalsAgainst = 0;
@@ -82,6 +116,9 @@ export function scorersSeen(attended: Match[], goalsByMatch: Map<string, Goal[]>
     const goals = goalsByMatch.get(m.id);
     if (!goals || !goalsComplete(m, goals)) continue;
     matchesWithGoals++;
+    const mine = m.homeTeamId === clubId ? m.homeGoals : m.awayGoals;
+    const theirs = m.homeTeamId === clubId ? m.awayGoals : m.homeGoals;
+    meta.set(m.id, { date: m.date, margin: (mine ?? 0) - (theirs ?? 0) });
     const rival = m.homeTeamId === clubId ? m.awayTeamId : m.homeTeamId;
     for (const g of goals) {
       const inFavor = g.teamId === clubId;
@@ -101,8 +138,8 @@ export function scorersSeen(attended: Match[], goalsByMatch: Map<string, Goal[]>
     matchesPlayed: played.length,
     goalsFor,
     goalsAgainst,
-    idols: tally(forEntries),
-    executioners: tally(againstEntries),
+    idols: tally(forEntries, meta, "win"),
+    executioners: tally(againstEntries, meta, "loss"),
     ownGoals: ownGoals.sort((a, b) => b.match.date.localeCompare(a.match.date)),
   };
 }
