@@ -184,8 +184,10 @@ def main():
     teams.update(rs.ALIASES)
     teams.update(EXTRA)
     existing = {}
-    for r in db.execute("select id, date, home_team_id, away_team_id, home_goals, away_goals from matches where competition_id='primera-division' and home_goals is not null"):
+    comp = {}
+    for r in db.execute("select id, date, home_team_id, away_team_id, home_goals, away_goals, competition_id from matches where competition_id in ('primera-division', 'copa-libertadores') and home_goals is not null"):
         existing.setdefault((r[2], r[3], r[4], r[5]), []).append((r[1], r[0]))
+        comp[r[0]] = r[6]
 
     rows, report = [], []
     stats = {"plantillas": 0, "sin_base": 0, "sin_enlace": 0, "no_suma": 0, "sin_rsssf": 0, "rsssf_distinto": 0, "incluidos": 0}
@@ -200,11 +202,17 @@ def main():
                 continue
             for p in templates(h):
                 stats["plantillas"] += 1
+                sc = re.findall(r"\d+", re.sub(r"\(.*", "", p.get("resultado", "")))[:2]
                 m = re.search(r"(\d{1,2}) de (\w+) de (\d{4})", p.get("fecha", ""))
-                sc = re.findall(r"\d+", p.get("resultado", ""))
-                if not m or len(sc) != 2 or m.group(2).lower() not in MONTHS:
+                t = re.search(r"\{\{\s*fecha\s*\|\s*(\d{1,2})\s*\|\s*(\d{1,2})\s*\|\s*(\d{4})", p.get("fecha", ""), flags=re.I)
+                if m and m.group(2).lower() in MONTHS:
+                    d = date(int(m.group(3)), MONTHS[m.group(2).lower()], int(m.group(1)))
+                elif t:
+                    d = date(int(t.group(3)), int(t.group(2)), int(t.group(1)))
+                else:
                     continue
-                d = date(int(m.group(3)), MONTHS[m.group(2).lower()], int(m.group(1)))
+                if len(sc) != 2:
+                    continue
                 hid, vid = teams.get(rs.norm(link_label(p.get("local", "")))), teams.get(rs.norm(link_label(p.get("visita", ""))))
                 hg, ag = int(sc[0]), int(sc[1])
                 cands = [c for c in existing.get((hid, vid, hg, ag), []) if abs((date.fromisoformat(c[0]) - d).days) <= 4] if hid and vid else []
@@ -227,17 +235,20 @@ def main():
                     continue
                 # segunda fuente: RSSSF (apellidos y cantidad por equipo)
                 ref = next((v for (h2, a2, g1, g2, d2), v in rsm.items() if (h2, a2, g1, g2) == (hid, vid, hg, ag) and abs((d2 - d).days) <= 4), None)
-                if ref is None:
+                league = comp[mid] == "primera-division"
+                if not league:
+                    ref = None  # las copas no tienen segunda fuente: solo Wikipedia (con todos los demás controles)
+                if ref is None and league:
                     stats["sin_rsssf"] += 1
                     report.append(f"{mid}: RSSSF no lo tiene para contrastar")
                     continue
-                ok = same_scorers([n for n, *_ in flat_h], [n for n, _ in ref[0]]) and same_scorers([n for n, *_ in flat_v], [n for n, _ in ref[1]])
+                ok = ref is None or same_scorers([n for n, *_ in flat_h], [n for n, _ in ref[0]]) and same_scorers([n for n, *_ in flat_v], [n for n, _ in ref[1]])
                 if not ok:
                     stats["rsssf_distinto"] += 1
                     report.append(f"{mid}: Wikipedia y RSSSF no coinciden (Wikipedia {[n for n, *_ in flat_h]} {[n for n, *_ in flat_v]} | RSSSF {[n for n, _ in ref[0]]} {[n for n, _ in ref[1]]})")
                     continue
                 seen.add(mid)
-                src = f"https://es.wikipedia.org/wiki/Anexo:Temporada_{y}_del_{slug} (contrastado con RSSSF chile{y % 100:02d})"
+                src = f"https://es.wikipedia.org/wiki/Anexo:Temporada_{y}_del_{slug}" + (f" (contrastado con RSSSF chile{y % 100:02d})" if league else " (solo Wikipedia; sin segunda fuente)")
                 for side, flat in ((hid, flat_h), (vid, flat_v)):
                     for name, pen, og in flat:
                         rows.append({"match_id": mid, "date": mdate, "home_team_id": hid, "away_team_id": vid, "scoring_team_id": side,

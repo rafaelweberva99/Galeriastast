@@ -21,6 +21,7 @@ Uso (desde la raíz del repo; la corrida completa toma horas, por eso todo queda
 RSSSF solo trae apellidos en 2000 y 2001. `wikipedia_annex.py` lee los anexos de temporada de es.wikipedia.org
 (`Anexo:Temporada 2001 del Club ...`), que traen cada partido con sus goleadores enlazados (nombre completo), y solo
 escribe un partido si existe en la base, los goles suman el marcador, todos los goleadores tienen nombre completo y
-RSSSF (otra fuente) coincide en los apellidos. Solo existen los anexos de 2001 de Colo-Colo y la U; los de 2000 no.
+RSSSF (otra fuente) coincide en los apellidos. Solo existen los anexos de 2001 de Colo-Colo y la U; los de 2000 no. También lee los partidos de Copa Libertadores de esos
+anexos (fechas con `{{fecha|d|m|a}}`); las copas no tienen segunda fuente, así que solo pasan los controles de Wikipedia y la base.
 
     python3 -I scripts/goals/wikipedia_annex.py --years 2001 --out data/raw/goals_wiki
