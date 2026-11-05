@@ -10,6 +10,7 @@ import { CONTACT_EMAIL } from "@/lib/legal.ts";
 import { isAdmin } from "@/lib/admin.ts";
 import { siteUrl } from "@/lib/site.ts";
 import { Ball } from "@/components/Ball.tsx";
+import { BackBar } from "@/components/BackBar.tsx";
 import "./globals.css";
 
 const display = Oswald({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-display" });
@@ -67,6 +68,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </nav>
           </div>
         </header>
+        <BackBar />
         <main className="container">{children}</main>
         <footer className="site-footer">
           <div className="container">
