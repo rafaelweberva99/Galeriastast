@@ -34,11 +34,10 @@ export function ResumenDeck({ username, club, clubName, r, cta }: { username: st
         <p className="rs-eyebrow">Tu año en la galería</p>
         <h2 className="rs-year">{r.year}</h2>
         <div className="rs-jersey">
-          <Jersey club={club} size={150} number="12" />
+          <Jersey club={club} size={120} number="12" />
         </div>
         <p className="rs-handle">@{username}</p>
         <p className="rs-pill">{r.title.label}</p>
-        <p className="rs-line">{r.title.blurb}</p>
       </Slide>
 
       <Slide n={n++} label="Cuántas veces fuiste">
@@ -58,18 +57,6 @@ export function ResumenDeck({ username, club, clubName, r, cta }: { username: st
               ? `Los mismos que en ${r.previous.year}`
               : `${signed(r.previous.deltaPlayed)} que en ${r.previous.year}`}
           </p>
-        )}
-        {r.first && r.last && r.first.match.id !== r.last.match.id && (
-          <div className="rs-bookends">
-            <div>
-              <span className="rs-k">Primero</span>
-              <strong>{`${r.first.match.homeTeamName} ${r.first.match.homeGoals}-${r.first.match.awayGoals} ${r.first.match.awayTeamName}`}</strong>
-            </div>
-            <div>
-              <span className="rs-k">Último</span>
-              <strong>{`${r.last.match.homeTeamName} ${r.last.match.homeGoals}-${r.last.match.awayGoals} ${r.last.match.awayTeamName}`}</strong>
-            </div>
-          </div>
         )}
       </Slide>
 
@@ -100,7 +87,7 @@ export function ResumenDeck({ username, club, clubName, r, cta }: { username: st
               : `${Math.round(-r.deltaVsClub)} puntos bajo el resto del año de ${club.short}. Ojo con la yeta.`}
           </p>
         )}
-        {r.previous && r.previous.deltaEffectiveness !== null && Math.abs(r.previous.deltaEffectiveness) >= 1 && (
+        {r.previous && r.previous.deltaEffectiveness !== null && Math.abs(r.previous.deltaEffectiveness) >= 1 && !(r.deltaVsClub !== null && Math.abs(r.deltaVsClub) >= 1) && (
           <p className="rs-chip">{`${signed(r.previous.deltaEffectiveness)} puntos vs ${r.previous.year}`}</p>
         )}
       </Slide>

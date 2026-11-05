@@ -454,12 +454,12 @@ fieldset.consents legend { font-weight: 600; font-size: 0.9rem; padding: 0 6px; 
 .rs-empty { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
 
 .rs-deck { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.rs-slide { --rs-fg: #fff; position: relative; aspect-ratio: 4 / 5; border-radius: 22px; overflow: hidden; color: var(--rs-fg); background: linear-gradient(160deg, var(--rs-bg), var(--rs-bg-deep)); display: flex; box-shadow: 0 8px 30px rgb(0 0 0 / 0.22); scroll-snap-align: center; scroll-margin-top: 80px; container-type: inline-size; }
+.rs-slide { --rs-fg: #fff; position: relative; aspect-ratio: 4 / 5; flex-direction: column; border-radius: 22px; overflow: clip; color: var(--rs-fg); background: linear-gradient(160deg, var(--rs-bg), var(--rs-bg-deep)); display: flex; box-shadow: 0 8px 30px rgb(0 0 0 / 0.22); scroll-snap-align: center; scroll-margin-top: 80px; container-type: inline-size; }
 .rs-slide.rs-club { background: var(--club-card, var(--rs-bg)); color: var(--club-ink, #fff); }
 .rs-slide::before { content: ""; position: absolute; width: 90%; aspect-ratio: 1; right: -45%; top: -8%; border-radius: 50%; border: 2px solid rgb(255 255 255 / 0.1); pointer-events: none; }
 .rs-slide::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: var(--club-band, var(--rs-hi)); }
-.rs-inner { position: relative; display: flex; flex-direction: column; justify-content: center; width: 100%; padding: 8% 8% 12%; gap: 0; min-width: 0; }
-.rs-foot { position: absolute; left: 8%; bottom: 4%; font: 700 0.8rem var(--font-display), sans-serif; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; }
+.rs-inner { position: relative; display: flex; flex-direction: column; justify-content: center; width: 100%; padding: 8% 8% 6%; gap: 0; min-width: 0; flex: 1; }
+.rs-foot { position: relative; padding: 0 8% 5%; flex: none; font: 700 0.8rem var(--font-display), sans-serif; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; }
 .rs-eyebrow { margin: 0 0 10px; font: 700 clamp(0.8rem, 4.2cqi, 1rem) var(--font-body), sans-serif; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rs-hi); }
 .rs-club .rs-eyebrow { color: inherit; opacity: 0.85; }
 .rs-year { margin: 0; font: 700 clamp(5rem, 36cqi, 9rem) / 0.95 var(--font-display), sans-serif; }

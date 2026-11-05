@@ -100,14 +100,29 @@ export async function resumenImage(opts: { username: string; club: ClubIdentity;
       ),
     );
   if (r.idol || r.executioner) {
-    if (r.idol) rows.push(row("Ídolo del año", short(r.idol.player, 28), `${r.idol.goals} ${r.idol.goals === 1 ? "gol" : "goles"} que viste`, OUTCOME_COLOR.G));
-    if (r.executioner)
-      rows.push(row("Verdugo del año", short(r.executioner.player, 28), `${r.executioner.goals} ${r.executioner.goals === 1 ? "gol" : "goles"} contra tu club`, OUTCOME_COLOR.P));
+    const half = (label: string, name: string, sub: string, color: string) => (
+      <div style={{ display: "flex", flex: 1, alignItems: "center", background: alpha("#ffffff", 0.08), borderRadius: 24, padding: "18px 24px" }}>
+        <div style={{ display: "flex", width: 10, alignSelf: "stretch", borderRadius: 6, background: color, marginRight: 20 }} />
+        <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+          <div style={{ display: "flex", fontSize: 21, fontWeight: 700, textTransform: "uppercase", letterSpacing: 2, opacity: 0.7 }}>{label}</div>
+          <div style={{ display: "flex", fontFamily: DISPLAY, fontSize: 36, fontWeight: 700, lineHeight: 1.15, marginTop: 4 }}>{name}</div>
+          <div style={{ display: "flex", fontSize: 24, opacity: 0.8 }}>{sub}</div>
+        </div>
+      </div>
+    );
+    const g = (n: number) => `${n} ${n === 1 ? "gol" : "goles"}`;
+    rows.push(
+      <div key="duo" style={{ display: "flex", marginTop: 16 }}>
+        {r.idol ? half("Ídolo del año", short(r.idol.player, 17), g(r.idol.goals), OUTCOME_COLOR.G) : null}
+        {r.idol && r.executioner ? <div style={{ display: "flex", width: 16 }} /> : null}
+        {r.executioner ? half("Verdugo del año", short(r.executioner.player, 17), g(r.executioner.goals), OUTCOME_COLOR.P) : null}
+      </div>,
+    );
   } else {
     if (r.bestWin) rows.push(row("Mejor victoria", `${r.bestWin.goalsFor}-${r.bestWin.goalsAgainst} a ${short(r.bestWin.match.homeTeamId === club.id ? r.bestWin.match.awayTeamName : r.bestWin.match.homeTeamName, 24)}`, dateEs(r.bestWin.match.date), OUTCOME_COLOR.G));
     if (r.worstLoss) rows.push(row("Peor derrota", `${r.worstLoss.goalsFor}-${r.worstLoss.goalsAgainst} ante ${short(r.worstLoss.match.homeTeamId === club.id ? r.worstLoss.match.awayTeamName : r.worstLoss.match.homeTeamName, 22)}`, dateEs(r.worstLoss.match.date), OUTCOME_COLOR.P));
   }
-  if (rows.length < 3 && r.busiestMonth)
+  if (rows.length < 2 && r.busiestMonth)
     rows.push(row("Tu mes", r.busiestMonth.name.charAt(0).toUpperCase() + r.busiestMonth.name.slice(1), `${r.busiestMonth.count} ${r.busiestMonth.count === 1 ? "partido" : "partidos"}`, t.hi));
 
   return new ImageResponse(
@@ -133,7 +148,7 @@ export async function resumenImage(opts: { username: string; club: ClubIdentity;
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ display: "flex", flexDirection: "column", width: 640 }}>
             <div style={{ display: "flex", fontSize: 30, fontWeight: 700, letterSpacing: 6, textTransform: "uppercase", color: t.hi }}>Tu año en la galería</div>
-            <div style={{ display: "flex", fontFamily: DISPLAY, fontSize: 250, fontWeight: 700, lineHeight: 1, marginTop: 4 }}>{String(r.year)}</div>
+            <div style={{ display: "flex", fontFamily: DISPLAY, fontSize: 230, fontWeight: 700, lineHeight: 1, marginTop: 4 }}>{String(r.year)}</div>
             <div style={{ display: "flex", fontFamily: DISPLAY, fontSize: handleSize, fontWeight: 700, lineHeight: 1.1 }}>{handle}</div>
             <div style={{ display: "flex", fontSize: 30, opacity: 0.8, marginTop: 6 }}>{clubName}</div>
           </div>
