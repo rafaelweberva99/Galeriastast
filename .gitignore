@@ -10,3 +10,6 @@ next-env.d.ts
 !.env.example
 /demo/dist/
 /public/vendor/
+
+# Caché de Python (scripts de datos)
+__pycache__/
