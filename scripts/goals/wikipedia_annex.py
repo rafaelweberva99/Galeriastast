@@ -75,6 +75,9 @@ def templates(h):
 
 def link_label(s):
     s = re.sub(r"<[^>]+>", "", s)
+    s = re.sub(r"\[\[(?:Archivo|File|Imagen|Image):[^\]]*\]\]", "", s, flags=re.I)  # [[Archivo:Flag_of_Chile.svg|20px]]
+    s = re.sub(r"\{\{[^}]*\}\}", "", s)  # {{bandera|chile}}
+    s = re.sub(r"^\s*\d+(?:x\d+)?px\s*", "", s)  # restos de la bandera: "20px Colo-Colo"
     m = re.search(r"\[\[([^\]|]+)(?:\|([^\]]+))?\]\]", s)
     return (m.group(2) or m.group(1)).strip() if m else s.strip()
 
