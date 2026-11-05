@@ -8,16 +8,17 @@ import { getTeam, listClubs } from "@/lib/repo/teams.ts";
 import { CURRENT_SEASON } from "@/lib/ticketing.ts";
 import { isVisibleClub, MVP_ACTIVE, MVP_CLUBS, visibleClubs } from "@/lib/mvp.ts";
 import { Jersey } from "@/components/Jersey.tsx";
+import { LandingPreview } from "@/components/LandingPreview.tsx";
 
 const BIG_THREE = ["colo-colo", "universidad-de-chile", "universidad-catolica"];
 
 const FEATURES = [
-  { n: "01", title: "Mufómetro", text: "Tu efectividad en los partidos que viste desde la galería. Más de 60%: cábala. Menos de 40%: yeta." },
-  { n: "02", title: "Clásicos", text: "Superclásico, Clásico Universitario, albos contra cruzados… ¿cómo le va a tu club cuando tú vas?" },
-  { n: "03", title: "Finales", text: "Las finales a las que fuiste, con penales incluidos. ¿Viste dar la vuelta o te tocó llorar?" },
-  { n: "04", title: "Modo Infiltrado", text: "¿Fuiste escondido a la galería rival? También cuenta, y lo separamos aparte." },
-  { n: "05", title: "Impacto real", text: "Comparamos tu efectividad con la de tu club en esas mismas temporadas: ¿sumas o restas?" },
-  { n: "06", title: "Importa tus entradas", text: "Sube una captura de tus compras en PuntoTicket y marcamos tus partidos solos." },
+  { icon: "🎯", title: "Mufómetro", text: "Tu efectividad en los partidos que viste desde la galería. Más de 60%: cábala. Menos de 40%: yeta." },
+  { icon: "⚽", title: "Ídolos y verdugos", text: "El goleador que más gritaste y el que más te hizo sufrir, con cada partido a mano." },
+  { icon: "🔥", title: "Clásicos y rivales", text: "Superclásico, Clásico Universitario… ¿cómo le va a tu club contra cada rival cuando tú vas?" },
+  { icon: "📈", title: "Gráficos por temporada", text: "Tu curva de efectividad, rachas, mejores y peores años, local y visita." },
+  { icon: "🏆", title: "Finales y premios", text: "Las finales que viviste, tu nivel de carnet (Bronce a Oro) y logros por desbloquear." },
+  { icon: "🎁", title: "Resumen del año", text: "Tu año de hincha en una imagen lista para compartir. Y compárate con la comunidad." },
 ];
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ cuenta?: string }> }) {
@@ -47,16 +48,34 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
         </p>
       )}
       <section className="pitch bleed hero">
-        <div className="container">
-          <p className="display hero-kicker">
-            Carnet de hincha · Fútbol chileno
-          </p>
-          <h1>¿Eres cábala o yeta?</h1>
-          <p className="lead">
-            Marca los partidos a los que fuiste al estadio y descubre si tu club gana más cuando estás en la galería.
-            Con {summary.matches.toLocaleString("es-CL")} partidos reales desde {summary.firstSeason ?? "2000"}.
-          </p>
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <p className="display hero-kicker">Carnet de hincha · Fútbol chileno</p>
+            <h1>¿Eres cábala o yeta?</h1>
+            <p className="lead">
+              Marca los partidos a los que fuiste al estadio y recibe tu carnet con el Mufómetro, tus goleadores, tus
+              clásicos y tu resumen del año. Con {summary.matches.toLocaleString("es-CL")} partidos reales desde{" "}
+              {summary.firstSeason ?? "1997"}.
+            </p>
+            {!user && (
+              <div className="row" style={{ marginTop: 22 }}>
+                <a className="btn btn-light" href="#elige-tu-club">Crear mi carnet gratis</a>
+                <a className="btn hero-ghost" href="#que-veras">Ver qué incluye</a>
+              </div>
+            )}
+            <ul className="hero-proof">
+              <li><b>{summary.matches.toLocaleString("es-CL")}</b> partidos</li>
+              <li><b>{summary.teams}</b> clubes</li>
+              <li><b>+8.000</b> con goleadores</li>
+            </ul>
+          </div>
+          <LandingPreview />
+        </div>
+      </section>
 
+      <section className="pitch bleed pick-section" id="elige-tu-club">
+        <div className="container">
+          <h2 className="display pick-title">{user ? "Sigue con tu carnet" : "Elige tu club y parte"}</h2>
           {user ? (
             <div className="row" style={{ marginTop: 24 }}>
               <Link className="btn btn-light" href="/carnet">
@@ -142,6 +161,30 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
         </div>
       </section>
 
+      <section className="section" id="que-veras">
+        <p className="lp-eyebrow">Lo que vas a ver</p>
+        <h2 className="lp-h2">Mucho más que un carnet</h2>
+        <div className="grid grid-3">
+          {FEATURES.map((f) => (
+            <div key={f.title} className="card feat">
+              <div className="feat-ico" aria-hidden="true">{f.icon}</div>
+              <h3>{f.title}</h3>
+              <p className="muted" style={{ margin: 0 }}>{f.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section steps">
+        <p className="lp-eyebrow">Así de simple</p>
+        <h2 className="lp-h2">Tu carnet en tres pasos</h2>
+        <ol className="steps-list">
+          <li><span>1</span><div><h3>Elige tu club</h3><p className="muted">Crea tu cuenta en un minuto y el sitio se viste con los colores de tu equipo.</p></div></li>
+          <li><span>2</span><div><h3>Marca tus partidos</h3><p className="muted">A mano, o sube una captura de tus entradas de PuntoTicket y los marcamos solos.</p></div></li>
+          <li><span>3</span><div><h3>Descubre tu carnet</h3><p className="muted">Mufómetro, ídolos y verdugos, derrotas históricas, gráficos y tu resumen anual para compartir.</p></div></li>
+        </ol>
+      </section>
+
       <section className="grid grid-4 section">
         <div className="card stat">
           <span className="stat-value">{summary.matches.toLocaleString("es-CL")}</span>
@@ -163,23 +206,6 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
         </div>
       </section>
 
-      <section className="section">
-        <h2 className="section-title">Cómo funciona</h2>
-        <div className="grid grid-3">
-          {FEATURES.map((f) => (
-            <div key={f.title} className="card">
-              <div className="display" style={{ color: "var(--accent)", fontSize: "1.6rem", marginBottom: 4 }}>
-                {f.n}
-              </div>
-              <h3>{f.title}</h3>
-              <p className="muted" style={{ margin: 0 }}>
-                {f.text}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {clubs.length > 0 && (
         <section className="section card">
           <h2 className="section-title">Las hinchadas que más marcan</h2>
@@ -194,6 +220,16 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               </li>
             ))}
           </ol>
+        </section>
+      )}
+
+      {!user && (
+        <section className="pitch bleed final-cta">
+          <div className="container">
+            <h2>¿Cábala o yeta? Descúbrelo hoy</h2>
+            <p className="lead">Es gratis y toma un minuto. Solo para entretención.</p>
+            <a className="btn btn-light" href="#elige-tu-club">Crear mi carnet</a>
+          </div>
         </section>
       )}
     </>
