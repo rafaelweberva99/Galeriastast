@@ -5,6 +5,8 @@ export interface ScorerTally {
   player: string;
   /** Equipo para el que hizo los goles (en autogoles, el equipo del jugador). */
   teamId: string;
+  /** Todos los clubes con los que le marcó (verdugos que jugaron en varios clubes), del más reciente al más antiguo. */
+  teamIds: string[];
   goals: number;
   penalties: number;
   /** Partidos distintos en que marcó. */
@@ -49,12 +51,17 @@ interface MatchMeta {
   margin: number;
 }
 
-function tally(entries: { goal: Goal; scorerTeam: string }[], meta: Map<string, MatchMeta>, decisiveWhen: "win" | "loss"): ScorerTally[] {
-  const by = new Map<string, { t: ScorerTally; perMatch: Map<string, number> }>();
+/**
+ * `mergeClubs`: un mismo jugador que anotó con distintos clubes se cuenta una sola vez (así un verdugo que pasó por
+ * varios equipos suma todos sus goles contra tu club). Sin eso, cada club lo partiría en filas separadas.
+ */
+function tally(entries: { goal: Goal; scorerTeam: string }[], meta: Map<string, MatchMeta>, decisiveWhen: "win" | "loss", mergeClubs = false): ScorerTally[] {
+  const by = new Map<string, { t: ScorerTally; perMatch: Map<string, number>; clubs: Map<string, string> }>();
   for (const { goal, scorerTeam } of entries) {
-    const key = `${goal.player}|${scorerTeam}`;
+    const key = mergeClubs ? goal.player : `${goal.player}|${scorerTeam}`;
     const e = by.get(key) ?? {
-      t: { player: goal.player, teamId: scorerTeam, goals: 0, penalties: 0, matches: 0, hatTricks: 0, decisive: 0, lastDate: "", games: [] },
+      clubs: new Map<string, string>(),
+      t: { player: goal.player, teamId: scorerTeam, teamIds: [scorerTeam], goals: 0, penalties: 0, matches: 0, hatTricks: 0, decisive: 0, lastDate: "", games: [] },
       perMatch: new Map<string, number>(),
     };
     const m = meta.get(goal.matchId);
@@ -62,20 +69,27 @@ function tally(entries: { goal: Goal; scorerTeam: string }[], meta: Map<string, 
     if (goal.penalty) e.t.penalties++;
     if (m && (decisiveWhen === "win" ? m.margin > 0 : m.margin < 0)) e.t.decisive++;
     if (m && m.date > e.t.lastDate) e.t.lastDate = m.date;
+    if (m && m.date > (e.clubs.get(scorerTeam) ?? "")) e.clubs.set(scorerTeam, m.date);
+    else if (!e.clubs.has(scorerTeam)) e.clubs.set(scorerTeam, "");
     e.perMatch.set(goal.matchId, (e.perMatch.get(goal.matchId) ?? 0) + 1);
     by.set(key, e);
   }
   // Primero goles y hat-tricks; si siguen empatados pesa lo que más le dolió (o alegró) al hincha, luego en cuántos
   // partidos marcó y el más reciente. El nombre solo desempata al final, para que el orden sea estable.
   return [...by.values()]
-    .map(({ t, perMatch }) => ({
-      ...t,
-      games: [...perMatch]
-        .map(([matchId, goals]) => ({ matchId, goals, date: meta.get(matchId)?.date ?? "", label: meta.get(matchId)?.label ?? matchId }))
-        .sort((a, b) => b.date.localeCompare(a.date)),
-      matches: perMatch.size,
-      hatTricks: [...perMatch.values()].filter((n) => n >= 3).length,
-    }))
+    .map(({ t, perMatch, clubs }) => {
+      const order = [...clubs].sort((x, y) => y[1].localeCompare(x[1])).map(([id]) => id);
+      return {
+        ...t,
+        teamId: order[0] ?? t.teamId,
+        teamIds: order.length ? order : t.teamIds,
+        games: [...perMatch]
+          .map(([matchId, goals]) => ({ matchId, goals, date: meta.get(matchId)?.date ?? "", label: meta.get(matchId)?.label ?? matchId }))
+          .sort((x, y) => y.date.localeCompare(x.date)),
+        matches: perMatch.size,
+        hatTricks: [...perMatch.values()].filter((n) => n >= 3).length,
+      };
+    })
     .sort(
       (a, b) =>
         b.goals - a.goals ||
@@ -154,7 +168,7 @@ export function scorersSeen(attended: Match[], goalsByMatch: Map<string, Goal[]>
     goalsFor,
     goalsAgainst,
     idols: tally(forEntries, meta, "win"),
-    executioners: tally(againstEntries, meta, "loss"),
+    executioners: tally(againstEntries, meta, "loss", true),
     ownGoals: ownGoals.sort((a, b) => b.match.date.localeCompare(a.match.date)),
   };
 }

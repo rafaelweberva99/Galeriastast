@@ -31,10 +31,10 @@ export function ScorerTable({ rows, teamNames, showTeam }: { rows: ScorerTally[]
           </thead>
           <tbody>
             {shown.map((s, i) => {
-              const key = `${s.player}|${s.teamId}`;
+              const key = `${s.player}|${s.teamIds.join(",")}`;
               const isOpen = open === key;
               return (
-                <ScorerRow key={key} s={s} rank={i + 1} isOpen={isOpen} onToggle={() => setOpen(isOpen ? null : key)} team={showTeam ? teamNames[s.teamId] ?? s.teamId : null} />
+                <ScorerRow key={key} s={s} rank={i + 1} isOpen={isOpen} onToggle={() => setOpen(isOpen ? null : key)} team={showTeam ? s.teamIds.map((id) => teamNames[id] ?? id).join(" · ") : null} />
               );
             })}
           </tbody>

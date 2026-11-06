@@ -47,6 +47,21 @@ describe("scorersSeen", () => {
     expect(r.idols.find((s) => s.player === "Pérez")).toBeUndefined();
   });
 
+  it("suma como un solo verdugo al jugador que anotó con distintos clubes", () => {
+    const a = match({ id: "a", date: "2015-03-01", homeTeamId: CC, awayTeamId: "santiago-morning", homeGoals: 0, awayGoals: 1 });
+    const b = match({ id: "b", date: "2018-05-01", homeTeamId: CC, awayTeamId: "cobreloa", homeGoals: 0, awayGoals: 2 });
+    const r = scorersSeen(
+      [a, b],
+      new Map([
+        ["a", [g("a", "santiago-morning", "Esteban Rivero", 10)]],
+        ["b", [g("b", "cobreloa", "Esteban Rivero", 20), g("b", "cobreloa", "Esteban Rivero", 70)]],
+      ]),
+      CC,
+    );
+    expect(r.executioners).toHaveLength(1);
+    expect(r.executioners[0]).toMatchObject({ player: "Esteban Rivero", goals: 3, matches: 2, teamId: "cobreloa", teamIds: ["cobreloa", "santiago-morning"] });
+  });
+
   it("no cuenta como dato un partido sin lista de goles cargada", () => {
     const empate = match({ id: "m4", homeTeamId: CC, awayTeamId: U, homeGoals: 0, awayGoals: 0 });
     expect(scorersSeen([empate], new Map(), CC).matchesWithGoals).toBe(0);
