@@ -29,7 +29,7 @@ export function GoalsSection({
   coverage: GoalCoverage;
   phase: MatchPhase;
 }) {
-  if (phase === "suspendido") return null;
+  if (phase === "suspendido" || phase === "pendiente") return null;
   const total = (m.homeGoals ?? 0) + (m.awayGoals ?? 0);
   return (
     <section className="card">

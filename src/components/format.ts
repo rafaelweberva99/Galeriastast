@@ -12,7 +12,11 @@ export function pct(value: number | null, digits = 0): string {
 
 /** Partido sin marcador: "vs" si está por jugarse, "s/r" si ya pasó (suspendido y nunca terminado). */
 export function noResult(m: Match): string {
-  return m.date < new Date().toISOString().slice(0, 10) ? "susp." : "vs";
+  const today = new Date().toISOString().slice(0, 10);
+  if (m.date >= today) return "vs";
+  // Se jugó hace pocos días y aún no cargamos el marcador: no es "suspendido".
+  const days = Math.round((Date.parse(today) - Date.parse(m.date)) / 86_400_000);
+  return days <= 3 ? "pend." : "susp.";
 }
 
 export function scoreLine(m: Match): string {

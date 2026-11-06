@@ -5,15 +5,19 @@
 import type { Goal, Match, Outcome } from "./types.ts";
 import { fanEffectiveness, type FanLine, mean, MIN_COMMUNITY_FANS, privacyGate } from "./community.ts";
 
-export type MatchPhase = "futuro" | "jugado" | "suspendido";
+export type MatchPhase = "futuro" | "jugado" | "pendiente" | "suspendido";
+
+/** Días tras los cuales un partido sin marcador deja de ser "resultado por confirmar" y pasa a "suspendido". */
+export const PENDING_DAYS = 3;
 
 const hasScore = (m: Pick<Match, "homeGoals" | "awayGoals">) => m.homeGoals !== null && m.awayGoals !== null;
 
-/** Futuro = hoy o después y sin marcador; suspendido = ya pasó, sin marcador ni penales. */
+/** Futuro = hoy o después y sin marcador; pendiente = se jugó hace pocos días y falta cargar el marcador; suspendido = ya pasó hace tiempo, sin marcador ni penales. */
 export function matchPhase(m: Pick<Match, "date" | "homeGoals" | "awayGoals" | "homePens">, today: string): MatchPhase {
   if (hasScore(m)) return "jugado";
   if (m.date >= today) return "futuro";
-  return m.homePens !== null ? "jugado" : "suspendido";
+  if (m.homePens !== null) return "jugado";
+  return daysUntil(m.date, today) >= -PENDING_DAYS ? "pendiente" : "suspendido";
 }
 
 /** Días de calendario entre dos fechas ISO (0 = hoy). */
@@ -36,6 +40,7 @@ export function matchTitle(m: Match, home: string, away: string): string {
 export function matchDescription(m: Match, home: string, away: string, phase: MatchPhase): string {
   const when = `${m.date}`;
   if (phase === "futuro") return `Próximo partido: ${home} vs ${away} (${m.competitionName}, ${when}). Mira la historia entre ambos y qué dice la hinchada.`;
+  if (phase === "pendiente") return `${home} vs ${away} (${m.competitionName}, ${when}): el partido ya se jugó y estamos esperando el marcador oficial.`;
   if (phase === "suspendido") return `${home} vs ${away} (${m.competitionName}, ${when}): partido suspendido. Historial entre ambos y la hinchada.`;
   const pens = m.homePens !== null ? ` (${m.homePens}-${m.awayPens} en penales)` : "";
   return `${home} ${m.homeGoals}-${m.awayGoals} ${away}${pens}, ${m.competitionName} ${when}. Goles, historial entre ambos y lo que dice la hinchada.`;

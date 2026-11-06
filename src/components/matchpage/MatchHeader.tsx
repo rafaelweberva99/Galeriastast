@@ -94,6 +94,9 @@ export function MatchHeader({
           <span className="muted small">Las fechas pueden cambiar: la ANFP programa fecha a fecha.</span>
         </div>
       )}
+      {phase === "pendiente" && (
+        <p className="mp-susp">Resultado por confirmar: el partido ya se jugó y estamos cargando el marcador. Si fuiste, márcalo igual.</p>
+      )}
       {phase === "suspendido" && (
         <p className="mp-susp">
           Suspendido: cuenta como asistencia, no para el Mufómetro. Si fuiste, márcalo igual.
