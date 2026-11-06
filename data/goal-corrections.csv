@@ -65,3 +65,1243 @@ match_id,date,home_team_id,away_team_id,scoring_team_id,player,minute,own_goal,p
 2026-08-23_universidad-de-chile_colo-colo,2026-08-23,universidad-de-chile,colo-colo,colo-colo,Álvaro Madrid,29,0,0,ESPN + TheClinic/Pauta
 2026-08-23_universidad-de-chile_colo-colo,2026-08-23,universidad-de-chile,colo-colo,universidad-de-chile,Charles Aránguiz,45,0,1,ESPN + TheClinic/Pauta
 2026-08-23_universidad-de-chile_colo-colo,2026-08-23,universidad-de-chile,colo-colo,colo-colo,Javier Correa,53,0,0,ESPN + TheClinic/Pauta
+2002-02-06_cobreloa_sao-caetano-sp-bra,2002-02-06,cobreloa,sao-caetano-sp-bra,cobreloa,Cristián Gómez,45,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-06_cobreloa_sao-caetano-sp-bra,2002-02-06,cobreloa,sao-caetano-sp-bra,cobreloa,Mauricio Dinamarca,67,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-06_cobreloa_sao-caetano-sp-bra,2002-02-06,cobreloa,sao-caetano-sp-bra,sao-caetano-sp-bra,Wagner,56,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-14_flamengo-rj-bra_universidad-catolica,2002-02-14,flamengo-rj-bra,universidad-catolica,flamengo-rj-bra,Felipe Mello,27,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-14_flamengo-rj-bra_universidad-catolica,2002-02-14,flamengo-rj-bra,universidad-catolica,universidad-catolica,Miguel Ramírez,48,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-14_flamengo-rj-bra_universidad-catolica,2002-02-14,flamengo-rj-bra,universidad-catolica,universidad-catolica,Arturo Norambuena,51,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-14_flamengo-rj-bra_universidad-catolica,2002-02-14,flamengo-rj-bra,universidad-catolica,universidad-catolica,Milovan Mirosevic,84,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-19_cerro-porteno-par_cobreloa,2002-02-19,cerro-porteno-par,cobreloa,cerro-porteno-par,César Ramirez,19,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-19_cerro-porteno-par_cobreloa,2002-02-19,cerro-porteno-par,cobreloa,cerro-porteno-par,César Ramirez,80,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-19_cerro-porteno-par_cobreloa,2002-02-19,cerro-porteno-par,cobreloa,cerro-porteno-par,Francisco Ferreira,39,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-19_santiago-wanderers_montevideo-wanderers-uru,2002-02-19,santiago-wanderers,montevideo-wanderers-uru,santiago-wanderers,Cristián Gálvez,41,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-19_santiago-wanderers_montevideo-wanderers-uru,2002-02-19,santiago-wanderers,montevideo-wanderers-uru,montevideo-wanderers-uru,Sergio Blanco,90,0,1,https://rsssf.org/sacups/copa02.html
+2002-02-23_universidad-de-chile_union-san-felipe,2002-02-23,universidad-de-chile,union-san-felipe,universidad-de-chile,Luis Rueda,69,0,0,https://rsssf.org/tablesc/chile02.html
+2002-02-23_universidad-de-chile_union-san-felipe,2002-02-23,universidad-de-chile,union-san-felipe,universidad-de-chile,Pedro González,75,0,0,https://rsssf.org/tablesc/chile02.html
+2002-02-24_universidad-catolica_colo-colo,2002-02-24,universidad-catolica,colo-colo,universidad-catolica,Miguel Ramírez,31,0,0,https://rsssf.org/tablesc/chile02.html
+2002-02-24_universidad-catolica_colo-colo,2002-02-24,universidad-catolica,colo-colo,universidad-catolica,Miguel Ramírez,78,0,1,https://rsssf.org/tablesc/chile02.html
+2002-02-24_universidad-catolica_colo-colo,2002-02-24,universidad-catolica,colo-colo,universidad-catolica,Jorge Campos,70,0,0,https://rsssf.org/tablesc/chile02.html
+2002-02-24_universidad-catolica_colo-colo,2002-02-24,universidad-catolica,colo-colo,colo-colo,Sebastián González,90,0,0,https://rsssf.org/tablesc/chile02.html
+2002-02-26_cobreloa_alianza-lima-per,2002-02-26,cobreloa,alianza-lima-per,cobreloa,Cristián Gómez,2,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-26_cobreloa_alianza-lima-per,2002-02-26,cobreloa,alianza-lima-per,cobreloa,Juan Carlos Madrid,58,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-26_cobreloa_alianza-lima-per,2002-02-26,cobreloa,alianza-lima-per,cobreloa,Fernando Cornejo,63,0,1,https://rsssf.org/sacups/copa02.html
+2002-02-26_cobreloa_alianza-lima-per,2002-02-26,cobreloa,alianza-lima-per,cobreloa,Patricio Galaz,65,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-26_cobreloa_alianza-lima-per,2002-02-26,cobreloa,alianza-lima-per,cobreloa,Patricio Galaz,73,0,0,https://rsssf.org/sacups/copa02.html
+2002-02-27_universidad-catolica_club-olimpia-par,2002-02-27,universidad-catolica,club-olimpia-par,club-olimpia-par,Juan Carlos Franco,25,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-06_emelec-ecu_santiago-wanderers,2002-03-06,emelec-ecu,santiago-wanderers,emelec-ecu,Carlos Juárez,68,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-06_emelec-ecu_santiago-wanderers,2002-03-06,emelec-ecu,santiago-wanderers,santiago-wanderers,Jaime Riveros,75,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-07_once-caldas-col_universidad-catolica,2002-03-07,once-caldas-col,universidad-catolica,once-caldas-col,Léider Preciado,13,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-07_once-caldas-col_universidad-catolica,2002-03-07,once-caldas-col,universidad-catolica,once-caldas-col,Raúl Marín,90,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-07_once-caldas-col_universidad-catolica,2002-03-07,once-caldas-col,universidad-catolica,once-caldas-col,Raúl Marín,92,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-10_universidad-catolica_santiago-morning,2002-03-10,universidad-catolica,santiago-morning,universidad-catolica,Milovan Mirosevic,31,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-10_universidad-catolica_santiago-morning,2002-03-10,universidad-catolica,santiago-morning,universidad-catolica,Arturo Norambuena,61,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-10_universidad-catolica_santiago-morning,2002-03-10,universidad-catolica,santiago-morning,santiago-morning,Carlos Cáceres,50,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-10_universidad-catolica_santiago-morning,2002-03-10,universidad-catolica,santiago-morning,santiago-morning,Carlos Cáceres,70,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-10_universidad-catolica_santiago-morning,2002-03-10,universidad-catolica,santiago-morning,santiago-morning,Franco Quiroz,75,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-10_universidad-de-chile_huachipato,2002-03-10,universidad-de-chile,huachipato,universidad-de-chile,Sebastián Pardo,4,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-10_universidad-de-chile_huachipato,2002-03-10,universidad-de-chile,huachipato,universidad-de-chile,Gamadiel García,38,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-10_universidad-de-chile_huachipato,2002-03-10,universidad-de-chile,huachipato,universidad-de-chile,César Henríquez,94,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-10_universidad-de-chile_huachipato,2002-03-10,universidad-de-chile,huachipato,huachipato,Sergio Gioino,21,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-10_universidad-de-chile_huachipato,2002-03-10,universidad-de-chile,huachipato,huachipato,Sergio Gioino,33,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-13_universidad-catolica_flamengo-rj-bra,2002-03-13,universidad-catolica,flamengo-rj-bra,universidad-catolica,Milovan Mirosevic,20,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-13_universidad-catolica_flamengo-rj-bra,2002-03-13,universidad-catolica,flamengo-rj-bra,universidad-catolica,Miguel Ramírez,64,0,1,https://rsssf.org/sacups/copa02.html
+2002-03-13_universidad-catolica_flamengo-rj-bra,2002-03-13,universidad-catolica,flamengo-rj-bra,flamengo-rj-bra,Felipe Mello,4,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-14_sao-caetano-sp-bra_cobreloa,2002-03-14,sao-caetano-sp-bra,cobreloa,sao-caetano-sp-bra,Brandão,24,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-14_sao-caetano-sp-bra_cobreloa,2002-03-14,sao-caetano-sp-bra,cobreloa,sao-caetano-sp-bra,Wagner,72,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-14_sao-caetano-sp-bra_cobreloa,2002-03-14,sao-caetano-sp-bra,cobreloa,sao-caetano-sp-bra,Cristián Gómez,76,1,0,https://rsssf.org/sacups/copa02.html
+2002-03-14_santiago-wanderers_boca-juniors-arg,2002-03-14,santiago-wanderers,boca-juniors-arg,santiago-wanderers,Silvio Fernández,47,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-20_montevideo-wanderers-uru_santiago-wanderers,2002-03-20,montevideo-wanderers-uru,santiago-wanderers,montevideo-wanderers-uru,Sebastián Eguren,30,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-20_montevideo-wanderers-uru_santiago-wanderers,2002-03-20,montevideo-wanderers-uru,santiago-wanderers,montevideo-wanderers-uru,Silvio Fernández,55,1,0,https://rsssf.org/sacups/copa02.html
+2002-03-20_montevideo-wanderers-uru_santiago-wanderers,2002-03-20,montevideo-wanderers-uru,santiago-wanderers,montevideo-wanderers-uru,Sergio Blanco,75,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-20_montevideo-wanderers-uru_santiago-wanderers,2002-03-20,montevideo-wanderers-uru,santiago-wanderers,santiago-wanderers,Héctor Robles,80,0,0,https://rsssf.org/sacups/copa02.html
+2002-03-23_universidad-catolica_union-san-felipe,2002-03-23,universidad-catolica,union-san-felipe,universidad-catolica,Arturo Norambuena,78,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-23_universidad-catolica_union-san-felipe,2002-03-23,universidad-catolica,union-san-felipe,universidad-catolica,Milovan Mirosevic,83,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-23_universidad-catolica_union-san-felipe,2002-03-23,universidad-catolica,union-san-felipe,union-san-felipe,Fabrizio Martelossi,60,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-30_universidad-de-chile_union-espanola,2002-03-30,universidad-de-chile,union-espanola,universidad-de-chile,Luis Rueda,70,0,0,https://rsssf.org/tablesc/chile02.html
+2002-03-30_universidad-de-chile_union-espanola,2002-03-30,universidad-de-chile,union-espanola,universidad-de-chile,Pedro González,79,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-02_club-olimpia-par_universidad-catolica,2002-04-02,club-olimpia-par,universidad-catolica,club-olimpia-par,Carlos Estigarribia,76,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-02_club-olimpia-par_universidad-catolica,2002-04-02,club-olimpia-par,universidad-catolica,universidad-catolica,Eduardo Arancibia,62,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-04_cobreloa_cerro-porteno-par,2002-04-04,cobreloa,cerro-porteno-par,cobreloa,Patricio Galaz,37,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-04_cobreloa_cerro-porteno-par,2002-04-04,cobreloa,cerro-porteno-par,cobreloa,Mauricio Dinamarca,54,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-04_cobreloa_cerro-porteno-par,2002-04-04,cobreloa,cerro-porteno-par,cobreloa,Osvaldo Canobbio,90,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-06_universidad-catolica_huachipato,2002-04-06,universidad-catolica,huachipato,universidad-catolica,Daniel Pérez,40,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-06_universidad-catolica_huachipato,2002-04-06,universidad-catolica,huachipato,universidad-catolica,Miguel Ramírez,85,0,1,https://rsssf.org/tablesc/chile02.html
+2002-04-06_universidad-catolica_huachipato,2002-04-06,universidad-catolica,huachipato,huachipato,Manuel López,61,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-06_universidad-catolica_huachipato,2002-04-06,universidad-catolica,huachipato,huachipato,Mauricio Torrico,78,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-10_alianza-lima-per_cobreloa,2002-04-10,alianza-lima-per,cobreloa,alianza-lima-per,Wilmer Aguirre,75,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-10_alianza-lima-per_cobreloa,2002-04-10,alianza-lima-per,cobreloa,cobreloa,Mauricio Dinamarca,69,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-10_alianza-lima-per_cobreloa,2002-04-10,alianza-lima-per,cobreloa,cobreloa,Osvaldo Canobbio,87,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-10_santiago-wanderers_emelec-ecu,2002-04-10,santiago-wanderers,emelec-ecu,santiago-wanderers,Silvio Fernández,49,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-10_santiago-wanderers_emelec-ecu,2002-04-10,santiago-wanderers,emelec-ecu,santiago-wanderers,Luis Zambrano,84,1,0,https://rsssf.org/sacups/copa02.html
+2002-04-10_santiago-wanderers_emelec-ecu,2002-04-10,santiago-wanderers,emelec-ecu,emelec-ecu,Pavel Caicedo,56,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-10_universidad-catolica_once-caldas-col,2002-04-10,universidad-catolica,once-caldas-col,universidad-catolica,Daniel Pérez,29,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-10_universidad-catolica_once-caldas-col,2002-04-10,universidad-catolica,once-caldas-col,universidad-catolica,Iván Gabrich,58,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-10_universidad-catolica_once-caldas-col,2002-04-10,universidad-catolica,once-caldas-col,universidad-catolica,Arturo Norambuena,78,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-10_universidad-catolica_once-caldas-col,2002-04-10,universidad-catolica,once-caldas-col,once-caldas-col,Sergio Galván,45,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-14_universidad-de-chile_universidad-catolica,2002-04-14,universidad-de-chile,universidad-catolica,universidad-de-chile,César Henríquez,3,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-14_universidad-de-chile_universidad-catolica,2002-04-14,universidad-de-chile,universidad-catolica,universidad-catolica,Rodrigo Barrera,46,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-21_universidad-catolica_cobresal,2002-04-21,universidad-catolica,cobresal,universidad-catolica,Miguel Ponce,15,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-21_universidad-catolica_cobresal,2002-04-21,universidad-catolica,cobresal,universidad-catolica,Arturo Norambuena,18,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-21_universidad-catolica_cobresal,2002-04-21,universidad-catolica,cobresal,universidad-catolica,Arturo Norambuena,74,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-21_universidad-catolica_cobresal,2002-04-21,universidad-catolica,cobresal,universidad-catolica,Rodrigo Barrera,53,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-21_universidad-catolica_cobresal,2002-04-21,universidad-catolica,cobresal,universidad-catolica,Milovan Mirosevic,60,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-21_universidad-catolica_cobresal,2002-04-21,universidad-catolica,cobresal,universidad-catolica,Iván Gabrich,66,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-21_universidad-catolica_cobresal,2002-04-21,universidad-catolica,cobresal,universidad-catolica,Mauricio Segovia,90,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-25_universidad-catolica_sao-caetano-sp-bra,2002-04-25,universidad-catolica,sao-caetano-sp-bra,universidad-catolica,Jorge Campos,29,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-25_universidad-catolica_sao-caetano-sp-bra,2002-04-25,universidad-catolica,sao-caetano-sp-bra,sao-caetano-sp-bra,Anailson,9,0,0,https://rsssf.org/sacups/copa02.html
+2002-04-28_universidad-de-chile_cobreloa,2002-04-28,universidad-de-chile,cobreloa,universidad-de-chile,Nelson Pinto,1,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-28_universidad-de-chile_cobreloa,2002-04-28,universidad-de-chile,cobreloa,universidad-de-chile,Sebastián Pardo,51,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-28_universidad-de-chile_cobreloa,2002-04-28,universidad-de-chile,cobreloa,universidad-de-chile,Alex Von Schwedler,58,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-28_universidad-de-chile_cobreloa,2002-04-28,universidad-de-chile,cobreloa,universidad-de-chile,Pedro González,78,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-28_universidad-de-chile_cobreloa,2002-04-28,universidad-de-chile,cobreloa,cobreloa,Osvaldo Canobbio,45,0,0,https://rsssf.org/tablesc/chile02.html
+2002-04-28_universidad-de-chile_cobreloa,2002-04-28,universidad-de-chile,cobreloa,cobreloa,John Valladares,53,1,0,https://rsssf.org/tablesc/chile02.html
+2002-05-01_sao-caetano-sp-bra_universidad-catolica,2002-05-01,sao-caetano-sp-bra,universidad-catolica,sao-caetano-sp-bra,Brandão,44,0,0,https://rsssf.org/sacups/copa02.html
+2002-05-01_sao-caetano-sp-bra_universidad-catolica,2002-05-01,sao-caetano-sp-bra,universidad-catolica,universidad-catolica,Arturo Norambuena,51,0,0,https://rsssf.org/sacups/copa02.html
+2002-05-02_club-olimpia-par_cobreloa,2002-05-02,club-olimpia-par,cobreloa,club-olimpia-par,Miguel Ángel Benítez,24,0,0,https://rsssf.org/sacups/copa02.html
+2002-05-02_club-olimpia-par_cobreloa,2002-05-02,club-olimpia-par,cobreloa,club-olimpia-par,Richart Báez,45,0,0,https://rsssf.org/sacups/copa02.html
+2002-05-02_club-olimpia-par_cobreloa,2002-05-02,club-olimpia-par,cobreloa,cobreloa,Osvaldo Canobbio,48,0,0,https://rsssf.org/sacups/copa02.html
+2002-05-05_universidad-catolica_coquimbo-unido,2002-05-05,universidad-catolica,coquimbo-unido,universidad-catolica,Rodrigo Barrera,14,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-05_universidad-catolica_coquimbo-unido,2002-05-05,universidad-catolica,coquimbo-unido,universidad-catolica,Pablo Lenci,26,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-05_universidad-catolica_coquimbo-unido,2002-05-05,universidad-catolica,coquimbo-unido,universidad-catolica,Milovan Mirosevic,55,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-05_universidad-catolica_coquimbo-unido,2002-05-05,universidad-catolica,coquimbo-unido,universidad-catolica,Milovan Mirosevic,62,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-05_universidad-catolica_coquimbo-unido,2002-05-05,universidad-catolica,coquimbo-unido,universidad-catolica,Jorge Campos,86,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-11_universidad-de-chile_colo-colo,2002-05-11,universidad-de-chile,colo-colo,colo-colo,Luis Ignacio Quinteros,9,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-11_universidad-de-chile_colo-colo,2002-05-11,universidad-de-chile,colo-colo,colo-colo,Francisco Huaiquipán,54,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-11_universidad-de-chile_colo-colo,2002-05-11,universidad-de-chile,colo-colo,colo-colo,Francisco Huaiquipán,88,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-27_universidad-catolica_cobreloa,2002-05-27,universidad-catolica,cobreloa,universidad-catolica,Daniel Pérez,31,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-27_universidad-catolica_cobreloa,2002-05-27,universidad-catolica,cobreloa,universidad-catolica,Arturo Norambuena,51,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-27_universidad-catolica_cobreloa,2002-05-27,universidad-catolica,cobreloa,universidad-catolica,Arturo Norambuena,62,0,1,https://rsssf.org/tablesc/chile02.html
+2002-05-27_universidad-catolica_cobreloa,2002-05-27,universidad-catolica,cobreloa,cobreloa,Mauricio Dinamarca,27,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-27_universidad-catolica_cobreloa,2002-05-27,universidad-catolica,cobreloa,cobreloa,Fernando Cornejo,72,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-27_universidad-catolica_cobreloa,2002-05-27,universidad-catolica,cobreloa,cobreloa,Albert Acevedo,85,1,0,https://rsssf.org/tablesc/chile02.html
+2002-05-28_universidad-de-chile_santiago-morning,2002-05-28,universidad-de-chile,santiago-morning,universidad-de-chile,Marcelo Corrales,63,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-28_universidad-de-chile_santiago-morning,2002-05-28,universidad-de-chile,santiago-morning,universidad-de-chile,Waldo Ponce,80,0,0,https://rsssf.org/tablesc/chile02.html
+2002-05-28_universidad-de-chile_santiago-morning,2002-05-28,universidad-de-chile,santiago-morning,santiago-morning,Francisco Cañete,38,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-08_universidad-de-chile_union-san-felipe,2002-06-08,universidad-de-chile,union-san-felipe,universidad-de-chile,Gamadiel García,5,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-08_universidad-de-chile_union-san-felipe,2002-06-08,universidad-de-chile,union-san-felipe,universidad-de-chile,Luis Rueda,25,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-08_universidad-de-chile_union-san-felipe,2002-06-08,universidad-de-chile,union-san-felipe,universidad-de-chile,Luis Rueda,27,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-08_universidad-de-chile_union-san-felipe,2002-06-08,universidad-de-chile,union-san-felipe,universidad-de-chile,Luis Rueda,50,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-08_universidad-de-chile_union-san-felipe,2002-06-08,universidad-de-chile,union-san-felipe,universidad-de-chile,Luis Rueda,106,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-08_universidad-de-chile_union-san-felipe,2002-06-08,universidad-de-chile,union-san-felipe,universidad-de-chile,Mauricio Pinilla,68,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-08_universidad-de-chile_union-san-felipe,2002-06-08,universidad-de-chile,union-san-felipe,union-san-felipe,Carlos Barraza,19,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-09_universidad-catolica_huachipato,2002-06-09,universidad-catolica,huachipato,universidad-catolica,Milovan Mirosevic,39,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-09_universidad-catolica_huachipato,2002-06-09,universidad-catolica,huachipato,universidad-catolica,Rodrigo Barrera,71,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-09_universidad-catolica_huachipato,2002-06-09,universidad-catolica,huachipato,universidad-catolica,Iván Gabrich,109,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-15_palestino_rangers,2002-06-15,palestino,rangers,palestino,Oscar Díaz,35,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-15_palestino_rangers,2002-06-15,palestino,rangers,rangers,Luis Díaz,45,0,1,https://rsssf.org/tablesc/chile02.html
+2002-06-15_universidad-catolica_deportes-temuco,2002-06-15,universidad-catolica,deportes-temuco,universidad-catolica,Arturo Norambuena,46,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-15_universidad-catolica_deportes-temuco,2002-06-15,universidad-catolica,deportes-temuco,universidad-catolica,Milovan Mirosevic,85,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-15_universidad-catolica_deportes-temuco,2002-06-15,universidad-catolica,deportes-temuco,deportes-temuco,Hugo Droguett,42,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-15_universidad-catolica_deportes-temuco,2002-06-15,universidad-catolica,deportes-temuco,deportes-temuco,Juan Quiroga,59,0,1,https://rsssf.org/tablesc/chile02.html
+2002-06-16_universidad-de-chile_santiago-wanderers,2002-06-16,universidad-de-chile,santiago-wanderers,universidad-de-chile,Gamadiel García,87,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-16_universidad-de-chile_santiago-wanderers,2002-06-16,universidad-de-chile,santiago-wanderers,universidad-de-chile,Mauricio Pinilla,90,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-16_universidad-de-chile_santiago-wanderers,2002-06-16,universidad-de-chile,santiago-wanderers,santiago-wanderers,Jaime Riveros,36,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-20_universidad-de-chile_universidad-catolica,2002-06-20,universidad-de-chile,universidad-catolica,universidad-de-chile,Luis Rueda,30,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-20_universidad-de-chile_universidad-catolica,2002-06-20,universidad-de-chile,universidad-catolica,universidad-de-chile,Luis Rueda,50,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-20_universidad-de-chile_universidad-catolica,2002-06-20,universidad-de-chile,universidad-catolica,universidad-de-chile,Darío Cabrol,58,0,1,https://rsssf.org/tablesc/chile02.html
+2002-06-20_universidad-de-chile_universidad-catolica,2002-06-20,universidad-de-chile,universidad-catolica,universidad-catolica,Miguel Ramírez,13,0,1,https://rsssf.org/tablesc/chile02.html
+2002-06-20_universidad-de-chile_universidad-catolica,2002-06-20,universidad-de-chile,universidad-catolica,universidad-catolica,Iván Gabrich,76,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-20_universidad-de-chile_universidad-catolica,2002-06-20,universidad-de-chile,universidad-catolica,universidad-catolica,Patricio Ormazábal,87,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-23_universidad-catolica_universidad-de-chile,2002-06-23,universidad-catolica,universidad-de-chile,universidad-catolica,Jorge Campos,6,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-23_universidad-catolica_universidad-de-chile,2002-06-23,universidad-catolica,universidad-de-chile,universidad-catolica,Jorge Campos,87,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-23_universidad-catolica_universidad-de-chile,2002-06-23,universidad-catolica,universidad-de-chile,universidad-de-chile,Pedro González,45,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-30_universidad-catolica_rangers,2002-06-30,universidad-catolica,rangers,universidad-catolica,Arturo Norambuena,45,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-30_universidad-catolica_rangers,2002-06-30,universidad-catolica,rangers,universidad-catolica,Arturo Norambuena,46,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-30_universidad-catolica_rangers,2002-06-30,universidad-catolica,rangers,universidad-catolica,Daniel Pérez,62,0,0,https://rsssf.org/tablesc/chile02.html
+2002-06-30_universidad-catolica_rangers,2002-06-30,universidad-catolica,rangers,universidad-catolica,Milovan Mirosevic,73,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-03_universidad-de-chile_rangers,2002-08-03,universidad-de-chile,rangers,universidad-de-chile,Luis Rueda,8,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-03_universidad-de-chile_rangers,2002-08-03,universidad-de-chile,rangers,universidad-de-chile,Luis Rueda,14,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-03_universidad-de-chile_rangers,2002-08-03,universidad-de-chile,rangers,universidad-de-chile,Pedro González,16,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-03_universidad-de-chile_rangers,2002-08-03,universidad-de-chile,rangers,universidad-de-chile,Mauricio Pinilla,71,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-04_universidad-catolica_deportes-concepcion,2002-08-04,universidad-catolica,deportes-concepcion,universidad-catolica,Iván Gabrich,39,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-04_universidad-catolica_deportes-concepcion,2002-08-04,universidad-catolica,deportes-concepcion,universidad-catolica,Miguel Ramírez,86,0,1,https://rsssf.org/tablesc/chile02.html
+2002-08-04_universidad-catolica_deportes-concepcion,2002-08-04,universidad-catolica,deportes-concepcion,deportes-concepcion,Jorge Torres,10,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-14_cobreloa_cobresal,2002-08-14,cobreloa,cobresal,cobreloa,José Luis Díaz,76,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-14_cobreloa_cobresal,2002-08-14,cobreloa,cobresal,cobreloa,Pascual De Gregorio,78,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-14_cobreloa_cobresal,2002-08-14,cobreloa,cobresal,cobreloa,Pascual De Gregorio,90,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-14_universidad-catolica_union-espanola,2002-08-14,universidad-catolica,union-espanola,universidad-catolica,Jorge Campos,41,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-14_universidad-catolica_union-espanola,2002-08-14,universidad-catolica,union-espanola,universidad-catolica,Arturo Norambuena,100,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-14_universidad-catolica_union-espanola,2002-08-14,universidad-catolica,union-espanola,universidad-catolica,Arturo Norambuena,112,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-14_universidad-catolica_union-espanola,2002-08-14,universidad-catolica,union-espanola,universidad-catolica,Mauricio Segovia,115,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-14_universidad-catolica_union-espanola,2002-08-14,universidad-catolica,union-espanola,union-espanola,Fernando Vergara,60,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-14_universidad-catolica_union-espanola,2002-08-14,universidad-catolica,union-espanola,union-espanola,Moisés Avila,120,0,1,https://rsssf.org/tablesc/chile02.html
+2002-08-18_universidad-catolica_santiago-wanderers,2002-08-18,universidad-catolica,santiago-wanderers,universidad-catolica,Manuel Valencia,45,1,0,https://rsssf.org/tablesc/chile02.html
+2002-08-18_universidad-catolica_santiago-wanderers,2002-08-18,universidad-catolica,santiago-wanderers,universidad-catolica,Arturo Norambuena,75,0,1,https://rsssf.org/tablesc/chile02.html
+2002-08-18_universidad-catolica_santiago-wanderers,2002-08-18,universidad-catolica,santiago-wanderers,santiago-wanderers,Joel Soto,31,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-18_universidad-catolica_santiago-wanderers,2002-08-18,universidad-catolica,santiago-wanderers,santiago-wanderers,Silvio Fernández,71,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-18_universidad-de-chile_deportes-temuco,2002-08-18,universidad-de-chile,deportes-temuco,universidad-de-chile,Pedro González,55,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-18_universidad-de-chile_deportes-temuco,2002-08-18,universidad-de-chile,deportes-temuco,deportes-temuco,Richard Olivares,65,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-18_universidad-de-chile_deportes-temuco,2002-08-18,universidad-de-chile,deportes-temuco,deportes-temuco,Juan Quiroga,93,0,1,https://rsssf.org/tablesc/chile02.html
+2002-08-20_universidad-catolica_union-san-felipe,2002-08-20,universidad-catolica,union-san-felipe,universidad-catolica,Mauricio Segovia,73,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-28_coquimbo-unido_santiago-wanderers,2002-08-28,coquimbo-unido,santiago-wanderers,coquimbo-unido,Ricardo Olivares,1,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-28_coquimbo-unido_santiago-wanderers,2002-08-28,coquimbo-unido,santiago-wanderers,santiago-wanderers,Arturo Sanhueza,80,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-28_coquimbo-unido_santiago-wanderers,2002-08-28,coquimbo-unido,santiago-wanderers,santiago-wanderers,Silvio Fernández,103,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-28_coquimbo-unido_santiago-wanderers,2002-08-28,coquimbo-unido,santiago-wanderers,santiago-wanderers,Silvio Fernández,116,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-28_coquimbo-unido_santiago-wanderers,2002-08-28,coquimbo-unido,santiago-wanderers,santiago-wanderers,Jaime Riveros,111,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-28_universidad-catolica_cobreloa,2002-08-28,universidad-catolica,cobreloa,universidad-catolica,Iván Gabrich,9,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-28_universidad-catolica_cobreloa,2002-08-28,universidad-catolica,cobreloa,universidad-catolica,Iván Gabrich,89,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-28_universidad-catolica_cobreloa,2002-08-28,universidad-catolica,cobreloa,cobreloa,Luis Fuentes,49,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-28_universidad-catolica_cobreloa,2002-08-28,universidad-catolica,cobreloa,cobreloa,Juan Carlos Madrid,71,0,0,https://rsssf.org/tablesc/chile02.html
+2002-08-28_universidad-catolica_cobreloa,2002-08-28,universidad-catolica,cobreloa,cobreloa,Mauricio Dinamarca,88,0,0,https://rsssf.org/tablesc/chile02.html
+2002-09-14_palestino_santiago-morning,2002-09-14,palestino,santiago-morning,santiago-morning,Michel Ríos,56,0,0,https://rsssf.org/tablesc/chile02.html
+2002-09-14_palestino_santiago-morning,2002-09-14,palestino,santiago-morning,santiago-morning,Michel Ríos,69,0,0,https://rsssf.org/tablesc/chile02.html
+2002-09-22_universidad-de-chile_cobresal,2002-09-22,universidad-de-chile,cobresal,universidad-de-chile,Luis Rueda,37,0,0,https://rsssf.org/tablesc/chile02.html
+2002-09-22_universidad-de-chile_cobresal,2002-09-22,universidad-de-chile,cobresal,cobresal,Carlos Cáceres,80,0,0,https://rsssf.org/tablesc/chile02.html
+2002-09-28_universidad-catolica_deportes-temuco,2002-09-28,universidad-catolica,deportes-temuco,universidad-catolica,Iván Gabrich,9,0,0,https://rsssf.org/tablesc/chile02.html
+2002-09-28_universidad-catolica_deportes-temuco,2002-09-28,universidad-catolica,deportes-temuco,universidad-catolica,Iván Gabrich,70,0,0,https://rsssf.org/tablesc/chile02.html
+2002-09-28_universidad-catolica_deportes-temuco,2002-09-28,universidad-catolica,deportes-temuco,universidad-catolica,José Ramón González,34,1,0,https://rsssf.org/tablesc/chile02.html
+2002-09-28_universidad-catolica_deportes-temuco,2002-09-28,universidad-catolica,deportes-temuco,universidad-catolica,Miguel Ramírez,37,0,0,https://rsssf.org/tablesc/chile02.html
+2002-09-28_universidad-catolica_deportes-temuco,2002-09-28,universidad-catolica,deportes-temuco,universidad-catolica,Milovan Mirosevic,55,0,0,https://rsssf.org/tablesc/chile02.html
+2002-09-28_universidad-catolica_deportes-temuco,2002-09-28,universidad-catolica,deportes-temuco,deportes-temuco,Richard Olivares,67,0,0,https://rsssf.org/tablesc/chile02.html
+2002-10-06_universidad-de-chile_coquimbo-unido,2002-10-06,universidad-de-chile,coquimbo-unido,universidad-de-chile,César Henríquez,14,0,0,https://rsssf.org/tablesc/chile02.html
+2002-10-12_universidad-catolica_universidad-de-chile,2002-10-12,universidad-catolica,universidad-de-chile,universidad-catolica,Patricio Ormazábal,35,0,0,https://rsssf.org/tablesc/chile02.html
+2002-10-12_universidad-catolica_universidad-de-chile,2002-10-12,universidad-catolica,universidad-de-chile,universidad-de-chile,Pedro González,13,0,0,https://rsssf.org/tablesc/chile02.html
+2002-10-20_union-san-felipe_colo-colo,2002-10-20,union-san-felipe,colo-colo,union-san-felipe,Paolo Vivar,10,0,0,https://rsssf.org/tablesc/chile02.html
+2002-10-20_union-san-felipe_colo-colo,2002-10-20,union-san-felipe,colo-colo,union-san-felipe,Fabián Muñoz,83,0,0,https://rsssf.org/tablesc/chile02.html
+2002-10-20_universidad-de-chile_palestino,2002-10-20,universidad-de-chile,palestino,universidad-de-chile,Pedro González,45,0,0,https://rsssf.org/tablesc/chile02.html
+2002-10-20_universidad-de-chile_palestino,2002-10-20,universidad-de-chile,palestino,universidad-de-chile,Darío Cabrol,52,0,1,https://rsssf.org/tablesc/chile02.html
+2002-10-20_universidad-de-chile_palestino,2002-10-20,universidad-de-chile,palestino,universidad-de-chile,César Henríquez,73,0,0,https://rsssf.org/tablesc/chile02.html
+2002-10-20_universidad-de-chile_palestino,2002-10-20,universidad-de-chile,palestino,palestino,Esteban Valencia,90,0,1,https://rsssf.org/tablesc/chile02.html
+2002-10-27_universidad-catolica_union-espanola,2002-10-27,universidad-catolica,union-espanola,universidad-catolica,Miguel Ramírez,73,0,0,https://rsssf.org/tablesc/chile02.html
+2002-10-27_universidad-catolica_union-espanola,2002-10-27,universidad-catolica,union-espanola,union-espanola,Moisés Avila,75,0,1,https://rsssf.org/tablesc/chile02.html
+2002-11-02_universidad-de-chile_deportes-concepcion,2002-11-02,universidad-de-chile,deportes-concepcion,universidad-de-chile,Pedro González,35,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-02_universidad-de-chile_deportes-concepcion,2002-11-02,universidad-de-chile,deportes-concepcion,universidad-de-chile,Rafael Olarra,41,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-02_universidad-de-chile_deportes-concepcion,2002-11-02,universidad-de-chile,deportes-concepcion,deportes-concepcion,Jorge Torres,90,0,1,https://rsssf.org/tablesc/chile02.html
+2002-11-09_universidad-catolica_audax-italiano,2002-11-09,universidad-catolica,audax-italiano,universidad-catolica,Milovan Mirosevic,11,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-09_universidad-catolica_audax-italiano,2002-11-09,universidad-catolica,audax-italiano,universidad-catolica,Iván Gabrich,41,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-09_universidad-catolica_audax-italiano,2002-11-09,universidad-catolica,audax-italiano,audax-italiano,Salvador Cabañas,39,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-09_universidad-catolica_audax-italiano,2002-11-09,universidad-catolica,audax-italiano,audax-italiano,Salvador Cabañas,90,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-09_universidad-catolica_audax-italiano,2002-11-09,universidad-catolica,audax-italiano,audax-italiano,Mauricio Cataldo,52,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-16_universidad-catolica_palestino,2002-11-16,universidad-catolica,palestino,universidad-catolica,Milovan Mirosevic,18,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-16_universidad-catolica_palestino,2002-11-16,universidad-catolica,palestino,universidad-catolica,Albert Acevedo,67,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-17_universidad-de-chile_santiago-wanderers,2002-11-17,universidad-de-chile,santiago-wanderers,universidad-de-chile,Darío Cabrol,12,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-17_universidad-de-chile_santiago-wanderers,2002-11-17,universidad-de-chile,santiago-wanderers,universidad-de-chile,Darío Cabrol,63,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-17_universidad-de-chile_santiago-wanderers,2002-11-17,universidad-de-chile,santiago-wanderers,santiago-wanderers,Silvio Fernández,54,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-30_universidad-catolica_coquimbo-unido,2002-11-30,universidad-catolica,coquimbo-unido,universidad-catolica,Arturo Norambuena,30,0,0,https://rsssf.org/tablesc/chile02.html
+2002-11-30_universidad-catolica_coquimbo-unido,2002-11-30,universidad-catolica,coquimbo-unido,universidad-catolica,Jaime González,39,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-01_universidad-de-chile_palestino,2002-12-01,universidad-de-chile,palestino,universidad-de-chile,César Henríquez,3,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-01_universidad-de-chile_palestino,2002-12-01,universidad-de-chile,palestino,universidad-de-chile,Pedro González,38,0,1,https://rsssf.org/tablesc/chile02.html
+2002-12-01_universidad-de-chile_palestino,2002-12-01,universidad-de-chile,palestino,universidad-de-chile,Rafael Olarra,65,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-01_universidad-de-chile_palestino,2002-12-01,universidad-de-chile,palestino,universidad-de-chile,Marcelo Corrales,90,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-01_universidad-de-chile_palestino,2002-12-01,universidad-de-chile,palestino,palestino,Mario Núñez,53,0,1,https://rsssf.org/tablesc/chile02.html
+2002-12-01_universidad-de-chile_palestino,2002-12-01,universidad-de-chile,palestino,palestino,Mario Núñez,62,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-07_universidad-catolica_santiago-wanderers,2002-12-07,universidad-catolica,santiago-wanderers,universidad-catolica,Cristián Alvarez,16,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-07_universidad-catolica_santiago-wanderers,2002-12-07,universidad-catolica,santiago-wanderers,universidad-catolica,Rodrigo Barrera,49,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-07_universidad-catolica_santiago-wanderers,2002-12-07,universidad-catolica,santiago-wanderers,santiago-wanderers,Fernando Martel,46,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-08_universidad-de-chile_huachipato,2002-12-08,universidad-de-chile,huachipato,universidad-de-chile,Mauricio Pinilla,86,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-08_universidad-de-chile_huachipato,2002-12-08,universidad-de-chile,huachipato,huachipato,Luis Ceballos,91,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-15_universidad-de-chile_universidad-catolica,2002-12-15,universidad-de-chile,universidad-catolica,universidad-catolica,Pedro Reyes,58,1,0,https://rsssf.org/tablesc/chile02.html
+2002-12-18_colo-colo_universidad-catolica,2002-12-18,colo-colo,universidad-catolica,colo-colo,Marcelo Espina,47,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-18_colo-colo_universidad-catolica,2002-12-18,colo-colo,universidad-catolica,colo-colo,Luis Ignacio Quinteros,86,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-21_palestino_cobreloa,2002-12-21,palestino,cobreloa,palestino,Jaime Rubilar,39,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-21_palestino_cobreloa,2002-12-21,palestino,cobreloa,cobreloa,Juan Carlos Madrid,10,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-21_palestino_cobreloa,2002-12-21,palestino,cobreloa,cobreloa,Juan Carlos Madrid,17,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-22_universidad-catolica_colo-colo,2002-12-22,universidad-catolica,colo-colo,universidad-catolica,Pablo Lenci,10,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-22_universidad-catolica_colo-colo,2002-12-22,universidad-catolica,colo-colo,universidad-catolica,Albert Acevedo,86,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-22_universidad-catolica_colo-colo,2002-12-22,universidad-catolica,colo-colo,colo-colo,Marcelo Espina,15,0,1,https://rsssf.org/tablesc/chile02.html
+2002-12-22_universidad-catolica_colo-colo,2002-12-22,universidad-catolica,colo-colo,colo-colo,Manuel Neira,67,0,0,https://rsssf.org/tablesc/chile02.html
+2002-12-22_universidad-catolica_colo-colo,2002-12-22,universidad-catolica,colo-colo,colo-colo,Manuel Neira,73,0,0,https://rsssf.org/tablesc/chile02.html
+2003-02-06_cerro-porteno-par_universidad-catolica,2003-02-06,cerro-porteno-par,universidad-catolica,cerro-porteno-par,Santiago Salcedo,2,0,0,https://rsssf.org/sacups/copa03.html
+2003-02-06_cerro-porteno-par_universidad-catolica,2003-02-06,cerro-porteno-par,universidad-catolica,cerro-porteno-par,Santiago Salcedo,45,0,0,https://rsssf.org/sacups/copa03.html
+2003-02-06_cerro-porteno-par_universidad-catolica,2003-02-06,cerro-porteno-par,universidad-catolica,cerro-porteno-par,Héctor Núñez,93,0,0,https://rsssf.org/sacups/copa03.html
+2003-02-06_cerro-porteno-par_universidad-catolica,2003-02-06,cerro-porteno-par,universidad-catolica,universidad-catolica,Sergio Gioino,84,0,0,https://rsssf.org/sacups/copa03.html
+2003-02-06_cerro-porteno-par_universidad-catolica,2003-02-06,cerro-porteno-par,universidad-catolica,universidad-catolica,Pablo Lenci,87,0,0,https://rsssf.org/sacups/copa03.html
+2003-02-06_barcelona-ecu_colo-colo,2003-02-06,barcelona-ecu,colo-colo,barcelona-ecu,Ariel Graziani,9,0,0,https://rsssf.org/sacups/copa03.html
+2003-02-06_barcelona-ecu_colo-colo,2003-02-06,barcelona-ecu,colo-colo,barcelona-ecu,Marcelo Fleitas,51,0,0,https://rsssf.org/sacups/copa03.html
+2003-02-14_universidad-de-concepcion_puerto-montt,2003-02-14,universidad-de-concepcion,puerto-montt,universidad-de-concepcion,Juan José Ribera,26,0,0,https://rsssf.org/tablesc/chile03.html
+2003-02-14_universidad-de-concepcion_puerto-montt,2003-02-14,universidad-de-concepcion,puerto-montt,puerto-montt,Miguel Acosta,37,0,0,https://rsssf.org/tablesc/chile03.html
+2003-02-14_universidad-de-concepcion_puerto-montt,2003-02-14,universidad-de-concepcion,puerto-montt,puerto-montt,Favio Escobar,64,0,0,https://rsssf.org/tablesc/chile03.html
+2003-02-14_universidad-de-concepcion_puerto-montt,2003-02-14,universidad-de-concepcion,puerto-montt,puerto-montt,Favio Escobar,69,0,0,https://rsssf.org/tablesc/chile03.html
+2003-02-19_universidad-catolica_sporting-cristal-per,2003-02-19,universidad-catolica,sporting-cristal-per,sporting-cristal-per,Flavio Maestri,6,0,0,https://rsssf.org/sacups/copa03.html
+2003-02-26_colo-colo_boca-juniors-arg,2003-02-26,colo-colo,boca-juniors-arg,colo-colo,Marcelo Espina,75,0,1,https://rsssf.org/sacups/copa03.html
+2003-02-26_colo-colo_boca-juniors-arg,2003-02-26,colo-colo,boca-juniors-arg,boca-juniors-arg,Alfredo Moreno,38,0,1,https://rsssf.org/sacups/copa03.html
+2003-02-26_colo-colo_boca-juniors-arg,2003-02-26,colo-colo,boca-juniors-arg,boca-juniors-arg,Alfredo Moreno,88,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-05_alianza-lima-per_cobreloa,2003-03-05,alianza-lima-per,cobreloa,alianza-lima-per,Nicolás Tagliani,15,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-05_alianza-lima-per_cobreloa,2003-03-05,alianza-lima-per,cobreloa,alianza-lima-per,Nicolás Tagliani,68,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-05_alianza-lima-per_cobreloa,2003-03-05,alianza-lima-per,cobreloa,cobreloa,Fernando Martel,31,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-05_alianza-lima-per_cobreloa,2003-03-05,alianza-lima-per,cobreloa,cobreloa,Fernando Martel,65,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-05_alianza-lima-per_cobreloa,2003-03-05,alianza-lima-per,cobreloa,cobreloa,Fernando Cornejo,92,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-06_colo-colo_independiente-medellin-col,2003-03-06,colo-colo,independiente-medellin-col,colo-colo,Manuel Neira,24,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-06_colo-colo_independiente-medellin-col,2003-03-06,colo-colo,independiente-medellin-col,colo-colo,Marcelo Espina,54,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-06_colo-colo_independiente-medellin-col,2003-03-06,colo-colo,independiente-medellin-col,independiente-medellin-col,Tressor Moreno,39,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-11_paysandu-pa-bra_universidad-catolica,2003-03-11,paysandu-pa-bra,universidad-catolica,paysandu-pa-bra,Robson,45,0,1,https://rsssf.org/sacups/copa03.html
+2003-03-11_paysandu-pa-bra_universidad-catolica,2003-03-11,paysandu-pa-bra,universidad-catolica,paysandu-pa-bra,Robson,83,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-11_paysandu-pa-bra_universidad-catolica,2003-03-11,paysandu-pa-bra,universidad-catolica,paysandu-pa-bra,Welber,49,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-11_paysandu-pa-bra_universidad-catolica,2003-03-11,paysandu-pa-bra,universidad-catolica,universidad-catolica,Cristián Alvarez,12,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-13_colo-colo_barcelona-ecu,2003-03-13,colo-colo,barcelona-ecu,colo-colo,Luis Ignacio Quinteros,19,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-13_colo-colo_barcelona-ecu,2003-03-13,colo-colo,barcelona-ecu,barcelona-ecu,Hugo Brizuela,85,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-16_universidad-de-concepcion_cobresal,2003-03-16,universidad-de-concepcion,cobresal,universidad-de-concepcion,Marco Olea,2,0,0,https://rsssf.org/tablesc/chile03.html
+2003-03-16_universidad-de-concepcion_cobresal,2003-03-16,universidad-de-concepcion,cobresal,cobresal,Fernando Rodríguez,26,0,0,https://rsssf.org/tablesc/chile03.html
+2003-03-16_universidad-de-concepcion_cobresal,2003-03-16,universidad-de-concepcion,cobresal,cobresal,Juan Quiroga,38,0,1,https://rsssf.org/tablesc/chile03.html
+2003-03-18_universidad-catolica_cerro-porteno-par,2003-03-18,universidad-catolica,cerro-porteno-par,universidad-catolica,Sergio Gioino,55,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-18_universidad-catolica_cerro-porteno-par,2003-03-18,universidad-catolica,cerro-porteno-par,universidad-catolica,Jorge Campos,70,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-18_universidad-catolica_cerro-porteno-par,2003-03-18,universidad-catolica,cerro-porteno-par,cerro-porteno-par,Jorge Núñez,81,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-25_cobreloa_club-olimpia-par,2003-03-25,cobreloa,club-olimpia-par,cobreloa,José Luis Díaz,10,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-25_cobreloa_club-olimpia-par,2003-03-25,cobreloa,club-olimpia-par,cobreloa,Fernando Martel,15,0,1,https://rsssf.org/sacups/copa03.html
+2003-03-25_cobreloa_club-olimpia-par,2003-03-25,cobreloa,club-olimpia-par,club-olimpia-par,Pablo Gaglianone,20,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-25_cobreloa_club-olimpia-par,2003-03-25,cobreloa,club-olimpia-par,club-olimpia-par,Rodrigo López,37,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-25_cobreloa_club-olimpia-par,2003-03-25,cobreloa,club-olimpia-par,club-olimpia-par,Richart Báez,70,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-27_sporting-cristal-per_universidad-catolica,2003-03-27,sporting-cristal-per,universidad-catolica,sporting-cristal-per,Flavio Maestri,34,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-27_sporting-cristal-per_universidad-catolica,2003-03-27,sporting-cristal-per,universidad-catolica,sporting-cristal-per,Flavio Maestri,60,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-27_sporting-cristal-per_universidad-catolica,2003-03-27,sporting-cristal-per,universidad-catolica,sporting-cristal-per,Julinho,63,0,0,https://rsssf.org/sacups/copa03.html
+2003-03-27_sporting-cristal-per_universidad-catolica,2003-03-27,sporting-cristal-per,universidad-catolica,universidad-catolica,Patricio Ormazábal,89,0,0,https://rsssf.org/sacups/copa03.html
+2003-04-03_boca-juniors-arg_colo-colo,2003-04-03,boca-juniors-arg,colo-colo,boca-juniors-arg,Marcelo Delgado,2,0,0,https://rsssf.org/sacups/copa03.html
+2003-04-03_boca-juniors-arg_colo-colo,2003-04-03,boca-juniors-arg,colo-colo,boca-juniors-arg,Marcelo Delgado,15,0,0,https://rsssf.org/sacups/copa03.html
+2003-04-03_boca-juniors-arg_colo-colo,2003-04-03,boca-juniors-arg,colo-colo,colo-colo,Marcelo Espina,40,0,1,https://rsssf.org/sacups/copa03.html
+2003-04-03_boca-juniors-arg_colo-colo,2003-04-03,boca-juniors-arg,colo-colo,colo-colo,Luis Ignacio Quinteros,51,0,0,https://rsssf.org/sacups/copa03.html
+2003-04-06_universidad-de-concepcion_union-espanola,2003-04-06,universidad-de-concepcion,union-espanola,universidad-de-concepcion,Ricardo Viveros,31,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-06_universidad-de-concepcion_union-espanola,2003-04-06,universidad-de-concepcion,union-espanola,universidad-de-concepcion,Ricardo Viveros,48,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-06_universidad-de-concepcion_union-espanola,2003-04-06,universidad-de-concepcion,union-espanola,universidad-de-concepcion,Jorge Valdivia,55,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-06_universidad-de-concepcion_union-espanola,2003-04-06,universidad-de-concepcion,union-espanola,union-espanola,Gustavo Biscayzacú,53,0,1,https://rsssf.org/tablesc/chile03.html
+2003-04-08_cobreloa_alianza-lima-per,2003-04-08,cobreloa,alianza-lima-per,cobreloa,Rodrigo Pérez,5,0,0,https://rsssf.org/sacups/copa03.html
+2003-04-08_cobreloa_alianza-lima-per,2003-04-08,cobreloa,alianza-lima-per,cobreloa,Fernando Martel,7,0,0,https://rsssf.org/sacups/copa03.html
+2003-04-08_cobreloa_alianza-lima-per,2003-04-08,cobreloa,alianza-lima-per,cobreloa,Rodrigo Meléndez,63,0,0,https://rsssf.org/sacups/copa03.html
+2003-04-08_cobreloa_alianza-lima-per,2003-04-08,cobreloa,alianza-lima-per,cobreloa,Mauricio Dinamarca,88,0,0,https://rsssf.org/sacups/copa03.html
+2003-04-10_independiente-medellin-col_colo-colo,2003-04-10,independiente-medellin-col,colo-colo,independiente-medellin-col,José Serna,4,0,0,https://rsssf.org/sacups/copa03.html
+2003-04-10_independiente-medellin-col_colo-colo,2003-04-10,independiente-medellin-col,colo-colo,independiente-medellin-col,José Serna,60,0,0,https://rsssf.org/sacups/copa03.html
+2003-04-11_audax-italiano_rangers,2003-04-11,audax-italiano,rangers,audax-italiano,Felipe González,7,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-11_audax-italiano_rangers,2003-04-11,audax-italiano,rangers,audax-italiano,Cristián Chaparro,18,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-11_audax-italiano_rangers,2003-04-11,audax-italiano,rangers,audax-italiano,Salvador Cabañas,65,0,1,https://rsssf.org/tablesc/chile03.html
+2003-04-11_audax-italiano_rangers,2003-04-11,audax-italiano,rangers,audax-italiano,Salvador Cabañas,74,0,1,https://rsssf.org/tablesc/chile03.html
+2003-04-11_audax-italiano_rangers,2003-04-11,audax-italiano,rangers,rangers,Pascual De Gregorio,9,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-11_audax-italiano_rangers,2003-04-11,audax-italiano,rangers,rangers,Moisés Avila,12,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-11_audax-italiano_rangers,2003-04-11,audax-italiano,rangers,rangers,Gustavo Semino,63,0,1,https://rsssf.org/tablesc/chile03.html
+2003-04-11_audax-italiano_rangers,2003-04-11,audax-italiano,rangers,rangers,Carioca,70,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-20_universidad-de-concepcion_palestino,2003-04-20,universidad-de-concepcion,palestino,universidad-de-concepcion,Ricardo Viveros,12,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-20_universidad-de-concepcion_palestino,2003-04-20,universidad-de-concepcion,palestino,universidad-de-concepcion,Ricardo Viveros,49,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-20_universidad-de-concepcion_palestino,2003-04-20,universidad-de-concepcion,palestino,universidad-de-concepcion,Marco Olea,16,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-20_universidad-de-concepcion_palestino,2003-04-20,universidad-de-concepcion,palestino,universidad-de-concepcion,Marco Olea,30,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-20_universidad-de-concepcion_palestino,2003-04-20,universidad-de-concepcion,palestino,universidad-de-concepcion,Juan José Ribera,43,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-20_universidad-de-concepcion_palestino,2003-04-20,universidad-de-concepcion,palestino,universidad-de-concepcion,Juan José Ribera,62,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-20_universidad-de-concepcion_palestino,2003-04-20,universidad-de-concepcion,palestino,universidad-de-concepcion,Rodrigo Raín,72,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-20_universidad-de-concepcion_palestino,2003-04-20,universidad-de-concepcion,palestino,universidad-de-concepcion,Renato Ramos,90,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-20_universidad-de-concepcion_palestino,2003-04-20,universidad-de-concepcion,palestino,palestino,Mario Núñez,83,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-20_universidad-de-concepcion_palestino,2003-04-20,universidad-de-concepcion,palestino,palestino,José Luis Villanueva,87,0,0,https://rsssf.org/tablesc/chile03.html
+2003-04-24_pumas-unam-mex_cobreloa,2003-04-24,pumas-unam-mex,cobreloa,cobreloa,José Luis Díaz,49,0,0,https://rsssf.org/sacups/copa03.html
+2003-05-11_universidad-de-concepcion_rangers,2003-05-11,universidad-de-concepcion,rangers,universidad-de-concepcion,Fernando Solís,5,0,1,https://rsssf.org/tablesc/chile03.html
+2003-05-11_universidad-de-concepcion_rangers,2003-05-11,universidad-de-concepcion,rangers,universidad-de-concepcion,Andrés Oroz,22,0,0,https://rsssf.org/tablesc/chile03.html
+2003-05-11_universidad-de-concepcion_rangers,2003-05-11,universidad-de-concepcion,rangers,universidad-de-concepcion,Andrés Oroz,40,0,0,https://rsssf.org/tablesc/chile03.html
+2003-05-11_universidad-de-concepcion_rangers,2003-05-11,universidad-de-concepcion,rangers,universidad-de-concepcion,Andrés Oroz,56,0,0,https://rsssf.org/tablesc/chile03.html
+2003-05-11_universidad-de-concepcion_rangers,2003-05-11,universidad-de-concepcion,rangers,universidad-de-concepcion,Jorge Valdivia,28,0,0,https://rsssf.org/tablesc/chile03.html
+2003-05-21_cobreloa_boca-juniors-arg,2003-05-21,cobreloa,boca-juniors-arg,cobreloa,Luis Fuentes,10,0,0,https://rsssf.org/sacups/copa03.html
+2003-05-21_cobreloa_boca-juniors-arg,2003-05-21,cobreloa,boca-juniors-arg,boca-juniors-arg,Guillermo Barros Schelotto,14,0,0,https://rsssf.org/sacups/copa03.html
+2003-05-21_cobreloa_boca-juniors-arg,2003-05-21,cobreloa,boca-juniors-arg,boca-juniors-arg,Guillermo Barros Schelotto,77,0,0,https://rsssf.org/sacups/copa03.html
+2003-05-24_universidad-de-concepcion_cobreloa,2003-05-24,universidad-de-concepcion,cobreloa,universidad-de-concepcion,Diego Guidi,55,0,0,https://rsssf.org/tablesc/chile03.html
+2003-05-24_universidad-de-concepcion_cobreloa,2003-05-24,universidad-de-concepcion,cobreloa,universidad-de-concepcion,Rodrigo Raín,80,0,0,https://rsssf.org/tablesc/chile03.html
+2003-05-24_universidad-de-concepcion_cobreloa,2003-05-24,universidad-de-concepcion,cobreloa,cobreloa,Juan Carlos Madrid,90,0,0,https://rsssf.org/tablesc/chile03.html
+2003-05-28_boca-juniors-arg_cobreloa,2003-05-28,boca-juniors-arg,cobreloa,boca-juniors-arg,Matías Donnet,8,0,0,https://rsssf.org/sacups/copa03.html
+2003-05-28_boca-juniors-arg_cobreloa,2003-05-28,boca-juniors-arg,cobreloa,boca-juniors-arg,Carlos Tevez,14,0,0,https://rsssf.org/sacups/copa03.html
+2003-05-28_boca-juniors-arg_cobreloa,2003-05-28,boca-juniors-arg,cobreloa,cobreloa,Patricio Galaz,27,0,0,https://rsssf.org/sacups/copa03.html
+2003-06-15_universidad-de-concepcion_universidad-de-chile,2003-06-15,universidad-de-concepcion,universidad-de-chile,universidad-de-concepcion,Jorge Valdivia,5,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-15_universidad-de-concepcion_universidad-de-chile,2003-06-15,universidad-de-concepcion,universidad-de-chile,universidad-de-concepcion,Luis Pedro Figueroa,41,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-15_universidad-de-concepcion_universidad-de-chile,2003-06-15,universidad-de-concepcion,universidad-de-chile,universidad-de-concepcion,Marco Olea,63,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-15_universidad-de-concepcion_universidad-de-chile,2003-06-15,universidad-de-concepcion,universidad-de-chile,universidad-de-concepcion,Mauricio Cataldo,96,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-15_universidad-de-concepcion_universidad-de-chile,2003-06-15,universidad-de-concepcion,universidad-de-chile,universidad-de-chile,Cristián Mora,22,0,1,https://rsssf.org/tablesc/chile03.html
+2003-06-15_universidad-de-concepcion_universidad-de-chile,2003-06-15,universidad-de-concepcion,universidad-de-chile,universidad-de-chile,Rodolfo Moya,44,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-15_universidad-de-concepcion_universidad-de-chile,2003-06-15,universidad-de-concepcion,universidad-de-chile,universidad-de-chile,Rodrigo Rain,81,1,0,https://rsssf.org/tablesc/chile03.html
+2003-06-21_universidad-de-concepcion_cobresal,2003-06-21,universidad-de-concepcion,cobresal,universidad-de-concepcion,Rodrigo Raín,3,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-21_universidad-de-concepcion_cobresal,2003-06-21,universidad-de-concepcion,cobresal,universidad-de-concepcion,Marco Olea,9,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-21_universidad-de-concepcion_cobresal,2003-06-21,universidad-de-concepcion,cobresal,universidad-de-concepcion,Luis Pedro Figueroa,31,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-21_universidad-de-concepcion_cobresal,2003-06-21,universidad-de-concepcion,cobresal,universidad-de-concepcion,Luis Pedro Figueroa,118,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-21_universidad-de-concepcion_cobresal,2003-06-21,universidad-de-concepcion,cobresal,universidad-de-concepcion,Juan José Ribera,45,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-21_universidad-de-concepcion_cobresal,2003-06-21,universidad-de-concepcion,cobresal,universidad-de-concepcion,Fernando Solís,63,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-21_universidad-de-concepcion_cobresal,2003-06-21,universidad-de-concepcion,cobresal,universidad-de-concepcion,Fernando Solís,82,0,1,https://rsssf.org/tablesc/chile03.html
+2003-06-21_universidad-de-concepcion_cobresal,2003-06-21,universidad-de-concepcion,cobresal,cobresal,Fernando Rodríguez,15,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-29_universidad-de-concepcion_colo-colo,2003-06-29,universidad-de-concepcion,colo-colo,universidad-de-concepcion,Ricardo Viveros,5,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-29_universidad-de-concepcion_colo-colo,2003-06-29,universidad-de-concepcion,colo-colo,universidad-de-concepcion,Marco Olea,40,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-29_universidad-de-concepcion_colo-colo,2003-06-29,universidad-de-concepcion,colo-colo,colo-colo,Marcelo Espina,12,0,1,https://rsssf.org/tablesc/chile03.html
+2003-06-29_universidad-de-concepcion_colo-colo,2003-06-29,universidad-de-concepcion,colo-colo,colo-colo,Marcelo Espina,85,0,0,https://rsssf.org/tablesc/chile03.html
+2003-06-29_universidad-de-concepcion_colo-colo,2003-06-29,universidad-de-concepcion,colo-colo,colo-colo,Braulio Leal,37,0,0,https://rsssf.org/tablesc/chile03.html
+2003-07-06_cobreloa_colo-colo,2003-07-06,cobreloa,colo-colo,cobreloa,Luis Fuentes,28,0,0,https://rsssf.org/tablesc/chile03.html
+2003-07-06_cobreloa_colo-colo,2003-07-06,cobreloa,colo-colo,cobreloa,José Luis Díaz,67,0,0,https://rsssf.org/tablesc/chile03.html
+2003-07-06_cobreloa_colo-colo,2003-07-06,cobreloa,colo-colo,cobreloa,Patricio Galaz,72,0,0,https://rsssf.org/tablesc/chile03.html
+2003-07-06_cobreloa_colo-colo,2003-07-06,cobreloa,colo-colo,cobreloa,Patricio Galaz,87,0,0,https://rsssf.org/tablesc/chile03.html
+2003-07-25_universidad-de-concepcion_santiago-wanderers,2003-07-25,universidad-de-concepcion,santiago-wanderers,universidad-de-concepcion,Fernando Solís,59,0,1,https://rsssf.org/tablesc/chile03.html
+2003-07-25_universidad-de-concepcion_santiago-wanderers,2003-07-25,universidad-de-concepcion,santiago-wanderers,santiago-wanderers,José Contreras,9,0,0,https://rsssf.org/tablesc/chile03.html
+2003-07-27_rangers_coquimbo-unido,2003-07-27,rangers,coquimbo-unido,rangers,Carioca,2,0,0,https://rsssf.org/tablesc/chile03.html
+2003-07-27_rangers_coquimbo-unido,2003-07-27,rangers,coquimbo-unido,rangers,Jorge Carrasco,36,0,0,https://rsssf.org/tablesc/chile03.html
+2003-07-27_rangers_coquimbo-unido,2003-07-27,rangers,coquimbo-unido,coquimbo-unido,Bruno Pesce,46,0,1,https://rsssf.org/tablesc/chile03.html
+2003-08-10_universidad-de-concepcion_deportes-temuco,2003-08-10,universidad-de-concepcion,deportes-temuco,universidad-de-concepcion,Rodrigo Rain,37,0,0,https://rsssf.org/tablesc/chile03.html
+2003-08-10_universidad-de-concepcion_deportes-temuco,2003-08-10,universidad-de-concepcion,deportes-temuco,universidad-de-concepcion,Marco Olea,50,0,0,https://rsssf.org/tablesc/chile03.html
+2003-08-10_universidad-de-concepcion_deportes-temuco,2003-08-10,universidad-de-concepcion,deportes-temuco,universidad-de-concepcion,Ricardo Viveros,75,0,0,https://rsssf.org/tablesc/chile03.html
+2003-08-10_universidad-de-concepcion_deportes-temuco,2003-08-10,universidad-de-concepcion,deportes-temuco,universidad-de-concepcion,Paulo Rosales,85,0,0,https://rsssf.org/tablesc/chile03.html
+2003-08-10_universidad-de-concepcion_deportes-temuco,2003-08-10,universidad-de-concepcion,deportes-temuco,deportes-temuco,Héctor Santibáñez,63,0,1,https://rsssf.org/tablesc/chile03.html
+2003-08-24_rangers_deportes-temuco,2003-08-24,rangers,deportes-temuco,rangers,Carioca,46,0,0,https://rsssf.org/tablesc/chile03.html
+2003-08-24_rangers_deportes-temuco,2003-08-24,rangers,deportes-temuco,rangers,Marco Bautista,81,0,0,https://rsssf.org/tablesc/chile03.html
+2003-08-24_rangers_deportes-temuco,2003-08-24,rangers,deportes-temuco,rangers,Gustavo Semino,90,0,0,https://rsssf.org/tablesc/chile03.html
+2003-08-24_rangers_deportes-temuco,2003-08-24,rangers,deportes-temuco,deportes-temuco,Héctor Santibáñez,32,0,0,https://rsssf.org/tablesc/chile03.html
+2003-08-24_rangers_deportes-temuco,2003-08-24,rangers,deportes-temuco,deportes-temuco,Felipe Siles,92,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-07_universidad-de-concepcion_colo-colo,2003-09-07,universidad-de-concepcion,colo-colo,universidad-de-concepcion,Andrés Oroz,45,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-07_universidad-de-concepcion_colo-colo,2003-09-07,universidad-de-concepcion,colo-colo,colo-colo,Braulio Leal,54,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-14_universidad-de-concepcion_audax-italiano,2003-09-14,universidad-de-concepcion,audax-italiano,universidad-de-concepcion,Marco Olea,64,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-26_universidad-de-chile_union-espanola,2003-09-26,universidad-de-chile,union-espanola,universidad-de-chile,Diego Rivarola,76,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-26_universidad-de-chile_union-espanola,2003-09-26,universidad-de-chile,union-espanola,union-espanola,Gustavo Biscayzacú,7,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-26_universidad-de-chile_union-espanola,2003-09-26,universidad-de-chile,union-espanola,union-espanola,Gustavo Biscayzacú,66,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-26_universidad-de-chile_union-espanola,2003-09-26,universidad-de-chile,union-espanola,union-espanola,Gustavo Biscayzacú,90,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-26_universidad-de-chile_union-espanola,2003-09-26,universidad-de-chile,union-espanola,union-espanola,Carlos Cáceres,81,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-28_universidad-de-concepcion_universidad-catolica,2003-09-28,universidad-de-concepcion,universidad-catolica,universidad-de-concepcion,Andrés Oroz,17,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-28_universidad-de-concepcion_universidad-catolica,2003-09-28,universidad-de-concepcion,universidad-catolica,universidad-de-concepcion,Juan José Ribera,70,0,0,https://rsssf.org/tablesc/chile03.html
+2003-09-28_universidad-de-concepcion_universidad-catolica,2003-09-28,universidad-de-concepcion,universidad-catolica,universidad-de-concepcion,Luis Pedro Figueroa,90,0,0,https://rsssf.org/tablesc/chile03.html
+2003-10-14_rangers_universidad-catolica,2003-10-14,rangers,universidad-catolica,rangers,Miguel Angel Romero,,0,0,https://rsssf.org/tablesc/chile03.html
+2003-10-14_universidad-de-concepcion_union-san-felipe,2003-10-14,universidad-de-concepcion,union-san-felipe,universidad-de-concepcion,Marco Olea,40,0,0,https://rsssf.org/tablesc/chile03.html
+2003-10-14_universidad-de-concepcion_union-san-felipe,2003-10-14,universidad-de-concepcion,union-san-felipe,universidad-de-concepcion,Ricardo Viveros,70,0,0,https://rsssf.org/tablesc/chile03.html
+2003-10-19_universidad-de-concepcion_universidad-de-chile,2003-10-19,universidad-de-concepcion,universidad-de-chile,universidad-de-concepcion,Fernando Solís,17,0,1,https://rsssf.org/tablesc/chile03.html
+2003-10-19_universidad-de-concepcion_universidad-de-chile,2003-10-19,universidad-de-concepcion,universidad-de-chile,universidad-de-concepcion,Ricardo Viveros,45,0,0,https://rsssf.org/tablesc/chile03.html
+2003-10-19_universidad-de-concepcion_universidad-de-chile,2003-10-19,universidad-de-concepcion,universidad-de-chile,universidad-de-chile,Ezequiel Amaya,64,0,0,https://rsssf.org/tablesc/chile03.html
+2003-10-19_universidad-de-concepcion_universidad-de-chile,2003-10-19,universidad-de-concepcion,universidad-de-chile,universidad-de-chile,Fernando Pierucci,85,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-02_universidad-de-concepcion_coquimbo-unido,2003-11-02,universidad-de-concepcion,coquimbo-unido,universidad-de-concepcion,Juan José Ribera,38,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-16_puerto-montt_audax-italiano,2003-11-16,puerto-montt,audax-italiano,puerto-montt,Favio Escobar,5,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-16_puerto-montt_audax-italiano,2003-11-16,puerto-montt,audax-italiano,audax-italiano,Jorge Carrasco,87,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-23_universidad-catolica_santiago-wanderers,2003-11-23,universidad-catolica,santiago-wanderers,universidad-catolica,Arturo Sanhueza,5,1,0,https://rsssf.org/tablesc/chile03.html
+2003-11-23_universidad-catolica_santiago-wanderers,2003-11-23,universidad-catolica,santiago-wanderers,universidad-catolica,Arturo Norambuena,16,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-23_universidad-catolica_santiago-wanderers,2003-11-23,universidad-catolica,santiago-wanderers,universidad-catolica,Arturo Norambuena,47,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-23_universidad-catolica_santiago-wanderers,2003-11-23,universidad-catolica,santiago-wanderers,universidad-catolica,Daniel Pérez,57,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-23_universidad-catolica_santiago-wanderers,2003-11-23,universidad-catolica,santiago-wanderers,santiago-wanderers,Jorge Ormeño,12,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-30_universidad-de-concepcion_rangers,2003-11-30,universidad-de-concepcion,rangers,universidad-de-concepcion,Mauricio Cataldo,40,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-30_universidad-de-concepcion_rangers,2003-11-30,universidad-de-concepcion,rangers,universidad-de-concepcion,Mauricio Cataldo,53,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-30_universidad-de-concepcion_rangers,2003-11-30,universidad-de-concepcion,rangers,universidad-de-concepcion,Mauricio Cataldo,55,0,0,https://rsssf.org/tablesc/chile03.html
+2003-11-30_universidad-de-concepcion_rangers,2003-11-30,universidad-de-concepcion,rangers,rangers,Mario Núñez,88,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-01_santiago-wanderers_universidad-catolica,2003-12-01,santiago-wanderers,universidad-catolica,santiago-wanderers,Jorge Ormeño,34,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-01_santiago-wanderers_universidad-catolica,2003-12-01,santiago-wanderers,universidad-catolica,santiago-wanderers,Gustavo Bentos,63,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-01_santiago-wanderers_universidad-catolica,2003-12-01,santiago-wanderers,universidad-catolica,universidad-catolica,Mauricio Segovia,56,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-04_palestino_santiago-wanderers,2003-12-04,palestino,santiago-wanderers,palestino,José Luis Villanueva,23,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-04_palestino_santiago-wanderers,2003-12-04,palestino,santiago-wanderers,santiago-wanderers,Jaime Riveros,20,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-07_universidad-de-concepcion_cobresal,2003-12-07,universidad-de-concepcion,cobresal,universidad-de-concepcion,Fernando Solís,13,0,1,https://rsssf.org/tablesc/chile03.html
+2003-12-07_universidad-de-concepcion_cobresal,2003-12-07,universidad-de-concepcion,cobresal,universidad-de-concepcion,Juan José Ribera,22,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-07_universidad-de-concepcion_cobresal,2003-12-07,universidad-de-concepcion,cobresal,universidad-de-concepcion,Jorge Valdivia,33,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-07_universidad-de-concepcion_cobresal,2003-12-07,universidad-de-concepcion,cobresal,universidad-de-concepcion,Marco Olea,36,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-07_universidad-de-concepcion_cobresal,2003-12-07,universidad-de-concepcion,cobresal,universidad-de-concepcion,Eduardo Hurtado,47,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-07_universidad-de-concepcion_cobresal,2003-12-07,universidad-de-concepcion,cobresal,cobresal,Damián Yáñez,90,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-07_universidad-de-concepcion_cobresal,2003-12-07,universidad-de-concepcion,cobresal,cobresal,Juan Quiroga,112,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-21_colo-colo_cobreloa,2003-12-21,colo-colo,cobreloa,colo-colo,Silvio Fernández,81,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-21_colo-colo_cobreloa,2003-12-21,colo-colo,cobreloa,cobreloa,Luis Fuentes,41,0,0,https://rsssf.org/tablesc/chile03.html
+2003-12-21_colo-colo_cobreloa,2003-12-21,colo-colo,cobreloa,cobreloa,Jaime González,70,0,0,https://rsssf.org/tablesc/chile03.html
+2004-02-03_colo-colo_deportivo-cali-col,2004-02-03,colo-colo,deportivo-cali-col,colo-colo,Manuel Neira,43,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-03_colo-colo_deportivo-cali-col,2004-02-03,colo-colo,deportivo-cali-col,colo-colo,Manuel Neira,87,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-03_colo-colo_deportivo-cali-col,2004-02-03,colo-colo,deportivo-cali-col,deportivo-cali-col,Máyer Candelo,23,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-03_colo-colo_deportivo-cali-col,2004-02-03,colo-colo,deportivo-cali-col,deportivo-cali-col,Alvaro Domínguez,41,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-03_colo-colo_deportivo-cali-col,2004-02-03,colo-colo,deportivo-cali-col,deportivo-cali-col,Carlos Castillo,55,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-04_santos-laguna-mex_universidad-de-concepcion,2004-02-04,santos-laguna-mex,universidad-de-concepcion,santos-laguna-mex,Héctor Altamirano,2,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-04_santos-laguna-mex_universidad-de-concepcion,2004-02-04,santos-laguna-mex,universidad-de-concepcion,santos-laguna-mex,José Antonio Noriega,8,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-04_santos-laguna-mex_universidad-de-concepcion,2004-02-04,santos-laguna-mex,universidad-de-concepcion,universidad-de-concepcion,Ricardo Viveros,44,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-04_santos-laguna-mex_universidad-de-concepcion,2004-02-04,santos-laguna-mex,universidad-de-concepcion,universidad-de-concepcion,Luis Pedro Figueroa,82,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-07_rangers_la-serena,2004-02-07,rangers,la-serena,rangers,Luis Díaz,89,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-07_rangers_la-serena,2004-02-07,rangers,la-serena,la-serena,Felipe Flores,37,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-07_rangers_la-serena,2004-02-07,rangers,la-serena,la-serena,Felipe Flores,47,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-07_rangers_la-serena,2004-02-07,rangers,la-serena,la-serena,Felipe Flores,67,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-07_rangers_la-serena,2004-02-07,rangers,la-serena,la-serena,Felipe Flores,71,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-10_universidad-de-concepcion_cruzeiro-bra,2004-02-10,universidad-de-concepcion,cruzeiro-bra,universidad-de-concepcion,Fernando Solís,73,0,1,https://rsssf.org/sacups/copa04.html
+2004-02-10_universidad-de-concepcion_cruzeiro-bra,2004-02-10,universidad-de-concepcion,cruzeiro-bra,cruzeiro-bra,Alex,18,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-10_universidad-de-concepcion_cruzeiro-bra,2004-02-10,universidad-de-concepcion,cruzeiro-bra,cruzeiro-bra,Maicon,20,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-10_universidad-de-concepcion_cruzeiro-bra,2004-02-10,universidad-de-concepcion,cruzeiro-bra,cruzeiro-bra,Cristián Gómez,80,1,0,https://rsssf.org/sacups/copa04.html
+2004-02-10_cobreloa_ldu-quito-ecu,2004-02-10,cobreloa,ldu-quito-ecu,ldu-quito-ecu,Alex Aguinaga,52,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-10_cobreloa_ldu-quito-ecu,2004-02-10,cobreloa,ldu-quito-ecu,ldu-quito-ecu,Elkin Murillo,92,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-14_universidad-de-concepcion_santiago-wanderers,2004-02-14,universidad-de-concepcion,santiago-wanderers,universidad-de-concepcion,Luis Pedro Figueroa,23,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-14_universidad-de-concepcion_santiago-wanderers,2004-02-14,universidad-de-concepcion,santiago-wanderers,universidad-de-concepcion,Luis Pedro Figueroa,35,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-14_universidad-de-concepcion_santiago-wanderers,2004-02-14,universidad-de-concepcion,santiago-wanderers,santiago-wanderers,Paulo Pérez,42,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-14_la-serena_union-espanola,2004-02-14,la-serena,union-espanola,la-serena,Felipe Flores,48,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-14_la-serena_union-espanola,2004-02-14,la-serena,union-espanola,la-serena,Mauricio Salazar,82,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-14_la-serena_union-espanola,2004-02-14,la-serena,union-espanola,union-espanola,Rodrigo Ríos,18,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-14_la-serena_union-espanola,2004-02-14,la-serena,union-espanola,union-espanola,Sebastián Rozental,28,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-14_la-serena_union-espanola,2004-02-14,la-serena,union-espanola,union-espanola,José Luis Sierra,42,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-14_la-serena_union-espanola,2004-02-14,la-serena,union-espanola,union-espanola,José Luis Sierra,81,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-21_union-espanola_universidad-de-chile,2004-02-21,union-espanola,universidad-de-chile,union-espanola,Eduardo Arancibia,2,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-21_union-espanola_universidad-de-chile,2004-02-21,union-espanola,universidad-de-chile,union-espanola,José Luis Sierra,25,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-21_union-espanola_universidad-de-chile,2004-02-21,union-espanola,universidad-de-chile,union-espanola,Juan Pablo Toro,83,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-21_union-espanola_universidad-de-chile,2004-02-21,union-espanola,universidad-de-chile,universidad-de-chile,José Rojas,41,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-22_puerto-montt_la-serena,2004-02-22,puerto-montt,la-serena,puerto-montt,Jorge Gálvez,92,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-22_puerto-montt_la-serena,2004-02-22,puerto-montt,la-serena,la-serena,Felipe Flores,56,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-22_puerto-montt_la-serena,2004-02-22,puerto-montt,la-serena,la-serena,Andrés Vásquez,62,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-24_universidad-de-concepcion_caracas-fc-ven,2004-02-24,universidad-de-concepcion,caracas-fc-ven,universidad-de-concepcion,Mario Cáceres,76,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-24_universidad-de-concepcion_caracas-fc-ven,2004-02-24,universidad-de-concepcion,caracas-fc-ven,universidad-de-concepcion,Cristián Gómez,90,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-24_universidad-de-concepcion_caracas-fc-ven,2004-02-24,universidad-de-concepcion,caracas-fc-ven,caracas-fc-ven,Paul Cominges,34,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-24_universidad-de-concepcion_caracas-fc-ven,2004-02-24,universidad-de-concepcion,caracas-fc-ven,caracas-fc-ven,Paul Cominges,37,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-24_universidad-de-concepcion_caracas-fc-ven,2004-02-24,universidad-de-concepcion,caracas-fc-ven,caracas-fc-ven,Jorge Rojas,50,0,0,https://rsssf.org/sacups/copa04.html
+2004-02-27_universidad-de-concepcion_coquimbo-unido,2004-02-27,universidad-de-concepcion,coquimbo-unido,universidad-de-concepcion,Ricardo Viveros,21,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-27_universidad-de-concepcion_coquimbo-unido,2004-02-27,universidad-de-concepcion,coquimbo-unido,universidad-de-concepcion,Rodrigo Rain,26,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-27_universidad-de-concepcion_coquimbo-unido,2004-02-27,universidad-de-concepcion,coquimbo-unido,universidad-de-concepcion,Patricio Neira,48,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-27_universidad-de-concepcion_coquimbo-unido,2004-02-27,universidad-de-concepcion,coquimbo-unido,universidad-de-concepcion,Fernando Solís,54,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-27_universidad-de-concepcion_coquimbo-unido,2004-02-27,universidad-de-concepcion,coquimbo-unido,universidad-de-concepcion,Esteban Paredes,60,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-28_la-serena_union-san-felipe,2004-02-28,la-serena,union-san-felipe,la-serena,Sergio Navea,1,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-28_la-serena_union-san-felipe,2004-02-28,la-serena,union-san-felipe,la-serena,Felipe Flores,45,0,0,https://rsssf.org/tablesc/chile04.html
+2004-02-28_la-serena_union-san-felipe,2004-02-28,la-serena,union-san-felipe,la-serena,Felipe Flores,46,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-02_caracas-fc-ven_universidad-de-concepcion,2004-03-02,caracas-fc-ven,universidad-de-concepcion,caracas-fc-ven,José Manuel Rey,16,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-03_boca-juniors-arg_colo-colo,2004-03-03,boca-juniors-arg,colo-colo,boca-juniors-arg,Guillermo Barros Schelotto,18,0,1,https://rsssf.org/sacups/copa04.html
+2004-03-03_boca-juniors-arg_colo-colo,2004-03-03,boca-juniors-arg,colo-colo,boca-juniors-arg,Guillermo Barros Schelotto,72,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-04_alianza-lima-per_cobreloa,2004-03-04,alianza-lima-per,cobreloa,alianza-lima-per,Jefferson Farfán,68,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-04_alianza-lima-per_cobreloa,2004-03-04,alianza-lima-per,cobreloa,alianza-lima-per,Jefferson Farfán,80,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-06_everton_la-serena,2004-03-06,everton,la-serena,everton,Álvaro Villalón,46,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-06_everton_la-serena,2004-03-06,everton,la-serena,everton,Víctor González,80,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-09_la-serena_palestino,2004-03-09,la-serena,palestino,la-serena,Mauricio Salazar,7,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-09_la-serena_palestino,2004-03-09,la-serena,palestino,la-serena,Mauricio Salazar,10,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-09_la-serena_palestino,2004-03-09,la-serena,palestino,la-serena,Felipe Flores,84,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-09_la-serena_palestino,2004-03-09,la-serena,palestino,palestino,Matías Guerrero,62,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-09_la-serena_palestino,2004-03-09,la-serena,palestino,palestino,Cristián Fabbiani,70,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-10_cobreloa_alianza-lima-per,2004-03-10,cobreloa,alianza-lima-per,alianza-lima-per,Jefferson Farfán,22,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-14_huachipato_la-serena,2004-03-14,huachipato,la-serena,huachipato,Rodrigo Millar,29,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-14_huachipato_la-serena,2004-03-14,huachipato,la-serena,huachipato,Rodrigo Millar,35,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-14_huachipato_la-serena,2004-03-14,huachipato,la-serena,huachipato,Horacio del Valle,50,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-14_huachipato_la-serena,2004-03-14,huachipato,la-serena,huachipato,Mauricio Aros,92,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-14_huachipato_la-serena,2004-03-14,huachipato,la-serena,la-serena,Felipe Flores,26,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-14_huachipato_la-serena,2004-03-14,huachipato,la-serena,la-serena,Juan Carlos Madrid,38,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-17_cruzeiro-bra_universidad-de-concepcion,2004-03-17,cruzeiro-bra,universidad-de-concepcion,cruzeiro-bra,Cris,5,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-17_cruzeiro-bra_universidad-de-concepcion,2004-03-17,cruzeiro-bra,universidad-de-concepcion,cruzeiro-bra,Guilherme,42,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-17_cruzeiro-bra_universidad-de-concepcion,2004-03-17,cruzeiro-bra,universidad-de-concepcion,cruzeiro-bra,Guilherme,72,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-17_cruzeiro-bra_universidad-de-concepcion,2004-03-17,cruzeiro-bra,universidad-de-concepcion,cruzeiro-bra,Leandro,46,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-17_cruzeiro-bra_universidad-de-concepcion,2004-03-17,cruzeiro-bra,universidad-de-concepcion,cruzeiro-bra,Maicon,89,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-18_bolivar-bol_colo-colo,2004-03-18,bolivar-bol,colo-colo,bolivar-bol,Roger Suárez,4,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-18_bolivar-bol_colo-colo,2004-03-18,bolivar-bol,colo-colo,bolivar-bol,Alfredo Castillo,46,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-19_coquimbo-unido_huachipato,2004-03-19,coquimbo-unido,huachipato,coquimbo-unido,Juan González,42,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-19_coquimbo-unido_huachipato,2004-03-19,coquimbo-unido,huachipato,coquimbo-unido,Juan Manuel Lucero,58,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-19_coquimbo-unido_huachipato,2004-03-19,coquimbo-unido,huachipato,coquimbo-unido,Marcelo Corrales,89,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-19_coquimbo-unido_huachipato,2004-03-19,coquimbo-unido,huachipato,huachipato,Cristián Reynero,6,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-19_coquimbo-unido_huachipato,2004-03-19,coquimbo-unido,huachipato,huachipato,Héctor Mancilla,11,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-20_universidad-de-chile_la-serena,2004-03-20,universidad-de-chile,la-serena,universidad-de-chile,Ezequiel Amaya,13,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-20_universidad-de-chile_la-serena,2004-03-20,universidad-de-chile,la-serena,universidad-de-chile,Diego Rivarola,33,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-20_universidad-de-chile_la-serena,2004-03-20,universidad-de-chile,la-serena,universidad-de-chile,Marco Olea,69,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-20_universidad-de-chile_la-serena,2004-03-20,universidad-de-chile,la-serena,la-serena,Felipe Flores,19,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-20_universidad-de-concepcion_puerto-montt,2004-03-20,universidad-de-concepcion,puerto-montt,universidad-de-concepcion,Hugo Droguett,13,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-20_universidad-de-concepcion_puerto-montt,2004-03-20,universidad-de-concepcion,puerto-montt,puerto-montt,Álvaro Sarabia,65,0,0,https://rsssf.org/tablesc/chile04.html
+2004-03-24_cobreloa_sao-paulo-fc-bra,2004-03-24,cobreloa,sao-paulo-fc-bra,cobreloa,Mauricio Dinamarca,27,0,1,https://rsssf.org/sacups/copa04.html
+2004-03-24_cobreloa_sao-paulo-fc-bra,2004-03-24,cobreloa,sao-paulo-fc-bra,sao-paulo-fc-bra,Grafite,15,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-24_cobreloa_sao-paulo-fc-bra,2004-03-24,cobreloa,sao-paulo-fc-bra,sao-paulo-fc-bra,Marquinhos,22,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-25_colo-colo_bolivar-bol,2004-03-25,colo-colo,bolivar-bol,colo-colo,Juan Pablo Ubeda,35,0,0,https://rsssf.org/sacups/copa04.html
+2004-03-25_colo-colo_bolivar-bol,2004-03-25,colo-colo,bolivar-bol,colo-colo,Manuel Neira,58,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-03_la-serena_cobresal,2004-04-03,la-serena,cobresal,la-serena,Ricardo Olivares,19,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-03_la-serena_cobresal,2004-04-03,la-serena,cobresal,la-serena,Fabián Acuña,22,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-03_la-serena_cobresal,2004-04-03,la-serena,cobresal,la-serena,Felipe Flores,40,0,1,https://rsssf.org/tablesc/chile04.html
+2004-04-03_la-serena_cobresal,2004-04-03,la-serena,cobresal,la-serena,Sergio Navea,89,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-03_la-serena_cobresal,2004-04-03,la-serena,cobresal,cobresal,Pablo Gilabert,30,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-03_la-serena_cobresal,2004-04-03,la-serena,cobresal,cobresal,Juan Quiroga,43,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-03_la-serena_cobresal,2004-04-03,la-serena,cobresal,cobresal,Gary Castillo,82,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-07_ldu-quito-ecu_cobreloa,2004-04-07,ldu-quito-ecu,cobreloa,ldu-quito-ecu,Elkin Murillo,8,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-07_ldu-quito-ecu_cobreloa,2004-04-07,ldu-quito-ecu,cobreloa,ldu-quito-ecu,Elkin Murillo,28,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-07_ldu-quito-ecu_cobreloa,2004-04-07,ldu-quito-ecu,cobreloa,ldu-quito-ecu,Néicer Reasco,29,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-07_ldu-quito-ecu_cobreloa,2004-04-07,ldu-quito-ecu,cobreloa,ldu-quito-ecu,Juan Angel Paredes,32,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-07_ldu-quito-ecu_cobreloa,2004-04-07,ldu-quito-ecu,cobreloa,ldu-quito-ecu,Carlos Espínola,90,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-07_ldu-quito-ecu_cobreloa,2004-04-07,ldu-quito-ecu,cobreloa,cobreloa,Patricio Galaz,86,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-08_colo-colo_boca-juniors-arg,2004-04-08,colo-colo,boca-juniors-arg,colo-colo,David Henríquez,33,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-09_audax-italiano_la-serena,2004-04-09,audax-italiano,la-serena,audax-italiano,Carlos Reyes,41,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-09_audax-italiano_la-serena,2004-04-09,audax-italiano,la-serena,audax-italiano,Carlos Reyes,85,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-09_audax-italiano_la-serena,2004-04-09,audax-italiano,la-serena,audax-italiano,Mauricio Cataldo,57,0,1,https://rsssf.org/tablesc/chile04.html
+2004-04-09_audax-italiano_la-serena,2004-04-09,audax-italiano,la-serena,la-serena,Felipe Flores,6,0,1,https://rsssf.org/tablesc/chile04.html
+2004-04-09_audax-italiano_la-serena,2004-04-09,audax-italiano,la-serena,la-serena,Felipe Flores,44,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-09_audax-italiano_la-serena,2004-04-09,audax-italiano,la-serena,la-serena,Juan Carlos Madrid,61,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-09_universidad-de-concepcion_everton,2004-04-09,universidad-de-concepcion,everton,universidad-de-concepcion,Pedro Rivera,6,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-09_universidad-de-concepcion_everton,2004-04-09,universidad-de-concepcion,everton,universidad-de-concepcion,Hugo Droguett,22,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-09_universidad-de-concepcion_everton,2004-04-09,universidad-de-concepcion,everton,everton,Héctor Suazo,14,0,1,https://rsssf.org/tablesc/chile04.html
+2004-04-09_universidad-de-concepcion_everton,2004-04-09,universidad-de-concepcion,everton,everton,Héctor Suazo,65,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-09_universidad-de-concepcion_everton,2004-04-09,universidad-de-concepcion,everton,everton,Héctor Suazo,90,0,1,https://rsssf.org/tablesc/chile04.html
+2004-04-09_universidad-de-concepcion_everton,2004-04-09,universidad-de-concepcion,everton,everton,Víctor González,16,0,1,https://rsssf.org/tablesc/chile04.html
+2004-04-14_universidad-de-concepcion_santos-laguna-mex,2004-04-14,universidad-de-concepcion,santos-laguna-mex,universidad-de-concepcion,Esteban Paredes,6,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-14_universidad-de-concepcion_santos-laguna-mex,2004-04-14,universidad-de-concepcion,santos-laguna-mex,universidad-de-concepcion,Esteban Paredes,14,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-14_universidad-de-concepcion_santos-laguna-mex,2004-04-14,universidad-de-concepcion,santos-laguna-mex,santos-laguna-mex,Matías Vuoso,3,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-14_universidad-de-concepcion_santos-laguna-mex,2004-04-14,universidad-de-concepcion,santos-laguna-mex,santos-laguna-mex,Jared Borgetti,55,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-15_la-serena_cobreloa,2004-04-15,la-serena,cobreloa,la-serena,Felipe Flores,71,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-15_la-serena_cobreloa,2004-04-15,la-serena,cobreloa,cobreloa,Mauricio Dinamarca,67,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-15_la-serena_cobreloa,2004-04-15,la-serena,cobreloa,cobreloa,Hernán Vigna,90,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-18_universidad-de-concepcion_la-serena,2004-04-18,universidad-de-concepcion,la-serena,universidad-de-concepcion,Cristián Gómez,21,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-18_universidad-de-concepcion_la-serena,2004-04-18,universidad-de-concepcion,la-serena,universidad-de-concepcion,Esteban Paredes,24,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-18_universidad-de-concepcion_la-serena,2004-04-18,universidad-de-concepcion,la-serena,universidad-de-concepcion,Mario Cáceres,39,0,1,https://rsssf.org/tablesc/chile04.html
+2004-04-18_universidad-de-concepcion_la-serena,2004-04-18,universidad-de-concepcion,la-serena,universidad-de-concepcion,Renzo Yáñez,48,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-18_universidad-de-concepcion_la-serena,2004-04-18,universidad-de-concepcion,la-serena,universidad-de-concepcion,Ricardo Olivares,69,1,0,https://rsssf.org/tablesc/chile04.html
+2004-04-21_deportivo-cali-col_colo-colo,2004-04-21,deportivo-cali-col,colo-colo,deportivo-cali-col,Carlos Castillo,45,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-21_deportivo-cali-col_colo-colo,2004-04-21,deportivo-cali-col,colo-colo,deportivo-cali-col,Tressor Moreno,70,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-21_deportivo-cali-col_colo-colo,2004-04-21,deportivo-cali-col,colo-colo,deportivo-cali-col,Oscar Díaz,75,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-21_deportivo-cali-col_colo-colo,2004-04-21,deportivo-cali-col,colo-colo,colo-colo,Marco Millape,83,0,0,https://rsssf.org/sacups/copa04.html
+2004-04-21_la-serena_deportes-temuco,2004-04-21,la-serena,deportes-temuco,la-serena,Cristián Villalobos,5,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-21_la-serena_deportes-temuco,2004-04-21,la-serena,deportes-temuco,la-serena,Mauricio Salazar,12,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-21_la-serena_deportes-temuco,2004-04-21,la-serena,deportes-temuco,deportes-temuco,Jorge Guzmán,44,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-21_la-serena_deportes-temuco,2004-04-21,la-serena,deportes-temuco,deportes-temuco,César Díaz,71,0,1,https://rsssf.org/tablesc/chile04.html
+2004-04-25_santiago-wanderers_la-serena,2004-04-25,santiago-wanderers,la-serena,santiago-wanderers,Jaime Riveros,29,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-25_santiago-wanderers_la-serena,2004-04-25,santiago-wanderers,la-serena,santiago-wanderers,Jaime Riveros,78,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-25_santiago-wanderers_la-serena,2004-04-25,santiago-wanderers,la-serena,santiago-wanderers,José Contreras,38,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-25_santiago-wanderers_la-serena,2004-04-25,santiago-wanderers,la-serena,santiago-wanderers,Ricardo Olivares,44,1,0,https://rsssf.org/tablesc/chile04.html
+2004-04-25_santiago-wanderers_la-serena,2004-04-25,santiago-wanderers,la-serena,santiago-wanderers,Mauricio Rojas,83,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-30_la-serena_universidad-catolica,2004-04-30,la-serena,universidad-catolica,la-serena,Felipe Flores,71,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-30_la-serena_universidad-catolica,2004-04-30,la-serena,universidad-catolica,universidad-catolica,Albert Acevedo,18,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-30_la-serena_universidad-catolica,2004-04-30,la-serena,universidad-catolica,universidad-catolica,Cristián Alvarez,24,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-30_la-serena_universidad-catolica,2004-04-30,la-serena,universidad-catolica,universidad-catolica,Mauricio Segovia,44,0,0,https://rsssf.org/tablesc/chile04.html
+2004-04-30_la-serena_universidad-catolica,2004-04-30,la-serena,universidad-catolica,universidad-catolica,Rubén Capria,55,0,0,https://rsssf.org/tablesc/chile04.html
+2004-05-05_universidad-de-concepcion_cobreloa,2004-05-05,universidad-de-concepcion,cobreloa,universidad-de-concepcion,Mario Cáceres,7,0,0,https://rsssf.org/tablesc/chile04.html
+2004-05-05_universidad-de-concepcion_cobreloa,2004-05-05,universidad-de-concepcion,cobreloa,universidad-de-concepcion,Juan José Ribera,24,0,0,https://rsssf.org/tablesc/chile04.html
+2004-05-05_universidad-de-concepcion_cobreloa,2004-05-05,universidad-de-concepcion,cobreloa,universidad-de-concepcion,Pedro Rivera,41,0,1,https://rsssf.org/tablesc/chile04.html
+2004-05-06_coquimbo-unido_la-serena,2004-05-06,coquimbo-unido,la-serena,coquimbo-unido,Juan González,3,0,0,https://rsssf.org/tablesc/chile04.html
+2004-05-06_coquimbo-unido_la-serena,2004-05-06,coquimbo-unido,la-serena,coquimbo-unido,Juan Manuel Lucero,24,0,0,https://rsssf.org/tablesc/chile04.html
+2004-05-06_coquimbo-unido_la-serena,2004-05-06,coquimbo-unido,la-serena,coquimbo-unido,Marcelo Corrales,42,0,0,https://rsssf.org/tablesc/chile04.html
+2004-05-06_coquimbo-unido_la-serena,2004-05-06,coquimbo-unido,la-serena,coquimbo-unido,Marcelo Corrales,61,0,1,https://rsssf.org/tablesc/chile04.html
+2004-05-06_coquimbo-unido_la-serena,2004-05-06,coquimbo-unido,la-serena,la-serena,Juan Carlos Madrid,45,0,0,https://rsssf.org/tablesc/chile04.html
+2004-05-06_coquimbo-unido_la-serena,2004-05-06,coquimbo-unido,la-serena,la-serena,Fabián Acuña,54,0,0,https://rsssf.org/tablesc/chile04.html
+2004-05-06_coquimbo-unido_la-serena,2004-05-06,coquimbo-unido,la-serena,la-serena,Felipe Flores,73,0,0,https://rsssf.org/tablesc/chile04.html
+2004-05-09_la-serena_colo-colo,2004-05-09,la-serena,colo-colo,la-serena,Mauricio Salazar,7,0,0,https://rsssf.org/tablesc/chile04.html
+2004-05-09_la-serena_colo-colo,2004-05-09,la-serena,colo-colo,colo-colo,Gonzalo Fierro,50,0,0,https://rsssf.org/tablesc/chile04.html
+2004-05-22_universidad-de-concepcion_deportes-temuco,2004-05-22,universidad-de-concepcion,deportes-temuco,universidad-de-concepcion,Rodrigo Raín,55,0,0,https://rsssf.org/tablesc/chile04.html
+2004-05-22_universidad-de-concepcion_deportes-temuco,2004-05-22,universidad-de-concepcion,deportes-temuco,deportes-temuco,Víctor Hugo Avalos,47,0,0,https://rsssf.org/tablesc/chile04.html
+2004-06-12_universidad-de-concepcion_universidad-de-chile,2004-06-12,universidad-de-concepcion,universidad-de-chile,universidad-de-concepcion,Ricardo Viveros,26,0,0,https://rsssf.org/tablesc/chile04.html
+2004-06-12_universidad-de-concepcion_universidad-de-chile,2004-06-12,universidad-de-concepcion,universidad-de-chile,universidad-de-concepcion,Esteban Paredes,44,0,0,https://rsssf.org/tablesc/chile04.html
+2004-06-12_universidad-de-concepcion_universidad-de-chile,2004-06-12,universidad-de-concepcion,universidad-de-chile,universidad-de-chile,Sergio Gioino,116,0,0,https://rsssf.org/tablesc/chile04.html
+2004-06-17_huachipato_cobreloa,2004-06-17,huachipato,cobreloa,huachipato,Héctor Mancilla,43,0,1,https://rsssf.org/tablesc/chile04.html
+2004-06-17_huachipato_cobreloa,2004-06-17,huachipato,cobreloa,huachipato,Rodolfo Moya,47,0,0,https://rsssf.org/tablesc/chile04.html
+2004-06-17_huachipato_cobreloa,2004-06-17,huachipato,cobreloa,cobreloa,Jonathan Cisternas,17,0,0,https://rsssf.org/tablesc/chile04.html
+2004-06-17_huachipato_cobreloa,2004-06-17,huachipato,cobreloa,cobreloa,Patricio Galaz,32,0,0,https://rsssf.org/tablesc/chile04.html
+2004-06-27_cobreloa_universidad-de-chile,2004-06-27,cobreloa,universidad-de-chile,cobreloa,Luis Fuentes,35,0,0,https://rsssf.org/tablesc/chile04.html
+2004-06-27_cobreloa_universidad-de-chile,2004-06-27,cobreloa,universidad-de-chile,universidad-de-chile,Esteban González,52,1,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_cobresal_cobreloa,2004-07-07,cobresal,cobreloa,cobresal,Cristóbal Aliste,34,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_cobresal_cobreloa,2004-07-07,cobresal,cobreloa,cobresal,Juan Cisternas,36,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_cobresal_cobreloa,2004-07-07,cobresal,cobreloa,cobreloa,Fernando Cornejo,50,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_cobresal_cobreloa,2004-07-07,cobresal,cobreloa,cobreloa,Fernando Cornejo,73,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_everton_santiago-wanderers,2004-07-07,everton,santiago-wanderers,everton,Héctor Suazo,69,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_everton_santiago-wanderers,2004-07-07,everton,santiago-wanderers,everton,Héctor Suazo,79,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_everton_santiago-wanderers,2004-07-07,everton,santiago-wanderers,santiago-wanderers,Jaime Riveros,1,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_everton_santiago-wanderers,2004-07-07,everton,santiago-wanderers,santiago-wanderers,Pascual De Gregorio,11,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_everton_santiago-wanderers,2004-07-07,everton,santiago-wanderers,santiago-wanderers,José Soto,25,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_everton_santiago-wanderers,2004-07-07,everton,santiago-wanderers,santiago-wanderers,José Soto,44,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_everton_santiago-wanderers,2004-07-07,everton,santiago-wanderers,santiago-wanderers,Paulo Pérez,85,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_huachipato_universidad-de-concepcion,2004-07-07,huachipato,universidad-de-concepcion,universidad-de-concepcion,Ricardo Viveros,24,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_huachipato_universidad-de-concepcion,2004-07-07,huachipato,universidad-de-concepcion,universidad-de-concepcion,Mario Cáceres,51,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_la-serena_coquimbo-unido,2004-07-07,la-serena,coquimbo-unido,la-serena,Mauricio Salazar,25,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_la-serena_coquimbo-unido,2004-07-07,la-serena,coquimbo-unido,la-serena,Patricio Rubina,80,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_puerto-montt_deportes-temuco,2004-07-07,puerto-montt,deportes-temuco,puerto-montt,César Cortés,54,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_puerto-montt_deportes-temuco,2004-07-07,puerto-montt,deportes-temuco,deportes-temuco,César Díaz,60,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_rangers_audax-italiano,2004-07-07,rangers,audax-italiano,audax-italiano,Jaime González,20,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_union-espanola_universidad-de-chile,2004-07-07,union-espanola,universidad-de-chile,union-espanola,José Luis Jerez,4,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_universidad-catolica_colo-colo,2004-07-07,universidad-catolica,colo-colo,universidad-catolica,Eduardo Rubio,12,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-07_universidad-catolica_colo-colo,2004-07-07,universidad-catolica,colo-colo,colo-colo,Mauricio Donoso,52,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-09_coquimbo-unido_la-serena,2004-07-09,coquimbo-unido,la-serena,coquimbo-unido,Marcelo Corrales,28,0,1,https://rsssf.org/tablesc/chile04.html
+2004-07-09_coquimbo-unido_la-serena,2004-07-09,coquimbo-unido,la-serena,coquimbo-unido,Marcelo Corrales,90,0,1,https://rsssf.org/tablesc/chile04.html
+2004-07-09_coquimbo-unido_la-serena,2004-07-09,coquimbo-unido,la-serena,coquimbo-unido,Carlos Carmona,81,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-09_coquimbo-unido_la-serena,2004-07-09,coquimbo-unido,la-serena,la-serena,Juan Carlos Madrid,18,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-10_audax-italiano_rangers,2004-07-10,audax-italiano,rangers,rangers,Carlos Garrido,42,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-10_universidad-de-concepcion_huachipato,2004-07-10,universidad-de-concepcion,huachipato,universidad-de-concepcion,Patricio Monsálvez,15,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-10_universidad-de-concepcion_huachipato,2004-07-10,universidad-de-concepcion,huachipato,universidad-de-concepcion,Mario Cáceres,36,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-10_universidad-de-concepcion_huachipato,2004-07-10,universidad-de-concepcion,huachipato,huachipato,Rodolfo Moya,18,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-10_universidad-de-concepcion_huachipato,2004-07-10,universidad-de-concepcion,huachipato,huachipato,Rodolfo Moya,88,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-21_cobresal_la-serena,2004-07-21,cobresal,la-serena,cobresal,Juan Quiroga,61,0,1,https://rsssf.org/tablesc/chile04.html
+2004-07-21_cobresal_la-serena,2004-07-21,cobresal,la-serena,cobresal,Juan Quiroga,78,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-21_cobresal_la-serena,2004-07-21,cobresal,la-serena,la-serena,Patricio Rubina,65,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-22_audax-italiano_union-espanola,2004-07-22,audax-italiano,union-espanola,union-espanola,Elthon Troncoso,22,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-22_audax-italiano_union-espanola,2004-07-22,audax-italiano,union-espanola,union-espanola,Rodrigo Ríos,86,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-22_santiago-wanderers_colo-colo,2004-07-22,santiago-wanderers,colo-colo,santiago-wanderers,Manuel Neira,63,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-22_santiago-wanderers_colo-colo,2004-07-22,santiago-wanderers,colo-colo,santiago-wanderers,Manuel Neira,72,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-24_la-serena_cobresal,2004-07-24,la-serena,cobresal,la-serena,Juan Carlos Madrid,71,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-24_la-serena_cobresal,2004-07-24,la-serena,cobresal,cobresal,Juan Cisternas,19,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-24_la-serena_cobresal,2004-07-24,la-serena,cobresal,cobresal,Juan Quiroga,93,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-25_colo-colo_santiago-wanderers,2004-07-25,colo-colo,santiago-wanderers,colo-colo,José Soto,23,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-25_colo-colo_santiago-wanderers,2004-07-25,colo-colo,santiago-wanderers,colo-colo,Pascual De Gregorio,28,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-25_universidad-de-concepcion_deportes-temuco,2004-07-25,universidad-de-concepcion,deportes-temuco,deportes-temuco,Cristián Canío,60,0,0,https://rsssf.org/tablesc/chile04.html
+2004-07-25_universidad-de-concepcion_deportes-temuco,2004-07-25,universidad-de-concepcion,deportes-temuco,deportes-temuco,Jorge Guzmán,88,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-01_la-serena_rangers,2004-08-01,la-serena,rangers,la-serena,Marcelo Caro,64,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-01_la-serena_rangers,2004-08-01,la-serena,rangers,rangers,Bruno Pesce,96,0,1,https://rsssf.org/tablesc/chile04.html
+2004-08-05_santiago-wanderers_cobresal,2004-08-05,santiago-wanderers,cobresal,santiago-wanderers,Jaime Riveros,5,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-05_santiago-wanderers_cobresal,2004-08-05,santiago-wanderers,cobresal,santiago-wanderers,Jaime Riveros,70,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-05_santiago-wanderers_cobresal,2004-08-05,santiago-wanderers,cobresal,santiago-wanderers,Rodrigo Núñez,33,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-05_santiago-wanderers_cobresal,2004-08-05,santiago-wanderers,cobresal,cobresal,Jorge Baeza,23,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-05_universidad-de-concepcion_union-espanola,2004-08-05,universidad-de-concepcion,union-espanola,universidad-de-concepcion,Silvio Fernández,50,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-05_universidad-de-concepcion_union-espanola,2004-08-05,universidad-de-concepcion,union-espanola,universidad-de-concepcion,Luis Pedro Figueroa,89,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-08_union-espanola_la-serena,2004-08-08,union-espanola,la-serena,union-espanola,José Luis Sierra,15,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-08_union-espanola_la-serena,2004-08-08,union-espanola,la-serena,la-serena,Marcelo Caro,22,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-10_universidad-de-concepcion_universidad-catolica,2004-08-10,universidad-de-concepcion,universidad-catolica,universidad-de-concepcion,Rodrigo Rain,9,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-10_universidad-de-concepcion_universidad-catolica,2004-08-10,universidad-de-concepcion,universidad-catolica,universidad-de-concepcion,Cristián Gómez,19,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-10_universidad-de-concepcion_universidad-catolica,2004-08-10,universidad-de-concepcion,universidad-catolica,universidad-de-concepcion,Mario Cáceres,43,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-10_universidad-de-concepcion_universidad-catolica,2004-08-10,universidad-de-concepcion,universidad-catolica,universidad-de-concepcion,Alejandro Vásquez,84,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-10_universidad-de-concepcion_universidad-catolica,2004-08-10,universidad-de-concepcion,universidad-catolica,universidad-catolica,José Pedro Fuenzalida,39,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-11_la-serena_puerto-montt,2004-08-11,la-serena,puerto-montt,puerto-montt,Nicolás Núñez,77,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-15_union-san-felipe_la-serena,2004-08-15,union-san-felipe,la-serena,union-san-felipe,Héctor Santibáñez,31,0,1,https://rsssf.org/tablesc/chile04.html
+2004-08-15_union-san-felipe_la-serena,2004-08-15,union-san-felipe,la-serena,union-san-felipe,Hernán Torres,60,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-21_universidad-de-concepcion_colo-colo,2004-08-21,universidad-de-concepcion,colo-colo,universidad-de-concepcion,Cristián Gómez,44,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-21_universidad-de-concepcion_colo-colo,2004-08-21,universidad-de-concepcion,colo-colo,universidad-de-concepcion,Pedro Rivera,87,0,1,https://rsssf.org/tablesc/chile04.html
+2004-08-21_la-serena_everton,2004-08-21,la-serena,everton,la-serena,Sebastián Páez,16,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-21_la-serena_everton,2004-08-21,la-serena,everton,la-serena,Juan José Ossandón,49,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-21_la-serena_everton,2004-08-21,la-serena,everton,la-serena,Juan José Ossandón,52,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-22_audax-italiano_union-espanola,2004-08-22,audax-italiano,union-espanola,audax-italiano,Humberto Suazo,72,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-22_audax-italiano_union-espanola,2004-08-22,audax-italiano,union-espanola,union-espanola,Emerson,70,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-28_palestino_la-serena,2004-08-28,palestino,la-serena,palestino,David Reyes,29,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-28_palestino_la-serena,2004-08-28,palestino,la-serena,palestino,David Reyes,50,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-28_palestino_la-serena,2004-08-28,palestino,la-serena,palestino,Roberto Castillo,44,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-28_palestino_la-serena,2004-08-28,palestino,la-serena,palestino,César Burgos,80,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-28_palestino_la-serena,2004-08-28,palestino,la-serena,palestino,César Burgos,82,0,0,https://rsssf.org/tablesc/chile04.html
+2004-08-28_palestino_la-serena,2004-08-28,palestino,la-serena,la-serena,Álex Comas,88,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-08_la-serena_huachipato,2004-09-08,la-serena,huachipato,la-serena,Álex Comas,60,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-08_la-serena_huachipato,2004-09-08,la-serena,huachipato,huachipato,Cristián Reynero,39,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-08_la-serena_huachipato,2004-09-08,la-serena,huachipato,huachipato,Rodrigo Millar,42,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-08_la-serena_huachipato,2004-09-08,la-serena,huachipato,huachipato,Rodolfo Moya,53,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-12_la-serena_universidad-de-chile,2004-09-12,la-serena,universidad-de-chile,la-serena,Álex Comas,19,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-12_la-serena_universidad-de-chile,2004-09-12,la-serena,universidad-de-chile,universidad-de-chile,Diego Rivarola,6,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-12_la-serena_universidad-de-chile,2004-09-12,la-serena,universidad-de-chile,universidad-de-chile,Gamadiel García,47,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-12_la-serena_universidad-de-chile,2004-09-12,la-serena,universidad-de-chile,universidad-de-chile,Sergio Gioino,59,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-12_huachipato_coquimbo-unido,2004-09-12,huachipato,coquimbo-unido,huachipato,Pedro Morales,77,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-17_universidad-de-concepcion_union-san-felipe,2004-09-17,universidad-de-concepcion,union-san-felipe,universidad-de-concepcion,Luis Pedro Figueroa,24,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-17_universidad-de-concepcion_union-san-felipe,2004-09-17,universidad-de-concepcion,union-san-felipe,union-san-felipe,Percy Araya,87,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-17_cobresal_la-serena,2004-09-17,cobresal,la-serena,cobresal,Jorge Baeza,15,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-17_cobresal_la-serena,2004-09-17,cobresal,la-serena,cobresal,Jorge Baeza,85,0,1,https://rsssf.org/tablesc/chile04.html
+2004-09-17_cobresal_la-serena,2004-09-17,cobresal,la-serena,cobresal,Juan Cisternas,17,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-17_cobresal_la-serena,2004-09-17,cobresal,la-serena,cobresal,Juan Cisternas,53,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-17_cobresal_la-serena,2004-09-17,cobresal,la-serena,cobresal,Juan Quiroga,20,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-17_cobresal_la-serena,2004-09-17,cobresal,la-serena,cobresal,Juan Quiroga,56,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-17_cobresal_la-serena,2004-09-17,cobresal,la-serena,la-serena,Álex Comas,30,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-26_la-serena_audax-italiano,2004-09-26,la-serena,audax-italiano,la-serena,Álex Comas,45,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-26_la-serena_audax-italiano,2004-09-26,la-serena,audax-italiano,la-serena,Marcelo Caro,56,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-26_la-serena_audax-italiano,2004-09-26,la-serena,audax-italiano,la-serena,Cristián Uribe,95,0,0,https://rsssf.org/tablesc/chile04.html
+2004-09-26_la-serena_audax-italiano,2004-09-26,la-serena,audax-italiano,audax-italiano,Carlos Reyes,78,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-01_universidad-de-concepcion_palestino,2004-10-01,universidad-de-concepcion,palestino,universidad-de-concepcion,Fernando Solís,64,0,1,https://rsssf.org/tablesc/chile04.html
+2004-10-01_universidad-de-concepcion_palestino,2004-10-01,universidad-de-concepcion,palestino,universidad-de-concepcion,Silvio Fernández,76,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-03_cobreloa_la-serena,2004-10-03,cobreloa,la-serena,cobreloa,Patricio Galaz,66,0,1,https://rsssf.org/tablesc/chile04.html
+2004-10-03_cobreloa_la-serena,2004-10-03,cobreloa,la-serena,la-serena,Álex Comas,52,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-09_universidad-de-concepcion_union-espanola,2004-10-09,universidad-de-concepcion,union-espanola,universidad-de-concepcion,Mario Cáceres,90,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-16_la-serena_universidad-de-concepcion,2004-10-16,la-serena,universidad-de-concepcion,universidad-de-concepcion,Ricardo Viveros,5,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-20_deportes-temuco_la-serena,2004-10-20,deportes-temuco,la-serena,deportes-temuco,Víctor Hugo Avalos,28,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-20_deportes-temuco_la-serena,2004-10-20,deportes-temuco,la-serena,deportes-temuco,Cristián Canío,60,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-20_deportes-temuco_la-serena,2004-10-20,deportes-temuco,la-serena,deportes-temuco,Cristián Canío,67,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-20_deportes-temuco_la-serena,2004-10-20,deportes-temuco,la-serena,la-serena,Marcelo Caro,32,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-20_deportes-temuco_la-serena,2004-10-20,deportes-temuco,la-serena,la-serena,Álex Comas,36,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-20_deportes-temuco_la-serena,2004-10-20,deportes-temuco,la-serena,la-serena,Carlos Alzamora,81,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-24_la-serena_santiago-wanderers,2004-10-24,la-serena,santiago-wanderers,la-serena,Raúl Quiroz,22,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-24_la-serena_santiago-wanderers,2004-10-24,la-serena,santiago-wanderers,la-serena,Álex Comas,85,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-24_la-serena_santiago-wanderers,2004-10-24,la-serena,santiago-wanderers,la-serena,Juan Carlos Madrid,87,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-24_la-serena_santiago-wanderers,2004-10-24,la-serena,santiago-wanderers,santiago-wanderers,Rodrigo Núñez,51,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-24_la-serena_santiago-wanderers,2004-10-24,la-serena,santiago-wanderers,santiago-wanderers,José Soto,62,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-28_universidad-de-concepcion_audax-italiano,2004-10-28,universidad-de-concepcion,audax-italiano,universidad-de-concepcion,Carlos Verdugo,47,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-28_universidad-de-concepcion_audax-italiano,2004-10-28,universidad-de-concepcion,audax-italiano,audax-italiano,Humberto Suazo,11,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-28_universidad-de-concepcion_audax-italiano,2004-10-28,universidad-de-concepcion,audax-italiano,audax-italiano,Humberto Suazo,22,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-28_universidad-de-concepcion_audax-italiano,2004-10-28,universidad-de-concepcion,audax-italiano,audax-italiano,Jaime González,26,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-29_universidad-catolica_la-serena,2004-10-29,universidad-catolica,la-serena,universidad-catolica,Cristián Alvarez,40,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-29_universidad-catolica_la-serena,2004-10-29,universidad-catolica,la-serena,universidad-catolica,Joel Estay,55,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-29_universidad-catolica_la-serena,2004-10-29,universidad-catolica,la-serena,universidad-catolica,Joel Estay,66,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-29_universidad-catolica_la-serena,2004-10-29,universidad-catolica,la-serena,universidad-catolica,Eduardo Rubio,83,0,0,https://rsssf.org/tablesc/chile04.html
+2004-10-29_universidad-catolica_la-serena,2004-10-29,universidad-catolica,la-serena,la-serena,Álex Comas,72,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-03_la-serena_coquimbo-unido,2004-11-03,la-serena,coquimbo-unido,la-serena,Álex Comas,25,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-03_la-serena_coquimbo-unido,2004-11-03,la-serena,coquimbo-unido,la-serena,Álex Comas,75,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-03_la-serena_coquimbo-unido,2004-11-03,la-serena,coquimbo-unido,coquimbo-unido,Manuel García,17,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-06_colo-colo_la-serena,2004-11-06,colo-colo,la-serena,colo-colo,Juan Lorca,41,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-06_colo-colo_la-serena,2004-11-06,colo-colo,la-serena,colo-colo,Matías Fernández,69,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-06_colo-colo_la-serena,2004-11-06,colo-colo,la-serena,colo-colo,Miguel Aceval,91,0,1,https://rsssf.org/tablesc/chile04.html
+2004-11-06_colo-colo_la-serena,2004-11-06,colo-colo,la-serena,la-serena,Álex Comas,36,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-07_universidad-de-concepcion_huachipato,2004-11-07,universidad-de-concepcion,huachipato,universidad-de-concepcion,Mario Cáceres,74,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-07_universidad-de-concepcion_huachipato,2004-11-07,universidad-de-concepcion,huachipato,universidad-de-concepcion,Hugo Droguett,88,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-10_coquimbo-unido_colo-colo,2004-11-10,coquimbo-unido,colo-colo,coquimbo-unido,Manuel García,16,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-21_puerto-montt_everton,2004-11-21,puerto-montt,everton,puerto-montt,Jorge Torres,25,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-21_puerto-montt_everton,2004-11-21,puerto-montt,everton,everton,Jorge Delgado,5,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-21_puerto-montt_everton,2004-11-21,puerto-montt,everton,everton,Héctor Suazo,55,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-28_universidad-de-concepcion_union-espanola,2004-11-28,universidad-de-concepcion,union-espanola,universidad-de-concepcion,Ricardo Viveros,10,0,0,https://rsssf.org/tablesc/chile04.html
+2004-11-28_universidad-de-concepcion_union-espanola,2004-11-28,universidad-de-concepcion,union-espanola,union-espanola,Rodrigo Ríos,52,0,0,https://rsssf.org/tablesc/chile04.html
+2004-12-01_deportes-temuco_universidad-catolica,2004-12-01,deportes-temuco,universidad-catolica,deportes-temuco,Cristián Canío,33,0,0,https://rsssf.org/tablesc/chile04.html
+2004-12-01_deportes-temuco_universidad-catolica,2004-12-01,deportes-temuco,universidad-catolica,deportes-temuco,Cristián Canío,91,0,0,https://rsssf.org/tablesc/chile04.html
+2004-12-01_deportes-temuco_universidad-catolica,2004-12-01,deportes-temuco,universidad-catolica,deportes-temuco,César Díaz,77,0,0,https://rsssf.org/tablesc/chile04.html
+2004-12-01_deportes-temuco_universidad-catolica,2004-12-01,deportes-temuco,universidad-catolica,universidad-catolica,Pablo Caballero,,0,0,https://rsssf.org/tablesc/chile04.html
+2005-05-19_universidad-de-chile_santos-fc-bra,2005-05-19,universidad-de-chile,santos-fc-bra,santos-fc-bra,Ricardinho,57,0,0,ESPN + es.wikipedia
+2005-05-19_universidad-de-chile_santos-fc-bra,2005-05-19,universidad-de-chile,santos-fc-bra,universidad-de-chile,Diego Rivarola,51,0,0,ESPN + es.wikipedia
+2005-05-19_universidad-de-chile_santos-fc-bra,2005-05-19,universidad-de-chile,santos-fc-bra,universidad-de-chile,Patricio Galaz,73,0,0,ESPN + es.wikipedia
+2005-05-25_santos-fc-bra_universidad-de-chile,2005-05-25,santos-fc-bra,universidad-de-chile,santos-fc-bra,Flávio,34,0,0,ESPN + es.wikipedia
+2005-05-25_santos-fc-bra_universidad-de-chile,2005-05-25,santos-fc-bra,universidad-de-chile,santos-fc-bra,Robinho,72,0,0,ESPN + es.wikipedia
+2005-05-25_santos-fc-bra_universidad-de-chile,2005-05-25,santos-fc-bra,universidad-de-chile,santos-fc-bra,Robinho,89,0,1,ESPN + es.wikipedia
+2005-07-17_la-serena_union-san-felipe,2005-07-17,la-serena,union-san-felipe,la-serena,Álex Comas,25,0,0,RSSSF + ESPN
+2005-07-17_la-serena_union-san-felipe,2005-07-17,la-serena,union-san-felipe,union-san-felipe,Francisco Alam,63,0,0,RSSSF + ESPN
+2005-07-17_melipilla_huachipato,2005-07-17,melipilla,huachipato,melipilla,Rodrigo Romero,65,0,0,RSSSF + ESPN
+2005-07-23_cobreloa_melipilla,2005-07-23,cobreloa,melipilla,cobreloa,Arturo Norambuena,26,0,0,RSSSF + ESPN
+2005-07-23_cobreloa_melipilla,2005-07-23,cobreloa,melipilla,cobreloa,Jonathan Cisternas,75,0,0,RSSSF + ESPN
+2005-07-23_cobreloa_melipilla,2005-07-23,cobreloa,melipilla,cobreloa,José Luis Díaz,45,0,1,RSSSF + ESPN
+2005-07-23_cobreloa_melipilla,2005-07-23,cobreloa,melipilla,melipilla,Rodrigo Barrera,38,0,0,RSSSF + ESPN
+2005-07-23_colo-colo_la-serena,2005-07-23,colo-colo,la-serena,colo-colo,Luis Mena,58,0,0,RSSSF + ESPN
+2005-07-23_colo-colo_la-serena,2005-07-23,colo-colo,la-serena,la-serena,Felipe Flores,64,0,0,RSSSF + ESPN
+2005-07-24_universidad-de-concepcion_everton,2005-07-24,universidad-de-concepcion,everton,everton,Renato Ramos,57,0,1,RSSSF + ESPN
+2005-07-24_universidad-de-concepcion_everton,2005-07-24,universidad-de-concepcion,everton,universidad-de-concepcion,Leonardo Drugovich,60,0,0,RSSSF + ESPN
+2005-07-24_universidad-de-concepcion_everton,2005-07-24,universidad-de-concepcion,everton,universidad-de-concepcion,Ricardo Viveros,16,0,0,RSSSF + ESPN
+2005-07-31_la-serena_union-espanola,2005-07-31,la-serena,union-espanola,la-serena,Felipe Flores,26,0,1,RSSSF + ESPN
+2005-07-31_la-serena_union-espanola,2005-07-31,la-serena,union-espanola,union-espanola,Jonathan Orellana,90,0,0,RSSSF + ESPN
+2005-07-31_melipilla_santiago-wanderers,2005-07-31,melipilla,santiago-wanderers,santiago-wanderers,Juan Francisco Viveros,40,0,0,RSSSF + ESPN
+2005-07-31_universidad-de-concepcion_rangers,2005-07-31,universidad-de-concepcion,rangers,rangers,Silvio Fernández,73,0,1,RSSSF + ESPN
+2005-07-31_universidad-de-concepcion_rangers,2005-07-31,universidad-de-concepcion,rangers,universidad-de-concepcion,Claudio Videla,63,0,0,RSSSF + ESPN
+2005-07-31_universidad-de-concepcion_rangers,2005-07-31,universidad-de-concepcion,rangers,universidad-de-concepcion,Leonardo Drugovich,90,0,1,RSSSF + ESPN
+2005-08-06_union-espanola_melipilla,2005-08-06,union-espanola,melipilla,melipilla,Rodrigo Barrera,87,0,1,RSSSF + ESPN
+2005-08-06_union-espanola_melipilla,2005-08-06,union-espanola,melipilla,union-espanola,José Luis Sierra,56,0,0,RSSSF + ESPN
+2005-08-06_union-espanola_melipilla,2005-08-06,union-espanola,melipilla,union-espanola,José Luis Sierra,74,0,0,RSSSF + ESPN
+2005-08-07_deportes-concepcion_la-serena,2005-08-07,deportes-concepcion,la-serena,deportes-concepcion,Cristián Montecinos,43,0,0,RSSSF + ESPN
+2005-08-07_deportes-concepcion_la-serena,2005-08-07,deportes-concepcion,la-serena,deportes-concepcion,Esteban González,18,0,0,RSSSF + ESPN
+2005-08-07_deportes-concepcion_la-serena,2005-08-07,deportes-concepcion,la-serena,la-serena,Felipe Flores,17,0,0,RSSSF + ESPN
+2005-08-13_universidad-de-concepcion_colo-colo,2005-08-13,universidad-de-concepcion,colo-colo,colo-colo,Felipe Flores,26,0,0,RSSSF + ESPN
+2005-08-13_universidad-de-concepcion_colo-colo,2005-08-13,universidad-de-concepcion,colo-colo,colo-colo,Jorge Valdivia,72,0,0,RSSSF + ESPN
+2005-08-13_universidad-de-concepcion_colo-colo,2005-08-13,universidad-de-concepcion,colo-colo,universidad-de-concepcion,Pedro Rivera,45,0,0,RSSSF + ESPN
+2005-08-14_deportes-temuco_melipilla,2005-08-14,deportes-temuco,melipilla,deportes-temuco,Lucas Barrios,88,0,0,RSSSF + ESPN
+2005-08-14_la-serena_rangers,2005-08-14,la-serena,rangers,rangers,David Reyes,71,0,0,RSSSF + ESPN
+2005-08-20_union-espanola_universidad-de-concepcion,2005-08-20,union-espanola,universidad-de-concepcion,union-espanola,José Luis Jerez,58,0,0,RSSSF + ESPN
+2005-08-20_union-espanola_universidad-de-concepcion,2005-08-20,union-espanola,universidad-de-concepcion,union-espanola,José Luis Sierra,70,0,1,RSSSF + ESPN
+2005-08-20_union-espanola_universidad-de-concepcion,2005-08-20,union-espanola,universidad-de-concepcion,union-espanola,Manuel Neira,41,0,0,RSSSF + ESPN
+2005-08-20_union-espanola_universidad-de-concepcion,2005-08-20,union-espanola,universidad-de-concepcion,universidad-de-concepcion,Leonardo Drugovich,45,0,1,RSSSF + ESPN
+2005-08-20_union-espanola_universidad-de-concepcion,2005-08-20,union-espanola,universidad-de-concepcion,universidad-de-concepcion,Víctor Avalos,53,0,0,RSSSF + ESPN
+2005-08-21_melipilla_la-serena,2005-08-21,melipilla,la-serena,melipilla,Alejandro Carrasco,79,0,0,RSSSF + ESPN
+2005-08-28_la-serena_huachipato,2005-08-28,la-serena,huachipato,huachipato,Cristián Reynero,87,0,0,RSSSF + ESPN
+2005-08-28_la-serena_huachipato,2005-08-28,la-serena,huachipato,huachipato,Héctor Mancilla,60,0,0,RSSSF + ESPN
+2005-08-28_la-serena_huachipato,2005-08-28,la-serena,huachipato,huachipato,Mauricio Salazar,90,0,0,RSSSF + ESPN
+2005-08-28_la-serena_huachipato,2005-08-28,la-serena,huachipato,la-serena,Raúl Palacios,74,0,0,RSSSF + ESPN
+2005-08-28_la-serena_huachipato,2005-08-28,la-serena,huachipato,la-serena,Rodrigo Brito,33,0,0,RSSSF + ESPN
+2005-09-08_universidad-de-chile_colo-colo,2005-09-08,universidad-de-chile,colo-colo,universidad-de-chile,Diego Rivarola,19,0,0,RSSSF + ESPN
+2005-09-10_la-serena_cobresal,2005-09-10,la-serena,cobresal,cobresal,Cristián Mauvezin,85,0,0,RSSSF + ESPN
+2005-09-10_la-serena_cobresal,2005-09-10,la-serena,cobresal,cobresal,César Díaz,29,0,0,RSSSF + ESPN
+2005-09-10_la-serena_cobresal,2005-09-10,la-serena,cobresal,cobresal,Patricio Lira,41,0,0,RSSSF + ESPN
+2005-09-10_la-serena_cobresal,2005-09-10,la-serena,cobresal,la-serena,Ignacio Rolón,6,0,0,RSSSF + ESPN
+2005-09-10_la-serena_cobresal,2005-09-10,la-serena,cobresal,la-serena,Sixto Rojas,34,0,0,RSSSF + ESPN
+2005-09-11_melipilla_puerto-montt,2005-09-11,melipilla,puerto-montt,melipilla,Iván Arenas,87,0,1,RSSSF + ESPN
+2005-09-17_universidad-de-concepcion_la-serena,2005-09-17,universidad-de-concepcion,la-serena,la-serena,Felipe Flores,20,0,0,RSSSF + ESPN
+2005-09-17_universidad-de-concepcion_la-serena,2005-09-17,universidad-de-concepcion,la-serena,la-serena,Ignacio Rolón,68,0,0,RSSSF + ESPN
+2005-09-17_universidad-de-concepcion_la-serena,2005-09-17,universidad-de-concepcion,la-serena,la-serena,Álex Comas,87,0,0,RSSSF + ESPN
+2005-09-17_universidad-de-concepcion_la-serena,2005-09-17,universidad-de-concepcion,la-serena,universidad-de-concepcion,Ricardo Viveros,73,0,0,RSSSF + ESPN
+2005-09-25_melipilla_audax-italiano,2005-09-25,melipilla,audax-italiano,melipilla,Felipe Miranda,69,0,0,RSSSF + ESPN
+2005-09-28_cobresal_melipilla,2005-09-28,cobresal,melipilla,cobresal,Diego Silva,58,0,0,RSSSF + ESPN
+2005-09-28_cobresal_melipilla,2005-09-28,cobresal,melipilla,cobresal,Néstor Contreras,43,0,0,RSSSF + ESPN
+2005-10-01_la-serena_deportes-temuco,2005-10-01,la-serena,deportes-temuco,la-serena,Álex Comas,41,0,0,RSSSF + ESPN
+2005-10-01_la-serena_deportes-temuco,2005-10-01,la-serena,deportes-temuco,la-serena,Álex Comas,83,0,0,RSSSF + ESPN
+2005-10-01_melipilla_deportes-concepcion,2005-10-01,melipilla,deportes-concepcion,melipilla,Alejandro Carrasco,38,0,0,RSSSF + ESPN
+2005-10-02_universidad-de-concepcion_universidad-catolica,2005-10-02,universidad-de-concepcion,universidad-catolica,universidad-catolica,Luis Ignacio Quinteros,65,0,0,RSSSF + ESPN
+2005-10-07_universidad-de-concepcion_santiago-wanderers,2005-10-07,universidad-de-concepcion,santiago-wanderers,universidad-de-concepcion,Claudio Videla,79,0,0,RSSSF + ESPN
+2005-10-16_coquimbo-unido_la-serena,2005-10-16,coquimbo-unido,la-serena,coquimbo-unido,Marcelo Corrales,73,0,0,RSSSF + ESPN
+2005-10-16_coquimbo-unido_la-serena,2005-10-16,coquimbo-unido,la-serena,la-serena,Felipe Flores,79,0,1,RSSSF + ESPN
+2005-10-16_coquimbo-unido_la-serena,2005-10-16,coquimbo-unido,la-serena,la-serena,Marcelo Caro,84,0,0,RSSSF + ESPN
+2005-10-18_fluminense-bra_universidad-catolica,2005-10-18,fluminense-bra,universidad-catolica,fluminense-bra,Dejan Petkovic,36,0,0,ESPN + es.wikipedia
+2005-10-18_fluminense-bra_universidad-catolica,2005-10-18,fluminense-bra,universidad-catolica,fluminense-bra,Juan,24,0,0,ESPN + es.wikipedia
+2005-10-18_fluminense-bra_universidad-catolica,2005-10-18,fluminense-bra,universidad-catolica,universidad-catolica,Miguel Ponce,90,0,0,ESPN + es.wikipedia
+2005-10-22_la-serena_puerto-montt,2005-10-22,la-serena,puerto-montt,la-serena,Raúl Palacios,27,0,0,RSSSF + ESPN
+2005-10-22_la-serena_puerto-montt,2005-10-22,la-serena,puerto-montt,la-serena,Raúl Palacios,76,0,1,RSSSF + ESPN
+2005-10-22_universidad-de-concepcion_coquimbo-unido,2005-10-22,universidad-de-concepcion,coquimbo-unido,coquimbo-unido,Carlos Carmona,78,0,0,RSSSF + ESPN
+2005-10-22_universidad-de-concepcion_coquimbo-unido,2005-10-22,universidad-de-concepcion,coquimbo-unido,universidad-de-concepcion,Leonardo Drugovich,24,0,1,RSSSF + ESPN
+2005-10-23_melipilla_universidad-catolica,2005-10-23,melipilla,universidad-catolica,universidad-catolica,Albert Acevedo,84,0,0,RSSSF + ESPN
+2005-10-26_melipilla_rangers,2005-10-26,melipilla,rangers,melipilla,Alejandro Vrsalovic,14,0,0,RSSSF + ESPN
+2005-10-26_melipilla_rangers,2005-10-26,melipilla,rangers,melipilla,Alexis Jiménez,25,0,0,RSSSF + ESPN
+2005-10-26_melipilla_rangers,2005-10-26,melipilla,rangers,melipilla,Cristián Abrigó,70,0,0,RSSSF + ESPN
+2005-10-26_melipilla_rangers,2005-10-26,melipilla,rangers,melipilla,Iván Arenas,23,0,1,RSSSF + ESPN
+2005-10-26_melipilla_rangers,2005-10-26,melipilla,rangers,rangers,Eduardo Arancibia,88,0,0,RSSSF + ESPN
+2005-10-29_la-serena_cobreloa,2005-10-29,la-serena,cobreloa,la-serena,Felipe Flores,29,0,0,RSSSF + ESPN
+2005-10-30_union-san-felipe_melipilla,2005-10-30,union-san-felipe,melipilla,union-san-felipe,Francis Ferrero,38,0,0,RSSSF + ESPN
+2005-10-30_union-san-felipe_melipilla,2005-10-30,union-san-felipe,melipilla,union-san-felipe,Rafael Celedón,46,0,0,RSSSF + ESPN
+2005-10-30_universidad-de-concepcion_deportes-concepcion,2005-10-30,universidad-de-concepcion,deportes-concepcion,deportes-concepcion,Cristián Montecinos,39,0,0,RSSSF + ESPN
+2005-10-30_universidad-de-concepcion_deportes-concepcion,2005-10-30,universidad-de-concepcion,deportes-concepcion,deportes-concepcion,Cristián Montecinos,89,0,0,RSSSF + ESPN
+2005-10-30_universidad-de-concepcion_deportes-concepcion,2005-10-30,universidad-de-concepcion,deportes-concepcion,deportes-concepcion,Jimmy Ortiz,55,0,0,RSSSF + ESPN
+2005-10-30_universidad-de-concepcion_deportes-concepcion,2005-10-30,universidad-de-concepcion,deportes-concepcion,universidad-de-concepcion,Federico Bongioanni,80,0,0,RSSSF + ESPN
+2005-10-30_universidad-de-concepcion_deportes-concepcion,2005-10-30,universidad-de-concepcion,deportes-concepcion,universidad-de-concepcion,Fernando Solís,53,0,0,RSSSF + ESPN
+2005-10-30_universidad-de-concepcion_deportes-concepcion,2005-10-30,universidad-de-concepcion,deportes-concepcion,universidad-de-concepcion,Rodrigo Rain,9,0,0,RSSSF + ESPN
+2005-11-04_coquimbo-unido_melipilla,2005-11-04,coquimbo-unido,melipilla,coquimbo-unido,Alfredo Calderón,80,0,0,RSSSF + ESPN
+2005-11-04_coquimbo-unido_melipilla,2005-11-04,coquimbo-unido,melipilla,coquimbo-unido,Marcelo Corrales,26,0,0,RSSSF + ESPN
+2005-11-04_coquimbo-unido_melipilla,2005-11-04,coquimbo-unido,melipilla,melipilla,Alejandro Vrsalovic,63,0,0,RSSSF + ESPN
+2005-11-05_la-serena_universidad-de-chile,2005-11-05,la-serena,universidad-de-chile,la-serena,Luis Pizarro,61,0,0,RSSSF + ESPN
+2005-11-05_la-serena_universidad-de-chile,2005-11-05,la-serena,universidad-de-chile,la-serena,Miguel Ángel Castillo,89,0,0,RSSSF + ESPN
+2005-11-05_la-serena_universidad-de-chile,2005-11-05,la-serena,universidad-de-chile,universidad-de-chile,Cristián Canío,88,0,0,RSSSF + ESPN
+2005-11-05_la-serena_universidad-de-chile,2005-11-05,la-serena,universidad-de-chile,universidad-de-chile,Diego Rivarola,81,0,0,RSSSF + ESPN
+2005-11-05_la-serena_universidad-de-chile,2005-11-05,la-serena,universidad-de-chile,universidad-de-chile,Hugo Droguett,16,0,0,RSSSF + ESPN
+2005-11-06_universidad-de-concepcion_cobresal,2005-11-06,universidad-de-concepcion,cobresal,cobresal,Alejandro Acosta,79,0,0,RSSSF + ESPN
+2005-11-06_universidad-de-concepcion_cobresal,2005-11-06,universidad-de-concepcion,cobresal,universidad-de-concepcion,Claudio Videla,51,0,0,RSSSF + ESPN
+2005-11-06_universidad-de-concepcion_cobresal,2005-11-06,universidad-de-concepcion,cobresal,universidad-de-concepcion,Fernando Solís,28,0,1,RSSSF + ESPN
+2005-11-06_universidad-de-concepcion_cobresal,2005-11-06,universidad-de-concepcion,cobresal,universidad-de-concepcion,Fernando Solís,43,0,0,RSSSF + ESPN
+2005-11-06_universidad-de-concepcion_cobresal,2005-11-06,universidad-de-concepcion,cobresal,universidad-de-concepcion,Pedro Rivera,82,0,0,RSSSF + ESPN
+2005-11-09_universidad-catolica_fluminense-bra,2005-11-09,universidad-catolica,fluminense-bra,universidad-catolica,Francisco Arrué,63,0,0,ESPN + es.wikipedia
+2005-11-09_universidad-catolica_fluminense-bra,2005-11-09,universidad-catolica,fluminense-bra,universidad-catolica,Jorge Quinteros,40,0,0,ESPN + es.wikipedia
+2005-11-12_melipilla_universidad-de-concepcion,2005-11-12,melipilla,universidad-de-concepcion,melipilla,Felipe Miranda,35,0,0,RSSSF + ESPN
+2005-11-12_melipilla_universidad-de-concepcion,2005-11-12,melipilla,universidad-de-concepcion,universidad-de-concepcion,Juan Cisternas,48,0,0,RSSSF + ESPN
+2005-11-12_melipilla_universidad-de-concepcion,2005-11-12,melipilla,universidad-de-concepcion,universidad-de-concepcion,Patricio Monsálvez,84,0,0,RSSSF + ESPN
+2005-11-20_melipilla_colo-colo,2005-11-20,melipilla,colo-colo,colo-colo,Héctor Tapia,78,0,1,RSSSF + ESPN
+2005-11-20_melipilla_colo-colo,2005-11-20,melipilla,colo-colo,colo-colo,Juan Lorca,84,0,0,RSSSF + ESPN
+2005-11-20_melipilla_colo-colo,2005-11-20,melipilla,colo-colo,colo-colo,Miguel Aceval,90,0,0,RSSSF + ESPN
+2005-11-20_melipilla_colo-colo,2005-11-20,melipilla,colo-colo,melipilla,Alejandro Carrasco,88,0,0,RSSSF + ESPN
+2005-11-20_melipilla_colo-colo,2005-11-20,melipilla,colo-colo,melipilla,Iván Arenas,82,0,1,RSSSF + ESPN
+2005-11-24_boca-juniors-arg_universidad-catolica,2005-11-24,boca-juniors-arg,universidad-catolica,boca-juniors-arg,Federico Insúa,71,0,0,ESPN + es.wikipedia
+2005-11-24_boca-juniors-arg_universidad-catolica,2005-11-24,boca-juniors-arg,universidad-catolica,boca-juniors-arg,Martín Palermo,84,0,0,ESPN + es.wikipedia
+2005-11-24_boca-juniors-arg_universidad-catolica,2005-11-24,boca-juniors-arg,universidad-catolica,universidad-catolica,Facundo Imboden,75,0,0,ESPN + es.wikipedia
+2005-11-24_boca-juniors-arg_universidad-catolica,2005-11-24,boca-juniors-arg,universidad-catolica,universidad-catolica,Jorge Quinteros,79,0,0,ESPN + es.wikipedia
+2005-11-25_la-serena_colo-colo,2005-11-25,la-serena,colo-colo,colo-colo,Gonzalo Fierro,17,0,0,RSSSF + ESPN
+2005-11-25_la-serena_colo-colo,2005-11-25,la-serena,colo-colo,la-serena,Álex Comas,61,0,0,RSSSF + ESPN
+2005-11-27_universidad-de-concepcion_universidad-de-chile,2005-11-27,universidad-de-concepcion,universidad-de-chile,universidad-de-chile,Esteban Valencia,71,0,0,RSSSF + ESPN
+2005-11-27_universidad-de-concepcion_universidad-de-chile,2005-11-27,universidad-de-concepcion,universidad-de-chile,universidad-de-chile,Juan Manuel Olivera,5,0,0,RSSSF + ESPN
+2005-11-27_universidad-de-concepcion_universidad-de-chile,2005-11-27,universidad-de-concepcion,universidad-de-chile,universidad-de-concepcion,Ricardo Viveros,53,0,0,RSSSF + ESPN
+2005-12-01_universidad-catolica_boca-juniors-arg,2005-12-01,universidad-catolica,boca-juniors-arg,boca-juniors-arg,Rolando Schiavi,60,0,0,ESPN + es.wikipedia
+2005-12-03_colo-colo_la-serena,2005-12-03,colo-colo,la-serena,colo-colo,Arturo Sanhueza,72,0,0,RSSSF + ESPN
+2005-12-03_colo-colo_la-serena,2005-12-03,colo-colo,la-serena,colo-colo,Gonzalo Fierro,90,0,1,RSSSF + ESPN
+2005-12-03_colo-colo_la-serena,2005-12-03,colo-colo,la-serena,colo-colo,Rodolfo Madrid,22,0,0,RSSSF + ESPN
+2005-12-03_colo-colo_la-serena,2005-12-03,colo-colo,la-serena,la-serena,Patricio Rubina,81,0,0,RSSSF + ESPN
+2005-12-03_colo-colo_la-serena,2005-12-03,colo-colo,la-serena,la-serena,Raúl Palacios,11,0,0,RSSSF + ESPN
+2005-12-03_colo-colo_la-serena,2005-12-03,colo-colo,la-serena,la-serena,Raúl Palacios,61,0,1,RSSSF + ESPN
+2005-12-08_la-serena_universidad-catolica,2005-12-08,la-serena,universidad-catolica,la-serena,Felipe Flores,37,0,0,RSSSF + ESPN
+2005-12-08_la-serena_universidad-catolica,2005-12-08,la-serena,universidad-catolica,la-serena,Felipe Flores,63,0,0,RSSSF + ESPN
+2005-12-08_la-serena_universidad-catolica,2005-12-08,la-serena,universidad-catolica,la-serena,Álex Comas,42,0,0,RSSSF + ESPN
+2005-12-08_la-serena_universidad-catolica,2005-12-08,la-serena,universidad-catolica,universidad-catolica,Eros Pérez,55,0,0,RSSSF + ESPN
+2005-12-08_la-serena_universidad-catolica,2005-12-08,la-serena,universidad-catolica,universidad-catolica,Eros Pérez,73,0,0,RSSSF + ESPN
+2005-12-08_la-serena_universidad-catolica,2005-12-08,la-serena,universidad-catolica,universidad-catolica,Jorge Quinteros,32,0,0,RSSSF + ESPN
+2005-12-14_universidad-catolica_la-serena,2005-12-14,universidad-catolica,la-serena,universidad-catolica,Jorge Quinteros,34,0,0,RSSSF + ESPN
+2005-12-14_universidad-de-chile_cobresal,2005-12-14,universidad-de-chile,cobresal,cobresal,Alejandro Acosta,27,0,0,RSSSF + ESPN
+2005-12-14_universidad-de-chile_cobresal,2005-12-14,universidad-de-chile,cobresal,cobresal,César Díaz,62,0,0,RSSSF + ESPN
+2005-12-14_universidad-de-chile_cobresal,2005-12-14,universidad-de-chile,cobresal,universidad-de-chile,Juan Manuel Olivera,88,0,0,RSSSF + ESPN
+2005-12-14_universidad-de-chile_cobresal,2005-12-14,universidad-de-chile,cobresal,universidad-de-chile,Marcelo Salas,44,0,1,RSSSF + ESPN
+2005-12-14_universidad-de-chile_cobresal,2005-12-14,universidad-de-chile,cobresal,universidad-de-chile,Marcelo Salas,56,0,1,RSSSF + ESPN
+2005-12-14_universidad-de-chile_cobresal,2005-12-14,universidad-de-chile,cobresal,universidad-de-chile,Waldo Ponce,77,0,0,RSSSF + ESPN
+2005-12-18_universidad-de-chile_universidad-catolica,2005-12-18,universidad-de-chile,universidad-catolica,universidad-catolica,Eduardo Rubio,70,0,1,RSSSF + ESPN
+2005-12-22_universidad-catolica_universidad-de-chile,2005-12-22,universidad-catolica,universidad-de-chile,universidad-catolica,Alejandro Osorio,5,0,0,RSSSF + ESPN
+2005-12-22_universidad-catolica_universidad-de-chile,2005-12-22,universidad-catolica,universidad-de-chile,universidad-de-chile,Diego Rivarola,73,0,0,RSSSF + ESPN
+2005-12-22_universidad-catolica_universidad-de-chile,2005-12-22,universidad-catolica,universidad-de-chile,universidad-de-chile,Marcelo Salas,52,0,0,RSSSF + ESPN
+2007-06-09_la-serena_nublense,2007-06-09,la-serena,nublense,la-serena,Emanuel Culio,66,0,0,RSSSF + ESPN
+2007-06-09_la-serena_nublense,2007-06-09,la-serena,nublense,la-serena,Gustavo Canales,19,0,0,RSSSF + ESPN
+2007-06-09_la-serena_nublense,2007-06-09,la-serena,nublense,la-serena,Gustavo Canales,34,0,0,RSSSF + ESPN
+2007-06-09_la-serena_nublense,2007-06-09,la-serena,nublense,la-serena,Gustavo Canales,90,0,0,RSSSF + ESPN
+2007-06-09_la-serena_nublense,2007-06-09,la-serena,nublense,la-serena,Joel Estay,21,0,0,RSSSF + ESPN
+2007-06-09_la-serena_nublense,2007-06-09,la-serena,nublense,la-serena,Ángel Carreño,51,0,0,RSSSF + ESPN
+2007-06-09_la-serena_nublense,2007-06-09,la-serena,nublense,nublense,Edgardo Abdala,30,0,0,RSSSF + ESPN
+2007-06-09_la-serena_nublense,2007-06-09,la-serena,nublense,nublense,Gabriel Migliónico,90,0,0,RSSSF + ESPN
+2007-07-24_colo-colo_melipilla,2007-07-24,colo-colo,melipilla,colo-colo,Gonzalo Fierro,56,0,1,RSSSF + ESPN
+2007-07-24_colo-colo_melipilla,2007-07-24,colo-colo,melipilla,colo-colo,Gonzalo Fierro,69,0,0,RSSSF + ESPN
+2007-07-24_colo-colo_melipilla,2007-07-24,colo-colo,melipilla,colo-colo,Juan Lorca,34,0,0,RSSSF + ESPN
+2007-07-24_colo-colo_melipilla,2007-07-24,colo-colo,melipilla,colo-colo,Miguel Aceval,9,0,1,RSSSF + ESPN
+2007-07-24_colo-colo_melipilla,2007-07-24,colo-colo,melipilla,melipilla,John Valladares,73,0,0,RSSSF + ESPN
+2008-07-06_cobresal_universidad-de-chile,2008-07-06,cobresal,universidad-de-chile,cobresal,Pedro Muñoz,83,0,0,RSSSF + ESPN
+2008-07-06_cobresal_universidad-de-chile,2008-07-06,cobresal,universidad-de-chile,universidad-de-chile,Nicolás Larrondo,67,0,0,RSSSF + ESPN
+2008-07-06_cobresal_universidad-de-chile,2008-07-06,cobresal,universidad-de-chile,universidad-de-chile,Raúl Estévez,43,0,0,RSSSF + ESPN
+2008-10-25_deportes-antofagasta_melipilla,2008-10-25,deportes-antofagasta,melipilla,deportes-antofagasta,Cristián Rojas,35,0,0,RSSSF + ESPN
+2008-10-25_deportes-antofagasta_melipilla,2008-10-25,deportes-antofagasta,melipilla,deportes-antofagasta,Eduardo Martínez,14,0,0,RSSSF + ESPN
+2008-10-25_deportes-antofagasta_melipilla,2008-10-25,deportes-antofagasta,melipilla,deportes-antofagasta,Kevin Harbottle,69,0,0,RSSSF + ESPN
+2008-10-25_deportes-antofagasta_melipilla,2008-10-25,deportes-antofagasta,melipilla,deportes-antofagasta,Richard Olivares,61,0,0,RSSSF + ESPN
+2008-10-25_deportes-antofagasta_melipilla,2008-10-25,deportes-antofagasta,melipilla,melipilla,Luis Jiménez,24,0,0,RSSSF + ESPN
+2008-10-25_deportes-antofagasta_melipilla,2008-10-25,deportes-antofagasta,melipilla,melipilla,Norberto Arrieta,57,0,0,RSSSF + ESPN
+2008-10-25_santiago-morning_audax-italiano,2008-10-25,santiago-morning,audax-italiano,audax-italiano,Braulio Leal,39,0,1,RSSSF + ESPN
+2008-10-25_santiago-morning_audax-italiano,2008-10-25,santiago-morning,audax-italiano,audax-italiano,Braulio Leal,69,0,1,RSSSF + ESPN
+2008-10-25_santiago-morning_audax-italiano,2008-10-25,santiago-morning,audax-italiano,audax-italiano,Fabián Orellana,57,0,0,RSSSF + ESPN
+2008-10-25_santiago-morning_audax-italiano,2008-10-25,santiago-morning,audax-italiano,audax-italiano,Mauricio Salazar,74,0,0,RSSSF + ESPN
+2008-10-25_santiago-morning_audax-italiano,2008-10-25,santiago-morning,audax-italiano,audax-italiano,Renzo Yáñez,81,0,0,RSSSF + ESPN
+2008-10-25_santiago-morning_audax-italiano,2008-10-25,santiago-morning,audax-italiano,santiago-morning,Esteban Paredes,83,0,1,RSSSF + ESPN
+2008-10-25_santiago-morning_audax-italiano,2008-10-25,santiago-morning,audax-italiano,santiago-morning,Jaime Grondona,22,0,0,RSSSF + ESPN
+2008-10-25_santiago-morning_audax-italiano,2008-10-25,santiago-morning,audax-italiano,santiago-morning,Jaime Grondona,86,0,0,RSSSF + ESPN
+2010-02-03_cobreloa_cobresal,2010-02-03,cobreloa,cobresal,cobreloa,Aníbal Domeneghini,12,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-02-03_cobreloa_cobresal,2010-02-03,cobreloa,cobresal,cobreloa,Felipe Salinas,71,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-02-03_cobreloa_cobresal,2010-02-03,cobreloa,cobresal,cobresal,Jean Paul Pineda,87,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-06_huachipato_cobresal,2010-04-06,huachipato,cobresal,huachipato,Nelson Rebolledo,23,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-06_huachipato_cobresal,2010-04-06,huachipato,cobresal,huachipato,Manuel Villalobos,32,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-06_huachipato_cobresal,2010-04-06,huachipato,cobresal,huachipato,Edgardo Abdala,45,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-06_huachipato_cobresal,2010-04-06,huachipato,cobresal,huachipato,Matías García,63,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-06_huachipato_cobresal,2010-04-06,huachipato,cobresal,cobresal,Román Cuello,50,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-06_huachipato_cobresal,2010-04-06,huachipato,cobresal,cobresal,Jean Paul Pineda,61,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-06_huachipato_cobresal,2010-04-06,huachipato,cobresal,cobresal,Esteban Sáez,80,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-14_universidad-de-concepcion_union-espanola,2010-04-14,universidad-de-concepcion,union-espanola,universidad-de-concepcion,Otelo Ocampo,67,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-14_universidad-de-concepcion_union-espanola,2010-04-14,universidad-de-concepcion,union-espanola,universidad-de-concepcion,Juan Cabral,81,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-14_universidad-de-concepcion_union-espanola,2010-04-14,universidad-de-concepcion,union-espanola,universidad-de-concepcion,Gustavo Lorenzetti,87,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-14_universidad-de-concepcion_union-espanola,2010-04-14,universidad-de-concepcion,union-espanola,union-espanola,Braulio Leal,17,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-14_universidad-de-concepcion_union-espanola,2010-04-14,universidad-de-concepcion,union-espanola,union-espanola,Alexander Medina,37,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-04-14_universidad-de-concepcion_union-espanola,2010-04-14,universidad-de-concepcion,union-espanola,union-espanola,Nicolás Núñez,82,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-05-12_union-san-felipe_huachipato,2010-05-12,union-san-felipe,huachipato,union-san-felipe,Carlos Alzamora,71,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-05-12_union-san-felipe_huachipato,2010-05-12,union-san-felipe,huachipato,huachipato,Manuel Villalobos,63,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-10_cobreloa_universidad-de-chile,2010-07-10,cobreloa,universidad-de-chile,universidad-de-chile,Gabriel Vargas,23,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-10_cobreloa_universidad-de-chile,2010-07-10,cobreloa,universidad-de-chile,universidad-de-chile,Diego Rivarola,90,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-10_huachipato_audax-italiano,2010-07-10,huachipato,audax-italiano,huachipato,Nelson Rebolledo,52,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-10_huachipato_audax-italiano,2010-07-10,huachipato,audax-italiano,audax-italiano,Sebastián Pinto,34,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-10_huachipato_audax-italiano,2010-07-10,huachipato,audax-italiano,audax-italiano,Cristián Martínez,72,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-14_colo-colo_everton,2010-07-14,colo-colo,everton,colo-colo,Matías Quiroga,17,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-14_colo-colo_everton,2010-07-14,colo-colo,everton,colo-colo,Matías Quiroga,22,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-14_ohiggins_universidad-de-chile,2010-07-14,ohiggins,universidad-de-chile,ohiggins,Gonzalo Ludueña,34,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-14_ohiggins_universidad-de-chile,2010-07-14,ohiggins,universidad-de-chile,ohiggins,Luis Casanova,62,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-14_ohiggins_universidad-de-chile,2010-07-14,ohiggins,universidad-de-chile,ohiggins,Samuel Teuber,88,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-14_ohiggins_universidad-de-chile,2010-07-14,ohiggins,universidad-de-chile,universidad-de-chile,José Contreras,20,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-14_ohiggins_universidad-de-chile,2010-07-14,ohiggins,universidad-de-chile,universidad-de-chile,Juan Manuel Olivera,74,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-14_ohiggins_universidad-de-chile,2010-07-14,ohiggins,universidad-de-chile,universidad-de-chile,Diego Rivarola,81,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-21_universidad-catolica_universidad-de-concepcion,2010-07-21,universidad-catolica,universidad-de-concepcion,universidad-catolica,Claudio Muñoz,86,1,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-22_universidad-de-chile_audax-italiano,2010-07-22,universidad-de-chile,audax-italiano,universidad-de-chile,Juan Manuel Olivera,24,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-22_universidad-de-chile_audax-italiano,2010-07-22,universidad-de-chile,audax-italiano,universidad-de-chile,Juan Manuel Olivera,51,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-22_universidad-de-chile_audax-italiano,2010-07-22,universidad-de-chile,audax-italiano,audax-italiano,Mauro Olivi,20,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-07-22_universidad-de-chile_audax-italiano,2010-07-22,universidad-de-chile,audax-italiano,audax-italiano,Mauro Olivi,37,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-06_audax-italiano_union-espanola,2010-08-06,audax-italiano,union-espanola,audax-italiano,Matías Campos,17,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-06_audax-italiano_union-espanola,2010-08-06,audax-italiano,union-espanola,audax-italiano,Boris Rieloff,51,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-06_audax-italiano_union-espanola,2010-08-06,audax-italiano,union-espanola,audax-italiano,Sebastián Pinto,64,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-06_audax-italiano_union-espanola,2010-08-06,audax-italiano,union-espanola,audax-italiano,Omar Salazar,73,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-06_audax-italiano_union-espanola,2010-08-06,audax-italiano,union-espanola,audax-italiano,Fabián Benítez,87,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-06_audax-italiano_union-espanola,2010-08-06,audax-italiano,union-espanola,union-espanola,Miguel Aceval,6,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-06_audax-italiano_union-espanola,2010-08-06,audax-italiano,union-espanola,union-espanola,Leonardo Monje,84,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-13_audax-italiano_union-san-felipe,2010-08-13,audax-italiano,union-san-felipe,audax-italiano,Mauro Olivi,45,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-13_deportes-iquique_universidad-de-chile,2010-08-13,deportes-iquique,universidad-de-chile,universidad-de-chile,Gabriel Vargas,8,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-13_deportes-iquique_universidad-de-chile,2010-08-13,deportes-iquique,universidad-de-chile,universidad-de-chile,Angel Rojas,81,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-19_universidad-de-chile_deportes-iquique,2010-08-19,universidad-de-chile,deportes-iquique,universidad-de-chile,Edson Puch,24,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-19_universidad-de-chile_deportes-iquique,2010-08-19,universidad-de-chile,deportes-iquique,universidad-de-chile,Matías Rodríguez,70,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-19_universidad-de-chile_deportes-iquique,2010-08-19,universidad-de-chile,deportes-iquique,universidad-de-chile,Matías Rodríguez,85,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-19_universidad-de-chile_deportes-iquique,2010-08-19,universidad-de-chile,deportes-iquique,universidad-de-chile,Gabriel Vargas,73,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-19_universidad-de-chile_deportes-iquique,2010-08-19,universidad-de-chile,deportes-iquique,deportes-iquique,Néstor Contreras,44,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-20_ohiggins_cobresal,2010-08-20,ohiggins,cobresal,cobresal,Jean Paul Pineda,35,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-08-27_universidad-de-chile_santiago-wanderers,2010-08-27,universidad-de-chile,santiago-wanderers,universidad-de-chile,Diego Rivarola,90,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-05_cobresal_universidad-de-chile,2010-09-05,cobresal,universidad-de-chile,cobresal,Román Cuello,90,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-05_cobresal_universidad-de-chile,2010-09-05,cobresal,universidad-de-chile,universidad-de-chile,Gabriel Vargas,54,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-05_cobresal_universidad-de-chile,2010-09-05,cobresal,universidad-de-chile,universidad-de-chile,Diego Rivarola,87,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-05_union-espanola_everton,2010-09-05,union-espanola,everton,union-espanola,Fernando Cordero,11,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-05_union-espanola_everton,2010-09-05,union-espanola,everton,union-espanola,Fernando Cordero,55,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-05_union-espanola_everton,2010-09-05,union-espanola,everton,union-espanola,Leonardo Monje,52,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-05_union-espanola_everton,2010-09-05,union-espanola,everton,everton,Mauro Guevgeozián,36,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-05_union-espanola_everton,2010-09-05,union-espanola,everton,everton,Mauro Guevgeozián,48,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-08_everton_nublense,2010-09-08,everton,nublense,everton,Nicolás Peñailillo,35,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-08_everton_nublense,2010-09-08,everton,nublense,everton,Rodrigo Ramírez,71,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-08_everton_nublense,2010-09-08,everton,nublense,nublense,Gabriel Rodríguez,24,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-08_everton_nublense,2010-09-08,everton,nublense,nublense,Jonathan Cisternas,52,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-08_everton_nublense,2010-09-08,everton,nublense,nublense,Luis Alegría,89,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-10_universidad-catolica_union-espanola,2010-09-10,universidad-catolica,union-espanola,universidad-catolica,Roberto Gutiérrez,2,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-10_universidad-catolica_union-espanola,2010-09-10,universidad-catolica,union-espanola,universidad-catolica,Lucas Pratto,35,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-15_san-luis_universidad-de-concepcion,2010-09-15,san-luis,universidad-de-concepcion,san-luis,Hernán Peirone,12,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-17_audax-italiano_la-serena,2010-09-17,audax-italiano,la-serena,audax-italiano,Mauro Olivi,9,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-17_audax-italiano_la-serena,2010-09-17,audax-italiano,la-serena,audax-italiano,Cristián Canuhé,15,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-17_audax-italiano_la-serena,2010-09-17,audax-italiano,la-serena,la-serena,Marcelo Díaz,85,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-17_cobresal_huachipato,2010-09-17,cobresal,huachipato,huachipato,Claudio Muñoz,90,1,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-17_cobresal_huachipato,2010-09-17,cobresal,huachipato,cobresal,Adrián Faúndez,21,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-17_cobresal_huachipato,2010-09-17,cobresal,huachipato,cobresal,Jean Paul Pineda,85,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-17_palestino_santiago-wanderers,2010-09-17,palestino,santiago-wanderers,santiago-wanderers,Sebastián Méndez,77,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-17_union-espanola_santiago-morning,2010-09-17,union-espanola,santiago-morning,union-espanola,Gustavo Canales,41,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-17_union-espanola_santiago-morning,2010-09-17,union-espanola,santiago-morning,union-espanola,Gustavo Canales,80,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-17_union-espanola_santiago-morning,2010-09-17,union-espanola,santiago-morning,santiago-morning,Felipe Díaz,47,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-17_union-espanola_santiago-morning,2010-09-17,union-espanola,santiago-morning,santiago-morning,Sergio Comba,64,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-17_union-san-felipe_cobreloa,2010-09-17,union-san-felipe,cobreloa,union-san-felipe,Ángel Vildozo,64,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-22_universidad-de-chile_ohiggins,2010-09-22,universidad-de-chile,ohiggins,ohiggins,Enzo Gutiérrez,27,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-24_san-luis_cobresal,2010-09-24,san-luis,cobresal,san-luis,Hernán Peirone,16,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-24_san-luis_cobresal,2010-09-24,san-luis,cobresal,cobresal,Hans Salinas,10,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-29_everton_colo-colo,2010-09-29,everton,colo-colo,colo-colo,Cristóbal Jorquera,25,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-09-29_everton_colo-colo,2010-09-29,everton,colo-colo,colo-colo,Esteban Paredes,63,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-01_audax-italiano_huachipato,2010-10-01,audax-italiano,huachipato,audax-italiano,Matías Campos,66,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-01_audax-italiano_huachipato,2010-10-01,audax-italiano,huachipato,huachipato,José Pérez,3,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-01_union-san-felipe_universidad-de-chile,2010-10-01,union-san-felipe,universidad-de-chile,union-san-felipe,Ángel Vildozo,32,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-01_union-san-felipe_universidad-de-chile,2010-10-01,union-san-felipe,universidad-de-chile,universidad-de-chile,Carlos Bueno,51,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-01_union-san-felipe_universidad-de-chile,2010-10-01,union-san-felipe,universidad-de-chile,universidad-de-chile,Diego Rivarola,76,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-21_audax-italiano_cobresal,2010-10-21,audax-italiano,cobresal,audax-italiano,Omar Salazar,37,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-21_audax-italiano_cobresal,2010-10-21,audax-italiano,cobresal,audax-italiano,Sebastián Pinto,46,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-21_audax-italiano_cobresal,2010-10-21,audax-italiano,cobresal,audax-italiano,Sebastián Pinto,90,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-21_audax-italiano_cobresal,2010-10-21,audax-italiano,cobresal,audax-italiano,Cristián Vilches,77,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-21_audax-italiano_cobresal,2010-10-21,audax-italiano,cobresal,cobresal,Adrián Faúndez,16,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-21_audax-italiano_cobresal,2010-10-21,audax-italiano,cobresal,cobresal,Hans Salinas,19,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-21_palestino_colo-colo,2010-10-21,palestino,colo-colo,palestino,Pablo Pereira,25,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-21_palestino_colo-colo,2010-10-21,palestino,colo-colo,colo-colo,Cristóbal Jorquera,11,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-21_palestino_colo-colo,2010-10-21,palestino,colo-colo,colo-colo,Esteban Paredes,88,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-29_san-luis_union-espanola,2010-10-29,san-luis,union-espanola,san-luis,Hernán Peirone,21,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-29_san-luis_union-espanola,2010-10-29,san-luis,union-espanola,san-luis,Patricio Pérez,63,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-29_san-luis_union-espanola,2010-10-29,san-luis,union-espanola,san-luis,Joel Soto,67,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-10-29_san-luis_union-espanola,2010-10-29,san-luis,union-espanola,union-espanola,Leonardo Monje,82,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-05_audax-italiano_universidad-de-concepcion,2010-11-05,audax-italiano,universidad-de-concepcion,audax-italiano,Boris Rieloff,24,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-05_audax-italiano_universidad-de-concepcion,2010-11-05,audax-italiano,universidad-de-concepcion,audax-italiano,Boris Rieloff,42,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-05_audax-italiano_universidad-de-concepcion,2010-11-05,audax-italiano,universidad-de-concepcion,audax-italiano,Mauro Olivi,88,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-05_audax-italiano_universidad-de-concepcion,2010-11-05,audax-italiano,universidad-de-concepcion,audax-italiano,Lucas Domínguez,90,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-05_audax-italiano_universidad-de-concepcion,2010-11-05,audax-italiano,universidad-de-concepcion,universidad-de-concepcion,Richard Pellejero,77,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-12_universidad-catolica_huachipato,2010-11-12,universidad-catolica,huachipato,universidad-catolica,Jorge Ormeño,50,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-12_universidad-catolica_huachipato,2010-11-12,universidad-catolica,huachipato,universidad-catolica,Darío Botinelli,73,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-19_san-luis_santiago-wanderers,2010-11-19,san-luis,santiago-wanderers,san-luis,Alexis Flores,12,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-19_san-luis_santiago-wanderers,2010-11-19,san-luis,santiago-wanderers,san-luis,Hernán Peirone,31,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-19_san-luis_santiago-wanderers,2010-11-19,san-luis,santiago-wanderers,san-luis,Patricio Pérez,74,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-19_san-luis_santiago-wanderers,2010-11-19,san-luis,santiago-wanderers,santiago-wanderers,Eric Godoy,27,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-19_san-luis_santiago-wanderers,2010-11-19,san-luis,santiago-wanderers,santiago-wanderers,José Luis Jiménez,33,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-19_san-luis_santiago-wanderers,2010-11-19,san-luis,santiago-wanderers,santiago-wanderers,Carlos Muñoz,52,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-19_san-luis_santiago-wanderers,2010-11-19,san-luis,santiago-wanderers,santiago-wanderers,Michael Silva,87,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-26_union-san-felipe_union-espanola,2010-11-26,union-san-felipe,union-espanola,union-san-felipe,Miguel Ángel González,10,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-26_union-san-felipe_union-espanola,2010-11-26,union-san-felipe,union-espanola,union-san-felipe,Ángel Vildozo,21,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-26_union-san-felipe_union-espanola,2010-11-26,union-san-felipe,union-espanola,union-espanola,Gustavo Canales,34,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-26_union-san-felipe_union-espanola,2010-11-26,union-san-felipe,union-espanola,union-espanola,Gustavo Canales,88,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-26_union-san-felipe_union-espanola,2010-11-26,union-san-felipe,union-espanola,union-espanola,Martín Ligüera,42,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-11-26_union-san-felipe_union-espanola,2010-11-26,union-san-felipe,union-espanola,union-espanola,Braulio Leal,71,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-03_audax-italiano_universidad-de-chile,2010-12-03,audax-italiano,universidad-de-chile,audax-italiano,Lucas Domínguez,66,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-03_audax-italiano_universidad-de-chile,2010-12-03,audax-italiano,universidad-de-chile,universidad-de-chile,Diego Rivarola,48,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-03_audax-italiano_universidad-de-chile,2010-12-03,audax-italiano,universidad-de-chile,universidad-de-chile,Edson Puch,62,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-09_huachipato_audax-italiano,2010-12-09,huachipato,audax-italiano,huachipato,José Luis Zelaye,35,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-09_huachipato_audax-italiano,2010-12-09,huachipato,audax-italiano,huachipato,Nelson Rebolledo,77,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-09_huachipato_audax-italiano,2010-12-09,huachipato,audax-italiano,audax-italiano,Omar Salazar,1,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-12_audax-italiano_huachipato,2010-12-12,audax-italiano,huachipato,audax-italiano,Marco Medel,2,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-12_audax-italiano_huachipato,2010-12-12,audax-italiano,huachipato,audax-italiano,Boris Rieloff,49,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-12_curico-unido_universidad-de-concepcion,2010-12-12,curico-unido,universidad-de-concepcion,universidad-de-concepcion,Renato Ramos,51,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-12_curico-unido_universidad-de-concepcion,2010-12-12,curico-unido,universidad-de-concepcion,universidad-de-concepcion,Francisco Arrué,82,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-12_deportes-antofagasta_santiago-morning,2010-12-12,deportes-antofagasta,santiago-morning,deportes-antofagasta,Fernando Mendez,51,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-12_deportes-antofagasta_santiago-morning,2010-12-12,deportes-antofagasta,santiago-morning,deportes-antofagasta,Carlos Escudero,86,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-12_deportes-antofagasta_santiago-morning,2010-12-12,deportes-antofagasta,santiago-morning,santiago-morning,Michael Ríos,56,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-12_universidad-de-chile_union-espanola,2010-12-12,universidad-de-chile,union-espanola,universidad-de-chile,Felipe Gallegos,76,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-12_universidad-de-chile_union-espanola,2010-12-12,universidad-de-chile,union-espanola,union-espanola,Leonardo Monje,3,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-12_universidad-de-chile_union-espanola,2010-12-12,universidad-de-chile,union-espanola,union-espanola,Gustavo Canales,5,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-12_universidad-de-chile_union-espanola,2010-12-12,universidad-de-chile,union-espanola,union-espanola,Gustavo Canales,65,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-12_universidad-de-chile_union-espanola,2010-12-12,universidad-de-chile,union-espanola,union-espanola,Gustavo Canales,87,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-16_union-espanola_audax-italiano,2010-12-16,union-espanola,audax-italiano,union-espanola,Braulio Leal,17,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-16_union-espanola_audax-italiano,2010-12-16,union-espanola,audax-italiano,union-espanola,Gustavo Canales,90,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-16_union-espanola_audax-italiano,2010-12-16,union-espanola,audax-italiano,audax-italiano,Sebastián Pinto,73,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-18_santiago-morning_deportes-antofagasta,2010-12-18,santiago-morning,deportes-antofagasta,santiago-morning,Washington Torres,27,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-18_santiago-morning_deportes-antofagasta,2010-12-18,santiago-morning,deportes-antofagasta,santiago-morning,Michael Ríos,28,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-18_santiago-morning_deportes-antofagasta,2010-12-18,santiago-morning,deportes-antofagasta,santiago-morning,Pablo Calandra,117,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-18_santiago-morning_deportes-antofagasta,2010-12-18,santiago-morning,deportes-antofagasta,deportes-antofagasta,Richard Olivares,48,0,1,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-18_universidad-de-concepcion_curico-unido,2010-12-18,universidad-de-concepcion,curico-unido,universidad-de-concepcion,Gustavo Lorenzetti,20,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-18_universidad-de-concepcion_curico-unido,2010-12-18,universidad-de-concepcion,curico-unido,universidad-de-concepcion,Renato Ramos,78,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-18_universidad-de-concepcion_curico-unido,2010-12-18,universidad-de-concepcion,curico-unido,universidad-de-concepcion,Juan José Arraya,90,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-18_universidad-de-concepcion_curico-unido,2010-12-18,universidad-de-concepcion,curico-unido,curico-unido,Juan Carlos Muñoz,29,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-18_universidad-de-concepcion_curico-unido,2010-12-18,universidad-de-concepcion,curico-unido,curico-unido,Patricio Gutierrez,31,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-19_audax-italiano_union-espanola,2010-12-19,audax-italiano,union-espanola,audax-italiano,Matías Campos,30,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2010-12-19_audax-italiano_union-espanola,2010-12-19,audax-italiano,union-espanola,union-espanola,Gustavo Canales,43,0,0,RSSSF (rsssf.org/tablesc/chile2010.html)
+2011-07-28_deportes-concepcion_universidad-de-chile,2011-07-28,deportes-concepcion,universidad-de-chile,deportes-concepcion,Emanuel Herrera,51,0,0,es.wikipedia (Anexo U. de Chile 2011) + RSSSF (resultado)
+2011-07-28_deportes-concepcion_universidad-de-chile,2011-07-28,deportes-concepcion,universidad-de-chile,deportes-concepcion,Emanuel Herrera,58,0,0,es.wikipedia (Anexo U. de Chile 2011) + RSSSF (resultado)
+2011-07-28_deportes-concepcion_universidad-de-chile,2011-07-28,deportes-concepcion,universidad-de-chile,universidad-de-chile,Gabriel Vargas,73,0,0,es.wikipedia (Anexo U. de Chile 2011) + RSSSF (resultado)
+2011-07-28_deportes-concepcion_universidad-de-chile,2011-07-28,deportes-concepcion,universidad-de-chile,universidad-de-chile,Francisco Castro,83,0,0,es.wikipedia (Anexo U. de Chile 2011) + RSSSF (resultado)
+2011-08-04_universidad-de-chile_deportes-concepcion,2011-08-04,universidad-de-chile,deportes-concepcion,universidad-de-chile,Gustavo Canales,56,0,0,es.wikipedia (Anexo U. de Chile 2011) + RSSSF (resultado)
+2011-08-04_universidad-de-chile_deportes-concepcion,2011-08-04,universidad-de-chile,deportes-concepcion,universidad-de-chile,Diego Rivarola,90,0,0,es.wikipedia (Anexo U. de Chile 2011) + RSSSF (resultado)
+2012-02-18_palestino_universidad-de-chile,2012-02-18,palestino,universidad-de-chile,palestino,Nicolás Canales,66,0,0,"es.wikipedia (Anexo U. de Chile 2012, cita Soccerway) + crónica Cooperativa en el mismo anexo"
+2012-02-18_palestino_universidad-de-chile,2012-02-18,palestino,universidad-de-chile,universidad-de-chile,Junior Fernandes,54,0,0,"es.wikipedia (Anexo U. de Chile 2012, cita Soccerway) + crónica Cooperativa en el mismo anexo"
+2012-02-18_palestino_universidad-de-chile,2012-02-18,palestino,universidad-de-chile,universidad-de-chile,Albert Acevedo,77,0,0,"es.wikipedia (Anexo U. de Chile 2012, cita Soccerway) + crónica Cooperativa en el mismo anexo"
+2012-02-18_palestino_universidad-de-chile,2012-02-18,palestino,universidad-de-chile,universidad-de-chile,Raúl Ruidíaz,83,0,0,"es.wikipedia (Anexo U. de Chile 2012, cita Soccerway) + crónica Cooperativa en el mismo anexo"
+2012-11-18_everton_universidad-de-concepcion,2012-11-18,everton,universidad-de-concepcion,everton,Ángel Rojas,10,0,1,Cooperativa (crónica)
+2012-11-25_universidad-de-concepcion_everton,2012-11-25,universidad-de-concepcion,everton,universidad-de-concepcion,Renato Ramos,62,0,0,Cooperativa + 24horas + alairelibre (crónicas)
+2012-11-25_universidad-de-concepcion_everton,2012-11-25,universidad-de-concepcion,everton,everton,José Luis Muñoz,43,0,0,Cooperativa + 24horas + alairelibre (crónicas)
+2012-11-25_universidad-de-concepcion_everton,2012-11-25,universidad-de-concepcion,everton,everton,José Luis Muñoz,65,0,0,Cooperativa + 24horas + alairelibre (crónicas)
+2012-11-25_universidad-de-concepcion_everton,2012-11-25,universidad-de-concepcion,everton,everton,Yonathan Suazo,90,0,0,Cooperativa + 24horas + alairelibre (crónicas)
+2013-01-27_cobreloa_colo-colo,2013-01-27,cobreloa,colo-colo,cobreloa,Leandro Gracián,38,0,0,Cooperativa + The Clinic + worldfootball + ESPN 360369
+2013-01-27_cobreloa_colo-colo,2013-01-27,cobreloa,colo-colo,cobreloa,Miguel Ángel Cuéllar,49,0,1,Cooperativa + The Clinic + worldfootball + ESPN 360369
+2013-01-27_cobreloa_colo-colo,2013-01-27,cobreloa,colo-colo,cobreloa,Miguel Ángel Cuéllar,50,0,0,Cooperativa + The Clinic + worldfootball + ESPN 360369
+2013-01-27_cobreloa_colo-colo,2013-01-27,cobreloa,colo-colo,cobreloa,Brian Cortés,57,0,0,Cooperativa + The Clinic + worldfootball + ESPN 360369
+2013-01-27_cobreloa_colo-colo,2013-01-27,cobreloa,colo-colo,cobreloa,Marcos Pol,65,0,0,Cooperativa + The Clinic + worldfootball + ESPN 360369
+2013-01-27_cobreloa_colo-colo,2013-01-27,cobreloa,colo-colo,colo-colo,Mauro Olivi,76,0,1,Cooperativa + The Clinic + worldfootball + ESPN 360369
+2013-01-27_cobreloa_colo-colo,2013-01-27,cobreloa,colo-colo,colo-colo,Cristián Suárez,79,1,0,Cooperativa + The Clinic + worldfootball + ESPN 360369
+2013-08-27_emelec-ecu_universidad-catolica,2013-08-27,emelec-ecu,universidad-catolica,emelec-ecu,Enner Valencia,64,0,0,worldfootball + Cooperativa + fotmob (via búsqueda) + ESPN 380382
+2013-08-27_emelec-ecu_universidad-catolica,2013-08-27,emelec-ecu,universidad-catolica,emelec-ecu,Enner Valencia,71,0,0,worldfootball + Cooperativa + fotmob (via búsqueda) + ESPN 380382
+2013-08-27_emelec-ecu_universidad-catolica,2013-08-27,emelec-ecu,universidad-catolica,universidad-catolica,Nicolás Castillo,41,0,0,worldfootball + Cooperativa + fotmob (via búsqueda) + ESPN 380382
+2013-08-27_emelec-ecu_universidad-catolica,2013-08-27,emelec-ecu,universidad-catolica,universidad-catolica,Fernando Cordero,61,0,0,worldfootball + Cooperativa + fotmob (via búsqueda) + ESPN 380382
+2013-08-27_emelec-ecu_universidad-catolica,2013-08-27,emelec-ecu,universidad-catolica,universidad-catolica,Matías Jadue,73,0,0,worldfootball + Cooperativa + fotmob (via búsqueda) + ESPN 380382
+2013-11-23_palestino_nublense,2013-11-23,palestino,nublense,palestino,Roberto Gutiérrez,7,0,0,ESPN 380539 + Cooperativa
+2013-11-23_palestino_nublense,2013-11-23,palestino,nublense,palestino,Felipe Campos,38,0,0,ESPN 380539 + Cooperativa
+2013-11-23_palestino_nublense,2013-11-23,palestino,nublense,palestino,César Valenzuela,90,0,0,ESPN 380539 + Cooperativa
+2013-11-23_palestino_nublense,2013-11-23,palestino,nublense,nublense,Luciano Vásquez,25,0,1,ESPN 380539 + Cooperativa
+2013-11-23_palestino_nublense,2013-11-23,palestino,nublense,nublense,Luciano Vásquez,33,0,0,ESPN 380539 + Cooperativa
+2013-11-23_palestino_nublense,2013-11-23,palestino,nublense,nublense,Luciano Vásquez,45,0,0,ESPN 380539 + Cooperativa
+2013-11-23_palestino_nublense,2013-11-23,palestino,nublense,nublense,Luciano Vásquez,46,0,0,ESPN 380539 + Cooperativa
+2013-11-23_palestino_nublense,2013-11-23,palestino,nublense,nublense,Emanuel Crocce,51,0,0,ESPN 380539 + Cooperativa
+2013-11-23_palestino_nublense,2013-11-23,palestino,nublense,nublense,Ariel Bogado,90,0,1,ESPN 380539 + Cooperativa
+2013-12-10_universidad-catolica_ohiggins,2013-12-10,universidad-catolica,ohiggins,ohiggins,Pablo Hernández,34,0,0,ESPN 2013 + es.wikipedia
+2013-12-13_deportes-iquique_universidad-catolica,2013-12-13,deportes-iquique,universidad-catolica,universidad-catolica,Ramiro Costa,11,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-13_deportes-iquique_universidad-catolica,2013-12-13,deportes-iquique,universidad-catolica,universidad-catolica,José Luis Muñoz,29,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-13_deportes-iquique_universidad-catolica,2013-12-13,deportes-iquique,universidad-catolica,deportes-iquique,Rodrigo Díaz,45,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-13_deportes-iquique_universidad-catolica,2013-12-13,deportes-iquique,universidad-catolica,deportes-iquique,Rafael Caroca,46,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-13_palestino_universidad-de-chile,2013-12-13,palestino,universidad-de-chile,palestino,Sergio López,67,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-13_palestino_universidad-de-chile,2013-12-13,palestino,universidad-de-chile,universidad-de-chile,Isaac Díaz,64,0,1,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-16_universidad-catolica_deportes-iquique,2013-12-16,universidad-catolica,deportes-iquique,universidad-catolica,Matías Jadue,12,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-16_universidad-catolica_deportes-iquique,2013-12-16,universidad-catolica,deportes-iquique,deportes-iquique,Manuel Villalobos,77,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-16_universidad-de-chile_palestino,2013-12-16,universidad-de-chile,palestino,universidad-de-chile,Rodrigo Rojas,7,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-16_universidad-de-chile_palestino,2013-12-16,universidad-de-chile,palestino,universidad-de-chile,Gustavo Lorenzetti,38,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-16_universidad-de-chile_palestino,2013-12-16,universidad-de-chile,palestino,universidad-de-chile,Rodrigo Rojas,74,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-16_universidad-de-chile_palestino,2013-12-16,universidad-de-chile,palestino,palestino,Roberto Gutiérrez,55,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-19_deportes-iquique_universidad-de-chile,2013-12-19,deportes-iquique,universidad-de-chile,universidad-de-chile,Isaac Díaz,35,0,0,es.wikipedia + Cooperativa (Díaz)
+2013-12-22_universidad-de-chile_deportes-iquique,2013-12-22,universidad-de-chile,deportes-iquique,universidad-de-chile,Ramón Fernández,5,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-22_universidad-de-chile_deportes-iquique,2013-12-22,universidad-de-chile,deportes-iquique,universidad-de-chile,Charles Aránguiz,10,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-22_universidad-de-chile_deportes-iquique,2013-12-22,universidad-de-chile,deportes-iquique,universidad-de-chile,Isaac Díaz,76,0,0,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2013-12-22_universidad-de-chile_deportes-iquique,2013-12-22,universidad-de-chile,deportes-iquique,universidad-de-chile,Isaac Díaz,86,0,1,es.wikipedia Torneo Apertura 2013 (Chile) (cita Soccerway)
+2018-02-06_fbc-melgar-per_santiago-wanderers,2018-02-06,fbc-melgar-per,santiago-wanderers,santiago-wanderers,Marco Medel,44,0,0,en.wikipedia (Libertadores 2018 qualifying + CONMEBOL report) + ESPN
+2021-06-27_deportes-concepcion_santiago-wanderers,2021-06-27,deportes-concepcion,santiago-wanderers,deportes-concepcion,Kevin Baeza,49,0,0,en.wikipedia (2021 Copa Chile) + ESPN
+2021-06-27_deportes-concepcion_santiago-wanderers,2021-06-27,deportes-concepcion,santiago-wanderers,santiago-wanderers,Juan Soto,9,0,0,en.wikipedia (2021 Copa Chile) + ESPN
+2019-03-23_san-antonio-unido_la-serena,2019-03-23,san-antonio-unido,la-serena,san-antonio-unido,Luciano Díaz,8,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_san-antonio-unido_la-serena,2019-03-23,san-antonio-unido,la-serena,la-serena,Javier Bayk,24,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_san-antonio-unido_la-serena,2019-03-23,san-antonio-unido,la-serena,la-serena,Sebastián Rivera,41,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_deportes-colina_santiago-morning,2019-03-23,deportes-colina,santiago-morning,deportes-colina,Sebastián Julio,49,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_deportes-colina_santiago-morning,2019-03-23,deportes-colina,santiago-morning,santiago-morning,Sebastián Contreras Moreno,7,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_deportes-colina_santiago-morning,2019-03-23,deportes-colina,santiago-morning,santiago-morning,Jorge Gatica,59,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_deportes-colina_santiago-morning,2019-03-23,deportes-colina,santiago-morning,santiago-morning,Gonzalo Reyes,63,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_rengo_barnechea,2019-03-23,rengo,barnechea,rengo,Ernesto Rojas,55,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_rengo_barnechea,2019-03-23,rengo,barnechea,rengo,José González,69,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_rengo_barnechea,2019-03-23,rengo,barnechea,barnechea,Francisco Arriagada,46,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_rengo_barnechea,2019-03-23,rengo,barnechea,barnechea,Joaquín Díaz,53,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_rengo_barnechea,2019-03-23,rengo,barnechea,barnechea,Allan Luttecke,74,0,1,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_vallenar_copiapo,2019-03-23,vallenar,copiapo,vallenar,Fidel Córdova,58,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_vallenar_copiapo,2019-03-23,vallenar,copiapo,vallenar,Fidel Córdova,72,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_vallenar_copiapo,2019-03-23,vallenar,copiapo,copiapo,Eduardo Puchetta,81,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_fernandez-vial_deportes-temuco,2019-03-23,fernandez-vial,deportes-temuco,fernandez-vial,Carlos Vásquez,4,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_fernandez-vial_deportes-temuco,2019-03-23,fernandez-vial,deportes-temuco,fernandez-vial,Franco Ortega,78,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_fernandez-vial_deportes-temuco,2019-03-23,fernandez-vial,deportes-temuco,deportes-temuco,Bryan Taiva,42,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-23_fernandez-vial_deportes-temuco,2019-03-23,fernandez-vial,deportes-temuco,deportes-temuco,Jonathan Requena,90,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_provincial-osorno_puerto-montt,2019-03-24,provincial-osorno,puerto-montt,provincial-osorno,Bastián Lecaros,51,0,1,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_provincial-osorno_puerto-montt,2019-03-24,provincial-osorno,puerto-montt,puerto-montt,Jonathan Rebolledo,15,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_provincial-osorno_puerto-montt,2019-03-24,provincial-osorno,puerto-montt,puerto-montt,Richard Barroilhet,45,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_provincial-osorno_puerto-montt,2019-03-24,provincial-osorno,puerto-montt,puerto-montt,Ignacio Lemmo,72,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_san-marcos-de-arica_cobreloa,2019-03-24,san-marcos-de-arica,cobreloa,san-marcos-de-arica,Mauricio Godoy,20,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_san-marcos-de-arica_cobreloa,2019-03-24,san-marcos-de-arica,cobreloa,san-marcos-de-arica,Eduardo Alberto Vilches,63,0,1,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_san-marcos-de-arica_cobreloa,2019-03-24,san-marcos-de-arica,cobreloa,san-marcos-de-arica,Eduardo Alberto Vilches,90,0,1,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_san-marcos-de-arica_cobreloa,2019-03-24,san-marcos-de-arica,cobreloa,cobreloa,Kevin Mundaca,79,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_general-velasquez_magallanes,2019-03-24,general-velasquez,magallanes,general-velasquez,Nahuel Donadell,67,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_general-velasquez_magallanes,2019-03-24,general-velasquez,magallanes,magallanes,Thomas Jones Mariani,14,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_general-velasquez_magallanes,2019-03-24,general-velasquez,magallanes,magallanes,Diego Huerta,49,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_general-velasquez_magallanes,2019-03-24,general-velasquez,magallanes,magallanes,Matías Pinto,54,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_general-velasquez_magallanes,2019-03-24,general-velasquez,magallanes,magallanes,Albano Becica,73,0,1,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_colchagua_deportes-santa-cruz,2019-03-24,colchagua,deportes-santa-cruz,colchagua,Roberto Riveros,63,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_colchagua_deportes-santa-cruz,2019-03-24,colchagua,deportes-santa-cruz,deportes-santa-cruz,Diego Urquieta,86,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_independiente_rangers,2019-03-24,independiente,rangers,independiente,José Torres Estrada,30,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_independiente_rangers,2019-03-24,independiente,rangers,independiente,Christopher Lara,42,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_independiente_rangers,2019-03-24,independiente,rangers,rangers,Michael Ríos,6,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_independiente_rangers,2019-03-24,independiente,rangers,rangers,Felipe Fritz,78,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_deportes-concepcion_santiago-wanderers,2019-03-24,deportes-concepcion,santiago-wanderers,deportes-concepcion,Matías Reyes,59,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_deportes-concepcion_santiago-wanderers,2019-03-24,deportes-concepcion,santiago-wanderers,santiago-wanderers,Enzo Gutiérrez,8,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_deportes-concepcion_santiago-wanderers,2019-03-24,deportes-concepcion,santiago-wanderers,santiago-wanderers,Enzo Gutiérrez,47,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_deportes-concepcion_santiago-wanderers,2019-03-24,deportes-concepcion,santiago-wanderers,santiago-wanderers,Francisco Castro,10,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_deportes-concepcion_santiago-wanderers,2019-03-24,deportes-concepcion,santiago-wanderers,santiago-wanderers,Matías Marín,61,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_pilmahue_deportes-valdivia,2019-03-24,pilmahue,deportes-valdivia,deportes-valdivia,Francisco Ibáñez Campos,59,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2019-03-24_pilmahue_deportes-valdivia,2019-03-24,pilmahue,deportes-valdivia,deportes-valdivia,Christopher Ojeda,88,0,0,en.wikipedia (2019 Copa Chile; report ANFP)
+2021-06-15_cobreloa_copiapo,2021-06-15,cobreloa,copiapo,cobreloa,Álvaro Césped,80,0,0,en.wikipedia (2021 Copa Chile; report campeonatochileno.cl)
+2021-06-15_cobreloa_copiapo,2021-06-15,cobreloa,copiapo,cobreloa,Bryan Cortés,84,0,0,en.wikipedia (2021 Copa Chile; report campeonatochileno.cl)
+2021-06-15_cobreloa_copiapo,2021-06-15,cobreloa,copiapo,copiapo,Carlos Soza,9,0,0,en.wikipedia (2021 Copa Chile; report campeonatochileno.cl)
+2021-06-15_rodelindo-roman_coquimbo-unido,2021-06-15,rodelindo-roman,coquimbo-unido,coquimbo-unido,Luca Pontigo,80,0,0,en.wikipedia (2021 Copa Chile; report campeonatochileno.cl)
+2021-06-15_deportes-colina_santiago-morning,2021-06-15,deportes-colina,santiago-morning,deportes-colina,Juan Toloza,11,0,0,en.wikipedia (2021 Copa Chile; report campeonatochileno.cl)
+2023-04-09_union-san-felipe_san-luis,2023-04-09,union-san-felipe,san-luis,union-san-felipe,Josepablo Monreal,75,0,0,en.wikipedia (2023 Copa Chile; report campeonatochileno.cl)
+2023-04-09_union-san-felipe_san-luis,2023-04-09,union-san-felipe,san-luis,san-luis,Kennan Sepúlveda,15,0,0,en.wikipedia (2023 Copa Chile; report campeonatochileno.cl)
+2023-04-09_santiago-city_colo-colo,2023-04-09,santiago-city,colo-colo,colo-colo,Carlos Palacios,8,0,0,en.wikipedia (2023 Copa Chile; report campeonatochileno.cl)
+2023-04-09_santiago-city_colo-colo,2023-04-09,santiago-city,colo-colo,colo-colo,Marcos Bolados,89,0,0,en.wikipedia (2023 Copa Chile; report campeonatochileno.cl)
+2023-04-10_rengo_curico-unido,2023-04-10,rengo,curico-unido,rengo,Jaime Droguett,13,0,0,en.wikipedia (2023 Copa Chile; report campeonatochileno.cl)
+2024-06-15_municipal-mejillones_copiapo,2024-06-15,municipal-mejillones,copiapo,copiapo,Leonardo Pais,8,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-06-15_municipal-mejillones_copiapo,2024-06-15,municipal-mejillones,copiapo,copiapo,Bryan Soto,43,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-06-15_municipal-mejillones_copiapo,2024-06-15,municipal-mejillones,copiapo,copiapo,Marco Medel,68,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-06-15_municipal-mejillones_copiapo,2024-06-15,municipal-mejillones,copiapo,copiapo,Isaac Díaz,84,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-06-15_melipilla_union-san-felipe,2024-06-15,melipilla,union-san-felipe,melipilla,Bryan Taiva,42,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-06-16_santiago-city_palestino,2024-06-16,santiago-city,palestino,palestino,José Bizama,1,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-06-16_santiago-city_palestino,2024-06-16,santiago-city,palestino,palestino,Pablo Palacio,52,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-06-16_santiago-city_palestino,2024-06-16,santiago-city,palestino,palestino,Fernando Cornejo,57,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-06-16_santiago-city_palestino,2024-06-16,santiago-city,palestino,palestino,Bryan Carrasco,61,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-06-19_san-luis_everton,2024-06-19,san-luis,everton,everton,Federico Martínez,10,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-06-19_san-luis_everton,2024-06-19,san-luis,everton,everton,Federico Martínez,37,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-09-01_presidente-ibanez_huachipato,2024-09-01,presidente-ibanez,huachipato,huachipato,Julián Brea,8,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-09-01_presidente-ibanez_huachipato,2024-09-01,presidente-ibanez,huachipato,huachipato,Julián Brea,58,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-09-01_presidente-ibanez_huachipato,2024-09-01,presidente-ibanez,huachipato,huachipato,Julián Brea,61,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-09-01_presidente-ibanez_huachipato,2024-09-01,presidente-ibanez,huachipato,huachipato,Julián Brea,82,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-09-01_presidente-ibanez_huachipato,2024-09-01,presidente-ibanez,huachipato,huachipato,Julián Brea,85,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-09-01_presidente-ibanez_huachipato,2024-09-01,presidente-ibanez,huachipato,huachipato,Sebastián Sáez,25,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-09-01_presidente-ibanez_huachipato,2024-09-01,presidente-ibanez,huachipato,huachipato,Sebastián Sáez,63,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-09-01_presidente-ibanez_huachipato,2024-09-01,presidente-ibanez,huachipato,huachipato,Sebastián Sáez,81,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-09-01_presidente-ibanez_huachipato,2024-09-01,presidente-ibanez,huachipato,huachipato,Maximiliano Rodríguez,45,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-09-01_presidente-ibanez_huachipato,2024-09-01,presidente-ibanez,huachipato,huachipato,Mario Briceño,49,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-09-01_presidente-ibanez_huachipato,2024-09-01,presidente-ibanez,huachipato,huachipato,Franco Vega,64,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2024-09-01_presidente-ibanez_huachipato,2024-09-01,presidente-ibanez,huachipato,huachipato,Leandro Díaz,81,0,0,en.wikipedia (2024 Copa Chile; report campeonatochileno.cl)
+2025-09-14_colo-colo_universidad-de-chile,2025-09-14,colo-colo,universidad-de-chile,universidad-de-chile,Matías Sepúlveda,18,0,0,en.wikipedia (2025 Supercopa de Chile; report soccerway)
+2025-09-14_colo-colo_universidad-de-chile,2025-09-14,colo-colo,universidad-de-chile,universidad-de-chile,Nicolás Guerra,37,0,0,en.wikipedia (2025 Supercopa de Chile; report soccerway)
+2025-09-14_colo-colo_universidad-de-chile,2025-09-14,colo-colo,universidad-de-chile,universidad-de-chile,Lucas Assadi,50,0,0,en.wikipedia (2025 Supercopa de Chile; report soccerway)
+2025-11-18_deportes-concepcion_deportes-antofagasta,2025-11-18,deportes-concepcion,deportes-antofagasta,deportes-concepcion,Joaquín Larrivey,34,0,1,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-18_deportes-concepcion_deportes-antofagasta,2025-11-18,deportes-concepcion,deportes-antofagasta,deportes-concepcion,Joaquín Larrivey,38,0,1,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-18_deportes-concepcion_deportes-antofagasta,2025-11-18,deportes-concepcion,deportes-antofagasta,deportes-antofagasta,Andrés Souper,25,0,1,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-23_deportes-antofagasta_deportes-concepcion,2025-11-23,deportes-antofagasta,deportes-concepcion,deportes-antofagasta,Andrés Souper,61,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-23_deportes-antofagasta_deportes-concepcion,2025-11-23,deportes-antofagasta,deportes-concepcion,deportes-concepcion,Joaquín Larrivey,49,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-23_san-marcos-de-arica_rangers,2025-11-23,san-marcos-de-arica,rangers,san-marcos-de-arica,Camilo Melivilú,67,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-26_deportes-concepcion_copiapo,2025-11-26,deportes-concepcion,copiapo,deportes-concepcion,Joaquín Larrivey,60,0,1,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-26_san-marcos-de-arica_cobreloa,2025-11-26,san-marcos-de-arica,cobreloa,san-marcos-de-arica,Alfredo Ábalos,44,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-26_san-marcos-de-arica_cobreloa,2025-11-26,san-marcos-de-arica,cobreloa,san-marcos-de-arica,Ramón Fernández,90,0,1,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-26_san-marcos-de-arica_cobreloa,2025-11-26,san-marcos-de-arica,cobreloa,cobreloa,Gustavo Gotti,55,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-30_cobreloa_san-marcos-de-arica,2025-11-30,cobreloa,san-marcos-de-arica,cobreloa,Aldrix Jara,31,0,1,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-30_cobreloa_san-marcos-de-arica,2025-11-30,cobreloa,san-marcos-de-arica,cobreloa,Aldrix Jara,41,0,1,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-30_cobreloa_san-marcos-de-arica,2025-11-30,cobreloa,san-marcos-de-arica,cobreloa,Gerardo Navarrete,36,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-30_cobreloa_san-marcos-de-arica,2025-11-30,cobreloa,san-marcos-de-arica,san-marcos-de-arica,Augusto Barrios,65,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-30_copiapo_deportes-concepcion,2025-11-30,copiapo,deportes-concepcion,copiapo,Carlos Salomón,14,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-11-30_copiapo_deportes-concepcion,2025-11-30,copiapo,deportes-concepcion,deportes-concepcion,Joaquín Larrivey,70,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-12-03_deportes-concepcion_cobreloa,2025-12-03,deportes-concepcion,cobreloa,deportes-concepcion,Ariel Cáceres,53,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-12-03_deportes-concepcion_cobreloa,2025-12-03,deportes-concepcion,cobreloa,cobreloa,Iván Ledezma,66,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-12-07_cobreloa_deportes-concepcion,2025-12-07,cobreloa,deportes-concepcion,cobreloa,Gustavo Gotti,77,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-12-07_cobreloa_deportes-concepcion,2025-12-07,cobreloa,deportes-concepcion,cobreloa,Álvaro Delgado,84,0,1,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-12-07_cobreloa_deportes-concepcion,2025-12-07,cobreloa,deportes-concepcion,deportes-concepcion,Nelson Sepúlveda,37,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-12-07_cobreloa_deportes-concepcion,2025-12-07,cobreloa,deportes-concepcion,deportes-concepcion,Nelson Sepúlveda,90,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2025-12-07_cobreloa_deportes-concepcion,2025-12-07,cobreloa,deportes-concepcion,deportes-concepcion,Joaquín Larrivey,52,0,0,en.wikipedia (2025 Liga de Ascenso; report soccerway)
+2026-01-20_huachipato_universidad-catolica,2026-01-20,huachipato,universidad-catolica,huachipato,Lionel Altamirano,40,0,1,en.wikipedia (2026 Supercopa de Chile; report soccerway)
+2026-01-20_huachipato_universidad-catolica,2026-01-20,huachipato,universidad-catolica,huachipato,Lionel Altamirano,67,0,1,en.wikipedia (2026 Supercopa de Chile; report soccerway)
+2026-01-20_huachipato_universidad-catolica,2026-01-20,huachipato,universidad-catolica,universidad-catolica,Fernando Zampedri,57,0,0,en.wikipedia (2026 Supercopa de Chile; report soccerway)
+2026-01-20_huachipato_universidad-catolica,2026-01-20,huachipato,universidad-catolica,universidad-catolica,Fernando Zampedri,90,0,0,en.wikipedia (2026 Supercopa de Chile; report soccerway)
+2026-01-20_huachipato_universidad-catolica,2026-01-20,huachipato,universidad-catolica,universidad-catolica,Clemente Montes,74,0,0,en.wikipedia (2026 Supercopa de Chile; report soccerway)
+2026-01-20_huachipato_universidad-catolica,2026-01-20,huachipato,universidad-catolica,universidad-catolica,Justo Giani,90,0,0,en.wikipedia (2026 Supercopa de Chile; report soccerway)
+2026-01-21_coquimbo-unido_deportes-limache,2026-01-21,coquimbo-unido,deportes-limache,coquimbo-unido,Francisco Salinas,8,0,0,en.wikipedia (2026 Supercopa de Chile; report soccerway)
+2026-01-21_coquimbo-unido_deportes-limache,2026-01-21,coquimbo-unido,deportes-limache,coquimbo-unido,Guido Vadalá,72,0,0,en.wikipedia (2026 Supercopa de Chile; report soccerway)
+2026-01-21_coquimbo-unido_deportes-limache,2026-01-21,coquimbo-unido,deportes-limache,coquimbo-unido,Lucas Pratto,85,0,1,en.wikipedia (2026 Supercopa de Chile; report soccerway)
+2026-01-21_coquimbo-unido_deportes-limache,2026-01-21,coquimbo-unido,deportes-limache,deportes-limache,Jean Meneses,20,0,0,en.wikipedia (2026 Supercopa de Chile; report soccerway)
+2026-01-21_coquimbo-unido_deportes-limache,2026-01-21,coquimbo-unido,deportes-limache,deportes-limache,Daniel Castro,57,0,1,en.wikipedia (2026 Supercopa de Chile; report soccerway)
+2026-07-08_union-la-calera_coquimbo-unido,2026-07-08,union-la-calera,coquimbo-unido,coquimbo-unido,Luis Riveros,30,0,0,en.wikipedia (2026 Copa de la Liga (Chile); report soccerway)
+2026-07-09_nublense_ohiggins,2026-07-09,nublense,ohiggins,nublense,Pablo Calderón,25,0,0,en.wikipedia (2026 Copa de la Liga (Chile); report soccerway)
+2026-07-09_nublense_ohiggins,2026-07-09,nublense,ohiggins,nublense,Ignacio Jeraldino,90,0,0,en.wikipedia (2026 Copa de la Liga (Chile); report soccerway)
+2026-07-09_nublense_ohiggins,2026-07-09,nublense,ohiggins,ohiggins,Bastián Yáñez,38,0,0,en.wikipedia (2026 Copa de la Liga (Chile); report soccerway)
+2026-07-12_coquimbo-unido_union-la-calera,2026-07-12,coquimbo-unido,union-la-calera,union-la-calera,Matías Campos López,86,0,0,en.wikipedia (2026 Copa de la Liga (Chile); report soccerway)
+2026-07-12_ohiggins_nublense,2026-07-12,ohiggins,nublense,ohiggins,Francisco González,68,0,1,en.wikipedia (2026 Copa de la Liga (Chile); report soccerway)
+2026-09-24_everton_universidad-de-chile,2026-09-24,everton,universidad-de-chile,universidad-de-chile,Juan Martín Lucero,62,0,0,en.wikipedia (2026 Copa Chile; report soccerway)
+2008-04-30_nublense_audax-italiano,2008-04-30,nublense,audax-italiano,audax-italiano,Renato Ramos,15,0,0,ESPN + RSSSF + cooperativa.cl
+2008-04-30_nublense_audax-italiano,2008-04-30,nublense,audax-italiano,nublense,Fernando López,51,0,0,ESPN + RSSSF + cooperativa.cl
+2008-04-30_nublense_audax-italiano,2008-04-30,nublense,audax-italiano,nublense,Pedro Rivera,68,0,0,ESPN + RSSSF + cooperativa.cl
+2008-04-30_nublense_audax-italiano,2008-04-30,nublense,audax-italiano,audax-italiano,Sebastián Roco,85,0,0,ESPN + RSSSF + cooperativa.cl
+2008-04-30_nublense_audax-italiano,2008-04-30,nublense,audax-italiano,nublense,Juan Francisco Viveros,89,0,0,RSSSF + cooperativa.cl (ESPN decia Luis Flores)
