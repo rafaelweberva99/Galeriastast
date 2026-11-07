@@ -90,6 +90,17 @@ describe.each(ENGINES)("base de datos: %s", (_name, open) => {
     expect(await clubsByFans(db)).toEqual([{ clubId: "colo-colo", name: "Colo-Colo", fans: 1, attendances: 2 }]);
   });
 
+  it("el ranking del club lista a todos los hinchas públicos, también a los sin partidos marcados", async () => {
+    db = await seed(open);
+    const con = await createUser(db, { username: "con", email: "c@x.cl", password: "secreto123", clubId: "colo-colo", isPublic: true });
+    await createUser(db, { username: "sin", email: "s@x.cl", password: "secreto123", clubId: "colo-colo", isPublic: true });
+    await createUser(db, { username: "privado", email: "p@x.cl", password: "secreto123", clubId: "colo-colo", isPublic: false });
+    await setAttendance(db, con, "a", "propia");
+    const fans = await fansOfClub(db, "colo-colo");
+    expect(fans.map((f) => [f.username, f.attended])).toEqual([["con", 1], ["sin", 0]]);
+    expect((await clubsByFans(db))[0]).toMatchObject({ clubId: "colo-colo", fans: 2 }); // el conteo coincide con la lista
+  });
+
   it("consulta partidos, competiciones y resumen", async () => {
     db = await seed(open);
     expect((await listClubMatches(db, "colo-colo", { season: 2024 })).map((m) => m.id)).toEqual(["b", "a"]);

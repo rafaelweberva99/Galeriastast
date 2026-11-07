@@ -16,9 +16,10 @@ export interface FanRanking {
  * El cálculo de G/E/P se hace en SQL para que el ranking escale con muchos hinchas.
  */
 export async function fansOfClub(db: Db, clubId: string, limit = 100): Promise<FanRanking[]> {
+  // LEFT JOIN: un hincha público sin partidos marcados también cuenta (así el ranking muestra a todos los que cuenta la portada).
   const rows = await db.all(
     `SELECT u.username, u.club_id,
-         COUNT(a.match_id) AS attended,
+         COUNT(m.id) AS attended,
          SUM(CASE WHEN m.home_goals IS NOT NULL AND
                ((m.home_team_id = u.club_id AND m.home_goals > m.away_goals) OR
                 (m.away_team_id = u.club_id AND m.away_goals > m.home_goals)) THEN 1 ELSE 0 END) AS won,
@@ -27,14 +28,14 @@ export async function fansOfClub(db: Db, clubId: string, limit = 100): Promise<F
                ((m.home_team_id = u.club_id AND m.home_goals < m.away_goals) OR
                 (m.away_team_id = u.club_id AND m.away_goals < m.home_goals)) THEN 1 ELSE 0 END) AS lost
        FROM users u
-       JOIN attendances a ON a.user_id = u.id
-       JOIN matches m ON m.id = a.match_id AND (m.home_team_id = u.club_id OR m.away_team_id = u.club_id)
-       WHERE u.club_id = ? AND u.is_public = 1 AND m.date <= ?
+       LEFT JOIN attendances a ON a.user_id = u.id
+       LEFT JOIN matches m ON m.id = a.match_id AND (m.home_team_id = u.club_id OR m.away_team_id = u.club_id) AND m.date <= ?
+       WHERE u.club_id = ? AND u.is_public = 1
        GROUP BY u.id
        ORDER BY attended DESC, u.username
        LIMIT ?`,
-    clubId,
     new Date().toISOString().slice(0, 10), // los partidos marcados que aún no se juegan no cuentan
+    clubId,
     limit,
   );
   return rows.map((r) => {
