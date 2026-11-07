@@ -39,7 +39,12 @@ export function SiteNav({ items, children }: { items: NavItem[]; children?: Reac
   useEffect(() => {
     const header = navRef.current?.closest<HTMLElement>(".site-header");
     if (!header) return;
-    const onScroll = () => header.toggleAttribute("data-scrolled", window.scrollY > 12);
+    // Con histéresis (se activa pasado 40 px y se apaga bajo 8) para que no parpadee cerca del umbral.
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y > 40) header.setAttribute("data-scrolled", "");
+      else if (y < 8) header.removeAttribute("data-scrolled");
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);

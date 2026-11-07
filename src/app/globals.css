@@ -988,15 +988,13 @@ a.cm-bar-name:hover { text-decoration: underline; }
 /* === portada v3 === */
 /* Cabecera viva: pastilla que se desliza, ruta activa, compacta al hacer scroll, CTA con brillo. */
 .site-header { transition: box-shadow 0.3s ease, background-color 0.3s ease; }
-.site-header .container { transition: min-height 0.25s ease; }
 .brand { transition: transform 0.25s cubic-bezier(0.34, 1.6, 0.5, 1), font-size 0.25s ease; }
 .brand svg { transition: transform 0.6s cubic-bezier(0.34, 1.4, 0.5, 1); }
 .brand:hover svg { transform: rotate(360deg); }
 .brand:hover { transform: translateX(2px); }
 @media (min-width: 701px) {
   .site-header[data-scrolled] { box-shadow: 0 10px 30px rgb(0 0 0 / 0.4); background: rgb(12 17 14 / 0.94); backdrop-filter: blur(10px); }
-  .site-header[data-scrolled] .container { min-height: 46px; }
-  .site-header[data-scrolled] .brand { font-size: 1.15rem; }
+  /* La altura de la cabecera NO cambia al hacer scroll: si cambiara, el contenido se movería y el scroll oscilaría ("tiritón"). */
 }
 .nav { position: relative; }
 .nav a, .nav button { position: relative; z-index: 1; transition: color 0.2s ease, transform 0.2s ease; }
