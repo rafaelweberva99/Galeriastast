@@ -11,6 +11,8 @@ import { isAdmin } from "@/lib/admin.ts";
 import { siteUrl } from "@/lib/site.ts";
 import { Ball } from "@/components/Ball.tsx";
 import { SiteNav, type NavItem } from "@/components/SiteNav.tsx";
+import { OnboardingBanner } from "@/components/OnboardingBanner.tsx";
+import { countMarked } from "@/lib/repo/onboarding.ts";
 import { BackBar } from "@/components/BackBar.tsx";
 import "./globals.css";
 
@@ -34,6 +36,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   // Con condiciones pendientes, el menú solo ofrece lo que se puede usar (todo lo demás lleva a /aceptar).
   const pendingLegal = user ? await mustAcceptLegal(user.id) : false;
   const full = !!user && !pendingLegal;
+  // Sin ningún partido marcado el carnet está vacío: se le recuerda cargar partidos.
+  const needsMatches = full && (await countMarked(await getDb(), user.id)) === 0;
   const navItems: NavItem[] = [
     ...(full
       ? [
@@ -71,6 +75,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </SiteNav>
           </div>
         </header>
+        {needsMatches && <OnboardingBanner />}
         <BackBar />
         <main className="container">{children}</main>
         <footer className="site-footer">

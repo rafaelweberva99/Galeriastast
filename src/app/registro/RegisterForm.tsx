@@ -9,6 +9,11 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
   const [state, action, pending] = useActionState(register, {});
   return (
     <form key={JSON.stringify(state.values ?? {})} action={action} className="form">
+      <ol className="steps-mini" aria-label="Pasos">
+        <li className="now">1 · Tu cuenta</li>
+        <li>2 · Carga tus partidos</li>
+        <li>3 · Tu carnet</li>
+      </ol>
       <div className="field">
         <label htmlFor="username">Usuario</label>
         <input id="username" name="username" defaultValue={state.values?.username} required minLength={3} maxLength={20} pattern="[A-Za-z0-9_]+" autoComplete="username" aria-describedby="username-hint" />
@@ -73,7 +78,7 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
       </fieldset>
       {state.error && <p className="error" role="alert">{state.error}</p>}
       <button className="btn" disabled={pending}>
-        {pending ? "Creando…" : "Crear carnet"}
+        {pending ? "Creando…" : "Crear mi carnet y cargar partidos"}
       </button>
       <p className="muted small">
         ¿Ya tienes cuenta? <Link href="/ingresar">Ingresa</Link> · <Link href="/terminos">Términos</Link> ·{" "}

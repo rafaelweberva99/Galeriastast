@@ -49,6 +49,16 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
         </div>
       </div>
 
+      {modes.size === 0 && (
+        <div className="card mark-help">
+          <strong>Así se marca:</strong> elige la temporada, y en cada partido al que fuiste toca <em>Fui</em> (o <em>Infiltrado</em> si
+          estuviste en la galería rival). Se guarda solo.{" "}
+          <span className="muted">
+            ¿Compraste en línea? Es más rápido <Link href="/importar">subir una captura de tus entradas</Link>.
+          </span>
+        </div>
+      )}
+
       <UpcomingMatches matches={upcoming} clubId={club.id} clubs={rivals} />
 
       <form className="card filters" method="get">
@@ -104,6 +114,16 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
           </Paged>
         )}
       </div>
+      {modes.size > 0 && (
+        <div className="mark-bar" role="status">
+          <span>
+            <strong>{modes.size}</strong> {modes.size === 1 ? "partido marcado" : "partidos marcados"}
+          </span>
+          <Link className="btn" href="/carnet">
+            Ver mi carnet →
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

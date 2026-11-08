@@ -298,9 +298,14 @@ export function CarnetView({
             {isOwner ? "Marca los partidos a los que has ido al estadio y aquí aparecerán tu Mufómetro, tus gráficos y tus frases destacadas." : "Cuando marque partidos aparecerán sus estadísticas."}
           </p>
           {isOwner && (
-            <Link className="btn" href="/partidos" style={{ marginTop: 12 }}>
-              Marcar mis partidos
-            </Link>
+            <div className="row" style={{ marginTop: 12 }}>
+              <Link className="btn" href="/importar">
+                Subir captura de entradas
+              </Link>
+              <Link className="btn btn-ghost" href="/partidos">
+                Marcar a mano
+              </Link>
+            </div>
           )}
         </div>
       )}

@@ -1,5 +1,6 @@
 "use server";
 
+import { countMarked } from "@/lib/repo/onboarding.ts";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -94,7 +95,8 @@ export async function register(_: FormState, form: FormData): Promise<FormState>
     if (e instanceof UserExistsError || e instanceof ConsentRequiredError) return { error: e.message, values };
     throw e;
   }
-  redirect("/partidos");
+  // Paso 2: directo a cargar partidos (captura, a mano o Excel).
+  redirect("/bienvenida");
 }
 
 const LOGIN_FAILED = "Usuario o contraseña incorrectos.";
@@ -120,7 +122,9 @@ export async function login(_: FormState, form: FormData): Promise<FormState> {
   await clearFailures(db, accountKey);
   await startSession(user.id);
   // Si cambió la versión de los Términos o de la Privacidad, hay que aceptarla antes de seguir.
-  redirect((await mustAcceptLegal(user.id)) ? "/aceptar" : "/carnet");
+  if (await mustAcceptLegal(user.id)) redirect("/aceptar");
+  // Si aún no marca ningún partido, lo llevamos a cargarlos en vez de a un carnet vacío.
+  redirect((await countMarked(db, user.id)) === 0 ? "/bienvenida" : "/carnet");
 }
 
 export async function logout(): Promise<void> {
