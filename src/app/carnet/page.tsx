@@ -3,7 +3,6 @@ import { requireUser } from "@/lib/auth.ts";
 import { loadCarnet } from "@/lib/carnet.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { communityComparison } from "@/lib/repo/community.ts";
-import { PublicNudge } from "@/components/PublicNudge.tsx";
 import { CarnetView } from "@/components/CarnetView.tsx";
 
 export const metadata = { title: "Mi Galería · GaluchaStats" };
@@ -15,7 +14,6 @@ export default async function MyCarnetPage() {
   const community = await communityComparison(db, user.id);
   return (
     <div className="stack">
-      {!user.isPublic && <PublicNudge />}
       {user.isPublic && (
         <p className="muted small">
           Tu Galería es pública en <Link href={`/hincha/${user.username}`}>/hincha/{user.username}</Link>. Puedes

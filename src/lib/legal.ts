@@ -4,10 +4,10 @@
  * todos los hinchas deberán aceptarla de nuevo en /aceptar antes de seguir usando las páginas privadas.
  */
 
-export const TERMS_VERSION = "1.1";
-export const PRIVACY_VERSION = "1.1";
+export const TERMS_VERSION = "1.2";
+export const PRIVACY_VERSION = "1.2";
 /** Fecha de la última versión publicada (yyyy-mm-dd). */
-export const LEGAL_DATE = "2026-10-29";
+export const LEGAL_DATE = "2026-11-09";
 /** Edad mínima para crear una cuenta sin intervención de padres o tutores. */
 export const MIN_AGE = 14;
 /** "Versión" de la declaración de edad: la edad mínima declarada. */
@@ -24,7 +24,7 @@ export const CONSENT_LABELS: Record<ConsentKind, string> = {
   terms: "Términos y Condiciones",
   privacy: "Política de Privacidad",
   age: `Declaración de tener ${MIN_AGE} años o más`,
-  public_profile: "Mostrar mi carnet en los rankings y en mi perfil público",
+  public_profile: "Mi Galería es pública (rankings y perfil público)",
 };
 
 /** Dónde se aloja el servicio y se guardan los datos (Términos §6 y Privacidad §6). */

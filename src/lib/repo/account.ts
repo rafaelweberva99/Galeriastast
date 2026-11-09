@@ -95,7 +95,7 @@ export async function setPublicProfile(db: Db, userId: number, isPublic: boolean
 
 /**
  * Acepta las versiones vigentes de los documentos pendientes (y la declaración de edad si falta).
- * isPublic se registra solo si se entrega (hinchas antiguos que nunca eligieron).
+ * isPublic se aplica solo si se entrega.
  */
 export async function acceptLegal(
   db: Db,
@@ -104,7 +104,7 @@ export async function acceptLegal(
   current: Record<RequiredDoc, string> = REQUIRED_DOCS,
 ): Promise<void> {
   // El estado se lee dentro de la transacción: un doble envío no duplica los registros.
-  const status = await db.transaction(async (tx) => {
+  await db.transaction(async (tx) => {
     const st = await legalStatus(tx, userId, current);
     if (st.pending.includes("terms") && !input.acceptTerms)
       throw new ConsentRequiredError("Debes aceptar los Términos y Condiciones para seguir usando tu cuenta.");
@@ -115,7 +115,8 @@ export async function acceptLegal(
     if (!st.ageDeclared) await recordConsent(tx, userId, "age", AGE_VERSION, true);
     return st;
   });
-  if (input.isPublic !== undefined && !status.publicChoiceMade) await setPublicProfile(db, userId, input.isPublic);
+  // Si se entrega, se aplica siempre (con las versiones 1.2 la Galería es pública para todos); si no cambia nada, no se registra de nuevo.
+  if (input.isPublic !== undefined) await setPublicProfile(db, userId, input.isPublic);
 }
 
 // --- Registro ---------------------------------------------------------------

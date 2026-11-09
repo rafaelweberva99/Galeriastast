@@ -6,7 +6,6 @@ import { getDb } from "@/lib/db/client.ts";
 import { legalVersionLabel, REQUIRED_DOCS } from "@/lib/legal.ts";
 import { legalStatus, needsAcceptance } from "@/lib/repo/account.ts";
 import { DeleteAccountForm } from "../perfil/DeleteAccountForm.tsx";
-import { PrivacyForm } from "../perfil/PrivacyForm.tsx";
 import { AcceptForm } from "./AcceptForm.tsx";
 
 export const metadata = { title: "Actualizamos nuestras condiciones · GaluchaStats" };
@@ -46,7 +45,6 @@ export default async function AcceptPage() {
           askTerms={status.pending.includes("terms")}
           askPrivacy={status.pending.includes("privacy")}
           askAge={!status.ageDeclared}
-          askPublic={!status.publicChoiceMade}
         />
       </div>
 
@@ -70,14 +68,6 @@ export default async function AcceptPage() {
             </button>
           </form>
         </div>
-        {user.isPublic && (
-          <div className="stack">
-            <p className="muted small" style={{ margin: 0 }}>
-              Tu Galería hoy se muestra en los rankings. Puedes hacerlo privado sin aceptar nada:
-            </p>
-            <PrivacyForm isPublic={user.isPublic} />
-          </div>
-        )}
         <details>
           <summary>Eliminar mi cuenta</summary>
           <div style={{ marginTop: 12 }}>

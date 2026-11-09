@@ -46,7 +46,7 @@ export default function TermsPage() {
 
       <h2>3. Nombre de usuario</h2>
       <p>
-        Tu nombre de usuario puede verse públicamente si haces público tu carnet. No puede: suplantar a otra persona, club
+        Tu nombre de usuario se ve públicamente, porque tu Galería es pública (junto con tu club y tus estadísticas; nunca tu correo). No puede: suplantar a otra persona, club
         o institución; contener tu nombre real completo, RUT u otros datos de contacto; ni ser ofensivo, discriminatorio,
         violento o contrario a la ley. Podemos pedirte que lo cambies o suspender la cuenta si no cumple estas reglas.
       </p>
@@ -108,7 +108,7 @@ export default function TermsPage() {
       <ul>
         <li>
           Los datos que ingresas (tus partidos marcados y tu preferencia de club) son tuyos. Nos autorizas a usarlos para
-          prestar el servicio, incluyendo mostrarlos en rankings y en tu perfil público si así lo eliges.
+          prestar el servicio, incluyendo mostrarlos en rankings y en tu perfil público: la Galería es pública para todos los hinchas.
         </li>
         <li>
           También podemos elaborar <strong>estadísticas agregadas y anónimas</strong> a partir del uso del servicio (por

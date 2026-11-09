@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { MIN_AGE } from "@/lib/legal.ts";
 import { acceptLegalAction } from "../actions.ts";
 
-export function AcceptForm(props: { askTerms: boolean; askPrivacy: boolean; askAge: boolean; askPublic: boolean }) {
+export function AcceptForm(props: { askTerms: boolean; askPrivacy: boolean; askAge: boolean }) {
   const [state, action, pending] = useActionState(acceptLegalAction, {});
   return (
     <form action={action} className="form">
@@ -40,19 +40,10 @@ export function AcceptForm(props: { askTerms: boolean; askPrivacy: boolean; askA
             <span>Declaro tener {MIN_AGE} años o más</span>
           </label>
         )}
-        {props.askPublic && (
-          <>
-            <input type="hidden" name="askPublic" value="1" />
-            <label className="check">
-              <input type="checkbox" name="isPublic" />
-              <span>
-                Mostrar mi Galería en los rankings y en mi perfil público <span className="optional">(opcional)</span>
-                <br />
-                <span className="muted small">Si no la marcas, tu Galería queda privada.</span>
-              </span>
-            </label>
-          </>
-        )}
+        <p className="notice public-note" role="note">
+          <strong>Desde esta versión, tu Galería es pública:</strong> tu usuario, tu club y tus estadísticas aparecen en los
+          rankings y en tu página. Tu correo nunca se muestra. Si no quieres que sea pública, no aceptes y elimina tu cuenta.
+        </p>
       </fieldset>
       {state.error && <p className="error" role="alert">{state.error}</p>}
       <button className="btn" disabled={pending}>

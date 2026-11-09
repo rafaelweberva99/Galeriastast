@@ -7,7 +7,6 @@ import { listConsents } from "@/lib/repo/account.ts";
 import { listClubs } from "@/lib/repo/teams.ts";
 import { isVisibleClub } from "@/lib/mvp.ts";
 import { DeleteAccountForm } from "./DeleteAccountForm.tsx";
-import { PrivacyForm } from "./PrivacyForm.tsx";
 import { ProfileForm } from "./ProfileForm.tsx";
 
 export const metadata = { title: "Perfil · GaluchaStats" };
@@ -41,7 +40,11 @@ export default async function ProfilePage() {
 
         <div className="stack" style={{ gap: 8 }}>
           <h3 style={{ margin: 0 }}>Perfil público</h3>
-          <PrivacyForm isPublic={user.isPublic} />
+          <p className="muted small" style={{ margin: 0 }}>
+            Tu Galería es pública: tu usuario, tu club y tus estadísticas se ven en los rankings y en{" "}
+            <Link href={`/hincha/${user.username}`}>tu página</Link>. Tu correo nunca se muestra. Si no quieres que sea
+            pública, puedes eliminar tu cuenta más abajo.
+          </p>
         </div>
 
         <div className="stack" style={{ gap: 8 }}>

@@ -32,7 +32,7 @@ export default function PrivacyPage() {
       <h2>2. Qué datos tratamos</h2>
       <ul>
         <li>
-          <strong>Nombre de usuario</strong>: lo eliges tú y es visible para otros solo si haces público tu carnet.
+          <strong>Nombre de usuario</strong>: lo eliges tú y es visible para otros, porque tu Galería es pública.
         </li>
         <li>
           <strong>Correo electrónico</strong>: para identificar tu cuenta y responder tus solicitudes. No es público.
@@ -49,8 +49,9 @@ export default function PrivacyPage() {
           en “modo infiltrado”, y la fecha en que los marcaste.
         </li>
         <li>
-          <strong>Preferencia de perfil público</strong>: si quieres que tu carnet aparezca en los rankings y en tu página
-          pública (/hincha/tu-usuario). La eliges al crear tu cuenta; si no la autorizas, tu carnet es privado.
+          <strong>Perfil público</strong>: desde la versión 1.2 tu Galería es pública: tu usuario, tu club y tus
+          estadísticas de hincha aparecen en los rankings y en tu página pública (/hincha/tu-usuario). Tu correo nunca se
+          muestra. Si no quieres que tu Galería sea pública, puedes eliminar tu cuenta.
         </li>
         <li>
           <strong>Registros de consentimiento</strong>: qué aceptaste (Términos, Privacidad, declaración de edad,
@@ -82,7 +83,7 @@ export default function PrivacyPage() {
       <ul>
         <li>Crear y mantener tu cuenta y tu sesión.</li>
         <li>Calcular tu carnet de hincha: Mufómetro, clásicos, finales, rachas y demás estadísticas.</li>
-        <li>Mostrar tu carnet en los rankings y en tu perfil público, solo si lo autorizaste.</li>
+        <li>Mostrar tu Galería (usuario, club y estadísticas) en los rankings y en tu perfil público, que es parte del servicio.</li>
         <li>Responder tus solicitudes y comunicarte cambios relevantes del servicio o de estas condiciones.</li>
         <li>Mantener la seguridad del servicio y prevenir abusos.</li>
       </ul>
@@ -149,7 +150,7 @@ export default function PrivacyPage() {
       <p>
       </p>
       <p>
-        Solo tratan los datos para prestarnos el servicio. Si haces público tu carnet, cualquier persona podrá ver tu
+        Solo tratan los datos para prestarnos el servicio. Como tu Galería es pública, cualquier persona podrá ver tu
         nombre de usuario, tu club y tus estadísticas de hincha (nunca tu correo).
       </p>
 
@@ -187,7 +188,7 @@ export default function PrivacyPage() {
       <ul>
         <li>
           Desde <Link href="/perfil#privacidad-datos">tu perfil → Privacidad y datos</Link>: descargar tus datos en JSON
-          (acceso y portabilidad), cambiar tu club y tu preferencia de perfil público (rectificación y oposición),
+          (acceso y portabilidad), cambiar tu club (rectificación),
           desmarcar partidos, cerrar todas tus sesiones y eliminar tu cuenta (supresión).
         </li>
         <li>
@@ -202,10 +203,9 @@ export default function PrivacyPage() {
 
       <h2>8. Retirar tu consentimiento</h2>
       <p>
-        Puedes retirar en cualquier momento tu consentimiento para el perfil público desmarcando la opción en tu perfil;
-        el cambio queda registrado y tu carnet deja de aparecer en los rankings de inmediato. Como la aceptación de esta
-        política es necesaria para mantener la cuenta, retirarla equivale a eliminar tu cuenta. Retirar el consentimiento
-        no afecta la licitud del tratamiento previo.
+        La Galería pública es parte del servicio: si no quieres que tu Galería sea pública, puedes eliminar tu cuenta en
+        cualquier momento desde tu perfil, y tu Galería deja de aparecer de inmediato. Retirar el consentimiento no afecta
+        la licitud del tratamiento previo.
       </p>
 
       <h2>9. Menores de edad</h2>

@@ -42,7 +42,7 @@ export interface FormState {
 const echo = (form: FormData, keys: string[]): Record<string, string> =>
   Object.fromEntries(keys.map((k) => [k, String(form.get(k) ?? "")]));
 const CLUB_NOT_YET = "Ese club todavía no está disponible: estamos completando su historial.";
-const REGISTER_ECHO = ["username", "email", "clubId", "acceptTerms", "acceptPrivacy", "isAdult", "visibility"];
+const REGISTER_ECHO = ["username", "email", "clubId", "acceptTerms", "acceptPrivacy", "isAdult"];
 
 /** Casilla obligatoria: el navegador envía "on" solo si está marcada. */
 const mustCheck = (message: string) => z.literal("on", { errorMap: () => ({ message }) });
@@ -63,8 +63,6 @@ const registerSchema = z.object({
   acceptTerms: mustCheck("Debes aceptar los Términos y Condiciones."),
   acceptPrivacy: mustCheck("Debes confirmar que leíste la Política de Privacidad."),
   isAdult: mustCheck(`Debes tener ${MIN_AGE} años o más para crear una cuenta.`),
-  // Elección explícita (sin casilla marcada de antemano): pública o privada.
-  visibility: z.enum(["public", "private"], { message: "Elige si tu Galería será pública o privada." }),
 });
 
 export async function register(_: FormState, form: FormData): Promise<FormState> {
@@ -89,7 +87,7 @@ export async function register(_: FormState, form: FormData): Promise<FormState>
       acceptTerms: true,
       acceptPrivacy: true,
       isAdult: true,
-      isPublic: parsed.data.visibility === "public",
+      isPublic: true, // la Galería es pública para todos (Términos 1.2 y Privacidad 1.2, aceptados al registrarse)
     });
     await startSession(user.id);
   } catch (e) {
@@ -185,8 +183,8 @@ export async function acceptLegalAction(_: FormState, form: FormData): Promise<F
       acceptTerms: form.get("acceptTerms") === "on",
       acceptPrivacy: form.get("acceptPrivacy") === "on",
       isAdult: form.get("isAdult") === "on",
-      // Solo se pregunta (y se registra) a quien nunca eligió; el campo oculto indica que se mostró.
-      isPublic: form.get("askPublic") === "1" ? form.get("isPublic") === "on" : undefined,
+      // Desde las versiones 1.2 la Galería es pública para todos: aceptar las condiciones lo incluye y queda registrado.
+      isPublic: true,
     });
   } catch (e) {
     if (e instanceof ConsentRequiredError) return { error: e.message };
@@ -194,24 +192,6 @@ export async function acceptLegalAction(_: FormState, form: FormData): Promise<F
   }
   revalidatePath("/", "layout");
   redirect("/carnet");
-}
-
-/** Cambia la preferencia de perfil público; el cambio queda registrado en consents. */
-export async function savePrivacy(_: FormState, form: FormData): Promise<FormState> {
-  // Retirar el consentimiento debe ser tan fácil como darlo: hacerse privado se permite incluso con
-  // documentos pendientes; hacerse público, solo con las condiciones vigentes aceptadas.
-  const user = await requireUser({ allowPendingLegal: true });
-  const isPublic = form.get("isPublic") === "on";
-  if (isPublic && (await mustAcceptLegal(user.id))) {
-    return { error: "Para mostrar tu Galería en público primero acepta las condiciones vigentes." };
-  }
-  await setPublicProfile(await getDb(), user.id, isPublic);
-  revalidatePath("/", "layout");
-  return {
-    ok: isPublic
-      ? "Listo: tu Galería ahora aparece en los rankings y en tu perfil público."
-      : "Listo: tu Galería ahora es privada y no aparece en los rankings.",
-  };
 }
 
 export async function logoutEverywhere(): Promise<void> {
