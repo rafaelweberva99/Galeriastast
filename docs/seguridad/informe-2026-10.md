@@ -103,7 +103,7 @@ No encontré ninguno. Todas las consultas SQL usan parámetros, no hay secretos 
    - la lista de IPs permitidas de Neon (IP Allow) es de pago y las IPs de Vercel cambian, así que no conviene; basta con no exponer la URL;
    - **rotar la contraseña de la base** (Neon → Roles → Reset password, y luego actualizar `DATABASE_URL` en Vercel) si alguna vez se compartió por chat, captura o correo.
 5. **Vercel → Settings → Deployment Protection:** dejar protegidos los *preview deployments* (Vercel Authentication), para que las ramas de prueba no queden públicas con la base de producción.
-6. Revisar que `NEXT_PUBLIC_SITE_URL` (si existe) apunte a `https://galeriastast.vercel.app`.
+6. Revisar que `NEXT_PUBLIC_SITE_URL` (si existe) apunte a `https://galuchastats.com`.
 
 ## Archivos tocados
 - `next.config.ts`: cabeceras de seguridad, CSP y `poweredByHeader`.

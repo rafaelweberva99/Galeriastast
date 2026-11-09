@@ -160,6 +160,8 @@ siguientes son rápidos.
 4. Ve a **Deployments**, abre el último y presiona **⋯ → Redeploy**. En 1 o 2 minutos queda la URL pública
    (`https://<proyecto>.vercel.app`).
 
+   El dominio oficial es **https://galuchastats.com** (DNS en Cloudflare, con las nubes en gris "DNS only"; `www` redirige al dominio principal). En Vercel, la variable `NEXT_PUBLIC_SITE_URL` debe valer `https://galuchastats.com`.
+
 Variable opcional: `INGEST_FORCE=1` recarga todos los partidos en el próximo despliegue.
 
 ## Alternativa con Docker (Railway, Render, Fly.io)
