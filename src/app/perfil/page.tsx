@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { logoutEverywhere } from "../actions.ts";
+import { logout, logoutEverywhere } from "../actions.ts";
 import { requireUser } from "@/lib/auth.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { CONSENT_LABELS } from "@/lib/legal.ts";
@@ -23,6 +23,11 @@ export default async function ProfilePage() {
         <h1>@{user.username}</h1>
         <p className="muted">Si cambias de club, solo se contarán los partidos marcados que involucren a tu nuevo club.</p>
         <ProfileForm clubs={clubs} clubId={user.clubId} username={user.username} />
+        <form action={logout} className="logout-line">
+          <button type="submit" className="btn btn-ghost">
+            Cerrar sesión
+          </button>
+        </form>
       </div>
 
       <section className="card stack" aria-labelledby="privacidad-datos">

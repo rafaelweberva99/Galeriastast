@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-export type NavItem = { href: string; label: string; cta?: boolean };
+export type NavItem = { href: string; label: string; cta?: boolean; /** Otras rutas que también marcan este enlace como activo. */ also?: string[] };
 
 /** ¿La ruta actual cuelga de este enlace? (el inicio solo coincide exacto). */
 function isActive(path: string, href: string): boolean {
@@ -66,7 +66,7 @@ export function SiteNav({ items, children }: { items: NavItem[]; children?: Reac
         style={pill ? { opacity: 1, width: pill.w, transform: `translateX(${pill.x}px)` } : undefined}
       />
       {items.map((it) => {
-        const active = !it.cta && isActive(path, it.href);
+        const active = !it.cta && (isActive(path, it.href) || !!it.also?.some((h) => isActive(path, h)));
         return (
           <Link
             key={it.href}

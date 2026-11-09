@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Barlow, Oswald } from "next/font/google";
 import Link from "next/link";
 import { logout } from "./actions.ts";
@@ -13,6 +13,7 @@ import { Ball } from "@/components/Ball.tsx";
 import { SiteNav, type NavItem } from "@/components/SiteNav.tsx";
 import { OnboardingBanner } from "@/components/OnboardingBanner.tsx";
 import { countMarked } from "@/lib/repo/onboarding.ts";
+import { SectionTabs } from "@/components/SectionTabs.tsx";
 import { BackBar } from "@/components/BackBar.tsx";
 import "./globals.css";
 
@@ -22,9 +23,13 @@ const body = Barlow({ subsets: ["latin"], weight: ["400", "500", "600", "700"], 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
   title: "GaluchaStats · ¿Eres cábala o yeta?",
+  // Al guardarla en la pantalla de inicio del iPhone: nombre corto y modo app.
+  appleWebApp: { capable: true, title: "GaluchaStats", statusBarStyle: "black" },
   description:
     "Tu Galería de hincha del fútbol chileno. Marca los partidos a los que fuiste al estadio y descubre si eres cábala o yeta.",
 };
+
+export const viewport: Viewport = { themeColor: "#0c110e" };
 
 export const dynamic = "force-dynamic";
 
@@ -38,18 +43,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const full = !!user && !pendingLegal;
   // Sin ningún partido marcado el carnet está vacío: se le recuerda cargar partidos.
   const needsMatches = full && (await countMarked(await getDb(), user.id)) === 0;
+  // Menú corto: lo esencial arriba; las secciones hermanas se eligen en la barra de pestañas de debajo (SectionTabs).
   const navItems: NavItem[] = [
     ...(full
       ? [
-          { href: "/partidos", label: "Marcar partidos" },
-          { href: "/importar", label: "Importar entradas" },
           { href: "/carnet", label: "Mi Galería" },
+          { href: "/partidos", label: "Partidos", also: ["/importar"] },
         ]
       : []),
     ...(full && isAdmin(user) ? [{ href: "/admin", label: "Admin" }] : []),
-    { href: "/rankings", label: "Rankings" },
-    { href: "/estadisticas", label: "Estadísticas" },
-    { href: "/clubes", label: "Clubes" },
+    { href: "/estadisticas", label: "Comunidad", also: ["/rankings", "/clubes"] },
     ...(user
       ? [pendingLegal ? { href: "/aceptar", label: `@${user.username}` } : { href: "/perfil", label: `@${user.username}` }]
       : [
@@ -75,6 +78,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </SiteNav>
           </div>
         </header>
+        <SectionTabs loggedIn={full} />
         {needsMatches && <OnboardingBanner />}
         <BackBar />
         <main className="container">{children}</main>
