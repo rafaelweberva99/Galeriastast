@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getDb } from "@/lib/db/client.ts";
-import { rankDesc } from "@/lib/domain/community.ts";
+import { MIN_COMMUNITY_FANS, rankDesc } from "@/lib/domain/community.ts";
 import { communityOverview, type ClubCommunity } from "@/lib/repo/community.ts";
 import { listClubs } from "@/lib/repo/teams.ts";
 import { visibleClubs } from "@/lib/mvp.ts";
@@ -50,7 +50,7 @@ export default async function CommunityPage() {
         <h1 className="section-title">Estadísticas de la comunidad</h1>
         <p className="muted">
           Cómo está cada hinchada, sumando lo que marcan todos los hinchas con perfil público. Para que nadie quede
-          identificado, las cifras de un club aparecen desde 5 hinchas. Solo por entretención.
+          identificado, las cifras de un club aparecen desde {MIN_COMMUNITY_FANS} hinchas. Solo por entretención.
         </p>
       </div>
 
@@ -92,7 +92,7 @@ export default async function CommunityPage() {
         </section>
       ) : (
         <section className="card cm-empty">
-          <strong>Todavía no hay un club con 5 hinchas públicos.</strong>
+          <strong>Todavía no hay un club con {MIN_COMMUNITY_FANS} hinchas públicos.</strong>
           <p className="muted" style={{ margin: 0 }}>
             Apenas una hinchada llegue a 5, aparecerán aquí los rankings de clubes. ¿Eres de los que se anima? Crea tu
             carnet, marca tus partidos y deja tu perfil público para sumar a tu hinchada.

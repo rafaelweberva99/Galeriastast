@@ -59,7 +59,7 @@ export interface ClubCommunity {
   clubId: string;
   /** Hinchas públicos (siempre se muestra: es un conteo del propio ranking de hinchadas). */
   fans: number;
-  /** Cifras agregadas: null si hay menos de 5 hinchas detrás ("pocos datos"). */
+  /** Cifras agregadas: null si hay menos de MIN_COMMUNITY_FANS hinchas detrás ("pocos datos"). */
   attended: number | null;
   avgAttended: number | null;
   /** Mufómetro medio de la hinchada: promedio de la efectividad de cada hincha con veredicto. */
@@ -220,7 +220,7 @@ export async function clubCommunityDetail(db: Db, clubId: string): Promise<ClubC
 }
 
 /**
- * Comparación del hincha con su hinchada para el carnet. null si en su club hay menos de 5 hinchas públicos.
+ * Comparación del hincha con su hinchada para el carnet. null si en su club hay menos de MIN_COMMUNITY_FANS hinchas públicos.
  * Si su perfil es privado igual se compara (es su propio carnet), pero él no cuenta para el mínimo ni se
  * revela a los demás.
  */

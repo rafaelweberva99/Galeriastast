@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CommunityComparison } from "@/lib/domain/community.ts";
+import { MIN_COMMUNITY_FANS, type CommunityComparison } from "@/lib/domain/community.ts";
 
 /**
  * Tarjeta "Tu año y tu hinchada" del carnet: accesos al resumen anual (uno por año con partidos) y cómo te comparas con los
@@ -55,7 +55,7 @@ export function CommunityCard({
         </ul>
       ) : (
         <p className="muted small">
-          Cuando haya 5 hinchas públicos de {clubName} verás aquí cómo {owner ? "te comparas" : "se compara"}. Mientras tanto, mira las cifras de la hinchada.
+          Cuando haya {MIN_COMMUNITY_FANS} hinchas públicos de {clubName} verás aquí cómo {owner ? "te comparas" : "se compara"}. Mientras tanto, mira las cifras de la hinchada.
         </p>
       )}
       <Link className="cv-link cv-block-link" href={`/estadisticas/${clubId}`}>

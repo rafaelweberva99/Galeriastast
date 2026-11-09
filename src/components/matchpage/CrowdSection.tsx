@@ -2,7 +2,7 @@ import type { CrowdSummary, MatchPhase } from "@/lib/domain/matchPage.ts";
 import { MIN_COMMUNITY_FANS } from "@/lib/domain/community.ts";
 import { pct } from "../format.ts";
 
-/** Lo que dice la hinchada: solo perfiles públicos y con al menos 5 hinchas detrás de cada cifra. */
+/** Lo que dice la hinchada: solo perfiles públicos y con al menos MIN_COMMUNITY_FANS hinchas detrás de cada cifra. */
 export function CrowdSection({
   summary,
   phase,

@@ -8,7 +8,7 @@ const today = () => new Date().toISOString().slice(0, 10);
 /**
  * Hinchas con perfil público que marcaron el partido, cada uno con el historial de su club
  * (partidos jugados / ganados / empatados entre todos los que marcó). Solo se devuelven datos
- * anónimos: ni nombres ni ids. El mínimo k ≥ 5 se aplica en `summarizeCrowd`.
+ * anónimos: ni nombres ni ids. El mínimo k ≥ MIN_COMMUNITY_FANS se aplica en `summarizeCrowd`.
  */
 export async function matchCrowd(db: Db, matchId: string): Promise<CrowdFan[]> {
   const rows = await db.all(

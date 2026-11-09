@@ -41,7 +41,6 @@ async function seed(open: () => Promise<Db>): Promise<Db> {
     ["u5", "universidad-de-chile", 1, 4],
     ["u6", "universidad-de-chile", 0, 3],
     ["c1", "colo-colo", 1, 8],
-    ["c2", "colo-colo", 1, 8],
   ];
   for (const [name, club, pub, n] of fans) {
     await db.run("INSERT INTO users (username, email, password_hash, club_id, is_public) VALUES (?, ?, 'x', ?, ?)", name, `${name}@x.cl`, club, pub);
@@ -55,16 +54,16 @@ describe.each(ENGINES)("comunidad: %s", (_name, open) => {
   let db: Db;
   afterEach(async () => db?.close());
 
-  it("el panorama oculta cifras bajo 5 hinchas y excluye perfiles privados", async () => {
+  it("el panorama oculta cifras bajo 2 hinchas y excluye perfiles privados", async () => {
     db = await seed(open);
     const o = await communityOverview(db);
-    expect(o.totalFans).toBe(7);
+    expect(o.totalFans).toBe(6);
     const u = o.clubs.find((c) => c.clubId === "universidad-de-chile")!;
     const c = o.clubs.find((c) => c.clubId === "colo-colo")!;
     expect(u.fans).toBe(5);
     expect(u.attended).toBe(8 + 7 + 6 + 5 + 4);
     expect(u.avgAttended).toBe(6);
-    expect(c.fans).toBe(2);
+    expect(c.fans).toBe(1);
     expect(c.attended).toBeNull();
     expect(c.avgEffectiveness).toBeNull();
     expect(c.shares).toBeNull();
@@ -81,10 +80,10 @@ describe.each(ENGINES)("comunidad: %s", (_name, open) => {
     const small = await clubCommunityDetail(db, "colo-colo");
     expect(small.topAllTime).toEqual([]);
     expect(small.scorersFor).toEqual([]);
-    expect(small.faithful).toHaveLength(2); // el ranking de alias públicos sí se muestra
+    expect(small.faithful).toHaveLength(1); // el ranking de alias públicos sí se muestra
   });
 
-  it("comparación para el carnet: percentil, posición y mínimo de 5 hinchas", async () => {
+  it("comparación para el carnet: percentil, posición y mínimo de 2 hinchas", async () => {
     db = await seed(open);
     const id = async (n: string) => Number((await db.get("SELECT id FROM users WHERE username = ?", n))!.id);
     const top = (await communityComparison(db, await id("u1")))!;

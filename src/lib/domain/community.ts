@@ -5,7 +5,7 @@
 import { MIN_MATCHES_FOR_VERDICT } from "./stats.ts";
 
 /** Mínimo de hinchas públicos detrás de una cifra agregada; con menos, no se muestra ("pocos datos"). */
-export const MIN_COMMUNITY_FANS = 5;
+export const MIN_COMMUNITY_FANS = 2;
 
 /** Devuelve `value` solo si hay al menos `MIN_COMMUNITY_FANS` hinchas detrás; si no, null. */
 export function privacyGate<T>(fans: number, value: T): T | null {

@@ -1,6 +1,6 @@
 /**
  * Lógica pura de la página de un partido: fase, título, cobertura de goles, historial entre dos equipos
- * y resumen de la hinchada (con la regla de privacidad k ≥ 5). Nada de base de datos aquí.
+ * y resumen de la hinchada (con la regla de privacidad k ≥ MIN_COMMUNITY_FANS). Nada de base de datos aquí.
  */
 import type { Goal, Match, Outcome } from "./types.ts";
 import { fanEffectiveness, type FanLine, mean, MIN_COMMUNITY_FANS, privacyGate } from "./community.ts";
@@ -121,13 +121,13 @@ export interface CrowdClubShare {
 
 export interface CrowdSummary {
   fans: number;
-  /** Clubes con al menos 5 hinchas, de más a menos. */
+  /** Clubes con al menos MIN_COMMUNITY_FANS hinchas, de más a menos. */
   clubs: CrowdClubShare[];
   /** Hinchas de clubes con menos de 5 marcas: se agrupan para no identificar a nadie. */
   others: { fans: number; pct: number } | null;
 }
 
-/** null si hay menos de 5 hinchas públicos detrás (no se muestra nada). */
+/** null si hay menos de MIN_COMMUNITY_FANS hinchas públicos detrás (no se muestra nada). */
 export function summarizeCrowd(fans: CrowdFan[]): CrowdSummary | null {
   if (privacyGate(fans.length, true) === null) return null;
   const byClub = new Map<string, CrowdFan[]>();

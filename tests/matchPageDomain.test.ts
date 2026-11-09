@@ -41,16 +41,16 @@ describe("historial", () => {
   });
 });
 
-describe("hinchada (k ≥ 5)", () => {
+describe("hinchada (k ≥ 2)", () => {
   const fan = (clubId: string, won = 3) => ({ clubId, played: 5, won, drawn: 1 });
-  it("no muestra nada con menos de 5", () => {
-    expect(summarizeCrowd([fan("u"), fan("u"), fan("u"), fan("u")])).toBeNull();
+  it("no muestra nada con menos de 2", () => {
+    expect(summarizeCrowd([fan("u")])).toBeNull();
   });
   it("agrupa clubes chicos y oculta efectividad con pocos veredictos", () => {
-    const s = summarizeCrowd([...Array(5).fill(0).map(() => fan("u")), fan("c"), fan("c")])!;
-    expect(s.fans).toBe(7);
+    const s = summarizeCrowd([...Array(5).fill(0).map(() => fan("u")), fan("c")])!;
+    expect(s.fans).toBe(6);
     expect(s.clubs.map((c) => c.clubId)).toEqual(["u"]);
-    expect(s.others?.fans).toBe(2);
+    expect(s.others?.fans).toBe(1);
     expect(s.clubs[0].effectiveness).toBeCloseTo(((3 * 3 + 1) / 15) * 100);
   });
 });

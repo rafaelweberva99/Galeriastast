@@ -10,12 +10,12 @@ import {
 } from "../src/lib/domain/community.ts";
 
 describe("privacidad", () => {
-  it("oculta cifras con menos de 5 hinchas", () => {
-    expect(MIN_COMMUNITY_FANS).toBe(5);
-    expect(privacyGate(4, 42)).toBeNull();
-    expect(privacyGate(5, 42)).toBe(42);
+  it("oculta cifras con menos de 2 hinchas", () => {
+    expect(MIN_COMMUNITY_FANS).toBe(2);
+    expect(privacyGate(1, 42)).toBeNull();
+    expect(privacyGate(2, 42)).toBe(42);
     expect(privacyGate(0, 0)).toBeNull();
-    expect(fansMissing(2)).toBe(3);
+    expect(fansMissing(1)).toBe(1);
     expect(fansMissing(9)).toBe(0);
   });
 });
@@ -57,7 +57,7 @@ describe("efectividad y veredictos", () => {
     expect(fanEffectiveness({ played: 5, won: 3, drawn: 0 })).toBe(60);
   });
   it("reparte cábala/neutro/yeta y los porcentajes suman 100", () => {
-    expect(verdictShares([80, 70, 50, 10])).toBeNull();
+    expect(verdictShares([80])).toBeNull();
     const s = verdictShares([80, 70, 50, 60, 10, 20, 30])!;
     expect([s.cabala, s.neutro, s.yeta]).toEqual([2, 2, 3]);
     expect(s.pct.cabala + s.pct.neutro + s.pct.yeta).toBe(100);
