@@ -70,6 +70,8 @@ export interface Resumen {
   /** Resultados en orden cronológico (para dibujar la racha). */
   sequence: Outcome[];
   topRival: { teamId: string; name: string; count: number } | null;
+  /** Estadio donde más partidos vio en el año (null si ningún partido trae estadio). */
+  topVenue: { name: string; count: number; distinct: number } | null;
   idol: ScorerTally | null;
   executioner: ScorerTally | null;
   goalsSeenFor: number;
@@ -204,6 +206,10 @@ export function buildResumen(opts: {
   }
   const rival = [...byRival].sort((a, b) => b[1].count - a[1].count || b[1].last.localeCompare(a[1].last) || a[1].name.localeCompare(b[1].name, "es"))[0];
 
+  const byVenue = new Map<string, number>();
+  for (const m of mine) if (m.venueName) byVenue.set(m.venueName, (byVenue.get(m.venueName) ?? 0) + 1);
+  const venue = [...byVenue].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "es"))[0];
+
   const sc = scorersSeen(mine, goals, clubId);
 
   const prevMatches = matchesOfYear(attended, clubId, year - 1);
@@ -245,6 +251,7 @@ export function buildResumen(opts: {
     longestWinless,
     sequence,
     topRival: rival ? { teamId: rival[0], name: rival[1].name, count: rival[1].count } : null,
+    topVenue: venue ? { name: venue[0], count: venue[1], distinct: byVenue.size } : null,
     idol: sc.idols[0] ?? null,
     executioner: sc.executioners[0] ?? null,
     goalsSeenFor: sc.goalsFor,

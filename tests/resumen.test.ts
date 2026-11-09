@@ -74,6 +74,17 @@ describe("resumen anual", () => {
     });
   });
 
+  it("estadio del año: el más visto, con cuántos estadios distintos pisó", () => {
+    expect(run([home("2024-03-01", 1, 0)]).topVenue).toBeNull();
+    const r = run([
+      home("2024-03-01", 1, 0, "a", { venueName: "Estadio A" }),
+      home("2024-04-01", 1, 0, "b", { venueName: "Estadio B" }),
+      home("2024-05-01", 1, 0, "c", { venueName: "Estadio B" }),
+      home("2024-06-01", 1, 0, "d", { venueName: null }),
+    ]);
+    expect(r.topVenue).toEqual({ name: "Estadio B", count: 2, distinct: 2 });
+  });
+
   it("mes con más partidos (empate: el más temprano) y rival más visto", () => {
     const r = run([home("2024-03-01", 1, 0, "a"), home("2024-03-08", 1, 0, "b"), home("2024-05-01", 1, 0, "a"), home("2024-05-08", 1, 0, "a")]);
     expect(r.busiestMonth).toMatchObject({ month: 3, name: "marzo", count: 2 });

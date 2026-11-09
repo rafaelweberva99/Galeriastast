@@ -94,7 +94,7 @@ export default async function ResumenPage({ params }: { params: Params }) {
         {yearNav}
       </header>
       <ResumenDeck username={fan.username} club={identity} clubName={club.name} r={resumen} cta={isOwner ? <ShareAnchor /> : <CtaCrear />} />
-      <ResumenShare imageX={`${base}/resumen/${year}/imagen-x`} image={`${base}/resumen/${year}/imagen`} text={resumenShareText(resumen, club.shortName)} url={url} isPublic={fan.isPublic} year={year} />
+      <ResumenShare imageX={`${base}/resumen/${year}/imagen-x`} image={`${base}/resumen/${year}/imagen`} story={`${base}/resumen/${year}/imagen-historia`} text={resumenShareText(resumen, club.shortName)} url={url} isPublic={fan.isPublic} year={year} />
       <p className="muted small" style={{ textAlign: "center" }}>
         Estadísticas solo para entretención. Cuentan los partidos de {club.shortName} que marcaste con fecha de {year}.
       </p>
