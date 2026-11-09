@@ -25,3 +25,9 @@ RSSSF (otra fuente) coincide en los apellidos. Solo existen los anexos de 2001 d
 anexos (fechas con `{{fecha|d|m|a}}`); las copas no tienen segunda fuente, así que solo pasan los controles de Wikipedia y la base.
 
     python3 -I scripts/goals/wikipedia_annex.py --years 2001 --out data/raw/goals_wiki
+
+## Actualización semanal (resultados y goleadores recién jugados)
+
+`scripts/update_weekly.py` completa los partidos ya jugados que aún no tienen marcador en `data/matches/2024-2026.csv`
+y agrega sus goleadores a `data/goals/goals.csv` (ESPN; solo si la suma calza con el marcador). Ver su cabecera para el uso.
+Lo ejecuta cada domingo un agente programado.
