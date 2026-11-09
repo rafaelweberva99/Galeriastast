@@ -225,7 +225,7 @@ export async function resumenImage(opts: { username: string; club: ClubIdentity;
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginTop: 24 }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", fontFamily: DISPLAY, fontSize: 52, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>GaluchaStats</div>
-            <div style={{ display: "flex", fontSize: 26, opacity: 0.8 }}>{`Crea tu carnet en ${site.replace(/^https?:\/\//, "")}`}</div>
+            <div style={{ display: "flex", fontSize: 26, opacity: 0.8 }}>{`Crea tu Galería en ${site.replace(/^https?:\/\//, "")}`}</div>
           </div>
           <div style={{ display: "flex", fontSize: 24, fontWeight: 700, textTransform: "uppercase", letterSpacing: 3, color: t.hi, paddingBottom: 6 }}>¿Cábala o yeta?</div>
         </div>

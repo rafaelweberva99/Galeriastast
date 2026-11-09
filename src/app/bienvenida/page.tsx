@@ -21,14 +21,14 @@ export default async function WelcomePage() {
       <ol className="steps-mini" aria-label="Pasos">
         <li className="done">1 · Cuenta creada ✓</li>
         <li className="now">2 · Carga tus partidos</li>
-        <li>3 · Mira tu carnet</li>
+        <li>3 · Mira tu Galería</li>
       </ol>
       <div className="club-banner row">
         {club && <Jersey club={club} size={72} number="12" />}
         <div>
           <div className="small">¡Bienvenido, @{user.username}!</div>
           <h1>{marked > 0 ? `Ya tienes ${marked} ${marked === 1 ? "partido" : "partidos"}` : "Ahora carga tus partidos"}</h1>
-          <p style={{ margin: 0 }}>Tu carnet se arma con los partidos a los que fuiste al estadio. Elige cómo cargarlos:</p>
+          <p style={{ margin: 0 }}>Tu Galería se arma con los partidos a los que fuiste al estadio. Elige cómo cargarlos:</p>
         </div>
       </div>
 
@@ -57,11 +57,11 @@ export default async function WelcomePage() {
       <p className="muted small" style={{ textAlign: "center" }}>
         {marked > 0 ? (
           <>
-            <Link href="/carnet">Ver mi carnet →</Link>
+            <Link href="/carnet">Ver mi Galería →</Link>
           </>
         ) : (
           <>
-            ¿Prefieres hacerlo después? <Link href="/carnet">Ir a mi carnet</Link> (estará en cero hasta que marques partidos).
+            ¿Prefieres hacerlo después? <Link href="/carnet">Ir a mi Galería</Link> (estará en cero hasta que marques partidos).
           </>
         )}
       </p>

@@ -293,7 +293,7 @@ export function CarnetView({
       <Hero username={username} memberId={memberId} club={club} carnet={c} achievements={achievements} />
       {!hasData && (
         <div className="card cv-card cv-empty-hero">
-          <strong>{isOwner ? "Tu carnet está en cero." : "Este carnet todavía está en cero."}</strong>
+          <strong>{isOwner ? "Tu Galería está en cero." : "Esta Galería todavía está en cero."}</strong>
           <p className="muted" style={{ margin: "4px 0 0" }}>
             {isOwner ? "Marca los partidos a los que has ido al estadio y aquí aparecerán tu Mufómetro, tus gráficos y tus frases destacadas." : "Cuando marque partidos aparecerán sus estadísticas."}
           </p>

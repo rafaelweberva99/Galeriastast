@@ -12,7 +12,7 @@ export function OnboardingBanner() {
     <div className="onb-banner" role="status">
       <div className="container onb-row">
         <span>
-          <strong>Tu carnet está vacío.</strong> Carga los partidos a los que has ido al estadio para ver tu Mufómetro.
+          <strong>Tu Galería está vacía.</strong> Carga los partidos a los que has ido al estadio para ver tu Mufómetro.
         </span>
         <Link className="btn onb-btn" href="/bienvenida">
           Cargar partidos

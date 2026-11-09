@@ -78,13 +78,13 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               ¿Eres <em className="hl">cábala</em> o <em className="hl hl-2">yeta</em>?
             </h1>
             <p className="lead">
-              Marca los partidos a los que fuiste al estadio y recibe tu carnet con el Mufómetro, tus goleadores, tus
+              Marca los partidos a los que fuiste al estadio y recibe tu Galería con el Mufómetro, tus goleadores, tus
               clásicos y tu resumen del año. Con {summary.matches.toLocaleString("es-CL")} partidos reales desde{" "}
               {summary.firstSeason ?? "1997"}.
             </p>
             {!user && (
               <div className="row" style={{ marginTop: 22 }}>
-                <a className="btn btn-light" href="#elige-tu-club">Crear mi carnet gratis</a>
+                <a className="btn btn-light" href="#elige-tu-club">Crear mi Galería gratis</a>
                 <a className="btn hero-ghost" href="#que-veras">Ver qué incluye</a>
               </div>
             )}
@@ -125,11 +125,11 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
 
       <section className="pitch bleed pick-section" id="elige-tu-club">
         <div className="container">
-          <h2 className="display pick-title">{user ? "Sigue con tu carnet" : "Elige tu club y parte"}</h2>
+          <h2 className="display pick-title">{user ? "Sigue con tu Galería" : "Elige tu club y parte"}</h2>
           {user ? (
             <div className="row" style={{ marginTop: 24 }}>
               <Link className="btn btn-light" href="/carnet">
-                Ver mi carnet
+                Ver mi Galería
               </Link>
               <Link
                 className="btn btn-light"
@@ -216,12 +216,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
       <section className="section steps">
         <Reveal>
           <p className="lp-eyebrow">Así de simple</p>
-          <h2 className="lp-h2">Tu carnet en tres pasos</h2>
+          <h2 className="lp-h2">Tu Galería en tres pasos</h2>
         </Reveal>
         <ol className="steps-list">
           <li><span>1</span><div><h3>Elige tu club</h3><p className="muted">Crea tu cuenta en un minuto y el sitio se viste con los colores de tu equipo.</p></div></li>
           <li><span>2</span><div><h3>Marca tus partidos</h3><p className="muted">A mano, o sube una captura de tus entradas de PuntoTicket y los marcamos solos.</p></div></li>
-          <li><span>3</span><div><h3>Descubre tu carnet</h3><p className="muted">Mufómetro, ídolos y verdugos, derrotas históricas, gráficos y tu resumen anual para compartir.</p></div></li>
+          <li><span>3</span><div><h3>Descubre tu Galería</h3><p className="muted">Mufómetro, ídolos y verdugos, derrotas históricas, gráficos y tu resumen anual para compartir.</p></div></li>
         </ol>
       </section>
 
@@ -268,7 +268,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
           <div className="container">
             <h2>¿Cábala o yeta? Descúbrelo hoy</h2>
             <p className="lead">Es gratis y toma un minuto. Solo para entretención.</p>
-            <a className="btn btn-light" href="#elige-tu-club">Crear mi carnet</a>
+            <a className="btn btn-light" href="#elige-tu-club">Crear mi Galería</a>
           </div>
         </section>
       )}

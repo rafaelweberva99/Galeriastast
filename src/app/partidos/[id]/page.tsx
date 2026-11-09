@@ -84,14 +84,14 @@ export default async function MatchPage({ params }: { params: Params }) {
         <section className="card mp-toggle">
           <div>
             <strong>{phase === "futuro" ? "¿Vas a ir?" : "¿Fuiste a este partido?"}</strong>
-            <div className="muted small">Se suma a tu carnet de hincha.</div>
+            <div className="muted small">Se suma a tu Galería.</div>
           </div>
           <AttendanceToggle matchId={match.id} initial={modes?.get(match.id) ?? "ninguno"} upcoming={phase === "futuro"} />
         </section>
       )}
       {!user && (
         <p className="muted small">
-          <Link href="/ingresar">Ingresa</Link> o <Link href="/registro">crea tu carnet</Link> para marcar si fuiste.
+          <Link href="/ingresar">Ingresa</Link> o <Link href="/registro">crea tu Galería</Link> para marcar si fuiste.
         </p>
       )}
       {phase !== "futuro" && (

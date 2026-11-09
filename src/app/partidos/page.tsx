@@ -43,7 +43,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
           <div className="small">Fecha a fecha · {club.name}</div>
           <h1>¿Dónde estuviste?</h1>
           <p className="muted" style={{ margin: 0 }}>
-            {modes.size} partidos marcados · <Link href="/carnet">ver mi carnet</Link> ·{" "}
+            {modes.size} partidos marcados · <Link href="/carnet">ver mi Galería</Link> ·{" "}
             <Link href="/importar">importar entradas</Link>
           </p>
         </div>
@@ -120,7 +120,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
             <strong>{modes.size}</strong> {modes.size === 1 ? "partido marcado" : "partidos marcados"}
           </span>
           <Link className="btn" href="/carnet">
-            Ver mi carnet →
+            Ver mi Galería →
           </Link>
         </div>
       )}

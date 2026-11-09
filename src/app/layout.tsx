@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
   title: "GaluchaStats · ¿Eres cábala o yeta?",
   description:
-    "Tu carnet de hincha del fútbol chileno. Marca los partidos a los que fuiste al estadio y descubre si eres cábala o yeta.",
+    "Tu Galería de hincha del fútbol chileno. Marca los partidos a los que fuiste al estadio y descubre si eres cábala o yeta.",
 };
 
 export const dynamic = "force-dynamic";
@@ -43,7 +43,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       ? [
           { href: "/partidos", label: "Marcar partidos" },
           { href: "/importar", label: "Importar entradas" },
-          { href: "/carnet", label: "Mi carnet" },
+          { href: "/carnet", label: "Mi Galería" },
         ]
       : []),
     ...(full && isAdmin(user) ? [{ href: "/admin", label: "Admin" }] : []),
@@ -54,7 +54,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       ? [pendingLegal ? { href: "/aceptar", label: `@${user.username}` } : { href: "/perfil", label: `@${user.username}` }]
       : [
           { href: "/ingresar", label: "Ingresar" },
-          { href: "/registro", label: "Crear carnet", cta: true },
+          { href: "/registro", label: "Crear mi Galería", cta: true },
         ]),
   ];
   return (

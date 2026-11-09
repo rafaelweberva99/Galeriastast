@@ -20,7 +20,7 @@ export default async function AcceptPage() {
       <div className="card stack">
         <h1 style={{ margin: 0 }}>Antes de seguir, @{user.username}</h1>
         <p className="muted" style={{ margin: 0 }}>
-          Actualizamos nuestras condiciones o aún no tenemos registrada tu aceptación. Para seguir usando tu carnet
+          Actualizamos nuestras condiciones o aún no tenemos registrada tu aceptación. Para seguir usando tu Galería
           necesitamos que leas y aceptes la versión vigente:
         </p>
         <ul style={{ margin: 0 }}>
@@ -73,7 +73,7 @@ export default async function AcceptPage() {
         {user.isPublic && (
           <div className="stack">
             <p className="muted small" style={{ margin: 0 }}>
-              Tu carnet hoy se muestra en los rankings. Puedes hacerlo privado sin aceptar nada:
+              Tu Galería hoy se muestra en los rankings. Puedes hacerlo privado sin aceptar nada:
             </p>
             <PrivacyForm isPublic={user.isPublic} />
           </div>

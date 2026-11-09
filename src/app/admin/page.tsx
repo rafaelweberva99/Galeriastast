@@ -75,7 +75,7 @@ export default async function AdminPage() {
       <section className="card">
         <h2 className="section-title">Clubes ocultos del MVP</h2>
         <p className="muted small">
-          No se ofrecen para crear carnet hasta completar su historial (data/catalog/mvp.json). Como administrador puedes
+          No se ofrecen para crear su Galería hasta completar su historial (data/catalog/mvp.json). Como administrador puedes
           ver sus páginas:
         </p>
         <p>

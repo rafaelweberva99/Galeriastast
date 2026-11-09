@@ -47,7 +47,7 @@ export function ResumenShare({
               </a>
             </div>
             <p className="small" style={{ margin: 0 }}>
-              Tu carnet es privado: descarga la imagen y súbela a Instagram o X tal cual. Para compartir el link, hazlo público en{" "}
+              Tu Galería es privada: descarga la imagen y súbela a Instagram o X tal cual. Para compartir el link, hazlo público en{" "}
               <Link href="/perfil#privacidad-datos">Privacidad y datos</Link>.
             </p>
           </>

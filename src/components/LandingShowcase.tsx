@@ -8,7 +8,7 @@ export function LandingShowcase() {
   return (
     <section className="section sc" id="que-veras">
       <Reveal>
-        <p className="lp-eyebrow">Lo que tu carnet te va a contar</p>
+        <p className="lp-eyebrow">Lo que tu Galería te va a contar</p>
         <h2 className="lp-h2">¿Te gustaría saber…?</h2>
       </Reveal>
       <p className="sc-note">Así se ve con datos de ejemplo. El tuyo se arma con los partidos que tú marques.</p>

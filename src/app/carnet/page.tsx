@@ -5,7 +5,7 @@ import { getDb } from "@/lib/db/client.ts";
 import { communityComparison } from "@/lib/repo/community.ts";
 import { CarnetView } from "@/components/CarnetView.tsx";
 
-export const metadata = { title: "Mi carnet · GaluchaStats" };
+export const metadata = { title: "Mi Galería · GaluchaStats" };
 
 export default async function MyCarnetPage() {
   const user = await requireUser();
@@ -16,7 +16,7 @@ export default async function MyCarnetPage() {
     <div className="stack">
       {user.isPublic && (
         <p className="muted small">
-          Tu carnet es público en <Link href={`/hincha/${user.username}`}>/hincha/{user.username}</Link>. Puedes
+          Tu Galería es pública en <Link href={`/hincha/${user.username}`}>/hincha/{user.username}</Link>. Puedes
           cambiarlo en tu <Link href="/perfil">perfil</Link>.
         </p>
       )}

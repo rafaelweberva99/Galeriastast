@@ -72,17 +72,17 @@ export function ShareCarnet({ username, isPublic, text, url }: { username: strin
     <section className="card share" aria-labelledby="share-title">
       <div className="share-preview">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt="Vista previa de la imagen para compartir tu carnet" width={1200} height={630} loading="lazy" />
+        <img src={image} alt="Vista previa de la imagen para compartir tu Galería" width={1200} height={630} loading="lazy" />
       </div>
       <div className="stack" style={{ gap: 10, flex: 1, minWidth: 240 }}>
         <h2 id="share-title" className="section-title" style={{ margin: 0 }}>
-          Comparte tu carnet
+          Comparte tu Galería
         </h2>
         <p className="muted small" style={{ margin: 0 }}>
           {text}
         </p>
         {isPublic ? (
-          <ShareButtons text={text} url={url} shareTitle="Mi carnet de hincha" downloadHref={`${image}?descargar=1`} />
+          <ShareButtons text={text} url={url} shareTitle="Mi Galería de hincha" downloadHref={`${image}?descargar=1`} />
         ) : (
           <>
             <div className="share-actions">
@@ -91,7 +91,7 @@ export function ShareCarnet({ username, isPublic, text, url }: { username: strin
               </a>
             </div>
             <p className="small" style={{ margin: 0 }}>
-              Tu carnet es privado: descarga la imagen y súbela a X tal cual. Para compartir el link, hazlo público en{" "}
+              Tu Galería es privada: descarga la imagen y súbela a X tal cual. Para compartir el link, hazlo público en{" "}
               <Link href="/perfil#privacidad-datos">Privacidad y datos</Link>.
             </p>
           </>

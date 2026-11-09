@@ -16,7 +16,7 @@ export function CompararBox({ from = "yo" }: { from?: string }) {
         Comparar con un amigo
       </h2>
       <p className="muted small" style={{ margin: "6px 0 10px" }}>
-        Mi Mufómetro vs el tuyo. Funciona con hinchas de cualquier club con carnet público.
+        Mi Mufómetro vs el tuyo. Funciona con hinchas de cualquier club con Galería pública.
       </p>
       <form
         className="cmp-box-form"

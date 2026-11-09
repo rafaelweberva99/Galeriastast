@@ -8,7 +8,7 @@ import { Jersey } from "@/components/Jersey.tsx";
 import { AuthPerks } from "@/components/AuthPerks.tsx";
 import { RegisterForm } from "./RegisterForm.tsx";
 
-export const metadata = { title: "Crear carnet · GaluchaStats" };
+export const metadata = { title: "Crear mi Galería · GaluchaStats" };
 
 type Search = Promise<{ club?: string }>;
 
@@ -36,7 +36,7 @@ export default async function RegisterPage({ searchParams }: { searchParams: Sea
         </div>
       )}
       <div className="card">
-        {!club && <h1>Crea tu carnet de hincha</h1>}
+        {!club && <h1>Crea tu Galería de hincha</h1>}
         <p className="muted">Solo podrás marcar partidos de tu club. El 12 de la camiseta eres tú: la hinchada.</p>
         <RegisterForm clubs={clubs} defaultClub={club?.id ?? ""} />
       </div>

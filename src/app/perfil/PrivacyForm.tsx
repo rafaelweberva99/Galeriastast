@@ -10,9 +10,9 @@ export function PrivacyForm({ isPublic }: { isPublic: boolean }) {
       <label className="check">
         <input type="checkbox" name="isPublic" defaultChecked={isPublic} />
         <span>
-          Mostrar mi carnet en los rankings y en mi perfil público
+          Mostrar mi Galería en los rankings y en mi perfil público
           <br />
-          <span className="muted small">Desmarcada, tu carnet es privado: solo tú lo ves.</span>
+          <span className="muted small">Desmarcada, tu Galería es privada: solo tú lo ves.</span>
         </span>
       </label>
       {state.error && <p className="error" role="alert">{state.error}</p>}

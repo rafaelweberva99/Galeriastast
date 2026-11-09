@@ -213,7 +213,7 @@ export function ResumenDeck({ username, club, clubName, r, cta }: { username: st
 export function CtaCrear() {
   return (
     <Link className="btn rs-btn" href="/registro">
-      Crear mi carnet
+      Crear mi Galería
     </Link>
   );
 }

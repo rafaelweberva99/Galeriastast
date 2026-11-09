@@ -24,7 +24,7 @@ function Card({ h }: { h: Highlight }) {
 export function Highlights({ highlights, visible = 4 }: { highlights: Highlight[]; visible?: number }) {
   const sorted = [...highlights].sort((a, b) => b.weight - a.weight);
   if (!sorted.length) {
-    return <p className="muted cv-empty">Marca unos partidos más y te armamos frases destacadas con lo que se repite en tu carnet.</p>;
+    return <p className="muted cv-empty">Marca unos partidos más y te armamos frases destacadas con lo que se repite en tu Galería.</p>;
   }
   return (
     <>

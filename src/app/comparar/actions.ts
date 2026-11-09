@@ -17,7 +17,7 @@ export async function validarAmigo(from: string, raw: string): Promise<ValidarRe
   const a = await resolveFan(db, from || "yo", viewer);
   if ("error" in a) return { ok: false, message: "Ingresa a tu cuenta para compararte." };
   const b = await resolveFan(db, friend, viewer);
-  if ("error" in b) return { ok: false, message: `No encontramos a @${friend} o no tiene el carnet público.` };
+  if ("error" in b) return { ok: false, message: `No encontramos a @${friend} o no tiene su Galería pública.` };
   if (a.user.id === b.user.id) return { ok: false, message: "Ese eres tú. Busca a un amigo para picarse." };
   return { ok: true, href: `/comparar/${encodeURIComponent(a.user.username)}/${encodeURIComponent(b.user.username)}` };
 }

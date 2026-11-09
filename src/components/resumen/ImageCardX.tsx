@@ -85,7 +85,7 @@ export async function resumenImageX(opts: { username: string; club: ClubIdentity
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <div style={{ display: "flex", fontFamily: DISPLAY, fontSize: 40, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>GaluchaStats</div>
-              <div style={{ display: "flex", fontSize: 22, opacity: 0.8 }}>{`Crea tu carnet en ${site.replace(/^https?:\/\//, "")}`}</div>
+              <div style={{ display: "flex", fontSize: 22, opacity: 0.8 }}>{`Crea tu Galería en ${site.replace(/^https?:\/\//, "")}`}</div>
             </div>
           </div>
         </div>

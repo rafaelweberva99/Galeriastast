@@ -27,7 +27,7 @@ export function ProfileForm({
           aria-describedby="username-hint"
         />
         <span id="username-hint" className="muted small">
-          3 a 20 caracteres: letras, números o _. Cambia también el link de tu carnet público y el usuario para ingresar
+          3 a 20 caracteres: letras, números o _. Cambia también el link de tu Galería pública y el usuario para ingresar
           (tu correo sigue sirviendo).
         </span>
       </div>

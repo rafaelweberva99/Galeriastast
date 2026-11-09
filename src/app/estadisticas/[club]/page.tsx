@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Params }) {
   const title = `Estadísticas de la hinchada de ${team.shortName} · GaluchaStats`;
   const description =
     d.avgEffectiveness !== null
-      ? `${d.fans} hinchas de ${team.shortName} con perfil público: Mufómetro medio de ${Math.round(d.avgEffectiveness)}%. ¿Cábalas o yetas? Míralo y arma tu carnet.`
+      ? `${d.fans} hinchas de ${team.shortName} con perfil público: Mufómetro medio de ${Math.round(d.avgEffectiveness)}%. ¿Cábalas o yetas? Míralo y arma tu Galería.`
       : `La hinchada de ${team.shortName} se está armando en GaluchaStats (${d.fans} ${d.fans === 1 ? "hincha" : "hinchas"}). Súmate y descubre si eres cábala o yeta.`;
   const images = [{ url: `/estadisticas/${team.id}/imagen`, width: 1200, height: 630, alt: `Hinchada de ${team.shortName}` }];
   return {
@@ -82,7 +82,7 @@ export default async function ClubCommunityPage({ params }: { params: Params }) 
           <Waiting fans={d.fans} fansWord={word} />
           <p className="muted" style={{ margin: 0 }}>
             Las cifras de una hinchada se abren desde {MIN_COMMUNITY_FANS} hinchas para que nadie quede identificado.
-            Invita a tus amigos de la galería a crear su carnet y dejar su perfil público.
+            Invita a tus amigos de la galería a crear su Galería y dejar su perfil público.
           </p>
           <Link href="/registro" className="btn" style={{ alignSelf: "flex-start" }}>
             Sumarme a la hinchada

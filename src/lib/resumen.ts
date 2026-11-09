@@ -7,7 +7,7 @@ import type { User } from "./repo/users.ts";
 
 /** Texto para compartir el resumen anual en X u otras redes. */
 export function resumenShareText(r: Resumen, clubShort: string): string {
-  if (r.played === 0) return `Armé mi carnet de hincha de ${clubShort} en GaluchaStats.`;
+  if (r.played === 0) return `Armé mi Galería de hincha de ${clubShort} en GaluchaStats.`;
   const eff = r.effectiveness === null ? "" : ` con ${Math.round(r.effectiveness)}% de efectividad`;
   return `Mi ${r.year} en la galería: ${r.played} ${r.played === 1 ? "partido" : "partidos"} de ${clubShort}${eff} (${r.record.won}G-${r.record.drawn}E-${r.record.lost}P). Me dicen "${r.title.label}". ¿Y el tuyo?`;
 }

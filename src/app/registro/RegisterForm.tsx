@@ -12,12 +12,12 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
       <ol className="steps-mini" aria-label="Pasos">
         <li className="now">1 · Tu cuenta</li>
         <li>2 · Carga tus partidos</li>
-        <li>3 · Tu carnet</li>
+        <li>3 · Tu Galería</li>
       </ol>
       <div className="field">
         <label htmlFor="username">Usuario</label>
         <input id="username" name="username" defaultValue={state.values?.username} required minLength={3} maxLength={20} pattern="[A-Za-z0-9_]+" autoComplete="username" aria-describedby="username-hint" />
-        <span id="username-hint" className="muted small">3 a 20 caracteres: letras, números o guion bajo. Será visible si haces público tu carnet.</span>
+        <span id="username-hint" className="muted small">3 a 20 caracteres: letras, números o guion bajo. Será visible si haces público tu Galería.</span>
       </div>
       <div className="field">
         <label htmlFor="email">Correo</label>
@@ -70,15 +70,15 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
         <label className="check">
           <input type="checkbox" name="isPublic" defaultChecked={state.values?.isPublic === "on"} />
           <span>
-            Mostrar mi carnet en los rankings y en mi perfil público <span className="optional">(opcional)</span>
+            Mostrar mi Galería en los rankings y en mi perfil público <span className="optional">(opcional)</span>
             <br />
-            <span className="muted small">Si no la marcas, tu carnet queda privado. Puedes cambiarlo cuando quieras en tu perfil.</span>
+            <span className="muted small">Si no la marcas, tu Galería queda privada. Puedes cambiarlo cuando quieras en tu perfil.</span>
           </span>
         </label>
       </fieldset>
       {state.error && <p className="error" role="alert">{state.error}</p>}
       <button className="btn" disabled={pending}>
-        {pending ? "Creando…" : "Crear mi carnet y cargar partidos"}
+        {pending ? "Creando…" : "Crear mi Galería y cargar partidos"}
       </button>
       <p className="muted small">
         ¿Ya tienes cuenta? <Link href="/ingresar">Ingresa</Link> · <Link href="/terminos">Términos</Link> ·{" "}

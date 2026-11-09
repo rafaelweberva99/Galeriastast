@@ -98,7 +98,7 @@ export default async function CommunityPage() {
             carnet, marca tus partidos y deja tu perfil público para sumar a tu hinchada.
           </p>
           <Link href="/registro" className="btn" style={{ alignSelf: "flex-start" }}>
-            Crear carnet
+            Crear mi Galería
           </Link>
         </section>
       )}

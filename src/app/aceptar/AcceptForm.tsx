@@ -46,9 +46,9 @@ export function AcceptForm(props: { askTerms: boolean; askPrivacy: boolean; askA
             <label className="check">
               <input type="checkbox" name="isPublic" />
               <span>
-                Mostrar mi carnet en los rankings y en mi perfil público <span className="optional">(opcional)</span>
+                Mostrar mi Galería en los rankings y en mi perfil público <span className="optional">(opcional)</span>
                 <br />
-                <span className="muted small">Si no la marcas, tu carnet queda privado.</span>
+                <span className="muted small">Si no la marcas, tu Galería queda privada.</span>
               </span>
             </label>
           </>

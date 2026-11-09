@@ -74,7 +74,7 @@ export default async function ResumenPage({ params }: { params: Params }) {
               </Link>
             ) : (
               <Link className="btn" href={base}>
-                Ver el carnet de @{fan.username}
+                Ver la Galería de @{fan.username}
               </Link>
             )}
           </div>

@@ -14,7 +14,7 @@ type Params = Promise<{ a: string; b: string }>;
 
 const MENSAJES = {
   "sin-sesion": { title: "Ingresa para compararte", text: "Para usar «yo» necesitas tu sesión iniciada.", cta: { href: "/ingresar", label: "Ingresar" } },
-  "no-disponible": { title: "Este hincha no tiene el carnet público", text: "No lo encontramos o prefirió mantener su carnet privado. Pídele que lo haga público para compararse.", cta: null },
+  "no-disponible": { title: "Este hincha no tiene su Galería pública", text: "No lo encontramos o prefirió mantener su Galería privada. Pídele que lo haga público para compararse.", cta: null },
   mismo: { title: "Ese eres tú", text: "Compararte contigo mismo es fácil: siempre ganas. Busca a un amigo para picarse.", cta: null },
 } as const;
 

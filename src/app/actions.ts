@@ -202,14 +202,14 @@ export async function savePrivacy(_: FormState, form: FormData): Promise<FormSta
   const user = await requireUser({ allowPendingLegal: true });
   const isPublic = form.get("isPublic") === "on";
   if (isPublic && (await mustAcceptLegal(user.id))) {
-    return { error: "Para mostrar tu carnet en público primero acepta las condiciones vigentes." };
+    return { error: "Para mostrar tu Galería en público primero acepta las condiciones vigentes." };
   }
   await setPublicProfile(await getDb(), user.id, isPublic);
   revalidatePath("/", "layout");
   return {
     ok: isPublic
-      ? "Listo: tu carnet ahora aparece en los rankings y en tu perfil público."
-      : "Listo: tu carnet ahora es privado y no aparece en los rankings.",
+      ? "Listo: tu Galería ahora aparece en los rankings y en tu perfil público."
+      : "Listo: tu Galería ahora es privada y no aparece en los rankings.",
   };
 }
 
