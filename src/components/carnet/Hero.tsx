@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Carnet } from "@/lib/domain/stats.ts";
 import type { Achievements } from "@/lib/domain/achievements.ts";
 import type { Team } from "@/lib/repo/teams.ts";
+import type { ScorersReport, ScorerTally } from "@/lib/domain/scorers.ts";
 import { clubIdentity } from "@/lib/clubTheme.ts";
 import { isVisibleClub } from "@/lib/mvp.ts";
 import { Jersey } from "../Jersey.tsx";
@@ -15,12 +16,16 @@ export function Hero({
   club,
   carnet: c,
   achievements,
+  scorers,
+  clubs,
 }: {
   username: string;
   memberId: number;
   club: Team;
   carnet: Carnet;
   achievements: Achievements;
+  scorers: ScorersReport;
+  clubs: Team[];
 }) {
   const id = clubIdentity(club);
   const since = c.first ? c.first.season : null;
@@ -33,7 +38,7 @@ export function Hero({
         : c.verdict.description;
   const cur = c.streaks.current;
   const kpis: { value: string; label: string; sub?: string }[] = [
-    { value: String(c.total), label: c.total === 1 ? "partido" : "partidos" },
+    { value: String(c.bySeason.length), label: c.bySeason.length === 1 ? "temporada" : "temporadas" },
     { value: c.effectiveness === null ? "—" : pct(c.effectiveness), label: "efectividad" },
     {
       value: impact === null ? "—" : `${impact >= 0 ? "▲" : "▼"} ${Math.abs(impact).toFixed(1).replace(".", ",")}`,
@@ -44,6 +49,12 @@ export function Hero({
     { value: `${c.record.goalsFor}-${c.record.goalsAgainst}`, label: "goles" },
     { value: cur ? `${cur.length}${cur.outcome}` : "—", label: "racha actual" },
   ];
+  const idol = scorers.idols[0];
+  const foe = scorers.executioners[0];
+  const teams = new Map(clubs.map((t) => [t.id, t]));
+  const foeTeam = foe ? teams.get(foe.teamId) : undefined;
+  const foeClubs = foe ? foe.teamIds.map((tid) => teams.get(tid)?.shortName ?? tid).join(" · ") : "";
+  const goalsText = (s: ScorerTally) => `${s.goals} ${s.goals === 1 ? "gol" : "goles"}`;
   return (
     <section className={`socio-card cv-hero tier-${achievements.tier.key}`}>
       {achievements.tier.key !== "socio" && (
@@ -64,6 +75,39 @@ export function Hero({
             Socio N° {String(memberId).padStart(6, "0")}
             {since ? ` · desde ${since}` : ""}
           </div>
+        </div>
+      </div>
+      <div className="cv-trio">
+        <div className="cv-trio-tile cv-trio-games">
+          <span className="cv-trio-label">En el estadio</span>
+          <strong className="cv-trio-big">{c.total}</strong>
+          <span className="cv-trio-sub">{c.total === 1 ? "partido" : "partidos"}</span>
+        </div>
+        <div className="cv-trio-tile">
+          <span className="cv-trio-label">Tu ídolo</span>
+          {idol ? (
+            <>
+              <Jersey club={id} size={44} />
+              <strong className="cv-trio-name">{idol.player}</strong>
+              <span className="cv-trio-sub">{goalsText(idol)} que viste</span>
+            </>
+          ) : (
+            <span className="cv-trio-sub">Aún sin goleadores cargados</span>
+          )}
+        </div>
+        <div className="cv-trio-tile cv-trio-foe">
+          <span className="cv-trio-label">Tu verdugo</span>
+          {foe ? (
+            <>
+              {foeTeam && <Jersey club={clubIdentity(foeTeam)} size={44} />}
+              <strong className="cv-trio-name">{foe.player}</strong>
+              <span className="cv-trio-sub">
+                {goalsText(foe)} contra tu club{foeClubs ? ` · ${foeClubs}` : ""}
+              </span>
+            </>
+          ) : (
+            <span className="cv-trio-sub">Aún sin goleadores cargados</span>
+          )}
         </div>
       </div>
       <div className="mufometro-panel cv-hero-gauge">

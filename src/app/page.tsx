@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { currentUser } from "@/lib/auth.ts";
+import { redirect } from "next/navigation";
+import { countMarked } from "@/lib/repo/onboarding.ts";
+import { currentUser, mustAcceptLegal } from "@/lib/auth.ts";
 import { clubIdentity, clubStyle, jerseySvg } from "@/lib/clubTheme.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { datasetSummary } from "@/lib/repo/matches.ts";
@@ -18,9 +20,12 @@ import { Ball } from "@/components/Ball.tsx";
 const BIG_THREE = ["colo-colo", "universidad-de-chile", "universidad-catolica"];
 
 
-export default async function Home({ searchParams }: { searchParams: Promise<{ cuenta?: string }> }) {
-  const { cuenta } = await searchParams;
+export default async function Home({ searchParams }: { searchParams: Promise<{ cuenta?: string; portada?: string }> }) {
+  const { cuenta, portada } = await searchParams;
   const db = await getDb();
+  // Quien ya tiene sesión entra directo a su Galería (o a cargar partidos si aún no marcó ninguno). ?portada=1 muestra la portada.
+  const me = await currentUser();
+  if (me && !portada && !(await mustAcceptLegal(me.id))) redirect((await countMarked(db, me.id)) === 0 ? "/bienvenida" : "/carnet");
   const [user, summary, clubs] = [await currentUser(), await datasetSummary(db), (await clubsByFans(db)).filter((c) => isVisibleClub(c.clubId)).slice(0, 5)];
   const everyClub = await listClubs(db);
   const allClubs = visibleClubs(everyClub);

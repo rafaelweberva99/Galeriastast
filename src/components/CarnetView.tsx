@@ -290,7 +290,7 @@ export function CarnetView({
 
   return (
     <div className="stack cv" style={clubStyle(id) as React.CSSProperties}>
-      <Hero username={username} memberId={memberId} club={club} carnet={c} achievements={achievements} />
+      <Hero username={username} memberId={memberId} club={club} carnet={c} achievements={achievements} scorers={scorers} clubs={clubs} />
       {!hasData && (
         <div className="card cv-card cv-empty-hero">
           <strong>{isOwner ? "Tu Galería está en cero." : "Esta Galería todavía está en cero."}</strong>
