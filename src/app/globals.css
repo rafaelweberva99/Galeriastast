@@ -1339,3 +1339,12 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
   .cv-trio-big { font-size: 4.6rem; }
   .cv-trio-name { font-size: 1.5rem; }
 }
+
+/* === elección pública / privada === */
+.visibility { border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; display: grid; gap: 10px; }
+.visibility legend { font-weight: 700; padding: 0 6px; }
+.radio-card { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 2px solid var(--border); border-radius: 12px; cursor: pointer; background: var(--surface); }
+.radio-card:has(input:checked) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+.radio-card input { margin-top: 5px; width: 20px; height: 20px; flex: none; }
+.reco { font-style: normal; font: 700 0.72rem var(--font-display), sans-serif; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent); color: var(--accent-ink); padding: 2px 8px; border-radius: 999px; margin-left: 6px; }
+.nudge { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; border-left: 5px solid var(--accent); }

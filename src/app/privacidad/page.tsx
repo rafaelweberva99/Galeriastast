@@ -50,7 +50,7 @@ export default function PrivacyPage() {
         </li>
         <li>
           <strong>Preferencia de perfil público</strong>: si quieres que tu carnet aparezca en los rankings y en tu página
-          pública (/hincha/tu-usuario). Por defecto es privado.
+          pública (/hincha/tu-usuario). La eliges al crear tu cuenta; si no la autorizas, tu carnet es privado.
         </li>
         <li>
           <strong>Registros de consentimiento</strong>: qué aceptaste (Términos, Privacidad, declaración de edad,

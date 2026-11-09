@@ -42,7 +42,7 @@ export interface FormState {
 const echo = (form: FormData, keys: string[]): Record<string, string> =>
   Object.fromEntries(keys.map((k) => [k, String(form.get(k) ?? "")]));
 const CLUB_NOT_YET = "Ese club todavía no está disponible: estamos completando su historial.";
-const REGISTER_ECHO = ["username", "email", "clubId", "acceptTerms", "acceptPrivacy", "isAdult", "isPublic"];
+const REGISTER_ECHO = ["username", "email", "clubId", "acceptTerms", "acceptPrivacy", "isAdult", "visibility"];
 
 /** Casilla obligatoria: el navegador envía "on" solo si está marcada. */
 const mustCheck = (message: string) => z.literal("on", { errorMap: () => ({ message }) });
@@ -63,7 +63,8 @@ const registerSchema = z.object({
   acceptTerms: mustCheck("Debes aceptar los Términos y Condiciones."),
   acceptPrivacy: mustCheck("Debes confirmar que leíste la Política de Privacidad."),
   isAdult: mustCheck(`Debes tener ${MIN_AGE} años o más para crear una cuenta.`),
-  isPublic: z.literal("on").optional(),
+  // Elección explícita (sin casilla marcada de antemano): pública o privada.
+  visibility: z.enum(["public", "private"], { message: "Elige si tu Galería será pública o privada." }),
 });
 
 export async function register(_: FormState, form: FormData): Promise<FormState> {
@@ -88,7 +89,7 @@ export async function register(_: FormState, form: FormData): Promise<FormState>
       acceptTerms: true,
       acceptPrivacy: true,
       isAdult: true,
-      isPublic: parsed.data.isPublic === "on",
+      isPublic: parsed.data.visibility === "public",
     });
     await startSession(user.id);
   } catch (e) {

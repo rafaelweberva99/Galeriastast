@@ -67,14 +67,26 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
           <input type="checkbox" name="isAdult" defaultChecked={state.values?.isAdult === "on"} required />
           <span>Declaro tener {MIN_AGE} años o más</span>
         </label>
-        <label className="check">
-          <input type="checkbox" name="isPublic" defaultChecked={state.values?.isPublic === "on"} />
+      </fieldset>
+      <fieldset className="visibility" aria-describedby="vis-hint">
+        <legend>¿Tu Galería será pública?</legend>
+        <label className="radio-card">
+          <input type="radio" name="visibility" value="public" defaultChecked={state.values?.visibility === "public"} required />
           <span>
-            Mostrar mi Galería en los rankings y en mi perfil público <span className="optional">(opcional)</span>
+            <strong>Pública</strong> <em className="reco">Recomendada</em>
             <br />
-            <span className="muted small">Si no la marcas, tu Galería queda privada. Puedes cambiarlo cuando quieras en tu perfil.</span>
+            <span className="muted small">Apareces en los rankings de tu club y tus amigos pueden ver y comparar tu Galería contigo.</span>
           </span>
         </label>
+        <label className="radio-card">
+          <input type="radio" name="visibility" value="private" defaultChecked={state.values?.visibility === "private"} required />
+          <span>
+            <strong>Privada</strong>
+            <br />
+            <span className="muted small">Solo tú ves tu Galería y no apareces en los rankings.</span>
+          </span>
+        </label>
+        <span id="vis-hint" className="muted small">Tú decides, y puedes cambiarlo cuando quieras en tu perfil.</span>
       </fieldset>
       {state.error && <p className="error" role="alert">{state.error}</p>}
       <button className="btn" disabled={pending}>
