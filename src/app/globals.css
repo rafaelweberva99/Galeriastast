@@ -1349,3 +1349,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 .reco { font-style: normal; font: 700 0.72rem var(--font-display), sans-serif; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent); color: var(--accent-ink); padding: 2px 8px; border-radius: 999px; margin-left: 6px; }
 .nudge { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; border-left: 5px solid var(--accent); }
 .public-note { margin: 0; }
+
+/* Filtros automáticos: mientras se actualiza, se atenúan los resultados. */
+.filters-status { min-width: 6.5em; align-self: end; padding-bottom: 8px; }
+body:has(.filters[data-busy="1"]) .filter-results { opacity: 0.45; transition: opacity 0.15s; pointer-events: none; }

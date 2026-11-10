@@ -101,7 +101,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
         </label>
       </AutoFilterForm>
 
-      <div className="card">
+      <div className="card filter-results">
         {matches.length === 0 ? (
           <p className="muted">No hay partidos con esos filtros.</p>
         ) : (
