@@ -22,8 +22,10 @@
   },
   "dependencies": {
     "@tesseract.js-data/spa": "^1.0.0",
+    "@types/nodemailer": "^8.0.2",
     "fflate": "^0.8.3",
     "next": "^15.5.28",
+    "nodemailer": "^10.5.0",
     "pdfjs-dist": "^4.10.38",
     "postgres": "^3.4.5",
     "react": "^19.3.1",

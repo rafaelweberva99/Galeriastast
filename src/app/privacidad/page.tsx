@@ -35,7 +35,7 @@ export default function PrivacyPage() {
           <strong>Nombre de usuario</strong>: lo eliges tú y es visible para otros, porque tu Galería es pública.
         </li>
         <li>
-          <strong>Correo electrónico</strong>: para identificar tu cuenta y responder tus solicitudes. No es público.
+          <strong>Correo electrónico</strong>: para identificar tu cuenta, responder tus solicitudes y, si después de una semana no has marcado ningún partido, enviarte un único recordatorio con un enlace para no recibir más. No es público.
         </li>
         <li>
           <strong>Contraseña</strong>: nunca la guardamos tal cual; guardamos solo un resumen cifrado (hash con scrypt y

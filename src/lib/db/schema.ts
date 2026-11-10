@@ -115,6 +115,19 @@ UPDATE users SET is_public = 0
  WHERE is_public = 1
    AND NOT EXISTS (SELECT 1 FROM consents c WHERE c.user_id = users.id AND c.kind = 'public_profile');
 
+-- Correos que la app le envía a un hincha (hoy: kind = 'recordatorio-7d'). Una fila por correo enviado:
+-- sirve para no repetir el recordatorio. email_optouts: quien pidió no recibir más recordatorios.
+CREATE TABLE IF NOT EXISTS email_events (
+  user_id     INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  kind        TEXT NOT NULL,
+  sent_at     TEXT NOT NULL DEFAULT {{NOW}},
+  PRIMARY KEY (user_id, kind)
+);
+CREATE TABLE IF NOT EXISTS email_optouts (
+  user_id     INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  created_at  TEXT NOT NULL DEFAULT {{NOW}}
+);
+
 -- Goles de cada partido. team_id = equipo al que se le suma el gol en el marcador;
 -- en un autogol (own_goal = 1) el jugador pertenece al equipo rival de team_id.
 CREATE TABLE IF NOT EXISTS goals (

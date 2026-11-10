@@ -1,5 +1,9 @@
 "use server";
 
+import { after } from "next/server";
+import { sendMail } from "@/lib/mail.ts";
+import { newFanNotice } from "@/lib/mailTemplates.ts";
+import { countFans } from "@/lib/repo/emails.ts";
 import { countMarked } from "@/lib/repo/onboarding.ts";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -65,6 +69,20 @@ const registerSchema = z.object({
   isAdult: mustCheck(`Debes tener ${MIN_AGE} años o más para crear una cuenta.`),
 });
 
+/** Avisa al dueño por correo de cada registro (usuario y club; nunca el correo del hincha). No bloquea ni rompe el registro. */
+function notifyNewFan(db: Awaited<ReturnType<typeof getDb>>, username: string, clubId: string) {
+  after(async () => {
+    try {
+      const [club, total] = await Promise.all([getTeam(db, clubId), countFans(db)]);
+      const to = process.env.NOTIFY_EMAIL || process.env.GMAIL_USER;
+      if (!to) return;
+      await sendMail({ to, ...newFanNotice({ username, clubName: club?.name ?? clubId, total }) });
+    } catch (e) {
+      console.error("[mail] aviso de registro falló:", (e as Error).message);
+    }
+  });
+}
+
 export async function register(_: FormState, form: FormData): Promise<FormState> {
   const parsed = registerSchema.safeParse(Object.fromEntries(form));
   const values = echo(form, REGISTER_ECHO);
@@ -90,6 +108,7 @@ export async function register(_: FormState, form: FormData): Promise<FormState>
       isPublic: true, // la Galería es pública para todos (Términos 1.2 y Privacidad 1.2, aceptados al registrarse)
     });
     await startSession(user.id);
+    notifyNewFan(db, user.username, clubId);
   } catch (e) {
     if (e instanceof UserExistsError || e instanceof ConsentRequiredError) return { error: e.message, values };
     throw e;
