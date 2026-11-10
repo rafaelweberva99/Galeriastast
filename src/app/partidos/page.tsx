@@ -1,3 +1,4 @@
+import { AutoFilterForm } from "@/components/AutoFilterForm.tsx";
 import { Paged } from "@/components/Paged.tsx";
 import Link from "next/link";
 import { clubIdentity } from "@/lib/clubTheme.ts";
@@ -61,7 +62,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
 
       <UpcomingMatches matches={upcoming} clubId={club.id} clubs={rivals} />
 
-      <form className="card filters" method="get">
+      <AutoFilterForm className="card filters">
         <div className="field">
           <label htmlFor="temporada">Temporada</label>
           <select id="temporada" name="temporada" defaultValue={season ? String(season) : "todas"}>
@@ -98,8 +99,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
         <label className="row small">
           <input type="checkbox" name="solo" value="1" defaultChecked={sp.solo === "1"} /> Solo los que marqué
         </label>
-        <button className="btn">Filtrar</button>
-      </form>
+      </AutoFilterForm>
 
       <div className="card">
         {matches.length === 0 ? (
