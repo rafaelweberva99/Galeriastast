@@ -10,6 +10,25 @@ export interface AdminSummary {
   pendingLegal: number;
 }
 
+export interface RecentFan {
+  username: string;
+  clubName: string;
+  createdAt: string;
+  marked: number;
+}
+
+/** Últimos hinchas registrados: usuario y club (ya públicos en su Galería), fecha y partidos marcados. Sin correo. */
+export async function recentFans(db: Db, limit = 100): Promise<RecentFan[]> {
+  const rows = await db.all<{ username: string; club_name: string; created_at: string; marked: number | string }>(
+    `SELECT u.username, t.name AS club_name, u.created_at,
+            (SELECT COUNT(*) FROM attendances a WHERE a.user_id = u.id) AS marked
+       FROM users u JOIN teams t ON t.id = u.club_id
+      ORDER BY u.created_at DESC, u.id DESC LIMIT ?`,
+    limit,
+  );
+  return rows.map((r) => ({ username: r.username, clubName: r.club_name, createdAt: r.created_at, marked: Number(r.marked) }));
+}
+
 /** Cifras agregadas para el panel de administración (sin datos personales de los hinchas). */
 export async function adminSummary(db: Db, current: { terms: string; privacy: string }): Promise<AdminSummary> {
   const since = new Date(Date.now() - 7 * 86_400_000).toISOString();

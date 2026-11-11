@@ -5,7 +5,7 @@ import { isAdmin } from "@/lib/admin.ts";
 import { getDb } from "@/lib/db/client.ts";
 import { REQUIRED_DOCS } from "@/lib/legal.ts";
 import { MVP_CLUBS } from "@/lib/mvp.ts";
-import { adminSummary } from "@/lib/repo/admin.ts";
+import { adminSummary, recentFans } from "@/lib/repo/admin.ts";
 import { datasetSummary } from "@/lib/repo/matches.ts";
 import { listClubs } from "@/lib/repo/teams.ts";
 
@@ -15,7 +15,7 @@ export default async function AdminPage() {
   const user = await requireUser();
   if (!isAdmin(user)) notFound();
   const db = await getDb();
-  const [s, data, clubs] = await Promise.all([adminSummary(db, REQUIRED_DOCS), datasetSummary(db), listClubs(db)]);
+  const [s, data, clubs, fans] = await Promise.all([adminSummary(db, REQUIRED_DOCS), datasetSummary(db), listClubs(db), recentFans(db)]);
   const hidden = clubs.filter((c) => c.current && !MVP_CLUBS.includes(c.id));
   const stat = (value: number | string, label: string) => (
     <div className="card stat">
@@ -27,7 +27,7 @@ export default async function AdminPage() {
     <div className="stack">
       <h1 className="section-title">Administración</h1>
       <p className="muted" style={{ margin: 0 }}>
-        Cifras agregadas: este panel no muestra datos personales de los hinchas.
+        Cifras agregadas y la lista de hinchas con su usuario y club (los mismos datos de su Galería pública). No muestra correos.
       </p>
       <section className="grid grid-4">
         {stat(s.users, "hinchas registrados")}
@@ -62,6 +62,38 @@ export default async function AdminPage() {
                     </td>
                     <td className="num">{c.users}</td>
                     <td className="num">{c.attendances}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p className="muted">Todavía no hay hinchas registrados.</p>
+        )}
+      </section>
+
+      <section className="card">
+        <h2 className="section-title">Hinchas registrados</h2>
+        {fans.length ? (
+          <div className="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Usuario</th>
+                  <th>Club</th>
+                  <th>Se registró</th>
+                  <th className="num">Partidos marcados</th>
+                </tr>
+              </thead>
+              <tbody>
+                {fans.map((f) => (
+                  <tr key={f.username}>
+                    <td>
+                      <Link href={`/hincha/${f.username}`}>@{f.username}</Link>
+                    </td>
+                    <td>{f.clubName}</td>
+                    <td>{f.createdAt.slice(0, 10)}</td>
+                    <td className="num">{f.marked === 0 ? <span className="muted">0 · a medias</span> : f.marked}</td>
                   </tr>
                 ))}
               </tbody>
