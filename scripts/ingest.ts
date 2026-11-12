@@ -53,6 +53,9 @@ if (existsSync(goalsFile)) {
   const read = (f: string) => (existsSync(f) ? readFileSync(f, "utf8") : "");
   const canonical = parsePlayersCsv(read(path.resolve("data/goals/players.csv")));
   const rows = parseGoalsCsv(readFileSync(goalsFile, "utf8"), canonical);
+  // Goles de la Selección chilena (scripts/selecciones/chile_wikipedia.py): solo los goles de Chile.
+  const nationalFile = path.resolve("data/goals/goals-seleccion.csv");
+  if (existsSync(nationalFile)) rows.push(...parseGoalsCsv(readFileSync(nationalFile, "utf8"), canonical));
   const fixes = parseGoalsCsv(read(path.resolve("data/goal-corrections.csv")), canonical);
   const g = await loadGoals(db, rows, fixes);
   console.log(`Goleadores: ${g.rows} goles en ${g.matches} partidos (${g.complete} suman el marcador)`);

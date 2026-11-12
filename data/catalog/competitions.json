@@ -7,5 +7,10 @@
   {"id": "copa-sudamericana", "name": "Copa Sudamericana", "kind": "internacional", "tier": 6},
   {"id": "recopa-sudamericana", "name": "Recopa Sudamericana", "kind": "internacional", "tier": 6},
   {"id": "copa-de-la-liga", "name": "Copa de la Liga", "kind": "copa", "tier": 3},
-  {"id": "liguilla-ascenso", "name": "Liguilla de ascenso", "kind": "copa", "tier": 7}
+  {"id": "liguilla-ascenso", "name": "Liguilla de ascenso", "kind": "copa", "tier": 7},
+  {"id": "eliminatorias", "name": "Eliminatorias Mundial", "kind": "internacional", "tier": 8},
+  {"id": "copa-america", "name": "Copa América", "kind": "internacional", "tier": 8},
+  {"id": "mundial", "name": "Mundial", "kind": "internacional", "tier": 8},
+  {"id": "confederaciones", "name": "Copa Confederaciones", "kind": "internacional", "tier": 8},
+  {"id": "amistoso-seleccion", "name": "Amistosos de la Selección", "kind": "internacional", "tier": 9}
 ]

@@ -6,7 +6,7 @@ import { buildCarnet, involves } from "./domain/stats.ts";
 import { buildSuma } from "./domain/suma.ts";
 import { goalsForAttended } from "./repo/goals.ts";
 import { listAttended, listClubMatches } from "./repo/matches.ts";
-import { getTeam, listClubs, listRivalries } from "./repo/teams.ts";
+import { getTeam, listClubs, listRivalries, teamsByIds } from "./repo/teams.ts";
 import type { User } from "./repo/users.ts";
 import type { AttendedMatch, Match } from "./domain/types.ts";
 import type { Team } from "./repo/teams.ts";
@@ -67,7 +67,11 @@ export async function loadCarnet(db: Db, user: User, clubId: string = user.clubI
   const scorers = scorersSeen(attended, goals, club.id);
   const mine = new Set(attended.filter((m) => involves(m, club.id)).map((m) => m.id));
   const achievements = computeAchievements(carnet.total, mine, clubMatches, today);
-  return { club, carnet, insights, attended, upcoming, scorers, goals, clubs, achievements };
+  // Rivales que no están en la lista de clubes chilenos (selecciones y clubes extranjeros): sus nombres y colores.
+  const known = new Set(clubs.map((t) => t.id));
+  const missing = [...new Set([...attended, ...upcoming].flatMap((m) => [m.homeTeamId, m.awayTeamId]))].filter((id) => !known.has(id) && id !== club.id);
+  const allTeams = missing.length ? [...clubs, ...(await teamsByIds(db, missing))] : clubs;
+  return { club, carnet, insights, attended, upcoming, scorers, goals, clubs: allTeams, achievements };
 }
 
 /** Suma de los dos clubes del hincha (el principal y el segundo). */
