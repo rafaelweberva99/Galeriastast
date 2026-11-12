@@ -81,8 +81,10 @@ export default async function AdminPage() {
                 <tr>
                   <th>Usuario</th>
                   <th>Club</th>
+                  <th>Segundo club</th>
                   <th>Se registró</th>
                   <th className="num">Partidos marcados</th>
+                  <th>Último partido marcado</th>
                 </tr>
               </thead>
               <tbody>
@@ -92,8 +94,10 @@ export default async function AdminPage() {
                       <Link href={`/hincha/${f.username}`}>@{f.username}</Link>
                     </td>
                     <td>{f.clubName}</td>
+                    <td>{f.secondClubName ?? <span className="muted">—</span>}</td>
                     <td>{f.createdAt.slice(0, 10)}</td>
                     <td className="num">{f.marked === 0 ? <span className="muted">0 · a medias</span> : f.marked}</td>
+                    <td>{f.lastMarkedAt ? f.lastMarkedAt.slice(0, 16).replace("T", " ") : <span className="muted">nunca</span>}</td>
                   </tr>
                 ))}
               </tbody>
