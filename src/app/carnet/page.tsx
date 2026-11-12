@@ -25,7 +25,7 @@ export default async function MyCarnetPage({ searchParams }: { searchParams: Pro
   );
   const sumaData = secondId ? await loadSuma(db, user, secondId) : null;
   const switcher = secondTeam && mainTeam && sumaData && (
-    <ClubSwitch base="/carnet" view={view} main={mainTeam.shortName} second={secondTeam.shortName} suma={sumaData.suma} />
+    <ClubSwitch base="/carnet" view={view} main={mainTeam.shortName} second={secondTeam.shortName} suma={sumaData.suma} mainColor={mainTeam.colorPrimary} secondColor={secondTeam.colorPrimary} />
   );
   const addSecond = !secondId && (
     <p className="muted small">

@@ -42,7 +42,7 @@ export default async function FanPage({ params, searchParams }: { params: Params
   const base = `/hincha/${encodeURIComponent(fan.username)}`;
   const sumaData = secondId ? await loadSuma(db, fan, secondId) : null;
   const switcher = secondTeam && mainTeam && sumaData && (
-    <ClubSwitch base={base} view={view} main={mainTeam.shortName} second={secondTeam.shortName} suma={sumaData.suma} />
+    <ClubSwitch base={base} view={view} main={mainTeam.shortName} second={secondTeam.shortName} suma={sumaData.suma} mainColor={mainTeam.colorPrimary} secondColor={secondTeam.colorPrimary} />
   );
   if (view === "suma" && sumaData) {
     const { main, second, suma } = sumaData;

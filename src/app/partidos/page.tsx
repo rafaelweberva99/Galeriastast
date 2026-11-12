@@ -70,10 +70,10 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
 
       {secondTeam && mainTeam && (
         <nav className="club-switch" aria-label="Elegir club">
-          <Link href="/partidos" className={showSecond ? undefined : "is-active"}>
+          <Link href="/partidos" className={showSecond ? undefined : "is-active"} style={{ "--dot": mainTeam.colorPrimary } as React.CSSProperties}>
             {mainTeam.shortName}
           </Link>
-          <Link href="/partidos?club=segundo" className={showSecond ? "is-active" : undefined}>
+          <Link href="/partidos?club=segundo" className={showSecond ? "is-active" : undefined} style={{ "--dot": secondTeam.colorPrimary } as React.CSSProperties}>
             {secondTeam.shortName}
           </Link>
         </nav>

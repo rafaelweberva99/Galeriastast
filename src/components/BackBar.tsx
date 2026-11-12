@@ -17,7 +17,8 @@ function parentOf(path: string): string {
 export function BackBar() {
   const path = usePathname();
   const router = useRouter();
-  if (path === "/") return null;
+  // Sin "Volver" en el inicio ni en las secciones principales del menú (no tienen una página anterior lógica).
+  if (path === "/" || path === "/carnet" || path === "/partidos") return null;
   const fallback = parentOf(path);
   return (
     <div className="container back-bar">
