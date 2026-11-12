@@ -66,8 +66,25 @@ export function ShareButtons({
 }
 
 /** Compartir el carnet: X, WhatsApp, menú del teléfono, copiar link y descargar la imagen. */
-export function ShareCarnet({ username, isPublic, text, url }: { username: string; isPublic: boolean; text: string; url: string }) {
-  const image = `/hincha/${encodeURIComponent(username)}/tarjeta`;
+export function ShareCarnet({
+  username,
+  isPublic,
+  text,
+  url,
+  imagePath,
+  title = "Comparte tu Galería",
+  shareTitle = "Mi Galería de hincha",
+}: {
+  username: string;
+  isPublic: boolean;
+  text: string;
+  url: string;
+  /** Imagen para compartir (por defecto, la tarjeta de la Galería de la liga). */
+  imagePath?: string;
+  title?: string;
+  shareTitle?: string;
+}) {
+  const image = imagePath ?? `/hincha/${encodeURIComponent(username)}/tarjeta`;
   return (
     <section className="card share" aria-labelledby="share-title">
       <div className="share-preview">
@@ -76,13 +93,13 @@ export function ShareCarnet({ username, isPublic, text, url }: { username: strin
       </div>
       <div className="stack" style={{ gap: 10, flex: 1, minWidth: 240 }}>
         <h2 id="share-title" className="section-title" style={{ margin: 0 }}>
-          Comparte tu Galería
+          {title}
         </h2>
         <p className="muted small" style={{ margin: 0 }}>
           {text}
         </p>
         {isPublic ? (
-          <ShareButtons text={text} url={url} shareTitle="Mi Galería de hincha" downloadHref={`${image}?descargar=1`} />
+          <ShareButtons text={text} url={url} shareTitle={shareTitle} downloadHref={`${image}?descargar=1`} />
         ) : (
           <>
             <div className="share-actions">

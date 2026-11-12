@@ -60,8 +60,10 @@ export async function shareCardImage(opts: {
   clubName: string;
   carnet: Carnet;
   site: string;
+  /** Selección: sin la barra de la camiseta de los 100 (es un objetivo de club). */
+  national?: boolean;
 }) {
-  const { username, memberId, club, clubName, carnet: c, site } = opts;
+  const { username, memberId, club, clubName, carnet: c, site, national = false } = opts;
   const fonts = await loadFonts();
   const ink = club.colors.ink;
   const j = club.jersey;
@@ -221,12 +223,18 @@ export async function shareCardImage(opts: {
                 {c.effectiveness === null ? "Sin partidos aún" : c.verdict.label}
               </div>
               <div style={{ display: "flex", fontSize: 24, fontWeight: 700, opacity: 0.92 }}>
-                {unlocked ? "Camiseta de los 100: ¡desbloqueada!" : `Camiseta de los 100: ${toShirt}/100`}
+                {national
+                  ? `${c.total} ${c.total === 1 ? "partido" : "partidos"} de La Roja en la galería`
+                  : unlocked
+                    ? "Camiseta de los 100: ¡desbloqueada!"
+                    : `Camiseta de los 100: ${toShirt}/100`}
               </div>
             </div>
-            <div style={{ display: "flex", width: 620, height: 14, borderRadius: 999, background: alpha(ink, 0.25), marginTop: 16 }}>
-              <div style={{ width: `${(toShirt / CENTENARIO_GOAL) * 100}%`, height: 14, borderRadius: 999, background: ink }} />
-            </div>
+            {!national && (
+              <div style={{ display: "flex", width: 620, height: 14, borderRadius: 999, background: alpha(ink, 0.25), marginTop: 16 }}>
+                <div style={{ width: `${(toShirt / CENTENARIO_GOAL) * 100}%`, height: 14, borderRadius: 999, background: ink }} />
+              </div>
+            )}
           </div>
         </div>
 

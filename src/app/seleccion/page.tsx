@@ -62,9 +62,14 @@ export default async function SeleccionPage() {
               Historial y estadísticas de La Roja
             </Link>
           </div>
+          {user.isPublic && (
+            <p className="small" style={{ margin: "10px 0 0" }}>
+              Tu Galería de La Roja es pública en <Link href={`/hincha/${user.username}/seleccion`}>/hincha/{user.username}/seleccion</Link>.
+            </p>
+          )}
         </div>
       </section>
-      <CarnetView username={user.username} memberId={user.id} {...data} isOwner isPublic={false} community={null} />
+      <CarnetView username={user.username} memberId={user.id} {...data} isOwner isPublic={user.isPublic} community={null} national />
     </div>
   );
 }

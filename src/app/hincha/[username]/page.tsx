@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { currentUser } from "@/lib/auth.ts";
 import { loadCarnet, loadSuma, parseClubView } from "@/lib/carnet.ts";
@@ -50,6 +51,9 @@ export default async function FanPage({ params, searchParams }: { params: Params
       : await loadCarnet(db, fan, view === "segundo" && secondId ? secondId : fan.clubId);
   return (
     <div className="stack">
+      <p className="small" style={{ margin: 0 }}>
+        <Link href={`/hincha/${encodeURIComponent(fan.username)}/seleccion`}>Ver también su Galería de La Roja →</Link>
+      </p>
       {switcher}
       <CarnetView username={fan.username} memberId={fan.id} {...data} isOwner={isOwner} isPublic={fan.isPublic} community={community} />
     </div>

@@ -57,6 +57,7 @@ export function CarnetView({
   insights,
   community = null,
   secondClubId = null,
+  national = false,
 }: {
   username: string;
   memberId: number;
@@ -78,6 +79,8 @@ export function CarnetView({
   community?: CommunityComparison | null;
   /** Segundo club del hincha: sus partidos se muestran con su propio resultado en la lista. */
   secondClubId?: string | null;
+  /** Galería de la Selección: sin la camiseta de los 100 y con su propio link para compartir. */
+  national?: boolean;
 }) {
   const c = carnet;
   const id = clubIdentity(club);
@@ -152,8 +155,11 @@ export function CarnetView({
         <ShareCarnet
           username={username}
           isPublic={isPublic}
-          text={shareText(c, id.short)}
-          url={`${siteUrl()}/hincha/${encodeURIComponent(username)}`}
+          text={shareText(c, id.short, national)}
+          url={`${siteUrl()}/hincha/${encodeURIComponent(username)}${national ? "/seleccion" : ""}`}
+          imagePath={national ? `/hincha/${encodeURIComponent(username)}/seleccion/tarjeta` : undefined}
+          title={national ? "Comparte tu Galería de La Roja" : undefined}
+          shareTitle={national ? "Mi Galería de La Roja" : undefined}
         />
       )}
     </>
@@ -274,7 +280,7 @@ export function CarnetView({
 
   const logros = (
     <>
-      <Centenario club={id} total={c.total} owner={isOwner} />
+      {!national && <Centenario club={id} total={c.total} owner={isOwner} />}
       <Premios a={achievements} owner={isOwner} />
     </>
   );

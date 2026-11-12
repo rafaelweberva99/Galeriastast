@@ -6,7 +6,7 @@ import { Ball } from "./Ball.tsx";
 
 /** ¿La ruta actual pertenece a la sección de la Selección? */
 export function inSeleccion(path: string): boolean {
-  return path === "/seleccion" || path.startsWith("/seleccion/") || path === "/clubes/seleccion-chilena" || path === "/estadisticas/seleccion-chilena";
+  return path === "/seleccion" || path.startsWith("/seleccion/") || /^\/hincha\/[^/]+\/seleccion/.test(path) || path === "/clubes/seleccion-chilena" || path === "/estadisticas/seleccion-chilena";
 }
 
 /**
