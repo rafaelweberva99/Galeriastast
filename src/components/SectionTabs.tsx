@@ -23,11 +23,12 @@ const GROUPS: Group[] = [
     ],
   },
   {
-    prefixes: ["/estadisticas", "/rankings", "/clubes"],
+    prefixes: ["/comunidad", "/estadisticas", "/rankings", "/clubes"],
     tabs: [
-      { href: "/estadisticas", label: "Estadísticas" },
-      { href: "/rankings", label: "Rankings" },
+      { href: "/comunidad", label: "Datos de la liga" },
+      { href: "/rankings", label: "Hinchas" },
       { href: "/clubes", label: "Clubes" },
+      { href: "/estadisticas", label: "Promedios" },
     ],
   },
 ];

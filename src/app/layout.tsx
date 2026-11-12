@@ -53,7 +53,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         ]
       : []),
     ...(full && isAdmin(user) ? [{ href: "/admin", label: "Admin" }] : []),
-    { href: "/estadisticas", label: "Comunidad", also: ["/rankings", "/clubes"] },
+    { href: "/comunidad", label: "Comunidad", also: ["/estadisticas", "/rankings", "/clubes"] },
     ...(user
       ? [pendingLegal ? { href: "/aceptar", label: `@${user.username}` } : { href: "/perfil", label: `@${user.username}` }]
       : [
