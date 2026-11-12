@@ -23,9 +23,8 @@ const GROUPS: Group[] = [
     ],
   },
   {
-    prefixes: ["/comunidad", "/estadisticas", "/rankings", "/clubes"],
+    prefixes: ["/estadisticas", "/rankings", "/clubes"],
     tabs: [
-      { href: "/comunidad", label: "Datos de la liga" },
       { href: "/rankings", label: "Hinchas" },
       { href: "/clubes", label: "Clubes" },
       { href: "/estadisticas", label: "Promedios" },

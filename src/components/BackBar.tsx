@@ -18,7 +18,7 @@ export function BackBar() {
   const path = usePathname();
   const router = useRouter();
   // Sin "Volver" en el inicio ni en las secciones principales del menú (no tienen una página anterior lógica).
-  if (path === "/" || path === "/carnet" || path === "/partidos" || path === "/seleccion" || path === "/seleccion/partidos" || path === "/comunidad" || path === "/rankings" || path === "/clubes" || path === "/estadisticas") return null;
+  if (path === "/" || path === "/carnet" || path === "/partidos" || path === "/seleccion" || path === "/seleccion/partidos" || path === "/rankings" || path === "/clubes" || path === "/estadisticas") return null;
   const fallback = parentOf(path);
   return (
     <div className="container back-bar">
