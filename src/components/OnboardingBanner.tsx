@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 export function OnboardingBanner() {
   const path = usePathname();
   // En estas páginas ya está cargando partidos (o no aplica).
+  if (path === "/seleccion" || path.startsWith("/seleccion/")) return null;
   if (["/bienvenida", "/importar", "/partidos", "/ingresar", "/registro", "/aceptar", "/terminos", "/privacidad"].includes(path) || path.startsWith("/partidos/")) return null;
   return (
     <div className="onb-banner" role="status">

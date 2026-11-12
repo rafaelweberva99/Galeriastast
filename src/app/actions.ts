@@ -23,7 +23,7 @@ import {
 import { analyzeSheet } from "@/lib/ingest/sheet.ts";
 import { analyzeTicket, TeamMentionIndex } from "@/lib/ingest/tickets.ts";
 import type { Match } from "@/lib/domain/types.ts";
-import { getTeam, listClubs } from "@/lib/repo/teams.ts";
+import { getTeam, listClubs, SELECCION_ID } from "@/lib/repo/teams.ts";
 import { isVisibleClub } from "@/lib/mvp.ts";
 import {
   attendanceModes,
@@ -92,6 +92,7 @@ export async function register(_: FormState, form: FormData): Promise<FormState>
   const db = await getDb();
   const { username, email, password, clubId } = parsed.data;
   if (!(await getTeam(db, clubId))) return { error: "Club desconocido.", values };
+  if (clubId === SELECCION_ID) return { error: "La Selección tiene su propia sección: elige un club de la liga.", values };
   if (!isVisibleClub(clubId)) return { error: CLUB_NOT_YET, values };
   // Límite de cuentas por IP: cada intento que llega a la base (creado o con usuario/correo repetido) cuenta.
   const ipKey = throttleKey("register", await clientIp());
@@ -171,6 +172,7 @@ export async function toggleAttendance(form: FormData): Promise<{ error?: string
     throw e;
   }
   revalidatePath("/carnet");
+  revalidatePath("/seleccion");
   revalidatePath(`/hincha/${user.username}`);
   return {};
 }
@@ -201,6 +203,7 @@ export async function saveProfile(_: FormState, form: FormData): Promise<FormSta
   if (!name.success) return { error: name.error.issues[0].message, values };
   const db = await getDb();
   if (!(await getTeam(db, clubId))) return { error: "Club desconocido.", values };
+  if (clubId === SELECCION_ID || secondClubId === SELECCION_ID) return { error: "La Selección tiene su propia sección: elige un club de la liga.", values };
   if (!isVisibleClub(clubId) && clubId !== user.clubId) return { error: CLUB_NOT_YET, values };
   if (secondClubId) {
     if (!(await getTeam(db, secondClubId))) return { error: "Segundo club desconocido.", values };

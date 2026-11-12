@@ -1368,3 +1368,20 @@ body:has(.filters[data-busy="1"]) .filter-results { opacity: 0.45; transition: o
 .club-switch a::before { content: ""; position: absolute; left: 14px; top: 50%; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%; background: var(--dot, #222); box-shadow: 0 0 0 2px rgb(255 255 255 / 0.9), 0 0 0 3px rgb(0 0 0 / 0.25); }
 .club-switch a.is-active { border-color: #000; box-shadow: 0 3px 0 rgb(0 0 0 / 0.25); }
 .club-switch a.is-active::before { box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgb(255 255 255 / 0.6); }
+
+/* Barra de modo: Liga chilena vs Selección chilena */
+.mode-bar { background: #0c110e; border-bottom: 1px solid rgb(255 255 255 / 0.12); }
+.mode-bar-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 10px; padding-bottom: 10px; }
+.mode-opt { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 14px; text-decoration: none; color: #fff; border: 2px solid rgb(255 255 255 / 0.18); background: rgb(255 255 255 / 0.05); transition: background 0.15s, border-color 0.15s, transform 0.15s; }
+.mode-opt:hover { background: rgb(255 255 255 / 0.12); }
+.mode-txt { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.mode-txt strong { font-family: var(--font-display, inherit); font-size: 1.05rem; letter-spacing: 0.03em; text-transform: uppercase; }
+.mode-txt small { opacity: 0.75; font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mode-ico { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #fff; flex: none; }
+.mode-star { background: #d52b1e; color: #fff; font-size: 1.2rem; box-shadow: inset 0 -12px 0 #0033a0; }
+.mode-liga[aria-current="page"] { background: #1f7a45; border-color: #3fbf7f; }
+.mode-sel[aria-current="page"] { background: linear-gradient(135deg, #d52b1e 0 60%, #0033a0 60% 100%); border-color: #fff; }
+.mode-opt[aria-current="page"] { box-shadow: 0 0 0 3px rgb(255 255 255 / 0.25); }
+@media (max-width: 560px) { .mode-txt small { display: none; } .mode-opt { padding: 8px 10px; } .mode-txt strong { font-size: 0.9rem; } }
+.sel-hero { display: flex; gap: 18px; align-items: center; background: linear-gradient(135deg, #8f1a12 0%, #d52b1e 55%, #0033a0 100%); color: #fff; border: 0; }
+.sel-hero .btn-ghost { color: #fff; border-color: rgb(255 255 255 / 0.6); }

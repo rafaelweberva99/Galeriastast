@@ -2,8 +2,8 @@ import type { Db, Row } from "../db/client.ts";
 import type { Rivalry } from "../domain/types.ts";
 import { CURRENT_CLUBS } from "../ticketing.ts";
 
-/** Equipos nacionales que se pueden elegir como club (no juegan en Primera). */
-export const NATIONAL_TEAMS: string[] = ["seleccion-chilena"];
+/** La Selección chilena es una sección aparte (/seleccion), no un club que se elige en el perfil. */
+export const SELECCION_ID = "seleccion-chilena";
 
 export interface Team {
   id: string;
@@ -40,17 +40,16 @@ export async function listClubs(db: Db): Promise<(Team & { matches: number; fans
        WHERE t.is_chilean = 1 AND (EXISTS (
          SELECT 1 FROM matches m WHERE m.competition_id = 'primera-division'
            AND (m.home_team_id = t.id OR m.away_team_id = t.id))
-         OR t.id IN (${[...CURRENT_CLUBS, ...NATIONAL_TEAMS].map(() => "?").join(", ")}))
+         OR t.id IN (${CURRENT_CLUBS.map(() => "?").join(", ")}))
        ORDER BY t.name`,
     ...CURRENT_CLUBS,
-    ...NATIONAL_TEAMS,
   );
   return rows.map((r) => ({
     ...toTeam(r),
     matches: Number(r.matches),
     fans: Number(r.fans),
     lastSeason: r.last_season === null ? 0 : Number(r.last_season),
-    current: CURRENT_CLUBS.includes(r.id as string) || NATIONAL_TEAMS.includes(r.id as string),
+    current: CURRENT_CLUBS.includes(r.id as string),
   }));
 }
 

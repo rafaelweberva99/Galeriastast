@@ -1,6 +1,7 @@
 import { createHash, randomBytes, scrypt, timingSafeEqual, type ScryptOptions } from "node:crypto";
 import type { Db, Row } from "../db/client.ts";
 import type { AttendanceMode } from "../domain/types.ts";
+import { SELECCION_ID } from "./teams.ts";
 
 export interface User {
   id: number;
@@ -208,13 +209,14 @@ export async function getSecondClubId(db: Db, userId: number): Promise<string | 
   return r ? (r.club_id as string) : null;
 }
 
-/** Fija (o quita, con null) el segundo club. No puede ser el mismo que el club principal. */
+/** Fija (o quita, con null) el segundo club. No puede ser el mismo que el club principal ni la Selección. */
 export async function setSecondClub(db: Db, user: User, clubId: string | null): Promise<void> {
   if (!clubId) {
     await db.run("DELETE FROM user_second_club WHERE user_id = ?", user.id);
     return;
   }
   if (clubId === user.clubId) throw new AttendanceError("Tu segundo club tiene que ser distinto de tu club principal.");
+  if (clubId === SELECCION_ID) throw new AttendanceError("La Selección tiene su propia sección: elige un club de la liga.");
   await db.run(
     "INSERT INTO user_second_club (user_id, club_id) VALUES (?, ?) ON CONFLICT (user_id) DO UPDATE SET club_id = excluded.club_id",
     user.id,
@@ -227,8 +229,8 @@ export async function setAttendance(db: Db, user: User, matchId: string, mode: A
   const m = await db.get("SELECT home_team_id, away_team_id, date FROM matches WHERE id = ?", matchId);
   if (!m) throw new AttendanceError("Partido no encontrado.");
   const second = await getSecondClubId(db, user.id);
-  const ok = [user.clubId, second].some((c) => c && (m.home_team_id === c || m.away_team_id === c));
-  if (!ok) throw new AttendanceError("Solo puedes marcar partidos de tu club o de tu segundo club.");
+  const ok = [user.clubId, second, SELECCION_ID].some((c) => c && (m.home_team_id === c || m.away_team_id === c));
+  if (!ok) throw new AttendanceError("Solo puedes marcar partidos de tu club, de tu segundo club o de la Selección.");
   // Los partidos que vienen se pueden marcar ("Voy") hasta un año antes; cuentan en el carnet cuando se juegan.
   const limit = new Date(Date.now() + 365 * 86_400_000).toISOString().slice(0, 10);
   if ((m.date as string) > limit) throw new AttendanceError("Ese partido es demasiado lejano para marcarlo.");

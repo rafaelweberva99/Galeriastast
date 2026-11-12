@@ -1,5 +1,6 @@
 import type { Db } from "../db/client.ts";
 import { decryptNote, encryptNote, notesEnabled } from "../notesCrypto.ts";
+import { SELECCION_ID } from "./teams.ts";
 import { getSecondClubId, type User } from "./users.ts";
 
 export const MAX_NOTE_LENGTH = 600;
@@ -12,8 +13,8 @@ export async function saveNote(db: Db, user: User, matchId: string, text: string
   const m = await db.get("SELECT home_team_id, away_team_id FROM matches WHERE id = ?", matchId);
   if (!m) throw new NoteError("Partido no encontrado.");
   const second = await getSecondClubId(db, user.id);
-  if (![user.clubId, second].some((c) => c && (m.home_team_id === c || m.away_team_id === c)))
-    throw new NoteError("Solo puedes escribir notas de partidos de tu club o de tu segundo club.");
+  if (![user.clubId, second, SELECCION_ID].some((c) => c && (m.home_team_id === c || m.away_team_id === c)))
+    throw new NoteError("Solo puedes escribir notas de partidos de tu club, de tu segundo club o de la Selección.");
   const body = text.trim();
   if (!body) {
     await db.run("DELETE FROM match_notes WHERE user_id = ? AND match_id = ?", user.id, matchId);

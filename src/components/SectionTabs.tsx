@@ -8,6 +8,13 @@ type Group = { prefixes: string[]; tabs: Tab[]; needsLogin?: boolean };
 
 const GROUPS: Group[] = [
   {
+    prefixes: ["/seleccion"],
+    tabs: [
+      { href: "/seleccion", label: "Mi Galería de La Roja" },
+      { href: "/seleccion/partidos", label: "Marcar partidos" },
+    ],
+  },
+  {
     prefixes: ["/partidos", "/importar"],
     needsLogin: true,
     tabs: [

@@ -9,7 +9,8 @@ const enabled = mvp.enabled && process.env.MVP_ALL_CLUBS !== "1";
 export const MVP_CLUBS: readonly string[] = mvp.clubs;
 
 export function isVisibleClub(id: string): boolean {
-  return !enabled || MVP_CLUBS.includes(id);
+  // La Selección chilena tiene su propia sección (no se elige como club, pero su historial es público).
+  return !enabled || MVP_CLUBS.includes(id) || id === "seleccion-chilena";
 }
 
 export function visibleClubs<T extends { id: string }>(clubs: T[]): T[] {

@@ -96,3 +96,19 @@ describe("Galería por club y de los dos juntos", () => {
     expect(juntos.club.name).toContain("+");
   });
 });
+
+describe("la Selección es una sección aparte", () => {
+  it("no se puede elegir como segundo club, pero cualquiera puede marcar sus partidos", async () => {
+    const { db, user } = await seed();
+    await db.run("INSERT INTO teams (id, name, short_name, color_primary, color_secondary, is_chilean) VALUES ('seleccion-chilena','Selección Chilena','La Roja','#d52b1e','#0033a0',1)");
+    await db.run("INSERT INTO matches (id, date, season, competition_id, home_team_id, away_team_id, home_goals, away_goals, is_final, source, verified) VALUES ('ms','2024-03-01',2024,'c','seleccion-chilena','x',2,0,0,'t',1)");
+    await expect(setSecondClub(db, user, "seleccion-chilena")).rejects.toBeInstanceOf(AttendanceError);
+    await setAttendance(db, user, "ms", "propia");
+    const { loadCarnet } = await import("../src/lib/carnet.ts");
+    const roja = await loadCarnet(db, user, "seleccion-chilena");
+    expect(roja.carnet.total).toBe(1);
+    expect(roja.club.id).toBe("seleccion-chilena");
+    const liga = await loadCarnet(db, user, "a");
+    expect(liga.carnet.total).toBe(0); // la liga no mezcla los partidos de la Selección
+  });
+});

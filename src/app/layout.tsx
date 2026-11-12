@@ -14,6 +14,7 @@ import { SiteNav, type NavItem } from "@/components/SiteNav.tsx";
 import { OnboardingBanner } from "@/components/OnboardingBanner.tsx";
 import { countMarked } from "@/lib/repo/onboarding.ts";
 import { SectionTabs } from "@/components/SectionTabs.tsx";
+import { ModeBar } from "@/components/ModeBar.tsx";
 import { BackBar } from "@/components/BackBar.tsx";
 import "./globals.css";
 
@@ -60,6 +61,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           { href: "/registro", label: "Crear mi Galería", cta: true },
         ]),
   ];
+  // Menú dentro de la sección de la Selección: sus propios accesos.
+  const selItems: NavItem[] = [
+    { href: "/seleccion", label: "La Roja" },
+    ...(full ? [{ href: "/seleccion/partidos", label: "Partidos" }] : []),
+    { href: "/clubes/seleccion-chilena", label: "Historial", also: ["/estadisticas/seleccion-chilena"] },
+    ...(user
+      ? [pendingLegal ? { href: "/aceptar", label: `@${user.username}` } : { href: "/perfil", label: `@${user.username}` }]
+      : [
+          { href: "/ingresar", label: "Ingresar" },
+          { href: "/registro", label: "Crear mi Galería", cta: true },
+        ]),
+  ];
   return (
     <html lang="es-CL" className={`${display.variable} ${body.variable}`}>
       <body style={theme as React.CSSProperties}>
@@ -69,7 +82,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               <Ball size={26} />
               GaluchaStats
             </Link>
-            <SiteNav items={navItems}>
+            <SiteNav items={navItems} selItems={selItems}>
               {user && (
                 <form action={logout}>
                   <button type="submit">Salir</button>
@@ -78,6 +91,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </SiteNav>
           </div>
         </header>
+        <ModeBar ligaHref={full ? "/carnet" : "/"} />
         <SectionTabs loggedIn={full} />
         {needsMatches && <OnboardingBanner />}
         <BackBar />
