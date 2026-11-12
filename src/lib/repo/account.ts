@@ -13,6 +13,7 @@ import {
   type ConsentKind,
   type RequiredDoc,
 } from "../legal.ts";
+import { listNotes } from "./notes.ts";
 import { createUser, getSecondClubId, hashPassword, verifyPassword, type User } from "./users.ts";
 
 export class ConsentRequiredError extends Error {}
@@ -169,6 +170,8 @@ export interface UserDataExport {
     mode: string;
     markedAt: string;
   }[];
+  /** Notas personales sobre partidos (descifradas, solo para su dueño). */
+  notes: { matchId: string; date: string; text: string }[];
   consents: ConsentRecord[];
   activeSessions: { expiresAt: string }[];
 }
@@ -217,6 +220,7 @@ export async function exportUserData(db: Db, userId: number): Promise<UserDataEx
       mode: r.mode as string,
       markedAt: r.created_at as string,
     })),
+    notes: (await listNotes(db, userId)).map((n) => ({ matchId: n.matchId, date: n.date, text: n.text })),
     consents: await listConsents(db, userId),
     activeSessions: sessions.map((s) => ({ expiresAt: s.expires_at as string })),
   };

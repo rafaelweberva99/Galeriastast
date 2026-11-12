@@ -2,7 +2,7 @@ import { Paged } from "./Paged.tsx";
 import { AttendanceToggle } from "./AttendanceToggle.tsx";
 import Link from "next/link";
 import type { Carnet } from "@/lib/domain/stats.ts";
-import { outcomeFor } from "@/lib/domain/stats.ts";
+import { involves, outcomeFor } from "@/lib/domain/stats.ts";
 import type { ScorersReport } from "@/lib/domain/scorers.ts";
 import type { AttendedMatch, Goal } from "@/lib/domain/types.ts";
 import type { Insights } from "@/lib/domain/insights/types.ts";
@@ -56,6 +56,7 @@ export function CarnetView({
   isPublic = false,
   insights,
   community = null,
+  secondClubId = null,
 }: {
   username: string;
   memberId: number;
@@ -75,20 +76,24 @@ export function CarnetView({
   insights: Insights;
   /** Comparación con los demás hinchas públicos del club (null si hay menos de 5). */
   community?: CommunityComparison | null;
+  /** Segundo club del hincha: sus partidos se muestran con su propio resultado en la lista. */
+  secondClubId?: string | null;
 }) {
   const c = carnet;
   const id = clubIdentity(club);
   const ins = insights;
   const hasData = c.total > 0;
 
+  // Resultado desde el club del hincha; si el partido es de su segundo club, desde ese club.
+  const perspective = (m: AttendedMatch) => (!involves(m, club.id) && secondClubId && involves(m, secondClubId) ? secondClubId : club.id);
   const items: MatchItem[] = [...attended].reverse().map((m) => ({
     id: m.id,
     season: m.season,
     competition: m.competitionName,
-    outcome: outcomeFor(m, club.id),
+    outcome: outcomeFor(m, perspective(m)),
     search: [m.homeTeamName, m.awayTeamName, m.competitionName, m.tournament, m.stage, m.season, ...(goals.get(m.id) ?? []).map((g) => g.player)].filter(Boolean).join(" "),
     node: (
-      <MatchRow match={m} highlight={club.id} goals={goals.get(m.id)}>
+      <MatchRow match={m} highlight={perspective(m)} goals={goals.get(m.id)}>
         {m.mode === "infiltrado" && <span className="pill infiltrado">Infiltrado</span>}
         {/* En tu propio carnet puedes corregir una marca equivocada sin salir de aquí ("No fui" lo quita). */}
         {isOwner && <AttendanceToggle matchId={m.id} initial={m.mode === "infiltrado" ? "infiltrado" : "propia"} />}

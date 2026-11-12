@@ -40,9 +40,12 @@ export default async function FanPage({ params, searchParams }: { params: Params
   const view = parseClubView((await searchParams).club, !!secondId);
   const [mainTeam, secondTeam] = await Promise.all([getTeam(db, fan.clubId), secondId ? getTeam(db, secondId) : null]);
   const base = `/hincha/${encodeURIComponent(fan.username)}`;
-  const switcher = secondTeam && mainTeam && <ClubSwitch base={base} view={view} main={mainTeam.shortName} second={secondTeam.shortName} />;
-  if (view === "suma" && secondId) {
-    const { main, second, suma } = await loadSuma(db, fan, secondId);
+  const sumaData = secondId ? await loadSuma(db, fan, secondId) : null;
+  const switcher = secondTeam && mainTeam && sumaData && (
+    <ClubSwitch base={base} view={view} main={mainTeam.shortName} second={secondTeam.shortName} suma={sumaData.suma} />
+  );
+  if (view === "suma" && sumaData) {
+    const { main, second, suma } = sumaData;
     return (
       <div className="stack">
         {switcher}
@@ -55,7 +58,7 @@ export default async function FanPage({ params, searchParams }: { params: Params
   return (
     <div className="stack">
       {switcher}
-      <CarnetView username={fan.username} memberId={fan.id} {...data} isOwner={isOwner} isPublic={fan.isPublic} community={community} />
+      <CarnetView username={fan.username} memberId={fan.id} secondClubId={secondId} {...data} isOwner={isOwner} isPublic={fan.isPublic} community={community} />
     </div>
   );
 }

@@ -1356,5 +1356,7 @@ body:has(.filters[data-busy="1"]) .filter-results { opacity: 0.45; transition: o
 
 /* Selector de club (principal / segundo / suma) */
 .club-switch { display: flex; flex-wrap: wrap; gap: 8px; }
-.club-switch a { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border, #d0d7de); text-decoration: none; font-weight: 700; color: inherit; background: var(--surface, #fff); }
+.club-switch a { display: flex; flex-direction: column; padding: 8px 18px; border-radius: 18px; border: 1px solid var(--border, #d0d7de); text-decoration: none; font-weight: 700; color: inherit; background: var(--surface, #fff); }
 .club-switch a.is-active { background: var(--club-primary, #0b3a9c); color: #fff; border-color: transparent; }
+
+.club-switch a small { font-weight: 500; opacity: 0.75; }

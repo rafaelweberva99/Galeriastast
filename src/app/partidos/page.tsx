@@ -9,6 +9,9 @@ import { competitionsForClub, listClubMatches, seasonsForClub, upcomingClubMatch
 import { UpcomingMatches } from "@/components/UpcomingMatches.tsx";
 import { getTeam, listClubs } from "@/lib/repo/teams.ts";
 import { attendanceModes, getSecondClubId } from "@/lib/repo/users.ts";
+import { notesForMatches } from "@/lib/repo/notes.ts";
+import { notesEnabled } from "@/lib/notesCrypto.ts";
+import { NoteButton } from "@/components/NoteButton.tsx";
 import { goalsForMatches } from "@/lib/repo/goals.ts";
 import { AttendanceToggle } from "@/components/AttendanceToggle.tsx";
 import { MatchRow } from "@/components/MatchRow.tsx";
@@ -37,6 +40,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
   }));
   if (sp.solo === "1") matches = matches.filter((m) => modes.has(m.id));
   const goals = await goalsForMatches(db, matches.map((m) => m.id));
+  const notes = await notesForMatches(db, user.id, matches.map((m) => m.id));
   const upcoming = await upcomingClubMatches(db, club.id, today, 5);
   const rivals = (await listClubs(db)).filter((c) => c.id !== club.id);
 
@@ -49,7 +53,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
           <h1>¿Dónde estuviste?</h1>
           <p className="muted" style={{ margin: 0 }}>
             {modes.size} partidos marcados · <Link href="/carnet">ver mi Galería</Link> ·{" "}
-            <Link href="/importar">importar entradas</Link>
+            <Link href="/importar">importar entradas</Link>{notesEnabled() && <> · <Link href="/notas">mis notas</Link></>}
           </p>
         </div>
       </div>
@@ -125,6 +129,7 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
             {matches.map((m) => (
               <MatchRow key={m.id} match={m} highlight={club.id} goals={goals.get(m.id)}>
                 <AttendanceToggle matchId={m.id} initial={modes.get(m.id) ?? "ninguno"} upcoming={m.date > today} />
+                {notesEnabled() && m.date <= today && <NoteButton matchId={m.id} initial={notes.get(m.id) ?? ""} />}
               </MatchRow>
             ))}
           </Paged>

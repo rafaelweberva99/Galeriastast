@@ -23,9 +23,17 @@ export default async function MyCarnetPage({ searchParams }: { searchParams: Pro
       <Link href="/perfil">perfil</Link>.
     </p>
   );
-  const switcher = secondTeam && mainTeam && <ClubSwitch base="/carnet" view={view} main={mainTeam.shortName} second={secondTeam.shortName} />;
-  if (view === "suma" && secondId) {
-    const { main, second, suma } = await loadSuma(db, user, secondId);
+  const sumaData = secondId ? await loadSuma(db, user, secondId) : null;
+  const switcher = secondTeam && mainTeam && sumaData && (
+    <ClubSwitch base="/carnet" view={view} main={mainTeam.shortName} second={secondTeam.shortName} suma={sumaData.suma} />
+  );
+  const addSecond = !secondId && (
+    <p className="muted small">
+      ¿También vas al estadio de otro club? <Link href="/perfil">Agrega tu segundo club</Link> y verás cada club por separado y la suma de ambos.
+    </p>
+  );
+  if (view === "suma" && sumaData) {
+    const { main, second, suma } = sumaData;
     return (
       <div className="stack">
         {intro}
@@ -40,7 +48,8 @@ export default async function MyCarnetPage({ searchParams }: { searchParams: Pro
     <div className="stack">
       {intro}
       {switcher}
-      <CarnetView username={user.username} memberId={user.id} {...data} isOwner isPublic={user.isPublic} community={community} />
+      {addSecond}
+      <CarnetView username={user.username} memberId={user.id} secondClubId={secondId} {...data} isOwner isPublic={user.isPublic} community={community} />
     </div>
   );
 }

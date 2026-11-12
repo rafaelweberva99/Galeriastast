@@ -4,6 +4,7 @@ import { after } from "next/server";
 import { sendMail } from "@/lib/mail.ts";
 import { newFanNotice } from "@/lib/mailTemplates.ts";
 import { countFans } from "@/lib/repo/emails.ts";
+import { NoteError, saveNote } from "@/lib/repo/notes.ts";
 import { countMarked } from "@/lib/repo/onboarding.ts";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -171,6 +172,23 @@ export async function toggleAttendance(form: FormData): Promise<{ error?: string
   }
   revalidatePath("/carnet");
   revalidatePath(`/hincha/${user.username}`);
+  return {};
+}
+
+const noteSchema = z.object({ matchId: z.string().min(1).max(200), text: z.string().max(5000) });
+
+/** Guarda (o borra, si va vacía) la nota personal del hincha sobre un partido. */
+export async function saveNoteAction(form: FormData): Promise<{ error?: string }> {
+  const user = await requireUser();
+  const parsed = noteSchema.safeParse(Object.fromEntries(form));
+  if (!parsed.success) return { error: "Solicitud inválida." };
+  try {
+    await saveNote(await getDb(), user, parsed.data.matchId, parsed.data.text);
+  } catch (e) {
+    if (e instanceof NoteError) return { error: e.message };
+    throw e;
+  }
+  revalidatePath("/notas");
   return {};
 }
 

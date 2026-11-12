@@ -35,6 +35,11 @@ export default function PrivacyPage() {
           <strong>Nombre de usuario</strong>: lo eliges tú y es visible para otros, porque tu Galería es pública.
         </li>
         <li>
+          <strong>Notas personales</strong> (opcionales): si escribes una nota sobre un partido, se guarda cifrada y solo tú puedes
+          leerla en la app. No aparece en tu Galería pública ni en el panel de administración, no se comparte, y se borra con tu
+          cuenta (también puedes descargarla en «Privacidad y datos»).
+        </li>
+        <li>
           <strong>Correo electrónico</strong>: para identificar tu cuenta, responder tus solicitudes y, si después de una semana no has marcado ningún partido, enviarte un único recordatorio con un enlace para no recibir más. No es público.
         </li>
         <li>

@@ -135,6 +135,16 @@ CREATE TABLE IF NOT EXISTS user_second_club (
   created_at  TEXT NOT NULL DEFAULT {{NOW}}
 );
 
+-- Notas personales del hincha sobre un partido. El texto se guarda cifrado (AES-256-GCM, clave en el servidor):
+-- solo el propio hincha las ve en la app; no salen en su Galería pública, ni en el panel de administración.
+CREATE TABLE IF NOT EXISTS match_notes (
+  user_id     INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  match_id    TEXT NOT NULL REFERENCES matches(id),
+  body_enc    TEXT NOT NULL,
+  updated_at  TEXT NOT NULL DEFAULT {{NOW}},
+  PRIMARY KEY (user_id, match_id)
+);
+
 -- Goles de cada partido. team_id = equipo al que se le suma el gol en el marcador;
 -- en un autogol (own_goal = 1) el jugador pertenece al equipo rival de team_id.
 CREATE TABLE IF NOT EXISTS goals (
