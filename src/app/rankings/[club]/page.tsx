@@ -32,6 +32,7 @@ function FanTable({ rows, empty }: { rows: FanRanking[]; empty: string }) {
           <td>{i + 1}</td>
           <td>
             <Link href={`/hincha/${f.username}`}>@{f.username}</Link>
+            {f.secondary && <span className="muted small"> · 2º club</span>}
           </td>
           <td className="num">{f.attended}</td>
           <td className="num">

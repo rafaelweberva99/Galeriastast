@@ -11,6 +11,7 @@ import {
   verdictShares,
 } from "../domain/community.ts";
 import { CURRENT_SEASON } from "../ticketing.ts";
+import { FAN_CLUBS } from "./fanClubs.ts";
 
 const today = () => new Date().toISOString().slice(0, 10); // lo que aún no se juega no cuenta
 
@@ -22,17 +23,18 @@ interface FanRow extends FanLine {
   attended: number;
 }
 
-const FAN_SELECT = `SELECT u.id, u.username, u.club_id,
+/** Una fila por (hincha, club): `attended` y el resto cuentan solo los partidos de ese club. */
+const FAN_SELECT = `SELECT u.id, u.username, fc.club_id,
        COUNT(m.id) AS attended,
-       COALESCE(SUM(CASE WHEN m.home_goals IS NOT NULL AND (m.home_team_id = u.club_id OR m.away_team_id = u.club_id) THEN 1 ELSE 0 END), 0) AS played,
+       COALESCE(SUM(CASE WHEN m.home_goals IS NOT NULL THEN 1 ELSE 0 END), 0) AS played,
        COALESCE(SUM(CASE WHEN m.home_goals IS NOT NULL AND
-             ((m.home_team_id = u.club_id AND m.home_goals > m.away_goals) OR
-              (m.away_team_id = u.club_id AND m.away_goals > m.home_goals)) THEN 1 ELSE 0 END), 0) AS won,
-       COALESCE(SUM(CASE WHEN m.home_goals IS NOT NULL AND (m.home_team_id = u.club_id OR m.away_team_id = u.club_id)
-             AND m.home_goals = m.away_goals THEN 1 ELSE 0 END), 0) AS drawn
+             ((m.home_team_id = fc.club_id AND m.home_goals > m.away_goals) OR
+              (m.away_team_id = fc.club_id AND m.away_goals > m.home_goals)) THEN 1 ELSE 0 END), 0) AS won,
+       COALESCE(SUM(CASE WHEN m.home_goals IS NOT NULL AND m.home_goals = m.away_goals THEN 1 ELSE 0 END), 0) AS drawn
      FROM users u
+     JOIN ${FAN_CLUBS} fc ON fc.user_id = u.id
      LEFT JOIN attendances a ON a.user_id = u.id
-     LEFT JOIN matches m ON m.id = a.match_id AND m.date <= ?`;
+     LEFT JOIN matches m ON m.id = a.match_id AND m.date <= ? AND (m.home_team_id = fc.club_id OR m.away_team_id = fc.club_id)`;
 
 function toFan(r: Record<string, unknown>): FanRow {
   return {
@@ -49,7 +51,7 @@ function toFan(r: Record<string, unknown>): FanRow {
 /** Todos los hinchas con perfil público (solo ellos entran a cualquier agregado). */
 async function publicFans(db: Db, clubId?: string): Promise<FanRow[]> {
   const rows = await db.all(
-    `${FAN_SELECT} WHERE u.is_public = 1${clubId ? " AND u.club_id = ?" : ""} GROUP BY u.id, u.username, u.club_id`,
+    `${FAN_SELECT} WHERE u.is_public = 1${clubId ? " AND fc.club_id = ?" : ""} GROUP BY u.id, u.username, fc.club_id`,
     ...(clubId ? [today(), clubId] : [today()]),
   );
   return rows.map(toFan);
@@ -93,12 +95,16 @@ export async function communityOverview(db: Db): Promise<CommunityOverview> {
   const fans = await publicFans(db);
   const byClub = new Map<string, FanRow[]>();
   for (const f of fans) byClub.set(f.clubId, [...(byClub.get(f.clubId) ?? []), f]);
+  // Quien tiene dos clubes aparece en ambos, pero cuenta una sola vez en los totales.
+  const distinct = new Set(fans.map((f) => f.id)).size;
+  const marked = await db.get<{ n: number | string }>(
+    `SELECT COUNT(*) AS n FROM attendances a JOIN users u ON u.id = a.user_id AND u.is_public = 1
+       JOIN matches m ON m.id = a.match_id AND m.date <= ?`,
+    today(),
+  );
   return {
-    totalFans: fans.length,
-    totalAttended: privacyGate(
-      fans.length,
-      fans.reduce((s, f) => s + f.attended, 0),
-    ),
+    totalFans: distinct,
+    totalAttended: privacyGate(distinct, Number(marked?.n ?? 0)),
     clubs: [...byClub].map(([id, list]) => summarize(id, list)),
   };
 }
@@ -120,8 +126,9 @@ export async function mostMarkedMatches(db: Db, clubId: string, opts: { season?:
   const rows = await db.all(
     `SELECT m.id, m.date, m.season, m.home_goals, m.away_goals, ht.short_name AS home, aw.short_name AS away, COUNT(*) AS fans
        FROM attendances a
-       JOIN users u ON u.id = a.user_id AND u.is_public = 1 AND u.club_id = ?
-       JOIN matches m ON m.id = a.match_id AND (m.home_team_id = u.club_id OR m.away_team_id = u.club_id) AND m.date <= ?
+       JOIN users u ON u.id = a.user_id AND u.is_public = 1
+       JOIN ${FAN_CLUBS} fc ON fc.user_id = u.id AND fc.club_id = ?
+       JOIN matches m ON m.id = a.match_id AND (m.home_team_id = fc.club_id OR m.away_team_id = fc.club_id) AND m.date <= ?
        JOIN teams ht ON ht.id = m.home_team_id
        JOIN teams aw ON aw.id = m.away_team_id
       ${opts.season ? "WHERE m.season = ?" : ""}
@@ -164,7 +171,8 @@ export async function scorersSeenByFans(db: Db, clubId: string, side: "for" | "a
        FROM goals g
        JOIN matches m ON m.id = g.match_id AND m.date <= ?
        JOIN attendances a ON a.match_id = m.id
-       JOIN users u ON u.id = a.user_id AND u.is_public = 1 AND u.club_id = ?
+       JOIN users u ON u.id = a.user_id AND u.is_public = 1
+       JOIN ${FAN_CLUBS} fc ON fc.user_id = u.id AND fc.club_id = ?
        ${against ? "JOIN teams t ON t.id = g.team_id" : ""}
       WHERE g.own_goal = 0 AND ${
         against ? "g.team_id <> ? AND (m.home_team_id = ? OR m.away_team_id = ?)" : "g.team_id = ?"
@@ -224,8 +232,10 @@ export async function clubCommunityDetail(db: Db, clubId: string): Promise<ClubC
  * Si su perfil es privado igual se compara (es su propio carnet), pero él no cuenta para el mínimo ni se
  * revela a los demás.
  */
-export async function communityComparison(db: Db, userId: number): Promise<CommunityComparison | null> {
-  const meRows = await db.all(`${FAN_SELECT} WHERE u.id = ? GROUP BY u.id, u.username, u.club_id`, today(), userId);
+export async function communityComparison(db: Db, userId: number, clubId?: string): Promise<CommunityComparison | null> {
+  const club = clubId ?? ((await db.get<{ club_id: string }>("SELECT club_id FROM users WHERE id = ?", userId))?.club_id as string | undefined);
+  if (!club) return null;
+  const meRows = await db.all(`${FAN_SELECT} WHERE u.id = ? AND fc.club_id = ? GROUP BY u.id, u.username, fc.club_id`, today(), userId, club);
   if (meRows.length === 0) return null;
   const me = toFan(meRows[0]);
   const others = (await publicFans(db, me.clubId)).filter((f) => f.id !== me.id);

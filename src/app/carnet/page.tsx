@@ -35,7 +35,8 @@ export default async function MyCarnetPage({ searchParams }: { searchParams: Pro
     view === "suma" && secondId
       ? await loadCarnet(db, user, user.clubId, secondId)
       : await loadCarnet(db, user, view === "segundo" && secondId ? secondId : user.clubId);
-  const community = view === "principal" ? await communityComparison(db, user.id) : null;
+  const community =
+    view === "principal" ? await communityComparison(db, user.id) : view === "segundo" && secondId ? await communityComparison(db, user.id, secondId) : null;
   return (
     <div className="stack">
       {intro}

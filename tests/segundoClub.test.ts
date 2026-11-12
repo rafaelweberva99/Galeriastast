@@ -112,3 +112,26 @@ describe("la Selección es una sección aparte", () => {
     expect(liga.carnet.total).toBe(0); // la liga no mezcla los partidos de la Selección
   });
 });
+
+describe("el segundo club cuenta para la comunidad", () => {
+  it("quien tiene dos clubes aparece en el ranking de ambos y en el conteo de hinchas", async () => {
+    const { db, user } = await seed();
+    await db.run("UPDATE users SET is_public = 1");
+    await setSecondClub(db, user, "b");
+    await setAttendance(db, user, "ma", "propia");
+    await setAttendance(db, user, "mb", "propia");
+    const { fansOfClub, clubsByFans } = await import("../src/lib/repo/rankings.ts");
+    const { listClubs } = await import("../src/lib/repo/teams.ts");
+    const a = await fansOfClub(db, "a");
+    const b = await fansOfClub(db, "b");
+    expect(a.map((f) => f.username)).toContain("pepe");
+    expect(b.map((f) => f.username)).toEqual(["pepe"]);
+    expect(b[0]).toMatchObject({ attended: 1, won: 1, secondary: true });
+    expect(a.find((f) => f.username === "pepe")).toMatchObject({ attended: 1, secondary: false });
+    const byFans = new Map((await clubsByFans(db)).map((c) => [c.clubId, c]));
+    expect(byFans.get("b")).toMatchObject({ fans: 1, attendances: 1 });
+    expect(byFans.get("a")?.fans).toBe(1);
+    const clubs = new Map((await listClubs(db)).map((c) => [c.id, c]));
+    expect(clubs.get("b")?.fans ?? 1).toBe(1);
+  });
+});

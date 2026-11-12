@@ -44,7 +44,8 @@ export default async function FanPage({ params, searchParams }: { params: Params
   const switcher = secondTeam && mainTeam && sumaData && (
     <ClubSwitch base={base} view={view} main={mainTeam.shortName} second={secondTeam.shortName} suma={sumaData.suma} mainColor={mainTeam.colorPrimary} secondColor={secondTeam.colorPrimary} />
   );
-  const community = view === "principal" ? await communityComparison(db, fan.id) : null;
+  const community =
+    view === "principal" ? await communityComparison(db, fan.id) : view === "segundo" && secondId ? await communityComparison(db, fan.id, secondId) : null;
   const data =
     view === "suma" && secondId
       ? await loadCarnet(db, fan, fan.clubId, secondId)

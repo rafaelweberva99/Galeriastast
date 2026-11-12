@@ -1,5 +1,6 @@
 import type { Db } from "../db/client.ts";
 import { effectiveness, MIN_MATCHES_FOR_VERDICT } from "../domain/stats.ts";
+import { FAN_CLUBS } from "./fanClubs.ts";
 
 export interface FanRanking {
   username: string;
@@ -9,6 +10,8 @@ export interface FanRanking {
   drawn: number;
   lost: number;
   effectiveness: number | null;
+  /** true si el club es su segundo club. */
+  secondary: boolean;
 }
 
 /**
@@ -18,24 +21,25 @@ export interface FanRanking {
 export async function fansOfClub(db: Db, clubId: string, limit = 100): Promise<FanRanking[]> {
   // LEFT JOIN: un hincha público sin partidos marcados también cuenta (así el ranking muestra a todos los que cuenta la portada).
   const rows = await db.all(
-    `SELECT u.username, u.club_id,
+    `SELECT u.username, fc.club_id, (u.club_id <> fc.club_id) AS secondary,
          COUNT(m.id) AS attended,
          SUM(CASE WHEN m.home_goals IS NOT NULL AND
-               ((m.home_team_id = u.club_id AND m.home_goals > m.away_goals) OR
-                (m.away_team_id = u.club_id AND m.away_goals > m.home_goals)) THEN 1 ELSE 0 END) AS won,
+               ((m.home_team_id = fc.club_id AND m.home_goals > m.away_goals) OR
+                (m.away_team_id = fc.club_id AND m.away_goals > m.home_goals)) THEN 1 ELSE 0 END) AS won,
          SUM(CASE WHEN m.home_goals IS NOT NULL AND m.home_goals = m.away_goals THEN 1 ELSE 0 END) AS drawn,
          SUM(CASE WHEN m.home_goals IS NOT NULL AND
-               ((m.home_team_id = u.club_id AND m.home_goals < m.away_goals) OR
-                (m.away_team_id = u.club_id AND m.away_goals < m.home_goals)) THEN 1 ELSE 0 END) AS lost
+               ((m.home_team_id = fc.club_id AND m.home_goals < m.away_goals) OR
+                (m.away_team_id = fc.club_id AND m.away_goals < m.home_goals)) THEN 1 ELSE 0 END) AS lost
        FROM users u
+       JOIN ${FAN_CLUBS} fc ON fc.user_id = u.id AND fc.club_id = ?
        LEFT JOIN attendances a ON a.user_id = u.id
-       LEFT JOIN matches m ON m.id = a.match_id AND (m.home_team_id = u.club_id OR m.away_team_id = u.club_id) AND m.date <= ?
-       WHERE u.club_id = ? AND u.is_public = 1
-       GROUP BY u.id
+       LEFT JOIN matches m ON m.id = a.match_id AND (m.home_team_id = fc.club_id OR m.away_team_id = fc.club_id) AND m.date <= ?
+       WHERE u.is_public = 1
+       GROUP BY u.id, u.username, fc.club_id, u.club_id
        ORDER BY attended DESC, u.username
        LIMIT ?`,
-    new Date().toISOString().slice(0, 10), // los partidos marcados que aún no se juegan no cuentan
     clubId,
+    new Date().toISOString().slice(0, 10), // los partidos marcados que aún no se juegan no cuentan
     limit,
   );
   return rows.map((r) => {
@@ -51,6 +55,7 @@ export async function fansOfClub(db: Db, clubId: string, limit = 100): Promise<F
       drawn,
       lost,
       effectiveness: effectiveness({ played, won, drawn, lost, goalsFor: 0, goalsAgainst: 0 }),
+      secondary: Number(r.secondary) === 1,
     };
   });
 }
@@ -67,9 +72,10 @@ export async function clubsByFans(db: Db): Promise<{ clubId: string; name: strin
   return (
     await db.all(
       `SELECT t.id AS club_id, t.name, COUNT(DISTINCT u.id) AS fans, COUNT(a.match_id) AS attendances
-         FROM teams t JOIN users u ON u.club_id = t.id AND u.is_public = 1
+         FROM teams t JOIN ${FAN_CLUBS} fc ON fc.club_id = t.id
+         JOIN users u ON u.id = fc.user_id AND u.is_public = 1
          LEFT JOIN attendances a ON a.user_id = u.id
-           AND a.match_id IN (SELECT id FROM matches WHERE date <= ?)
+           AND a.match_id IN (SELECT id FROM matches WHERE date <= ? AND (home_team_id = t.id OR away_team_id = t.id))
          GROUP BY t.id ORDER BY fans DESC, attendances DESC`,
       new Date().toISOString().slice(0, 10),
     )
