@@ -128,6 +128,13 @@ CREATE TABLE IF NOT EXISTS email_optouts (
   created_at  TEXT NOT NULL DEFAULT {{NOW}}
 );
 
+-- Segundo club (opcional) del hincha: simpatiza con otro club y también va a su estadio.
+CREATE TABLE IF NOT EXISTS user_second_club (
+  user_id     INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  club_id     TEXT NOT NULL REFERENCES teams(id),
+  created_at  TEXT NOT NULL DEFAULT {{NOW}}
+);
+
 -- Goles de cada partido. team_id = equipo al que se le suma el gol en el marcador;
 -- en un autogol (own_goal = 1) el jugador pertenece al equipo rival de team_id.
 CREATE TABLE IF NOT EXISTS goals (

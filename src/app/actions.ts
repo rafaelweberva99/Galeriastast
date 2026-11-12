@@ -31,6 +31,7 @@ import {
   MAX_PASSWORD_LENGTH,
   removeAttendance,
   setAttendance,
+  setSecondClub,
   updateProfile,
   UserExistsError,
 } from "@/lib/repo/users.ts";
@@ -175,17 +176,24 @@ export async function toggleAttendance(form: FormData): Promise<{ error?: string
 
 export async function saveProfile(_: FormState, form: FormData): Promise<FormState> {
   const user = await requireUser();
-  const values = echo(form, ["username", "clubId"]);
+  const values = echo(form, ["username", "clubId", "secondClubId"]);
   const clubId = String(form.get("clubId") ?? "");
+  const secondClubId = String(form.get("secondClubId") ?? "");
   const name = usernameSchema.safeParse(String(form.get("username") ?? user.username));
   if (!name.success) return { error: name.error.issues[0].message, values };
   const db = await getDb();
   if (!(await getTeam(db, clubId))) return { error: "Club desconocido.", values };
   if (!isVisibleClub(clubId) && clubId !== user.clubId) return { error: CLUB_NOT_YET, values };
+  if (secondClubId) {
+    if (!(await getTeam(db, secondClubId))) return { error: "Segundo club desconocido.", values };
+    if (secondClubId === clubId) return { error: "Tu segundo club tiene que ser distinto de tu club principal.", values };
+    if (!isVisibleClub(secondClubId)) return { error: CLUB_NOT_YET, values };
+  }
   try {
     await updateProfile(db, user.id, { clubId, username: name.data });
+    await setSecondClub(db, { ...user, clubId }, secondClubId || null);
   } catch (e) {
-    if (e instanceof UserExistsError) return { error: e.message, values };
+    if (e instanceof UserExistsError || e instanceof AttendanceError) return { error: e.message, values };
     throw e;
   }
   revalidatePath("/", "layout");

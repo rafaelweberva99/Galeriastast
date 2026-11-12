@@ -13,7 +13,7 @@ import {
   type ConsentKind,
   type RequiredDoc,
 } from "../legal.ts";
-import { createUser, hashPassword, verifyPassword, type User } from "./users.ts";
+import { createUser, getSecondClubId, hashPassword, verifyPassword, type User } from "./users.ts";
 
 export class ConsentRequiredError extends Error {}
 export class AccountError extends Error {}
@@ -158,7 +158,7 @@ export interface UserDataExport {
   exportedAt: string;
   /** Versiones vigentes al momento de la descarga; las que aceptaste están en `consents`. */
   currentLegalVersions: { terms: string; privacy: string; date: string };
-  profile: { id: number; username: string; email: string; clubId: string; isPublic: boolean; createdAt: string };
+  profile: { id: number; username: string; email: string; clubId: string; secondClubId: string | null; isPublic: boolean; createdAt: string };
   attendances: {
     matchId: string;
     date: string;
@@ -203,6 +203,7 @@ export async function exportUserData(db: Db, userId: number): Promise<UserDataEx
       username: u.username as string,
       email: u.email as string,
       clubId: u.club_id as string,
+      secondClubId: await getSecondClubId(db, userId),
       isPublic: Number(u.is_public) === 1,
       createdAt: u.created_at as string,
     },

@@ -1353,3 +1353,8 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 /* Filtros automáticos: mientras se actualiza, se atenúan los resultados. */
 .filters-status { min-width: 6.5em; align-self: end; padding-bottom: 8px; }
 body:has(.filters[data-busy="1"]) .filter-results { opacity: 0.45; transition: opacity 0.15s; pointer-events: none; }
+
+/* Selector de club (principal / segundo / suma) */
+.club-switch { display: flex; flex-wrap: wrap; gap: 8px; }
+.club-switch a { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border, #d0d7de); text-decoration: none; font-weight: 700; color: inherit; background: var(--surface, #fff); }
+.club-switch a.is-active { background: var(--club-primary, #0b3a9c); color: #fff; border-color: transparent; }

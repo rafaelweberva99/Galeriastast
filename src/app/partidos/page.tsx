@@ -8,20 +8,24 @@ import { getDb } from "@/lib/db/client.ts";
 import { competitionsForClub, listClubMatches, seasonsForClub, upcomingClubMatches } from "@/lib/repo/matches.ts";
 import { UpcomingMatches } from "@/components/UpcomingMatches.tsx";
 import { getTeam, listClubs } from "@/lib/repo/teams.ts";
-import { attendanceModes } from "@/lib/repo/users.ts";
+import { attendanceModes, getSecondClubId } from "@/lib/repo/users.ts";
 import { goalsForMatches } from "@/lib/repo/goals.ts";
 import { AttendanceToggle } from "@/components/AttendanceToggle.tsx";
 import { MatchRow } from "@/components/MatchRow.tsx";
 
 export const metadata = { title: "Marcar partidos · GaluchaStats" };
 
-type Search = Promise<{ temporada?: string; competicion?: string; rival?: string; solo?: string }>;
+type Search = Promise<{ temporada?: string; competicion?: string; rival?: string; solo?: string; club?: string }>;
 
 export default async function MatchesPage({ searchParams }: { searchParams: Search }) {
   const user = await requireUser();
   const sp = await searchParams;
   const db = await getDb();
-  const club = (await getTeam(db, user.clubId))!;
+  const secondId = await getSecondClubId(db, user.id);
+  const showSecond = !!secondId && sp.club === "segundo";
+  const club = (await getTeam(db, showSecond ? secondId : user.clubId))!;
+  const mainTeam = showSecond ? await getTeam(db, user.clubId) : club;
+  const secondTeam = secondId ? (showSecond ? club : await getTeam(db, secondId)) : null;
   const seasons = await seasonsForClub(db, club.id);
   const season = sp.temporada === "todas" ? undefined : Number(sp.temporada) || seasons[0];
   const modes = await attendanceModes(db, user.id);
@@ -60,9 +64,21 @@ export default async function MatchesPage({ searchParams }: { searchParams: Sear
         </div>
       )}
 
+      {secondTeam && mainTeam && (
+        <nav className="club-switch" aria-label="Elegir club">
+          <Link href="/partidos" className={showSecond ? undefined : "is-active"}>
+            {mainTeam.shortName}
+          </Link>
+          <Link href="/partidos?club=segundo" className={showSecond ? "is-active" : undefined}>
+            {secondTeam.shortName}
+          </Link>
+        </nav>
+      )}
+
       <UpcomingMatches matches={upcoming} clubId={club.id} clubs={rivals} />
 
       <AutoFilterForm className="card filters">
+        {showSecond && <input type="hidden" name="club" value="segundo" />}
         <div className="field">
           <label htmlFor="temporada">Temporada</label>
           <select id="temporada" name="temporada" defaultValue={season ? String(season) : "todas"}>

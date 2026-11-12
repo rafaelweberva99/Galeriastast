@@ -6,10 +6,12 @@ import { saveProfile } from "../actions.ts";
 export function ProfileForm({
   clubs,
   clubId,
+  secondClubId,
   username,
 }: {
   clubs: { id: string; name: string }[];
   clubId: string;
+  secondClubId: string | null;
   username: string;
 }) {
   const [state, action, pending] = useActionState(saveProfile, {});
@@ -40,6 +42,20 @@ export function ProfileForm({
             </option>
           ))}
         </select>
+      </div>
+      <div className="field">
+        <label htmlFor="secondClubId">Segundo club (opcional)</label>
+        <select id="secondClubId" name="secondClubId" defaultValue={v.secondClubId ?? secondClubId ?? ""}>
+          <option value="">Ninguno</option>
+          {clubs.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.name}
+            </option>
+          ))}
+        </select>
+        <span className="muted small">
+          Si también vas al estadio de otro club, puedes marcar sus partidos. Tu Galería mostrará cada club por separado y la suma de ambos.
+        </span>
       </div>
       {state.error && <p className="error" role="alert">{state.error}</p>}
       <button className="btn" disabled={pending}>

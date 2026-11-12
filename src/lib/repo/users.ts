@@ -148,6 +148,7 @@ export async function updateProfile(db: Db, userId: number, input: { clubId: str
     if (taken) throw new UserExistsError("Ese nombre de usuario ya está en uso.");
   }
   try {
+    await db.run("DELETE FROM user_second_club WHERE user_id = ? AND club_id = ?", userId, input.clubId);
     if (username) await db.run("UPDATE users SET club_id = ?, username = ? WHERE id = ?", input.clubId, username, userId);
     else await db.run("UPDATE users SET club_id = ? WHERE id = ?", input.clubId, userId);
   } catch (e) {
@@ -201,12 +202,33 @@ export async function deleteUserSessions(db: Db, userId: number): Promise<number
 
 export class AttendanceError extends Error {}
 
-/** Marca (o actualiza el modo de) un partido al que el hincha fue. Solo partidos de su club. */
+/** Segundo club del hincha, o null si no tiene. */
+export async function getSecondClubId(db: Db, userId: number): Promise<string | null> {
+  const r = await db.get("SELECT club_id FROM user_second_club WHERE user_id = ?", userId);
+  return r ? (r.club_id as string) : null;
+}
+
+/** Fija (o quita, con null) el segundo club. No puede ser el mismo que el club principal. */
+export async function setSecondClub(db: Db, user: User, clubId: string | null): Promise<void> {
+  if (!clubId) {
+    await db.run("DELETE FROM user_second_club WHERE user_id = ?", user.id);
+    return;
+  }
+  if (clubId === user.clubId) throw new AttendanceError("Tu segundo club tiene que ser distinto de tu club principal.");
+  await db.run(
+    "INSERT INTO user_second_club (user_id, club_id) VALUES (?, ?) ON CONFLICT (user_id) DO UPDATE SET club_id = excluded.club_id",
+    user.id,
+    clubId,
+  );
+}
+
+/** Marca (o actualiza el modo de) un partido al que el hincha fue. Solo partidos de su club o de su segundo club. */
 export async function setAttendance(db: Db, user: User, matchId: string, mode: AttendanceMode): Promise<void> {
   const m = await db.get("SELECT home_team_id, away_team_id, date FROM matches WHERE id = ?", matchId);
   if (!m) throw new AttendanceError("Partido no encontrado.");
-  if (m.home_team_id !== user.clubId && m.away_team_id !== user.clubId)
-    throw new AttendanceError("Solo puedes marcar partidos de tu club.");
+  const second = await getSecondClubId(db, user.id);
+  const ok = [user.clubId, second].some((c) => c && (m.home_team_id === c || m.away_team_id === c));
+  if (!ok) throw new AttendanceError("Solo puedes marcar partidos de tu club o de tu segundo club.");
   // Los partidos que vienen se pueden marcar ("Voy") hasta un año antes; cuentan en el carnet cuando se juegan.
   const limit = new Date(Date.now() + 365 * 86_400_000).toISOString().slice(0, 10);
   if ((m.date as string) > limit) throw new AttendanceError("Ese partido es demasiado lejano para marcarlo.");

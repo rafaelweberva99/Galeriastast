@@ -6,6 +6,7 @@ import { CONSENT_LABELS } from "@/lib/legal.ts";
 import { listConsents } from "@/lib/repo/account.ts";
 import { listClubs } from "@/lib/repo/teams.ts";
 import { isVisibleClub } from "@/lib/mvp.ts";
+import { getSecondClubId } from "@/lib/repo/users.ts";
 import { DeleteAccountForm } from "./DeleteAccountForm.tsx";
 import { ProfileForm } from "./ProfileForm.tsx";
 
@@ -14,14 +15,15 @@ export const metadata = { title: "Perfil · GaluchaStats" };
 export default async function ProfilePage() {
   const user = await requireUser();
   const db = await getDb();
-  const clubs = (await listClubs(db)).filter((c) => isVisibleClub(c.id) || c.id === user.clubId).map((c) => ({ id: c.id, name: c.name }));
+  const secondClubId = await getSecondClubId(db, user.id);
+  const clubs = (await listClubs(db)).filter((c) => isVisibleClub(c.id) || c.id === user.clubId || c.id === secondClubId).map((c) => ({ id: c.id, name: c.name }));
   const consents = (await listConsents(db, user.id)).slice(-8).reverse();
   return (
     <div className="stack" style={{ maxWidth: 560, margin: "24px auto" }}>
       <div className="card">
         <h1>@{user.username}</h1>
-        <p className="muted">Si cambias de club, solo se contarán los partidos marcados que involucren a tu nuevo club.</p>
-        <ProfileForm clubs={clubs} clubId={user.clubId} username={user.username} />
+        <p className="muted">Si cambias de club, solo se contarán los partidos marcados que involucren a tu nuevo club (y a tu segundo club, si lo tienes).</p>
+        <ProfileForm clubs={clubs} clubId={user.clubId} secondClubId={secondClubId} username={user.username} />
         <form action={logout} className="logout-line">
           <button type="submit" className="btn btn-ghost">
             Cerrar sesión
