@@ -75,3 +75,24 @@ describe("segundo club: reglas", () => {
     expect(await getSecondClubId(db, user.id)).toBeNull();
   });
 });
+
+describe("Galería por club y de los dos juntos", () => {
+  it("cada vista cuenta lo suyo y la conjunta suma ambos clubes", async () => {
+    const { loadCarnet } = await import("../src/lib/carnet.ts");
+    const { db, user } = await seed();
+    await setSecondClub(db, user, "b");
+    await setAttendance(db, user, "ma", "propia"); // club a, gana 1-0
+    await setAttendance(db, user, "mb", "propia"); // club b, gana 1-0
+    const principal = await loadCarnet(db, user, "a");
+    const segundo = await loadCarnet(db, user, "b");
+    const juntos = await loadCarnet(db, user, "a", "b");
+    expect(principal.carnet.total).toBe(1);
+    expect(principal.attended.map((m) => m.id)).toEqual(["ma"]);
+    expect(segundo.carnet.total).toBe(1);
+    expect(segundo.attended.map((m) => m.id)).toEqual(["mb"]);
+    expect(juntos.carnet.total).toBe(2);
+    expect(juntos.carnet.record).toMatchObject({ played: 2, won: 2 });
+    expect(juntos.attended.map((m) => m.id).sort()).toEqual(["ma", "mb"]);
+    expect(juntos.club.name).toContain("+");
+  });
+});

@@ -5,7 +5,6 @@ import { getDb } from "@/lib/db/client.ts";
 import { communityComparison } from "@/lib/repo/community.ts";
 import { getSecondClubId, getUserByUsername, safeDecode } from "@/lib/repo/users.ts";
 import { ClubSwitch } from "@/components/carnet/ClubSwitch.tsx";
-import { SumaView } from "@/components/carnet/SumaView.tsx";
 import { getTeam } from "@/lib/repo/teams.ts";
 import { CarnetView } from "@/components/CarnetView.tsx";
 import { shareText } from "@/lib/shareText.ts";
@@ -44,21 +43,15 @@ export default async function FanPage({ params, searchParams }: { params: Params
   const switcher = secondTeam && mainTeam && sumaData && (
     <ClubSwitch base={base} view={view} main={mainTeam.shortName} second={secondTeam.shortName} suma={sumaData.suma} mainColor={mainTeam.colorPrimary} secondColor={secondTeam.colorPrimary} />
   );
-  if (view === "suma" && sumaData) {
-    const { main, second, suma } = sumaData;
-    return (
-      <div className="stack">
-        {switcher}
-        <SumaView username={fan.username} main={main} second={second} suma={suma} />
-      </div>
-    );
-  }
   const community = view === "principal" ? await communityComparison(db, fan.id) : null;
-  const data = await loadCarnet(db, fan, view === "segundo" && secondId ? secondId : fan.clubId);
+  const data =
+    view === "suma" && secondId
+      ? await loadCarnet(db, fan, fan.clubId, secondId)
+      : await loadCarnet(db, fan, view === "segundo" && secondId ? secondId : fan.clubId);
   return (
     <div className="stack">
       {switcher}
-      <CarnetView username={fan.username} memberId={fan.id} secondClubId={secondId} {...data} isOwner={isOwner} isPublic={fan.isPublic} community={community} />
+      <CarnetView username={fan.username} memberId={fan.id} {...data} isOwner={isOwner} isPublic={fan.isPublic} community={community} />
     </div>
   );
 }

@@ -7,7 +7,6 @@ import { getTeam } from "@/lib/repo/teams.ts";
 import { getSecondClubId } from "@/lib/repo/users.ts";
 import { CarnetView } from "@/components/CarnetView.tsx";
 import { ClubSwitch } from "@/components/carnet/ClubSwitch.tsx";
-import { SumaView } from "@/components/carnet/SumaView.tsx";
 
 export const metadata = { title: "Mi Galería · GaluchaStats" };
 
@@ -32,24 +31,17 @@ export default async function MyCarnetPage({ searchParams }: { searchParams: Pro
       ¿También vas al estadio de otro club? <Link href="/perfil">Agrega tu segundo club</Link> y verás cada club por separado y la suma de ambos.
     </p>
   );
-  if (view === "suma" && sumaData) {
-    const { main, second, suma } = sumaData;
-    return (
-      <div className="stack">
-        {intro}
-        {switcher}
-        <SumaView username={user.username} main={main} second={second} suma={suma} />
-      </div>
-    );
-  }
-  const data = await loadCarnet(db, user, view === "segundo" && secondId ? secondId : user.clubId);
+  const data =
+    view === "suma" && secondId
+      ? await loadCarnet(db, user, user.clubId, secondId)
+      : await loadCarnet(db, user, view === "segundo" && secondId ? secondId : user.clubId);
   const community = view === "principal" ? await communityComparison(db, user.id) : null;
   return (
     <div className="stack">
       {intro}
       {switcher}
       {addSecond}
-      <CarnetView username={user.username} memberId={user.id} secondClubId={secondId} {...data} isOwner isPublic={user.isPublic} community={community} />
+      <CarnetView username={user.username} memberId={user.id} {...data} isOwner isPublic={user.isPublic} community={community} />
     </div>
   );
 }

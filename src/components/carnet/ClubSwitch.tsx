@@ -27,11 +27,11 @@ export function ClubSwitch({
   const items: { key: ClubView; label: string; sub: string; href: string; color?: string }[] = [
     { key: "principal", label: main, sub: `${games(a.total)}${pct(a.effectiveness)}`, href: base, color: mainColor },
     { key: "segundo", label: second, sub: `${games(b.total)}${pct(b.effectiveness)}`, href: `${base}?club=segundo`, color: secondColor },
-    { key: "suma", label: "Suma de los dos", sub: `${games(suma.total)}${pct(suma.effectiveness)}`, href: `${base}?club=suma` },
+    { key: "suma", label: "Los dos juntos", sub: `${games(suma.total)}${pct(suma.effectiveness)}`, href: `${base}?club=suma` },
   ];
   return (
     <nav className="club-switch" aria-label="Elegir club">
-      <span className="club-switch-title">Tus dos clubes · elige cuál ver</span>
+      <span className="club-switch-title">Visual · elige qué estadísticas ver</span>
       {items.map((i) => (
         <Link
           key={i.key}
