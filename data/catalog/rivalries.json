@@ -11,5 +11,6 @@
   { "id": "clasico-chorero", "name": "Clásico Chorero", "teamA": "huachipato", "teamB": "naval" },
   { "id": "clasico-penquista", "name": "Clásico Penquista", "teamA": "deportes-concepcion", "teamB": "fernandez-vial" },
   { "id": "clasico-penquista-udec", "name": "Clásico penquista (D. Concepción–U. de Concepción)", "teamA": "deportes-concepcion", "teamB": "universidad-de-concepcion" },
+  { "id": "clasico-region-coquimbo", "name": "Clásico de la Región de Coquimbo", "teamA": "la-serena", "teamB": "coquimbo-unido" },
   { "id": "clasico-del-maule", "name": "Clásico del Maule", "teamA": "rangers", "teamB": "curico-unido" }
 ]

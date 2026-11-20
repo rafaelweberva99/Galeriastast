@@ -47,6 +47,8 @@ def parse(wt,y0,split):
                     cells+=ln[1:].split('||')
             tx=[clean(c) for c in cells]
             si=next((i for i,t in enumerate(tx) if SC.match(t)),None)
+            # Partidos cancelados/suspendidos: el marcador es un fallo del tribunal (3-0), no se jugaron.
+            if any(re.search(r'cancelad|suspendid|walk\s?over|\bw\.?o\.?\b',t.lower()) for t in tx):continue
             dt=None
             for t in tx:
                 dd=parse_date(t,y0,split)
@@ -85,6 +87,20 @@ def get(title):
 
 UA="GaluchaStatsDataBot/1.0 (educational football stats)"
 NORM={'Iberia':'Deportes Iberia','San Luis':'San Luis de Quillota','San Luis (C)':'San Luis de Quillota','Lota Schwager (D)':'Lota Schwager','|Santiago Morning':'Santiago Morning'}
+# Partidos jugados cuyo resultado cambió por fallo del tribunal: se guarda el de la cancha (lo que vio el hincha).
+OVERRIDES={('2024-07-31','Deportes La Serena','Santiago Morning'):(1,0,'corregido a 1-0 (gol de L. Altamirano, prensa y Sofascore); el calendario de Wikipedia decía 2-1 y su tabla de posiciones 1-0'),
+('2023-09-23','Deportes La Serena','Deportes Iquique'):(0,0,'resultado en cancha 0-0; el Tribunal de Disciplina otorgó 0-3 a Iquique el 05-10-2023')}
+# Wikipedia nombra un mismo estadio de varias formas; se unifican con los nombres que ya usa la base.
+VENUE_ALIASES={'CAP':'Estadio Huachipato-CAP Acero','Huachipato':'Estadio Huachipato-CAP Acero','Huachipato - CAP':'Estadio Huachipato-CAP Acero','Huachipato-CAP Acero':'Estadio Huachipato-CAP Acero',
+'Elías Figueroa':'Estadio Elías Figueroa Brander','Ester Roa':'Estadio Ester Roa Rebolledo','Francisco Sánchez':'Estadio Francisco Sánchez Rumoroso','Federico Schwager':'Estadio Municipal Federico Schwager',
+'Germán Becker':'Estadio Germán Becker Baechler','Bicentenario Germán Becker':'Estadio Germán Becker Baechler','Joaquín Muñoz':'Estadio Joaquín Muñoz García','Lucio Fariña':'Estadio Lucio Fariña Fernández','Bicentenario Lucio Fariña':'Estadio Lucio Fariña Fernández',
+'Luis Navarro':'Estadio Luis Navarro Avilés','Luis Valenzuela':'Estadio Luis Valenzuela Hermosilla','Nelson Oyarzún Arenas':'Estadio Bicentenario Nelson Oyarzún Arenas','Bicentenario Nelson Oyarzún':'Estadio Bicentenario Nelson Oyarzún Arenas',
+'Nicolás Chahuán':'Estadio Nicolás Chahuán Nazar','Bicentenario Fiscal de Talca':'Estadio Fiscal de Talca','Santa Laura':'Estadio Santa Laura-Universidad SEK'}
+def venue(v):
+    v=v.strip()
+    if not v:return ''
+    if v in VENUE_ALIASES:return VENUE_ALIASES[v]
+    return v if v.startswith(('Estadio','Parque','Complejo')) else 'Estadio '+v
 OURS={'Colo-Colo','Universidad de Chile','Universidad Católica',"O'Higgins",'Coquimbo Unido','Audax Italiano','Palestino','Huachipato','Cobresal','Everton','Ñublense','Unión La Calera','Deportes La Serena','Deportes Limache','Universidad de Concepción','Deportes Concepción'}
 SEASONS=[(2014,True,'2014-15','Primera B de Chile 2014-15'),(2015,True,'2015-16','Primera B de Chile 2015-16'),(2016,True,'2016-17','Primera B de Chile 2016-17'),(2017,False,'2017 (Transición)','Torneo de Transición Primera B de Chile 2017'),(2018,False,'2018','Primera B de Chile 2018'),(2019,False,'2019','Primera B de Chile 2019'),(2020,False,'2020','Primera B de Chile 2020'),(2021,False,'2021','Primera B de Chile 2021'),(2022,False,'2022','Primera B de Chile 2022'),(2023,False,'2023','Primera B de Chile 2023'),(2024,False,'2024','Primera B de Chile 2024'),(2025,False,'2025','Primera B de Chile 2025'),(2026,False,'2026','Primera B de Chile 2026')]
 def fetch(cache):
@@ -99,12 +115,25 @@ def build(cache,out):
     rows=[]
     for y,sp,label,title in SEASONS:
         ms=parse(open(os.path.join(cache,f"{y}.txt"),encoding='utf-8').read(),y,sp);seen=set()
+        if not sp:
+            # Temporadas de un año calendario que terminan en enero/febrero siguiente (p. ej. 2020, por la pandemia):
+            # un mes anterior al del inicio del torneo pertenece al año siguiente.
+            start=min(int(m[0][5:7]) for m in ms if m[1]==1)
+            ms=[(f"{int(m[0][:4])+1}{m[0][4:]}" if int(m[0][5:7])<start else m[0],)+tuple(m[1:]) for m in ms]
+        # Si la numeración de fechas reinicia (p. ej. 2015-16: Apertura y Clausura, ambos 1-15), se continúa la secuencia.
+        fixed=[];prev=0;top=0;off=0
+        for m in ms:
+            if m[1]<prev:off=top
+            prev=m[1];top=max(top,m[1]+off if off==0 else top);fixed.append(m[:1]+(m[1]+off,)+m[2:])
+        ms=fixed
         for d,f,h,a,hg,ag,st,hr in ms:
-            h=NORM.get(h,h);a=NORM.get(a,a)
+            h=NORM.get(h,h);a=NORM.get(a,a);st=st.lstrip('| ').strip()
             if h not in OURS and a not in OURS:continue
             if (d,h,a) in seen:continue
             seen.add((d,h,a))
-            rows.append([d,'primera-b',y,f'Primera B {label}',f'Fecha {f}',h,a,hg,ag,'','',0,st,f'wikipedia:es:{title} (resultado, fecha y estadio; revisado 2026-11-20)'])
+            note=''
+            if (d,h,a) in OVERRIDES:hg,ag,note=OVERRIDES[(d,h,a)];note=f'; {note}'
+            rows.append([d,'primera-b',y,f'Primera B {label}',f'Fecha {f}',h,a,hg,ag,'','',0,venue(st),f'wikipedia:es:{title} (resultado, fecha y estadio; revisado 2026-11-20){note}'])
     rows.sort(key=lambda r:(r[0],r[5]))
     with open(out,'w',newline='',encoding='utf-8') as fh:
         w=csv.writer(fh,lineterminator='\n');w.writerow(['date','competition_id','season','tournament','stage','home','away','home_goals','away_goals','home_pens','away_pens','is_final','venue','source']);w.writerows(rows)
