@@ -19,5 +19,24 @@
     "universidad-de-concepcion",
     "deportes-concepcion"
   ],
-  "pendientes": {}
+  "pendientes": {},
+  "criterioB": "Los 16 clubes de Primera B 2026 también están habilitados. Su historial de partidos con fecha y resultado parte en la temporada 2014-15 (fase regular); antes de eso la fuente no trae fecha por partido.",
+  "b": [
+    "cobreloa",
+    "curico-unido",
+    "deportes-antofagasta",
+    "copiapo",
+    "deportes-iquique",
+    "puerto-montt",
+    "deportes-recoleta",
+    "deportes-santa-cruz",
+    "deportes-temuco",
+    "magallanes",
+    "rangers",
+    "san-luis",
+    "san-marcos-de-arica",
+    "santiago-wanderers",
+    "union-espanola",
+    "union-san-felipe"
+  ]
 }

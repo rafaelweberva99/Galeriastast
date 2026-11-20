@@ -7,10 +7,15 @@ import mvp from "../../data/catalog/mvp.json" with { type: "json" };
 
 const enabled = mvp.enabled && process.env.MVP_ALL_CLUBS !== "1";
 export const MVP_CLUBS: readonly string[] = mvp.clubs;
+/** Clubes de Primera B de la temporada en curso: también se pueden elegir como club (historial desde 2014-15). */
+export const B_CLUBS: readonly string[] = mvp.b;
+
+export type Division = "primera" | "b";
+export const divisionOf = (id: string): Division => (B_CLUBS.includes(id) ? "b" : "primera");
 
 export function isVisibleClub(id: string): boolean {
   // La Selección chilena tiene su propia sección (no se elige como club, pero su historial es público).
-  return !enabled || MVP_CLUBS.includes(id) || id === "seleccion-chilena";
+  return !enabled || MVP_CLUBS.includes(id) || B_CLUBS.includes(id) || id === "seleccion-chilena";
 }
 
 export function visibleClubs<T extends { id: string }>(clubs: T[]): T[] {

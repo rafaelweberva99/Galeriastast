@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import { ClubOptions, type ClubOption } from "@/components/ClubOptions.tsx";
 import { saveProfile } from "../actions.ts";
 
 export function ProfileForm({
@@ -9,7 +10,7 @@ export function ProfileForm({
   secondClubId,
   username,
 }: {
-  clubs: { id: string; name: string }[];
+  clubs: ClubOption[];
   clubId: string;
   secondClubId: string | null;
   username: string;
@@ -36,22 +37,14 @@ export function ProfileForm({
       <div className="field">
         <label htmlFor="clubId">Club</label>
         <select id="clubId" name="clubId" defaultValue={v.clubId ?? clubId}>
-          {clubs.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.name}
-            </option>
-          ))}
+          <ClubOptions clubs={clubs} />
         </select>
       </div>
       <div className="field">
         <label htmlFor="secondClubId">Segundo club (opcional)</label>
         <select id="secondClubId" name="secondClubId" defaultValue={v.secondClubId ?? secondClubId ?? ""}>
           <option value="">Ninguno</option>
-          {clubs.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.name}
-            </option>
-          ))}
+          <ClubOptions clubs={clubs} />
         </select>
         <span className="muted small">
           Si también vas al estadio de otro club, puedes marcar sus partidos. Tu Galería mostrará cada club por separado y la suma de ambos.

@@ -24,8 +24,15 @@ export default async function ImportPage() {
           <div className="small">Importar entradas · {club.name}</div>
           <h1>Tus entradas</h1>
           <p className="muted" style={{ margin: 0 }}>
-            {club.name} vende sus entradas en <strong>{seller.name}</strong>
-            {own?.ownPortal ? " (su portal propio)" : ""}. Sube una captura de tus compras y marcamos los partidos solos.
+            {own ? (
+              <>
+                {club.name} vende sus entradas en <strong>{seller.name}</strong>
+                {own.ownPortal ? " (su portal propio)" : ""}.
+              </>
+            ) : (
+              <>Usa la ticketera donde compraste tus entradas (por ejemplo {seller.name}).</>
+            )}{" "}
+            Sube una captura de tus compras y marcamos los partidos solos.
           </p>
         </div>
       </div>

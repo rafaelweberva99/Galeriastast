@@ -16,7 +16,7 @@ export default async function ProfilePage() {
   const user = await requireUser();
   const db = await getDb();
   const secondClubId = await getSecondClubId(db, user.id);
-  const clubs = (await listClubs(db)).filter((c) => isVisibleClub(c.id) || c.id === user.clubId || c.id === secondClubId).map((c) => ({ id: c.id, name: c.name }));
+  const clubs = (await listClubs(db)).filter((c) => isVisibleClub(c.id) || c.id === user.clubId || c.id === secondClubId).map((c) => ({ id: c.id, name: c.name, division: c.division }));
   const consents = (await listConsents(db, user.id)).slice(-8).reverse();
   return (
     <div className="stack" style={{ maxWidth: 560, margin: "24px auto" }}>

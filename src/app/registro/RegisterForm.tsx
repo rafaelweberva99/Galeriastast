@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useActionState } from "react";
+import { ClubOptions, type ClubOption } from "@/components/ClubOptions.tsx";
 import { MIN_AGE } from "@/lib/legal.ts";
 import { register } from "../actions.ts";
 
-export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name: string }[]; defaultClub: string }) {
+export function RegisterForm({ clubs, defaultClub }: { clubs: ClubOption[]; defaultClub: string }) {
   const [state, action, pending] = useActionState(register, {});
   return (
     <form key={JSON.stringify(state.values ?? {})} action={action} className="form">
@@ -34,11 +35,7 @@ export function RegisterForm({ clubs, defaultClub }: { clubs: { id: string; name
           <option value="" disabled>
             Elige tu club…
           </option>
-          {clubs.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.name}
-            </option>
-          ))}
+          <ClubOptions clubs={clubs} />
         </select>
       </div>
       <fieldset className="consents">

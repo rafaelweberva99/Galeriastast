@@ -12,7 +12,8 @@ export default async function ClubsPage() {
   const clubs = visibleClubs(await listClubs(await getDb()));
   const groups: [string, typeof clubs][] = [
     [`En Primera ${CURRENT_SEASON}`, clubs.filter((c) => c.current)],
-    ["Pasaron por Primera", clubs.filter((c) => !c.current)],
+    [`En Primera B ${CURRENT_SEASON}`, clubs.filter((c) => c.division === "b")],
+    ["Pasaron por Primera", clubs.filter((c) => !c.current && c.division !== "b")],
   ];
   return (
     <div className="stack">

@@ -25,7 +25,7 @@ export function ModeBar({ ligaHref }: { ligaHref: string }) {
           </span>
           <span className="mode-txt">
             <strong>Liga chilena</strong>
-            <small>Tu club · Primera División</small>
+            <small>Tu club · Primera y Primera B</small>
           </span>
         </Link>
         <Link href="/seleccion" className="mode-opt mode-sel" aria-current={sel ? "page" : undefined}>

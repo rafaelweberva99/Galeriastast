@@ -36,7 +36,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   const featured = bigVisible.length ? bigVisible : [...MVP_CLUBS];
   const latest = CURRENT_SEASON;
   const current = allClubs.filter((c) => c.current && !featured.includes(c.id));
-  const historic = allClubs.filter((c) => !c.current);
+  const historic = allClubs.filter((c) => !c.current && c.division !== "b");
   const big = (await Promise.all(featured.map((id) => getTeam(db, id))))
     .filter((t) => t !== null)
     .map(clubIdentity);
