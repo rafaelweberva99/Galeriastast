@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Primera B de Chile (2014-15 a hoy): partidos de los clubes del catálogo, desde Wikipedia en español.
+"""Primera B de Chile (2014-15 a hoy): todos los partidos de la fase regular, desde Wikipedia en español.
 
 Uso: python3 scripts/primera_b/build.py [--cache DIR] [--no-fetch]
   1. Descarga el wikitext de cada temporada (es.wikipedia.org, con pausas por el límite de la API) a DIR
      (por defecto data/raw/primera_b, que no se versiona).
   2. Lee las tablas "Fecha N" (local, resultado, visita, estadio, día y hora) de cada temporada.
-  3. Escribe data/matches/primera-b.csv solo con los partidos donde juega alguno de los 16 clubes de Primera 2026.
+  3. Escribe data/matches/primera-b.csv con todos los partidos jugados (sin los cancelados ni los no disputados).
 
-Antes de 2014-15 Wikipedia solo trae tablas de posiciones, sin fecha por partido: esas temporadas no se cargan.
+Antes de 2014-15 Wikipedia solo trae tablas de posiciones, y los Play-Offs/liguillas solo cuadros sin fecha: no se cargan.
 Los partidos suspendidos sin marcador no se incluyen. Después: npm run data:ingest.
 """
 import argparse,csv,json,os,re,sys,time,urllib.error,urllib.parse,urllib.request
@@ -101,7 +101,9 @@ def venue(v):
     if not v:return ''
     if v in VENUE_ALIASES:return VENUE_ALIASES[v]
     return v if v.startswith(('Estadio','Parque','Complejo')) else 'Estadio '+v
-OURS={'Colo-Colo','Universidad de Chile','Universidad Católica',"O'Higgins",'Coquimbo Unido','Audax Italiano','Palestino','Huachipato','Cobresal','Everton','Ñublense','Unión La Calera','Deportes La Serena','Deportes Limache','Universidad de Concepción','Deportes Concepción'}
+# Ojo 2021: la tabla oficial cuenta como 0-3 los 12 partidos con el jugador mal inscrito de San Marcos de Arica;
+# el calendario trae lo que pasó en la cancha, que es lo que se carga aquí.
+EXCLUDE={('2021-07-25','San Marcos de Arica','Barnechea')}  # 0-3 por sanción del Tribunal de Disciplina (no se disputó)
 SEASONS=[(2014,True,'2014-15','Primera B de Chile 2014-15'),(2015,True,'2015-16','Primera B de Chile 2015-16'),(2016,True,'2016-17','Primera B de Chile 2016-17'),(2017,False,'2017 (Transición)','Torneo de Transición Primera B de Chile 2017'),(2018,False,'2018','Primera B de Chile 2018'),(2019,False,'2019','Primera B de Chile 2019'),(2020,False,'2020','Primera B de Chile 2020'),(2021,False,'2021','Primera B de Chile 2021'),(2022,False,'2022','Primera B de Chile 2022'),(2023,False,'2023','Primera B de Chile 2023'),(2024,False,'2024','Primera B de Chile 2024'),(2025,False,'2025','Primera B de Chile 2025'),(2026,False,'2026','Primera B de Chile 2026')]
 def fetch(cache):
     os.makedirs(cache,exist_ok=True)
@@ -128,7 +130,7 @@ def build(cache,out):
         ms=fixed
         for d,f,h,a,hg,ag,st,hr in ms:
             h=NORM.get(h,h);a=NORM.get(a,a);st=st.lstrip('| ').strip()
-            if h not in OURS and a not in OURS:continue
+            if (d,h,a) in EXCLUDE:continue
             if (d,h,a) in seen:continue
             seen.add((d,h,a))
             note=''
